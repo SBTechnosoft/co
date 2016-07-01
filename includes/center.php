@@ -46,6 +46,9 @@
 				case 'INV':
 					$url = FILENAME_INVOICE;
 					break;
+				case 'TRN':
+					$url = FILENAME_TRANSACTION;
+					break;
 				case 'CTG':
 					$url = FILENAME_CATEGORY;
 					break;

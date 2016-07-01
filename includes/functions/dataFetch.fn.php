@@ -305,6 +305,17 @@ function showClientInv($conn)
 		$sqlshowClientInv = "select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt`,`inv_file_name` from `event_mst` where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlshowClientInv);	
 	}
+	
+function showTransDtl($conn)
+	{
+		$sqlTransDtl = "select `event_id`,`event_name`,`client_name`,`client_charges` from `event_mst` where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
+		return $conn->getResultArray($sqlTransDtl);	
+	}
+function showTransVend($conn)
+	{
+		$sqlTransDtlVend = "select `event_id`,sum(vend_price) as vtot from new_event_places_dtl where vend_id != 0  GROUP BY `event_id`   "; 
+		return $conn->getResultArray($sqlTransDtlVend);	
+	}
 
 	
 	/*

@@ -378,6 +378,10 @@ $arr1 = json_decode($data[0]['permission']);
 						{
 							echo "active ";
 						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'TRN')
+						{
+							echo "active ";
+						}
 						else
 						{
 							echo" ";
@@ -392,6 +396,17 @@ $arr1 = json_decode($data[0]['permission']);
             <ul class="sub-menu">
 
 			<?php 
+				if(isset($arr1) && !empty($arr1) && in_array("PID", $arr1))
+				{					
+			?>
+                <li class="">
+                    <a href="<?php echo HTTP_SERVER.'index.php?url=TRN';?>">
+                        <i class="icon-check-sign"></i> Transaction </a>
+                </li>			
+			<?php 
+			
+				}
+				
 				if(isset($arr1) && !empty($arr1) && in_array("PID", $arr1))
 				{					
 			?>
