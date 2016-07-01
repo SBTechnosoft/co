@@ -122,8 +122,8 @@
                                         <th>Id</th>
                                         <th> Order Name </th>
                                         <th>Client Name </th>
-										<th> FP No </th>
-										<th> Bill No </th>
+										<!--th> FP No </th>
+										<th> Bill No </th-->
                                         <th> Order Date</th>										
 										<th> Charged Amt </th>
 										<th> S.Tax </th>

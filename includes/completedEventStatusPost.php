@@ -20,9 +20,11 @@
 					Mobile1:<?php echo $data[$i]['client_work_mob'];?><br>
 					Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
 					</i>&nbsp;&nbsp;<?php echo ucfirst($data[$i]['client_name']);?>
-				</td>				
-				<td> <?php echo $data[$i]['fp_no']; ?> </td>
-				<td> <?php echo $data[$i]['bill_no'];?> </td>				
+				</td>	
+				
+				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
+				<td> <?php //echo $data[$i]['bill_no'];?> </td-->
+				
 				<?php $from_date=date_create($data[$i]['from_date']);
 						$inm1= date_format($from_date,dateFormat);  
 				?>
