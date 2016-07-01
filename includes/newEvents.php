@@ -1,0 +1,774 @@
+<!-- BEGIN PAGE -->
+<div class="page-content">
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <div id="portlet-config" class="modal hide">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"></button>
+            <h3>portlet Settings</h3>
+        </div>
+        <div class="modal-body">
+            <p>Here will be a configuration form</p>
+        </div>
+    </div>
+    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title">
+					Orders<small> New</small> 
+				</h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.php">Home</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">Add Order </a>
+                    </li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row-fluid">
+			<div class="row-fluid">
+				<div class="span12 booking-search">
+					<h4>Order Details </h4><hr/>
+					<form action="#" name="Form" class="form-horizontal" role="form" >
+						<div class="clearfix margin-bottom-10">
+							<label> Order Name <font color="red">*</font> </label>
+							<div class="input-icon left">
+								<input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  />
+							</div>
+						</div>
+						<!--div class="clearfix margin-bottom-10" >
+							<label for="mn_category">Category </label>
+							<div class="input-icon left">
+								<select name="mn_category" id="mn_category" class="large m-wrap"> 
+									<option>Photography</option>
+									<option>Film Making</option>
+									<option>Designing</option>
+								</select>
+							</div>
+						</div-->
+						<div class="clearfix margin-bottom-10">
+							<label for="">Category</label>
+							<div class="input-icon left">
+								<select name="drpctgnm" id="drpctgnm" class="large m-wrap"> 
+									
+								</select>
+							</div>
+						</div>
+						
+						<div class="clearfix margin-bottom-10">
+							<label for="">Sub Category</label>
+							<div class="input-icon left">
+								<select name="drpsubctgnm" id="drpsubctgnm" class="large m-wrap"> 
+									
+								</select>
+							</div>
+						</div>
+						
+						
+						<!--div class="clearfix margin-bottom-10" >
+							<label for="sub_category">Sub Category </label>
+							<div class="input-icon left">
+								<select name="sub_category" id="sub_category" class="large m-wrap"> 
+									<option>Fashion</option>
+									<option>Catalogue</option>
+									<option>Baby</option>
+									<option>Maternity</option>
+									<option>Automobile</option>
+									<option>Industrial</option>
+									<option>Wedding</option>
+									<option>Portfolio</option>
+									<option>Documentary</option>
+									<option>Pre Wedding</option>
+								</select>
+							</div>
+						</div-->
+						<div class="clearfix margin-bottom-10">
+							<label for="txteventds">Description</label>
+							<div class="input-icon left">
+								<!--input class="large m-wrap" id="txteventds" name="txteventds" type="textarea" /-->
+								<textarea rows="4" cols="50"  class="large m-wrap" id="txteventds" name="txteventds">
+								</textarea>								
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="">Company</label>
+							<div class="input-icon left">
+								<select name="drpcmpnm" id="drpcmpnm" class="large m-wrap">									
+								</select>
+							</div>
+						</div>
+						
+						<div class="clearfix margin-bottom-10">
+							<label> Job Data Part1  </label>
+							<div class="input-icon left">
+								<input type="text" class="large m-wrap" id="txtjobdata1" name="txtjobdata1"  />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label> Job Data Part2  </label>
+							<div class="input-icon left">
+								<input type="text" class="large m-wrap" id="txtjobdata2" name="txtjobdata2"  />
+							</div>
+						</div>
+						
+						
+						</br>
+						<h4>Client Details </h4>
+						<hr />
+						<div class="clearfix margin-bottom-10">
+							<label for="txtclnm">Client Name </label>
+							<div class="input-icon left">
+								<input type="text" id="txtclnm" name="txtclnm"  class="m-wrap" />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="txtclcmp">Client Company </label>
+							<div class="input-icon left">
+								<input class="m-wrap" id="txtclcmp" name="txtclcmp" type="text" />
+							</div>
+						</div>
+						
+						<!--div class="clearfix margin-bottom-10">
+							<label for="txtmob">FP No. </label>
+							<div class="input-icon left">
+								<input type="text" id="txtfpno" name="txtfpno" class="m-wrap" />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="txtmob">Bill No. </label>
+							<div class="input-icon left">
+								<input type="text" id="txtbillno" name="txtbillno" class="m-wrap" />
+							</div>
+						</div-->
+						
+						
+						<div class="clearfix margin-bottom-10">
+							<label for="txtclemail">Email ID </label>
+							<div class="input-icon left">
+								<input type="text" class="m-wrap" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<div class="pull-left margin-right-20">
+								<label for="txtworkmob">Work</label>
+								<div class="input-icon left">
+									<input type="text" id="txtworkmob" name="txtworkmob" class="m-wrap" placeholder="Eg; +919858784525"/>
+								</div>
+							</div>
+							<div class="pull-right margin-right-20">
+								<label for="txthmmob" class="well1">Home</label>
+								<div class="input-icon left">
+									<input type="text" id="txthmmob" name="txthmmob" class="m-wrap" />
+								</div>
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="txtmob">Mobile <font color="red">*</font></label>
+							<div class="input-icon left">
+								<input type="text" id="txtmob" name="txtmob" class="m-wrap" />
+							</div>
+						</div>
+						
+						
+						
+						<div class="">
+							<div class="clearfix margin-bottom-10">
+							<div class="pull-left margin-right-20">
+								<label for="txtfromdt">From Date </label>
+								<div id="datetimepicker1" class="input-append date">
+									<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+									<span class="add-on">
+									  <i class="icon-time" class="icon-calendar"></i>
+									</span>
+								</div>
+							</div>
+							<div class="pull-right margin-right-20">
+								<label for="txttodt" class="well1">To Date </label> 
+								<div id="datetimepicker2" class="input-append date">
+									<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
+									<span class="add-on">
+									  <i class="icon-time" class="icon-calendar"></i>
+									</span>
+								</div>
+							</div>	
+							</div>
+							
+						</div>
+						<br />
+						<div id= "multiinsert">
+							<div id="dynamic_field">
+								<h4>
+									Order places 
+									<!--a name="add" id="add" class="btn blue event">
+										<i class="icon-plus"></i>								
+									</a-->									
+								</h4>
+								<hr />
+								<div class="clearfix margin-bottom-10">
+									<label for="txtvenue">Venue </label>
+									<div class="input-icon left">
+										<input class="m-wrap" id="txtvenue" name="txtvenue" type="text"  />
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="txthall">Hall </label>
+									<div class="input-icon left">
+										<input class="m-wrap" id="txthall" name="txthall" type="text"  />
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="txtldmark">Land Mark </label>
+									<div class="input-icon left">
+										<input class="m-wrap" id="txtldmark" name="txtldmark" type="text" />
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<div class="pull-left margin-right-20">
+										<label for="txtfromdate">From Date </label>
+										<div id="datetimepickerPF" class="input-append date">
+											<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdate" id="txtfromdate"></input>
+											<span class="add-on">
+											  <i class="icon-time" class="icon-calendar"></i>
+											</span>
+										</div>
+									</div>
+									<div class="pull-right margin-right-20">
+									<label for="txttodate" class="well1">To Date </label>
+									<div id="datetimepickerPT" class="input-append date">
+										<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="<?php echo Date;?>" name="txttodate" id="txttodate"></input>
+										<span class="add-on">
+										  <i class="icon-time" class="icon-calendar"></i>
+										</span>
+									</div>
+									</div>									
+								</div>
+								<!--div class="clearfix margin-bottom-10">
+									<label for="eqpdrp">Equipment</label>
+									<div class="multiselect input-icon left">
+										<div class="selectBox" id="eqpdrp" >
+											<select>
+												<option>Select an option</option>
+											</select>
+											<div class="overSelect"></div>
+										</div>
+										<div id="checkboxEqp" class="checkboxesEqp">																	
+										</div>
+										
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="stfdrp">Staff</label>
+									<div class="multiselect input-icon left">
+										<div class="selectBox" id="stfdrp" >
+											<select>
+												<option>Select an option</option>
+											</select>
+											<div class="overSelect"></div>
+										</div>
+										<div id="checkboxStf" class="checkboxesStf">																	
+										</div>
+									</div>
+								</div-->
+								<!-- new drop down for the eqp stf and vendor --->
+								</br>
+								</br>
+								
+								<!--New pop up for insert the equipment -->
+								<div id="popup_equipment">
+								
+								</div>
+								<div id="popup_equipment_data">								
+									<span id="close"> &times; </span>													
+									<h4 align="center" style= "font-weight:bold;"> Add Equipemnt Detail </h4>
+									<br>										
+									<div class="TableRowing">
+										&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+										<strong >Add Equipemnt</strong>
+									</div>
+									</br></br>
+									<div class="span8 booking-search">
+										<form action="#">
+											<div class="clearfix margin-bottom-10">
+												<label> Name </label>
+												<div class="input-icon left">
+
+													<input class="m-wrap" type="text" id="txteqpnm" name="txteqpnm" placeholder="Company or Brand name">
+												</div>
+											</div>
+											<div class="clearfix margin-bottom-10">
+												<div class="pull-left margin-right-20">
+													<label> Serial No. </label>
+													<div class="input-icon left">
+														<input class="m-wrap" type="text" id="txtserno" name="txtserno" />
+													</div>
+												</div>
+												<div class="pull-left margin-right-20">
+													<label> Model No. </label>
+													<div class="input-icon left">
+														<input class="m-wrap" type="text" id="txtmodel" name="txtmodel" />
+													</div>
+												</div>
+											</div>											
+											<div class="clearfix margin-bottom-10">
+												<label> Category </label>
+												<div class="input-icon left">
+													<select class="large m-wrap" id="txtcateqp" name="txtcateqp" >													   
+													</select>
+												</div>
+											</div>											
+											<div class="clearfix margin-bottom-10">
+												<label >Purchase Date</label>
+												
+													<div class="input-append date" id="datetimepicker3">
+														<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap m-ctrl-medium date-picker" type="text"  id="txtpurdate" name="txtpurdate" value="<?php echo Date;?>" /><span class="add-on"><i class="icon-calendar"></i></span>
+													</div>
+												
+											</div>
+											<div class="clearfix margin-bottom-10">
+												<label> Purchase From </label>
+												<div class="input-icon left">
+
+													<input class="m-wrap" type="text"  id="txtpurfrm" name="txtpurfrm" />
+												</div>
+											</div>                                    
+											<div class="clearfix margin-bottom-10">
+												<label> Price </label>
+												<div class="input-icon left">
+													<input class="m-wrap" type="text"  id="txtprice" name="txtprice" placeholder="Your Equipment Price" />
+												</div>
+											</div>
+											
+											<div class="clearfix margin-bottom-10">
+												<label >Type</label>
+												<div class="input-icon left">
+													<select class="large m-wrap" id="drptype" name="drptype" >
+														<option selected="select" value="">Select Type </option>
+														<option value="1"> Qty </option>
+														<option value="2">Sq.Feet </option>
+														
+													</select>
+												</div>
+											</div>
+											<div class="clearfix margin-bottom-10">
+												<label> Remark </label>
+												<div class="input-icon left">
+													<input class="m-wrap" type="text"  id="txtremk" name="txtremk" placeholder="Your Remarks here" />
+												</div>
+											</div>
+
+											<!--button class="btn blue right-side">SAVE <i class="icon-download"></i></button-->
+											<div class="right-side">
+												<a class="btn blue" id="addEquip">Add</a>										
+												<a class="btn blue" id="close1">CANCEL</a>
+											</div>
+										</form>
+										<span id="msgs">
+											
+										</span>
+										<script>
+											function shownewEqp()
+											{		
+												$.ajax({
+													url : './includes/newEventsPost.php',
+													type : 'post',
+													async : false,
+													data : {
+														'shownewEqp' : 1
+														
+													},
+													success : function(r)
+													{
+														$('#drpneweqp').html(r);	
+														
+													}
+													
+												});
+											}
+										
+										</script>
+
+										<!--end booking-search-->
+									</div>								
+									<br/>								
+								</div>
+								
+								<!-- end of the popup for insert equipment -->
+								
+						<!--New pop up for insert the vendor -->
+								<div id="popup_ins_vendor">
+								
+								</div>
+								<div id="popup_ins_vendor_data">								
+									<span id="closevd"> &times; </span>													
+									<h4 align="center" style= "font-weight:bold;"> Add Vendor Detail </h4>
+									<br>									
+									<div class="TableRowing">
+										&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+										<strong >Add Vendor</strong>
+									</div>
+									</br></br>
+									<div class="span8 booking-search">
+										<form action="#">
+											<div class="clearfix margin-bottom-10">
+												<label> Vendor Name </label>
+												<div class="input-icon left">
+													<input type="text" id="txtvendnm" name="txtvendnm" placeholder="Eg; Name of Vendor ..." class="m-wrap" />
+												</div>
+											</div>
+											<div class="clearfix margin-bottom-10">
+												<label> Vendor Company </label>
+												<div class="input-icon left">
+													<input type="text" id="txtvendcmp" name="txtvendcmp" placeholder="Eg; Name of the company..." class="m-wrap" />
+												</div>
+											</div>
+																						
+											<div class="clearfix margin-bottom-10">
+												<label>Class </label>
+												<div class="input-icon left">
+													<select class="medium m-wrap" id="drp_cat_vend" name="drp_cat_vend">
+														<option select="selected" value="">
+															Select Class
+														</option>
+														<option  value="1">
+															Class 1
+														</option>
+														<option value="2">
+															Class 2
+														</option>
+														<option value="3">
+														   Class 3
+														</option>
+														<option value="4">
+															Class 4
+														</option>
+													</select>
+												</div>
+											</div>											
+											
+											<div class="right-side">
+												<a class="btn blue" id="addvend">Add</a>										
+												<a class="btn blue" id="close1vd">CANCEL</a>
+											</div>	
+										</form>
+										<span id="msgs">
+											
+										</span>
+										<script>
+											function shownewVend()
+											{		
+												$.ajax({
+													url : './includes/newEventsPost.php',
+													type : 'post',
+													async : false,
+													data : {
+														'shownewVend' : 1
+														
+													},
+													success : function(r)
+													{
+														$('#drpnewvend').html(r);	
+														
+													}
+													
+												});
+											}										
+										</script>
+
+										<!--end booking-search-->
+									</div>																
+								</div>
+								
+								<!-- end of the popup for insert vendor -->
+								
+								<div>
+									<input style="width:190px;" type="text"  value="Equipment" readonly />
+									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>									
+									
+									
+									
+									<input style="width:120px;" type="text" id="label1" name="label1"  value="Length(FT)" readonly />
+									<input style="width:120px;" type="text" id="label2" name="label2" value="Width(FT)" readonly />
+									
+									
+									
+								</div>
+								
+								<div>
+								
+									
+								
+									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
+									</select>
+									
+									
+									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
+									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									
+								</div>
+								<div>
+									<input style="width:120px;" type="text"  value="Rate" readonly />
+									
+									<input style="width:125px;" type="hidden"  value="Type" readonly />
+									
+									<input style="width:123px;" type="text"  value="Qty" readonly />
+									<input style="width:123px;" type="text"  value="Amount" readonly />
+									
+									<input style="width:200px;" type="text"  value="Staff" readonly />
+									<input style="width:200px;" type="text"  value="Vendor" readonly />
+									<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>
+									<input style="width:124px;" type="text"  value="Price" readonly />
+								
+									
+								</div>
+								<div>
+								
+									<input class="small m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
+									
+									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
+									
+									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
+										<?php  
+											// for($i=1;$i<=10;$i++)
+											// {
+												// echo '<option value="'.$i.'">'.$i.'</option>';
+											// }
+										?>											
+									</select-->
+									<input class="small m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
+									
+									<input class="small m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
+									
+									<input class="small m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
+									
+									<select name="drpnewstf" id="drpnewstf" class="medium m-wrap drpnewstf"> 											
+									</select>
+									<select name="drpnewvend" id="drpnewvend" class="medium m-wrap drpnewvend"> 											
+									</select>
+									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
+									
+									
+								</div>
+								
+								<div>
+									<input  type="text"  value="Remark" readonly />
+								</div>
+								
+								<div>
+									<textarea rows="2" cols="140" id="txtremark" class="txtremark" name="txtremark"></textarea>
+									<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
+										Add								
+									</a>
+								</div>
+								<br/>
+								
+								
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>Equipments</div>
+
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+											<thead>
+												<tr>
+													<th> Equipment</th>
+													<th> Rate</th>
+													<th> Qty</th>
+													<th> Amount</th>
+													<th> Staff</th>
+													<th> Vendor</th>
+													<th> Price</th>
+													<th> Remark</th>
+													<th> Action</th>													 
+												</tr>
+											</thead>
+											<tbody id="eqprec">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+								<!--div id="eqprec">
+								
+								</div-->
+								
+								
+								<!--div class="clearfix margin-bottom-10">
+									<label for="">Equipment</label>
+									<div class="input-icon left">
+										<select  name="drpneweqp" id="drpneweqp" class="small m-wrap">
+											
+										</select>
+									</div>									
+								</div>
+								
+								<div class="clearfix margin-bottom-10">
+									<label for="">Rate</label>
+									<div class="input-icon left" id="showprice">
+										<input  style = "width :75px;" type="text"  id="txtrate" name="txtrate" value=""/>
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="">Qty</label>
+									<div class="input-icon left">
+										<select name="drpqty" id="drpqty" class="small m-wrap">	
+										
+										<?php  
+											// for($i=1;$i<=10;$i++)
+											// {
+												// echo '<option value="'.$i.'">'.$i.'</option>';
+											// }
+										?>										
+											
+										</select>
+									</div>									
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="">Amount</label>
+									<div class="input-icon left" id="showprice">
+										<input style = "width :75px;" type="text"  id="txtamt" name="txtamt" value=""/>
+									</div>
+								</div>
+								
+								<div class="clearfix margin-bottom-10">
+									<label for="">Staff</label>
+									<div class="input-icon left">
+										<select name="drpnewstf" id="drpnewstf" class="small m-wrap"> 											
+										</select>
+									</div>
+								</div>
+								<div class="clearfix margin-bottom-10">
+									<label for="">Vendor</label>
+									<div class="input-icon left">
+										<select name="drpnewvend" id="drpnewvend" class="small m-wrap"> 
+											
+										</select>
+									</div>
+								</div-->
+								
+								
+								
+								
+								<!-- end of the deign-->
+								
+								
+								
+							</div>
+						</div>
+						
+						</br>
+						<h4>Payment Details </h4>
+						<hr />
+						<div class="clearfix margin-bottom-10">
+							<label for="txtcharge">Client Charge </label>
+							<div class="input-icon left">
+								<input type="text" id="txtcharge" name="txtcharge" class="m-wrap txtcharge" readonly />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="txtpaid">Paid Amount / Advance </label>
+							<div class="input-icon left">
+								<input type="number" id="txtpaid" name="txtpaid" class="m-wrap" />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10">
+							<label for="txtpaid">Discount </label>
+							<div class="input-icon left">
+								<input type="text" id="txtdisc" name="txtdisc" class="m-wrap" />
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10" >
+							<label for="paymentMode">Payment Mode </label>
+							<div class="input-icon left">
+								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();'> 
+									<option value="cash">Cash</option>
+									<option value="cheque">Cheque</option>
+								</select>
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">
+							<div class="pull-left margin-right-20">
+								<label for="txtbanknm">Bank Name</label>
+								<div class="input-icon left">
+									<input type="text" id="txtbanknm" name="txtbanknm" class="m-wrap" />
+								</div>
+							</div>
+							<div class="pull-right margin-right-20">
+								<label for="txtchkno" class="well1">Cheque No</label>
+								<div class="input-icon left">
+									<input type="text" id="txtchkno" name="txtchkno" class="m-wrap" />
+								</div>
+							</div>
+						</div>
+						<div class="clearfix margin-bottom-10" >
+							<label for="">Service Tax Applicability </label>
+							<div class="input-icon left">
+								<select name="taxmode" id="taxmode" > 
+									<option select="selected" value="No">No</option>
+									<option value="Yes">Yes</option>
+								</select>
+							</div>
+						</div>
+						<input type="hidden" id="txtstax" name="txtstax" value=""/>
+						<br/>
+						
+						<div class="right-side">
+							<a class="btn blue" id="newaddevent">SAVE <i class="icon-download"></i></a>
+							<a class="btn blue" id="newaddenquiry">ENQUIRY <i class="icon-download"></i></a>
+							<button type="reset" class="btn blue">CANCEL <i class="icon-remove-sign"></i></button>
+						</div>
+						<!--input type="submit" value="SUBMIT"/-->
+					</form>
+				</div>
+			</div>
+		<!-- END PAGE CONTENT-->
+		</div>
+	<!-- END PAGE CONTAINER-->
+    </div>
+	<!-- END CONTAINER -->  
+</div>
+<!-- END PAGE -->
+<!--
+function selectall(master,cn)
+	{
+		var cbarray = document.getElementsByClassName(cn);
+		for(var i = 0; i < cbarray.length ; i++)
+		{
+			var cb = document.getElementById(cbarray[i].id);
+			cb.checked = master.checked;
+		}
+	}
+	
+	onchange="selectall(this,\'chkall\')"
+	
+	
+	
+	 function showCheckboxes(master,cn) {
+        var checkboxes = document.getElementsByClassName(cn);
+        for(var i = 0; i < checkboxes.length ; i++)
+		{
+			if (!expanded) {
+				checkboxes.style.display = "block";
+				expanded = true;
+			} else {
+				checkboxes.style.display = "none";
+				expanded = false;
+			}
+		}
+    }
+	onclick="showCheckboxes1(this,selectBox)"
+	
+-->

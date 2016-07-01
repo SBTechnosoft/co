@@ -1,0 +1,9 @@
+/includes/config.php
+/includes/header.php
+/upload/*.*
+/.idea/
+Thumbs.db
+robots.txt
+.htaccess
+.DS_Store
+.DS_Store?
