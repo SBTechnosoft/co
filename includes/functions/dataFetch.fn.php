@@ -316,6 +316,17 @@ function showTransVend($conn)
 		$sqlTransDtlVend = "select `event_id`,sum(vend_price) as vtot from new_event_places_dtl where vend_id != 0  GROUP BY `event_id`   "; 
 		return $conn->getResultArray($sqlTransDtlVend);	
 	}
+	
+function showAccNum($conn)
+	{
+		$sqlshowAccNum = " select sum(client_charges) as total , sum(client_paid_amt) as paid from `event_mst` "; 
+		return $conn->getResultArray($sqlshowAccNum);	
+	}
+function showAccExp($conn)
+	{
+		$sqlshowAccNum = " select sum(vendor_charges) as total , sum(vendor_paid_amt) as paid from  `event_vendor_dtl` "; 
+		return $conn->getResultArray($sqlshowAccNum);	
+	}
 
 	
 	/*

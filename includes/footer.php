@@ -64,7 +64,9 @@
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js" type="text/javascript"></script>
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/index.js" type="text/javascript"></script>        
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/index.js" type="text/javascript"></script> 
+
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showdashboardAcc.js" type="text/javascript"></script>   					
 					<!-- END PAGE LEVEL SCRIPTS -->  
 					<script>
 						jQuery(document).ready(function() {    
@@ -1898,7 +1900,8 @@
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js" type="text/javascript"></script>
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/index.js" type="text/javascript"></script>        
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/index.js" type="text/javascript"></script> 
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showdashboardAcc.js" type="text/javascript"></script>   
 					<!-- END PAGE LEVEL SCRIPTS -->  
 					<script>
 						jQuery(document).ready(function() {    
