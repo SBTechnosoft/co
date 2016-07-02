@@ -288,6 +288,27 @@ function updEventDetail($conn,$eid,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$t
 			exit;
 		}
 
+function insertMassPayTrn($conn,$json,$cur_date,$pay_mode,$bk_nm,$chk_no,$mass_amt)
+		{
+			$sqlinsMassPayTrn = "INSERT INTO `event_vend_mass_pay_trn` (`event_vend_json_id`,`payment_date`,`payment_mode`,`bank_name`,`cheque_no`,`paid_amt`) 
+				VALUES ('".$json."','".$cur_date."','".$pay_mode."','".$bk_nm."','".$chk_no."','".$mass_amt."')"; 
+			$resultArray = $conn->insertQuery($sqlinsMassPayTrn);
+			
+		}
+function insert_mass_vend_pay_trn($conn,$evd_id,$event_id,$cur_date,$pay_mode,$bk_nm,$chk_no,$paid_amt,$last_id)
+		{
+			$sqlins_mass_vend_pay_trn = "INSERT INTO `event_vend_payment_trn`(`event_vendor_id`,`event_id`,`payment_date`,`payment_mode`,`vend_bank_name`,`vend_cheque_no`,`paid_amt`,`mass_payment_id`) 
+				VALUES ('".$evd_id."','".$event_id."','".$cur_date."','".$pay_mode."','".$bk_nm."','".$chk_no."','".$paid_amt."','".$last_id."')"; 
+			$resultArray = $conn->insertQuery($sqlins_mass_vend_pay_trn);
+			
+		}
+function upd_vend_dtl($conn,$evd_id,$vend_paid_amt)
+		{
+			$sqlUpd_vend_dtl = "Update `event_vendor_dtl` set `vendor_paid_amt` = '".$vend_paid_amt."',`vendor_paid_status`= 'Paid' where event_vendor_id = '".$evd_id."'"; 
+			$resultArray = $conn->insertQuery($sqlUpd_vend_dtl);
+			
+		}
+
 // function insDesg($conn,$desgId,$designation)
 // {
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 

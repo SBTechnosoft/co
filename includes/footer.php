@@ -699,6 +699,15 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script> 
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showVendunpaid.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
+					
+					<!-- Script for new event which is set for cash and cheque-->
+					<script type="text/javascript">
+						function ShowHideDiv() {
+							var paymentMode = document.getElementById("paymentMode");
+							var showHide = document.getElementById("showHide");
+							showHide.style.display = paymentMode.value == "cheque" ? "block" : "none";
+						}
+					</script>
 				<?php
 					break;
 				case 'CTG':

@@ -99,6 +99,72 @@
 		
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+		
+		<div class="pull-left margin-right-20">
+				<label for="txtbanknm">Total</label>
+				<div class="input-icon left">
+					<input type="text" id="totvamt" name="totvamt" class="m-wrap" readonly/>
+				</div>
+			</div>
+			
+			<div style="margin-left:300px;">
+				<label for="txtchkno" class="well1">Payment Mode</label>
+				<div class="input-icon left">
+					<select name="paymentMode" id="paymentMode" class="m-wrap" onchange='ShowHideDiv();'> 
+						<option value="cash">Cash</option>
+						<option value="cheque">Cheque</option>
+					</select>
+				</div>
+					
+			</div>
+			
+			
+			
+			<!--div class="pull-left margin-right-20">
+				<label for="txtbanknm"></label>
+				<div class="input-icon left">
+					<a id="massPay" class="btn green" >
+				Payment
+				<i class="icon-plus-sign icon-white"></i>
+				</a>
+				</div>
+			</div-->
+			
+			
+		
+		<!--div>
+			 Total 
+				<input type="text" id="totvamt" name="totvamt" class="small wrap" readonly/>		
+			
+			Payment Mode 			
+				<select name="paymentMode" id="paymentMode" class="small wrap" onchange='ShowHideDiv();'> 
+					<option value="cash">Cash</option>
+					<option value="cheque">Cheque</option>
+				</select>
+			
+		</div-->
+		
+		<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">
+			<div class="pull-left margin-right-20">
+				<label for="txtbanknm">Bank Name</label>
+				<div class="input-icon left">
+					<input type="text" id="txtbanknm" name="txtbanknm" class="m-wrap" />
+				</div>
+			</div>
+			<div style="margin-left:300px;">
+				<label for="txtchkno" class="well1">Cheque No</label>
+				<div class="input-icon left">
+					<input type="text" id="txtchkno" name="txtchkno" class="m-wrap" />
+				</div>
+			</div>
+		</div>
+		
+		<a id="massPay" class="btn green" style="margin-bottom:10px;">
+			Payment
+			<i class="icon-plus-sign icon-white"></i>
+			</br>
+		</a>
+		
         <div class="tabbable tabbable-custom tabbable-full-width">
             <div class="tab-content">
                 <div id="tab_1_2" class="tab-pane active">
@@ -138,7 +204,11 @@
                 
                 <!-- End tab pane -->
             </div>
-        </div>
+        </div>		
+		
+		<div id="totvdamt">
+		
+		</div>
         <!--end tabbable-->
         <!-- END PAGE CONTENT-->
     </div>

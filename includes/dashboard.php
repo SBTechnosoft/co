@@ -12,7 +12,7 @@
 						<!-- END BEGIN STYLE CUSTOMIZER -->    
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							Welcome to MyLooka <small>Always Connected</small>
+							Welcome to Creative Office <small>Always Connected</small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -21,13 +21,13 @@
 								<i class="icon-angle-right"></i>
 							</li>
 							<li><a href="#">Dashboard</a></li>
-							<li class="pull-right no-text-shadow">
+							<!--li class="pull-right no-text-shadow">
 								<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 									<i class="icon-calendar"></i>
 									<span></span>
 									<i class="icon-angle-down"></i>
 								</div>
-							</li>
+							</li-->
 						</ul>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						<div class="span6">
-							<div class="portlet box blue">
+							<!--div class="portlet box blue">
 								<div class="portlet-title">
 									<div class="caption"><i class="icon-calendar"></i>Server Stats</div>
 									<div class="tools">
@@ -182,7 +182,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div-->
 						</div>
 					</div>
 					<div class="clearfix"></div>
