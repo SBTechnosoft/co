@@ -327,6 +327,16 @@ function showAccExp($conn)
 		$sqlshowAccNum = " select sum(vendor_charges) as total , sum(vendor_paid_amt) as paid from  `event_vendor_dtl` "; 
 		return $conn->getResultArray($sqlshowAccNum);	
 	}
+function showRemainVAmt($conn,$evd_id)
+	{
+		$sqlshowRemainVAmt = "select (vendor_charges) - (vendor_paid_amt) as remain_amt  from `event_vendor_dtl` where `event_vendor_id` = '".$evd_id."' "; 
+		return $conn->getResultArray($sqlshowRemainVAmt);	
+	}
+function showVUPDetail($conn,$evd_id)
+	{
+		$sqlshowVUPDetail = "select `event_id`,`event_places_id`,`vend_id`,`vendor_paid_status`,`vendor_charges`,(vendor_charges) - (vendor_paid_amt) as remain_amt  from `event_vendor_dtl` where `event_vendor_id` = '".$evd_id."' "; 
+		return $conn->getResultArray($sqlshowVUPDetail);	
+	}
 
 	
 	/*
