@@ -19,7 +19,7 @@ if(isset($_SESSION['USER_ID']) && ($_SESSION['USER_ID']!='') && !empty($_SESSION
 ?>
 <head>
 	<meta charset="utf-8" />
-	<title> Welcome to Event Manager</title>
+	<title> Welcome to Creative Office</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
