@@ -209,9 +209,9 @@
 							<div id="dynamic_field">
 								<h4>
 									Order places 
-									<!--a name="add" id="add" class="btn blue event">
+									<a name="add" id="add" class="btn blue event">
 										<i class="icon-plus"></i>								
-									</a-->									
+									</a>									
 								</h4>
 								<hr />
 								<div class="clearfix margin-bottom-10">
