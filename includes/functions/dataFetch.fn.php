@@ -45,7 +45,7 @@ function showAcs($conn)
 	}
 function showSubCatg($conn)
 	{
-		$sqlShowAcs = "select `as_id`,`as_name`,`eq_id`,`remark` from  `new_sub_catg` where `deleted_at` = '0000-00-00 00:00:00'  "; 
+		$sqlShowAcs = "select `as_id`,`as_name`,ncm.cat_name,`remark` from  `new_sub_catg` nsc inner join new_category_mst ncm on ncm.cat_id = eq_id where nsc.deleted_at = '0000-00-00 00:00:00'  "; 
 		return $conn->getResultArray($sqlShowAcs);		
 	}
 

@@ -25,7 +25,7 @@
 				
 				<td><?php echo $data[$i]['as_id'];?></td>
 				<td><?php echo ucfirst($data[$i]['as_name']);?></td>
-				<td><?php echo $data[$i]['eq_id'];?></td>
+				<td><?php echo $data[$i]['cat_name'];?></td>
 				<td><?php echo ucfirst($data[$i]['remark']);?></td>
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['as_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
