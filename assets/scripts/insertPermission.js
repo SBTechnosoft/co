@@ -6,7 +6,7 @@ $("#addper").click(function() {
             $.each($("input[name='myCheckbox']:checked"), function(){            
                 permission.push($(this).val());
             });
-		alert(permission);
+		//alert(permission);
 		//return false;
 		//var json = JSON.stringify(permission);
 		//alert (json);
