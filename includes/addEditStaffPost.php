@@ -50,7 +50,7 @@
 				</td>
 				<td><?php echo $data[$i]['relative1'];?></td>
 				<td><?php echo $data[$i]['relative2'];?></td>
-				<td><?php echo $data[$i]['password'];?></td>
+				<td><?php echo base64_decode($data[$i]['password']);?></td>
 				<td><?php echo ucfirst($data[$i]['staff_type']);?></td>
 				
 				<td> 
