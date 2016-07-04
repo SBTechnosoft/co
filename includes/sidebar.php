@@ -396,7 +396,7 @@ $arr1 = json_decode($data[0]['permission']);
             <ul class="sub-menu">
 
 			<?php 
-				if(isset($arr1) && !empty($arr1) && in_array("PID", $arr1))
+				if(isset($arr1) && !empty($arr1) && in_array("TRN", $arr1))
 				{					
 			?>
                 <li class="">
@@ -447,6 +447,16 @@ $arr1 = json_decode($data[0]['permission']);
                     <a href="<?php echo HTTP_SERVER.'index.php?url=VUD';?>">
                         <i class="icon-remove-sign"></i> Vendor Unpaid</a>
                 </li>
+				
+				
+			<?php
+				
+				}
+			 
+				if(isset($arr1) && !empty($arr1) && in_array("INV", $arr1))
+				{
+				
+			?>
 				
 				<li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=INV';?>">

@@ -169,6 +169,29 @@ left: -5px;
 												</li>
 											</ul>
 										</li>
+										
+										<li>
+											<label>
+											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="Category">
+											Category
+											</label>
+										
+											<ul>												
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="OCTG">
+													New Category 
+													</label>
+												</li>
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="OSTG">
+													Sub Category
+													</label>
+												</li>
+												
+											</ul>
+										</li>
 											
 										<li>
 											<label>
@@ -194,6 +217,12 @@ left: -5px;
 											<ul>
 												<li>
 													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="TRN">
+													Transaction
+													</label>
+												</li>
+												<li>
+													<label>
 													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="PID">
 													Paid
 													</label>
@@ -204,6 +233,13 @@ left: -5px;
 													Unpaid
 													</label>
 												</li>
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="INV">
+													Invoice
+													</label>
+												</li>
+												
 												<li>
 													<label>
 													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="VPD">
