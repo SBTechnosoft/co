@@ -1,7 +1,7 @@
 <?php
 	include_once('includes/header.php');
 	//require('/home/siliconbrain/public_html/beta.prabandhak.co.in/fpdf/fpdf.php');
-	require('./fpdf/fpdf.php');
+	require(DIR_WS_DOCUMENT_ROOT.'fpdf/fpdf.php');
 	//$fname = $inm.$id.".pdf";
 	
 	$date=date_create($_POST['txtfdate']);
@@ -108,11 +108,7 @@
 					$mipdf->Cell(30,10,"",1,0);
 					$mipdf->Cell(30,10,"",1,1);
 					
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(90,10,"",1,0);
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,1);
+					
 					
 					
 				// for($a=1; $a<=7 ; $a++)
@@ -285,11 +281,7 @@
 					$mipdf->Cell(30,10,"",1,0);
 					$mipdf->Cell(30,10,"",1,1);
 					
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(90,10,"",1,0);
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,1);
+					
 					
 				
 				$mipdf->Cell(160,10,"Charge ",1,0,'R');

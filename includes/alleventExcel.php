@@ -22,7 +22,7 @@ if(isset($_POST['excel']))
 
 	$output			= "";
 	$table 			= ""; // Enter Your Table Name
-	$sql 			= mysql_query("select `event_id` as Id,`event_name` as 'Event Name',`client_name` as 'Client Name',`fp_no` as 'FP No.',`bill_no` as 'Bill No.',`from_date` as 'Event Date',`client_charges` as 'Charged Amount',`service_tax_amt` as 'S. Tax',`total_amt` as 'Tot. Amount',`client_paid_amt` as 'Rec. Amount',`payment_status` as 'Payment Status',`status` as 'Event Status'  from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `event_id` DESC ");
+	$sql 			= mysql_query("select `event_id` as Order Id,`event_name` as 'Order Name',`client_name` as 'Client Name',`from_date` as 'Order Date',`client_charges` as 'Charged Amount',`service_tax_amt` as 'S. Tax',`total_amt` as 'Tot. Amount',`client_paid_amt` as 'Rec. Amount',`payment_status` as 'Payment Status',`status` as 'Event Status'  from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `event_id` DESC ");
 	$columns_total 	= mysql_num_fields($sql);
 
 	// Get The Field Name

@@ -22,7 +22,7 @@ or die("database cannot be selected <br>");
 
 $output			= "";
 $table 			= ""; // Enter Your Table Name
-$sql 			= mysql_query("select `event_id` as 'Event ID',`event_name` as 'Event Name',`client_name` as 'Client Name',`client_work_mob` as 'Mobile #',`client_charges` as 'Client Charge',`client_paid_amt` as 'Client Paid Amt',`client_discount_amt` as 'Client Discount'  from event_mst where payment_status = \"paid\" order by event_id desc;");
+$sql 			= mysql_query("select `event_id` as 'Order ID',`event_name` as 'Order Name',`client_name` as 'Client Name',`client_work_mob` as 'Mobile #',`client_charges` as 'Client Charge',`client_paid_amt` as 'Client Paid Amt',`client_discount_amt` as 'Client Discount'  from event_mst where payment_status = \"paid\" order by event_id desc;");
 $columns_total 	= mysql_num_fields($sql);
 
 // Get The Field Name

@@ -22,7 +22,7 @@ or die("database cannot be selected <br>");
 
 $output			= "";
 $table 			= ""; // Enter Your Table Name
-$sql 			= mysql_query("select evd.event_id as 'Event Id',vm.vendor_name as 'Vendor Name',vm.vendor_cmp as 'Company Name',evd.vendor_charges as 'Vendor Charge',evd.vendor_paid_amt as 'Vendor Paid',evd.vendor_paid_status as 'Status'  from event_vendor_dtl evd inner join vendor_mst vm on evd.vend_id = vm.vend_id where evd.vendor_paid_status = 'paid'" );
+$sql 			= mysql_query("select evd.event_id as 'Order Id',vm.vendor_name as 'Vendor Name',vm.vendor_cmp as 'Company Name',evd.vendor_charges as 'Vendor Charge',evd.vendor_paid_amt as 'Vendor Paid',evd.vendor_paid_status as 'Status'  from event_vendor_dtl evd inner join vendor_mst vm on evd.vend_id = vm.vend_id where evd.vendor_paid_status = 'paid'" );
 $columns_total 	= mysql_num_fields($sql);
 
 // Get The Field Name

@@ -1,7 +1,7 @@
 <?php
 
 include_once('includes/header.php');
-require('./fpdf/fpdf.php');
+require(DIR_WS_DOCUMENT_ROOT.'fpdf/fpdf.php');
 
 if(isset($_POST['fullinvoice']))
 	{
