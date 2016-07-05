@@ -814,6 +814,9 @@
 			});		
 					
 		});	
+		
+		
+		
 
 		function shownewEqp()
 		{		
@@ -873,9 +876,11 @@
 		shownewStf();
 		shownewVend();
 		
+		
+		
 		$("#drpneweqp").on("change", function(){
 			var eqpid    =   $('#drpneweqp').val();
-			//alert( eqpid );
+			
 			$.ajax({
 				url : './includes/newEventsPost.php',
 				type : 'post',
@@ -897,8 +902,8 @@
 			});
 		});
 		
-		$('#label1').hide();
-		$('#label2').hide();
+		$('#labelLT').hide();
+		$('#labelWT').hide();
 		$('#txtlength').hide();
 		$('#txtwidth').hide();
 		
@@ -908,15 +913,15 @@
 			
 			if(gettype == 2)
 			{
-				$('#label1').show();
-				$('#label2').show();
+				$('#labelLT').show();
+				$('#labelWT').show();
 				$('#txtlength').show();
 				$('#txtwidth').show();
 			}
 			else
 			{
-				$('#label1').hide();
-				$('#label2').hide();
+				$('#labelLT').hide();
+				$('#labelWT').hide();
 				$('#txtlength').hide();
 				$('#txtwidth').hide();
 			}
@@ -924,7 +929,8 @@
 			
 		}
 		
-	 $("#txtlength").on("focusout", function(){
+		$("#txtlength").on("focusout", function()
+		{
 			var txtlength    =   $('#txtlength').val();
 			
 			// if(gettype == 2 && txtlength=="")
@@ -952,7 +958,7 @@
 		$("#txtwidth").on("focusout", function(){
 			var txtlength    =   $('#txtlength').val();
 			var txtwidth    =   $('#txtwidth').val();
-			var sqfeet = parseInt(txtlength) * parseInt(txtwidth)
+			var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
 			
 			var rate = $('#txtrate').val();	
 			
@@ -961,7 +967,8 @@
 			$('#txtamt').val(tot);			
 		});
 		
-		$("#txtrate").on("focusout", function(){
+		$("#txtrate").on("focusout", function()
+		{
 			
 			var gettype = $('#txttype').val();
 			//alert(gettype);
@@ -975,7 +982,7 @@
 			{
 				if(isNaN(rate))
 				{
-					alert("Please Only Numeric in Rate!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(rate == 0)
@@ -988,7 +995,7 @@
 			{
 				var txtlength    =   $('#txtlength').val();
 				var txtwidth    =   $('#txtwidth').val();
-				var sqfeet = parseInt(txtlength) * parseInt(txtwidth)
+				var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
 				
 				var rate = $('#txtrate').val();	
 				
@@ -1005,7 +1012,8 @@
 		});
 		
 		
-		$("#drpqty").on("focusout", function(){
+		$("#drpqty").on("focusout", function()
+		{
 			var qty    =   $('#drpqty').val();
 			if(qty == "")
 			{
@@ -1016,7 +1024,7 @@
 			{
 				if(isNaN(qty))
 				{
-					alert("Please Only Numeric in qty!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(qty == 0)
@@ -1066,7 +1074,7 @@
 			{
 				if(isNaN(rate))
 				{
-					alert("Please Only Numeric in rate!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(rate == 0)
@@ -1084,7 +1092,7 @@
 			{
 				if(isNaN(qty))
 				{
-					alert("Please Only Numeric in qty!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(qty == 0)
@@ -1110,7 +1118,7 @@
 			{
 				if(isNaN(length))
 				{
-					alert("Please Only Numeric in length!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in length!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(length == 0)
@@ -1123,7 +1131,7 @@
 			{
 				if(isNaN(width))
 				{
-					alert("Please Only Numeric in width!!! (Allowed input:0-9)")
+					alert("Please Only Numeric in width!!! (Allowed input:0-9)");
 					return false;
 				}
 				if(width == 0)
@@ -1221,8 +1229,8 @@
 			$('.txtremark').val('');
 			$('.txtlength').val('');
 			$('.txtwidth').val('');
-			$('#label1').hide();
-			$('#label2').hide();
+			$('#labelLT').hide();
+			$('#labelWT').hide();
 			$('#txtlength').hide();
 			$('#txtwidth').hide();
 		   $('.txtcharge').val(total_amt);

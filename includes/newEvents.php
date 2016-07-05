@@ -497,8 +497,8 @@
 									
 									
 									
-									<input style="width:120px;" type="text" id="label1" name="label1"  value="Length(FT)" readonly />
-									<input style="width:120px;" type="text" id="label2" name="label2" value="Width(FT)" readonly />
+									<input style="width:120px;" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
+									<input style="width:120px;" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
 									
 									
 									
