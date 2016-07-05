@@ -486,19 +486,19 @@ $(document).on('click','#add',function()
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Vendor Name </label>'+
 		'					<div class="input-icon left">'+
-		'						<input type="text" id="txtvendnm" name="txtvendnm" placeholder="Eg; Name of Vendor ..." class="m-wrap" />'+
+		'						<input type="text" id="txtvendnm'+i+'" name="txtvendnm'+i+'" placeholder="Eg; Name of Vendor ..." class="m-wrap" />'+
 		'					</div>'+
 		'				</div>'+
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Vendor Company </label>'+
 		'					<div class="input-icon left">'+
-		'						<input type="text" id="txtvendcmp" name="txtvendcmp" placeholder="Eg; Name of the company..." class="m-wrap" />'+
+		'						<input type="text" id="txtvendcmp'+i+'" name="txtvendcmp'+i+'" placeholder="Eg; Name of the company..." class="m-wrap" />'+
 		'					</div>'+
 		'				</div>	'+																					
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label>Class </label>'+
 		'					<div class="input-icon left">'+
-		'						<select class="medium m-wrap" id="drp_cat_vend" name="drp_cat_vend">'+
+		'						<select class="medium m-wrap" id="drp_cat_vend'+i+'" name="drp_cat_vend'+i+'">'+
 		'							<option select="selected" value="">'+
 		'								Select Class'+
 		'							</option>'+
@@ -518,14 +518,14 @@ $(document).on('click','#add',function()
 		'					</div>'+
 		'				</div>	'+										
 		'				<div class="right-side">'+
-		'					<a class="btn blue" id="addvend">Add</a>'+										
+		'					<a class="btn blue" id="addvend'+i+'">Add</a>'+										
 		'					<a class="btn blue" id="close1vd'+i+'">CANCEL</a>'+
 		'				</div>'+	
 		'			</form>'+
 		'			<span id="msgs">'+											
 		'			</span>'+
 		'			<script>'+
-		'				function shownewVend()'+
+		'				function shownewVend'+i+'()'+
 		'				{	'+	
 		'					$.ajax({'+
 		'						url : \'./includes/newEventsPost.php\','+
@@ -536,7 +536,7 @@ $(document).on('click','#add',function()
 		'						},'+
 		'						success : function(r)'+
 		'						{'+
-		'							$(\'#drpnewvend\').html(r);'+		
+		'							$(\'#drpnewvend'+i+'\').html(r);'+		
 		'						}'+		
 		'					});'+
 		'				}'+										
@@ -571,6 +571,59 @@ $(document).on('click','#add',function()
 			
 			'return false;'+
 			'});'+
+			
+		//add multiple vendor insertion 
+		'$(\'#addvend'+i+'\').click(function(){'+
+			'var txtvendnm     =   $(\'#txtvendnm'+i+'\').val();'+
+			'var drp_cat_vend  =   $(\'#drp_cat_vend'+i+'\').val();'+
+			'var txtvendcmp    =   $(\'#txtvendcmp'+i+'\').val();'+
+			
+			'alert(txtvendnm);	'+	
+			//'return false;'+
+			
+			'if(txtvendnm == "" )'+
+			'{'+
+				'alert(\'Plz Fill Vendor Name \');'+
+				'return false;'+
+			'}'+
+			'else if(drp_cat_vend == "" )'+
+			'{'+
+				'alert(\'Plz Select Class From Drop Down \');'+
+				'return false;'+
+			'}'+
+			
+			'$.ajax({'+
+				'url : \'./includes/allVendorsPost.php\','+
+				'type : \'POST\','+
+				'async : false,'+
+				'data : {'+
+					'\'saverecord\'  : 1,'+
+					'\'txtvendnm\'   : txtvendnm,'+
+					'\'txtvendcmp\'  : txtvendcmp,'+
+					'\'drp_cat_vend\'  : drp_cat_vend,'+															
+				'},'+
+				'success : function(re)'+
+				'{'+
+					'if(re == 0)'+
+					' {'+
+						
+						'$(\'#txtvendnm\').val(\'\');'+
+						'$(\'#txtvendcmp\').val(\'\');'+
+						'$(\'#drp_cat_vend\').val(\'\');'+						
+						'$(\'#msgs\').addClass(\'fadeInDown\').fadeIn(\'slow\');'+
+						'$(\'#msgs\').addClass(\'fadeInDown\').fadeOut(\'slow\');'+						
+						
+						'shownewVend'+i+'();'+
+						'alert(\'inserted successful\');'+
+						'$(\'#popup_ins_vendor'+i+'\').fadeOut();'+
+						'$(\'#popup_ins_vendor_data'+i+'\').fadeOut();'+
+					 '}'+
+					
+				'}'	+			
+			'});'+	
+						
+		'});'+
+		
 		
 		
 		'</script>'+
