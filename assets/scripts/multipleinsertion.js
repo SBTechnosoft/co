@@ -307,27 +307,27 @@ $(document).on('click','#add',function()
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Name </label>'+
 		'					<div class="input-icon left">'+
-		'						<input class="m-wrap" type="text" id="txteqpnm" name="txteqpnm" placeholder="Company or Brand name">'+
+		'						<input class="m-wrap" type="text" id="txteqpnm'+i+'" name="txteqpnm'+i+'" placeholder="Company or Brand name">'+
 		'					</div>'+
 		'				</div>'+
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<div class="pull-left margin-right-20">'+
 		'						<label> Serial No. </label>'+
 		'						<div class="input-icon left">'+
-		'							<input class="m-wrap" type="text" id="txtserno" name="txtserno" />'+
+		'							<input class="m-wrap" type="text" id="txtserno'+i+'" name="txtserno'+i+'" />'+
 		'						</div>'+
 		'					</div>'+
 		'					<div class="pull-left margin-right-20">'+
 		'						<label> Model No. </label>'+
 		'						<div class="input-icon left">'+
-		'							<input class="m-wrap" type="text" id="txtmodel" name="txtmodel" />'+
+		'							<input class="m-wrap" type="text" id="txtmodel'+i+'" name="txtmodel'+i+'" />'+
 		'						</div>'+
 		'					</div>'+
 		'				</div>	'+										
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Category </label>'+
 		'					<div class="input-icon left">'+
-		'						<select class="large m-wrap" id="txtcateqp" name="txtcateqp" >'+													   
+		'						<select class="large m-wrap" id="txtcateqp'+i+'" name="txtcateqp'+i+'" >'+													   
 		'						</select>'+
 		'					</div>'+
 		'				</div>	'+										
@@ -340,19 +340,19 @@ $(document).on('click','#add',function()
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Purchase From </label>'+
 		'					<div class="input-icon left">'+
-		'						<input class="m-wrap" type="text"  id="txtpurfrm" name="txtpurfrm" />'+
+		'						<input class="m-wrap" type="text"  id="txtpurfrm'+i+'" name="txtpurfrm'+i+'" />'+
 		'					</div>'+
 		'				</div> '+                                   
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Price </label>'+
 		'					<div class="input-icon left">'+
-		'						<input class="m-wrap" type="text"  id="txtprice" name="txtprice" placeholder="Your Equipment Price" />'+
+		'						<input class="m-wrap" type="text"  id="txtprice'+i+'" name="txtprice'+i+'" placeholder="Your Equipment Price" />'+
 		'					</div>'+
 		'				</div>	'+										
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label >Type</label>'+
 		'					<div class="input-icon left">'+
-		'						<select class="large m-wrap" id="drptype" name="drptype" >'+
+		'						<select class="large m-wrap" id="drptype'+i+'" name="drptype'+i+'" >'+
 		'							<option selected="select" value="">Select Type </option>'+
 		'							<option value="1"> Qty </option>'+
 		'							<option value="2">Sq.Feet </option>	'+													
@@ -362,18 +362,18 @@ $(document).on('click','#add',function()
 		'				<div class="clearfix margin-bottom-10">'+
 		'					<label> Remark </label>'+
 		'					<div class="input-icon left">'+
-		'						<input class="m-wrap" type="text"  id="txtremk" name="txtremk" placeholder="Your Remarks here" />'+
+		'						<input class="m-wrap" type="text"  id="txtremk'+i+'" name="txtremk'+i+'" placeholder="Your Remarks here" />'+
 		'					</div>'+
 		'				</div>	'+									
 		'				<div class="right-side">'+
-		'					<a class="btn blue" id="addEquip">Add</a>'+										
+		'					<a class="btn blue" id="addEquip'+i+'">Add</a>'+										
 		'					<a class="btn blue" id="closebtn'+i+'">CANCEL</a>'+
 		'				</div>'+
 		'			</form>'+
 		'			<span id="msgs">'+											
 		'			</span>'+
 		'			<script>'+
-		'				function shownewEqp()'+
+		'				function shownewEqp'+i+'()'+
 		'				{		'+
 		'					$.ajax({'+
 		'						url : \'./includes/newEventsPost.php\','+
@@ -384,7 +384,7 @@ $(document).on('click','#add',function()
 		'						},'+
 		'						success : function(r)'+
 		'						{'+
-		'							$(\'#drpneweqp\').html(r);'+		
+		'							$(\'#drpneweqp'+i+'\').html(r);'+		
 		'						}	'+	
 		'					});'+
 		'				}	'+									
@@ -395,12 +395,37 @@ $(document).on('click','#add',function()
 		
 		'<script>'+
 		
+		//show the dropdown in popup equipment
+		
+		'function showCatInEqp'+i+'()'+
+		'{'	+	
+			'$.ajax({'+
+				'url : \'./includes/addEditEquipmentsPost.php\','+
+				'type : \'post\','+
+				'async : false,'+
+				'data : {'+
+					'\'showCategoryEqp\' : 1,'+
+					
+				'},'+
+				'success : function(r)'+
+				'{'+
+					'$(\'#txtcateqp'+i+'\').html(r);'+
+					
+				'}'+
+				
+			'});'+
+		'}'+
+		 'showCatInEqp'+i+'();'+
+		
+		
+		
 		//popup show and hide script
 		
 		'$(\'#newinseqp'+i+'\').click(function()'+
 		'{'+							
 			'$(\'#popup_equipment'+i+'\').fadeIn();'+
 			'$(\'#popup_equipment_data'+i+'\').fadeIn();'+
+			
 			
 			'return false;'+
 		'});'+
@@ -425,6 +450,88 @@ $(document).on('click','#add',function()
 		 '$(\'#datetimepicker3'+i+'\').datetimepicker({'+
 					'language: \'pt-BR\''+
 					' });'+
+		//add multiple equipment in eve for multiple
+		
+		'$(\'#addEquip'+i+'\').click(function(){'+
+			'var txteqpnm    =   $(\'#txteqpnm'+i+'\').val();'+
+			'var txtserno     =   $(\'#txtserno'+i+'\').val();'+
+			'var txtmodel    =   $(\'#txtmodel'+i+'\').val();'+
+			'var txtcateqp     =   $(\'#txtcateqp'+i+'\').val();'+
+			'var txtpurdate    =   $(\'#txtpurdate'+i+'\').val();'+
+			'var txtpurfrm     =   $(\'#txtpurfrm'+i+'\').val();'+
+			'var txtremk    =   $(\'#txtremk'+i+'\').val();'+
+			'var txtprice    =   $(\'#txtprice'+i+'\').val();'+
+			'var drptype = $(\'#drptype'+i+'\').val();'+
+			
+			'if(txteqpnm == "" )'+
+			'{'+
+				'alert(\'Plz Fill Equpment Name \');'+
+				'return false;'+
+			'}'+
+			'if(txtcateqp == "" )'+
+			'{'+
+				'alert(\'Plz Fill Equpment category \');'+
+				'return false;'+
+			'}'+
+			'if(txtprice == "" )'+
+			'{'+
+				'alert(\'Plz Fill Price\');'+
+				'return false;'+
+			'}'+
+			'if(drptype == "" )'+
+			'{'+
+				'alert(\'Plz Select Type\');'+
+				'return false;'+
+			'}'+
+			
+			// 'if(!txtprice.match(/^\d+/))'+
+			// '{'+
+				// 'alert("Please Only Numeric characters For Price! (Allowed input:0-9)");'+
+				// 'return false;'+
+			// '}'+
+			
+			'$.ajax({'+
+				'url : \'./includes/addEditEquipmentsPost.php\','+
+				'type : \'POST\','+
+				'async : false,'+
+				'data : {'+
+					'\'saverecord\'  : 1,'+
+					'\'txteqpnm\'   : txteqpnm,'+
+					'\'txtserno\'  : txtserno,'+	
+					'\'txtmodel\'   : txtmodel,'+
+					'\'txtcateqp\'  : txtcateqp,'+
+					'\'txtpurdate\'   : txtpurdate,'+
+					'\'txtpurfrm\'  : txtpurfrm,'+
+					'\'txtremk\'   : txtremk,'+
+					'\'txtprice\'  : txtprice,'+
+					'\'drptype\'  : drptype,'+
+					
+				'},'+
+				'success : function(re)'+
+				'{'+
+					
+						'$(\'#txteqpnm'+i+'\').val(\'\');'+
+						'$(\'#txtserno'+i+'\').val(\'\');'+
+						'$(\'#txtmodel'+i+'\').val(\'\');'+
+						'$(\'#txtcateqp'+i+'\').val(\'\');'+
+						'$(\'#txtpurdate'+i+'\').val(\'\');'+
+						'$(\'#txtpurfrm'+i+'\').val(\'\');'+
+						'$(\'#txtremk'+i+'\').val(\'\');'+
+						'$(\'#txtprice'+i+'\').val(\'\');'+
+						'$(\'#drptype'+i+'\').val(\'\');'+		
+						
+						'shownewEqp'+i+'();'+
+						'alert(\'Inserted Equipemnt\');'+
+						
+						'$(\'#popup_equipment'+i+'\').fadeOut();'+
+						'$(\'#popup_equipment_data'+i+'\').fadeOut();'+											
+				'}	'+			
+			'});'+	
+						
+		'});'+
+		
+		
+		
 		
 		'</script>'+
 		
