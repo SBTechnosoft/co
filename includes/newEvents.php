@@ -39,7 +39,15 @@
 			<div class="row-fluid">
 				<div class="span12 booking-search">
 					<h4>Order Details </h4><hr/>
-					<form action="#" name="Form" class="form-horizontal" role="form" >
+					<!--form action="<?php echo HTTP_SERVER; ?>includes/newEventsPost.php" name="Form" method ="post" class="form-horizontal" role="form" -->
+					<!--form name="f2" action="./includes/newEventsPost.php" method="post" id="f2">
+					
+						<input type="text" name="txtnm" id="txtnm"/>
+						<input type="submit" value="div" />
+					
+					</form-->
+					
+					<form name="f1" action="./includes/newEventsPost.php" method="post" id="f1">	
 						<div class="clearfix margin-bottom-10">
 							<label> Order Name <font color="red">*</font> </label>
 							<div class="input-icon left">
@@ -205,6 +213,8 @@
 							
 						</div>
 						<br />
+						
+						
 						<div id= "multiinsert">
 							<div id="dynamic_field">
 								<h4>
@@ -217,26 +227,26 @@
 								<div class="clearfix margin-bottom-10">
 									<label for="txtvenue">Venue </label>
 									<div class="input-icon left">
-										<input class="m-wrap" id="txtvenue" name="txtvenue" type="text"  />
+										<input class="m-wrap" id="hdn[0][txtvenue]" name="hdn[0][txtvenue]" type="text"  />
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
 									<label for="txthall">Hall </label>
 									<div class="input-icon left">
-										<input class="m-wrap" id="txthall" name="txthall" type="text"  />
+										<input class="m-wrap" id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
 									<label for="txtldmark">Land Mark </label>
 									<div class="input-icon left">
-										<input class="m-wrap" id="txtldmark" name="txtldmark" type="text" />
+										<input class="m-wrap" id="hdn[0][txtldmark]" name="hdn[0][txtldmark]" type="text" />
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
 									<div class="pull-left margin-right-20">
 										<label for="txtfromdate">From Date </label>
 										<div id="datetimepickerPF" class="input-append date">
-											<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdate" id="txtfromdate"></input>
+											<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
 											<span class="add-on">
 											  <i class="icon-time" class="icon-calendar"></i>
 											</span>
@@ -245,7 +255,7 @@
 									<div class="pull-right margin-right-20">
 									<label for="txttodate" class="well1">To Date </label>
 									<div id="datetimepickerPT" class="input-append date">
-										<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="<?php echo Date;?>" name="txttodate" id="txttodate"></input>
+										<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
 										<span class="add-on">
 										  <i class="icon-time" class="icon-calendar"></i>
 										</span>
@@ -297,7 +307,7 @@
 									</div>
 									</br></br>
 									<div class="span8 booking-search">
-										<form action="#">
+										
 											<div class="clearfix margin-bottom-10">
 												<label> Name </label>
 												<div class="input-icon left">
@@ -371,7 +381,7 @@
 												<a class="btn blue" id="addEquip">Add</a>										
 												<a class="btn blue" id="close1">CANCEL</a>
 											</div>
-										</form>
+										
 										<span id="msgs">
 											
 										</span>
@@ -418,7 +428,7 @@
 									</div>
 									</br></br>
 									<div class="span8 booking-search">
-										<form action="#">
+										
 											<div class="clearfix margin-bottom-10">
 												<label> Vendor Name </label>
 												<div class="input-icon left">
@@ -459,7 +469,7 @@
 												<a class="btn blue" id="addvend">Add</a>										
 												<a class="btn blue" id="close1vd">CANCEL</a>
 											</div>	
-										</form>
+										
 										<span id="msgs">
 											
 										</span>
@@ -669,6 +679,8 @@
 							</div>
 						</div>
 						
+						
+						
 						</br>
 						<h4>Payment Details </h4>
 						<hr />
@@ -726,12 +738,30 @@
 						<br/>
 						
 						<div class="right-side">
-							<a class="btn blue" id="newaddevent">SAVE <i class="icon-download"></i></a>
+							<!--a class="btn blue" id="newaddevent">SAVE <i class="icon-download"></i></a-->
+							
+							<a class="btn blue" onclick="myFunction()">SAVE <i class="icon-download"></i></a>
+							
+							<!--input  class="btn blue" type="button" onclick="myFunction()" value="SAVE">
+							
+							<button >SAVE <i class="icon-download"></i></button-->
+							
 							<a class="btn blue" id="newaddenquiry">ENQUIRY <i class="icon-download"></i></a>
 							<button type="reset" class="btn blue">CANCEL <i class="icon-remove-sign"></i></button>
+							
 						</div>
 						<!--input type="submit" value="SUBMIT"/-->
+						<!--input type="submit" value="div1" />
+						</form-->
+						
+						
 					</form>
+					
+					<script>
+						function myFunction() {
+							document.getElementById("f1").submit();
+						}
+					</script>
 				</div>
 			</div>
 		<!-- END PAGE CONTENT-->

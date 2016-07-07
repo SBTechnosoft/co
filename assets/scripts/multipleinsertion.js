@@ -12,196 +12,7 @@ $(document).on('click','#add',function()
 	var i = 0;
 	function addnewdiv()
 	{
-		i++;
-		var div = 
-		'<div id="dynamic_field'+i+'">'+
-		  '<h5>'+
-			'Event places' +
-			// '<a  name="add" id="add" class="btn blue event">'+
-			  // '<i class="icon-plus">'+
-			  // '</i>'+							
-			// '</a>'+	
-			// '<a style="margin-left:75%" name="add" id="add" class="btn blue event">'+
-			  // '<i class="icon-plus">'+
-			  // '</i>'+							
-			// '</a>'+
-			'<a style="margin-left:75%" name="remove" id='+i+' class="btn blue event"><i class="icon-minus"></i></a> <a  name="add" id="add" class="btn blue btn_remove"><i class="icon-plus"></i></a>'+
-			
-			
-		  '</h5>'+
-		  '<hr>'+
-		  '<div class="tab-content">'+
-			'<table>'+
-			  '<div class="input-icon left">'+
-				'<tr>'+
-				  '<td class="names">Venue'+ 
-				  '</td>'+
-				  '<td>'+
-					'<input class="small-box" id="txtvenue" name="txtvenue" type="text" />'+
-				  '</td>'+
-				'</tr>'+
-			  '</div>'+
-			  '<div class="input-icon left">'+
-				'<tr>'+
-				  '<td class="names">Land Mark'+
-				  '</td>'+
-				  '<td>'+
-					'<input class="small-box" id="txtldmark" name="txtldmark" type="text" />'+
-				  '</td>'+
-				'</tr>'+
-			  '</div>'+
-			  '<div class="input-icon left">'+
-				'<div class="controls">'+
-				  '<tr>'+
-					'<td>From Date </td>'+
-					'<td><div id="datetimepickerPF'+i+'" class="input-append date">'+
-						'<input data-format="yyyy-MM-dd hh:mm:ss" type="text" name="txtfromdate" id="txtfromdate"></input>'+
-						'<span class="add-on">'+
-						  '<i class="icon-time" class="icon-calendar">'+
-						  '</i>'+
-						'</span>'+
-					  '</div>'+
-					'</td>'+
-					'<td><div class="well1">To Date </div> </td>'+
-					'<td><div id="datetimepickerPT'+i+'" class="input-append date">'+
-						'<input data-format="yyyy-MM-dd hh:mm:ss" type="text" name="txttodate" id="txttodate"></input>'+
-						'<span class="add-on">'+
-						  '<i class="icon-time" class="icon-calendar">'+
-						  '</i>'+
-						'</span>'+
-					  '</div>'+
-					'</td>'+									
-				'</tr>'+
-				'</div>'+
-			  '</div>'+
-			  '<div class="input-icon left">'+
-				'<div class="controls">'+
-				  '<tr>'+
-					'<td class="names">Equipment'+
-					'</td>'+
-					'<td>'+
-					  '<div class="multiselect">'+
-						'<div class="selectBox" id="eqpdrp'+i+'" >'+
-						  '<select>'+
-							'<option>Select an option'+
-							'</option>'+
-						  '</select>'+
-						  '<div class="overSelect">'+
-						  '</div>'+
-						'</div>'+
-						'<div id="checkboxEqp'+i+'" class="checkboxesEqp'+i+'" style="display : none;" >'+																	
-						'</div>'+
-					  '</div>'+
-					'</td>'+
-				  '</tr>'+
-				'</div>'+
-			  '</div>'+
-			  '<div class="input-icon left">'+
-				'<div class="controls">'+
-				  '<tr>'+
-					'<td>Staff'+
-					'</td>'+
-					'<td>'+
-					  '<div class="multiselect">'+
-						'<div class="selectBox" id="stfdrp'+i+'" >'+
-						  '<select>'+
-							'<option>Select an option'+
-							'</option>'+
-						  '</select>'+
-						  '<div class="overSelect">'+
-						  '</div>'+
-						'</div>'+
-						'<div id="checkboxStf'+i+'" class="checkboxesStf'+i+'" style="display : none;">'+																	
-						'</div>'+
-					  '</div>'+
-					'</td>'+
-				  '</tr>'+
-				'</div>'+
-			  '</div>'+
-			'</table>'+
-		  '</div>'+
-		'</div>'+
-		'<script>'+
-			'var expandedEqp'+i+' = false;'+
-				'$(document).on(\'click\',\'#eqpdrp'+i+'\',function()'+
-				'{'	+												
-					'var checkboxesEqp = document.getElementById("checkboxEqp'+i+'");'+
-					'if (!expandedEqp'+i+') {'+
-						'checkboxesEqp.style.display = "block";'+
-						'expandedEqp'+i+' = true;'+
-					'} else {'+
-						'checkboxesEqp.style.display = "none";'+
-						'expandedEqp'+i+' = false;'+
-					'}'	+						
-				'});'+				
-				
-			'var expandedStf'+i+' = false;'+
-				'$(document).on(\'click\',\'#stfdrp'+i+'\',function()'+
-				'{'+
-					
-					'var checkboxesStf = document.getElementById("checkboxStf'+i+'");'+
-					'if (!expandedStf'+i+') {'+
-						'checkboxesStf.style.display = "block";'+
-						'expandedStf'+i+' = true;'+
-					'} else {'+
-						'checkboxesStf.style.display = "none";'+
-						'expandedStf'+i+' = false;'+
-					'}	'+						
-				'});'+	
-				
-			'function showdataEqp'+i+'()'+
-			'{'	+	
-				'$.ajax({'+
-					'url : \'./includes/newEventsPost.php\','+
-					'type : \'post\','+
-					'async : false,'+
-					'data : {'+
-						'\'showEqp\' : 1'+
-						
-					'},'+
-					'success : function(r)'+
-					'{'+
-						'$(\'.checkboxesEqp'+i+'\').html(r);'+	
-						
-					'}'+
-					
-				'});'+
-			'}'+	
-				
-				
-			'showdataEqp'+i+'();'+
-			
-			'function showdataStf'+i+'()'+
-			'{'	+	
-				'$.ajax({'+
-					'url : \'./includes/newEventsPost.php\','+
-					'type : \'post\','+
-					'async : false,'+
-					'data : {'+
-						'\'showStf\' : 1'+
-						
-					'},'+
-					'success : function(r1)'+
-					'{'+
-						'$(\'.checkboxesStf'+i+'\').html(r1);	'+				
-						
-					'}'+
-					
-				'});'+
-			'}'+
-			
-			
-			'showdataStf'+i+'();'+
-			
-			'$(\'#datetimepickerPF'+i+'\').datetimepicker({'+
-				'language: \'pt-BR\''+
-			 ' });'+
-			   '$(\'#datetimepickerPT'+i+'\').datetimepicker({'+
-				'language: \'pt-BR\''+
-			  '});'+
-		'</script>';
-		
-		
+		i++;		
 		var div1 = 		
 		'<div id="dynamic_field'+i+'">'+
 		'	<h4>'+
@@ -212,26 +23,26 @@ $(document).on('click','#add',function()
 		'	<div class="clearfix margin-bottom-10">'+
 		'		<label for="txtvenue">Venue </label>'+
 		'		<div class="input-icon left">'+
-		'			<input class="m-wrap" id="txtvenue" name="txtvenue" type="text"  />'+
+		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'		<label for="txthall">Hall </label>'+
 		'		<div class="input-icon left">'+
-		'			<input class="m-wrap" id="txthall" name="txthall" type="text"  />'+
+		'			<input class="m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'		<label for="txtldmark">Land Mark </label>'+
 		'		<div class="input-icon left">'+
-		'			<input class="m-wrap" id="txtldmark" name="txtldmark" type="text" />'+
+		'			<input class="m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'		<div class="pull-left margin-right-20">'+
 		'			<label for="txtfromdate">From Date </label>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
-		'				<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="" type="text" name="txtfromdate" id="txtfromdate"></input>'+
+		'				<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
 		'				<span class="add-on">'+
 		'				  <i class="icon-time" class="icon-calendar"></i>'+
 		'				</span>'+
@@ -240,7 +51,7 @@ $(document).on('click','#add',function()
 		'		<div class="pull-right margin-right-20">'+
 		'		<label for="txttodate" class="well1">To Date </label>'+
 		'		<div id="datetimepickerPT'+i+'" class="input-append date">'+
-		'			<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="" name="txttodate" id="txttodate"></input>'+
+		'			<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
 		'			<span class="add-on">'+
 		'			  <i class="icon-time" class="icon-calendar"></i>'+
 		'			</span>'+
@@ -1024,6 +835,10 @@ $(document).on('click','#add',function()
 		
 		
 		'var j = 0;'+
+		
+		// 'var col = 0;'+
+		 'var row'+i+' = 0;'+
+		
 		'$(\'#addeqp'+i+'\').on(\'click\',function()'+
 		'{'+
 			'var eqpid = $(\'.drpneweqp'+i+'\').val();'+
@@ -1041,7 +856,7 @@ $(document).on('click','#add',function()
 			'var length = $(\'.txtlength'+i+'\').val();'+
 			'var width = $(\'.txtwidth'+i+'\').val();'+
 			'var txttype = $(\'.txttype'+i+'\').val();'+
-			
+			'var col = '+i+';'+
 			
 			'if(eqpid==\'\')'+
 			'{'+
@@ -1136,23 +951,41 @@ $(document).on('click','#add',function()
 		
 			
 			'j++;'+
+			
+			'row'+i+'++;'+
+			
 			'var div =	'+				
 					
 					'\'<tr id="eqrow\'+i+\'\'+j+\'">\'+'+
-						'\'<input   type="hidden"  id="txtieqp" name="txtieqp" value="\'+eqpid+\'">\'+'+
-						'\'<input  type="hidden"  id="txtieqpnm" name="txtieqpnm" value="\'+eqpnm+\'">\'+'+
-						'\'<input  type="hidden"  id="txtirate" name="txtirate" value="\'+rate+\'">\'+'+
-						'\'<input  type="hidden"  id="txtiqty" name="txtiqty" value="\'+qty+\'">\'+'+
-						'\'<input   type="hidden" class="txtiamt"  id="txtiamt" name="txtiamt" value="\'+amt+\'">\'+'+
-						'\'<input   type="hidden"  id="txtistf" name="txtistf" value="\'+staff+\'">\'+'+
-						'\'<input  type="hidden"  id="txtistfnm" name="txtistfnm" value="\'+staffnm+\'">\'+'+
-						'\'<input  type="hidden"  id="txtivend" name="txtivend" value="\'+vend+\'">\'+'+
-						'\'<input type="hidden"  id="txtivendnm" name="txtivendnm" value="\'+vendnm+\'">\'+'+
-						'\'<input  type="hidden"  id="txtivendprice" name="txtivendprice" value="\'+vprice+\'">\'+'+
-						'\'<input   type="hidden"  id="txtiremark" name="txtiremark" value="\'+reamrk+\'">\'+'+
-						'\'<input  type="hidden"  id="txtilength" name="txtilength" value="\'+length+\'">\'+'+
-						'\'<input   type="hidden"  id="txtiwidth" name="txtiwidth" value="\'+width+\'">\'+'+
+						//'\'<input   type="hidden"  id= "hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" value="\'+eqpid+\'">\'+'+
 						
+						// '\'<input   type="hidden"  id="txtieqp" name="txtieqp" value="\'+eqpid+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtieqpnm" name="txtieqpnm" value="\'+eqpnm+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtirate" name="txtirate" value="\'+rate+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtiqty" name="txtiqty" value="\'+qty+\'">\'+'+
+						// '\'<input   type="hidden" class="txtiamt"  id="txtiamt" name="txtiamt" value="\'+amt+\'">\'+'+
+						// '\'<input   type="hidden"  id="txtistf" name="txtistf" value="\'+staff+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtistfnm" name="txtistfnm" value="\'+staffnm+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtivend" name="txtivend" value="\'+vend+\'">\'+'+
+						// '\'<input type="hidden"  id="txtivendnm" name="txtivendnm" value="\'+vendnm+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtivendprice" name="txtivendprice" value="\'+vprice+\'">\'+'+
+						// '\'<input   type="hidden"  id="txtiremark" name="txtiremark" value="\'+reamrk+\'">\'+'+
+						// '\'<input  type="hidden"  id="txtilength" name="txtilength" value="\'+length+\'">\'+'+
+						// '\'<input   type="hidden"  id="txtiwidth" name="txtiwidth" value="\'+width+\'">\'+'+
+						
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" value="\'+eqpid+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" value="\'+eqpnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtirate]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtirate]" value="\'+rate+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiqty]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiqty]" value="\'+qty+\'">\'+'+
+						'\'<input   type="hidden" class="txtiamt"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiamt]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiamt]" value="\'+amt+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtistf]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtistf]" value="\'+staff+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" value="\'+staffnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" value="\'+vend+\'">\'+'+
+						'\'<input type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" value="\'+vendnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" value="\'+vprice+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" value="\'+reamrk+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" value="\'+length+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" value="\'+width+\'">\'+'+
 						
 						
 						'\'<td>\'+ eqpnm+\'</td>\'+'+
@@ -1166,8 +999,11 @@ $(document).on('click','#add',function()
 						'\'<td><a class="remove'+i+'" id="\'+i+\'\'+j+\'" style= "cursor:pointer; margin-left:15px;">\'+'+
 							'\'<i class="fa fa-times" aria-hidden="true"></i>\'+'+							
 						'\'</a></td>\'+'+
-					'\'</tr>\';	'+				
+					'\'</tr>\';	'+	
+					
 			'$(\'#eqprec'+i+'\').append(div);'+	
+			
+			
 			
 			'var gtot = [];'+
             '$.each($(\'.txtiamt\'), function(){  '+          

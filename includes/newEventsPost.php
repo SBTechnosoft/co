@@ -24,7 +24,9 @@
 // foreach($_POST['stf'] as $stf_id)
 	// {
         // echo "Cheked Product is:= ".$stf_id." <br>";
-    // }	
+    // }
+// echo "hi divyesh";
+// exit;	
 	
 if(isset($_POST['showtax']))
 	{	
@@ -105,7 +107,107 @@ if(isset($_POST['showtax']))
 				insertPaymentTrn($conn,$event_id_pdtl,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 			}
 		
-	}		
+	}
+
+
+	//insertion using simple form post method.
+	
+	if(isset($_POST['txteventnm']))
+	{	
+		$hdn_ary = $_POST['hdn'];	
+		
+		
+		// inserted in event_mst
+		$cur_date = date('Y-m-d H:i:s');
+		
+		//$tot_amt = $_POST['gtot'];
+		
+		//temporory data
+		$tot_amt = $_POST['txtcharge'];
+		
+		$paid_amt = $_POST['txtpaid'];
+		
+		
+		
+		if($tot_amt - $paid_amt != 0)
+		{
+			$pay_status = "Unpaid";
+		}
+		else
+		{
+			$pay_status = "Paid";
+		}
+		$estatus = "new";
+		//need chng on gtot value
+		$gtot = $_POST['txtcharge'];
+		insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtfromdt'],$_POST['txttodt'],$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$_POST['tax'],$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2']);
+		
+		//select last record inserted from event_mst	
+		$eventlast_id = mysql_insert_id();;
+		//now inserted in event_places_id
+		
+		
+		//here is loop coming for multiple record//
+		foreach($hdn_ary as $key => $value)
+		{
+					  
+		  if(is_array($value))
+		  {
+							
+				echo $value['txtvenue']."</br>";
+				echo $value['txthall']."</br>";
+				echo $value['txtldmark']."</br>";
+				echo $value['txtfromdate']."</br>";
+				echo $value['txttodate']."</br>";			
+				
+				
+			//insertion work start
+			
+			insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$value['txtfromdate'],$value['txttodate']);			
+			$last_vplc_id  =  mysql_insert_id();			
+			//insertion of event_place over stop
+				
+			foreach($value as $key => $subvalue)
+			{
+			
+				if(is_array($subvalue))
+				{
+					
+					echo $subvalue['txtieqp'];
+					//echo $subvalue['txtieqpnm'];
+					echo $subvalue['txtirate'];
+					echo $subvalue['txtiqty'];
+					echo $subvalue['txtiamt'];
+					echo $subvalue['txtistf'];
+					//echo $subvalue['txtistfnm'];
+					echo $subvalue['txtivend'];
+					//echo $subvalue['txtivendnm'];
+					echo $subvalue['txtivendprice'];
+					echo $subvalue['txtiremark'];
+					echo $subvalue['txtilength'];
+					echo $subvalue['txtiwidth']."</br>";
+					insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['txtieqp'],$subvalue['txtirate'],$subvalue['txtiqty'],$subvalue['txtiamt'],$subvalue['txtistf'],$subvalue['txtivend'],$subvalue['txtivendprice'],$subvalue['txtiremark'],$subvalue['txtilength'],$subvalue['txtiwidth']);	
+					
+				}
+				else
+				{				
+					
+				}				
+			}					
+		  }
+		  
+		}
+		
+		$client_charge = $_POST['txtcharge'];
+		$cur_date = date('Ymd');
+		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
+		{
+			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
+		}
+		
+		
+		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+	}
 	
 	if(isset($_POST['showEqp']))
 	{	

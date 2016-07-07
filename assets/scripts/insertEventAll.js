@@ -33,6 +33,27 @@
 			var txtstax =$('#txtstax').val();
 			var txtdisc = $('#txtdisc').val();
 			
+			var hdn = $('input[id^="hdn"]').map(function() {
+			  return this.value;
+			}).get();
+			
+			//var hdn = ('#hdn').val();
+			
+			
+			// var values = $("input[id^='hdn']")
+              // .map(function(){return $(this).val();}).get();
+			  
+			
+			// var inputs = document.querySelectorAll("#hdn input[name='hdn[]']");
+				// alert(inputs);
+				// for (i = 0; i < inputs.length; i++) {
+					
+				// }
+			
+			alert (hdn);
+			return false;
+			
+			
 			
 			//now inserting next table			
 			var txtvenue = [];
@@ -1170,19 +1191,19 @@
 					'</tr>';*/
 					
 					'<tr id="eqrow'+i+'">'+
-						'<input   type="hidden"  id="txtieqp" name="txtieqp" value="'+eqpid+'">'+
-						'<input  type="hidden"  id="txtieqpnm" name="txtieqpnm" value="'+eqpnm+'">'+
-						'<input  type="hidden"  id="txtirate" name="txtirate" value="'+rate+'">'+
-						'<input  type="hidden"  id="txtiqty" name="txtiqty" value="'+qty+'">'+
-						'<input   type="hidden" class="txtiamt"  id="txtiamt" name="txtiamt" value="'+amt+'">'+
-						'<input   type="hidden"  id="txtistf" name="txtistf" value="'+staff+'">'+
-						'<input  type="hidden"  id="txtistfnm" name="txtistfnm" value="'+staffnm+'">'+
-						'<input  type="hidden"  id="txtivend" name="txtivend" value="'+vend+'">'+
-						'<input type="hidden"  id="txtivendnm" name="txtivendnm" value="'+vendnm+'">'+
-						'<input  type="hidden"  id="txtivendprice" name="txtivendprice" value="'+vprice+'">'+
-						'<input   type="hidden"  id="txtiremark" name="txtiremark" value="'+reamrk+'">'+
-						'<input  type="hidden"  id="txtilength" name="txtilength" value="'+length+'">'+
-						'<input   type="hidden"  id="txtiwidth" name="txtiwidth" value="'+width+'">'+
+						'<input   type="hidden"  id="hdn[0]['+i+'][txtieqp]" name="hdn[0]['+i+'][txtieqp]" value="'+eqpid+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtieqpnm]" name="hdn[0]['+i+'][txtieqpnm]" value="'+eqpnm+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtirate]" name="hdn[0]['+i+'][txtirate]" value="'+rate+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtiqty]" name="hdn[0]['+i+'][txtiqty]" value="'+qty+'">'+
+						'<input   type="hidden" class="txtiamt"  id="hdn[0]['+i+'][txtiamt]" name="hdn[0]['+i+'][txtiamt]" value="'+amt+'">'+
+						'<input   type="hidden"  id="hdn[0]['+i+'][txtistf]" name="hdn[0]['+i+'][txtistf]" value="'+staff+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtistfnm]" name="hdn[0]['+i+'][txtistfnm]" value="'+staffnm+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtivend]" name="hdn[0]['+i+'][txtivend]" value="'+vend+'">'+
+						'<input type="hidden"  id="hdn[0]['+i+'][txtivendnm]" name="hdn[0]['+i+'][txtivendnm]" value="'+vendnm+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtivendprice]" name="hdn[0]['+i+'][txtivendprice]" value="'+vprice+'">'+
+						'<input   type="hidden"  id="hdn[0]['+i+'][txtiremark]" name="hdn[0]['+i+'][txtiremark]" value="'+reamrk+'">'+
+						'<input  type="hidden"  id="hdn[0]['+i+'][txtilength]" name="hdn[0]['+i+'][txtilength]" value="'+length+'">'+
+						'<input   type="hidden"  id="hdn[0]['+i+'][txtiwidth]" name="hdn[0]['+i+'][txtiwidth]" value="'+width+'">'+
 						
 						
 						

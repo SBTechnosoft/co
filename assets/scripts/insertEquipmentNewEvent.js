@@ -34,7 +34,7 @@ function showCatInEqp()
 			
 			if(txteqpnm == "" )
 			{
-				alert('Plz Fill Equpment Name ');
+				alert('Plz Fill Equipment Name ');
 				return false;
 			}
 			if(txtcateqp == "" )
