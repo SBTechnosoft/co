@@ -502,7 +502,9 @@
 				
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-					  
+					
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/bootstrap-datetimepicker.min.js" type="text/javascript"></script> 
+					
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
@@ -523,6 +525,17 @@
 						$("#search_btn").click(function(){
 						$("#search_form").toggle();
 						});
+						
+						$("#add_btn").click(function(){
+						$("#add_form").toggle();
+						});
+						
+						$(function() 
+						   {
+							  $('#datetimepicker1').datetimepicker({
+								language: 'pt-BR'
+							  });
+						   });
 					</script>
 					<!-- END JAVASCRIPTS -->
 					

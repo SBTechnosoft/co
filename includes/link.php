@@ -276,6 +276,7 @@
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 						<!-- END GLOBAL MANDATORY STYLES -->
 						<!-- BEGIN PAGE LEVEL STYLES --> 
+						
 						<link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/css/datepicker.css" />
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/pages/search.css" rel="stylesheet" type="text/css"/>

@@ -308,6 +308,14 @@ function upd_vend_dtl($conn,$evd_id,$vend_paid_amt)
 			$resultArray = $conn->insertQuery($sqlUpd_vend_dtl);
 			
 		}
+function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf)
+		{
+			$sqlinsertExpence = "INSERT INTO `expence_dtl` (`exp_cat_id`,`event_id`,`exp_date`,`amount`,`exp_by`) 
+			VALUES ('".$showexpctg."','".$showevent."','".$txtfromdt."','".$txtamt."','".$showstf."')"; 
+			$resultArray = $conn->insertQuery($sqlinsertExpence);
+			//echo 4;
+			//exit;
+		}
 
 // function insDesg($conn,$desgId,$designation)
 // {

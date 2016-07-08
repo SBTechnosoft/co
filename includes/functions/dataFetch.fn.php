@@ -337,6 +337,16 @@ function showVUPDetail($conn,$evd_id)
 		$sqlshowVUPDetail = "select `event_id`,`event_places_id`,`vend_id`,`vendor_paid_status`,`vendor_charges`,(vendor_charges) - (vendor_paid_amt) as remain_amt  from `event_vendor_dtl` where `event_vendor_id` = '".$evd_id."' "; 
 		return $conn->getResultArray($sqlshowVUPDetail);	
 	}
+function showExpCtg($conn)
+	{
+		$sqlshowExpCtg = " select `exp_cat_id`,`cat_name`,`cat_type`  from  `expence_cat_mst` "; 
+		return $conn->getResultArray($sqlshowExpCtg);	
+	}
+function showEvent($conn)
+	{
+		$sqlshowEvent = " select `event_id`,`event_name`  from  `event_mst` "; 
+		return $conn->getResultArray($sqlshowEvent);	
+	}
 
 	
 	/*

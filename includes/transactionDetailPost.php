@@ -1,7 +1,11 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
-			
+	if(isset($_POST['saverecord']))
+	{
+		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$_POST['txtfromdt'],$_POST['txtamt'],$_POST['showstf']);
+		
+	}		
 	
 	if(isset($_POST['showTrnDtl']))
 	{	
@@ -52,4 +56,66 @@
 		}
 		
 	}
-?>
+	if(isset($_POST['showExpCtg']))
+	{
+		$data = showExpCtg($conn);
+		$showCtgCnt = count($data);
+		?>
+			<optgroup label="Event" >
+				<option select="selected" value="">Select Category</option>				
+		<?php
+		for($i=0;$i<$showCtgCnt;$i++)
+		{	
+			if($data[$i]['cat_type'] == 'event')
+			{
+		?>		
+			<option  value="<?php echo $data[$i]['exp_cat_id'];?>"><?php echo $data[$i]['cat_name'];?></option>
+		<?php
+			}
+		}
+		?>
+		</optgroup>
+		<optgroup label="Other" >
+		<?php
+		for($i=0;$i<$showCtgCnt;$i++)
+		{	
+			if($data[$i]['cat_type'] == 'other')
+			{
+		?>		
+			<option  value="<?php echo $data[$i]['exp_cat_id'];?>"><?php echo $data[$i]['cat_name'];?></option>
+		<?php
+			}
+		}
+		?>
+		</optgroup>
+	<?php	
+	}
+	if(isset($_POST['showEvent']))
+	{
+		$data = showEvent($conn);
+		$showEvntCnt = count($data);
+		?>
+		<option select="selected" value="">Select Event</option>
+		<?php
+		for($i=0;$i<$showEvntCnt;$i++)
+		{
+			?>
+			<option  value="<?php echo $data[$i]['event_id'];?>"><?php echo $data[$i]['event_name'];?></option>
+			<?php
+		}
+	}
+	if(isset($_POST['showStaffDrp']))
+	{
+		$data = showStaffDrp($conn);
+		$showStfCnt = count($data);
+		?>
+		<option select="selected" value="">Select Staff</option>
+		<?php
+		for($i=0;$i<$showStfCnt;$i++)
+		{
+			?>
+			<option  value="<?php echo $data[$i]['staff_id'];?>"><?php echo $data[$i]['first_name'];?></option>
+			<?php
+		}
+	}
+	?>

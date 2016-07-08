@@ -1,7 +1,8 @@
 
 	$( function() {		
 		//save data
-		$('#addcmpinfo').click(function(){
+		$('#addcmpinfo').click(function()
+		{
 			var txtcmpnm    =   $('#txtcmpnm').val();
 			var txtpass     =   $('#txtpass').val();
 			var txtcmpadd     =   $('#txtcmpadd').val();	

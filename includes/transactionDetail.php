@@ -37,13 +37,121 @@
                     <i class="icon-angle-down"></i>
                 </div>
             </li>
+			&nbsp;&nbsp;&nbsp;
+			<li id="add_btn">
+				<button type="button" class="btn green">Add
+					<i class="icon-plus-sign icon-white"></i>
+				</button>
+			</li>
 			<li id="search_btn">
 				<button type="button" class="btn green" data-toggle="tooltip" title="Search">
 					<i class="icon-search m-icon-white"></i>
-				</button>
+				</button>&nbsp;
 			</li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
+		<div id="add_form" class="row-fluid search-forms search-default">
+
+            <form class="form-search" action="#">
+                <h4>Expences </h4><hr/>
+				<!--div class="chat-form">
+                    <div class="input-cont">
+					<label>Category </label>
+						<select>
+							<optgroup label="Event">
+								<option value="volvo">Food</option>
+								<option value="saab">Traveling</option>
+								<option value="saab">Other</option>
+							</optgroup>
+							<optgroup label="General">
+								<option value="mercedes">Salary</option>
+								<option value="audi">Stationary</option>
+								<option value="mercedes">Tea/Coffee</option>
+								<option value="audi">Electricity</option>
+							</optgroup>
+						</select>
+					</div>
+                    
+                </div>				
+                <br /-->
+				<div class="clearfix margin-bottom-10">
+					<label> Category  </label>
+					<div class="input-icon left">
+						<select id="showexpctg">
+							
+						</select>
+					</div>
+				</div>
+				
+				<div class="clearfix margin-bottom-10">
+					<label> Event Name:  </label>
+					<div class="input-icon left">
+						<select id="showevent">							
+								
+						</select>
+					</div>
+				</div>
+				
+				<div class="clearfix margin-bottom-10">
+					<label for="txtfromdt">From Date </label>
+					<div class="input-icon left">
+						<div id="datetimepicker1" class="input-append date">
+							<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+							<span class="add-on">
+							  <i class="icon-time" class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<label> Amount  </label>
+					<div class="input-icon left">
+						<input type="text" id="txtamt" name="txtamt" placeholder="Eg; Amount of expence" class="m-wrap" />
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<label> Attachment  </label>
+					<div class="input-icon left">
+						<input type="file" id="upimg" name="upimg"  class="m-wrap" />
+					</div>
+				</div>
+				
+				<div class="clearfix margin-bottom-10">
+					<label> Expence By:  </label>
+					<div class="input-icon left">
+						<select id="showstf">							
+																			
+						</select>
+					</div>
+				</div>
+				
+				<div class="clearfix margin-bottom-10">					
+					<div class="input-icon left" style="margin-top:15px;">
+						<button id="addexp" type="button" class="btn green">Add &nbsp;
+							<!--i class="icon-plus-sign icon-white"></i-->
+						</button>
+						<button id="cancel" type="button" class="btn green">Cancel &nbsp;
+							<!--i class="icon-plus-sign icon-white"></i-->
+						</button> 						
+					</div>
+				</div>
+				
+                <!--div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtcatgdes" name="txtcatgdes" placeholder="Eg; Description Of Category..." class="m-wrap" />
+                    </div>
+					<button id="addcatg" type="button" class="btn green">Add &nbsp;
+                        <i class="icon-plus-sign icon-white"></i>
+                    </button>                    
+                </div-->
+                <span id="msgs">
+
+				</span>
+            </form>
+
+        </div>
+		
+		
 		
 		<div id="search_form" class="row-fluid search-forms search-default">
             <form class="form-search" action="#">

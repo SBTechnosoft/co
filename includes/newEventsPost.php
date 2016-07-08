@@ -154,11 +154,11 @@ if(isset($_POST['showtax']))
 		  if(is_array($value))
 		  {
 							
-				echo $value['txtvenue']."</br>";
-				echo $value['txthall']."</br>";
-				echo $value['txtldmark']."</br>";
-				echo $value['txtfromdate']."</br>";
-				echo $value['txttodate']."</br>";			
+				// echo $value['txtvenue']."</br>";
+				// echo $value['txthall']."</br>";
+				// echo $value['txtldmark']."</br>";
+				// echo $value['txtfromdate']."</br>";
+				// echo $value['txttodate']."</br>";			
 				
 				
 			//insertion work start
@@ -173,19 +173,19 @@ if(isset($_POST['showtax']))
 				if(is_array($subvalue))
 				{
 					
-					echo $subvalue['txtieqp'];
-					//echo $subvalue['txtieqpnm'];
-					echo $subvalue['txtirate'];
-					echo $subvalue['txtiqty'];
-					echo $subvalue['txtiamt'];
-					echo $subvalue['txtistf'];
-					//echo $subvalue['txtistfnm'];
-					echo $subvalue['txtivend'];
-					//echo $subvalue['txtivendnm'];
-					echo $subvalue['txtivendprice'];
-					echo $subvalue['txtiremark'];
-					echo $subvalue['txtilength'];
-					echo $subvalue['txtiwidth']."</br>";
+					// echo $subvalue['txtieqp'];
+					// echo $subvalue['txtieqpnm'];
+					// echo $subvalue['txtirate'];
+					// echo $subvalue['txtiqty'];
+					// echo $subvalue['txtiamt'];
+					// echo $subvalue['txtistf'];
+					// echo $subvalue['txtistfnm'];
+					// echo $subvalue['txtivend'];
+					// echo $subvalue['txtivendnm'];
+					// echo $subvalue['txtivendprice'];
+					// echo $subvalue['txtiremark'];
+					// echo $subvalue['txtilength'];
+					// echo $subvalue['txtiwidth']."</br>";
 					insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['txtieqp'],$subvalue['txtirate'],$subvalue['txtiqty'],$subvalue['txtiamt'],$subvalue['txtistf'],$subvalue['txtivend'],$subvalue['txtivendprice'],$subvalue['txtiremark'],$subvalue['txtilength'],$subvalue['txtiwidth']);	
 					
 				}
