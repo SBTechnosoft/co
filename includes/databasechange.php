@@ -2,6 +2,7 @@ ALTER TABLE `suchak_mgt`.`event_mst`
 ADD COLUMN `updated_by` VARCHAR(45) NULL AFTER `job_data_2`;
 
 date:08/july/2016
+//suchak_mgt change
 
 CREATE TABLE `suchak_mgt`.`expence_cat_mst` (
   `exp_cat_id` INT NOT NULL AUTO_INCREMENT,
