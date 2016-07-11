@@ -137,6 +137,11 @@ if(isset($_POST['showtax']))
 		{
 			$pay_status = "Paid";
 		}
+		
+		if($_POST['txtpaid']=='')
+		{
+			$txtpaid = 0;
+		}
 		$estatus = "new";
 		//need chng on gtot value
 		$gtot = $_POST['txtcharge'];
