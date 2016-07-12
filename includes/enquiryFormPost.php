@@ -26,7 +26,12 @@
 		
 			<tr>
 				
-				<td><?php echo $data[$i]['event_id'];?></td>
+				<td>
+					<a href="#" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
+						<?php echo $data[$i]['event_id'];?>
+					</a>
+					
+				</td>
 				
 				<td><?php echo ucfirst($data[$i]['event_name']);?></td>
 				
@@ -57,7 +62,7 @@
 				
 				<td>
 					<span style="float:right;">
-						<?php if($data[$i]['service_tax_rate']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
 						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 
 					</span>

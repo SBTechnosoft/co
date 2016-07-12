@@ -7,7 +7,7 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-							Categories<small>Sub</small>
+							Sub<small>Categories</small>
 						</h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,7 +20,7 @@
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#">Sub </a>
+                        <a href="#">Sub Categories </a>
                     </li>
                     &nbsp;&nbsp;&nbsp;
                     <li id="add_btn">
@@ -101,9 +101,9 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th> Sub_id </th>
+                                        <th> Sr.No. </th>
                                         <th> Name </th>
-                                        <th> Cat_id </th>
+                                        <th> Category</th>
                                         <th> Remark </th>
 										<th> Action </th>
                                     </tr>

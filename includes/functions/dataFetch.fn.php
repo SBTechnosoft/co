@@ -65,8 +65,8 @@ function showStaff($conn)
 		return $conn->getResultArray($sqlShowStaff);	
 	}
 function showAllEquipment($conn)
-	{
-		$sqlShowEquipment = "select `eq_id`,`eq_name`,`serial_no`,`model_no`,`category_id`,`purchase_date`,`purchase_from`,`price`,`remark` from  `equipment_mst` where `deleted_at` = '0000-00-00 00:00:00' "; 
+	{				
+		$sqlShowEquipment = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.`deleted_at` = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlShowEquipment);	
 	}
 function showEqupDrp($conn)
@@ -258,7 +258,7 @@ function showProfile($conn)
 	
 function showInvName($conn,$eid)
 	{
-		$sqlshowInvName = "select `inv_file_name`,`fp_no`,`bill_no`,`client_charges`,`client_discount_amt`,`service_tax_rate`,`service_tax_amt`,`total_amt`,`client_paid_amt`  from  `event_mst` where `event_id` = '".$eid."' "; 
+		$sqlshowInvName = "select `inv_file_name`,`fp_no`,`bill_no`,`client_charges`,`client_discount_amt`,`service_tax_rate`,`service_tax_amt`,`total_amt`,`client_paid_amt`,cm.cmp_name  from  `event_mst` em inner join company_mst cm on cm.cmp_id = em.cmp_id where `event_id` = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowInvName);		
 	}
 function showPdf($conn,$eid)

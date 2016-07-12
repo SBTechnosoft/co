@@ -270,7 +270,11 @@
 					
 					
 				</td>
-				<td><?php echo ucfirst($data[$i]['event_name']);?></td>
+				<td>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
+						<?php echo ucfirst($data[$i]['event_name']);?>
+					</a>
+				</td>
 				<td>
 					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
@@ -298,7 +302,7 @@
 				
 				<td>
 					<span style="float:right;">
-						<?php if($data[$i]['service_tax_rate']!=''){?>
+						<?php if($data[$i]['service_tax_amt']!=''){?>
 						<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
 						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 

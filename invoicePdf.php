@@ -7,7 +7,15 @@
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
 	$id = $_POST['txteid'];
-	$cmp = $_POST['txtcmpnm'];
+	
+	if($_POST['txtcmpnm']== '')
+	{
+		$cmp = "NA";
+	}
+	else
+	{
+		$cmp = $_POST['txtcmpnm'];
+	}
 	$enm = $_POST['txtenm'];	
 	$fdate= date_format($date,"dS F , Y H:i A");
 	$sdate= date_format($date,"dS F , Y");
@@ -64,8 +72,9 @@
 				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
 				$mipdf->Cell(60,10,$sdate,1,1,'C');
 				
-				$mipdf->Cell(130,10,"Event: ".$enm,1,0);
-				$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
+				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
+				
+				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
 				
 				$mipdf->Cell(190,10,"Event Date: ".$fdate,1,1);
 				
@@ -137,11 +146,11 @@
 				$mipdf->Cell(160,10,"TOTAL ",1,0,'R');
 				$mipdf->Cell(30,10,$data[$i]['total_amt'],1,1,'R');
 				
-				$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
+				//$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
+				//$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
 				
-				$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
-				$mipdf->Cell(30,10,$ramt,1,1,'R');
+				//$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
+				//$mipdf->Cell(30,10,$ramt,1,1,'R');
 				
 				$mipdf->Cell(190,8,"",0,1);
 				
@@ -154,7 +163,7 @@
 				$mipdf->Cell(190,4,"",0,1);
 				
 				$mipdf->Cell(130,8,"",0,0);
-				$mipdf->Cell(60,8,"      \"Client Name\"",0,1,'C');	
+				$mipdf->Cell(60,8,"      ".ucfirst($data[$i]['cmp_name'])."",0,1,'C');	
 				$mipdf->Cell(190,8,"   Email: xyz@abc.co.in",0,1,'R');
 				
 				$mipdf->Output($fname,'F');				
@@ -216,8 +225,8 @@
 				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
 				$mipdf->Cell(60,10,$sdate,1,1,'C');
 				
-				$mipdf->Cell(130,10,"Event: ".$enm,1,0);
-				$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
+				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
+				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
 				
 				$mipdf->Cell(190,10,"Event Date: ".$fdate,1,1);
 				
@@ -294,11 +303,11 @@
 				$mipdf->Cell(160,10,"TOTAL ",1,0,'R');
 				$mipdf->Cell(30,10,$data[$i]['total_amt'],1,1,'R');
 				
-				$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
+				//$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
+				//$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
 				
-				$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
-				$mipdf->Cell(30,10,$ramt,1,1,'R');
+				//$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
+				//$mipdf->Cell(30,10,$ramt,1,1,'R');
 				
 				$mipdf->Cell(190,8,"",0,1);
 				
@@ -311,7 +320,7 @@
 				$mipdf->Cell(190,4,"",0,1);
 				
 				$mipdf->Cell(130,8,"",0,0);
-				$mipdf->Cell(60,8,"      \"Client Name\"",0,1,'C');	
+				$mipdf->Cell(60,8,"      ".ucfirst($data[$i]['cmp_name'])."",0,1,'C');	
 				$mipdf->Cell(190,8,"   Email: xyz@abc.co.in",0,1,'R');
 				
 				$mipdf->Output($newFileName,'F');

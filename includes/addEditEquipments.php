@@ -150,7 +150,7 @@
                                     </div-->
 									
 									<div class="clearfix margin-bottom-10">
-                                        <label> Price </label>
+                                        <label> Min.Client Charged </label>
                                         <div class="input-icon left">
                                             <input class="m-wrap" type="text"  id="txtprice" name="txtprice" placeholder="Your Equipment Price" />
                                         </div>

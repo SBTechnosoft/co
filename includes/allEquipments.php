@@ -72,10 +72,10 @@
                                             <th>Equipment Name</th>
                                             <th> Serial No </th>
                                             <th>Model No </th>
-                                            <th> Category Id</th>
+                                            <th> Category</th>
                                             <th>Purchase_date</th>
                                             <th>Purchase_From</th>
-                                            <th>Price</th>
+                                            <th>Min.Client Charged</th>
                                             <th>Remark</th>
 											<th>Action</th>
                                         </tr>
