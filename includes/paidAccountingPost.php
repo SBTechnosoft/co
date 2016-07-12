@@ -12,9 +12,21 @@
 		{
 		?>
 			<tr>
+				<td>						
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo $ClPaid[$i]['event_id'];?>
+					</a>
+				</td>
 				
-				<td><?php echo $ClPaid[$i]['event_id'];?></td>
-				<td><?php echo ucfirst($ClPaid[$i]['event_name']);?></td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo $ClPaid[$i]['event_name'];?>
+					</a>
+					<?php //echo ucfirst($ClPaid[$i]['event_name']);?>
+				</td>
+				
 				<td><?php echo ucfirst($ClPaid[$i]['client_name']);?></td>
 				<td><?php echo $ClPaid[$i]['client_work_mob'];?></td>
 				<td><?php echo $ClPaid[$i]['client_charges'];?></td>

@@ -113,7 +113,7 @@
 								
                         </div>
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
                                 <thead>
                                     <tr>
                                         <th> Order Id</th>
@@ -138,6 +138,20 @@
                                 
                                   
                                 </tbody>
+								
+								<tbody>
+								
+									<tr>
+                                        <td> Order Id</td>
+                                        <td> Order Name </td>
+                                        <td>Client Name </td>
+                                        <td> Mobile No</td>
+                                        <td>Client charge</td>
+                                        <td>Clent Paid Amount</td>
+                                        <td>Remaining Amount</td>
+                                    </tr>
+								
+								</tbody>
                             </table>
                         </div>
 					</div>

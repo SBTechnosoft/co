@@ -102,7 +102,7 @@
                             <div class="caption"><i class="icon-group"></i>Vendor Details</div>
                         </div>
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
                                 <thead>
                                     <tr>
                                         <th>Name</th>

@@ -36,17 +36,41 @@
 		{
 		?>
 			<tr>
-				<td><?php echo ucfirst($data[$i]['staff_id']);?></td>
-				<td><?php echo ucfirst($data[$i]['emp_id']);?></td>				
+				<td>
+					<form id="<?php echo "id".$data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
+						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
+						<a class="edit" data-toggle="tooltip" title="Edit" onclick="document.getElementById('id<?php echo $data[$i]['staff_id']; ?>').submit();">
+							<?php echo ucfirst($data[$i]['staff_id']);?>
+						</a>
+					</form>
+					
+				</td>
+				<td>
+					<form id="<?php echo "eid".$data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
+						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
+						<a class="edit" data-toggle="tooltip" title="Edit" onclick="document.getElementById('eid<?php echo $data[$i]['staff_id']; ?>').submit();">
+							<?php echo ucfirst($data[$i]['emp_id']);?>
+						</a>
+					</form>
+					<?php //echo ucfirst($data[$i]['emp_id']);?>
+				</td>				
 				<td><?php echo ucfirst($data[$i]['first_name']);?></td>
 				<td><?php echo ucfirst($data[$i]['last_name']);?></td>
-				<td><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Permission">
-					</i>&nbsp;&nbsp;<?php echo $data[$i]['email'];?>
+				<td>
+					<a style="cursor:pointer;">
+						<i class="fa fa-lock" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Permission">
+						</i>&nbsp;&nbsp;
+					</a><?php echo $data[$i]['email'];?>
+					
 				</td>
-				<td><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Permission">
-					</i>&nbsp;&nbsp;<?php echo $data[$i]['mobile'];?>
+				<td>
+					<a style="cursor:pointer;">
+						<i class="fa fa-lock" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Permission">
+						</i>&nbsp;&nbsp;
+					</a><?php echo $data[$i]['mobile'];?>
+					
 				</td>
 				<td><?php echo $data[$i]['relative1'];?></td>
 				<td><?php echo $data[$i]['relative2'];?></td>

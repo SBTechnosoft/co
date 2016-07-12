@@ -23,7 +23,7 @@
 				
 				<td><?php echo ucfirst($data[$i]['vendor_name']);?></td>
 				<td>
-					<?php if( $data[$i]['vendor_cmp']!= '') {echo ucfirst($data[$i]['vendor_cmp']);}else {echo "NULL";}?>
+					<?php if( $data[$i]['vendor_cmp']!= '') {echo ucfirst($data[$i]['vendor_cmp']);}else {echo "-";}?>
 				</td>
 				<td>
 					
@@ -47,11 +47,11 @@
 						}
 						else if($data[$i]['cat_id'] == '')
 						{
-							echo "NULL";
+							echo "-";
 						}
 						else 
 						{
-							echo "NULL";
+							echo "-";
 						}
 					?>
 				</td>

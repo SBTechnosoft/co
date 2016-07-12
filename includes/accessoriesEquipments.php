@@ -99,11 +99,10 @@
                         <div class="portlet-body">
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                                 <thead>
-                                    <tr>
-                                        <th> Sr.</th>
-                                        <th> Access_id </th>
-                                        <th> Access_Name </th>
-                                        <th> Cat_id </th>
+                                    <tr>                                        
+                                        <th> Sr.No </th>
+                                        <th> Name </th>
+                                        <th> Category </th>
                                         <th> Remark </th>
 										<th> Action </th>
                                     </tr>
@@ -123,7 +122,7 @@
                 </div>
                 <!--end tab-pane-->
 
-                <div id="tab_1_3" class="tab-pane">
+                <!--div id="tab_1_3" class="tab-pane">
 
                     <div class="portlet box green">
 
@@ -185,272 +184,14 @@
                                         <td class="hidden-480">6</td>
                                         <td class="hidden-480">A</td>
                                     </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.0</td>
-                                        <td class="hidden-480">Win 98+ / OSX.2+</td>
-                                        <td class="hidden-480">1.7</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.5</td>
-                                        <td class="hidden-480">Win 98+ / OSX.2+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 2.0</td>
-                                        <td class="hidden-480">Win 98+ / OSX.2+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 3.0</td>
-                                        <td class="hidden-480">Win 2k+ / OSX.3+</td>
-                                        <td class="hidden-480">1.9</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Camino 1.0</td>
-                                        <td class="hidden-480">OSX.2+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Camino 1.5</td>
-                                        <td class="hidden-480">OSX.3+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Netscape 7.2</td>
-                                        <td class="hidden-480">Win 95+ / Mac OS 8.6-9.2</td>
-                                        <td class="hidden-480">1.7</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Netscape Browser 8</td>
-                                        <td class="hidden-480">Win 98SE+</td>
-                                        <td class="hidden-480">1.7</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Netscape Navigator 9</td>
-                                        <td class="hidden-480">Win 98+ / OSX.2+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.0</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.1</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.1</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.2</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.2</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.3</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.3</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.4</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.4</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.5</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.5</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.6</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">1.6</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.7</td>
-                                        <td class="hidden-480">Win 98+ / OSX.1+</td>
-                                        <td class="hidden-480">1.7</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.8</td>
-                                        <td class="hidden-480">Win 98+ / OSX.1+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Seamonkey 1.1</td>
-                                        <td class="hidden-480">Win 98+ / OSX.2+</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Epiphany 2.20</td>
-                                        <td class="hidden-480">Gnome</td>
-                                        <td class="hidden-480">1.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>Safari 1.2</td>
-                                        <td class="hidden-480">OSX.3</td>
-                                        <td class="hidden-480">125.5</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>Safari 1.3</td>
-                                        <td class="hidden-480">OSX.3</td>
-                                        <td class="hidden-480">312.8</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>Safari 2.0</td>
-                                        <td class="hidden-480">OSX.4+</td>
-                                        <td class="hidden-480">419.3</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>Safari 3.0</td>
-                                        <td class="hidden-480">OSX.4+</td>
-                                        <td class="hidden-480">522.1</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>OmniWeb 5.5</td>
-                                        <td class="hidden-480">OSX.4+</td>
-                                        <td class="hidden-480">420</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>iPod Touch / iPhone</td>
-                                        <td class="hidden-480">iPod</td>
-                                        <td class="hidden-480">420.1</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Webkit</td>
-                                        <td>S60</td>
-                                        <td class="hidden-480">S60</td>
-                                        <td class="hidden-480">413</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 7.0</td>
-                                        <td class="hidden-480">Win 95+ / OSX.1+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 7.5</td>
-                                        <td class="hidden-480">Win 95+ / OSX.2+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 8.0</td>
-                                        <td class="hidden-480">Win 95+ / OSX.2+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 8.5</td>
-                                        <td class="hidden-480">Win 95+ / OSX.2+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 9.0</td>
-                                        <td class="hidden-480">Win 95+ / OSX.3+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 9.2</td>
-                                        <td class="hidden-480">Win 88+ / OSX.3+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera 9.5</td>
-                                        <td class="hidden-480">Win 88+ / OSX.3+</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Opera for Wii</td>
-                                        <td class="hidden-480">Wii</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Nokia N800</td>
-                                        <td class="hidden-480">N800</td>
-                                        <td class="hidden-480">-</td>
-                                        <td class="hidden-480">A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Presto</td>
-                                        <td>Nintendo DS browser</td>
-                                        <td class="hidden-480">Nintendo DS</td>
-                                        <td class="hidden-480">8.5</td>
-                                        <td class="hidden-480">C/A<sup>1</sup></td>
-                                    </tr>
+                                    
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                </div>
+                </div-->
                 <!-- End tab pane -->
 
             </div>

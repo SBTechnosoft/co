@@ -25,8 +25,20 @@
 		?>
 			<tr>
 				
-				<td><?php echo $ETrnDtl[$i]['event_id'];?></td>
-				<td><?php echo ucfirst($ETrnDtl[$i]['event_name']);?></td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+					data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo $ETrnDtl[$i]['event_id'];?>
+					</a>
+					<?php //echo $ETrnDtl[$i]['event_id'];?>
+				</td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+					data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
+					</a>
+					<?php //echo ucfirst($ETrnDtl[$i]['event_name']);?>
+				</td>
 				<td><?php echo ucfirst($ETrnDtl[$i]['client_name']);?></td>
 				
 				<td>

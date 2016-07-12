@@ -41,6 +41,12 @@
         <!-- END PAGE TITLE & BREADCRUMB-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+		<div>
+			<a style="cursor:pointer; float:left;margin-right:10px;" id="selchkitm" target="_blank" class="btn blue"> Submit </a>
+			<input type="checkbox" id="chall" name="chall" class="chall"  >
+			Check All
+		</div>
+		
         <div class="tabbable tabbable-custom tabbable-full-width">
             <div class="tab-content">
                 <div id="tab_1_2" class="tab-pane active">
@@ -54,8 +60,9 @@
 								</a-->
 								
                         </div>
+						
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">								
                                 <thead>
                                     <tr>
                                         <th> Order Id</th>
@@ -77,10 +84,9 @@
                                         <td class="hidden-480">4</td>
                                         <td class="hidden-480">X</td>
                                         <td class="hidden-480">X</td>
-                                    </tr-->
-                                
+                                    </tr-->									
                                   
-                                </tbody>
+                                </tbody>								
                             </table>
                         </div>
 					</div>

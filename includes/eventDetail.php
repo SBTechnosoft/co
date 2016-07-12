@@ -1,4 +1,20 @@
 <!-- BEGIN PAGE -->
+<?php
+if(isset($_GET['id'])&& !empty($_GET['id']))
+{
+	$id = $_GET['id'];
+	?>
+	
+	<input type="hidden" id="txtenqid" name="txtenqid" value="<?php echo $id; ?>"/>
+	<?php
+}
+else
+{
+	?>
+	<input type="hidden" id="txtenqid" name="txtenqid" value=""/>
+	<?php
+}
+?>
 <div class="page-content">
     <div class="container-fluid">
         <div class="row-fluid">
@@ -29,6 +45,7 @@
                             <i class="icon-search m-icon-white"></i>
                         </button>&nbsp;
                     </li>
+					
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>

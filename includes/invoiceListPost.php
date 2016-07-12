@@ -36,8 +36,20 @@
 		?>
 			<tr>
 				
-				<td><?php echo $ClInv[$i]['event_id'];?></td>
-				<td><?php echo ucfirst($ClInv[$i]['event_name']);?></td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+					data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo $ClInv[$i]['event_id'];?>
+					</a>
+					<?php //echo $ClInv[$i]['event_id'];?>
+				</td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+					data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo ucfirst($ClInv[$i]['event_name']);?>
+					</a>
+					<?php// echo ucfirst($ClInv[$i]['event_name']);?>
+				</td>
 				<td><?php echo ucfirst($ClInv[$i]['client_name']);?></td>
 				<td><?php echo $ClInv[$i]['client_work_mob'];?></td>
 				<td><?php echo $ClInv[$i]['client_charges'];?></td>
@@ -50,6 +62,16 @@
 		}
 		?>
 		
+		<!--tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>			
+			<td>Check All</td>
+			<td> <input type="checkbox" id="chall" name="chall" class="chall"></td>	
+		</tr>
 		<tr>
 			<td></td>
 			<td></td>
@@ -58,8 +80,8 @@
 			<td></td>
 			<td></td>			
 			<td></td>
-			<td> <a style="cursor:pointer;" id="selchkitm" target="_blank"> Submit </a><input type="checkbox" id="chall" name="chall" class="chall">Check All</td>	
-		</tr>
+			<td> <a style="cursor:pointer;" class="btn blue" id="selchkitm" target="_blank"> Submit </a></td>	
+		</tr-->
 	<?php	
 	}
 ?>

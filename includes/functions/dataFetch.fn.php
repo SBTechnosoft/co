@@ -40,7 +40,7 @@ function showSubCtgDrpNew($conn,$catid)
 	
 function showAcs($conn)
 	{
-		$sqlShowAcs = "select `as_id`,`as_name`,`eq_id`,`remark` from  `eq_accessories` where `deleted_at` = '0000-00-00 00:00:00'  "; 
+		$sqlShowAcs = "select `as_id`,`as_name`,`eq_id`,cm.cat_name,`remark` from  `eq_accessories` ea inner join eq_category_mst cm on cm.cat_id = eq_id  where ea.deleted_at = '0000-00-00 00:00:00'  "; 
 		return $conn->getResultArray($sqlShowAcs);		
 	}
 function showSubCatg($conn)
@@ -173,7 +173,11 @@ function showClientPaidAmt($conn)
 	}
 function showClientUnpaidAmt($conn)
 	{
-		$sqlClPaidAmt = "select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt` from `event_mst` where `payment_status` = 'Unpaid' and `status` != 'enquiry' "; 
+		$sqlClPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt`, (select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ctotal,(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ptotal 
+		from `event_mst` 
+		where `payment_status` = 'Unpaid' and `status` != 'enquiry' 
+		order by event_id "; 
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}
 function showCatInEqp($conn)

@@ -27,14 +27,16 @@
 			<tr>
 				
 				<td>
-					<a href="#" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 					
 				</td>
 				
-				<td><?php echo ucfirst($data[$i]['event_name']);?></td>
-				
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
+						<?php echo ucfirst($data[$i]['event_name']);?></td>
+					</a>
 				<td>
 					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
