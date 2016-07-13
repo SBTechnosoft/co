@@ -117,12 +117,13 @@
                                     <tr>
                                         <th> Order Id</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th>
-                                        <th> Mobile No</th>
-                                        <th>Client charge</th>
-                                        <th>Clent Paid Amount</th>
-                                        <th>Client Discount</th>
-                                    </tr>
+                                        <th>Client Name </th>                                        
+                                        <th>Client charge</th>                                        
+                                        <th>Discount</th>
+										<th>S.Tax</th>
+										<th>Amt</th>
+                                        <th>Paid Amount</th>
+                                    </tr>										
                                 </thead>
                                 <tbody id="showClientPaid">
 								

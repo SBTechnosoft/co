@@ -123,7 +123,7 @@
 										<th> Vendor Company</th>
                                         <th>Vendor Charges</th>
                                         <th>Vendor Paid Amt</th>
-                                        <th> Status</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody id="show_paid_trn">

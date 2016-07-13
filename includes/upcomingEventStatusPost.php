@@ -1,9 +1,22 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
+	
+	if(isset($_POST['showdays']))
+	{
+		$data = showUpDays($conn);
+		$cnt = count($data);
+		for($i=0;$i<$cnt;$i++)
+		{
+			?>
+			<input type="hidden" name="txtupdays" id="txtupdays" value="<?php echo $data[$i]['upcoming_days'] ?>"/>
+			<?php
+		}
+	}	
+	
 	if(isset($_POST['show']))
 	{	
-		$data = showUpcoming($conn);
+		$data = showUpcoming($conn,$_POST['txtupdays']);
 		
 		$showUpcomingCnt = count($data);	
 		for($i=0;$i<$showUpcomingCnt;$i++)

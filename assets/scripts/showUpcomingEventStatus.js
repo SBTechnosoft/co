@@ -1,11 +1,13 @@
 function showdata()
-		{		
+		{	
+			var txtupdays = $('#txtupdays').val();
 			$.ajax({
 				url : './includes/upcomingEventStatusPost.php',
 				type : 'post',
 				async : false,
 				data : {
-					'show' : 1
+					'show' : 1,
+					'txtupdays' : txtupdays,
 					
 				},
 				success : function(r)
@@ -18,7 +20,29 @@ function showdata()
 				
 			});
 		}
-		showdata();
+function showdays()
+		{		
+			$.ajax({
+				url : './includes/upcomingEventStatusPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showdays' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#upc_days').html(r);
+					//initTable1();
+					//$("th").removeClass("sorting_asc").addClass("sorting_asc");
+					showdata();
+				}
+				
+			});
+		}
+		showdays();
+		
+		
 	$('#upcomingexcel').click(function()
 		{	
 			// alert(" use for excel");

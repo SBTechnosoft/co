@@ -249,6 +249,16 @@ function insOption($conn,$stax)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionDays($conn,$updays)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`upcoming_days`) VALUES (1,'".$updays."')ON DUPLICATE KEY UPDATE `upcoming_days` = `upcoming_days`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `upcoming_days` = '".$updays."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 		
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{

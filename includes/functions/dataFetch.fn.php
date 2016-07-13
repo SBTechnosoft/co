@@ -130,9 +130,21 @@ function showAll($conn)
 		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
 		return $conn->getResultArray($sqlEventAllStatus);	
 	}
-function showUpcoming($conn)
+	
+function showUpDays($conn)
 	{
-		$sqlEventUpcomingStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'upcoming' and  deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlUpDays = "select `upcoming_days` from  `setting` "; 
+		return $conn->getResultArray($sqlUpDays);	
+	}
+function showUpcoming($conn,$updy)
+	{
+		$sqlEventUpcomingStatus = 
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where `status` <> 'completed' and `from_date` between curdate() and curdate()+'".$updy."' and `deleted_at` = '0000-00-00 00:00:00' "; 
+		
 		return $conn->getResultArray($sqlEventUpcomingStatus);	
 	}
 function showCompleted($conn)
@@ -168,17 +180,36 @@ function show_ClientCharge_ClientPaid($conn,$setpid)
 	}
 function showClientPaidAmt($conn)
 	{
-		$sqlClPaidAmt = "select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt`,`client_discount_amt` from `event_mst` where `payment_status` = 'Paid' and `status` != 'enquiry' "; 
+		$sqlClPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as rtotal
+		from `event_mst` 
+		where `payment_status` = 'Paid' and `status` != 'enquiry' 
+		order by event_id "; 
+		
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}
 function showClientUnpaidAmt($conn)
 	{
-		$sqlClPaidAmt = 
-		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt`, (select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ctotal,(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ptotal 
+		$sqlClUPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as rtotal
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' 
 		order by event_id "; 
-		return $conn->getResultArray($sqlClPaidAmt);	
+		return $conn->getResultArray($sqlClUPaidAmt);	
 	}
 function showCatInEqp($conn)
 	{
@@ -230,12 +261,27 @@ function showTotPaidTrnVd($conn,$vetpid)
 	
 function showVendorPaidAmt($conn)
 	{
-		$sqlVdPaidAmt = "select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status  from event_vendor_dtl evd inner join vendor_mst vm on evd.vend_id = vm.vend_id where evd.vendor_paid_status = 'paid'" ;
+		$sqlVdPaidAmt = 
+		"select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,
+		evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
+		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as vtotal,
+		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as ptotal
+		from event_vendor_dtl evd 
+		inner join vendor_mst vm on evd.vend_id = vm.vend_id 
+		where evd.vendor_paid_status = 'paid' " ;
 		return $conn->getResultArray($sqlVdPaidAmt);	
 	}
 function showVendorUnPaidAmt($conn)
 	{
-		$sqlVdUnPaidAmt = "select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status  from event_vendor_dtl evd inner join vendor_mst vm on evd.vend_id = vm.vend_id where evd.vendor_paid_status = 'unpaid'"; 
+		$sqlVdUnPaidAmt = 
+		"select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,
+		vm.vendor_cmp,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
+		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as vtotal,
+		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as ptotal,
+		(select sum(evd.vendor_charges - evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as rtotal
+		from event_vendor_dtl evd 
+		inner join vendor_mst vm on evd.vend_id = vm.vend_id 
+		where evd.vendor_paid_status = 'unpaid'"; 
 		return $conn->getResultArray($sqlVdUnPaidAmt);	
 	}
 function showCmp($conn)
@@ -306,18 +352,35 @@ function showEqpRsDtl($conn,$event_id)
 	}
 function showClientInv($conn)
 	{
-		$sqlshowClientInv = "select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_charges`,`client_paid_amt`,`inv_file_name` from `event_mst` where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlshowClientInv = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,`inv_file_name`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as stotal,
+		(select sum(total_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as rtotal
+		from `event_mst` 
+		where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' ";
+		
 		return $conn->getResultArray($sqlshowClientInv);	
 	}
 	
 function showTransDtl($conn)
 	{
-		$sqlTransDtl = "select `event_id`,`event_name`,`client_name`,`client_charges` from `event_mst` where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
+		$sqlTransDtl = 
+		"select `event_id`,`event_name`,`client_name`,`client_charges` 
+		from `event_mst` 
+		where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
 		return $conn->getResultArray($sqlTransDtl);	
 	}
 function showTransVend($conn)
 	{
-		$sqlTransDtlVend = "select `event_id`,sum(vend_price) as vtot from new_event_places_dtl where vend_id != 0  GROUP BY `event_id`   "; 
+		$sqlTransDtlVend = 
+		"select `event_id`,sum(vend_price) as vtot 
+		from `new_event_places_dtl` 
+		where vend_id != 0  GROUP BY `event_id`   "; 
 		return $conn->getResultArray($sqlTransDtlVend);	
 	}
 	
@@ -348,9 +411,10 @@ function showExpCtg($conn)
 	}
 function showEvent($conn)
 	{
-		$sqlshowEvent = " select `event_id`,`event_name`  from  `event_mst` "; 
+		$sqlshowEvent = " select `event_id`,`event_name`  from  `event_mst` where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
 		return $conn->getResultArray($sqlshowEvent);	
 	}
+	
 
 	
 	/*

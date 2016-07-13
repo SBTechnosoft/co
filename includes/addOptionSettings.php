@@ -91,8 +91,21 @@
 				</div>
 				<div class="controls hide1" id="hide1">	
 					<input id="txtservicetax" class="m-wrap medium" type="text" name="txtservicetax" placeholder="Service Tax">
-					<a id="savetax" name="savetax" class="btn btn-default"> Submit</a>
+					<a id="savetax" name="savetax" class="btn btn-default"> Update</a>
 				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Upcoming Days</label>
+				<div class="controls" id="updefault">
+					<input id="txtdays" class="m-wrap medium" readonly type="text" name="txtdays" placeholder="Days">					
+
+					<a id="editdays" name="editdays" class="btn btn-default"> Edit</a>	
+					<a id="updays" name="updays" class="btn btn-default"> Update</a>
+				</div>
+				<!--div class="controls hide1" id="hide1">	
+					<input id="txtservicetax" class="m-wrap medium" type="text" name="txtservicetax" placeholder="Service Tax">
+					<a id="savetax" name="savetax" class="btn btn-default"> Submit</a>
+				</div-->
 			</div>
 			
 			

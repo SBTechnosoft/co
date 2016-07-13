@@ -225,10 +225,11 @@
                                     <tr>
                                         <th> Order Id</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th>
-                                        
+                                        <th>Client Name </th>                                        
                                         <th>Income</th>
-                                        <th>Expence</th>                                        
+                                        <th>Expence</th>
+										<th>Other Exp.</th>
+											
                                     </tr>
                                 </thead>
                                 <tbody id="showTrnDetail">

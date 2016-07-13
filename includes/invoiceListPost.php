@@ -34,54 +34,101 @@
 		for($i=0;$i<$showClInvCnt;$i++)
 		{
 		?>
-			<tr>
-				
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
-					data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo $ClInv[$i]['event_id'];?>
-					</a>
-					<?php //echo $ClInv[$i]['event_id'];?>
-				</td>
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
-					data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo ucfirst($ClInv[$i]['event_name']);?>
-					</a>
-					<?php// echo ucfirst($ClInv[$i]['event_name']);?>
-				</td>
-				<td><?php echo ucfirst($ClInv[$i]['client_name']);?></td>
-				<td><?php echo $ClInv[$i]['client_work_mob'];?></td>
-				<td><?php echo $ClInv[$i]['client_charges'];?></td>
-				<td><?php echo $ClInv[$i]['client_paid_amt'];?></td>
-				
-				<td style="color:red;"><?php echo $ClInv[$i]['client_charges'] - $ClInv[$i]['client_paid_amt'];?></td>
-				<td> <input type="checkbox" id="chkinv" name="chkinv" class="chkinv" value="<?php echo $ClInv[$i]['inv_file_name'];?>" /></td>
-			</tr>
+			<?php
+				if($i == ($showClInvCnt-1))
+				{
+					?>
+					<tr>
+						
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $ClInv[$i]['event_id'];?>
+							</a>
+							<?php //echo $ClInv[$i]['event_id'];?>
+						</td>
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($ClInv[$i]['event_name']);?>
+							</a>
+							<?php// echo ucfirst($ClInv[$i]['event_name']);?>
+						</td>
+						<td>
+							<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Client Comapany:<?php echo $ClInv[$i]['client_cmp'];?><br>
+							Client Email:<?php echo $ClInv[$i]['client_email'];?><br>
+							Mobile1:<?php echo $ClInv[$i]['client_work_mob'];?><br>
+							Mobile2:<?php echo $ClInv[$i]['client_home_mob'];?>">
+							</i>&nbsp;&nbsp;<?php echo ucfirst($ClInv[$i]['client_name']);?>
+						</td>	
+						
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_charges'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_discount_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['service_tax_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['total_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_paid_amt'];?></span></td>				
+						<td style="color:red;"><span style="float:right;"><?php echo $ClInv[$i]['remain_amt'] ?></span></td>
+						<td> <input type="checkbox" id="chkinv" name="chkinv" class="chkinv" value="<?php echo $ClInv[$i]['inv_file_name'];?>" /></span></td>
+					</tr>
+					
+					<tr>
+						
+						<td></td>
+						<td></td>						
+						<td><b> Grand Total</b></td>
+						<td><span style="float:right;"><b><?php echo $ClInv[$i]['ctotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClInv[$i]['dtotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClInv[$i]['stotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClInv[$i]['ttotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClInv[$i]['ptotal'];?></b> </span></td>
+						<td style="color:red;"><span style="float:right;"><b><?php echo $ClInv[$i]['rtotal'];?></b></span></td>
+						<td></td>
+					</tr>
+					
+					<?php
+				}
+				else
+				{?>
+					<tr>
+						
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $ClInv[$i]['event_id'];?>
+							</a>
+							<?php //echo $ClInv[$i]['event_id'];?>
+						</td>
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($ClInv[$i]['event_name']);?>
+							</a>
+							<?php// echo ucfirst($ClInv[$i]['event_name']);?>
+						</td>
+						<td>
+							<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Client Comapany:<?php echo $ClInv[$i]['client_cmp'];?><br>
+							Client Email:<?php echo $ClInv[$i]['client_email'];?><br>
+							Mobile1:<?php echo $ClInv[$i]['client_work_mob'];?><br>
+							Mobile2:<?php echo $ClInv[$i]['client_home_mob'];?>">
+							</i>&nbsp;&nbsp;<?php echo ucfirst($ClInv[$i]['client_name']);?>
+						</td>	
+						
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_charges'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_discount_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['service_tax_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['total_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClInv[$i]['client_paid_amt'];?></span></td>				
+						<td style="color:red;"><span style="float:right;"><?php echo $ClInv[$i]['remain_amt'] ?></span></td>
+						<td> <input type="checkbox" id="chkinv" name="chkinv" class="chkinv" value="<?php echo $ClInv[$i]['inv_file_name'];?>" /></span></td>
+					</tr>
 		<?php	
+				}
 		}
 		?>
 		
-		<!--tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>			
-			<td>Check All</td>
-			<td> <input type="checkbox" id="chall" name="chall" class="chall"></td>	
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>			
-			<td></td>
-			<td> <a style="cursor:pointer;" class="btn blue" id="selchkitm" target="_blank"> Submit </a></td>	
-		</tr-->
+		
 	<?php	
 	}
 ?>

@@ -105,6 +105,10 @@
         </div>
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+		<div id="upc_days">
+		
+		</div>
+		
         <div class="tabbable tabbable-custom tabbable-full-width">
             <div class="tab-content">
                 <div id="tab_1_2" class="tab-pane active">

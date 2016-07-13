@@ -17,7 +17,7 @@
 		$showTrnVend = count($VTrnDtl);
 		
 		
-		print_r($VTrnDtl);
+		//print_r($VTrnDtl);
 		
 		$showTrnCnt = count($ETrnDtl);	
 		for($i=0;$i<$showTrnCnt;$i++)
@@ -60,6 +60,9 @@
 						}
 						?>
 					</span>
+				</td>
+				<td>
+				
 				</td>
 				
 				

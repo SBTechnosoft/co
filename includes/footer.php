@@ -1825,6 +1825,15 @@
 						
 						$("#hide1").hide();
 						
+						$('#editdays').click(function()
+						{
+							$('#txtdays').removeAttr('readonly');
+							$("#editdays").hide();
+							$("#updays").show();
+						});
+						
+						$("#updays").hide();
+						
 						
 					</script>
 					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmp.js"></script-->

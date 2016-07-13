@@ -118,41 +118,22 @@
                                     <tr>
                                         <th> Order Id</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th>
-                                        <th> Mobile No</th>
+                                        <th>Client Name </th>				
                                         <th>Client charge</th>
-                                        <th>Clent Paid Amount</th>
+										<th>Discount</th>
+										<th>S.Tax</th>
+										<th>Amt</th>
+                                        <th>Paid Amount</th>
                                         <th>Remaining Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody id="showClientUnpaid">
-                                    <!--tr>
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 4.0
-                                        </td>
-                                        <td class="hidden-480">Win 95+</td>
-                                        <td class="hidden-480">4</td>
-                                        <td class="hidden-480">X</td>
-                                        <td class="hidden-480">X</td>
-                                    </tr-->
-                                
+                                                                    
                                   
-                                </tbody>
+                                </tbody>								
 								
-								<tbody>
-								
-									<tr>
-                                        <td> Order Id</td>
-                                        <td> Order Name </td>
-                                        <td>Client Name </td>
-                                        <td> Mobile No</td>
-                                        <td>Client charge</td>
-                                        <td>Clent Paid Amount</td>
-                                        <td>Remaining Amount</td>
-                                    </tr>
-								
-								</tbody>
                             </table>
+							
                         </div>
 					</div>
                 </div>

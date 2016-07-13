@@ -27,6 +27,34 @@
 				
 		});	
 		
+		$('#updays').click(function(){
+			var txtdays    =   $('#txtdays').val();
+					
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'saveDays'  : 1,
+					'txtdays'   : txtdays,																			
+				},
+				success : function(re)
+				{
+					if(re == 1)
+					 {
+						alert ("Inserted Data Successfully");
+								
+					 }
+					showdata();
+					$('#txtdays').attr('readonly','txtdays');
+					
+					$("#editdays").show();
+					$("#updays").hide();
+				}				
+			});	
+				
+		});	
+		
 		function showdata()
 		{		
 			$.ajax({
@@ -41,6 +69,7 @@
 				{
 					$('#txtservicetax').val(r.service_tax);					
 					$('#txtservicetax1').val(r.service_tax);
+					$('#txtdays').val(r.upcoming_days);
 				}
 				
 			});

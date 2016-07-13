@@ -64,13 +64,15 @@
                         <div class="portlet-body">
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">								
                                 <thead>
-                                    <tr>
-                                        <th> Order Id</th>
+                                    <tr>                                        						
+										<th> Order Id</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th>
-                                        <th> Mobile No</th>
-                                        <th>Client charge</th>
-                                        <th>Clent Paid Amount</th>
+                                        <th>Client Name </th>				
+                                        <th>Client Charge</th>
+										<th>Discount</th>
+										<th>S.Tax</th>
+										<th>Amt</th>
+                                        <th>Paid Amount</th>
                                         <th>Remaining Amount</th>
 										<th> Action </th>
                                     </tr>

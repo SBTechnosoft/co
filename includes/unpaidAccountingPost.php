@@ -31,23 +31,35 @@
 							</a>
 							<?php //echo ucfirst($ClUnpaid[$i]['event_name']);?>
 						</td>
-						<td><?php echo ucfirst($ClUnpaid[$i]['client_name']);?></td>
-						<td><?php echo $ClUnpaid[$i]['client_work_mob'];?></td>
 						
-						<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
-						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>
 						
-						<td style="color:red;"><?php echo $ClUnpaid[$i]['client_charges'] - $ClUnpaid[$i]['client_paid_amt'];?></td>
+						<td>
+							<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Client Comapany:<?php echo $ClUnpaid[$i]['client_cmp'];?><br>
+							Client Email:<?php echo $ClUnpaid[$i]['client_email'];?><br>
+							Mobile1:<?php echo $ClUnpaid[$i]['client_work_mob'];?><br>
+							Mobile2:<?php echo $ClUnpaid[$i]['client_home_mob'];?>">
+							</i>&nbsp;&nbsp;<?php echo ucfirst($ClUnpaid[$i]['client_name']);?>
+						</td>
 						
+						
+						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
+						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
+						<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><?php echo $ClUnpaid[$i]['ctotal'];?> </td>
-						<td><?php echo $ClUnpaid[$i]['ptotal'];?> </td>
-						<td> </td>
+						<td></td>						
+						<td><b> Grand Total</b></td>
+						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ctotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['dtotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['stotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ttotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ptotal'];?></b> </span></td>
+						<td style="color:red;"><span style="float:right;"><b><?php echo $ClUnpaid[$i]['rtotal'];?></b></span></td>
 					</tr>
 					
 					
@@ -73,12 +85,22 @@
 					</a>
 					<?php //echo ucfirst($ClUnpaid[$i]['event_name']);?>
 				</td>
-				<td><?php echo ucfirst($ClUnpaid[$i]['client_name']);?></td>
-				<td><?php echo $ClUnpaid[$i]['client_work_mob'];?></td>
-				<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
-				<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>
 				
-				<td style="color:red;"><?php echo $ClUnpaid[$i]['client_charges'] - $ClUnpaid[$i]['client_paid_amt'];?></td>
+				<td>
+					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+					title="Client Comapany:<?php echo $ClUnpaid[$i]['client_cmp'];?><br>
+					Client Email:<?php echo $ClUnpaid[$i]['client_email'];?><br>
+					Mobile1:<?php echo $ClUnpaid[$i]['client_work_mob'];?><br>
+					Mobile2:<?php echo $ClUnpaid[$i]['client_home_mob'];?>">
+					</i>&nbsp;&nbsp;<?php echo ucfirst($ClUnpaid[$i]['client_name']);?>
+				</td>
+				
+				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
+				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
+				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
+				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
+				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
+				<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
 				
 			</tr>
 		<?php

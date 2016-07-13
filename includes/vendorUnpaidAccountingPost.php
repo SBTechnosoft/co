@@ -11,33 +11,77 @@
 		for($i=0;$i<$showVdUnPaidCnt;$i++)
 		{
 		?>
-			<tr>
-				
-				<!--td><?php// echo $VdUnPaid[$i]['event_vendor_id'];?></td-->
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
-					data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo $VdUnPaid[$i]['event_id'];?>
-					</a>
-                   <?php //echo $VdUnPaid[$i]['event_id'];?>	
-                   <input type="checkbox" id="mpay" name="mpay" class="mpay" value="<?php echo $VdUnPaid[$i]['event_vendor_id'];?>" /> 
-                </td>
-				<!--td><?php //echo $VdUnPaid[$i]['event_places_id'];?></td>
-				<td><?php //echo $VdUnPaid[$i]['vend_id'];?></td-->
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
-					data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
-					</a>
-					<?php //echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
-				</td>
-				<td><?php echo ucfirst($VdUnPaid[$i]['vendor_cmp']);?></td>
-				<td><?php echo $VdUnPaid[$i]['vendor_charges'];?></td>
-				<td><?php if($VdUnPaid[$i]['vendor_paid_amt']==''){ echo 0;} else {echo $VdUnPaid[$i]['vendor_paid_amt'];}?></td>
-				<td style="color:red;"><?php echo $VdUnPaid[$i]['vendor_charges']-$VdUnPaid[$i]['vendor_paid_amt'] ;?></td>
-				
-			</tr>
+			<?php
+				if($i == ($showVdUnPaidCnt-1))
+				{
+					?>
+					<tr>
+						
+						<!--td><?php// echo $VdUnPaid[$i]['event_vendor_id'];?></td-->
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
+							data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $VdUnPaid[$i]['event_id'];?>
+							</a>
+						   <?php //echo $VdUnPaid[$i]['event_id'];?>	
+						   <input type="checkbox" id="mpay" name="mpay" class="mpay" value="<?php echo $VdUnPaid[$i]['event_vendor_id'];?>" /> 
+						</td>
+						<!--td><?php //echo $VdUnPaid[$i]['event_places_id'];?></td>
+						<td><?php //echo $VdUnPaid[$i]['vend_id'];?></td-->
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
+							data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
+							</a>
+							<?php //echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
+						</td>
+						<td><?php echo ucfirst($VdUnPaid[$i]['vendor_cmp']);?></td>
+						<td><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges'];?></span></td>
+						<td><span style="float:right;"><?php if($VdUnPaid[$i]['vendor_paid_amt']==''){ echo 0;} else {echo $VdUnPaid[$i]['vendor_paid_amt'];}?></span></td>
+						<td style="color:red;"><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges']-$VdUnPaid[$i]['vendor_paid_amt'] ;?></span></td>
+						
+					</tr>					
+					<tr>
+						<td></td>
+						<td></td>
+						<td><b>Grand Total </b></td>
+						<td><span style="float:right;"><b><?php echo $VdUnPaid[$i]['vtotal'];?></span></td>
+						<td><span style="float:right;"><b><?php echo $VdUnPaid[$i]['ptotal'];?></span></td>
+						<td style="color:red;"><span style="float:right;"><b><?php echo $VdUnPaid[$i]['rtotal'];?></span></td>
+					</tr>
+					
+					<?php
+				}
+				else
+				{?>
+					<tr>
+						
+						<!--td><?php// echo $VdUnPaid[$i]['event_vendor_id'];?></td-->
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
+							data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $VdUnPaid[$i]['event_id'];?>
+							</a>
+						   <?php //echo $VdUnPaid[$i]['event_id'];?>	
+						   <input type="checkbox" id="mpay" name="mpay" class="mpay" value="<?php echo $VdUnPaid[$i]['event_vendor_id'];?>" /> 
+						</td>
+						<!--td><?php //echo $VdUnPaid[$i]['event_places_id'];?></td>
+						<td><?php //echo $VdUnPaid[$i]['vend_id'];?></td-->
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdUnPaid[$i]['event_id'];?>" 
+							data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
+							</a>
+							<?php //echo ucfirst($VdUnPaid[$i]['vendor_name']);?>
+						</td>
+						<td><?php echo ucfirst($VdUnPaid[$i]['vendor_cmp']);?></td>
+						<td><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges'];?></span></td>
+						<td><span style="float:right;"><?php if($VdUnPaid[$i]['vendor_paid_amt']==''){ echo 0;} else {echo $VdUnPaid[$i]['vendor_paid_amt'];}?></span></td>
+						<td style="color:red;"><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges']-$VdUnPaid[$i]['vendor_paid_amt'] ;?></span></td>
+						
+					</tr>
 		<?php	
+				}
 		}
 		
 	}
