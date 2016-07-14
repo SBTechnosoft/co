@@ -298,10 +298,9 @@
 				}
 				else
 				{
-					//var tax = 0;
-					//var gtot =  (parseInt(txtcharge) + parseInt(tax)) - (parseInt(txtdisc)) ;
+					
 					var gtot =  (parseInt(txtcharge) - parseInt(txtdisc) )  ;
-					//alert(tax);
+					
 				}
 					
 				
