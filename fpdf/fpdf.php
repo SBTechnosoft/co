@@ -1022,7 +1022,7 @@ function Output($name='', $dest='')
 			break;
 		case 'F':
 			// Save to local file
-			$f = fopen("upload/invoice/".$name,'wb');
+			$f = fopen($name,'wb');
 			if(!$f)
 				$this->Error('Unable to create output file: '.$name);
 			fwrite($f,$this->buffer,strlen($this->buffer));

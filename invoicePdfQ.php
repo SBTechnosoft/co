@@ -1,7 +1,7 @@
 <?php
 	include_once('includes/header.php');
 	//require('/home/siliconbrain/public_html/beta.prabandhak.co.in/fpdf/fpdf.php');
-	require(DIR_WS_DOCUMENT_ROOT.'fpdf/fpdf.php');
+	require(DIR_WS_FPDF.'fpdf.php');
 	//$fname = $inm.$id.".pdf";
 	
 	$date=date_create($_POST['txtfdate']);
@@ -165,8 +165,8 @@
 				$mipdf->Cell(130,8,"",0,0);
 				$mipdf->Cell(60,8,"      ".ucfirst($data[$i]['cmp_name'])."",0,1,'C');	
 				$mipdf->Cell(190,8,"   Email: xyz@abc.co.in",0,1,'R');
-				
-				$mipdf->Output($fname,'F');				
+				$path = DIR_WS_INV.$fname;
+				$mipdf->Output($path,'F');				
 				
 				$date = date('Y-m-d H:i:s');
 				updInvEM($conn,$id,$fname);
@@ -323,7 +323,9 @@
 				$mipdf->Cell(60,8,"      ".ucfirst($data[$i]['cmp_name'])."",0,1,'C');	
 				$mipdf->Cell(190,8,"   Email: xyz@abc.co.in",0,1,'R');
 				
-				$mipdf->Output($newFileName,'F');
+				$path = DIR_WS_INV.$newFileName;
+				
+				$mipdf->Output($path,'F');
 				
 				//echo $id."<br/>";
 				//echo $fname."<br/>";
