@@ -52,34 +52,33 @@
 		
 		
 		//edit detail with data on evd .
-		$('body').delegate('.editenq','click',function(){
-			//alert('hello Divyesh');
-			var id = $(this).data('id');
-			// alert(id);
-			// return false;
+		// $('body').delegate('.editenq','click',function(){
 			
-			$.ajax({
-				url : 'includes/enquiryFormPost.php',
-				type : 'POST',
-				async : false,
-				data : {
-					'edit'  : 1,
-					'id' 	: id
+			// var id = $(this).data('id');
+			
+			
+			// $.ajax({
+				// url : 'includes/enquiryFormPost.php',
+				// type : 'POST',
+				// async : false,
+				// data : {
+					// 'edit'  : 1,
+					// 'id' 	: id
 										
-				},
-				success : function(e)
-				{
-					if(e==12)
-					{
-					alert("Ordered Successfully!!!");
-					}
-					else
-					{
-						alert("ERROR!!!")
-					}
-					window.location.reload();
-				}
+				// },
+				// success : function(e)
+				// {
+					// if(e==12)
+					// {
+					// alert("Ordered Successfully!!!");
+					// }
+					// else
+					// {
+						// alert("ERROR!!!")
+					// }
+					// window.location.reload();
+				// }
 				
-			});		
-		});		
+			// });		
+		// });		
 		//end
