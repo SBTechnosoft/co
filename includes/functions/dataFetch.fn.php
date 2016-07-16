@@ -154,7 +154,7 @@ function showCompleted($conn)
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
 		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
 		from  `event_mst` 
-		where  `to_date` < curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
+		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
 	}
 function showEqpdtl($conn,$event_plc_dtl)
