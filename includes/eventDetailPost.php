@@ -204,10 +204,10 @@
 						<?php if($data[$i]['service_tax_rate']!=''){?>
 						<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 
+						</i>&nbsp;&nbsp;<?php echo round($data[$i]['service_tax_amt']);}?> 
 					</span>
 				</td>
-				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>				
+				<td><span style="float:right;"><?php echo round($data[$i]['total_amt']);?> </span></td>				
 				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
 				<td>
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >

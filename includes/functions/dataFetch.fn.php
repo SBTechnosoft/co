@@ -375,13 +375,25 @@ function showClientInv($conn)
 function showTransDtl($conn)
 	{
 		$sqlTransDtl = 
-		"select `event_id`,`event_name`,`client_name`,`client_charges` ,`vendor_charges`,`from_date`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
-		(select sum(amount)from expence_dtl where expence_dtl.event_id=event_mst.event_id) as amount,
-		(select sum(client_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ctotal,
-		(select sum(vendor_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as vtotal,
-		(select sum(amount) from expence_dtl where event_id != '' ) as etotal
-		from `event_mst` 
-		where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
+		//"select `event_id`,`event_name`,`client_name`,`client_charges` ,`vendor_charges`,`from_date`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		//(select sum(amount)from expence_dtl where expence_dtl.event_id=event_mst.event_id) as amount,
+		//(select sum(client_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ctotal,
+		// (select sum(vendor_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as vtotal,
+		// (select sum(amount) from expence_dtl where event_id != '' ) as etotal
+		// from `event_mst` 
+		// where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
+		"select event_id,'Event Expense',event_name,client_name,from_date,null, client_charges, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
+		(
+			select sum(amount) 
+			from expence_dtl 
+			where expence_dtl.event_id=event_mst.event_id
+		) as amount
+		from event_mst
+		UNION
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		from expence_dtl exd
+		inner join staff_mst sm on sm.staff_id = exd.exp_by
+		where event_id = 0";
 		return $conn->getResultArray($sqlTransDtl);	
 	}
 function showTransVend($conn)
@@ -421,6 +433,23 @@ function showExpCtg($conn)
 function showEvent($conn)
 	{
 		$sqlshowEvent = " select `event_id`,`event_name`  from  `event_mst` where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
+		return $conn->getResultArray($sqlshowEvent);	
+	}
+function showInvCond($conn)
+	{
+		$sqlshowEvent = " select `inv_cond_json`  from  `setting` "; 
+		return $conn->getResultArray($sqlshowEvent);	
+	}
+	
+function showExpDtl($conn,$eid)
+	{
+		$sqlshowEvent = 
+		" select ecm.cat_name,em.event_name,exp_date,sm.first_name,amount
+		from expence_dtl exd
+		inner join staff_mst sm on sm.staff_id = exd.exp_by
+		inner join event_mst em on em.event_id = exd.event_id
+		inner join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id
+		where exd.event_id= '".$eid."' "; 
 		return $conn->getResultArray($sqlshowEvent);	
 	}
 	

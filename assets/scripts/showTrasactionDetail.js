@@ -1,3 +1,37 @@
+
+
+
+$('body').delegate('.open','click',function()
+	{			
+			
+		$('#pop_background').fadeIn();
+		$('#pop_box').fadeIn();
+		var event_id = $(this).data('id');
+		//alert(event_id);
+		//return false;
+		$.ajax({
+			url : 'includes/transactionDetailPost.php',
+			type : 'POST',
+			async : false,
+			data : {
+				'ExpDtl'  : 1,
+				'event_id' 	: event_id,										
+			},
+			success : function(ex)
+			{
+				// $('#txtevent_vend_id').val(va.event_vendor_id);
+				// $('#txtvend_evnt_id').val(va.event_id);					
+				// showeventpaidtrn();
+				$('#showexpdtl').html(ex);
+			}
+			
+		});		
+	});
+
+
+
+
+
 function showTrnDtl()
 		{		
 			$.ajax({

@@ -69,7 +69,7 @@
 				
 				$mipdf->SetFont("Arial","",12);
 				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
-				$mipdf->Cell(60,10,$sdate,1,1,'C');
+				$mipdf->Cell(60,10,$sdate,1,1);
 				
 				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
 				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
@@ -81,11 +81,11 @@
 				
 				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
 				
-				$mipdf->Cell(20,10,"SR No.:",1,0,'C');
-				$mipdf->Cell(90,10,"Event Detail",1,0,'C');
-				$mipdf->Cell(20,10,"Qty.:",1,0,'C');
-				$mipdf->Cell(30,10,"Rate.:",1,0,'C');
-				$mipdf->Cell(30,10,"Amount",1,1,'C');
+				$mipdf->Cell(20,10,"SR No.",1,0,'C');
+				$mipdf->Cell(90,10,"Event Detail",1,0);
+				$mipdf->Cell(20,10,"Qty.",1,0,'R');
+				$mipdf->Cell(30,10,"Rate.",1,0,'R');
+				$mipdf->Cell(30,10,"Amount",1,1,'R');
 				
 				$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
 				$cnt = count($dEqp);		
@@ -95,16 +95,16 @@
 					{
 					$mipdf->Cell(20,10,$a+1,1,0,'R');
 					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name']."  (".$dEqp[$a]['length']."*".$dEqp[$a]['width'].")",1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
+					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
+					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
 					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
 					}
 					else
 					{
 					$mipdf->Cell(20,10,$a+1,1,0,'R');
 					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name'],1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
+					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
+					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
 					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
 					}
 				}
@@ -235,11 +235,11 @@
 				
 				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
 				
-				$mipdf->Cell(20,10,"SR No.:",1,0,'C');
-				$mipdf->Cell(90,10,"Event Detail",1,0,'C');
-				$mipdf->Cell(20,10,"Qty.:",1,0,'C');
-				$mipdf->Cell(30,10,"Rate.:",1,0,'C');
-				$mipdf->Cell(30,10,"Amount",1,1,'C');
+				$mipdf->Cell(20,10,"SR No.",1,0,'C');
+				$mipdf->Cell(90,10,"Event Detail",1,0);
+				$mipdf->Cell(20,10,"Qty.",1,0,'R');
+				$mipdf->Cell(30,10,"Rate.",1,0,'R');
+				$mipdf->Cell(30,10,"Amount",1,1,'R');
 				
 				//fetch the data from new event_places_dtail with the amount of the equipment
 				

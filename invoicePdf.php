@@ -4,6 +4,19 @@
 	require(DIR_WS_FPDF.'fpdf.php');
 	//$fname = $inm.$id.".pdf";
 	
+	// $cond = showInvCond($conn);
+	// $cnt = count($cond);	
+	// for($b=0;$b<$cnt;$b++)
+	// {
+		// $allcond = json_decode($cond[$b]['inv_cond_json']);
+		// $cntjsn = count($allcond);
+		// for($k=0;$k<$cntjsn;$k++)
+		// {
+			// echo $allcond[$k];
+		// }
+	// }
+	
+	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
 	$id = $_POST['txteid'];
@@ -36,14 +49,18 @@
 	//$new = $num + 1;
 	//echo $new;
 	if(isset($_POST['txteid']))
-	{		
+	{	
+
 		$data = showInvName($conn,$_POST['txteid']);
-		$cnt = count($data);		
+		$cnt = count($data);
+		
 		for($i=0;$i<$cnt;$i++)
 		{
+			
 			if($data[$i]['inv_file_name']=='')
 			{
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
+				echo "hi";
 				
 				class Mipdf extends FPDF
 				{
@@ -70,7 +87,7 @@
 				
 				$mipdf->SetFont("Arial","",12);
 				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
-				$mipdf->Cell(60,10,$sdate,1,1,'C');
+				$mipdf->Cell(60,10,$sdate,1,1);
 				
 				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
 				
@@ -83,11 +100,11 @@
 				
 				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
 				
-				$mipdf->Cell(20,10,"SR No.:",1,0,'C');
+				$mipdf->Cell(20,10,"SR No.",1,0,'C');
 				$mipdf->Cell(90,10,"Event Detail",1,0,'C');
-				$mipdf->Cell(20,10,"Qty.:",1,0,'C');
-				$mipdf->Cell(30,10,"Rate.:",1,0,'C');
-				$mipdf->Cell(30,10,"Amount",1,1,'C');
+				$mipdf->Cell(20,10,"Qty.",1,0,'R');
+				$mipdf->Cell(30,10,"Rate.",1,0,'R');
+				$mipdf->Cell(30,10,"Amount",1,1,'R');
 				
 				$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
 				$cnt = count($dEqp);		
@@ -159,6 +176,7 @@
 				$mipdf->Cell(190,8," * Payment to be done on the name of \"Client Name\" ",0,1);
 				$mipdf->Cell(190,8,"   Through bank a/c no: 1************ with The \"Bank Name\" :  ",0,1);
 				$mipdf->Cell(190,8,"   \"Address\"  IFSC CODE FOR NEFT/RTGS: ********* ",0,1);
+				$mipdf->Cell(190,8," *  [Subject to Surat jurisdiction]",0,1);
 				$mipdf->Cell(190,8," *  [Subject to Surat jurisdiction]",0,1);
 				$mipdf->Cell(190,4,"",0,1);
 				
@@ -225,7 +243,7 @@
 				
 				$mipdf->SetFont("Arial","",12);
 				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
-				$mipdf->Cell(60,10,$sdate,1,1,'C');
+				$mipdf->Cell(60,10,$sdate,1,1);
 				
 				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
 				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
@@ -237,11 +255,11 @@
 				
 				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
 				
-				$mipdf->Cell(20,10,"SR No.:",1,0,'C');
-				$mipdf->Cell(90,10,"Event Detail",1,0,'C');
-				$mipdf->Cell(20,10,"Qty.:",1,0,'C');
-				$mipdf->Cell(30,10,"Rate.:",1,0,'C');
-				$mipdf->Cell(30,10,"Amount",1,1,'C');
+				$mipdf->Cell(20,10,"SR No.",1,0,'C');
+				$mipdf->Cell(90,10,"Event Detail",1,0);
+				$mipdf->Cell(20,10,"Qty.",1,0,'R');
+				$mipdf->Cell(30,10,"Rate.",1,0,'R');
+				$mipdf->Cell(30,10,"Amount",1,1,'R');
 				
 				//fetch the data from new event_places_dtail with the amount of the equipment
 				
@@ -253,16 +271,16 @@
 					{
 					$mipdf->Cell(20,10,$a+1,1,0,'R');
 					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name']."  (".$dEqp[$a]['length']."*".$dEqp[$a]['width'].")",1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
+					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
+					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
 					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
 					}
 					else
 					{
 					$mipdf->Cell(20,10,$a+1,1,0,'R');
 					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name'],1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
+					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
+					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
 					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
 					}
 				}
@@ -313,12 +331,30 @@
 				
 				$mipdf->Cell(190,8,"",0,1);
 				
-				$mipdf->Cell(190,8," * Service Tax no: A************ , PAN No.:AC********* ",0,1);
-				$mipdf->Cell(190,8," * Category : Studio Management & Promotions",0,1);
-				$mipdf->Cell(190,8," * Payment to be done on the name of \"Client Name\" ",0,1);
-				$mipdf->Cell(190,8,"   Through bank a/c no: 1************ with The \"Bank Name\" :  ",0,1);
-				$mipdf->Cell(190,8,"   \"Address\"  IFSC CODE FOR NEFT/RTGS: ********* ",0,1);
-				$mipdf->Cell(190,8," *  [Subject to Surat jurisdiction]",0,1);
+				// $cond = showInvCond($conn);
+				// $cnt = count($cond);
+				// print_r($cond);
+				// exit;
+				
+				$cond = showInvCond($conn);
+				$cnt = count($cond);	
+				for($b=0;$b<$cnt;$b++)
+				{
+					$allcond = json_decode($cond[$b]['inv_cond_json']);
+					$cntjsn = count($allcond);
+					for($k=0;$k<$cntjsn;$k++)
+					{
+						$mipdf->Cell(190,8,"<p>".$allcond[$k]."</p>",0,1);
+					}
+				}
+				
+				// $mipdf->Cell(190,8,"  ",0,1);
+				// $mipdf->Cell(190,8,"  ",0,1);
+				// $mipdf->Cell(190,8,"  ",0,1);
+				// $mipdf->Cell(190,8,"  ",0,1);
+				// $mipdf->Cell(190,8,"  ",0,1);
+				// $mipdf->Cell(190,8,"  ",0,1);
+				
 				$mipdf->Cell(190,4,"",0,1);
 				
 				$mipdf->Cell(130,8,"",0,0);

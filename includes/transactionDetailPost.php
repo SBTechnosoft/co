@@ -11,13 +11,16 @@
 	{	
 		$ETrnDtl = showTransDtl ($conn);
 		
+		// print_r($ETrnDtl);
+		// exit;
+		
 		$VTrnDtl = showTransVend($conn);
 		
 		
 		$showTrnVend = count($VTrnDtl);
 		
 		
-		//print_r($VTrnDtl);
+		
 		
 		$showTrnCnt = count($ETrnDtl);	
 		for($i=0;$i<$showTrnCnt;$i++)
@@ -36,6 +39,7 @@
 							</a>
 							<?php //echo $ETrnDtl[$i]['event_id'];?>
 						</td>
+						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -56,6 +60,9 @@
 						<td>					
 							<?php echo $ETrnDtl[$i]['from_date'];?>
 						</td>
+						<td>					
+							<?php echo $ETrnDtl[$i]['NULL'];?>
+						</td>
 						<td>
 							<span style="float:right;" class="label label-success">
 								<?php echo $ETrnDtl[$i]['client_charges'];?>
@@ -74,15 +81,15 @@
 						
 						
 					</tr>
-					<tr>
+					<!--tr>
 						<td></td>	
 						<td></td>
 						<td></td>
 						<td><b> Grand Total</b></td>						
-						<td><span style="float:right;" class="label label-success"><b><?php echo $ETrnDtl[$i]['ctotal'];?> </b></span></td>
-						<td><span style="float:right;" class="label label-warning"><b><?php echo $ETrnDtl[$i]['vtotal'];?> </b></span></td>
-						<td><span style="float:right;" class="label label-warning"><b><?php echo $ETrnDtl[$i]['etotal'];?></b> </span></td>
-					</tr>
+						<td><span style="float:right;" class="label label-success"><b><?php //echo $ETrnDtl[$i]['ctotal'];?> </b></span></td>
+						<td><span style="float:right;" class="label label-warning"><b><?php //echo $ETrnDtl[$i]['vtotal'];?> </b></span></td>
+						<td><span style="float:right;" class="label label-warning"><b><?php //echo $ETrnDtl[$i]['etotal'];?></b> </span></td>
+					</tr-->
 					
 					<?php					
 			}
@@ -98,6 +105,7 @@
 							</a>
 							<?php //echo $ETrnDtl[$i]['event_id'];?>
 						</td>
+						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -118,6 +126,9 @@
 						<td>					
 							<?php echo $ETrnDtl[$i]['from_date'];?>
 						</td>
+						<td>					
+							<?php echo $ETrnDtl[$i]['NULL'];?>
+						</td>
 						<td>
 							<span style="float:right;" class="label label-success">
 								<?php echo $ETrnDtl[$i]['client_charges'];?>
@@ -129,13 +140,44 @@
 							</span>
 						</td>				
 						<td>
+							
 							<span style="float:right;" class="label label-warning">
-								<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
+							
+							<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
 							</span>
+							<?php 
+							if($ETrnDtl[$i]['amount']!=''){?>								
+								<a class="open" data-id ="<?php echo $ETrnDtl[$i]['event_id']; ?>" style="cursor:pointer; float:right;">
+								info
+								</a>
+							<?php } ?>
 						</td>
 						
 						
 					</tr>
+					<script>
+					// $('.open').click(function(){
+							
+						// $('#pop_background').fadeIn();
+						// $('#pop_box').fadeIn();
+						
+						// return false;
+						// });
+					$('.closec').click(function(){
+						
+						$('#pop_background').fadeOut();
+						$('#pop_box').fadeOut();
+						
+						return false;
+						});
+					$('#close1').click(function(){
+						
+						$('#pop_background').fadeOut();
+						$('#pop_box').fadeOut();
+						
+						return false;
+						});
+					</script>
 		<?php
 				}		
 		}
@@ -202,5 +244,49 @@
 			<option  value="<?php echo $data[$i]['staff_id'];?>"><?php echo $data[$i]['first_name'];?></option>
 			<?php
 		}
+	}
+	//show the popup detail of expence detail.
+	if(isset($_POST['ExpDtl']))
+	{			
+		$expdtl = showExpDtl($conn,$_POST['event_id']);		
+		
+		$cntexpdtl = count($expdtl);
+		?>
+		
+		<div class="Heading">
+			<div class="Cell">Event Name</div>
+			<div class="Cell">Exp.Type</div>
+			<div class="Cell">Exp date</div>
+			<div class="Cell">Exp By</div>			
+			<div class="Cell">Amount</div>			
+		</div>
+		<?php
+		for($a=0;$a<$cntexpdtl;$a++)
+		{
+		 ?>	
+			
+			<div class="Row" >			
+				
+				<div class="Cell">
+					<?php if($expdtl[$a]['event_name']== ''){echo "-";}else{echo $expdtl[$a]['event_name']; } ?>
+				</div>
+				<div class="Cell">
+					<?php if($expdtl[$a]['cat_name']== ''){echo "-";}else{echo $expdtl[$a]['cat_name']; } ?>
+				</div>
+				<div class="Cell">
+					<?php if($expdtl[$a]['exp_date']== ''){echo "-";}else{echo $expdtl[$a]['exp_date']; } ?>
+				</div>
+				<div class="Cell">
+					<?php  if($expdtl[$a]['first_name']== ''){echo "-";}else{echo $expdtl[$a]['first_name']; } ?>
+				</div>
+				<div class="Cell">
+					<?php if($expdtl[$a]['amount']== ''){echo "-";}else{echo $expdtl[$a]['amount']; }  ?>
+				</div>
+				
+			</div>
+            
+		 <?php	
+		}	
+		
 	}
 	?>

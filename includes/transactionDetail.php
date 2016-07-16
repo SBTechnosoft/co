@@ -219,14 +219,39 @@
 									<i class="fa fa-file-excel-o fa-2x" style="color:white; margin-top:10%;" aria-hidden="true"></i>					
 								</a>
                         </div>
+						<div id="pop_background">		
+						</div>
+						<div id="pop_box">
+							<span class="closec" id="close"> &times; </span>													
+							<h4 align="center" style= "font-weight:bold;"> Expence Detail </h4>
+							<br>
+							
+								
+							<div class="TableRowing">
+								&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+								<strong>Expences</strong>
+							</div>
+							
+							<div class="Table" id="showexpdtl">																	
+							</div>
+							
+							
+							<br/><br/>
+							<div class="right-side" id="add_div">								
+								<button class="btn blue" id="close1">Close</button>
+							</div>
+							<br/>
+						</div>
                         <div class="portlet-body">
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
                                 <thead>
                                     <tr>
                                         <th> Order Id</th>
+										<th> Event Expence </th>
                                         <th> Order Name </th>
                                         <th>Client Name </th> 
 										<th> Date </th>
+										<th>Expence By </th>
                                         <th>Income</th>
                                         <th>Expence</th>
 										<th>Other Exp.</th>
