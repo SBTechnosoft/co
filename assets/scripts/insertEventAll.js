@@ -1199,7 +1199,7 @@
 						'<input  type="hidden"  id="hdn[0]['+i+'][txtistfnm]" name="hdn[0]['+i+'][txtistfnm]" value="'+staffnm+'">'+
 						'<input  type="hidden"  id="hdn[0]['+i+'][txtivend]" name="hdn[0]['+i+'][txtivend]" value="'+vend+'">'+
 						'<input type="hidden"  id="hdn[0]['+i+'][txtivendnm]" name="hdn[0]['+i+'][txtivendnm]" value="'+vendnm+'">'+
-						'<input  type="hidden"  id="hdn[0]['+i+'][txtivendprice]" name="hdn[0]['+i+'][txtivendprice]" value="'+vprice+'">'+
+						'<input  type="hidden" class="txtivendprice" id="hdn[0]['+i+'][txtivendprice]" name="hdn[0]['+i+'][txtivendprice]" value="'+vprice+'">'+
 						'<input   type="hidden"  id="hdn[0]['+i+'][txtiremark]" name="hdn[0]['+i+'][txtiremark]" value="'+reamrk+'">'+
 						'<input  type="hidden"  id="hdn[0]['+i+'][txtilength]" name="hdn[0]['+i+'][txtilength]" value="'+length+'">'+
 						'<input   type="hidden"  id="hdn[0]['+i+'][txtiwidth]" name="hdn[0]['+i+'][txtiwidth]" value="'+width+'">'+
@@ -1239,6 +1239,19 @@
 				total_amt += parseInt(this);
 			});
 			//alert(total_amt);
+			
+			var vtot = [];
+            $.each($('.txtivendprice'), function(){            
+                vtot.push($(this).val());
+            });
+			//alert (vtot);		
+			
+
+			var total_vamt = 0;
+			$.each(vtot,function() {
+				total_vamt += parseInt(this);
+			});
+
 			$('.drpneweqp').val('');
 			$('.txtrate').val('');
 			$('.drpqty').val('1');
@@ -1254,6 +1267,7 @@
 			$('#txtlength').hide();
 			$('#txtwidth').hide();
 		   $('.txtcharge').val(total_amt);
+		   $('.txtvcharge').val(total_vamt);
 			
 		});
 		$(document).on('click','.remove',function(){
@@ -1271,6 +1285,19 @@
 					total_amt += parseInt(this);
 				});
 				//alert(total_amt);
+				var vtot = [];
+				$.each($('.txtivendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				//alert (vtot);		
+				
+
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				
 			$('.txtcharge').val(total_amt);
+			$('.txtvcharge').val(total_vamt);
 		});
 	});	

@@ -110,10 +110,10 @@ function insEqup($conn,$txteqpnm,$txtserno,$txtmodel,$txtcateqp,$txtpurdate,$txt
 			exit;
 		}	
 
-function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2)
+function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2,$txtvcharge)
 		{
-			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`) 
-			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."')"; 
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`) 
+			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtvcharge."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;

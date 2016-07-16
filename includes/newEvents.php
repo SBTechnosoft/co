@@ -47,7 +47,17 @@
 					
 					</form-->
 					
-					<form name="f1" action="./includes/newEventsPost.php" method="post" id="f1">	
+					<form name="f1" action="./includes/newEventsPost.php" method="post" id="f1">
+						<div class="clearfix margin-bottom-10">
+							
+							<div class="input-icon left">
+								<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
+								Enquiry &nbsp&nbsp <input type="radio" name="order_type" id="" value="enquiry" > /
+								Order &nbsp&nbsp <input type="radio" name="order_type" id="" value="new" checked><br/>
+							</div>
+							
+						</div>
+					
 						<div class="clearfix margin-bottom-10">
 							<label> Order Name <font color="red">*</font> </label>
 							<div class="input-icon left">
@@ -684,6 +694,8 @@
 						</br>
 						<h4>Payment Details </h4>
 						<hr />
+						
+						<input type="hidden" id="txtvcharge" name="txtvcharge" class="m-wrap txtvcharge" readonly  />
 						<div class="clearfix margin-bottom-10">
 							<label for="txtcharge">Client Charge </label>
 							<div class="input-icon left">
@@ -746,7 +758,7 @@
 							
 							<button >SAVE <i class="icon-download"></i></button-->
 							
-							<a class="btn blue" id="newaddenquiry">ENQUIRY <i class="icon-download"></i></a>
+							<!--a class="btn blue" id="newaddenquiry">ENQUIRY <i class="icon-download"></i></a-->
 							<button type="reset" class="btn blue">CANCEL <i class="icon-remove-sign"></i></button>
 							
 						</div>

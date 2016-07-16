@@ -149,7 +149,12 @@ function showUpcoming($conn,$updy)
 	}
 function showCompleted($conn)
 	{
-		$sqlEventCompletedStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'completed' and  deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventCompletedStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where  `to_date` < curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
 	}
 function showEqpdtl($conn,$event_plc_dtl)
@@ -326,8 +331,8 @@ function showCntStatus($conn)
 		
 		$sqlCntStatus = " SELECT 
 				(SELECT COUNT(*) FROM event_mst WHERE status ='new' and  deleted_at = '0000-00-00 00:00:00' ) as new1,
-				(SELECT COUNT(*) FROM event_mst WHERE status ='upcoming' and  deleted_at = '0000-00-00 00:00:00' ) as upcoming,
-				(SELECT COUNT(*) FROM event_mst WHERE  status ='completed' and  deleted_at = '0000-00-00 00:00:00' ) as completed,
+				(SELECT COUNT(*) FROM event_mst WHERE status ='upcoming'  and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' ) as upcoming,
+				(select COUNT(*) from `event_mst` where  `to_date` < curdate() and `status` != 'enquiry' and `deleted_at` = '0000-00-00 00:00:00') as completed,
 				(SELECT COUNT(`status`) FROM event_mst where status != 'enquiry' and  deleted_at = '0000-00-00 00:00:00'  ) as tot
 			FROM event_mst limit 1 "; 
 		return $conn->getResultArray($sqlCntStatus);		
@@ -370,7 +375,11 @@ function showClientInv($conn)
 function showTransDtl($conn)
 	{
 		$sqlTransDtl = 
-		"select `event_id`,`event_name`,`client_name`,`client_charges` 
+		"select `event_id`,`event_name`,`client_name`,`client_charges` ,`vendor_charges`,`from_date`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		(select sum(amount)from expence_dtl where expence_dtl.event_id=event_mst.event_id) as amount,
+		(select sum(client_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ctotal,
+		(select sum(vendor_charges) from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as vtotal,
+		(select sum(amount) from expence_dtl where event_id != '' ) as etotal
 		from `event_mst` 
 		where `deleted_at` = '0000-00-00 00:00:00' and `status` != 'enquiry' "; 
 		return $conn->getResultArray($sqlTransDtl);	

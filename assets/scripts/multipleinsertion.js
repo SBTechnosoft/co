@@ -982,7 +982,7 @@ $(document).on('click','#add',function()
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" value="\'+staffnm+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" value="\'+vend+\'">\'+'+
 						'\'<input type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" value="\'+vendnm+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" value="\'+vprice+\'">\'+'+
+						'\'<input  type="hidden" class="txtivendprice" id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" value="\'+vprice+\'">\'+'+
 						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" value="\'+reamrk+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" value="\'+length+\'">\'+'+
 						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" value="\'+width+\'">\'+'+
@@ -1015,6 +1015,15 @@ $(document).on('click','#add',function()
 				'total_amt += parseInt(this);'+
 			'});'+
 			
+			'var vtot = [];'+
+			'$.each($(\'.txtivendprice\'), function(){  ' +         
+				'vtot.push($(this).val());'+
+			'});'+
+			'var total_vamt = 0;'+
+			'$.each(vtot,function() {'+
+				'total_vamt += parseInt(this);'+
+			'});'+
+			
 			'$(\'.drpneweqp'+i+'\').val(\'\');'+
 			'$(\'.txtrate'+i+'\').val(\'\');'+
 			'$(\'.drpqty'+i+'\').val(\'1\');'+
@@ -1030,6 +1039,7 @@ $(document).on('click','#add',function()
 			'$(\'#txtlength'+i+'\').hide();'+
 			'$(\'#txtwidth'+i+'\').hide();'+
 		   '$(\'.txtcharge\').val(total_amt);'+
+		   '$(\'.txtvcharge\').val(total_vamt);'+
 			
 		'});'+
 		'$(document).on(\'click\',\'.remove'+i+'\',function(){'+
@@ -1045,7 +1055,17 @@ $(document).on('click','#add',function()
 					'total_amt += parseInt(this);'+
 				'});'+
 				
+				'var vtot = [];'+
+				'$.each($(\'.txtivendprice\'), function(){  ' +         
+					'vtot.push($(this).val());'+
+				'});'+
+				'var total_vamt = 0;'+
+				'$.each(vtot,function() {'+
+					'total_vamt += parseInt(this);'+
+				'});'+
+				
 			'$(\'.txtcharge\').val(total_amt);'+
+			'$(\'.txtvcharge\').val(total_vamt);'+
 		'});'+
 		
 			 

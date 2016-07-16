@@ -23,51 +23,121 @@
 		for($i=0;$i<$showTrnCnt;$i++)
 		{
 		?>
-			<tr>
-				
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
-					data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo $ETrnDtl[$i]['event_id'];?>
-					</a>
-					<?php //echo $ETrnDtl[$i]['event_id'];?>
-				</td>
-				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
-					data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
-						<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
-					</a>
-					<?php //echo ucfirst($ETrnDtl[$i]['event_name']);?>
-				</td>
-				<td><?php echo ucfirst($ETrnDtl[$i]['client_name']);?></td>
-				
-				<td>
-					<span class="label label-success">
-						<?php echo $ETrnDtl[$i]['client_charges'];?>
-					</span>
-				</td>
-				<td>
-					<span class="label label-warning">
+			<?php
+				if($i == ($showTrnCnt-1))
+				{
+					?>
+					<tr>
+						
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $ETrnDtl[$i]['event_id'];?>
+							</a>
+							<?php //echo $ETrnDtl[$i]['event_id'];?>
+						</td>
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
+							</a>
+							<?php //echo ucfirst($ETrnDtl[$i]['event_name']);?>
+						</td>				
+						
+						<td>
+							<?php if($ETrnDtl[$i]['client_name']!= '') {?>
+							<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Client Comapany:<?php echo $ETrnDtl[$i]['client_cmp'];?><br>
+							Client Email:<?php echo $ETrnDtl[$i]['client_email'];?><br>
+							Mobile1:<?php echo $ETrnDtl[$i]['client_work_mob'];?><br>
+							Mobile2:<?php echo $ETrnDtl[$i]['client_home_mob'];?>">
+							</i>&nbsp;&nbsp;<?php echo ucfirst($ETrnDtl[$i]['client_name']); }else {echo "-";}?>
+						</td>
+						<td>					
+							<?php echo $ETrnDtl[$i]['from_date'];?>
+						</td>
+						<td>
+							<span style="float:right;" class="label label-success">
+								<?php echo $ETrnDtl[$i]['client_charges'];?>
+							</span>
+						</td>
+						<td>
+							<span style="float:right;" class="label label-warning">
+								<?php if($ETrnDtl[$i]['vendor_charges']!=''){echo $ETrnDtl[$i]['vendor_charges'];}else {echo "";}?>
+							</span>
+						</td>				
+						<td>
+							<span style="float:right;" class="label label-warning">
+								<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
+							</span>
+						</td>
+						
+						
+					</tr>
+					<tr>
+						<td></td>	
+						<td></td>
+						<td></td>
+						<td><b> Grand Total</b></td>						
+						<td><span style="float:right;" class="label label-success"><b><?php echo $ETrnDtl[$i]['ctotal'];?> </b></span></td>
+						<td><span style="float:right;" class="label label-warning"><b><?php echo $ETrnDtl[$i]['vtotal'];?> </b></span></td>
+						<td><span style="float:right;" class="label label-warning"><b><?php echo $ETrnDtl[$i]['etotal'];?></b> </span></td>
+					</tr>
 					
-						<?php 
-						for($j=0;$j<$showTrnVend;$j++)
-						{
-							if($ETrnDtl[$i]['event_id'] == $VTrnDtl[$j]['event_id'] )
-							{
-								echo $VTrnDtl[$j]['vtot'];
-							}
-							
-						}
-						?>
-					</span>
-				</td>
-				<td>
-				
-				</td>
-				
-				
-			</tr>
-		<?php	
+					<?php					
+			}
+				else
+				{
+					?>
+					<tr>
+						
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $ETrnDtl[$i]['event_id'];?>
+							</a>
+							<?php //echo $ETrnDtl[$i]['event_id'];?>
+						</td>
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
+							</a>
+							<?php //echo ucfirst($ETrnDtl[$i]['event_name']);?>
+						</td>				
+						
+						<td>
+							<?php if($ETrnDtl[$i]['client_name']!= '') {?>
+							<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Client Comapany:<?php echo $ETrnDtl[$i]['client_cmp'];?><br>
+							Client Email:<?php echo $ETrnDtl[$i]['client_email'];?><br>
+							Mobile1:<?php echo $ETrnDtl[$i]['client_work_mob'];?><br>
+							Mobile2:<?php echo $ETrnDtl[$i]['client_home_mob'];?>">
+							</i>&nbsp;&nbsp;<?php echo ucfirst($ETrnDtl[$i]['client_name']); }else {echo "-";}?>
+						</td>
+						<td>					
+							<?php echo $ETrnDtl[$i]['from_date'];?>
+						</td>
+						<td>
+							<span style="float:right;" class="label label-success">
+								<?php echo $ETrnDtl[$i]['client_charges'];?>
+							</span>
+						</td>
+						<td>
+							<span style="float:right;" class="label label-warning">
+								<?php if($ETrnDtl[$i]['vendor_charges']!=''){echo $ETrnDtl[$i]['vendor_charges'];}else {echo "";}?>
+							</span>
+						</td>				
+						<td>
+							<span style="float:right;" class="label label-warning">
+								<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
+							</span>
+						</td>
+						
+						
+					</tr>
+		<?php
+				}		
 		}
 		
 	}
