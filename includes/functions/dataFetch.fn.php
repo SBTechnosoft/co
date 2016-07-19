@@ -122,7 +122,13 @@ function showEventDataDet($conn,$id)
 	}	
 function showNew($conn)
 	{
-		$sqlEventNewStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'new' and  deleted_at = '0000-00-00 00:00:00' "; 
+		//$sqlEventNewStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'new' and  deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventNewStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
 	}
 function showAll($conn)
@@ -143,7 +149,7 @@ function showUpcoming($conn,$updy)
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
 		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
 		from  `event_mst` 
-		where `status` <> 'completed' and `from_date` between curdate() and curdate()+'".$updy."' and `deleted_at` = '0000-00-00 00:00:00' "; 
+		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and `deleted_at` = '0000-00-00 00:00:00' "; 	 
 		
 		return $conn->getResultArray($sqlEventUpcomingStatus);	
 	}
@@ -326,12 +332,14 @@ function showfullPdf($conn,$eid)
 		$sqlshowInvFile = "select `info_file_name`  from  `event_mst` where `event_id` = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowInvFile);		
 	}
-function showCntStatus($conn)
+function showCntStatus($conn,$days)
 	{
 		
 		$sqlCntStatus = " SELECT 
-				(SELECT COUNT(*) FROM event_mst WHERE status ='new' and  deleted_at = '0000-00-00 00:00:00' ) as new1,
-				(SELECT COUNT(*) FROM event_mst WHERE status ='upcoming'  and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' ) as upcoming,
+				
+				(SELECT COUNT(*) FROM  `event_mst` where  `to_date` > curdate() and status ='new' and `deleted_at` = '0000-00-00 00:00:00' ) as new1,				
+				(SELECT COUNT(*) FROM event_mst 
+				where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$days." DAY) and `status` != 'enquiry'  and `deleted_at` = '0000-00-00 00:00:00') as upcoming,
 				(select COUNT(*) from `event_mst` where  `to_date` < curdate() and `status` != 'enquiry' and `deleted_at` = '0000-00-00 00:00:00') as completed,
 				(SELECT COUNT(`status`) FROM event_mst where status != 'enquiry' and  deleted_at = '0000-00-00 00:00:00'  ) as tot
 			FROM event_mst limit 1 "; 

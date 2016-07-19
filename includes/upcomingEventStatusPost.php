@@ -16,8 +16,9 @@
 	
 	if(isset($_POST['show']))
 	{	
-		$data = showUpcoming($conn,$_POST['txtupdays']);
 		
+		(int)$txtupdays = $_POST['txtupdays'];
+		$data = showUpcoming($conn,$txtupdays);
 		$showUpcomingCnt = count($data);	
 		for($i=0;$i<$showUpcomingCnt;$i++)
 		{

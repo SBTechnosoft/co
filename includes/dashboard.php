@@ -42,14 +42,14 @@
 									<i class="icon-globe"></i>
 								</div>
 								<div class="details">
-									<div class="number">
-										29
+									<div class="number" id="newevents">
+										
 									</div>
 									<div class="desc">                           
-										New Members
+										New Orders
 									</div>
 								</div>
-								<a class="more" href="#">
+								<a class="more" href="<?php echo HTTP_SERVER.'index.php?url=NEW';?>">
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
@@ -74,10 +74,10 @@
 									<i class="icon-comments"></i>
 								</div>
 								<div class="details">
-									<div class="number"> 3 </div>
-									<div class="desc">Upcoming Events</div>
+									<div class="number" id="upcevents"></div>
+									<div class="desc">Upcoming Orders</div>
 								</div>
-								<a class="more" href="#">
+								<a class="more" href="<?php echo HTTP_SERVER.'index.php?url=UPC';?>">
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>

@@ -49,7 +49,44 @@ function showdataProfit()
 				
 			});
 		}
-		
+function showEventCnt()
+		{		
+			$.ajax({
+				url : './includes/dashboardPost.php',
+				type : 'post',				
+				async : false,
+				data : {
+					'showEventCnt' : 1
+					
+				},
+				success : function(r)
+				{
+					
+					$('#newevents').html(r);
+				}
+				
+			});
+		}
+function showUPCEventCnt()
+		{		
+			$.ajax({
+				url : './includes/dashboardPost.php',
+				type : 'post',				
+				async : false,
+				data : {
+					'showUPCEventCnt' : 1
+					
+				},
+				success : function(r)
+				{
+					
+					$('#upcevents').html(r);
+				}
+				
+			});
+		}
+		showEventCnt();
+		showUPCEventCnt();
 		showdataIncome();
 		showdataExpence();
 		showdataProfit();

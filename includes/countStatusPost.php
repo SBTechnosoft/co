@@ -3,8 +3,9 @@
 include_once('./header.php');
 if(isset($_POST['show']))
 	{	
-		$data = showCntStatus($conn);
-		//print_r($data);
+		
+		$dataday = showUpDays($conn);		
+		$data = showCntStatus($conn,$dataday[0]['upcoming_days']);
 		$data1=showPerm($conn);
 		$arr1 = json_decode($data1[0]['permission']);		
 ?>		

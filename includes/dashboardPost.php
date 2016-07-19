@@ -22,6 +22,23 @@
 		<?php
 		}
 		
+		if(isset($_POST['showEventCnt']))
+			{
+				$dataday = showUpDays($conn);
+				$data = showCntStatus($conn,$dataday[0]['upcoming_days']);
+				?>
+				<b><?php echo $data[0]['new1'];?></b>				
+			<?php
+			}
+		if(isset($_POST['showUPCEventCnt']))
+			{
+				$dataday = showUpDays($conn);
+				$data = showCntStatus($conn,$dataday[0]['upcoming_days']);
+				?>
+				<b><?php echo $data[0]['upcoming'];?></b>				
+			<?php
+			}
+		
 	if(isset($_POST['showAccProfit']))
 		{
 			$client = showAccNum($conn);

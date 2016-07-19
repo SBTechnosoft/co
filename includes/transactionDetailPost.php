@@ -74,9 +74,17 @@
 							</span>
 						</td>				
 						<td>
+							
 							<span style="float:right;" class="label label-warning">
-								<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
+							
+							<?php if($ETrnDtl[$i]['amount']!=''){echo $ETrnDtl[$i]['amount'];}else {echo "";}?>
 							</span>
+							<?php 
+							if($ETrnDtl[$i]['amount']!=''){?>								
+								<a class="expopen" data-id ="<?php echo $ETrnDtl[$i]['event_id']; ?>" style="cursor:pointer; float:right;">
+								<i class="fa fa-file-text" aria-hidden="true"></i>
+								</a>
+							<?php } ?>
 						</td>
 						
 						
@@ -147,8 +155,8 @@
 							</span>
 							<?php 
 							if($ETrnDtl[$i]['amount']!=''){?>								
-								<a class="open" data-id ="<?php echo $ETrnDtl[$i]['event_id']; ?>" style="cursor:pointer; float:right;">
-								info
+								<a class="expopen" data-id ="<?php echo $ETrnDtl[$i]['event_id']; ?>" style="cursor:pointer; float:right;">
+								<i class="fa fa-file-text" aria-hidden="true"></i>
 								</a>
 							<?php } ?>
 						</td>
@@ -254,11 +262,11 @@
 		?>
 		
 		<div class="Heading">
-			<div class="Cell">Event Name</div>
-			<div class="Cell">Exp.Type</div>
-			<div class="Cell">Exp date</div>
-			<div class="Cell">Exp By</div>			
-			<div class="Cell">Amount</div>			
+			<div class="Cell"><span style="float:left;">Event Name</span></div>
+			<div class="Cell"><span style="float:left;">Exp.Type</span></div>
+			<div class="Cell"><span style="float:left;">Exp date</span></div>
+			<div class="Cell"><span style="float:left;">Exp By</span></div>			
+			<div class="Cell"><span style="float:left;">Amount</span></div>				
 		</div>
 		<?php
 		for($a=0;$a<$cntexpdtl;$a++)
@@ -268,19 +276,29 @@
 			<div class="Row" >			
 				
 				<div class="Cell">
+					<span style="float:left;">
 					<?php if($expdtl[$a]['event_name']== ''){echo "-";}else{echo $expdtl[$a]['event_name']; } ?>
+					</span>
 				</div>
 				<div class="Cell">
+					<span style="float:left;">
 					<?php if($expdtl[$a]['cat_name']== ''){echo "-";}else{echo $expdtl[$a]['cat_name']; } ?>
+					</span>
 				</div>
 				<div class="Cell">
+					<span style="float:left;">
 					<?php if($expdtl[$a]['exp_date']== ''){echo "-";}else{echo $expdtl[$a]['exp_date']; } ?>
+					</span>
 				</div>
 				<div class="Cell">
+					<span style="float:left;">
 					<?php  if($expdtl[$a]['first_name']== ''){echo "-";}else{echo $expdtl[$a]['first_name']; } ?>
+					</span>
 				</div>
 				<div class="Cell">
+					<span style="float:right;">
 					<?php if($expdtl[$a]['amount']== ''){echo "-";}else{echo $expdtl[$a]['amount']; }  ?>
+					</span>
 				</div>
 				
 			</div>

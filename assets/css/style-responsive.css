@@ -11,8 +11,8 @@
  	Page sidebar
  	***/
  	.page-sidebar {
-		/* position: absolute;*/
-		position: fixed; /*change by divyesh for fix the side bar*/
+		 position: absolute;
+		/*position: fixed; change by divyesh for fix the side bar*/
  		width: 225px;
   	}
 

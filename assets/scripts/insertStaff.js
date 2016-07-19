@@ -185,7 +185,7 @@
 						$('#txtzip').val(v.zip);
 						$('#txtrel1').val(v.relative1);
 						$('#txtrel2').val(v.relative2);
-						$('#txtstype').val(v.staff_type);
+						//$('#txtstype').val(v.staff_type);
 						
 						
 					}
