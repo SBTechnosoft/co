@@ -480,6 +480,9 @@
 					
 					//this for invoice
 					$('#txteid').val(e.event_id);
+					$('#txtfpdfeid').val(e.event_id);
+					$('#txtfpdffromdt').val(e.from_date);
+					
 					$('#txtenm').val(e.event_name);
 					$('#txtfdate').val(e.from_date);
 					$('#txtcnm').val(e.client_name);
@@ -554,6 +557,9 @@
 					
 					//this for invoice
 					$('#txteid').val(e.event_id);
+					$('#txtfpdfeid').val(e.event_id);
+					$('#txtfpdffromdt').val(e.from_date);
+
 					$('#txtenm').val(e.event_name);
 					$('#txtfdate').val(e.from_date);
 					$('#txtcnm').val(e.client_name);

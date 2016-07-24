@@ -204,7 +204,7 @@
 							<div class="pull-left margin-right-20">
 								<label for="txtfromdt">From Date </label>
 								<div id="datetimepicker1" class="input-append date">
-									<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+									<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -213,7 +213,7 @@
 							<div class="pull-right margin-right-20">
 								<label for="txttodt" class="well1">To Date </label> 
 								<div id="datetimepicker2" class="input-append date">
-									<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
+									<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -256,7 +256,7 @@
 									<div class="pull-left margin-right-20">
 										<label for="txtfromdate">From Date </label>
 										<div id="datetimepickerPF" class="input-append date">
-											<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
+											<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
 											<span class="add-on">
 											  <i class="icon-time" class="icon-calendar"></i>
 											</span>
@@ -265,7 +265,7 @@
 									<div class="pull-right margin-right-20">
 									<label for="txttodate" class="well1">To Date </label>
 									<div id="datetimepickerPT" class="input-append date">
-										<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
+										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
 										<span class="add-on">
 										  <i class="icon-time" class="icon-calendar"></i>
 										</span>

@@ -382,6 +382,10 @@ $arr1 = json_decode($data[0]['permission']);
 						{
 							echo "active ";
 						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'TEMP')
+						{
+							echo "active ";
+						}
 						else
 						{
 							echo" ";
@@ -405,7 +409,7 @@ $arr1 = json_decode($data[0]['permission']);
                 </li>			
 			<?php 
 			
-				}
+				}				
 				
 				if(isset($arr1) && !empty($arr1) && in_array("PID", $arr1))
 				{					
@@ -464,6 +468,16 @@ $arr1 = json_decode($data[0]['permission']);
                 </li>
 			<?php 
 			
+				}
+				if(isset($arr1) && !empty($arr1) && in_array("INV", $arr1))
+				{
+					?>
+					<li class="">
+						<a href="<?php echo HTTP_SERVER.'index.php?url=TEMP';?>">
+							<i class="icon-file"></i> Templates</a>
+					</li>
+					
+					<?php
 				}
 			?>
             </ul>

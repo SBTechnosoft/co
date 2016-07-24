@@ -66,12 +66,12 @@ function showStaff($conn)
 	}
 function showAllEquipment($conn)
 	{				
-		$sqlShowEquipment = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.`deleted_at` = '0000-00-00 00:00:00' "; 
+		$sqlShowEquipment = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.`deleted_at` = '0000-00-00 00:00:00' order by em.eq_name "; 
 		return $conn->getResultArray($sqlShowEquipment);	
 	}
 function showEqupDrp($conn)
 	{
-		$sqlShowEquipment1 = "select `eq_id`,`eq_name`,`price` from  `equipment_mst` where `deleted_at` = '0000-00-00 00:00:00' "; 
+		$sqlShowEquipment1 = "select `eq_id`,`eq_name`,`price` from  `equipment_mst` where `deleted_at` = '0000-00-00 00:00:00'  order by eq_name "; 
 		return $conn->getResultArray($sqlShowEquipment1);	
 	}
 function showStaffDrp($conn)
@@ -79,6 +79,12 @@ function showStaffDrp($conn)
 		$sqlShowStaffDrp = "select `staff_id`,`first_name` from  staff_mst where `staff_type`= 'staff' "; 
 		return $conn->getResultArray($sqlShowStaffDrp);	
 	}
+function showEventDetailInv($conn,$eid)
+	{
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where event_id = '".$eid."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		return $conn->getResultArray($sqlEventDetail);	
+	}	
+
 function showEventDetail($conn)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
@@ -360,7 +366,7 @@ function showEqpRsDtl($conn,$event_id)
 	{
 		$sqlshowEqpRsDtl = "select em.eq_name,nepd.qty,nepd.rate,nepd.amount,nepd.length,nepd.width 
 						from `new_event_places_dtl` nepd  inner join `equipment_mst` em 
-						on nepd.eq_id = em.eq_id where nepd.event_id = '".$event_id."' "; 
+						on nepd.eq_id = em.eq_id where nepd.event_id = '".$event_id."' order by em.eq_name "; 
 		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
 function showClientInv($conn)
@@ -435,7 +441,7 @@ function showVUPDetail($conn,$evd_id)
 	}
 function showExpCtg($conn)
 	{
-		$sqlshowExpCtg = " select `exp_cat_id`,`cat_name`,`cat_type`  from  `expence_cat_mst` "; 
+		$sqlshowExpCtg = " select `exp_cat_id`,`cat_name`,`cat_type`  from  `expence_cat_mst` order by cat_name "; 
 		return $conn->getResultArray($sqlshowExpCtg);	
 	}
 function showEvent($conn)
@@ -459,6 +465,16 @@ function showExpDtl($conn,$eid)
 		inner join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id
 		where exd.event_id= '".$eid."' "; 
 		return $conn->getResultArray($sqlshowEvent);	
+	}
+function showEv_Pl_Dtl($conn,$eid)
+	{
+		$sqlEv_Pl_Dtl = " select *  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlEv_Pl_Dtl);	
+	}
+function showNewEv_Pl_Dtl($conn,$eid)
+	{
+		$sqlEv_Pl_Dtl = " select *  from  `new_event_places_dtl` where event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlEv_Pl_Dtl);	
 	}
 	
 

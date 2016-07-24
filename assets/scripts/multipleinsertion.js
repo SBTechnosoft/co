@@ -42,7 +42,7 @@ $(document).on('click','#add',function()
 		'		<div class="pull-left margin-right-20">'+
 		'			<label for="txtfromdate">From Date </label>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
-		'				<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
+		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
 		'				<span class="add-on">'+
 		'				  <i class="icon-time" class="icon-calendar"></i>'+
 		'				</span>'+
@@ -51,7 +51,7 @@ $(document).on('click','#add',function()
 		'		<div class="pull-right margin-right-20">'+
 		'		<label for="txttodate" class="well1">To Date </label>'+
 		'		<div id="datetimepickerPT'+i+'" class="input-append date">'+
-		'			<input data-format="yyyy-MM-dd hh:mm:ss" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
+		'			<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
 		'			<span class="add-on">'+
 		'			  <i class="icon-time" class="icon-calendar"></i>'+
 		'			</span>'+
@@ -276,12 +276,12 @@ $(document).on('click','#add',function()
 			
 			'if(txteqpnm == "" )'+
 			'{'+
-				'alert(\'Plz Fill Equpment Name \');'+
+				'alert(\'Plz Fill Equipment Name \');'+
 				'return false;'+
 			'}'+
 			'if(txtcateqp == "" )'+
 			'{'+
-				'alert(\'Plz Fill Equpment category \');'+
+				'alert(\'Plz Fill Equipment category \');'+
 				'return false;'+
 			'}'+
 			'if(txtprice == "" )'+

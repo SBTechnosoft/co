@@ -49,6 +49,9 @@
 				case 'TRN':
 					$url = FILENAME_TRANSACTION;
 					break;
+				case 'TEMP':
+					$url = FILENAME_TEMPLATE;
+					break;
 				case 'CTG':
 					$url = FILENAME_CATEGORY;
 					break;

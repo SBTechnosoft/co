@@ -13,7 +13,7 @@ define('FILENAME_LOGIN','login.php');
 
 //Constant for date
 date_default_timezone_set('Asia/Calcutta');
- $date =  Date('Y-m-d h:m:s');
+ $date =  Date('d-m-Y h:m A');
 define('Date',$date);
 // $dateFormat = date_format($date,"d-M-Y  H:i A");
 define('dateFormat',"d-M-Y g:i A");
@@ -89,6 +89,8 @@ define('FILENAME_TRANSACTION',DIR_WS_INCLUDES.'transactionDetail.php');
 
 define('FILENAME_CATEGORYNEW',DIR_WS_INCLUDES.'categoryNew.php');
 define('FILENAME_SUBCATEGORY',DIR_WS_INCLUDES.'categorySub.php');
+
+define('FILENAME_TEMPLATE',DIR_WS_INCLUDES.'templateSettings.php');
 
 //registration files
 //define('FILENAME_REGISTRATION',DIR_WS_INCLUDES.'registration.php');

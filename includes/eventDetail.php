@@ -344,11 +344,19 @@ else
 							<!-- invoice button -->
 							
 							<!--form class="form-search" id="form2" target="_blank" method="post" action="full_invoice.php"-->
-							
-								<a class="invoice invoice_btn btn blue" id="fullPdf" target="_blank" >
-									<h3 class="invoice_font"> Order Info <i style="cursor : pointer; color:white;" class="fa fa-file-pdf-o" aria-hidden="true" >
-									</h3></i>
-								</a>											
+															
+							<form class="form-search" id="form2" target="_blank" method="post" action="full_invoice.php">
+								
+								<input type="hidden" id="txtfpdfeid" name="txtfpdfeid" value=""/>
+								<input type="hidden" id="txtfpdffromdt" name="txtfpdffromdt" value=""/>
+								
+								<a class="invoice invoice_btn btn blue" onclick="document.getElementById('form2').submit();" >
+ 									<h3 class="invoice_font"> Order Info 
+										<i style="cursor : pointer; color:white;" class="fa fa-file-pdf-o" aria-hidden="true" >
+										</i>
+									</h3>																			
+								</a>
+							</form>	
 								<div id="showfullpdf">
 									<!--a href="upload/invoice/20160513-95_1.pdf" class="pdflist" target="_blank"> PDF </a><br-->
 									
@@ -378,7 +386,7 @@ else
 										</a>
 										<br class="clear">
 										 <div class="tab-content" id="showplsdtl">
-																							
+										 
 										</div>
 									</div>								
 									
