@@ -1,12 +1,18 @@
 <?php
+	ob_start();
+	$html = ob_get_clean();
+	$html = utf8_encode($html);
+	
 	include_once('includes/header.php');
-	//require('/home/siliconbrain/public_html/beta.prabandhak.co.in/fpdf/fpdf.php');
-	require(DIR_WS_FPDF.'fpdf.php');
-	//$fname = $inm.$id.".pdf";
+	
+	require(DIR_WS_MPDF.'mpdf.php');
+	
 	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
-	$id = $_POST['txteid'];
+	
+	$id = $_POST['txteid'];	
+	//$cmp = $_POST['txtcmpnm'];	
 	if($_POST['txtcmpnm']== '')
 	{
 		$cmp = "NA";
@@ -23,137 +29,193 @@
 	$cpaid = $_POST['txtpaid'];
 	$ramt = $charge - $cpaid;
 	
+	
+	
 	if(isset($_POST['txteid']))
 	{		
 		$data = showInvName($conn,$_POST['txteid']);
-		$cnt = count($data);		
+		$cnt = count($data);
+		//echo $cnt."<br>";
+		
 		for($i=0;$i<$cnt;$i++)
 		{
 			if($data[$i]['inv_file_name']=='')
-			{
+			{				
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
-				
-				class Mipdf extends FPDF
-				{
-					function Header()
-					{
-						$this->SetFont("Arial","",14);
+		
+			
+				$html .= '
+
+					<style>
+					.trhw {height : 35px;}
+
+					</style>
+					<style type="text/css">
+					.tg  {border-collapse:collapse;border-spacing:0;}
+					.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+					.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+					.tg .tg-jtyd{font-weight:bold;font-family:Georgia, serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
+					.tg .tg-3gzm{font-weight:bold;font-family:Georgia, serif !important;;text-align:right;vertical-align:top}
+					.tg .tg-ullm{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:right;vertical-align:top}
+					.tg .tg-vi9z{font-weight:bold;font-family:Georgia, serif !important;;vertical-align:top}
+					.tg .tg-bjj3{font-weight:bold;font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
+					.tg .tg-m36b{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:center;vertical-align:top}
+					.thsrno {width:50px;}
+					.theqp {width:400px;}
+					.thamt {width:90px;}
+					</style>
+
+					<html>
+						<body> 
 						
-						$this->SetTextColor(255,255,255);
-						$this->SetFillColor(140,140,140);
-						$this->Cell(190,20,"Quatation",1,0,'C',true);
-						$this->Image("images/8.png",10,10,20);
-						$this->Ln(20);
-					}
-					function Footer()
-					{
-						$this->SetY(-20);
+						<table class="tg" >						
+						  <tr>
+							<th class="tg-bjj3" colspan="1"><img style="height:50px;width:100px;"src="assets/img/sblogo.png"> </th>
+							<th class="tg-bjj3" style="padding:10px 5px;" colspan="4">QUATATION <br></th>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">To.: '.$cmp.' <br></td>
+							<td class="tg-vi9z" colspan="2">'.$sdate.'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">Order Name:'.$enm.'</td>
+							<td class="tg-vi9z" colspan="2">FP No.:'.$data[$i]['fp_no'].'<br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5">Order Date :'.$fdate.' <br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">Vennue.:</td>
+							<td class="tg-vi9z" colspan="2">Quatation No.:'.$id.'<br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5">Client.:'.$cnm.'</td>
+						  </tr>	  
+						  <tr class="trhw">
+							<td class="tg-m36b thsrno">Sr.No</td>
+							<td class="tg-m36b theqp">Equipment</td>
+							<td class="tg-ullm thsrno">Qty.</td>
+							<td class="tg-ullm thamt">Unit Cost<br></td>
+							<td class="tg-ullm thamt">Amount</td>
+						  </tr>';
 						
-						$this->Cell(190,7,"Page No.".$this->PageNo()."/{nb}",1,0,'C');
-					}
-				}
-				$mipdf = new Mipdf();
-				$mipdf->AliasNBPages();
-				$mipdf->addPage();
-				
-				$mipdf->SetFont("Arial","",12);
-				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
-				$mipdf->Cell(60,10,$sdate,1,1,'C');
-				
-				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
-				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
-				
-				$mipdf->Cell(190,10,"Event Date: ".$fdate,1,1);
-				
-				$mipdf->Cell(130,10,"Vennue: ",1,0);
-				$mipdf->Cell(60,10,"Invoice No.: ".$id,1,1);
-				
-				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
-				
-				$mipdf->Cell(20,10,"SR No.",1,0,'C');
-				$mipdf->Cell(90,10,"Event Detail",1,0);
-				$mipdf->Cell(20,10,"Qty.",1,0,'R');
-				$mipdf->Cell(30,10,"Rate.",1,0,'R');
-				$mipdf->Cell(30,10,"Amount",1,1,'R');
-				
-				$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
-				$cnt = count($dEqp);		
-				for($a=0;$a<$cnt;$a++)
-				{
-					if($dEqp[$a]['length']!='')
-					{
-					$mipdf->Cell(20,10,$a+1,1,0,'R');
-					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name']."  (".$dEqp[$a]['length']."*".$dEqp[$a]['width'].")",1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
-					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
-					}
-					else
-					{
-					$mipdf->Cell(20,10,$a+1,1,0,'R');
-					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name'],1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0,'R');
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0,'R');
-					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
-					}
-				}
-				
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(90,10,"",1,0);
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,1);
+						$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
+						$cnteqp = count($dEqp); 
+						
+						for($a=0;$a<$cnteqp;$a++)
+						{
+							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+							{				
+							
+							$html .= '
+								<tr class="trhw">
+									<td class="tg-3gzm">'.($a+1).'</td>
+									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
+							else
+							{				
+							
+							$html .= '
+								<tr class="trhw">
+									<td class="tg-3gzm">'.($a+1).'</td>
+									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
+						}
+						  
+						  
+						$html .= '  
+						
+						  <tr class="trhw">
+							<td class="tg-3gzm"></td>
+							<td class="tg-vi9z"> <br></td>
+							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm"></td>
+						  </tr>
+						
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Charge<br></td>
+							<td class="tg-3gzm">'.$data[$i]['client_charges'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Discount</td>
+							<td class="tg-3gzm">'.$data[$i]['client_discount_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">S.Tax '.$data[$i]['service_tax_rate'].'%<br></td>
+							<td class="tg-3gzm">'.$data[$i]['service_tax_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Total</td>
+							<td class="tg-3gzm">'.$data[$i]['total_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" rowspan="1">
+								Terms & Condition <br/>
+							';
+							
+						$cond = showInvCond($conn);				
+						$cnt = count($cond);	
+						for($b=0;$b<$cnt;$b++)
+						{
+							$allcond = json_decode($cond[$b]['inv_cond_json']);
+							$cntjsn = count($allcond);
+							for($k=0;$k<$cntjsn;$k++)
+							{						
+								$html .= $allcond[$k].'<br>';
+							}
+						}
+						
+						if($data[$i]['cmp_name']!='')
+						{
+							$company=ucfirst($data[$i]['cmp_name']);
+						}
+						else
+						{
+							$company="-";
+						}
+						
+					$html .= '
+							</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-3gzm" colspan="5" rowspan="1">'.$company.'&nbsp;&nbsp;   <br>abc@gmail.com </td>
+						  </tr>
+						 
+						</table>
+						</body>
+					</html>';
 					
-				$mipdf->Cell(160,10,"Charge ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_charges'],1,1,'R');
+				$mpdf=new mPDF('c','A4','','GEORGIAN' , 25 , 25 , 30 , 15 , 0 , 0); 
+				 
+				$mpdf->SetDisplayMode('fullpage');
+				 
+				$mpdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
+				 
+				$mpdf->WriteHTML($html);
+						 
 				
-				$mipdf->Cell(160,10,"Discount ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_discount_amt'],1,1,'R');
 				
-				$mipdf->Cell(160,10,"S.Tax ".$data[$i]['service_tax_rate']."%",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['service_tax_amt'],1,1,'R');
-				
-				$mipdf->Cell(160,10,"TOTAL ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['total_amt'],1,1,'R');
-				
-				//$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
-				//$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
-				
-				//$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
-				//$mipdf->Cell(30,10,($data[$i]['total_amt'])-($data[$i]['client_paid_amt']),1,1,'R');
-				
-				$mipdf->Cell(190,8,"",0,1);
-				$cond = showInvCond($conn);				
-				$cnt = count($cond);	
-				for($b=0;$b<$cnt;$b++)
-				{
-					$allcond = json_decode($cond[$b]['inv_cond_json']);
-					$cntjsn = count($allcond);
-					for($k=0;$k<$cntjsn;$k++)
-					{
-						$mipdf->Cell(190,8,$allcond[$k],0,1);
-					}
-				}
-				if($data[$i]['cmp_name']!='')
-				{
-					$company=ucfirst($data[$i]['cmp_name']);
-				}
-				else
-				{
-					$company="-";
-				}
-				
-				$mipdf->Cell(130,8,"",0,0);
-				$mipdf->Cell(60,8,$company,0,1,'C');	
-				$mipdf->Cell(190,8,"   Email: abc@gmail.com",0,1,'R');
-				$path = DIR_WS_INV.$fname;
-				$mipdf->Output($path,'F');				
-				
+				//header('location : D:\xampp\htdocs\mpdf\invoice\meu-pdf.pdf');
+				$path = DIR_WS_MINV.$fname;								
+				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
 				$date1 = date('Y-m-d H:i:s');
 				updInvEM($conn,$id,$fname);
 				insInvECID($conn,$id,$fname,$date1,$_SESSION['USER_ID']);
 				
-				header('Location: upload/invoice/'.$fname);		
+				header('Location: upload/minvoice/'.$fname);
+				//exit();
+					
 			}
 			else
 			{
@@ -161,148 +223,196 @@
 				$pos = substr($data[$i]['inv_file_name'],(strpos($data[$i]['inv_file_name'],"_") + 1),1);
 				$pos = $pos+ 1;
 				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
-								
-				class Mipdf extends FPDF
-				{
-					function Header()
-					{
-						$this->SetFont("Arial","",14);
+				
+			
+				$html .= '
+
+					<style>
+					.trhw {height : 35px;}
+
+					</style>
+					<style type="text/css">
+					.tg  {border-collapse:collapse;border-spacing:0;}
+					.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+					.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+					.tg .tg-jtyd{font-weight:bold;font-family:Georgia, serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
+					.tg .tg-3gzm{font-weight:bold;font-family:Georgia, serif !important;;text-align:right;vertical-align:top}
+					.tg .tg-ullm{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:right;vertical-align:top}
+					.tg .tg-vi9z{font-weight:bold;font-family:Georgia, serif !important;;vertical-align:top}
+					.tg .tg-bjj3{font-weight:bold;font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
+					.tg .tg-m36b{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:center;vertical-align:top}
+					.thsrno {width:50px;}
+					.theqp {width:400px;}
+					.thamt {width:90px;}
+					</style>
+
+					<html>
+						<body> 						
 						
-						$this->SetTextColor(255,255,255);
-						$this->SetFillColor(140,140,140);
-						$this->Cell(190,20,"Quatation",1,0,'C',true);
-						$this->Image("images/8.png",10,10,20);
-						$this->Ln(20);
-					}
-					function Footer()
-					{
-						$this->SetY(-20);
+						<table class="tg" >							
+						  <tr>
+							
+							<th class="tg-bjj3" colspan="1"><img style="height:50px;width:100px;"src="assets/img/sblogo.png"> </th>
+							<th class="tg-bjj3" style="padding:10px 5px;" colspan="4">QUATATION <br></th>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">To.: '.$cmp.' <br></td>
+							<td class="tg-vi9z" colspan="2">'.$sdate.'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">Order Name:'.$enm.'</td>
+							<td class="tg-vi9z" colspan="2">FP No.:'.$data[$i]['fp_no'].'<br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5">Order Date :'.$fdate.' <br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3">Vennue.:</td>
+							<td class="tg-vi9z" colspan="2">Quatation No.:'.$id.'<br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5">Client.:'.$cnm.'</td>
+						  </tr>	  
+						  <tr class="trhw">
+							<td class="tg-m36b thsrno">Sr.No</td>
+							<td class="tg-m36b theqp">Equipment</td>
+							<td class="tg-ullm thsrno">Qty.</td>
+							<td class="tg-ullm thamt">Unit Cost<br></td>
+							<td class="tg-ullm thamt">Amount</td>
+						  </tr>';
 						
-						$this->Cell(190,7,"Page No.".$this->PageNo()."/{nb}",1,0,'C');
-					}
-				}
-				$mipdf = new Mipdf();
-				$mipdf->AliasNBPages();
-				$mipdf->addPage();
-				
-				$mipdf->SetFont("Arial","",12);
-				$mipdf->Cell(130,10,"To: ".$cmp,1,0);
-				$mipdf->Cell(60,10,$sdate,1,1,'C');
-				
-				$mipdf->Cell(190,10,"Event: ".$enm,1,1);
-				//$mipdf->Cell(60,10,"FP No.: ".$data[$i]['fp_no'],1,1);
-				
-				$mipdf->Cell(190,10,"Event Date: ".$fdate,1,1);
-				
-				$mipdf->Cell(130,10,"Vennue: ",1,0);
-				$mipdf->Cell(60,10,"Invoice No.: ".$id,1,1);
-				
-				$mipdf->Cell(190,10,"Client: ".$cnm,1,1);
-				
-				$mipdf->Cell(20,10,"SR No.",1,0,'C');
-				$mipdf->Cell(90,10,"Event Detail",1,0);
-				$mipdf->Cell(20,10,"Qty.",1,0,'R');
-				$mipdf->Cell(30,10,"Rate.",1,0,'R');
-				$mipdf->Cell(30,10,"Amount",1,1,'R');
-				
-				//fetch the data from new event_places_dtail with the amount of the equipment
-				
-				$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
-				$cnt = count($dEqp);		
-				for($a=0;$a<$cnt;$a++)
-				{
-					if($dEqp[$a]['length']!='')
-					{
-					$mipdf->Cell(20,10,$a+1,1,0,'R');
-					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name']."  (".$dEqp[$a]['length']."*".$dEqp[$a]['width'].")",1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
-					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
-					}
-					else
-					{
-					$mipdf->Cell(20,10,$a+1,1,0,'R');
-					$mipdf->Cell(90,10," ".$dEqp[$a]['eq_name'],1,0);
-					$mipdf->Cell(20,10," ".$dEqp[$a]['qty'],1,0);
-					$mipdf->Cell(30,10," ".$dEqp[$a]['rate'],1,0);
-					$mipdf->Cell(30,10,$dEqp[$a]['amount'],1,1,'R');
-					}
-				}
-				
-				
-				//end of fetching
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(90,10,"",1,0);
-					$mipdf->Cell(20,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,0);
-					$mipdf->Cell(30,10,"",1,1);
+						$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
+						$cnteqp = count($dEqp); 
+						
+						for($a=0;$a<$cnteqp;$a++)
+						{
+							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+							{				
+							
+							$html .= '
+								<tr class="trhw">
+									<td class="tg-3gzm">'.($a+1).'</td>
+									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
+							else
+							{				
+							
+							$html .= '
+								<tr class="trhw">
+									<td class="tg-3gzm">'.($a+1).'</td>
+									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
+						}
+						  
+						  
+						$html .= '  
+						
+						  <tr class="trhw">
+							<td class="tg-3gzm"></td>
+							<td class="tg-vi9z"> <br></td>
+							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm"></td>
+						  </tr>
+						
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Charge<br></td>
+							<td class="tg-3gzm">'.$data[$i]['client_charges'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Discount</td>
+							<td class="tg-3gzm">'.$data[$i]['client_discount_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">S.Tax '.$data[$i]['service_tax_rate'].'%<br></td>
+							<td class="tg-3gzm">'.$data[$i]['service_tax_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Total</td>
+							<td class="tg-3gzm">'.$data[$i]['total_amt'].'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" rowspan="1">
+								Terms & Condition <br/>
+							';
+							
+						$cond = showInvCond($conn);				
+						$cnt = count($cond);	
+						for($b=0;$b<$cnt;$b++)
+						{
+							$allcond = json_decode($cond[$b]['inv_cond_json']);
+							$cntjsn = count($allcond);
+							for($k=0;$k<$cntjsn;$k++)
+							{						
+								$html .= $allcond[$k].'<br>';
+							}
+						}
+						
+						if($data[$i]['cmp_name']!='')
+						{
+							$company=ucfirst($data[$i]['cmp_name']);
+						}
+						else
+						{
+							$company="-";
+						}
+						
+					$html .= '
+							</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-3gzm" colspan="5" rowspan="1">'.$company.'&nbsp;&nbsp;   <br>abc@gmail.com </td>
+						  </tr>
+						 
+						</table>
+						</body>
+					</html>';
 					
-					
-					
+				$mpdf=new mPDF('c','A4','','GEORGIAN' , 25 , 25 , 30 , 15 , 0 , 0); 
+				 
+				$mpdf->SetDisplayMode('fullpage');
+				 
+				$mpdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
+				 
+				$mpdf->WriteHTML($html);
+						 
 				
-				$mipdf->Cell(160,10,"Charge ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_charges'],1,1,'R');
 				
-				$mipdf->Cell(160,10,"Discount ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['client_discount_amt'],1,1,'R');
+				//header('location : D:\xampp\htdocs\mpdf\invoice\meu-pdf.pdf');
 				
-				$mipdf->Cell(160,10,"S.Tax ".$data[$i]['service_tax_rate']."%",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['service_tax_amt'],1,1,'R');
-				
-				$mipdf->Cell(160,10,"TOTAL ",1,0,'R');
-				$mipdf->Cell(30,10,$data[$i]['total_amt'],1,1,'R');
-				
-				//$mipdf->Cell(160,10,"PAID AMOUNT ",1,0,'R');
-				//$mipdf->Cell(30,10,$data[$i]['client_paid_amt'],1,1,'R');	
-				
-				//$mipdf->Cell(160,10,"REAMINING AMT ",1,0,'R');
-				//$mipdf->Cell(30,10,($data[$i]['total_amt'])-($data[$i]['client_paid_amt']),1,1,'R');
-				
-				$mipdf->Cell(190,8,"",0,1);
-				
-				$cond = showInvCond($conn);
-				
-				$cnt = count($cond);	
-				for($b=0;$b<$cnt;$b++)
-				{
-					$allcond = json_decode($cond[$b]['inv_cond_json']);
-					$cntjsn = count($allcond);
-					for($k=0;$k<$cntjsn;$k++)
-					{
-						$mipdf->Cell(190,8,$allcond[$k],0,1);
-					}
-				}
-				
-				if($data[$i]['cmp_name']!='')
-				{
-					$company=ucfirst($data[$i]['cmp_name']);
-				}
-				else
-				{
-					$company="-";
-				}
-				
-				$mipdf->Cell(130,8,"",0,0);
-				$mipdf->Cell(60,8,$company,0,1,'C');	
-				$mipdf->Cell(190,8,"Email: abc@gmail.com",0,1,'R');
-				
-				$path = DIR_WS_INV.$newFileName;
-				
-				$mipdf->Output($path,'F');
-				
+				$path = DIR_WS_MINV.$newFileName;								
+				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
 				$date = date('Y-m-d H:i:s');
 				
 				updInvEM($conn,$id,$newFileName);
-				insInvECID($conn,$id,$newFileName,$date,$_SESSION['USER_ID']);
+				insInvECID($conn,$id,$newFileName,$date,$_SESSION['USER_ID']);		
 				
-				header('Location: upload/invoice/'.$newFileName);			
-				
+				header('Location: upload/minvoice/'.$newFileName);
+				//exit();
 			}
 		}
 	}
+	
+	// include("mpdf60/mpdf.php");
+	// $mpdf = new mPDF();
+	// $mpdf -> allow_charset_conversion = true;
+	// $mpdf -> charset_in = 'UTF-8';
+	// $mpdf -> WriteHTML($html);
+	// $mpdf -> Output('meu-pdf','I');
+	// exit();
+	
+	//include("mpdf/mpdf.php");
+	 
+	
 
-exit;
-	
-	
-	
 ?>

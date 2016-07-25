@@ -218,7 +218,7 @@
 				<td>					
 					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
 					<?php if($data[$i]['inv_file_name']!='') {?>
-					<a href="upload/invoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
 						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
 						</i>
 					</a>						
@@ -319,7 +319,7 @@
 				<td>					
 					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
 					<?php if($data[$i]['inv_file_name']!='') {?>
-					<a href="upload/invoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
 						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
 						</i>
 					</a>						
@@ -349,7 +349,7 @@
 		for($i=0;$i<$showPdfCnt;$i++)
 		{
 		?>
-			<a href="upload/invoice/<?php echo $data[$i]['inv_file_name'] ; ?>" class="pdflist" target="_blank"> 
+			<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ; ?>" class="pdflist" target="_blank"> 
 				<?php echo $data[$i]['inv_file_name'] ;?> 
 			</a></br>
 		<?php	
@@ -364,7 +364,7 @@
 		for($i=0;$i<$showPdfCnt;$i++)
 		{
 		?>
-			<a href="upload/invoice/<?php echo $data[$i]['info_file_name'] ; ?>" class="pdflist" target="_blank"> 
+			<a href="upload/minvoice/<?php echo $data[$i]['info_file_name'] ; ?>" class="pdflist" target="_blank"> 
 				<?php echo $data[$i]['info_file_name'] ;?> 
 			</a></br>
 		<?php	
