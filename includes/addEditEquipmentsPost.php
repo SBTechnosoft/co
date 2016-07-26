@@ -5,7 +5,9 @@
 	if(isset($_POST['saverecord']))
 	{	
 		$cur_date = date('Y-m-d H:i:s');
-		insEqup($conn,$_POST['txteqpnm'],$_POST['txtserno'],$_POST['txtmodel'],$_POST['txtcateqp'],$_POST['txtpurdate'],$_POST['txtpurfrm'],$_POST['txtremk'],$_POST['txtprice'],$cur_date,$_POST['drptype']);	
+		$purdt = $_POST['txtpurdate'];		
+		$npurdt = date_format(new DateTime($purdt),'Y-m-d H:i:s');
+		insEqup($conn,$_POST['txteqpnm'],$_POST['txtserno'],$_POST['txtmodel'],$_POST['txtcateqp'],$npurdt,$_POST['txtpurfrm'],$_POST['txtremk'],$_POST['txtprice'],$cur_date,$_POST['drptype']);	
 	}		
 	if(isset($_POST['delete']))
 	{	

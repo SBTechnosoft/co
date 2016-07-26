@@ -96,7 +96,7 @@
 					<label for="txtfromdt">From Date </label>
 					<div class="input-icon left">
 						<div id="datetimepicker1" class="input-append date">
-							<input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
 							<span class="add-on">
 							  <i class="icon-time" class="icon-calendar"></i>
 							</span>
@@ -247,14 +247,20 @@
                                 <thead>
                                     <tr>
                                         <th> Order Id</th>
-										<th> Event Expence </th>
+										<th> Order Exp.</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th> 
+                                        <th>C.Name </th> 
 										<th> Date </th>
-										<th>Expence By </th>
+										<th>Exp.By </th>
+										<th>C.Charge</th>
+										<th>Disc.</th>
+										<th>S.Tax</th>
                                         <th>Income</th>
-                                        <th>Expence</th>
+                                        <th>C.Paid</th>
+										<th>C.Unpaid</th>										
+                                        <th>Exp.</th> 
 										<th>Other Exp.</th>
+										<th>P/L</th>
 											
                                     </tr>
                                 </thead>

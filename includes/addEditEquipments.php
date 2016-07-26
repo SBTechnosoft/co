@@ -81,7 +81,7 @@
                                             <label class="control-label" for="txtpurdate">Purchase Date</label>
                                             <div class="controls">
                                                 <div class="input-append date" id="datetimepicker1">
-                                                    <input data-format="yyyy-MM-dd hh:mm:ss" class="m-wrap m-ctrl-medium date-picker" type="text"  id="txtpurdate" name="txtpurdate" value="<?php echo Date;?>" /><span class="add-on"><i class="icon-calendar"></i></span>
+                                                    <input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap m-ctrl-medium date-picker" type="text"  id="txtpurdate" name="txtpurdate" value="<?php echo Date;?>" /><span class="add-on"><i class="icon-calendar"></i></span>
                                                 </div>
                                             </div>
                                         </div>
