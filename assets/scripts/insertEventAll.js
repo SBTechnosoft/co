@@ -892,9 +892,28 @@
 				
 			});
 		}
+		function shownewRes()
+		{		
+			$.ajax({
+				url : './includes/newEventsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'shownewRes' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#drp_resource').html(r);	
+					
+				}
+				
+			});
+		}
 		shownewEqp();
 		shownewStf();
 		shownewVend();
+		shownewRes();
 		
 		
 		
@@ -920,6 +939,80 @@
 				}
 				
 			});
+		});
+		
+		$("#drp_resource").on("change", function(){
+			var resid    =   $('#drp_resource').val();
+			
+			$.ajax({
+				url : './includes/newEventsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showresprice' : 1,
+					'resid' : resid,
+					
+				},
+				success : function(r)
+				{
+					$('#txtresrate').val(r.amount);
+					$('#txtresamt').val(r.amount);
+									
+				}
+				
+			});
+		});
+		$("#txtresqty").on("focusout", function()
+		{
+			var qty    =   $('#txtresqty').val();
+			if(qty == "")
+			{
+				alert("Plz Insert The qty!!!");
+				return false;
+			}
+			if(qty != "")
+			{
+				if(isNaN(qty))
+				{
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(qty == 0)
+				{
+					alert("Can't GIve qty 0");
+					return false;
+				}
+			}
+			var txtramt = $('#txtresrate').val();			
+			var tot = parseInt(qty) * parseInt(txtramt);			
+			$('#txtresamt').val(tot);			
+		});
+		$("#txtresrate").on("focusout", function()
+		{
+					
+			var ratechg = $('#txtresrate').val();		
+			if(ratechg == "")
+			{
+				alert("Plz Insert The Rate!!!");
+				return false;
+			}
+			if(ratechg != "")
+			{
+				if(isNaN(ratechg))
+				{
+					alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(ratechg == 0)
+				{
+					alert("Can't GIve rate 0");
+					return false;
+				}
+			}
+			var qty    =   $('#txtresqty').val();			
+			var tot = parseInt(qty) * parseInt(ratechg);			
+			$('#txtresamt').val(tot);
+			
 		});
 		
 		$('#labelLT').hide();
@@ -1060,6 +1153,7 @@
 		
 		
 		var i = 0; 
+		var k = 0;
 		$('#addeqp').on('click',function()
 		{
 			var eqpid = $('.drpneweqp').val();
@@ -1219,38 +1313,31 @@
 						'</a></td>'+
 					'</tr>';
 					
-					//'</div>';
+					
 			$('#eqprec').append(div);
 			
-			 //  total();
-			// var gtot = [];
-			// var gtot = $('.txtiamt').val();
-			// alert(gtot);
-			
-			var gtot = [];
-            $.each($('.txtiamt'), function(){            
-                gtot.push($(this).val());
-            });
-			//alert (gtot);		
-			
-
-			var total_amt = 0;
-			$.each(gtot,function() {
-				total_amt += parseInt(this);
-			});
-			//alert(total_amt);
-			
-			var vtot = [];
-            $.each($('.txtivendprice'), function(){            
-                vtot.push($(this).val());
-            });
-			//alert (vtot);		
-			
-
-			var total_vamt = 0;
-			$.each(vtot,function() {
-				total_vamt += parseInt(this);
-			});
+			var txtrescharge = $('.txtrescharge').val();
+			if(txtrescharge == "")
+			{			
+				var gtot = [];
+				$.each($('.txtiamt'), function(){            
+					gtot.push($(this).val());
+				});
+				var total_amt = 0;
+				$.each(gtot,function() {
+					total_amt += parseInt(this);
+				});			
+				var vtot = [];
+				$.each($('.txtivendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				$('.txtcharge').val(total_amt);
+			    $('.txtvcharge').val(total_vamt);
+			}
 
 			$('.drpneweqp').val('');
 			$('.txtrate').val('');
@@ -1266,38 +1353,151 @@
 			$('#labelWT').hide();
 			$('#txtlength').hide();
 			$('#txtwidth').hide();
-		   $('.txtcharge').val(total_amt);
-		   $('.txtvcharge').val(total_vamt);
+		   
 			
 		});
+		
+		$('#addres').on('click',function()
+		{
+			var resid = $('.drp_resource').val();
+			var resnm = document.getElementById("drp_resource").options[(document.getElementById("drp_resource").options.selectedIndex)].text;		
+			var qty = $('.txtresqty').val();
+			var rate = $('.txtresrate').val();
+			var amt = $('.txtresamt').val();
+					
+			
+			if(resid=='')
+			{
+				alert("Plz Select Equipment.");
+				return false;
+			}
+			if(rate=='')
+			{
+				alert("Plz Fill Rate.");
+				return false;
+			 }
+			if(rate != "")
+			{
+				if(isNaN(rate))
+				{
+					alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(rate == 0)
+				{
+					alert("Can't Give rate 0");
+					return false;
+				}
+			}
+			if(qty=='')
+			{
+				alert("Plz Fill Qty.");
+				return false;
+			}
+			if(qty != "")
+			{
+				if(isNaN(qty))
+				{
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(qty == 0)
+				{
+					alert("Can't GIve qty 0");
+					return false;
+				}
+			}		
+			
+			k++;
+			var resdiv=
+					
+					
+					'<tr id="resrow'+k+'">'+
+						'<input   type="hidden"  id="res[0]['+k+'][txtires]" name="res[0]['+k+'][txtires]" value="'+resid+'">'+
+						'<input  type="hidden"  id="res[0]['+k+'][txtiresnm]" name="res[0]['+k+'][txtiresnm]" value="'+resnm+'">'+
+						'<input  type="hidden"  id="res[0]['+k+'][txtiqty]" name="res[0]['+k+'][txtiqty]" value="'+qty+'">'+
+						'<input  type="hidden"  id="res[0]['+k+'][txtirate]" name="res[0]['+k+'][txtirate]" value="'+rate+'">'+
+						'<input   type="hidden" class="rtxtiamt"  id="res[0]['+k+'][rtxtiamt]" name="res[0]['+k+'][rtxtiamt]" value="'+amt+'">'+
+						
+						
+						'<td>'+ resnm+'</td>'+
+						'<td>'+ rate+'</td>'+
+						'<td>'+ qty+'</td>'+
+						'<td class="amount">'+ amt+'</td>'+						
+											
+						'<td><a class="resremove" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
+							'<i class="fa fa-times" aria-hidden="true"></i>'+							
+						'</a></td>'+
+					'</tr>';					
+					
+			$('#resrec').append(resdiv);
+			
+			var rgtot = [];
+			$.each($('.rtxtiamt'), function(){            
+				rgtot.push($(this).val());
+			});
+			var rtotal_amt = 0;
+			$.each(rgtot,function() {
+				rtotal_amt += parseInt(this);
+			});			
+			$('.txtcharge').val(rtotal_amt);
+			$('.txtrescharge').val(rtotal_amt);
+			$('.drp_resource').val('');
+			$('.txtresrate').val('');
+			$('.txtresqty').val('1');
+			$('.txtresamt').val('');
+			
+			
+			
+		});
+		
+		$(document).on('click','.resremove',function(){
+			var button_id = $(this).attr("id");
+			$("#resrow"+button_id+"").remove();	
+
+			var rgtot = [];
+			$.each($('.rtxtiamt'), function(){            
+				rgtot.push($(this).val());
+			});
+			//alert (gtot);		
+		
+
+			var rtotal_amt = 0;
+			$.each(rgtot,function() {
+				rtotal_amt += parseInt(this);
+			});
+			
+			$('.txtcharge').val(rtotal_amt);
+			$('.txtrescharge').val(rtotal_amt);
+		});
+		
+		
+		
+		
 		$(document).on('click','.remove',function(){
 			var button_id = $(this).attr("id");
 			$("#eqrow"+button_id+"").remove();
-			 var gtot = [];
+			var txtrescharge = $('.txtrescharge').val();
+			if(txtrescharge == "")
+			{
+				var gtot = [];
 				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
 				});
-				//alert (gtot);		
-			
-
 				var total_amt = 0;
 				$.each(gtot,function() {
 					total_amt += parseInt(this);
-				});
-				//alert(total_amt);
+				});				
 				var vtot = [];
 				$.each($('.txtivendprice'), function(){            
 					vtot.push($(this).val());
 				});
-				//alert (vtot);		
-				
-
 				var total_vamt = 0;
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
-				});
-				
-			$('.txtcharge').val(total_amt);
-			$('.txtvcharge').val(total_vamt);
+				});				
+				$('.txtcharge').val(total_amt);
+				$('.txtvcharge').val(total_vamt);
+			}
 		});
 	});	

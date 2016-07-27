@@ -248,7 +248,29 @@ $arr1 = json_decode($data[0]['permission']);
         </li>
 			<?php } ?>
 			
-			
+		<?php 
+			if(isset($arr1) && !empty($arr1) && in_array("ENR", $arr1))
+			{					
+		?>
+        <li class="
+					<?php 
+						if(isset($_GET['url']) && strtoupper($_GET['url']) == 'RES') 
+						{
+							echo " active ";
+						}
+						else
+						{
+							echo " ";
+						}
+					?>">
+            <a href="<?php echo HTTP_SERVER.'index.php?url=RES';?>">
+                <i class="icon-question-sign"></i>
+                <span class="title">Resources</span>
+                <span class="arrow "></span>
+            </a>
+
+        </li>
+	<?php } ?>	
 			
 			<?php 
 			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1))

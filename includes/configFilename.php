@@ -92,6 +92,8 @@ define('FILENAME_SUBCATEGORY',DIR_WS_INCLUDES.'categorySub.php');
 
 define('FILENAME_TEMPLATE',DIR_WS_INCLUDES.'templateSettings.php');
 
+define('FILENAME_RESOURCES',DIR_WS_INCLUDES.'resourcesCategory.php');
+
 //registration files
 //define('FILENAME_REGISTRATION',DIR_WS_INCLUDES.'registration.php');
 //define('FILENAME_REGISTER_POST','registerFormPost.php');

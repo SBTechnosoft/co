@@ -510,11 +510,54 @@
 								
 								<!-- end of the popup for insert vendor -->
 								
+								
+								<div>
+									<input style="width:207px;" type="text"  value="Resources" readonly />									
+																		
+									<input style="width:121px;" type="text"  value="Rate" readonly />
+									<input style="width:123px;" type="text"  value="Qty" readonly />
+									<input style="width:120px;" type="text"  value="Amount" readonly />									
+								</div>
+								<div>
+								
+									<select  name="drp_resource" id="drp_resource" class="medium m-wrap drp_resource">											
+									</select>	
+									<input class="small m-wrap txtresrate"  type="text"  id="txtresrate" name="txtresrate" value=""  />	
+									<input class="small m-wrap txtresqty"  type="text"  id="txtresqty" name="txtresqty" value="1" />																	
+									<input class="small m-wrap txtresamt" type="text"  id="txtresamt" name="txtresamt" value="" readonly />	
+									
+									<a name="addres" class="btn blue" id="addres" style="margin-left:15px;" >
+										Add								
+									</a>
+								</div>
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>Resources</div>
+
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+											<thead>
+												<tr>
+													<th> Resource</th>													
+													<th> Rate</th>
+													<th> Qty</th>
+													<th> Amount</th>													
+													<th> Action</th>													 
+												</tr>
+											</thead>
+											<tbody id="resrec">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+								
 								<div>
 									<input style="width:190px;" type="text"  value="Equipment" readonly />
 									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
-									</i>									
-									
+									</i>							
 									
 									
 									<input style="width:120px;" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
@@ -694,6 +737,7 @@
 						</br>
 						<h4>Payment Details </h4>
 						<hr />
+						<input type="hidden" id="txtrescharge" name="txtrescharge" class="m-wrap txtrescharge" readonly  />
 						
 						<input type="hidden" id="txtvcharge" name="txtvcharge" class="m-wrap txtvcharge" readonly  />
 						<div class="clearfix margin-bottom-10">

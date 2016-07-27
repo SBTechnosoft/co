@@ -108,15 +108,16 @@
 					break;
 				case 'LOG':
 					$url = FILENAME_LOGOUT;
-					break;
-				
+					break;				
 				case 'OCTG':
 					$url = FILENAME_CATEGORYNEW;
 					break;
 				case 'OSTG':
 					$url = FILENAME_SUBCATEGORY;
 					break;
-						
+				case 'RES':
+					$url = FILENAME_RESOURCES;
+					break;		
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

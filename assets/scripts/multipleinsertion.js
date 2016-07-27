@@ -546,6 +546,49 @@ $(document).on('click','#add',function()
 		
 		'</script>'+
 		
+		//inserting resourses
+		'<div>'+
+			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
+												
+			'<input style="width:121px;" type="text"  value="Rate" readonly />'+
+			'<input style="width:123px;" type="text"  value="Qty" readonly />'+
+			'<input style="width:120px;" type="text"  value="Amount" readonly />'+									
+		'</div>'+
+		'<div>'+
+		
+			'<select  name="drp_resource'+i+'" id="drp_resource'+i+'" class="medium m-wrap drp_resource'+i+'">'+											
+			'</select>'	+
+			'<input class="small m-wrap txtresrate'+i+'"  type="text"  id="txtresrate'+i+'" name="txtresrate'+i+'" value=""  />'+	
+			'<input class="small m-wrap txtresqty'+i+'"  type="text"  id="txtresqty'+i+'" name="txtresqty'+i+'" value="1" />'+																	
+			'<input class="small m-wrap txtresamt'+i+'" type="text"  id="txtresamt'+i+'" name="txtresamt'+i+'" value="" readonly />'+	
+			
+			'<a name="addres'+i+'" class="btn blue" id="addres'+i+'" style="margin-left:15px;" >'+
+				'Add'+								
+			'</a>'+
+		'</div>'+
+		'<div class="portlet box green">'+
+			'<div class="portlet-title">'+
+				'<div class="caption"><i class="icon-reorder"></i>Resources</div>'+
+
+			'</div>'+
+			'<div class="portlet-body">'+
+				'<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">'+
+					'<thead>'+
+						'<tr>'+
+							'<th> Resource</th>	'+												
+							'<th> Rate</th>'+
+							'<th> Qty</th>'+
+							'<th> Amount</th>'+													
+							'<th> Action</th>'	+												 
+						'</tr>'+
+					'</thead>'+
+					'<tbody id="resrec'+i+'">'+
+
+					'</tbody>'+
+				'</table>'+
+			'</div>'+
+		'</div>'+
+		
 		
 		
 		'	<div>'+
@@ -688,10 +731,29 @@ $(document).on('click','#add',function()
 				
 			'});'+
 		'}'+
+		
+		'function shownewRes'+i+'()'+
+		'{'	+	
+			'$.ajax({'+
+				'url : \'./includes/newEventsPost.php\','+
+				'type : \'post\','+
+				'async : false,'+
+				'data : {'+
+				'\'shownewRes\' : 1'+
+					
+				'},'+
+				'success : function(r)'+
+				'{'+
+					'$(\'#drp_resource'+i+'\').html(r);'	+
+					
+				'}'+
+				
+			'});'+
+		'}'+
 		'shownewEqp'+i+'();'+
 		'shownewStf'+i+'();'+
 		'shownewVend'+i+'();	'+  
-		
+		'shownewRes'+i+'();'+
 
 		'$("#drpneweqp'+i+'").on("change", function(){'+
 			'var eqpid    =   $(\'#drpneweqp'+i+'\').val();'+
@@ -716,6 +778,83 @@ $(document).on('click','#add',function()
 				
 			'});'+
 		'});'+
+		
+		
+		'$("#drp_resource'+i+'").on("change", function(){'+
+			'var resid    =   $(\'#drp_resource'+i+'\').val();'+
+			
+			'$.ajax({'+
+				'url : \'./includes/newEventsPost.php\','+
+				'type : \'post\','+
+				'async : false,'+
+				'data : {'+
+					'\'showresprice\' : 1,'+
+					'\'resid\' : resid,'+
+					
+				'},'+
+				'success : function(r)'+
+				'{'+
+					'$(\'#txtresrate'+i+'\').val(r.amount);'+
+					'$(\'#txtresamt'+i+'\').val(r.amount);'+
+									
+				'}'+
+				
+			'});'+
+		'});'+
+		'$("#txtresqty'+i+'").on("focusout", function()'+
+		'{'+
+			'var qty    =   $(\'#txtresqty'+i+'\').val();'+
+			'if(qty == "")'+
+			'{'+
+				'alert("Plz Insert The qty!!!");'+
+				'return false;'+
+			'}'+
+			'if(qty != "")'+
+			'{'+
+				'if(isNaN(qty))'+
+				'{'+
+					'alert("Please Only Numeric in qty!!! (Allowed input:0-9)");'+
+					'return false;'+
+				'}'+
+				'if(qty == 0)'+
+				'{'+
+					'alert("Cant GIve qty 0");'+
+					'return false;'+
+				'}'+
+			'}'+
+			'var txtramt = $(\'#txtresrate'+i+'\').val();	'+		
+			'var tot = parseInt(qty) * parseInt(txtramt);'+			
+			'$(\'#txtresamt'+i+'\').val(tot);	'+		
+		'});'+
+		'$("#txtresrate'+i+'").on("focusout", function()'+
+		'{'+
+					
+			'var ratechg = $(\'#txtresrate'+i+'\').val();'	+	
+			'if(ratechg == "")'+
+			'{'+
+				'alert("Plz Insert The Rate!!!");'+
+				'return false;'+
+			'}'+
+			'if(ratechg != "")'+
+			'{'+
+				'if(isNaN(ratechg))'+
+				'{'+
+					'alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");'+
+					'return false;'+
+				'}'+
+				'if(ratechg == 0)'+
+				'{'+
+					'alert("Cant GIve rate 0");'+
+					'return false;'+
+				'}'+
+			'}'+
+			'var qty    =   $(\'#txtresqty'+i+'\').val();'	+		
+			'var tot = parseInt(qty) * parseInt(ratechg);'+			
+			'$(\'#txtresamt'+i+'\').val(tot);'+
+			
+		'});'+
+		
+		
 		'$(\'#labelLT'+i+'\').hide();'+
 		'$(\'#labelWT'+i+'\').hide();'+
 		'$(\'#txtlength'+i+'\').hide();'+
@@ -836,8 +975,11 @@ $(document).on('click','#add',function()
 		
 		'var j = 0;'+
 		
+		'var k = 0;'+
+		
 		// 'var col = 0;'+
 		 'var row'+i+' = 0;'+
+		 'var rrow'+i+' = 0;'+
 		
 		'$(\'#addeqp'+i+'\').on(\'click\',function()'+
 		'{'+
@@ -898,57 +1040,8 @@ $(document).on('click','#add',function()
 					'alert("Can not GIve qty 0");'+
 					'return false;'+
 				'}'+
-			'}'+
+			'}'+	
 			
-			
-			
-			// 'if(txttype==2)'+
-			// '{'+
-				
-				// 'if(length == "")'+
-				// '{'+
-					// 'alert(txttype);'+
-					// 'alert("Plz Fill length.");'+
-					// 'return false;'+
-				// '}'+
-				// 'if(width == "")'+
-				// '{'+
-					// 'alert("Plz Fill width.");'+
-					// 'return false;'+
-				// '}'+
-			// '}'+
-			
-			// 'if(txttype==2)'+
-			// '{'+
-			
-				// 'if(length != "")'+
-				// '{'+
-					// 'if(isNaN(length))'+
-					// '{'+
-						// 'alert("Please Only Numeric in length!!!");'+
-						// 'return false;'+
-					// '}'+
-					// 'if(length == 0)'+
-					// '{'+
-						// 'alert("Can not GIve length 0");'+
-						// 'return false;'+
-					// '}'+
-				// '}'+
-				// 'if(width != "")'+
-				// '{'+
-					// 'if(isNaN(width))'+
-					// '{'+
-						// 'alert("Please Only Numeric in width!!! (Allowed input:0-9)");'+
-						// 'return false;'+
-					// '}'+
-					// 'if(width == 0)'+
-					// '{'+
-						// 'alert("Can not GIve width 0");'+
-						// 'return false;'+
-					// '}'+
-				// '}'+
-			// '}'+
-		
 			
 			'j++;'+
 			
@@ -957,21 +1050,6 @@ $(document).on('click','#add',function()
 			'var div =	'+				
 					
 					'\'<tr id="eqrow\'+i+\'\'+j+\'">\'+'+
-						//'\'<input   type="hidden"  id= "hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" value="\'+eqpid+\'">\'+'+
-						
-						// '\'<input   type="hidden"  id="txtieqp" name="txtieqp" value="\'+eqpid+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtieqpnm" name="txtieqpnm" value="\'+eqpnm+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtirate" name="txtirate" value="\'+rate+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtiqty" name="txtiqty" value="\'+qty+\'">\'+'+
-						// '\'<input   type="hidden" class="txtiamt"  id="txtiamt" name="txtiamt" value="\'+amt+\'">\'+'+
-						// '\'<input   type="hidden"  id="txtistf" name="txtistf" value="\'+staff+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtistfnm" name="txtistfnm" value="\'+staffnm+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtivend" name="txtivend" value="\'+vend+\'">\'+'+
-						// '\'<input type="hidden"  id="txtivendnm" name="txtivendnm" value="\'+vendnm+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtivendprice" name="txtivendprice" value="\'+vprice+\'">\'+'+
-						// '\'<input   type="hidden"  id="txtiremark" name="txtiremark" value="\'+reamrk+\'">\'+'+
-						// '\'<input  type="hidden"  id="txtilength" name="txtilength" value="\'+length+\'">\'+'+
-						// '\'<input   type="hidden"  id="txtiwidth" name="txtiwidth" value="\'+width+\'">\'+'+
 						
 						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" value="\'+eqpid+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" value="\'+eqpnm+\'">\'+'+
@@ -1004,49 +1082,11 @@ $(document).on('click','#add',function()
 			'$(\'#eqprec'+i+'\').append(div);'+	
 			
 			
-			
-			'var gtot = [];'+
-            '$.each($(\'.txtiamt\'), function(){  '+          
-                'gtot.push($(this).val());'+
-            '});'+
-			
-			'var total_amt = 0;'+
-			'$.each(gtot,function() {'+
-				'total_amt += parseInt(this);'+
-			'});'+
-			
-			'var vtot = [];'+
-			'$.each($(\'.txtivendprice\'), function(){  ' +         
-				'vtot.push($(this).val());'+
-			'});'+
-			'var total_vamt = 0;'+
-			'$.each(vtot,function() {'+
-				'total_vamt += parseInt(this);'+
-			'});'+
-			
-			'$(\'.drpneweqp'+i+'\').val(\'\');'+
-			'$(\'.txtrate'+i+'\').val(\'\');'+
-			'$(\'.drpqty'+i+'\').val(\'1\');'+
-			'$(\'.txtamt'+i+'\').val(\'\');'+
-			'$(\'.drpnewstf'+i+'\').val(\'\');'+
-			'$(\'.drpnewvend'+i+'\').val(\'\');'+
-			'$(\'.txtvprice'+i+'\').val(\'\');'+
-			'$(\'.txtremark'+i+'\').val(\'\');'+
-			'$(\'.txtlength'+i+'\').val(\'\');'+
-			'$(\'.txtwidth'+i+'\').val(\'\');'+
-			'$(\'#labelLT'+i+'\').hide();'+
-			'$(\'#labelWT'+i+'\').hide();'+
-			'$(\'#txtlength'+i+'\').hide();'+
-			'$(\'#txtwidth'+i+'\').hide();'+
-		   '$(\'.txtcharge\').val(total_amt);'+
-		   '$(\'.txtvcharge\').val(total_vamt);'+
-			
-		'});'+
-		'$(document).on(\'click\',\'.remove'+i+'\',function(){'+
-			'var button_id = $(this).attr("id");'+
-			'$("#eqrow"+button_id+"").remove();'+
-			 'var gtot = [];'+
-				'$.each($(\'.txtiamt\'), function(){ '+           
+			'var txtrescharge = $(\'.txtrescharge\').val();'+
+			'if(txtrescharge == "")'+
+			'{'+
+				'var gtot = [];'+
+				'$.each($(\'.txtiamt\'), function(){  '+          
 					'gtot.push($(this).val());'+
 				'});'+
 				
@@ -1063,9 +1103,167 @@ $(document).on('click','#add',function()
 				'$.each(vtot,function() {'+
 					'total_vamt += parseInt(this);'+
 				'});'+
+				'$(\'.txtcharge\').val(total_amt);'+
+				'$(\'.txtvcharge\').val(total_vamt);'+
+			'}'+
+			
+			'$(\'.drpneweqp'+i+'\').val(\'\');'+
+			'$(\'.txtrate'+i+'\').val(\'\');'+
+			'$(\'.drpqty'+i+'\').val(\'1\');'+
+			'$(\'.txtamt'+i+'\').val(\'\');'+
+			'$(\'.drpnewstf'+i+'\').val(\'\');'+
+			'$(\'.drpnewvend'+i+'\').val(\'\');'+
+			'$(\'.txtvprice'+i+'\').val(\'\');'+
+			'$(\'.txtremark'+i+'\').val(\'\');'+
+			'$(\'.txtlength'+i+'\').val(\'\');'+
+			'$(\'.txtwidth'+i+'\').val(\'\');'+
+			'$(\'#labelLT'+i+'\').hide();'+
+			'$(\'#labelWT'+i+'\').hide();'+
+			'$(\'#txtlength'+i+'\').hide();'+
+			'$(\'#txtwidth'+i+'\').hide();'+
+		   
+			
+		'});'+
+		
+		
+		'$(\'#addres'+i+'\').on(\'click\',function()'+
+		'{'+
+			'var resid = $(\'.drp_resource'+i+'\').val();'+
+			'var resnm = document.getElementById("drp_resource'+i+'").options[(document.getElementById("drp_resource'+i+'").options.selectedIndex)].text;'+
+			'var qty = $(\'.txtresqty'+i+'\').val();'+
+			'var rate = $(\'.txtresrate'+i+'\').val();'+
+			'var amt = $(\'.txtresamt'+i+'\').val();'+		
+			'var col = '+i+';'+
+			'if(resid=="")'+
+			'{'+
+				'alert("Plz Select Equipment.");'+
+				'return false;'+
+			'}'+
+			'if(rate=="")'+
+			'{'+
+				'alert("Plz Fill Rate.");'+
+				'return false;'+
+			 '}'+
+			'if(rate != "")'+
+			'{'+
+				'if(isNaN(rate))'+
+				'{'+
+					'alert("Please Only Numeric in rate!!! (Allowed input:0-9)");'+
+					'return false;'+
+				'}'+
+				'if(rate == 0)'+
+				'{'+
+					'alert("Cant Give rate 0");'+
+					'return false;'+
+				'}'+
+			'}'+
+			'if(qty=="")'+
+			'{'+
+				'alert("Plz Fill Qty.");'+
+				'return false;'+
+			'}'+
+			'if(qty != "")'+
+			'{'+
+				'if(isNaN(qty))'+
+				'{'+
+					'alert("Please Only Numeric in qty!!! (Allowed input:0-9)");'+
+					'return false;'+
+				'}'+
+				'if(qty == 0)'+
+				'{'+
+					'alert("Cant GIve qty 0");'+
+					'return false;'+
+				'}'+
+			'}'	+	
+			
+			'k++;'+
+			'rrow'+i+'++;'+
+			'var resdiv='+
+					
+					
+					'\'<tr id="resrow\'+i+\'\'+k+\'">\'+'+
+						
+						'\'<input   type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtires]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtires]" value="\'+resid+\'">\'+'+
+						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtiresnm]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtiresnm]" value="\'+resnm+\'">\'+'+
+						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtiqty]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtiqty]" value="\'+qty+\'">\'+'+
+						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtirate]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtirate]" value="\'+rate+\'">\'+'+
+						'\'<input   type="hidden" class="rtxtiamt"  id="res[\'+col+\'][\'+rrow'+i+'+\'][rtxtiamt]" name="res[\'+col+\'][\'+rrow'+i+'+\'][rtxtiamt]" value="\'+amt+\'">\'+'+			
+						
+						'\'<td>\'+ resnm+\'</td>\'+'+
+						'\'<td>\'+ rate+\'</td>\'+'+
+						'\'<td>\'+ qty+\'</td>\'+'+
+						'\'<td class="amount">\'+ amt+\'</td>\'+'+					
+											
+						'\'<td><a class="resremove'+i+'" id="\'+i+\'\'+k+\'" style= "cursor:pointer; margin-left:15px;">\'+'+
+							'\'<i class="fa fa-times" aria-hidden="true"></i>\'+	'+						
+						'\'</a></td>\'+'+
+					'\'</tr>\';'+					
+					
+			'$(\'#resrec'+i+'\').append(resdiv);'+	
+			
+			'var rgtot = [];'+
+			'$.each($(\'.rtxtiamt\'), function(){ ' +          
+				'rgtot.push($(this).val());'+
+			'});'+
+			'var rtotal_amt = 0;'+
+			'$.each(rgtot,function() {'+
+				'rtotal_amt += parseInt(this);'+
+			'});'	+		
+			'$(\'.txtcharge\').val(rtotal_amt);'+
+
+			'$(\'.drp_resource'+i+'\').val(\'\');'+
+			'$(\'.txtresrate'+i+'\').val(\'\');'+
+			'$(\'.txtresqty'+i+'\').val(\'1\');'+
+			'$(\'.txtresamt'+i+'\').val(\'\');'+
+			
+			
+			
+		'});'+
+		
+		'$(document).on(\'click\',\'.resremove'+i+'\',function(){'+
+			'var button_id = $(this).attr("id");'+
+			'$("#resrow"+button_id+"").remove();'+	
+			
+			'var rgtot = [];'+
+			'$.each($(\'.rtxtiamt\'), function(){ ' +          
+				'rgtot.push($(this).val());'+
+			'});'+
+			'var rtotal_amt = 0;'+
+			'$.each(rgtot,function() {'+
+				'rtotal_amt += parseInt(this);'+
+			'});'	+		
+			'$(\'.txtcharge\').val(rtotal_amt);'+
+			
+		'});'+
+		
+		'$(document).on(\'click\',\'.remove'+i+'\',function(){'+
+			'var button_id = $(this).attr("id");'+
+			'$("#eqrow"+button_id+"").remove();'+
+			
+			'var txtrescharge = $(\'.txtrescharge\').val();'+
+			'if(txtrescharge == "")'+
+			'{'+
+				'var gtot = [];'+
+				'$.each($(\'.txtiamt\'), function(){ '+           
+					'gtot.push($(this).val());'+
+				'});'+
 				
-			'$(\'.txtcharge\').val(total_amt);'+
-			'$(\'.txtvcharge\').val(total_vamt);'+
+				'var total_amt = 0;'+
+				'$.each(gtot,function() {'+
+					'total_amt += parseInt(this);'+
+				'});'+
+				
+				'var vtot = [];'+
+				'$.each($(\'.txtivendprice\'), function(){  ' +         
+					'vtot.push($(this).val());'+
+				'});'+
+				'var total_vamt = 0;'+
+				'$.each(vtot,function() {'+
+					'total_vamt += parseInt(this);'+
+				'});'+				
+				'$(\'.txtcharge\').val(total_amt);'+
+				'$(\'.txtvcharge\').val(total_vamt);'+
+			'}	'+
 		'});'+
 		
 			 

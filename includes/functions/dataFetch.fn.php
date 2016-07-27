@@ -21,6 +21,11 @@ function showCatgNew($conn)
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `new_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function showResources($conn)
+	{
+		$sqlShowCatg = "select `res_id`,`res_name`,`amount` from  `resource_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `res_name` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showCtgdrp($conn)
 	{
 		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
@@ -68,6 +73,11 @@ function showAllEquipment($conn)
 	{				
 		$sqlShowEquipment = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.`deleted_at` = '0000-00-00 00:00:00' order by em.eq_name "; 
 		return $conn->getResultArray($sqlShowEquipment);	
+	}
+function showResoDrp($conn)
+	{
+		$sqlshowResoDrp = "select `res_id`,`res_name`,`amount` from  `resource_mst` where `deleted_at` = '0000-00-00 00:00:00'  order by res_name "; 
+		return $conn->getResultArray($sqlshowResoDrp);	
 	}
 function showEqupDrp($conn)
 	{

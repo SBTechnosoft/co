@@ -1,0 +1,11 @@
+CREATE TABLE `suchak_mgt`.`resource_mst` (
+  `res_id` INT NOT NULL AUTO_INCREMENT,
+  `res_name` VARCHAR(100) NULL,
+  `amount` VARCHAR(10) NULL,
+  PRIMARY KEY (`res_id`));
+  
+  ALTER TABLE `suchak_mgt`.`resource_mst` 
+ADD COLUMN `created_at` TIMESTAMP NULL AFTER `amount`,
+ADD COLUMN `deleted_at` TIMESTAMP NULL AFTER `created_at`,
+ADD COLUMN `updated_at` TIMESTAMP NULL AFTER `deleted_at`,
+ADD COLUMN `deleted_by` VARCHAR(45) NULL AFTER `updated_at`;

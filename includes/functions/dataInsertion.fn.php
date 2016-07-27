@@ -18,6 +18,13 @@ function insCatg($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 			echo 0;
 			exit;
 		}
+function insResource($conn,$txtresnm,$txtresprice,$cur_date)
+		{
+			$sqlInsCatg = "INSERT INTO `resource_mst` (`res_name`,`amount`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtresnm."','".$txtresprice."','".$cur_date."','','')"; 
+			$resultArray = $conn->insertQuery($sqlInsCatg);
+			echo 0;
+			exit;
+		}
 function insCatgNew($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `new_category_mst` (`cat_name`,`description`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcatgnm."','".$txtcatgdes."','".$cur_date."','','')"; 

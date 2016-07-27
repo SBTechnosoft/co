@@ -383,9 +383,31 @@ if(isset($_POST['showtax']))
 		<?php	
 		}		
 	}
+	if(isset($_POST['shownewRes']))
+	{	
+		$data = showResoDrp($conn);
+		$showResoCnt = count($data);
+	?>
+		<option select= "selected" value=""> Select the Resource </option>
+	<?php
+		for($i=0;$i<$showResoCnt;$i++)		
+		{
+		?>
+			<option  value="<?php echo $data[$i]['res_id'];?>"><?php echo $data[$i]['res_name'];?></option>
+		<?php	
+		}		
+	}
 	if(isset($_POST['showeqpprice']))
 	{			
 		$q = mysql_query("select `price`,`price_type` from  equipment_mst where `eq_id` = '".$_POST['eqpid']."' ");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+	}
+	if(isset($_POST['showresprice']))
+	{			
+		$q = mysql_query("select `amount` from  resource_mst where `res_id` = '".$_POST['resid']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
