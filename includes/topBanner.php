@@ -20,6 +20,11 @@
                     <a href="<?php// echo HTTP_SERVER.'index.php?url=ENQ';?>" class="btn blue top"><i class="icon-question-sign"></i> Enquiry Form
 					</a>
                 </li-->
+				<li>
+                    <a href="<?php echo HTTP_SERVER.'index.php?url=RSE';?>" class="btn blue top">
+                        <i class="icon-plus-sign"></i> Retail/Sales
+                    </a>
+                </li>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                 <li>
                     <a href="<?php echo HTTP_SERVER.'index.php?url=EVE';?>" class="btn blue top">

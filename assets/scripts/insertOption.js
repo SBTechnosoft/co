@@ -53,7 +53,35 @@
 				}				
 			});	
 				
-		});	
+		});
+
+		$('#updvat').click(function(){
+			var txtvat    =   $('#txtvat').val();
+					
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'saveVat'  : 1,
+					'txtvat'   : txtvat,																			
+				},
+				success : function(re)
+				{
+					if(re == 1)
+					 {
+						alert ("Inserted Data Successfully");
+								
+					 }
+					showdata();
+					$('#txtvat').attr('readonly','txtvat');
+					
+					$("#editvat").show();
+					$("#updvat").hide();
+				}				
+			});	
+				
+		});
 		
 		function showdata()
 		{		
@@ -70,6 +98,7 @@
 					$('#txtservicetax').val(r.service_tax);					
 					$('#txtservicetax1').val(r.service_tax);
 					$('#txtdays').val(r.upcoming_days);
+					$('#txtvat').val(r.vat);
 				}
 				
 			});

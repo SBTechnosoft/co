@@ -26,9 +26,34 @@ function showResources($conn)
 		$sqlShowCatg = "select `res_id`,`res_name`,`amount` from  `resource_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `res_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function showProduct($conn)
+	{
+		$sqlShowCatg = "select `prd_cat_name`,`prd_cat_parent_id`,`prd_cat_id` from  `product_cat_mst` where  
+		`deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+function showProductMst($conn)
+	{
+		$sqlShowCatg = "select `prod_id`,`disp_nm` from  `product_mst` where  
+		`deleted_at` = '0000-00-00 00:00:00' order by `disp_nm` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+function showProductAdd($conn)
+	{
+		$sqlShowCatg = "select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
+			`pur_price`,`type` from  `product_mst` where  
+		`deleted_at` = '0000-00-00 00:00:00'  "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showCtgdrp($conn)
 	{
 		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
+		return $conn->getResultArray($sqlShowCatgdrp);		
+	}
+function showPrdCtgdrp($conn)
+	{
+		$sqlShowCatgdrp = "select `prd_cat_id`,`prd_cat_name` from  `product_cat_mst`  
+		where `deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
 		return $conn->getResultArray($sqlShowCatgdrp);		
 	}
 function showCtgdrpNew($conn)
@@ -480,7 +505,11 @@ function showNewEv_Pl_Dtl($conn,$eid)
 		$sqlEv_Pl_Dtl = " select *  from  `new_event_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlEv_Pl_Dtl);	
 	}
-	
+function showVennue($conn,$eid)
+	{
+		$sqlshowVennue = " select `event_vennue`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}	
 
 	
 	/*

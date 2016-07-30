@@ -25,6 +25,26 @@ function insResource($conn,$txtresnm,$txtresprice,$cur_date)
 			echo 0;
 			exit;
 		}
+function insProduct($conn,$txtprdnm,$txtcatid,$cur_date)
+		{
+			$sqlinsProduct = "INSERT INTO `product_cat_mst` (`prd_cat_name`,`prd_cat_parent_id`,`created_at`,`deleted_at`,`updated_at`) 
+			VALUES ('".$txtprdnm."','".$txtcatid."','".$cur_date."','','')"; 
+			$resultArray = $conn->insertQuery($sqlinsProduct);
+			echo 0;
+			exit;
+		}
+		
+function insProductAdd($conn,$txtprdnm,$txtprdid,$txtitmcd,$txtdispnm,$txtcgrp,$drpprdctg,$txtrprice,$txtpprice,$drptype,$cur_date)
+		{
+			$sqlinsProductAdd = "INSERT INTO `product_mst` 
+			(`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
+			`pur_price`,`type`,`created_at`,`deleted_at`,`updated_at`) 
+			VALUES ('".$txtprdnm."','".$txtprdid."','".$txtitmcd."','".$txtdispnm."','".$txtcgrp."',
+			'".$drpprdctg."','".$txtrprice."','".$txtpprice."','".$drptype."','".$cur_date."','','')"; 
+			$resultArray = $conn->insertQuery($sqlinsProductAdd);
+			echo 0;
+			exit;
+		}
 function insCatgNew($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `new_category_mst` (`cat_name`,`description`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcatgnm."','".$txtcatgdes."','".$cur_date."','','')"; 
@@ -124,7 +144,27 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
-		}	
+		}
+function insertRetailAdd($conn,$txtprdnm,$txtmobno,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
+							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax)
+		{
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`cmp_id`,`client_charges`,
+			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
+			`total_amt`,`service_tax_rate`,`order_type`) 
+			VALUES ('".$txtprdnm."','".$txtmobno."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
+			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail')"; 
+			$resultArray = $conn->insertQuery($sqlInsEventAdd);
+			echo 1;
+			//exit;
+		}
+function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt)
+		{
+			$sqlInsEventAdd = "INSERT INTO `retail_inv_dtl` (`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`) 
+			VALUES ('".$event_id."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."')"; 
+			$resultArray = $conn->insertQuery($sqlInsEventAdd);
+			echo 1;
+			//exit;
+		}		
 	
 function insertEventPlaces($conn,$eventlast_id,$txtvenue,$txthall,$txtldmark,$txtfromdate,$txttodate)
 		{
@@ -266,6 +306,16 @@ function insOptionDays($conn,$updays)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionVat($conn,$txtvat)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`vat`) VALUES (1,'".$txtvat."')ON DUPLICATE KEY UPDATE `vat` = `vat`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `vat` = '".$txtvat."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 		
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{
@@ -333,7 +383,13 @@ function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf)
 			//echo 4;
 			//exit;
 		}
-
+function insNewRes($conn,$event_id,$event_plc_id,$res_id,$res_nm,$qty,$rate,$amount)
+		{
+			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`) 
+				VALUES ('".$event_id."','".$event_plc_id."','".$res_id."','".$res_nm."','".$qty."','".$rate."','".$amount."')"; 
+			$resultArray = $conn->insertQuery($sqlinsNewRes);
+			
+		}
 // function insDesg($conn,$desgId,$designation)
 // {
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 

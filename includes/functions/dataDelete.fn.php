@@ -51,6 +51,22 @@ function delResources($conn,$id,$del_date)
 			//echo 12;
 			exit;
 		}
+function delProduct($conn,$id,$del_date)
+		{
+			$sqldelCmpNew = "Update `product_cat_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' 
+			where `prd_cat_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			exit;
+		}
+function delProductAdd($conn,$id,$del_date)
+		{
+			$sqldelCmpNew = "Update `product_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' 
+			where `prod_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			exit;
+		}
 function delAcs($conn,$id,$del_date)
 		{
 			$sqldelCmpNew = "Update `eq_accessories`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `as_id` = '".$id."' "; 

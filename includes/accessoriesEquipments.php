@@ -57,8 +57,7 @@
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
-						<select name="txtcatid" id="txtcatid" > 
-														
+						<select name="txtcatid" id="txtcatid" > 														
 							
 						</select>
                         <!--input type="text" id="txtcatid" name="txtcatid" placeholder="Eg; Select from dropdown..." class="m-wrap" /-->

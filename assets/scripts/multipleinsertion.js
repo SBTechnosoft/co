@@ -1051,19 +1051,19 @@ $(document).on('click','#add',function()
 					
 					'\'<tr id="eqrow\'+i+\'\'+j+\'">\'+'+
 						
-						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqp]" value="\'+eqpid+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtieqpnm]" value="\'+eqpnm+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtirate]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtirate]" value="\'+rate+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiqty]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiqty]" value="\'+qty+\'">\'+'+
-						'\'<input   type="hidden" class="txtiamt"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiamt]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiamt]" value="\'+amt+\'">\'+'+
-						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtistf]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtistf]" value="\'+staff+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtistfnm]" value="\'+staffnm+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivend]" value="\'+vend+\'">\'+'+
-						'\'<input type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendnm]" value="\'+vendnm+\'">\'+'+
-						'\'<input  type="hidden" class="txtivendprice" id="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtivendprice]" value="\'+vprice+\'">\'+'+
-						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiremark]" value="\'+reamrk+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtilength]" value="\'+length+\'">\'+'+
-						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" name="hdn[\'+col+\'][\'+row'+i+'+\'][txtiwidth]" value="\'+width+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqp]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqp]" value="\'+eqpid+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqpnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqpnm]" value="\'+eqpnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtirate]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtirate]" value="\'+rate+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiqty]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiqty]" value="\'+qty+\'">\'+'+
+						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiamt]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiamt]" class="txtiamt" value="\'+amt+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistf]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistf]" value="\'+staff+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistfnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistfnm]" value="\'+staffnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivend]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivend]" value="\'+vend+\'">\'+'+
+						'\'<input type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendnm]" value="\'+vendnm+\'">\'+'+
+						'\'<input  type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendprice]" class="txtivendprice" value="\'+vprice+\'">\'+'+
+						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiremark]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiremark]" value="\'+reamrk+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtilength]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtilength]" value="\'+length+\'">\'+'+
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiwidth]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiwidth]" value="\'+width+\'">\'+'+
 						
 						
 						'\'<td>\'+ eqpnm+\'</td>\'+'+
@@ -1183,11 +1183,11 @@ $(document).on('click','#add',function()
 					
 					'\'<tr id="resrow\'+i+\'\'+k+\'">\'+'+
 						
-						'\'<input   type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtires]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtires]" value="\'+resid+\'">\'+'+
-						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtiresnm]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtiresnm]" value="\'+resnm+\'">\'+'+
-						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtiqty]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtiqty]" value="\'+qty+\'">\'+'+
-						'\'<input  type="hidden"  id="res[\'+col+\'][\'+rrow'+i+'+\'][txtirate]" name="res[\'+col+\'][\'+rrow'+i+'+\'][txtirate]" value="\'+rate+\'">\'+'+
-						'\'<input   type="hidden" class="rtxtiamt"  id="res[\'+col+\'][\'+rrow'+i+'+\'][rtxtiamt]" name="res[\'+col+\'][\'+rrow'+i+'+\'][rtxtiamt]" value="\'+amt+\'">\'+'+			
+						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtires]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtires]" value="\'+resid+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresnm]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresnm]" value="\'+resnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiqty]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiqty]" value="\'+qty+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" value="\'+rate+\'">\'+'+
+						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" class="rtxtiamt" value="\'+amt+\'">\'+'+			
 						
 						'\'<td>\'+ resnm+\'</td>\'+'+
 						'\'<td>\'+ rate+\'</td>\'+'+

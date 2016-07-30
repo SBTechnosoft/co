@@ -145,8 +145,13 @@ if(isset($_POST['showtax']))
 		}
 		
 		
-		$hdn_ary = $_POST['hdn'];	
+		$hdn_ary = $_POST['hdn'];
+		// echo "<pre>";
+		// print_r($hdn_ary);
+		// echo "</pre>";
 		
+		
+		//exit;
 		
 		// inserted in event_mst
 		$cur_date = date('Y-m-d H:i:s');
@@ -202,8 +207,7 @@ if(isset($_POST['showtax']))
 		{
 					  
 		  if(is_array($value))
-		  {
-							
+		  {							
 				// echo $value['txtvenue']."</br>";
 				// echo $value['txthall']."</br>";
 				// echo $value['txtldmark']."</br>";
@@ -218,31 +222,44 @@ if(isset($_POST['showtax']))
 			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 			
-			insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
-			$last_vplc_id  =  mysql_insert_id();			
+			 insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 $last_vplc_id  =  mysql_insert_id();			
+			
 			//insertion of event_place over stop
 				
 			foreach($value as $key => $subvalue)
 			{
 			
-				if(is_array($subvalue))
-				{
-					
-					// echo $subvalue['txtieqp'];
-					// echo $subvalue['txtieqpnm'];
-					// echo $subvalue['txtirate'];
-					// echo $subvalue['txtiqty'];
-					// echo $subvalue['txtiamt'];
-					// echo $subvalue['txtistf'];
-					// echo $subvalue['txtistfnm'];
-					// echo $subvalue['txtivend'];
-					// echo $subvalue['txtivendnm'];
-					// echo $subvalue['txtivendprice'];
-					// echo $subvalue['txtiremark'];
-					// echo $subvalue['txtilength'];
-					// echo $subvalue['txtiwidth']."</br>";
-					insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['txtieqp'],$subvalue['txtirate'],$subvalue['txtiqty'],$subvalue['txtiamt'],$subvalue['txtistf'],$subvalue['txtivend'],$subvalue['txtivendprice'],$subvalue['txtiremark'],$subvalue['txtilength'],$subvalue['txtiwidth']);	
-					
+				if(is_array($subvalue) && !empty($subvalue) )
+				{									
+					if(@is_array ($subvalue['equipment'])&& isset($subvalue['equipment']) && !empty($subvalue['equipment']))
+					{
+						// echo $subvalue['equipment']['txtieqp'];
+						// echo $subvalue['equipment']['txtieqpnm'];
+						// echo $subvalue['equipment']['txtirate'];
+						// echo $subvalue['equipment']['txtiqty'];
+						// echo $subvalue['equipment']['txtiamt'];
+						// echo $subvalue['equipment']['txtistf'];
+						// echo $subvalue['equipment']['txtistfnm'];
+						// echo $subvalue['equipment']['txtivend'];
+						// echo $subvalue['equipment']['txtivendnm'];
+						// echo $subvalue['equipment']['txtivendprice'];
+						// echo $subvalue['equipment']['txtiremark'];
+						// echo $subvalue['equipment']['txtilength'];
+						// echo $subvalue['equipment']['txtiwidth']."</br>";
+						
+						insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtivendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);	
+						
+					}
+					 if(@is_array ($subvalue['resource']) && isset($subvalue['resource']) && !empty($subvalue['resource']))
+					{
+						// echo $subvalue['resource']['txtires'];
+						// echo $subvalue['resource']['txtiresnm'];
+						// echo $subvalue['resource']['txtiqty'];
+						// echo $subvalue['resource']['txtirate'];
+						// echo $subvalue['resource']['rtxtiamt']."</br>";
+						insNewRes($conn,$eventlast_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiamt']);
+					}				
 				}
 				else
 				{				
@@ -252,6 +269,7 @@ if(isset($_POST['showtax']))
 		  }
 		  
 		}
+	
 		
 		$client_charge = $_POST['txtcharge'];
 		$cur_date = date('Ymd');
@@ -310,7 +328,7 @@ if(isset($_POST['showtax']))
 		$data = showCtgDrpNew($conn);
 		$showCtgCnt = count($data);
 		?>
-		<option select="selected" value="">Select Company</option>
+		<option select="selected" value="">Select Category</option>
 		<?php
 		for($i=0;$i<$showCtgCnt;$i++)
 		{
@@ -327,7 +345,7 @@ if(isset($_POST['showtax']))
 		$data = showSubCtgDrpNew($conn,$_POST['ctgid']);
 		$showsubCtgCnt = count($data);
 		?>
-		<option select="selected" value="">Select Company</option>
+		<option select="selected" value="">Select Sub Category</option>
 		<?php
 		for($i=0;$i<$showsubCtgCnt;$i++)
 		{
@@ -345,7 +363,7 @@ if(isset($_POST['showtax']))
 		$data = showEqupDrp($conn);
 		$showEqpCnt = count($data);
 	?>
-		<option select= "selected" value=""> Select the Equpment </option>
+		<option select= "selected" value=""> Select the Equipment </option>
 	<?php
 		for($i=0;$i<$showEqpCnt;$i++)		
 		{

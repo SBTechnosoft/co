@@ -323,7 +323,70 @@ $arr1 = json_decode($data[0]['permission']);
         </li>
 			<?php } ?>
 			
-			
+		<?php 
+			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1))
+			{					
+		?>	
+        <li class="
+				 	<?php 
+						if(isset($_GET['url']) && strtoupper($_GET['url']) == 'PRD') 
+						{
+							echo " active ";
+						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'PADD')
+						{
+							echo "active ";
+						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'PVIW')
+						{
+							echo "active ";
+						}
+						else
+						{
+							echo" ";
+						}
+						?>">
+            <a href="javascript:;">
+                <i class=" icon-male"></i>
+                <span class="title">Product</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+				<?php 
+					if(isset($arr1) && !empty($arr1) && in_array("OCTG", $arr1))
+					{					
+				?>
+                <li class="">
+                    <a href="<?php echo HTTP_SERVER.'index.php?url=PRD';?>">
+                        <i class="icon-group"></i> Product Category </a>
+                </li>
+					<?php } ?>
+					
+					<?php 
+					if(isset($arr1) && !empty($arr1) && in_array("OSTG", $arr1))
+					{					
+				?>
+                <li class="">
+                    <a href="<?php echo HTTP_SERVER.'index.php?url=PADD';?>">
+                        <i class="icon-group"></i> Product Add </a>
+                </li>
+					<?php } ?>
+					
+				<?php 
+					if(isset($arr1) && !empty($arr1) && in_array("OSTG", $arr1))
+					{					
+				?>
+                <li class="">
+                    <a href="<?php echo HTTP_SERVER.'index.php?url=PVIW';?>">
+                        <i class="icon-group"></i> Product View </a>
+                </li>
+					<?php } ?>
+					
+                
+
+            </ul>
+        </li>
+			<?php } ?>	
 			
 			
 			

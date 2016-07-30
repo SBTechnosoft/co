@@ -22,8 +22,8 @@
 		$cmp = $_POST['txtcmpnm'];
 	}
 	$enm = $_POST['txtenm'];	
-	$fdate= date_format($date,"dS F , Y H:i A");
-	$sdate= date_format($date,"dS F , Y");
+	$fdate= date_format($date,"dS F, Y H:i A");
+	$sdate= date_format($date,"dS F, Y");
 	$cnm = $_POST['txtcnm'];
 	$charge = $_POST['txtcharge1'];
 	$cpaid = $_POST['txtpaid'];
@@ -43,7 +43,9 @@
 			{				
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
 		
-			
+				
+				
+				
 				$html .= '
 
 					<style>
@@ -52,48 +54,78 @@
 					</style>
 					<style type="text/css">
 					.tg  {border-collapse:collapse;border-spacing:0;}
-					.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-					.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-					.tg .tg-jtyd{font-weight:bold;font-family:Georgia, serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
-					.tg .tg-3gzm{font-weight:bold;font-family:Georgia, serif !important;;text-align:right;vertical-align:top}
-					.tg .tg-ullm{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:right;vertical-align:top}
-					.tg .tg-vi9z{font-weight:bold;font-family:Georgia, serif !important;;vertical-align:top}
-					.tg .tg-bjj3{font-weight:bold;font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
-					.tg .tg-m36b{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:center;vertical-align:top}
+					.tg td{font-family:Calibri; sans-serif;font-size:12px;padding:7px 3px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+					.tg th{font-family:Calibri; sans-serif;font-size:12px;font-weight:normal;padding:00px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+					.tg .tg-jtyd{font-family:Calibri; serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
+					.tg .tg-3gzm{font-family:Calibri; serif !important;;text-align:right;vertical-align:top}
+					.tg .tg-ullm{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:right;vertical-align:top}
+					.tg .tg-vi9z{font-family:Calibri; serif !important;;vertical-align:top}
+					.tg .tg-bjj3{font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
+					.tg .tg-m36b{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:left;vertical-align:top}
 					.thsrno {width:50px;}
 					.theqp {width:400px;}
 					.thamt {width:90px;}
 					</style>
 
 					<html>
-						<body> 
+						<body> 						
 						
-						<table class="tg" >						
+						<table class="tg" >							
+						  
 						  <tr>
-							<th class="tg-bjj3" colspan="1"><img style="height:50px;width:100px;"src="assets/img/sblogo.png"> </th>
-							<th class="tg-bjj3" style="padding:10px 5px;" colspan="4">INVOICE <br></th>
+							<th colspan="5">
+								<img src="ombanner.jpg"> 
+							</th>
+						  </tr>
+						  
+						  <tr class="trhw">
+							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="3">To: '.$cnm.' <br></td>
+							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="2">'.$sdate.'</td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">To.: '.$cmp.' <br></td>
-							<td class="tg-vi9z" colspan="2">'.$sdate.'</td>
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order:'.$enm.'</td>
+							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Quataion No:'.$data[$i]['fp_no'].'<br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">Order Name:'.$enm.'</td>
-							<td class="tg-vi9z" colspan="2">FP No.:'.$data[$i]['fp_no'].'<br></td>
+							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order Date :'.$fdate.' <br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5">Order Date :'.$fdate.' <br></td>
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Vennue:';
+							
+						
+						$vennue = showVennue($conn,$_POST['txteid']);
+						$cntven = count($vennue);
+						for($t=0;$t<$cntven;$t++)
+						{
+							if($t== $cntven-1)
+							{
+								$html .= $vennue[$t]['event_vennue'];
+							}
+							else
+							{
+								$html .= $vennue[$t]['event_vennue'].', ';
+							}
+						}
+						
+						$html .= '	
+							</td>
+							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Invoice No:'.$id.'<br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">Vennue.:</td>
-							<td class="tg-vi9z" colspan="2">Invoice No.:'.$id.'<br></td>
+							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Client:'.$cmp.'</td>
 						  </tr>
+						  
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5">Client.:'.$cnm.'</td>
-						  </tr>	  
-						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
+						  </tr>
+						   <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
+						  </tr>
+						  
+						  
+						  <tr class="trhw" style="background-color:#9a9a9a;font-family:Calibri;">
 							<td class="tg-m36b thsrno">Sr.No</td>
-							<td class="tg-m36b theqp">Equipment</td>
+							<td class="tg-m36b theqp">Particulars</td>
 							<td class="tg-ullm thsrno">Qty.</td>
 							<td class="tg-ullm thamt">Unit Cost<br></td>
 							<td class="tg-ullm thamt">Amount</td>
@@ -108,12 +140,12 @@
 							{				
 							
 							$html .= '
-								<tr class="trhw">
-									<td class="tg-3gzm">'.($a+1).'</td>
-									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
-									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								<tr class="trhw" >
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['amount'].'</td>
 								</tr>
 							';
 							}
@@ -122,11 +154,11 @@
 							
 							$html .= '
 								<tr class="trhw">
-									<td class="tg-3gzm">'.($a+1).'</td>
-									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['amount'].'</td>
 								</tr>
 							';
 							}
@@ -136,45 +168,34 @@
 						$html .= '  
 						
 						  <tr class="trhw">
-							<td class="tg-3gzm"></td>
-							<td class="tg-vi9z"> <br></td>
-							<td class="tg-3gzm"></td>
-							<td class="tg-3gzm"></td>
-							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-vi9z" style="background-color:#d9d9d9"> <br></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
 						  </tr>
 						
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Charge<br></td>
-							<td class="tg-3gzm">'.$data[$i]['client_charges'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['client_charges'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Discount</td>
-							<td class="tg-3gzm">'.$data[$i]['client_discount_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['client_discount_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">S.Tax '.$data[$i]['service_tax_rate'].'%<br></td>
-							<td class="tg-3gzm">'.$data[$i]['service_tax_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['service_tax_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Total</td>
-							<td class="tg-3gzm">'.$data[$i]['total_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['total_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" rowspan="1">
-								Terms & Condition <br/>
-							';
-							
-						$cond = showInvCond($conn);				
-						$cnt = count($cond);	
-						for($b=0;$b<$cnt;$b++)
-						{
-							$allcond = json_decode($cond[$b]['inv_cond_json']);
-							$cntjsn = count($allcond);
-							for($k=0;$k<$cntjsn;$k++)
-							{						
-								$html .= $allcond[$k].'<br>';
-							}
-						}
+							<td class="tg-vi9z" colspan="5" rowspan="1" style="background-color:#d9d9d9">
+								
+							';				
+						
 						
 						if($data[$i]['cmp_name']!='')
 						{
@@ -187,16 +208,34 @@
 						
 					$html .= '
 							</td>
+						  </tr>						  					  
+						  <tr >
+							<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+								
+							</td>
+							<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;">Remark </td>
+							<td class="tg-3gzm" colspan="2" style="text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+								Venture Of
+							</td>
 						  </tr>
-						  <tr class="trhw">
-							<td class="tg-3gzm" colspan="5" rowspan="1">'.$company.'&nbsp;&nbsp;   <br>abc@gmail.com </td>
+						  <tr >
+								<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+									
+								</td>
+								<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;" > E.&.O.E. </td>
+								<td class="tg-3gzm" colspan="2" style="text-align:center;background-color:#d9d9d9">
+									<img src="smlogo.png">
+								</td>
 						  </tr>
 						 
 						</table>
 						</body>
 					</html>';
 					
-				$mpdf=new mPDF('c','A4','','GEORGIAN' , 25 , 25 , 30 , 15 , 0 , 0); 
+				// print_r($html);
+				// exit;
+					
+				$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 				 
 				$mpdf->SetDisplayMode('fullpage');
 				 
@@ -233,14 +272,14 @@
 					</style>
 					<style type="text/css">
 					.tg  {border-collapse:collapse;border-spacing:0;}
-					.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-					.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:0px 0px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-					.tg .tg-jtyd{font-weight:bold;font-family:Georgia, serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
-					.tg .tg-3gzm{font-weight:bold;font-family:Georgia, serif !important;;text-align:right;vertical-align:top}
-					.tg .tg-ullm{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:right;vertical-align:top}
-					.tg .tg-vi9z{font-weight:bold;font-family:Georgia, serif !important;;vertical-align:top}
-					.tg .tg-bjj3{font-weight:bold;font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
-					.tg .tg-m36b{font-weight:bold;font-size:13px;font-family:Georgia, serif !important;;background-color:#999999;text-align:center;vertical-align:top}
+					.tg td{font-family:Calibri; sans-serif;font-size:12px;padding:7px 3px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+					.tg th{font-family:Calibri; sans-serif;font-size:12px;font-weight:normal;padding:00px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+					.tg .tg-jtyd{font-family:Calibri; serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
+					.tg .tg-3gzm{font-family:Calibri; serif !important;;text-align:right;vertical-align:top}
+					.tg .tg-ullm{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:right;vertical-align:top}
+					.tg .tg-vi9z{font-family:Calibri; serif !important;;vertical-align:top}
+					.tg .tg-bjj3{font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
+					.tg .tg-m36b{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:left;vertical-align:top}
 					.thsrno {width:50px;}
 					.theqp {width:400px;}
 					.thamt {width:90px;}
@@ -250,32 +289,61 @@
 						<body> 						
 						
 						<table class="tg" >							
+						  
 						  <tr>
+							<th colspan="5">
+								<img src="'.DIR_WS_IMAGES'.ombanner.jpg"> 
+							</th>
+						  </tr>
+						  
+						  <tr class="trhw">
+							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="3">To: '.$cnm.' <br></td>
+							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="2">'.$sdate.'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order:'.$enm.'</td>
+							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Quataion No:'.$data[$i]['fp_no'].'<br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order Date :'.$fdate.' <br></td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Vennue:';
 							
-							<th class="tg-bjj3" colspan="1"><img style="height:50px;width:100px;"src="assets/img/sblogo.png"> </th>
-							<th class="tg-bjj3" style="padding:10px 5px;" colspan="4">INVOICE <br></th>
+						
+						$vennue = showVennue($conn,$_POST['txteid']);
+						$cntven = count($vennue);
+						for($t=0;$t<$cntven;$t++)
+						{
+							if($t== $cntven-1)
+							{
+								$html .= $vennue[$t]['event_vennue'];
+							}
+							else
+							{
+								$html .= $vennue[$t]['event_vennue'].', ';
+							}
+						}
+						
+						$html .= '	
+							</td>
+							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Invoice No:'.$id.'<br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">To.: '.$cmp.' <br></td>
-							<td class="tg-vi9z" colspan="2">'.$sdate.'</td>
+							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Client:'.$cmp.'</td>
 						  </tr>
+						  
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">Order Name:'.$enm.'</td>
-							<td class="tg-vi9z" colspan="2">FP No.:'.$data[$i]['fp_no'].'<br></td>
+							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
 						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5">Order Date :'.$fdate.' <br></td>
+						   <tr class="trhw">
+							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
 						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3">Vennue.:</td>
-							<td class="tg-vi9z" colspan="2">Invoice No.:'.$id.'<br></td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5">Client.:'.$cnm.'</td>
-						  </tr>	  
-						  <tr class="trhw">
+						  
+						  
+						  <tr class="trhw" style="background-color:#9a9a9a;font-family:Calibri;">
 							<td class="tg-m36b thsrno">Sr.No</td>
-							<td class="tg-m36b theqp">Equipment</td>
+							<td class="tg-m36b theqp">Particulars</td>
 							<td class="tg-ullm thsrno">Qty.</td>
 							<td class="tg-ullm thamt">Unit Cost<br></td>
 							<td class="tg-ullm thamt">Amount</td>
@@ -290,12 +358,12 @@
 							{				
 							
 							$html .= '
-								<tr class="trhw">
-									<td class="tg-3gzm">'.($a+1).'</td>
-									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
-									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+								<tr class="trhw" >
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['amount'].'</td>
 								</tr>
 							';
 							}
@@ -304,11 +372,11 @@
 							
 							$html .= '
 								<tr class="trhw">
-									<td class="tg-3gzm">'.($a+1).'</td>
-									<td class="tg-vi9z">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm">'.$dEqp[$a]['amount'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$dEqp[$a]['amount'].'</td>
 								</tr>
 							';
 							}
@@ -318,45 +386,34 @@
 						$html .= '  
 						
 						  <tr class="trhw">
-							<td class="tg-3gzm"></td>
-							<td class="tg-vi9z"> <br></td>
-							<td class="tg-3gzm"></td>
-							<td class="tg-3gzm"></td>
-							<td class="tg-3gzm"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-vi9z" style="background-color:#d9d9d9"> <br></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
 						  </tr>
 						
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Charge<br></td>
-							<td class="tg-3gzm">'.$data[$i]['client_charges'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['client_charges'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Discount</td>
-							<td class="tg-3gzm">'.$data[$i]['client_discount_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['client_discount_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">S.Tax '.$data[$i]['service_tax_rate'].'%<br></td>
-							<td class="tg-3gzm">'.$data[$i]['service_tax_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['service_tax_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Total</td>
-							<td class="tg-3gzm">'.$data[$i]['total_amt'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$data[$i]['total_amt'].'</td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" rowspan="1">
-								Terms & Condition <br/>
-							';
-							
-						$cond = showInvCond($conn);				
-						$cnt = count($cond);	
-						for($b=0;$b<$cnt;$b++)
-						{
-							$allcond = json_decode($cond[$b]['inv_cond_json']);
-							$cntjsn = count($allcond);
-							for($k=0;$k<$cntjsn;$k++)
-							{						
-								$html .= $allcond[$k].'<br>';
-							}
-						}
+							<td class="tg-vi9z" colspan="5" rowspan="1" style="background-color:#d9d9d9">
+								
+							';				
+						
 						
 						if($data[$i]['cmp_name']!='')
 						{
@@ -369,16 +426,31 @@
 						
 					$html .= '
 							</td>
+						  </tr>						  					  
+						  <tr >
+							<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+								
+							</td>
+							<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;">Remark </td>
+							<td class="tg-3gzm" colspan="2" style="text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+								Venture Of
+							</td>
 						  </tr>
-						  <tr class="trhw">
-							<td class="tg-3gzm" colspan="5" rowspan="1">'.$company.'&nbsp;&nbsp;   <br>abc@gmail.com </td>
+						  <tr >
+								<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
+									
+								</td>
+								<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;" > E.&.O.E. </td>
+								<td class="tg-3gzm" colspan="2" style="text-align:center;background-color:#d9d9d9">
+									<img src="smlogo.png">
+								</td>
 						  </tr>
 						 
 						</table>
 						</body>
 					</html>';
 					
-				$mpdf=new mPDF('c','A4','','GEORGIAN' , 25 , 25 , 30 , 15 , 0 , 0); 
+				$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 				 
 				$mpdf->SetDisplayMode('fullpage');
 				 
@@ -386,7 +458,8 @@
 				 
 				$mpdf->WriteHTML($html);
 						 
-				
+				// print_r($html);
+				// exit;
 				
 				//header('location : D:\xampp\htdocs\mpdf\invoice\meu-pdf.pdf');
 				

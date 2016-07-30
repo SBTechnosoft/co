@@ -117,7 +117,19 @@
 					break;
 				case 'RES':
 					$url = FILENAME_RESOURCES;
-					break;		
+					break;
+				case 'PRD':
+					$url = FILENAME_PRODUCT;
+					break;
+				case 'PADD':
+					$url = FILENAME_PRDADD;
+					break;
+				case 'PVIW':
+					$url = FILENAME_PRDVIEW;
+					break;
+				case 'RSE':
+					$url = FILENAME_RSALES;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;
