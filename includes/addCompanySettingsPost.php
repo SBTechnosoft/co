@@ -4,7 +4,7 @@
 	if(isset($_POST['saverecord']))
 	{	
 		$cur_date = date('Y-m-d H:i:s');
-		insCmpNew($conn,$_POST['txtcmpnm'],$_POST['txtcmprnno'],$cur_date);	
+		insCmpNew($conn,$_POST['txtcmpnm'],$_POST['txtcmprnno'],$_POST['txtbnrnm'],$cur_date);	
 	}		
 	
 	if(isset($_POST['show']))
@@ -17,6 +17,7 @@
 			<tr>				
 				<td><?php echo ucfirst($data[$i]['cmp_name']);?></td>
 				<td><?php echo $data[$i]['cmp_reg_no'];?></td>
+				<td><?php echo $data[$i]['banner_img'];?></td>
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['cmp_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>

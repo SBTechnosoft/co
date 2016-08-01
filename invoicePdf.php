@@ -292,7 +292,7 @@
 						  
 						  <tr>
 							<th colspan="5">
-								<img src="'.DIR_WS_IMAGES'.ombanner.jpg"> 
+								<img src="'.DIR_WS_IMAGES.'ombanner.jpg"> 
 							</th>
 						  </tr>
 						  

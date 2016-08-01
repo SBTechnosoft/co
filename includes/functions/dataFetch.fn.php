@@ -242,7 +242,24 @@ function showClientPaidAmt($conn)
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ptotal,
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as rtotal
 		from `event_mst` 
-		where `payment_status` = 'Paid' and `status` != 'enquiry' 
+		where `payment_status` = 'Paid' and `status` != 'enquiry'  
+		order by event_id "; 
+		
+		return $conn->getResultArray($sqlClPaidAmt);	
+	}
+function showClPaidAmtType($conn,$event_type)
+	{
+		$sqlClPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry' and order_type = '".$event_type."') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as rtotal
+		from `event_mst` 
+		where `payment_status` = 'Paid' and `status` != 'enquiry' and order_type = '".$event_type."'
 		order by event_id "; 
 		
 		return $conn->getResultArray($sqlClPaidAmt);	
@@ -260,6 +277,22 @@ function showClientUnpaidAmt($conn)
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as rtotal
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' 
+		order by event_id "; 
+		return $conn->getResultArray($sqlClUPaidAmt);	
+	}
+function showClientUnpaidAmtType($conn,$event_type)
+	{
+		$sqlClUPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as rtotal
+		from `event_mst` 
+		where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."'
 		order by event_id "; 
 		return $conn->getResultArray($sqlClUPaidAmt);	
 	}
@@ -338,7 +371,7 @@ function showVendorUnPaidAmt($conn)
 	}
 function showCmp($conn)
 	{
-		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no`,`banner_img` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
 		return $conn->getResultArray($sqlShowCmp);		
 	}	
 function showCmpDrp($conn)
@@ -508,6 +541,11 @@ function showNewEv_Pl_Dtl($conn,$eid)
 function showVennue($conn,$eid)
 	{
 		$sqlshowVennue = " select `event_vennue`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showResPlacesDtl($conn,$eid)
+	{
+		$sqlshowVennue = " select `event_id`,`event_places_id`,`res_name`,`qty`,`amount`  from  `res_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}	
 

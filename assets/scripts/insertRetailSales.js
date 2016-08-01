@@ -1,3 +1,44 @@
+$("#taxmode").on("change", function()
+		{
+			var taxmode    =   $('#taxmode').val();
+			var stax = $('#txtstax');
+			var vat = $('#txtvat');
+			
+			// alert(taxmode);
+			
+			// alert(ptxtiamt);
+			
+			if(taxmode=='Yes')
+			{			
+				// var len = (txticomgrp).length;
+				
+				
+				// alert(len);
+				
+				// alert(txticomgrp);
+				// return false;
+				var i ;
+				for(i=0; i < txticomgrp.length;i++)
+				{
+					alert(txticomgrp);
+				}
+				
+				var totstax = [];
+				$.each($('.ptxtiamt'), function(){            
+					totstax.push($(this).val());
+				});
+				
+				var totvat = [];
+				$.each($('.ptxtiamt'), function(){            
+					totvat.push($(this).val());
+				});
+			}
+			 
+			
+			
+		});
+
+
 
 
 $("#drpProd").on("change", function()
@@ -145,7 +186,7 @@ $("#drpProd").on("change", function()
 					
 					'<tr id="prdrow'+k+'">'+
 						'<input   type="hidden"  id="hdn['+k+'][txtictg]" name="hdn['+k+'][txtictg]" value="'+ctgid+'">'+
-						'<input   type="hidden"  id="hdn['+k+'][txticomgrp]" name="hdn['+k+'][txticomgrp]" value="'+comgrp+'">'+
+						'<input   type="hidden"  id="hdn['+k+'][txticomgrp]" name="hdn['+k+'][txticomgrp]"  class="txticomgrp" value="'+comgrp+'">'+
 						'<input   type="hidden"  id="hdn['+k+'][txtictgnm]" name="hdn['+k+'][txtictgnm]"  value="'+ctgnm+'">'+
 						'<input   type="hidden"  id="hdn['+k+'][txtprdid]" name="hdn['+k+'][txtprdid]" value="'+prdid+'">'+
 						'<input  type="hidden"  id="hdn['+k+'][txtiprdnm]" name="hdn['+k+'][txtiprdnm]" value="'+prdnm+'">'+
@@ -163,7 +204,20 @@ $("#drpProd").on("change", function()
 						'<td><a class="prdremove" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
 							'<i class="fa fa-times" aria-hidden="true"></i>'+							
 						'</a></td>'+
-					'</tr>';					
+					'</tr>'+
+					
+					'<script>'+
+					'var txticomgrp = [];'+
+					 '$.each($(\'.txticomgrp\'), function(){ ' +          
+						'txticomgrp.push($(this).val());'+
+					'});'+
+					'var ptxtiamt = [];'+
+					 '$.each($(\'.ptxtiamt\'), function(){ ' +          
+						'ptxtiamt.push($(this).val());'+
+					'});'+
+					// 'alert(txticomgrp);'+
+					// 'alert(ptxtiamt);'+
+					'</script>';					
 					
 			$('#prdrec').append(prddiv);
 			
@@ -175,7 +229,7 @@ $("#drpProd").on("change", function()
 			$.each(rgtot,function() {
 				rtotal_amt += parseInt(this);
 			});			
-			 $('.txtcharge').val(rtotal_amt);
+			$('.txtcharge').val(rtotal_amt);
 			// $('.txtrescharge').val(rtotal_amt);
 			
 			$('.prdCtgDrp').val('');

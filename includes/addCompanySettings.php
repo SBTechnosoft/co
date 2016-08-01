@@ -58,9 +58,12 @@
                     <div class="input-cont">
                         <input type="text" id="txtcmpnm" name="txtcmpnm" placeholder="Eg; Company Name ..." class="m-wrap" />
                     </div>
-                    <!--button type="button" class="btn green">Add &nbsp; 
-							<i class="icon-plus-sign icon-white"></i>
-							</button-->
+                </div>
+                <br />
+				<div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtbnrnm" name="txtbnrnm" placeholder="Eg; Company banner[Image name] ..." class="m-wrap" />
+                    </div>
                 </div>
                 <br />
                 <div class="chat-form">
@@ -97,6 +100,7 @@
                                         <tr>
                                             <th> Company Name</th>
                                             <th> Registration Number</th>
+											<th> Banner Img</th>
 											<th> Action</th>
                                         </tr>
                                     </thead>

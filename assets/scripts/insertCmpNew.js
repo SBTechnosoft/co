@@ -4,7 +4,8 @@
 		//save data
 		$('#addcmp').click(function(){
 			var txtcmpnm    =   $('#txtcmpnm').val();
-			var txtcmprnno     =   $('#txtcmprnno').val();		
+			var txtcmprnno     =   $('#txtcmprnno').val();
+			var txtbnrnm     =   $('#txtbnrnm').val();		
 			$.ajax({
 				url : './includes/addCompanySettingsPost.php',
 				type : 'POST',
@@ -12,7 +13,8 @@
 				data : {
 					'saverecord'  : 1,
 					'txtcmpnm'   : txtcmpnm,
-					'txtcmprnno'  : txtcmprnno,															
+					'txtcmprnno'  : txtcmprnno,	
+					'txtbnrnm'  : txtbnrnm,
 				},
 				success : function(re)
 				{
@@ -21,6 +23,7 @@
 						//alert ("Inserted Data Successfully");
 						$('#txtcmpnm').val('');
 						$('#txtcmprnno').val('');
+						$('#txtbnrnm').val('');
 						$("#msgs").html("<i class=\"fa fa-check-circle-o\"> Successfully Subscribed!!");
 						$('#msgs').addClass('fadeInDown').fadeIn('slow');
 						$('#msgs').addClass('fadeInDown').fadeOut('slow');						

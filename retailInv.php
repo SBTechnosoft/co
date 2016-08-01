@@ -113,7 +113,7 @@ $inm = date_format($date,"Ymd");
 	$html = utf8_encode($html);
 	
 	
-	$fname = $inm."-".$_POST['txteid']."_1.pdf";
+	$fname = $inm."-".$eventlast_id."_1.pdf";
 		
 				
 				
@@ -155,14 +155,14 @@ $inm = date_format($date,"Ymd");
 							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="2"></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order:</td>
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order:'.$_POST['txtfromdt'].'</td>
 							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Retail No:<br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order Date : <br></td>
+							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Delivery Date :'.$_POST['txttodt'].' <br></td>
 						  </tr>
 						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Vennue:	</td>
+							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">	</td>
 							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Invoice No:<br></td>
 						  </tr>
 						  <tr class="trhw">

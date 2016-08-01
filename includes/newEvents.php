@@ -52,8 +52,8 @@
 							
 							<div class="input-icon left">
 								<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
-								Enquiry &nbsp&nbsp <input type="radio" name="order_type" id="" value="enquiry" > /
-								Order &nbsp&nbsp <input type="radio" name="order_type" id="" value="new" checked><br/>
+								Enquiry &nbsp <input type="radio" name="order_type" id="" value="enquiry" > /
+								Order &nbsp <input type="radio" name="order_type" id="" value="new" checked><br/>
 							</div>
 							
 						</div>

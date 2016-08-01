@@ -11,8 +11,7 @@
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
 	
-	$id = $_POST['txteid'];	
-	//$cmp = $_POST['txtcmpnm'];	
+	$id = $_POST['txteid'];			
 	if($_POST['txtcmpnm']== '')
 	{
 		$cmp = "NA";
@@ -30,21 +29,15 @@
 	$ramt = $charge - $cpaid;
 	
 	
-	
 	if(isset($_POST['txteid']))
 	{		
 		$data = showInvName($conn,$_POST['txteid']);
-		$cnt = count($data);
-		//echo $cnt."<br>";
-		
+		$cnt = count($data);		
 		for($i=0;$i<$cnt;$i++)
 		{
-							
-				$pos = substr($data[$i]['inv_file_name'],(strpos($data[$i]['inv_file_name'],"_") + 1),1);
-				$pos = $pos+ 1;
-				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
-				
 			
+				$newFileName = $inm."-".$_POST['txteid']."_1.pdf";			
+						
 				$html .= '
 
 					<style>
@@ -121,7 +114,7 @@
 							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;">Day1</td>
 							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;">Date</td>
 							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;">Event Detail</td>
-							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;">No. Of Photographers:<br>No. Of Cinematographers:</td>
+							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;"><br>No. Of Photographers:<br>No. Of Cinematographers:</td>
 							<td class=" " style="font-family:Calibri;border-style:solid;border-width:1px;vertical-align:top;height:65px;">Final Amount</td>
 						  </tr>
 						  <tr class="" style="font-family:Calibri;">
@@ -273,10 +266,6 @@
 				$mpdf -> AddPage();
 				
 				$mpdf->WriteHTML($html1);		 
-				// print_r($html);
-				// exit;
-				
-				//header('location : D:\xampp\htdocs\mpdf\invoice\meu-pdf.pdf');
 				
 				$path = DIR_WS_MINV.$newFileName;								
 				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php

@@ -68,6 +68,8 @@ CREATE TABLE `suchak_mgt`.`retail_inv_dtl` (
   `amount` VARCHAR(45) NULL,
   PRIMARY KEY (`retail_inv_id`));
   
-  
+ALTER TABLE `suchak_mgt`.`company_mst` 
+ADD COLUMN `banner_img` VARCHAR(45) NULL AFTER `cmp_reg_no`;
+ 
   
   

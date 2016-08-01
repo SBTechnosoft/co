@@ -21,6 +21,26 @@
 			});
 		}
 		showClientUnpaidAmt();
+		
+	$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/unpaidAccountingPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showClientUnpaidAmtType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#showClientUnpaid').html(r);					
+				}
+				
+			});
+	});
 	
 	$('#unpaidexcel').click(function()
 		{	

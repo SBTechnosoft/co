@@ -10,15 +10,32 @@
 				},
 				success : function(r)
 				{
-					$('#showClientPaid').html(r);
-					//initTable1();
-					//$("th").removeClass("sorting_asc").addClass("sorting_asc");
-					
+					$('#showClientPaid').html(r);					
 				}
 				
 			});
 		}
 		showClientPaidAmt();
+		
+	$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/paidAccountingPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showClPaidAmtType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#showClientPaid').html(r);					
+				}
+				
+			});
+	});
 		
 	
 	$('#paidexcel').click(function()

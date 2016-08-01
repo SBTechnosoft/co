@@ -139,8 +139,8 @@ function insEqup($conn,$txteqpnm,$txtserno,$txtmodel,$txtcateqp,$txtpurdate,$txt
 
 function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2,$txtvcharge)
 		{
-			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`) 
-			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtvcharge."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."')"; 
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`,`order_type`) 
+			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtvcharge."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."','Event')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
@@ -150,9 +150,9 @@ function insertRetailAdd($conn,$txtprdnm,$txtmobno,$drpcmpnm,$txtcharge,$txtpaid
 		{
 			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`cmp_id`,`client_charges`,
 			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
-			`total_amt`,`service_tax_rate`,`order_type`) 
+			`total_amt`,`service_tax_rate`,`order_type`,`status`) 
 			VALUES ('".$txtprdnm."','".$txtmobno."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
-			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail')"; 
+			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
@@ -247,9 +247,9 @@ function updatePaidAmtVendP($conn,$vueid,$total_amt_paid)
 			echo 8;
 			//exit;
 		}
-function insCmpNew($conn,$txtcmpnm,$txtcmprno,$cur_date)
+function insCmpNew($conn,$txtcmpnm,$txtcmprno,$txtbnrnm,$cur_date)
 		{
-			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$cur_date."','','')"; 
+			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."','".$cur_date."','','')"; 
 			$resultArray = $conn->insertQuery($sqlInsCmp);
 			echo 1;
 			exit;
