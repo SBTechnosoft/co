@@ -608,12 +608,12 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>
 					
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showTrasactionDetail.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertTemplate.js"></script>
 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-					<script>tinymce.init({ selector:'textarea' });</script>
+					<script>tinymce.init({ selector:'#txttemplate' });</script>
 					
 				<?php
 					break;
@@ -2206,6 +2206,7 @@
 						});
 						
 						$("#updvat").hide();
+						
 						
 						
 					</script>

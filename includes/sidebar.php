@@ -2,6 +2,16 @@
 $data=showPerm($conn);
 $arr1 = json_decode($data[0]['permission']);
 //print_r($arr1);
+
+$setting = showSetting($conn);
+if(isset($setting) && !empty($setting))
+{
+	$set = $setting[0]['retail_sales'];
+	//echo $set;
+}
+
+//echo $setting[0]['retail_sales'];
+
 ?>
 
 
@@ -324,7 +334,9 @@ $arr1 = json_decode($data[0]['permission']);
 			<?php } ?>
 			
 		<?php 
-			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1))
+			
+			
+			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1) && $set == 'Enable' )
 			{					
 		?>	
         <li class="
@@ -386,7 +398,10 @@ $arr1 = json_decode($data[0]['permission']);
 
             </ul>
         </li>
-			<?php } ?>	
+		<?php 
+			}
+			
+			?>	
 			
 			
 			

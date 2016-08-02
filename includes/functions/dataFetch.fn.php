@@ -429,6 +429,11 @@ function showPerm($conn)
 		$sqlshowPerm = "select `user_id`,`permission` from  `staff_permission` where `user_id` = '".$_SESSION['USER_ID']."' "; 
 		return $conn->getResultArray($sqlshowPerm);	
 	}
+function showSetting($conn)
+	{
+		$sqlshowPerm = "select `retail_sales` from  `setting` "; 
+		return $conn->getResultArray($sqlshowPerm);	
+	}
 
 function showEqpRsDtl($conn,$event_id)
 	{
@@ -454,6 +459,25 @@ function showClientInv($conn)
 		return $conn->getResultArray($sqlshowClientInv);	
 	}
 	
+function showTransDtlType($conn,$event_type)
+	{
+		$sqlTransDtl = 		
+		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
+		client_charges,client_discount_amt,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
+		(
+			select sum(amount) 
+			from expence_dtl 
+			where expence_dtl.event_id=event_mst.event_id
+		) as amount
+		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = '".$event_type."'
+		UNION
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		from expence_dtl exd
+		inner join staff_mst sm on sm.staff_id = exd.exp_by
+		where event_id = 0";
+		return $conn->getResultArray($sqlTransDtl);	
+	}
+	
 function showTransDtl($conn)
 	{
 		$sqlTransDtl = 		
@@ -472,6 +496,7 @@ function showTransDtl($conn)
 		where event_id = 0";
 		return $conn->getResultArray($sqlTransDtl);	
 	}
+	
 function showTransVend($conn)
 	{
 		$sqlTransDtlVend = 

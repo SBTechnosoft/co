@@ -293,7 +293,9 @@
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
+						
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
+						
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>

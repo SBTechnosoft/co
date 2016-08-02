@@ -70,6 +70,14 @@ CREATE TABLE `suchak_mgt`.`retail_inv_dtl` (
   
 ALTER TABLE `suchak_mgt`.`company_mst` 
 ADD COLUMN `banner_img` VARCHAR(45) NULL AFTER `cmp_reg_no`;
+
+change///
+02-08-2016
+ 
+ALTER TABLE `suchak_mgt`.`setting` 
+ADD COLUMN `retail_sales` VARCHAR(45) NULL AFTER `vat`;
+
+
  
   
   

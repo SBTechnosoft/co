@@ -83,6 +83,32 @@
 				
 		});
 		
+		$('#updrtl').click(function(){
+			var txtrtl    =   $('#txtrtl').val();
+					
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'saveRtl'  : 1,
+					'txtrtl'   : txtrtl,																			
+				},
+				success : function(re)
+				{
+					if(re == 1)
+					 {
+						alert ("Inserted Data Successfully");
+								
+					 }
+					showdata();
+					window.location.reload();
+					
+				}				
+			});	
+				
+		});
+		
 		function showdata()
 		{		
 			$.ajax({
@@ -99,6 +125,7 @@
 					$('#txtservicetax1').val(r.service_tax);
 					$('#txtdays').val(r.upcoming_days);
 					$('#txtvat').val(r.vat);
+					$('#txtrtl').val(r.retail_sales);
 				}
 				
 			});

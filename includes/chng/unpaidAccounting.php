@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title">
-			Accounting <small> Templates</small>
+			Accounting <small> Unpaid</small>
 		</h3>
         <ul class="breadcrumb">
             <li>
@@ -28,7 +28,7 @@
                 <i class="icon-angle-right"></i>
             </li>
             <li>
-                <a href="#">Templates</a>
+                <a href="#">Unpaid</a>
             </li>
             <li class="pull-right no-text-shadow">
                 <div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
@@ -37,64 +37,13 @@
                     <i class="icon-angle-down"></i>
                 </div>
             </li>
-			&nbsp;&nbsp;&nbsp;
-			<li id="add_btn">
-				<button type="button" class="btn green">Add
-					<i class="icon-plus-sign icon-white"></i>
-				</button>
-			</li>
 			<li id="search_btn">
 				<button type="button" class="btn green" data-toggle="tooltip" title="Search">
 					<i class="icon-search m-icon-white"></i>
-				</button>&nbsp;
+				</button>
 			</li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
-		<div id="add_form" class="row-fluid search-forms search-default">
-
-            <form class="form-search" action="#">
-                <h4>Template </h4><hr/>
-				
-				
-				
-				<div class="clearfix margin-bottom-10">
-					<label> Template Name:  </label>
-					<div class="input-icon left">
-						<input type="text" id="txtename" name="txtename" placeholder="Eg; Order Name..." class="small-wrap" />
-					</div>
-				</div>
-				
-				<div class="clearfix margin-bottom-10">
-					<label> Template Body:  </label>
-					<div class="input-icon left">
-						<textarea rows="4" cols="50" id="txttemplate" name="txttemplate"  >
-						
-						</textarea>
-					</div>
-				</div>
-				
-				
-				
-				<div class="clearfix margin-bottom-10">					
-					<div class="input-icon left" style="margin-top:15px;">
-						<button id="addtemp" type="button" class="btn green">Add &nbsp;
-							<!--i class="icon-plus-sign icon-white"></i-->
-						</button>
-						<button id="cancel" type="button" class="btn green">Cancel &nbsp;
-							<!--i class="icon-plus-sign icon-white"></i-->
-						</button> 						
-					</div>
-				</div>
-				
-                
-                <span id="msgs">
-
-				</span>
-            </form>
-
-        </div>
-		
-		
 		
 		<div id="search_form" class="row-fluid search-forms search-default">
             <form class="form-search" action="#">
@@ -150,45 +99,58 @@
 		
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+		
+		<div class="clearfix margin-bottom-10">
+							
+			<div class="input-icon left">
+				<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
+				Event &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="Event" >
+				Retail &nbsp <input type="radio" name="event_type" class="event_type" id="event_type"  value="Retail" >
+				All &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="All" checked>
+				<br/>
+			</div>
+			
+		</div>
         <div class="tabbable tabbable-custom tabbable-full-width">
             <div class="tab-content">
                 <div id="tab_1_2" class="tab-pane active">
 					
                     <div class="portlet box green">
                         <div class="portlet-title">
-                            <div class="caption"><i class="icon-check-sign"></i>Template Setting</div>
+                            <div class="caption"><i class="icon-remove-sign"></i>Unpaid Accounts</div>
 								
-								<a href= "#" id="paidexcel" class="invoice invoice_excel"  >
-									<i class="fa fa-file-excel-o fa-2x" style="color:white; margin-top:10%;" aria-hidden="true"></i>					
+								<a class="invoice invoice_excel" id="unpaidexcel">
+									<i class="fa fa-file-excel-o fa-2x" style="color:white; margin-top:10%;" aria-hidden="true"></i>
 								</a>
+								
                         </div>
-						
                         <div class="portlet-body">
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
-                                <!--thead>
+                                <thead>
                                     <tr>
                                         <th> Order Id</th>
-										<th> Event Expence </th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th> 
-										<th> Date </th>
-										<th>Expence By </th>
-                                        <th>Income</th>
-                                        <th>Expence</th>
-										<th>Other Exp.</th>
-											
+                                        <th>Client Name </th>				
+                                        <th>Client charge</th>
+										<th>Discount</th>
+										<th>S.Tax</th>
+										<th>Amt</th>
+                                        <th>Paid Amount</th>
+                                        <th>Remaining Amount</th>
                                     </tr>
                                 </thead>
-                                <tbody id="showTrnDetail">			
-                                    
-                                    
-                                </tbody-->
+                                <tbody id="showClientUnpaid">
+                                                                    
+                                  
+                                </tbody>								
+								
                             </table>
+							
                         </div>
-                    </div>
+					</div>
                 </div>
                 <!--end tab-pane-->
-                
+               
                 <!-- End tab pane -->
             </div>
         </div>

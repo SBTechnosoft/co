@@ -28,7 +28,25 @@ $('body').delegate('.expopen','click',function()
 		});		
 	});
 
-
+$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/transactionDetailPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showTrnDetailType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#showTrnDetail').html(r);					
+				}
+				
+			});
+	});
 
 
 

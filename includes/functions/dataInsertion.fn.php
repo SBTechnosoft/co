@@ -316,6 +316,16 @@ function insOptionVat($conn,$txtvat)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionRtl($conn,$txtrtl)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`retail_sales`) VALUES (1,'".$txtrtl."')ON DUPLICATE KEY UPDATE `retail_sales` = `retail_sales`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `retail_sales` = '".$txtrtl."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 		
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{

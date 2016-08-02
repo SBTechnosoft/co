@@ -1,3 +1,13 @@
+<?php
+$setting = showSetting($conn);
+if(isset($setting) && !empty($setting))
+{
+	$settop = $setting[0]['retail_sales'];
+	//echo $set;
+}
+
+?>
+
 <div class="header navbar navbar-inverse navbar-fixed-top">
     <!-- BEGIN TOP NAVIGATION BAR -->
     <div class="navbar-inner">
@@ -20,11 +30,13 @@
                     <a href="<?php// echo HTTP_SERVER.'index.php?url=ENQ';?>" class="btn blue top"><i class="icon-question-sign"></i> Enquiry Form
 					</a>
                 </li-->
+				<?php if (isset($settop) && $settop == 'Enable') {?>
 				<li>
                     <a href="<?php echo HTTP_SERVER.'index.php?url=RSE';?>" class="btn blue top">
                         <i class="icon-plus-sign"></i> Retail/Sales
                     </a>
                 </li>
+				<?php } ?>
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                 <li>
                     <a href="<?php echo HTTP_SERVER.'index.php?url=EVE';?>" class="btn blue top">

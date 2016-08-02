@@ -6,7 +6,7 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-							Settings <small> Add Option </small>
+							Settings <small> Add Company </small>
 						</h3>
                 <ul class="breadcrumb">
                     <li>
@@ -19,10 +19,10 @@
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#"> Add Option </a>
+                        <a href="#"> Add Company </a>
                     </li>
                     &nbsp;&nbsp;&nbsp;
-                    <!--li id="add_btn">
+                    <li id="add_btn">
                         <button type="button" class="btn green">Add
                             <i class="icon-plus-sign icon-white"></i>
                         </button>
@@ -32,13 +32,13 @@
                         <button type="button" class="btn green" data-toggle="tooltip" title="Search">
                             <i class="icon-search m-icon-white"></i>
                         </button>&nbsp;
-                    </li-->
+                    </li>
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>
         </div>
 
-        <!--div id="search_form" class="row-fluid search-forms search-default">
+        <div id="search_form" class="row-fluid search-forms search-default">
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
@@ -58,7 +58,12 @@
                     <div class="input-cont">
                         <input type="text" id="txtcmpnm" name="txtcmpnm" placeholder="Eg; Company Name ..." class="m-wrap" />
                     </div>
-                    
+                </div>
+                <br />
+				<div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtbnrnm" name="txtbnrnm" placeholder="Eg; Company banner[Image name] ..." class="m-wrap" />
+                    </div>
                 </div>
                 <br />
                 <div class="chat-form">
@@ -74,60 +79,45 @@
 				</span>
             </form>
 
-        </div-->
+        </div>
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
         <div class="row-fluid">
-		
-			<h4> All Options </h4>
-			<hr/>
-			<br/>
-            <div class="control-group">
-				<label class="control-label">Service Tax</label>
-				<div class="controls" id="default">
-					<input id="txtservicetax1" class="m-wrap medium" readonly type="text" name="txtservicetax1" placeholder="Service Tax">					
+            <div class="tabbable tabbable-custom tabbable-full-width">
 
-					<a id="editax" name="editax" class="btn btn-default"> Edit</a>										
-				</div>
-				<div class="controls hide1" id="hide1">	
-					<input id="txtservicetax" class="m-wrap medium" type="text" name="txtservicetax" placeholder="Service Tax">
-					<a id="savetax" name="savetax" class="btn btn-default"> Save</a>
-				</div>
-			</div>
-			
-			<div class="control-group">
-				<label class="control-label">Vat</label>
-				<div class="controls" id="updefault">
-					<input id="txtvat" class="m-wrap medium" readonly type="text" name="txtvat" placeholder="Vat%">					
+                <div class="tab-content">
 
-					<a id="editvat" name="editvat" class="btn btn-default"> Edit</a>	
-					<a id="updvat" name="updvat" class="btn btn-default"> Save</a>
-				</div>				
-			</div>
-			
-			<div class="control-group">
-				<label class="control-label">Upcoming Days</label>
-				<div class="controls" id="updefault">
-					<input id="txtdays" class="m-wrap medium" readonly type="text" name="txtdays" placeholder="Days">					
+                    <!--end row-fluid-->
+                    <div id="tab_1_2" class="tab-pane active">
+                        <div class="portlet box green">
+                            <div class="portlet-title">
+                                <div class="caption"><i class="icon-sitemap"></i>All Company Details</div>
 
-					<a id="editdays" name="editdays" class="btn btn-default"> Edit</a>	
-					<a id="updays" name="updays" class="btn btn-default"> Save</a>
-				</div>				
-			</div>
-			<div class="control-group">
-				<label class="control-label">Retail Sales</label>
-				<div class="controls" id="updefault">
-					<select id="txtrtl" name="txtrtl" >						
-						<option  value="Enable"> Enable</option>
-						<option selected value="Disable"> Disable</option>						
-					</select>						
-					<a id="updrtl" name="updrtl" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
-				</div>				
-			</div>
-			
-			
-			
-           
+                            </div>
+                            <div class="portlet-body">
+                                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                                    <thead>
+                                        <tr>
+                                            <th> Company Name</th>
+                                            <th> Registration Number</th>
+											<th> Banner Img</th>
+											<th> Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="showcmpdata">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--end tab-pane-->
+
+                </div>
+            </div>
+            <!--end tabbable-->
         </div>
         <!--end tabbable-->
         <!-- END PAGE CONTENT-->
