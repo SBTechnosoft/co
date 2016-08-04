@@ -482,10 +482,7 @@ if(isset($setting) && !empty($setting))
 						{
 							echo "active ";
 						}
-						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'TEMP')
-						{
-							echo "active ";
-						}
+						
 						else
 						{
 							echo" ";
@@ -569,16 +566,7 @@ if(isset($setting) && !empty($setting))
 			<?php 
 			
 				}
-				if(isset($arr1) && !empty($arr1) && in_array("INV", $arr1))
-				{
-					?>
-					<li class="">
-						<a href="<?php echo HTTP_SERVER.'index.php?url=TEMP';?>">
-							<i class="icon-file"></i> Templates</a>
-					</li>
-					
-					<?php
-				}
+				
 			?>
             </ul>
         </li>
@@ -663,6 +651,10 @@ if(isset($setting) && !empty($setting))
 						{
 							echo "active ";
 						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'TEMP')
+						{
+							echo "active ";
+						}
 						else
 						{
 							echo" ";
@@ -722,7 +714,19 @@ if(isset($setting) && !empty($setting))
                         <i class="icon-cog"></i> Emails 
 					</a>
                 </li>
-				<?php } ?>
+			<?php 
+				} 
+				if(isset($arr1) && !empty($arr1) && in_array("INV", $arr1))
+				{
+					?>
+					<li class="">
+						<a href="<?php echo HTTP_SERVER.'index.php?url=TEMP';?>">
+							<i class="icon-file"></i> Templates</a>
+					</li>
+					
+					<?php
+				}
+			?>
             </ul>
         </li>
 			<?php } ?>

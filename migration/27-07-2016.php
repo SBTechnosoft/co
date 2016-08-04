@@ -71,13 +71,20 @@ CREATE TABLE `suchak_mgt`.`retail_inv_dtl` (
 ALTER TABLE `suchak_mgt`.`company_mst` 
 ADD COLUMN `banner_img` VARCHAR(45) NULL AFTER `cmp_reg_no`;
 
-change///
+db change///
 02-08-2016
  
 ALTER TABLE `suchak_mgt`.`setting` 
 ADD COLUMN `retail_sales` VARCHAR(45) NULL AFTER `vat`;
 
+db change //
+03-08-2016
 
+CREATE TABLE `suchak_mgt`.`template_mst` (
+  `template_id` INT NOT NULL AUTO_INCREMENT,
+  `template_name` VARCHAR(50) NULL,
+  `template_body` LONGTEXT NULL,
+  PRIMARY KEY (`template_id`));
  
   
   

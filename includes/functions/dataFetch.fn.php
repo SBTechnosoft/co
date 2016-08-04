@@ -32,9 +32,9 @@ function showProduct($conn)
 		`deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
-function showProductMst($conn)
+function showProductMst($conn,$ctgprod)
 	{
-		$sqlShowCatg = "select `prod_id`,`disp_nm` from  `product_mst` where  
+		$sqlShowCatg = "select `prod_id`,`disp_nm` from  `product_mst` where `prd_cat_id` = '".$ctgprod."' and
 		`deleted_at` = '0000-00-00 00:00:00' order by `disp_nm` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
@@ -190,7 +190,8 @@ function showUpcoming($conn,$updy)
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
 		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
 		from  `event_mst` 
-		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and `deleted_at` = '0000-00-00 00:00:00' "; 	 
+		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
+		`deleted_at` = '0000-00-00 00:00:00' "; 	 
 		
 		return $conn->getResultArray($sqlEventUpcomingStatus);	
 	}
@@ -201,7 +202,7 @@ function showCompleted($conn)
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
 		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
 		from  `event_mst` 
-		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00'";
+		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
 	}
 function showEqpdtl($conn,$event_plc_dtl)

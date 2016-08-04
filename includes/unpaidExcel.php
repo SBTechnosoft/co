@@ -22,7 +22,9 @@ if(isset($_POST['excel']))
 
 	$output			= "";
 	$table 			= ""; // Enter Your Table Name
-	$sql 			= mysql_query("select `event_id` as 'Order Id',`event_name` as 'Order Name',`client_name` as 'Client Name',`client_work_mob` as 'Mobile #',`client_charges` as 'Client Charge',`client_paid_amt` as 'Client Paid Amt',(client_charges - client_paid_amt) as 'Remaining Amt'  from event_mst where payment_status = \"Unpaid\" order by event_id desc ");
+	$sql 			= mysql_query(	UNPAID_EVENT_EXCEL	);						
+								
+								
 	$columns_total 	= mysql_num_fields($sql);
 
 	// Get The Field Name

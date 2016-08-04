@@ -32,7 +32,7 @@
 	}
 	if(isset($_POST['showProduct']))
 	{	
-		$ctg = showProductMst($conn);
+		$ctg = showProductMst($conn,$_POST['ctgprod']);
 		?>
 		
 		<option select="select" value = "">Select the Product</option>

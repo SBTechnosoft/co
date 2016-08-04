@@ -226,7 +226,7 @@
                         <div class="portlet-title">
                             <div class="caption"><i class="icon-check-sign"></i>Transaction Accounts</div>
 								
-								<a href= "#" id="paidexcel" class="invoice invoice_excel"  >
+								<a href= "#" id="tranexcel" class="invoice invoice_excel"  >
 									<i class="fa fa-file-excel-o fa-2x" style="color:white; margin-top:10%;" aria-hidden="true"></i>					
 								</a>
                         </div>

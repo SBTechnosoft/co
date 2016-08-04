@@ -280,25 +280,47 @@ function showPrdCtg()
 		}
 		showPrdCtg();
 		
-function showProduct()
-		{		
+$("#prdCtgDrp").on("change", function()
+		{
+			var ctgprod    =   $('#prdCtgDrp').val();
+			// alert(prod);
+			// return false;
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
 				async : false,
 				data : {
-					'showProduct' : 1
+					'showProduct' : 1,
+					'ctgprod' : ctgprod,
 					
 				},
 				success : function(r1)
 				{
-					$('#drpProd').html(r1);					
-					
+					 $('#drpProd').html(r1);									
 				}
 				
 			});
-		}
-		showProduct();
+		});
+		
+// function showProduct()
+		// {		
+			// $.ajax({
+				// url : './includes/retailSalesPost.php',
+				// type : 'post',
+				// async : false,
+				// data : {
+					// 'showProduct' : 1
+					
+				// },
+				// success : function(r1)
+				// {
+					// $('#drpProd').html(r1);					
+					
+				// }
+				
+			// });
+		// }
+		// showProduct();
 function showtax()
 		{		
 			$.ajax({

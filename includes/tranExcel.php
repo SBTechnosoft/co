@@ -1,5 +1,4 @@
 <?php
-
 include_once('./header.php');
 // Database Connection
 if(isset($_POST['excel']))
@@ -7,7 +6,8 @@ if(isset($_POST['excel']))
 $host=TNS;
 $uname=DB_SERVER_USERNAME;
 $pass=DB_SERVER_PASSWORD;
-$database = DB_NAME;
+$database = DB_NAME;	
+
 $connection=mysql_connect($host,$uname,$pass); 
 
 echo mysql_error();
@@ -22,11 +22,11 @@ or die("database cannot be selected <br>");
 
 $output			= "";
 $table 			= ""; // Enter Your Table Name
-$sql 			= mysql_query( VPAID_EVENT_EXCEL );
+$sql 			= mysql_query(	TRAN_EVENT_EXCEL );						
 							
 							
-							
-$columns_total 	= mysql_num_fields($sql);
+
+	$columns_total 	= mysql_num_fields($sql);
 
 // Get The Field Name
 
@@ -51,13 +51,20 @@ $output .="\n";
 // header('Content-type: application/csv');
 // header('Content-Disposition: attachment; filename=upload/'.$filename);
 
-$name="../upload/excel/vpaid.csv";
+$name="../upload/excel/transaction.csv";
+//$name1 = "paid.csv";
+
 	$f=fopen($name,'wb');				
 	fwrite($f,$output,strlen($output));
 	fclose($f);
-	//header('Location: ../upload/excel/vpaid.csv');
-//echo $output;
-	echo 1;
-}
 	
+	//header('Location: ../upload/excel/paid.csv');
+	
+	
+//exit;
+
+echo 1;
+}	
 ?>
+
+

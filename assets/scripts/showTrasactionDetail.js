@@ -1,4 +1,24 @@
-
+$('#tranexcel').click(function()
+		{	
+			// alert(" use for excel");
+			// return false;
+			$.ajax({
+				url : 'includes/tranExcel.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'excel'  : 1,				
+				},
+				success : function(vp)
+				{	
+					if(vp==1)
+					{
+					window.location.href = 'upload//excel//transaction.csv';
+					}
+				}				
+			});	
+						
+		});
 
 
 $('body').delegate('.expopen','click',function()
