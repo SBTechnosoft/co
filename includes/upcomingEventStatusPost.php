@@ -127,7 +127,12 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>										
+				</td>
+				<td>
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
+						<i class="fa fa-trash-o"></i> 
+					</a> 
+				</td>
 				
 			</tr>
 		<?php	

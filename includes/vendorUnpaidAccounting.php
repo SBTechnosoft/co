@@ -191,6 +191,7 @@
                                         <th>Vendor Charges</th>
                                         <th>Vendor Paid Amt</th>
                                         <th>Remaining Amt</th>
+										<th>Action </th>
                                     </tr>
                                 </thead>
                                 <tbody id="show_unpaid_trn">

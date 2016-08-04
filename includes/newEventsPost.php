@@ -397,7 +397,10 @@ if(isset($_POST['showtax']))
 		for($i=0;$i<$showVendCnt;$i++)
 		{
 		?>
-			<option  value="<?php echo $data[$i]['vend_id'];?>"><?php echo $data[$i]['vendor_name'];?></option>
+			
+			<option  value="<?php echo $data[$i]['vend_id'];?>"> 
+				<?php echo $data[$i]['vendor_name']."  ( ".$data[$i]['vendor_cmp']." )";?> 
+			</option>
 		<?php	
 		}		
 	}

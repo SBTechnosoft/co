@@ -130,13 +130,14 @@
                                     <tr>
                                         <th> Order Id</th>
                                         <th> Order Name </th>
-                                        <th>Client Name </th>				
+                                        <th>C.Name </th>				
                                         <th>Client charge</th>
-										<th>Discount</th>
+										<th>Disc.</th>
 										<th>S.Tax</th>
 										<th>Amt</th>
-                                        <th>Paid Amount</th>
-                                        <th>Remaining Amount</th>
+                                        <th>Paid Amt</th>
+                                        <th>Remain Amt</th>
+										<th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="showClientUnpaid">

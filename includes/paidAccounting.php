@@ -135,6 +135,7 @@
 										<th>S.Tax</th>
 										<th>Amt</th>
                                         <th>Paid Amount</th>
+										<th> Action </th>
                                     </tr>										
                                 </thead>
                                 <tbody id="showClientPaid">

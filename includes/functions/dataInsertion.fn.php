@@ -135,7 +135,25 @@ function insEqup($conn,$txteqpnm,$txtserno,$txtmodel,$txtcateqp,$txtpurdate,$txt
 			//print_r($resultArray);			
 			echo 0;
 			exit;
-		}	
+		}
+function updEqup($conn,$txteqpnm,$txtserno,$txtmodel,$txtcateqp,$txtpurdate,$txtpurfrm,$txtremk,$txtprice,$upd_date,$drptype,$eq_id)
+		{
+			$sqlInsEqup = "UPDATE  `equipment_mst` set `eq_name` = '".$txteqpnm."',
+														`serial_no` = '".$txtserno."',
+														`model_no` = '".$txtmodel."',
+														`category_id` = '".$txtcateqp."',
+														`purchase_date` = '".$txtpurdate."',
+														`purchase_from` = '".$txtpurfrm."',
+														`eq_photo` = '".$txtremk."',
+														`remark` = '".$txtremk."',
+														`price` = '".$txtprice."',
+														`price_type` = '".$drptype."',
+														`updated_at` = '".$upd_date."' where `eq_id` = '".$eq_id."'  "; 
+			$resultArray = $conn->insertQuery($sqlInsEqup);
+			//print_r($resultArray);			
+			echo 0;
+			exit;
+		}			
 
 function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2,$txtvcharge)
 		{

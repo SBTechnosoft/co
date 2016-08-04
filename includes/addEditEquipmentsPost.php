@@ -14,6 +14,14 @@
 		$del_date = date('Y-m-d H:i:s');
 		delEquip($conn,$_POST['id'],$del_date);	
 	}
+	if(isset($_POST['updEquip']))
+	{	
+		$upd_date = date('Y-m-d H:i:s');
+		$purdt = $_POST['txtpurdate'];		
+		$npurdt = date_format(new DateTime($purdt),'Y-m-d H:i:s');
+		
+		updEqup($conn,$_POST['txteqpnm'],$_POST['txtserno'],$_POST['txtmodel'],$_POST['txtcateqp'],$npurdt,$_POST['txtpurfrm'],$_POST['txtremk'],$_POST['txtprice'],$upd_date,$_POST['drptype'],$_POST['eq_id']);	
+	}
 	if(isset($_POST['show']))
 	{	
 		$data = showCatg ($conn);

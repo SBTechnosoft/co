@@ -1412,7 +1412,8 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script> 
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEquipment.js"></script>  
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEquipment.js"></script> 
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertEquipment.js"></script> 
 					<script>
 						jQuery(document).ready(function() {    
 						   App.init();

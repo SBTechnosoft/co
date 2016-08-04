@@ -80,13 +80,15 @@
 				<td> 
 					<form id="<?php echo $data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
 						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
-						<a class="edit" data-toggle="tooltip" title="Edit" onclick="document.getElementById('<?php echo $data[$i]['staff_id']; ?>').submit();">
+						<a class="edit" data-toggle="tooltip" title="Edit" 
+						onclick="document.getElementById('<?php echo $data[$i]['staff_id']; ?>').submit();">
 							<i class="fa fa-pencil-square-o"></i>
 						</a>
+						<a style="cursor:pointer; padding: 5px;" data-id="<?php echo $data[$i]['emp_id']; ?>" data-toggle="tooltip" title="Permission" class="newperadd" >
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</a>
 					</form>
-					<a style="cursor:pointer;" data-id="<?php echo $data[$i]['emp_id']; ?>" data-toggle="tooltip" title="Permission" class="newperadd" >
-						<i class="fa fa-lock" aria-hidden="true"></i>
-					</a>
+					
 				</td>
 				
 				

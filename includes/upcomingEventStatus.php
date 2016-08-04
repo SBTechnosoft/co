@@ -134,6 +134,7 @@
 										<th> Tot Amt </th>										
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
+										<th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody id="upcoming_event">

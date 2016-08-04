@@ -38,7 +38,11 @@
 						<td><?php echo ucfirst($VdPaid[$i]['vendor_cmp']);?></td>
 						<td><span style="float:right;"><?php echo $VdPaid[$i]['vendor_charges'];?></span></td>
 						<td><span style="float:right;"><?php echo $VdPaid[$i]['vendor_paid_amt'];?></span></td>
-						
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $VdPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 						
 					</tr>
 					<tr>
@@ -47,7 +51,7 @@
 						<td><b> Grand Total</b></td>
 						<td><span style="float:right;"><b><?php echo $VdPaid[$i]['vtotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $VdPaid[$i]['ptotal'];?> </b></span></td>
-					
+						<td></td>
 					</tr>
 					
 				<?php	
@@ -79,7 +83,11 @@
 						<td><?php echo ucfirst($VdPaid[$i]['vendor_cmp']);?></td>
 						<td><span style="float:right;"><?php echo $VdPaid[$i]['vendor_charges'];?></span></td>
 						<td><span style="float:right;"><?php echo $VdPaid[$i]['vendor_paid_amt'];?></span></td>
-						
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $VdPaid[$i]['event_id']; ?>" class="delete"> 
+							<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 						
 					</tr>
 		<?php

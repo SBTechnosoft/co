@@ -127,6 +127,11 @@
 					<?php echo ucfirst($data[$i]['status']);?> 
 					</span>
 					
+				</td>
+				<td>
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
+						<i class="fa fa-trash-o"></i> 
+					</a> 
 				</td>	
 			</tr>
 		<?php	

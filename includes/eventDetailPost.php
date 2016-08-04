@@ -755,9 +755,35 @@
 			<tr>
 				<td><?php echo $vendpaidtrn[$a]['vendor_name'];?></td>
 				<td><?php echo $vendpaidtrn[$a]['vendor_cmp'];?></td>
-				<td><?php echo $vendpaidtrn[$a]['cat_id'];?></td>
-				<td><?php echo $vendpaidtrn[$a]['event_places_id'];?></td>
-				<td><?php echo $vendpaidtrn[$a]['vend_id'];?></td>
+				<td>					
+					<?php 
+						if($vendpaidtrn[$a]['cat_id'] == 1) 
+						{
+							echo "Class 1";
+							
+						}
+						else if($vendpaidtrn[$a]['cat_id'] == 2)
+						{
+							echo "Class 2";
+						}
+						else if($vendpaidtrn[$a]['cat_id'] == 3)
+						{
+							echo "Class 3";
+						}
+						else if($vendpaidtrn[$a]['cat_id'] == 4)
+						{
+							echo "Class 4";
+						}
+						else if($vendpaidtrn[$a]['cat_id'] == '')
+						{
+							echo "-";
+						}
+						else 
+						{
+							echo "-";
+						}
+					?>
+				</td>				
 				<td><?php echo $vendpaidtrn[$a]['vendor_charges'];?></td>
 				<td><?php echo $vendpaidtrn[$a]['vendor_paid_amt'];?></td>
 				<td><?php echo $vendpaidtrn[$a]['vendor_paid_status'];?></td>

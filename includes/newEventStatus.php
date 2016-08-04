@@ -129,7 +129,7 @@
 										<th> Payment Status </th>
 										<!--th> Inv.</th>										
 										<th> Action </th-->
-										
+										<th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody id="new_event">

@@ -39,7 +39,11 @@
 						<td><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges'];?></span></td>
 						<td><span style="float:right;"><?php if($VdUnPaid[$i]['vendor_paid_amt']==''){ echo 0;} else {echo $VdUnPaid[$i]['vendor_paid_amt'];}?></span></td>
 						<td style="color:red;"><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges']-$VdUnPaid[$i]['vendor_paid_amt'] ;?></span></td>
-						
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 					</tr>					
 					<tr>
 						<td></td>
@@ -48,6 +52,7 @@
 						<td><span style="float:right;"><b><?php echo $VdUnPaid[$i]['vtotal'];?></span></td>
 						<td><span style="float:right;"><b><?php echo $VdUnPaid[$i]['ptotal'];?></span></td>
 						<td style="color:red;"><span style="float:right;"><b><?php echo $VdUnPaid[$i]['rtotal'];?></span></td>
+						<td></td>
 					</tr>
 					
 					<?php
@@ -78,7 +83,11 @@
 						<td><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges'];?></span></td>
 						<td><span style="float:right;"><?php if($VdUnPaid[$i]['vendor_paid_amt']==''){ echo 0;} else {echo $VdUnPaid[$i]['vendor_paid_amt'];}?></span></td>
 						<td style="color:red;"><span style="float:right;"><?php echo $VdUnPaid[$i]['vendor_charges']-$VdUnPaid[$i]['vendor_paid_amt'] ;?></span></td>
-						
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $VdUnPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 					</tr>
 		<?php	
 				}

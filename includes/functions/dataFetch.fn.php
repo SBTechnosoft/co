@@ -111,7 +111,7 @@ function showEqupDrp($conn)
 	}
 function showStaffDrp($conn)
 	{
-		$sqlShowStaffDrp = "select `staff_id`,`first_name` from  staff_mst where `staff_type`= 'staff' "; 
+		$sqlShowStaffDrp = "select `staff_id`,`first_name` from  staff_mst where `staff_type`= 'staff'  or `staff_type`= 'admin' "; 
 		return $conn->getResultArray($sqlShowStaffDrp);	
 	}
 function showEventDetailInv($conn,$eid)
@@ -309,19 +309,23 @@ function showEventPlacesDetail($conn,$epdid)
 	}
 function showVendName($conn)
 	{
-		$sqlShowVend = "select `vend_id`,`vendor_name` from  `vendor_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `vendor_name` "; 
+		$sqlShowVend = "select `vend_id`,`vendor_name`,`vendor_cmp` from  `vendor_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `vendor_name` "; 
 		return $conn->getResultArray($sqlShowVend);		
 	}
 	
 function showVendSel($conn,$eventplid)
 	{
-		$sqlShowSelVend = "select vm.vendor_name from vendor_mst vm inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id where evd.event_places_id = '".$eventplid."' "; 
+		$sqlShowSelVend = "select vm.vendor_name,vm.vendor_cmp from vendor_mst vm inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id where evd.event_places_id = '".$eventplid."' "; 
 		return $conn->getResultArray($sqlShowSelVend);		
 	}
 	
 function showvendpaidtrn($conn,$eveid)
 	{
-		$sqlShowEVend = "select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id,evd.vend_id,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,evd.event_vendor_id from vendor_mst vm inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id where evd.event_id = '".$eveid."' order by vm.vendor_name "; 
+		//$sqlShowEVend = "select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id,evd.vend_id,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,evd.event_vendor_id from vendor_mst vm inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id where evd.event_id = '".$eveid."' order by vm.vendor_name "; 
+		$sqlShowEVend = "select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id,evd.vend_id,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,evd.event_vendor_id 
++							from vendor_mst vm 
++							inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id 
++							where evd.event_id = '".$eveid."' order by vm.vendor_name "; 
 		return $conn->getResultArray($sqlShowEVend);		
 	}
 function showEventVendpaidtrn($conn,$txtevent_vend_id,$txtvend_evnt_id)

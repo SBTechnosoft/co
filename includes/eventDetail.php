@@ -696,13 +696,11 @@ else
 														<table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
 															<thead>
 																<tr>
-																	<th> Vendor Name</th>
-																	<th> Vendor Company </th>
-																	<th>Vendor Category</th>
-																	<th> Order Places Id</th>
-																	<th> Vendor Id</th>
-																	<th> Vendor Charges </th>
-																	<th> Vendor Paid Amt</th>
+																	<th> V. Name</th>
+																	<th> V. Company </th>
+																	<th>V. Category</th>																	
+																	<th> V. Charges </th>
+																	<th> V. Paid Amt</th>
 																	<th> Vendor Status </th>
 																	<th> Action </th>
 																</tr>
