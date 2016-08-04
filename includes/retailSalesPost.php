@@ -1,18 +1,119 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
-	if(isset($_POST['saverecord']))
-	{	
-		$cur_date = date('Y-m-d H:i:s');
-		insResource($conn,$_POST['txtresnm'],$_POST['txtresprice'],$cur_date);	
-	}		
+			
 	
-	
-	if(isset($_POST['delete']))
+	if(isset($_POST['caluculate']))
 	{	
-		$del_date = date('Y-m-d H:i:s');
-		delProductAdd($conn,$_POST['id'],$del_date);	
+		
+		$txmode =  $_POST['taxmode'];		
+		$txrt = $_POST['stax'];
+		$vtrt =  $_POST['vat'];
+		$dic =  $_POST['disc'];
+		$clcharge =  $_POST['clientcharge'];
+		
+		$txticomgrp = $_POST['txticomgrp'];
+		$ptxtiamt = $_POST['ptxtiamt'];
+		
+		$cnt = count($txticomgrp);
+		
+		if($txmode == 'Yes')
+		{
+			$tax = 0;
+			$vat = 0;
+			for($i=0;$i<$cnt;$i++)
+			{
+				
+				if($txticomgrp[$i] == 'Services')
+				{
+					$tax += round(($ptxtiamt[$i]*$txrt)/100);
+				}
+				else
+				{
+					$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+				}
+				
+			}
+			//echo $tax."<br>";
+			//echo $vat."<br>";
+			
+			$totamt = round($clcharge - $dic ) + $tax + $vat ;
+			//echo $totamt."<br>";
+			?>
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+			<?php						
+		}
+		else
+		{
+			$totamt = round($clcharge - $dic )  ;
+			?>
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+			
+			<?php
+		}
+		
+		
 	}
+	if(isset($_POST['CalDiscount']))
+	{	
+		
+		$txmode =  $_POST['taxmode'];		
+		$txrt = $_POST['stax'];
+		$vtrt =  $_POST['vat'];
+		$dic =  $_POST['disc'];
+		$clcharge =  $_POST['clientcharge'];
+		
+		$txticomgrp = $_POST['txticomgrp'];
+		$ptxtiamt = $_POST['ptxtiamt'];
+		
+		$cnt = count($txticomgrp);
+		
+		if($txmode == 'Yes')
+		{
+			$tax = 0;
+			$vat = 0;
+			for($i=0;$i<$cnt;$i++)
+			{
+				
+				if($txticomgrp[$i] == 'Services')
+				{
+					$tax += round(($ptxtiamt[$i]*$txrt)/100);
+				}
+				else
+				{
+					$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+				}
+				
+			}
+			//echo $tax."<br>";
+			//echo $vat."<br>";
+			
+			$totamt = round($clcharge - $dic ) + $tax + $vat ;
+			//echo $totamt."<br>";
+			?>
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+			<?php						
+		}
+		else
+		{
+			$totamt = round($clcharge - $dic )  ;
+			?>
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+			
+			<?php
+		}
+		
+		
+	}
+	
 	if(isset($_POST['showPrdCtg']))
 	{	
 		$ctg = showPrdCtgdrp($conn);

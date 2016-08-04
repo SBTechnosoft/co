@@ -1,5 +1,18 @@
 <?php
-$updy = 15;
+$data = showUpDays($conn);
+if(isset($data))
+{
+	$updy = $data[0]['upcoming_days'];
+}
+else
+{
+	$updy = 0;
+}
+//print_r($data);
+
+
+
+
 define('NEW_EVENT_EXCEL', "select `event_id` as 'Order Id',`event_name` as 'Order Name',`client_name` as 'Client Name',
 								`client_cmp` as 'Client Company',`client_email` as 'E-mail',`client_work_mob` as 'Mobile#',								
 								`from_date` as 'Order Date',`client_charges` as 'Client Charge',`service_tax_rate` as 'S.Rate',
@@ -73,6 +86,13 @@ define	('TRAN_EVENT_EXCEL',"select event_id as 'Order ID' ,'Event Expense',event
 							from expence_dtl exd
 							inner join staff_mst sm on sm.staff_id = exd.exp_by
 							where event_id = 0"
+	);
+define	('ENQUIRY_EVENT_EXCEL',
+				"select `event_id` as 'Order Id',`event_name` as 'Order Name',`client_name` as 'Client Name',`client_cmp` as 'Client Company',
+				`client_email` as 'E-mail',`client_work_mob` as 'Mobile#',`from_date` as 'Order Date',
+				`client_charges` as 'Client Charge',`service_tax_rate` as 'Tax Rate',`service_tax_amt` as 'S. Tax',`total_amt` as 'Amount'
+				from  `event_mst` 
+				where `status` = 'enquiry' and deleted_at = '0000-00-00 00:00:00' "
 	);
 
 ?>

@@ -1,3 +1,25 @@
+$('#enquiryexcel').click(function()
+		{	
+			// alert(" use for excel");
+			// return false;
+			$.ajax({
+				url : 'includes/enquiryExcel.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'excel'  : 1,				
+				},
+				success : function(vp)
+				{	
+					if(vp==1)
+					{
+					window.location.href = 'upload//excel//enquiryexcel.csv';
+					}
+				}				
+			});	
+						
+		});
+
 	function showdata()
 		{		
 			$.ajax({

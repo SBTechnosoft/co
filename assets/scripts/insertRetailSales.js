@@ -1,39 +1,80 @@
 $("#taxmode").on("change", function()
 		{
 			var taxmode    =   $('#taxmode').val();
-			var stax = $('#txtstax');
-			var vat = $('#txtvat');
+			var stax = $('#txtstax').val();
+			var vat = $('#txtvat').val();
+			var disc = $('#txtdisc').val();
+			var clientcharge = $('#txtcharge').val();			
+			var txticomgrp = [];
+			$.each($('.txticomgrp'), function(){            
+                 txticomgrp.push($(this).val());
+            });			
+			var ptxtiamt = [];
+			$.each($('.ptxtiamt'), function(){            
+                 ptxtiamt.push($(this).val());
+            });		
 			
-			// alert(taxmode);
-			
-			// alert(ptxtiamt);
-			
-			if(taxmode=='Yes')
-			{			
-				// var len = (txticomgrp).length;
-				
-				
-				// alert(len);
-				
-				// alert(txticomgrp);
-				// return false;
-				var i ;
-				for(i=0; i < txticomgrp.length;i++)
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'caluculate' : 1,
+					 'taxmode' : taxmode,
+					 'stax' : stax,
+					 'vat' : vat,
+					 'disc' : disc,
+					 'clientcharge' : clientcharge,
+					'txticomgrp' : txticomgrp,
+					'ptxtiamt' : ptxtiamt,
+				},
+				success : function(r1)
 				{
-					alert(txticomgrp);
+					$('#totdata').html(r1);
+									
 				}
 				
-				var totstax = [];
-				$.each($('.ptxtiamt'), function(){            
-					totstax.push($(this).val());
-				});
+			});
+			
+			
+		});
+$("#txtdisc").on("focusout", function()
+		{
+			var taxmode    =  $('#taxmode').val();
+			var stax = $('#txtstax').val();
+			var vat = $('#txtvat').val();
+			var disc = $('#txtdisc').val();
+			var clientcharge = $('#txtcharge').val();			
+			var txticomgrp = [];
+			$.each($('.txticomgrp'), function(){            
+                 txticomgrp.push($(this).val());
+            });			
+			var ptxtiamt = [];
+			$.each($('.ptxtiamt'), function(){            
+                 ptxtiamt.push($(this).val());
+            });		
+			
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'CalDiscount' : 1,
+					 'taxmode' : taxmode,
+					 'stax' : stax,
+					 'vat' : vat,
+					 'disc' : disc,
+					 'clientcharge' : clientcharge,
+					'txticomgrp' : txticomgrp,
+					'ptxtiamt' : ptxtiamt,
+				},
+				success : function(r1)
+				{
+					$('#totdata').html(r1);
+									
+				}
 				
-				var totvat = [];
-				$.each($('.ptxtiamt'), function(){            
-					totvat.push($(this).val());
-				});
-			}
-			 
+			});
 			
 			
 		});
@@ -132,7 +173,6 @@ $("#drpProd").on("change", function()
 			var rate = $('.txtprdrate').val();
 			var amt = $('.txtprdamt').val();
 			
-			
 			if(ctgid=='')
 			{
 				alert("Plz Select Equipment.");
@@ -204,20 +244,7 @@ $("#drpProd").on("change", function()
 						'<td><a class="prdremove" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
 							'<i class="fa fa-times" aria-hidden="true"></i>'+							
 						'</a></td>'+
-					'</tr>'+
-					
-					'<script>'+
-					'var txticomgrp = [];'+
-					 '$.each($(\'.txticomgrp\'), function(){ ' +          
-						'txticomgrp.push($(this).val());'+
-					'});'+
-					'var ptxtiamt = [];'+
-					 '$.each($(\'.ptxtiamt\'), function(){ ' +          
-						'ptxtiamt.push($(this).val());'+
-					'});'+
-					// 'alert(txticomgrp);'+
-					// 'alert(ptxtiamt);'+
-					'</script>';					
+					'</tr>';										
 					
 			$('#prdrec').append(prddiv);
 			

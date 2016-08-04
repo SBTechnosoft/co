@@ -183,6 +183,19 @@
 											</select>
 										</div>
 									</div>
+									
+									
+									<div>										
+										<input style="width:207px;" type="text"  value="Service Tax" readonly  />									
+										<input style="width:207px;" type="text"  value="Vat" readonly />									
+										<input style="width:207px;" type="text"  value="Total" readonly  />																			
+									</div>
+									
+									<div id ="totdata">									
+									</div>
+									
+									
+									
 									<input type="hidden" id="txtstax" name="txtstax" value=""/>
 									<input type="hidden" id="txtvat" name="txtvat" value=""/>
 									<br/>

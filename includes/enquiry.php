@@ -54,6 +54,9 @@
                         <div class="portlet box green">
                             <div class="portlet-title">
                                 <div class="caption"><i class="icon-question-sign"></i>Enquiry Details</div>
+								<a href= "#" id="enquiryexcel" class="invoice invoice_excel"  >
+									<i class="fa fa-file-excel-o fa-2x" style="color:white; margin-top:10%;" aria-hidden="true"></i>					
+								</a>
                             </div>
                             <div class="portlet-body">
                                 <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">

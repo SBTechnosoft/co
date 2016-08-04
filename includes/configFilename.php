@@ -97,7 +97,7 @@ define('FILENAME_RESOURCES',DIR_WS_INCLUDES.'resourcesCategory.php');
 define('FILENAME_PRODUCT',DIR_WS_INCLUDES.'productCategory.php');
 define('FILENAME_PRDADD',DIR_WS_INCLUDES.'productAdd.php');
 define('FILENAME_PRDVIEW',DIR_WS_INCLUDES.'productView.php');
-define('FILENAME_RSALES',DIR_WS_INCLUDES.'reatilSales.php');
+define('FILENAME_RSALES',DIR_WS_INCLUDES.'retailSales.php');
 
 //registration files
 //define('FILENAME_REGISTRATION',DIR_WS_INCLUDES.'registration.php');

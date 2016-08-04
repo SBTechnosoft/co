@@ -10,41 +10,44 @@ $inm = date_format($date,"Ymd");
 	if(isset($_POST['txtprdnm']))
 	{	
 		
-		if($_POST['taxmode'] == 'Yes')
-		{
-			if($_POST['txtdisc']=='')
-			{
-				$tax  =	round(($_POST['txtcharge'])* ($_POST['txtstax'])/100);				
-				$gtot =  ($_POST['txtcharge'] ) + ($tax) ;				
-			}
-			else
-			{
-				$tax =  round(((($_POST['txtcharge']) - ($_POST['txtdisc'])) * ($_POST['txtstax']))/100);				
-				$gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) ) + ($tax) ;
-			}
-		}
-		else
-		{
-			if($_POST['txtdisc'] == '')
-			{
-				$gtot = ($_POST['txtcharge']);
-			}
-			else
-			{
+		// if($_POST['taxmode'] == 'Yes')
+		// {
+			// if($_POST['txtdisc']=='')
+			// {
+				// $tax  =	round(($_POST['txtcharge'])* ($_POST['txtstax'])/100);				
+				// $gtot =  ($_POST['txtcharge'] ) + ($tax) ;				
+			// }
+			// else
+			// {
+				// $tax =  round(((($_POST['txtcharge']) - ($_POST['txtdisc'])) * ($_POST['txtstax']))/100);				
+				// $gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) ) + ($tax) ;
+			// }
+		// }
+		// else
+		// {
+			// if($_POST['txtdisc'] == '')
+			// {
+				// $gtot = ($_POST['txtcharge']);
+			// }
+			// else
+			// {
 				
-				$gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) )  ;
+				// $gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) )  ;
 				
-			}
+			// }
 				
 			
-		}
+		// }
+		
+		$gtot = $_POST['txtgtotamt'];
+		$tax =  $_POST['txttaxamt'];
+		$vat =  $_POST['txtvatamt'];
 		
 		
 		$hdn_ary = $_POST['hdn'];
 		$cur_date = date('Y-m-d H:i:s');
 		
 		
-		$tot_amt = $gtot;
 		
 		$paid_amt = $_POST['txtpaid'];
 		
@@ -66,11 +69,7 @@ $inm = date_format($date,"Ymd");
 		else
 		{
 			$txtpaid = $_POST['txtpaid'];
-		}
-		
-		
-		$gtot = $tot_amt;
-		
+		}	
 		
 		$frdt = $_POST['txtfromdt'];
 		$trdt = $_POST['txttodt'];
@@ -80,7 +79,7 @@ $inm = date_format($date,"Ymd");
 
 		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['drpcmpnm'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
-		$pay_status,$tax,$gtot,$_POST['txtstax']);
+		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
 		
 		
@@ -219,15 +218,19 @@ $inm = date_format($date,"Ymd");
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Discount</td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$_POST['txtdisc'].'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">S.Tax %<br></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$tax.'</td>
+						  </tr>
+						  <tr class="trhw">
+							<td class="tg-jtyd" colspan="4">Vat %<br></td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$vat.'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-jtyd" colspan="4">Total</td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$_POST['txtcharge'].'</td>
+							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$gtot.'</td>
 						  </tr>
 						  <tr class="trhw">
 							<td class="tg-vi9z" colspan="5" rowspan="1" style="background-color:#d9d9d9">							
