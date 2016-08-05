@@ -577,6 +577,11 @@ function showResPlacesDtl($conn,$eid)
 	{
 		$sqlshowVennue = " select `event_id`,`event_places_id`,`res_name`,`qty`,`amount`  from  `res_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showTemplate($conn)
+	{
+		$sqlshowTemplate = " select `template_id`,`template_name`  from  `template_mst` "; 
+		return $conn->getResultArray($sqlshowTemplate);	
 	}	
 
 	

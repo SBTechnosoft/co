@@ -50,7 +50,7 @@
 			</li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
-		<div id="add_form" class="row-fluid search-forms search-default">
+		<div id="add_form_temp" class="row-fluid search-forms search-default">
 
             <form class="form-search" action="#">
                 <h4>Template </h4><hr/>
@@ -165,24 +165,17 @@
 						
                         <div class="portlet-body">
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
-                                <!--thead>
+                                <thead>
                                     <tr>
-                                        <th> Order Id</th>
-										<th> Event Expence </th>
-                                        <th> Order Name </th>
-                                        <th>Client Name </th> 
-										<th> Date </th>
-										<th>Expence By </th>
-                                        <th>Income</th>
-                                        <th>Expence</th>
-										<th>Other Exp.</th>
-											
+                                        <th> Template Id</th>										
+                                        <th> Template Name </th>
+										<th> Action </th>
                                     </tr>
                                 </thead>
-                                <tbody id="showTrnDetail">			
+                                <tbody id="showTemplate">			
                                     
                                     
-                                </tbody-->
+                                </tbody>
                             </table>
                         </div>
                     </div>

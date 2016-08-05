@@ -1206,8 +1206,9 @@ Input icons
   color: #468847;
 }
 
-/* input with left aligned icons */
-.input-icon.left i {
+/* input with left aligned icons*/
+
+.input-icon.left1 i {
   color: #ccc;
   display: block !important;
   position: absolute !important;
@@ -1222,7 +1223,7 @@ Input icons
 .input-icon.left input {
   padding-left: 33px !important;
 }
-
+ 
 /***
 Portlets
 ***/
@@ -5345,6 +5346,9 @@ Datatables Plugin(in v1.3)
 	}
 #add_form{
 	display:none;
+	}
+#add_form_temp{
+	display:block;
 	}
 #add_btn{
 	float:right;

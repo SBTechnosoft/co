@@ -561,7 +561,87 @@
 				
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-					<script>tinymce.init({ selector:'#txttemplate' });</script>
+					<!--script>tinymce.init({ selector:'#txttemplate' });</script-->
+					
+					<script type="text/javascript">
+						tinymce.init({
+							selector: "#txttemplate",
+							menu : {
+								file   : {title : 'File'  , items : 'newdocument'},
+								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
+								newmenu: {title : 'Setting', items : 'item1 item2'}
+							},
+							menubar: 'file edit newmenu',
+							setup: function(editor) {
+								editor.addMenuItem('item1', {
+									text: 'Client Name',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[ClientName]');
+									}
+								});
+								editor.addMenuItem('item2', {
+									text: 'Company',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[Company]');
+									}
+								});
+								
+							}
+							
+							
+						});
+					</script>
+					<!--script type="text/javascript">
+						tinymce.PluginManager.add('example', function(editor, url) {
+							// Add a button that opens a window
+							editor.addButton('example', {
+								text: 'My button',
+								icon: false,
+								onclick: function() {
+									// Open window
+									editor.windowManager.open({
+										title: 'Example plugin',
+										body: [
+											{type: 'textbox', name: 'title', label: 'Title'}
+										],
+										onsubmit: function(e) {
+											// Insert content when the window form is submitted
+											editor.insertContent('Title: ' + e.data.title);
+										}
+									});
+								}
+							});
+
+							// Adds a menu item to the tools menu
+							editor.addMenuItem('example', {
+								text: 'Example plugin',
+								context: 'tools',
+								onclick: function() {
+									// Open window with a specific url
+									editor.windowManager.open({
+										title: 'TinyMCE site',
+										url: 'http://www.tinymce.com',
+										width: 400,
+										height: 300,
+										buttons: [{
+											text: 'Close',
+											onclick: 'close'
+										}]
+									});
+								}
+							});
+						});
+
+						tinymce.init({
+							selector: "#txttemplate",
+							plugins: "example",
+							toolbar: "example undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+						});
+						</script-->
 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					
@@ -589,9 +669,9 @@
 						});
 						
 						$("#add_btn").click(function(){
-						$("#add_form").toggle();
+						//$("#add_form").toggle();
 						});						
-						
+						$('#add_form').fadeOut();
 						
 						$(function() 
 						   {

@@ -1,8 +1,54 @@
 $('#addtemp').click(function() 
 {
-
-//var txttemplate = tinyMCE.get('txttemplate').getContent();
-var data1= '<style type="text/css">.tg-baqh1{border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-collapse:collapse;border-spacing:0;vertical-align:top}.tg-yw4l1{border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-collapse:collapse;border-spacing:0;vertical-align:top;text-align:center;}.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial,font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;}.tg th{font-family:Arial,font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;}.tg .tg-yw4l0{vertical-align:top;width:90%}.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial,font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;}.tg th{font-family:Arial,font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;}.tg .tg-baqh{text-align:center;vertical-align:top;width:100px;padding:0px 0px;}.tg .tg-ywh4l{vertical-align:top;width:800px;}.tg .tg-baqhsub{vertical-align:top;width:200px;}.tg .tg-ywh4lsub{vertical-align:top;width:600px;}.tg .tg-baqhsub1{vertical-align:top;width:250px;}.tg .tg-baqhsub2{vertical-align:top;width:50px;}.tg .tg-baqhsub3{vertical-align:top;width:160px;}.tg .tg-baqhsub4{vertical-align:top;width:160px;}.tg .tg-baqhsub5{vertical-align:top;width:270px;}</style><table class="tg">  <tr>    <th class="tg-baqh"><img style="height:40px; width:100px;" src="rclogo.png" ></th>    <th class="tg-ywh4l0" colspan="7"><b>Event information</b><br></th>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Event Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Event Name:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Event Desc. :<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-yw4l0" colspan="8"><b>Client Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Client Name:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr> <tr>    <td class="tg-baqhsub" colspan="2">Client Company:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Email Id:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Work:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Home:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Mobile:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Status<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Event Places Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Vennue:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Hall:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">From Date<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">To Date<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Equipment Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub1" colspan="4">Equipment<br></td>	    <td class="tg-baqhsub2">Qty</td>    <td class="tg-baqhsub3">Staff</td>    <td class="tg-baqhsub4">Vendor</td>    <td class="tg-baqhsub5">Remark</td>  </tr>  <tr>    <td class="" colspan="4">camera</td>    <td class="">5</td>    <td class="">divyesh</td>    <td class="">rajesh</td>    <td class="">its testing<br></td>  </tr>  </table>';
-tinyMCE.get('txttemplate').setContent(data1);
+// var txttemplate = tinyMCE.get('txttemplate').getContent();
+// var data1= '<table class="tg" height = "780" width ="1020" border="1">  <tr>    <th class="tg-baqh"><img style="height:40px; width:100px;" src="images/sblogo.png" ></th>    <th class="tg-ywh4l0" colspan="7"><b>Event information</b><br></th>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Event Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Event Name:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Event Desc. :<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-yw4l0" colspan="8"><b>Client Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Client Name:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr> <tr>    <td class="tg-baqhsub" colspan="2">Client Company:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Email Id:<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Work:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Home:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Mobile:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Status<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Event Places Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Vennue:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">Hall:</td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">From Date<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-baqhsub" colspan="2">To Date<br></td>    <td class="tg-ywh4lsub" colspan="6"></td>  </tr>  <tr>    <td class="tg-ywh4l0" colspan="8"><b>Equipment Detail</b><br></td>  </tr>  <tr>    <td class="tg-baqhsub1" colspan="4">Equipment<br></td>	    <td class="tg-baqhsub2">Qty</td>    <td class="tg-baqhsub3">Staff</td>    <td class="tg-baqhsub4">Vendor</td>    <td class="tg-baqhsub5">Remark</td>  </tr>  <tr>    <td class="" colspan="4">camera</td>    <td class="">5</td>    <td class="">divyesh</td>    <td class="">rajesh</td>    <td class="">its testing<br></td>  </tr>  </table>';
+// tinyMCE.get('txttemplate').setContent(data1);
 
 })
+
+function showdata()
+		{		
+			$.ajax({
+				url : './includes/templateSettingsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'show' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#showTemplate').html(r);
+					
+					
+				}
+				
+			});
+		}
+		showdata();
+//edit
+		$('body').delegate('.edit','click',function()
+		{
+			//alert('hello Divyesh');
+			var id = $(this).data('id');
+			// alert (id);
+			// return false;
+			
+			$.ajax({
+				url : 'includes/templateSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'edit'  : 1,
+					'id' 	: id
+										
+				},
+				success : function(e)
+				{
+					$('#txtename').val(e.template_name);					
+					tinyMCE.get('txttemplate').setContent(e.template_body);
+				}
+				
+			});		
+		});		
+		//end

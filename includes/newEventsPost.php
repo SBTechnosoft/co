@@ -234,19 +234,19 @@ if(isset($_POST['showtax']))
 				{									
 					if(@is_array ($subvalue['equipment'])&& isset($subvalue['equipment']) && !empty($subvalue['equipment']))
 					{
-						// echo $subvalue['equipment']['txtieqp'];
-						// echo $subvalue['equipment']['txtieqpnm'];
-						// echo $subvalue['equipment']['txtirate'];
-						// echo $subvalue['equipment']['txtiqty'];
-						// echo $subvalue['equipment']['txtiamt'];
-						// echo $subvalue['equipment']['txtistf'];
-						// echo $subvalue['equipment']['txtistfnm'];
-						// echo $subvalue['equipment']['txtivend'];
-						// echo $subvalue['equipment']['txtivendnm'];
-						// echo $subvalue['equipment']['txtivendprice'];
-						// echo $subvalue['equipment']['txtiremark'];
-						// echo $subvalue['equipment']['txtilength'];
-						// echo $subvalue['equipment']['txtiwidth']."</br>";
+						echo $subvalue['equipment']['txtieqp'];
+						echo $subvalue['equipment']['txtieqpnm'];
+						echo $subvalue['equipment']['txtirate'];
+						echo $subvalue['equipment']['txtiqty'];
+						echo $subvalue['equipment']['txtiamt'];
+						echo $subvalue['equipment']['txtistf'];
+						echo $subvalue['equipment']['txtistfnm'];
+						echo $subvalue['equipment']['txtivend'];
+						echo $subvalue['equipment']['txtivendnm'];
+						echo $subvalue['equipment']['txtivendprice'];
+						echo $subvalue['equipment']['txtiremark'];
+						echo $subvalue['equipment']['txtilength'];
+						echo $subvalue['equipment']['txtiwidth']."</br>";
 						
 						insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtivendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);	
 						
