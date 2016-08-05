@@ -259,7 +259,7 @@ if(isset($setting) && !empty($setting))
 			<?php } ?>
 			
 		<?php 
-			if(isset($arr1) && !empty($arr1) && in_array("ENR", $arr1))
+			if(isset($arr1) && !empty($arr1) && in_array("RES", $arr1))
 			{					
 		?>
         <li class="
@@ -274,7 +274,7 @@ if(isset($setting) && !empty($setting))
 						}
 					?>">
             <a href="<?php echo HTTP_SERVER.'index.php?url=RES';?>">
-                <i class="icon-question-sign"></i>
+                <i class="fa fa-book"></i>
                 <span class="title">Resources</span>
                 <span class="arrow "></span>
             </a>
@@ -302,7 +302,7 @@ if(isset($setting) && !empty($setting))
 						}
 						?>">
             <a href="javascript:;">
-                <i class=" icon-male"></i>
+                <i class="fa fa-sitemap"></i>
                 <span class="title">Category</span>
                 <span class="arrow"></span>
             </a>
@@ -313,7 +313,7 @@ if(isset($setting) && !empty($setting))
 				?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=OCTG';?>">
-                        <i class="icon-group"></i> New Category </a>
+                        <i class="fa fa-plus-circle"></i> New Category </a>
                 </li>
 					<?php } ?>
 					
@@ -323,7 +323,7 @@ if(isset($setting) && !empty($setting))
 				?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=OSTG';?>">
-                        <i class="icon-group"></i> Sub Category </a>
+                        <i class="fa fa-plus-circle"></i> Sub Category </a>
                 </li>
 					<?php } ?>
 					
@@ -336,7 +336,7 @@ if(isset($setting) && !empty($setting))
 		<?php 
 			
 			
-			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1) && $set == 'Enable' )
+			if(isset($arr1) && !empty($arr1) && in_array("Product", $arr1) && $set == 'Enable' )
 			{					
 		?>	
         <li class="
@@ -359,38 +359,38 @@ if(isset($setting) && !empty($setting))
 						}
 						?>">
             <a href="javascript:;">
-                <i class=" icon-male"></i>
+                <i class="fa fa-th-large"></i>
                 <span class="title">Product</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
 				<?php 
-					if(isset($arr1) && !empty($arr1) && in_array("OCTG", $arr1))
+					if(isset($arr1) && !empty($arr1) && in_array("PRD", $arr1))
 					{					
 				?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=PRD';?>">
-                        <i class="icon-group"></i> Product Category </a>
+                        <i class="fa fa-sitemap"></i> Product Category </a>
                 </li>
 					<?php } ?>
 					
 					<?php 
-					if(isset($arr1) && !empty($arr1) && in_array("OSTG", $arr1))
+					if(isset($arr1) && !empty($arr1) && in_array("PADD", $arr1))
 					{					
 				?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=PADD';?>">
-                        <i class="icon-group"></i> Product Add </a>
+                        <i class="fa fa-plus-circle"></i> Product Add </a>
                 </li>
 					<?php } ?>
 					
 				<?php 
-					if(isset($arr1) && !empty($arr1) && in_array("OSTG", $arr1))
+					if(isset($arr1) && !empty($arr1) && in_array("PVIW", $arr1))
 					{					
 				?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=PVIW';?>">
-                        <i class="icon-group"></i> Product View </a>
+                        <i class="fa fa-desktop"></i> Product View </a>
                 </li>
 					<?php } ?>
 					
@@ -502,7 +502,7 @@ if(isset($setting) && !empty($setting))
 			?>
                 <li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=TRN';?>">
-                        <i class="icon-check-sign"></i> Transaction </a>
+                        <i class="fa fa-credit-card"></i> Transaction </a>
                 </li>			
 			<?php 
 			
@@ -711,12 +711,12 @@ if(isset($setting) && !empty($setting))
 			?>
 				<li class="">
                     <a href="<?php echo HTTP_SERVER.'index.php?url=EML';?>">
-                        <i class="icon-cog"></i> Emails 
+                        <i class="fa fa-envelope"></i> Emails 
 					</a>
                 </li>
 			<?php 
 				} 
-				if(isset($arr1) && !empty($arr1) && in_array("INV", $arr1))
+				if(isset($arr1) && !empty($arr1) && in_array("TEMP", $arr1))
 				{
 					?>
 					<li class="">

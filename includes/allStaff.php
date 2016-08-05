@@ -107,19 +107,19 @@ left: -5px;
 										<li>
 											<label>
 											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="EVD">
-											Event Details
+											Order Details
 											</label>
 										</li>
 										<li>
 											<label>
 											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="Event_Status">
-											Event Status</label>
+											Order Status</label>
 										
 											<ul>
 												<li>
 													<label>
 													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="EALL">
-													All Events
+													All Orders
 													</label>
 												</li>
 												<li>
@@ -169,6 +169,12 @@ left: -5px;
 												</li>
 											</ul>
 										</li>
+										<li>
+											<label>
+												<input type="checkbox" name="myCheckbox" id="myCheckbox" value="RES">
+												Resources
+											</label>
+										</li>
 										
 										<li>
 											<label>
@@ -192,7 +198,36 @@ left: -5px;
 												
 											</ul>
 										</li>
-											
+										
+										<li>
+											<label>
+											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="Product">
+											Product
+											</label>
+										
+											<ul>												
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="PRD">
+													Product Category 
+													</label>
+												</li>
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="PADD">
+													Product Add
+													</label>
+												</li>
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="PVIW">
+													Product View
+													</label>
+												</li>
+											</ul>
+										</li>
+
+										
 										<li>
 											<label>
 											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="Vendors">
@@ -311,6 +346,12 @@ left: -5px;
 													<label>
 													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="EML">
 													Emails
+													</label>
+												</li>
+												<li>
+													<label>
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="TEMP">
+													Templates
 													</label>
 												</li>
 											</ul>
