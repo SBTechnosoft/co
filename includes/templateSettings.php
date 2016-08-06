@@ -56,11 +56,11 @@
                 <h4>Template </h4><hr/>
 				
 				
-				
+				<input type="hidden" id="txttempid" name="txttempid" />
 				<div class="clearfix margin-bottom-10">
 					<label> Template Name:  </label>
 					<div class="input-icon left">
-						<input type="text" id="txtename" name="txtename" placeholder="Eg; Order Name..." class="small-wrap" />
+						<input type="text" id="txtename" name="txtename" placeholder="Eg; Template Name..." class="small-wrap" />
 					</div>
 				</div>
 				
@@ -77,7 +77,7 @@
 				
 				<div class="clearfix margin-bottom-10">					
 					<div class="input-icon left" style="margin-top:15px;">
-						<button id="addtemp" type="button" class="btn green">Add &nbsp;
+						<button id="updtemp" type="button" class="btn green">Save &nbsp;
 							<!--i class="icon-plus-sign icon-white"></i-->
 						</button>
 						<button id="cancel" type="button" class="btn green">Cancel &nbsp;

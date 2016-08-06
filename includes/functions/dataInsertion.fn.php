@@ -418,6 +418,14 @@ function insNewRes($conn,$event_id,$event_plc_id,$res_id,$res_nm,$qty,$rate,$amo
 			$resultArray = $conn->insertQuery($sqlinsNewRes);
 			
 		}
+function updateTemplate($conn,$txttempid,$txtename,$txttemplate)
+	{
+		$sqlupdateTemplate = "UPDATE `template_mst` set `template_name` = '".$txtename."',
+													`template_body` = '".$txttemplate."'
+													 where `template_id` = '".$txttempid."' ";
+		return $conn->getResultArray($sqlupdateTemplate);
+		//echo 1;		
+	}
 // function insDesg($conn,$desgId,$designation)
 // {
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 

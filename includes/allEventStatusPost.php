@@ -236,8 +236,8 @@
 					Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
 					</i>&nbsp;&nbsp;<?php echo ucfirst($data[$i]['client_name']);?>
 				</td>				
-				<td> <?php echo $data[$i]['fp_no']; ?> </td>
-				<td> <?php echo $data[$i]['bill_no'];?> </td>				
+				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
+				<td> <?php //echo $data[$i]['bill_no'];?> </td-->				
 				<?php $from_date=date_create($data[$i]['from_date']);
 						$inm1= date_format($from_date,dateFormat);  
 				?>
@@ -275,7 +275,11 @@
 					</span>
 					
 				</td>
-				
+				<td>
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
+						<i class="fa fa-trash-o"></i> 
+					</a> 
+				</td>
 						
 				
 			</tr>

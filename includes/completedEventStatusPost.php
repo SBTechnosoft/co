@@ -201,31 +201,44 @@
 		
 			<tr>
 				<td> </td>
+				<td>						
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo $data[$i]['event_id'];?>
+					</a>
+				</td>
 				<td>
-					<?php if($i+1 == $searchEventCnt)
+					
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+						<?php echo ucfirst($data[$i]['event_name']);?>
+					</a>
+				</td>
+				
+				<td>
+					<?php 
+					if($data[$i]['client_name']!='') 
 					{
-						?>
-						<input type="hidden" id="lasteid" name="lasteid" value="<?php echo $data[$i]['event_id'];?>"/>
-				<?php
+					?>
+						<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+						title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
+						Client Email:<?php echo $data[$i]['client_email'];?><br>
+						Mobile1:<?php echo $data[$i]['client_work_mob'];?><br>
+						Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
+						</i>&nbsp;&nbsp;
+						<?php echo ucfirst($data[$i]['client_name']);?>
+					<?php 
+					} 
+					else
+					{
+						echo "-";
 					}
 					?>
-					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">						
-						<?php echo $data[$i]['event_id'];	?>
-					</a>
-					
-					
-				</td>
-				<td><?php echo ucfirst($data[$i]['event_name']);?></td>
-				<td>
-					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
-					Client Email:<?php echo $data[$i]['client_email'];?><br>
-					Mobile1:<?php echo $data[$i]['client_work_mob'];?><br>
-					Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
-					</i>&nbsp;&nbsp;<?php echo ucfirst($data[$i]['client_name']);?>
-				</td>				
-				<td> <?php echo $data[$i]['fp_no']; ?> </td>
-				<td> <?php echo $data[$i]['bill_no'];?> </td>				
+				</td>	
+				
+				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
+				<td> <?php //echo $data[$i]['bill_no'];?> </td-->
+				
 				<?php $from_date=date_create($data[$i]['from_date']);
 						$inm1= date_format($from_date,dateFormat);  
 				?>
@@ -235,23 +248,67 @@
 						//$inm2= date_format($to_date,dateFormat);  
 				?>
 				<!--td><?php// echo $inm2;?></td-->
-				<td> <span style="float:right;"><?php echo $data[$i]['client_charges'];?></span> </td>
+				<td> 
+					<span style="float:right;">
+						<?php 
+							if($data[$i]['client_charges']!='')
+							{ 
+								echo $data[$i]['client_charges'];
+							}
+							else
+							{
+								echo "-";
+							}
+							
+						?>
+					</span> 
+				</td>
 				
 				<td>
 					<span style="float:right;">
-						<?php if($data[$i]['service_tax_rate']!=''){?>
-						<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 
+						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
 					</span>
 				</td>
-				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>				
-				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
 				<td>
+					<span style="float:right;">
+						<?php 
+							if($data[$i]['total_amt']!= '')
+							{ 
+								echo $data[$i]['total_amt'];
+							} 
+							else 
+							{ 
+								echo "-";
+							}
+						?> 
+					</span>
+				</td>				
+				<td>
+					<span style="float:right;">
+						<?php 
+						if($data[$i]['client_paid_amt']!='')
+						{
+							echo $data[$i]['client_paid_amt'];
+						}
+						else
+						{
+							echo "-";
+						}
+						?>
+					</span>
+				</td>
+				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>				
+				</td>	
+				<td>
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
+						<i class="fa fa-trash-o"></i> 
+					</a> 
+				</td>	
 				
 			</tr>
 			
