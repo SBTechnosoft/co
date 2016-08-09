@@ -101,8 +101,7 @@
 					$htmlData = str_replace('['.$key.']', $value, $htmlData);
 					
 				}	
-				$html = $htmlData;	
-				
+					
 				$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 				 
 				$mpdf->SetDisplayMode('fullpage');
@@ -206,7 +205,7 @@
 				//header('location : D:\xampp\htdocs\mpdf\invoice\meu-pdf.pdf');
 				
 				$path = DIR_WS_MINV.$newFileName;								
-				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
+				$mpdf->Output($path,'I');//this fn on 8174 line in mpdf.php
 				$date = date('Y-m-d H:i:s');
 				
 				updInvEM($conn,$id,$newFileName);

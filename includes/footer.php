@@ -569,7 +569,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -587,6 +587,78 @@
 									onclick: function (){ 
 										 
 										editor.insertContent('[Company]');
+									}
+								});
+								editor.addMenuItem('item3', {
+									text: 'Order Date',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[OrderDate]');
+									}
+								});
+								editor.addMenuItem('item4', {
+									text: 'Order Name',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[OrderName]');
+									}
+								});
+								editor.addMenuItem('item5', {
+									text: 'Venue',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[Venue]');
+									}
+								});
+								editor.addMenuItem('item6', {
+									text: 'Order Id',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[OrderId]');
+									}
+								});
+								editor.addMenuItem('item7', {
+									text: 'Client Charge',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[ClientCharge]');
+									}
+								});
+								editor.addMenuItem('item8', {
+									text: 'Discount',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[Discount]');
+									}
+								});
+								editor.addMenuItem('item9', {
+									text: 'Tax Amount',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[TaxAmt]');
+									}
+								});
+								editor.addMenuItem('item10', {
+									text: 'Total',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[Total]');
+									}
+								});
+								editor.addMenuItem('item11', {
+									text: 'Tax Rate',
+									context: 'newmenu',
+									onclick: function (){ 
+										 
+										editor.insertContent('[TaxRate]');
 									}
 								});
 								
