@@ -90,5 +90,22 @@ CREATE TABLE `suchak_mgt`.`template_mst` (
 
 INSERT INTO `suchak_mgt`.`template_mst` (`template_name`, `template_body`) VALUES ('Invoice', '<table class=\"tg\" height = \"780\" width =\"1020\" border=\"1\">  <tr>    <th class=\"tg-baqh\"><img style=\"height:40px; width:100px;\" src=\"images/sblogo.png\" ></th>    <th class=\"tg-ywh4l0\" colspan=\"7\"><b>Event information</b><br></th>  </tr>  <tr>    <td class=\"tg-ywh4l0\" colspan=\"8\"><b>Event Detail</b><br></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Event Name:<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Event Desc. :<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-yw4l0\" colspan=\"8\"><b>Client Detail</b><br></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Client Name:<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr> <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Client Company:<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Email Id:<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Work:</td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Home:</td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Mobile:</td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Status<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-ywh4l0\" colspan=\"8\"><b>Event Places Detail</b><br></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Vennue:</td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">Hall:</td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">From Date<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-baqhsub\" colspan=\"2\">To Date<br></td>    <td class=\"tg-ywh4lsub\" colspan=\"6\"></td>  </tr>  <tr>    <td class=\"tg-ywh4l0\" colspan=\"8\"><b>Equipment Detail</b><br></td>  </tr>  <tr>    <td class=\"tg-baqhsub1\" colspan=\"4\">Equipment<br></td>	    <td class=\"tg-baqhsub2\">Qty</td>    <td class=\"tg-baqhsub3\">Staff</td>    <td class=\"tg-baqhsub4\">Vendor</td>    <td class=\"tg-baqhsub5\">Remark</td>  </tr>  <tr>    <td class=\"\" colspan=\"4\">camera</td>    <td class=\"\">5</td>    <td class=\"\">divyesh</td>    <td class=\"\">rajesh</td>    <td class=\"\">its testing<br></td>  </tr>  </table>');
 
+//08-08-2016
+//this cahnge only in co and u hv must do the query
+
+UPDATE `staff_permission` SET `permission`='[\"ENR\",\"EVD\",\"Event_Status\",\"EALL\",\"NEW\",\"UPC\",\"COM\",\"Equipment\",\"EQA\",\"CTG\",\"ACS\",\"RES\",\"Category\",\"OCTG\",\"OSTG\",\"Product\",\"PRD\",\"PADD\",\"PVIW\",\"Vendors\",\"VAL\",\"Accounting\",\"TRN\",\"PID\",\"UPD\",\"INV\",\"VPD\",\"VUD\",\"Staff\",\"STA\",\"STF\",\"Settings\",\"HOL\",\"CMP\",\"ADC\",\"OPT\",\"EML\",\"TEMP\"]' 
+WHERE `user_id`='client123';
+
+//setting for get the data
+
+INSERT INTO `event_mgt`.`vendor_mst` (`vend_id`, `vendor_name`) VALUES ('0', 'Not Selected');
+
+//query for fetching data in invoice..
+select em.eq_name,sm.first_name,evd.remark,vm.vendor_name 
+from new_event_places_dtl evd 
+right join staff_mst sm on sm.staff_id = evd.staff_id
+right join vendor_mst vm on vm.vend_id = evd.vend_id
+right join equipment_mst em on em.eq_id = evd.eq_id
+where evd.event_id=130;
  
   

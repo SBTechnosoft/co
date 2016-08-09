@@ -1,4 +1,6 @@
 <?php
+
+
 	ob_start();
 	$html = ob_get_clean();
 	$html = utf8_encode($html);
@@ -7,6 +9,30 @@
 	
 	require(DIR_WS_MPDF.'mpdf.php');
 	
+	
+	$vennue = showVennue($conn,$_POST['txteid']);
+	
+	echo "<pre>";
+	print_r($vennue);
+	echo "</pre>";
+	
+	$cnt = count($vennue);
+	
+	for($m=0;$m<$cnt;$m++)
+	{
+		
+		echo $vennue[$m]['event_date'];
+		
+		$new = $vennue [$m]['event_places_id'];
+		
+		$vndtl = showVnDtl($conn,$new);
+		
+		echo "<pre>";
+		print_r($vndtl);
+		echo "</pre>";
+	}
+	
+	exit;
 	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");

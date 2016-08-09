@@ -118,6 +118,17 @@ function showEventDetailInv($conn,$eid)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where event_id = '".$eid."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
+	}
+function showEventDetailInvD($conn,$eid)
+	{
+		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',
+		`client_cmp` as 'ClientCmp',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
+		`client_home_mob`,`from_date` as 'OrderDate',`to_date`,`invoice`,`status` ,`client_charges`,
+		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,
+		`service_tax_rate` 
+		from  `event_mst` 
+		where event_id = '".$eid."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		return $conn->getResultArray($sqlEventDetail);	
 	}	
 
 function showEventDetail($conn)
@@ -455,8 +466,9 @@ function showSetting($conn)
 function showEqpRsDtl($conn,$event_id)
 	{
 		$sqlshowEqpRsDtl = "select em.eq_name,nepd.qty,nepd.rate,nepd.amount,nepd.length,nepd.width 
-						from `new_event_places_dtl` nepd  inner join `equipment_mst` em 
-						on nepd.eq_id = em.eq_id where nepd.event_id = '".$event_id."' order by em.eq_name "; 
+						from `new_event_places_dtl` nepd  
+						inner join `equipment_mst` em on nepd.eq_id = em.eq_id 
+						where nepd.event_id = '".$event_id."' order by em.eq_name "; 
 		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
 function showClientInv($conn)
@@ -582,7 +594,13 @@ function showNewEv_Pl_Dtl($conn,$eid)
 	}
 function showVennue($conn,$eid)
 	{
-		$sqlshowVennue = " select `event_vennue`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showVnDtl($conn,$epid)
+	{
+		$sqlshowVennue = " select `event_places_id`,`event_id`,`eq_id`,`rate`,`qty`,`amount`  
+		from  `new_event_places_dtl` where event_places_id = '".$epid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showResPlacesDtl($conn,$eid)

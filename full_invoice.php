@@ -2,9 +2,10 @@
 	ob_start();
 	$html = ob_get_clean();
 	$html = utf8_encode($html);
-	include_once('includes/header.php');
-	
+	include_once('includes/header.php');	
 	require(DIR_WS_MPDF.'mpdf.php');
+	require('html_dom/simple_html_dom.php');
+	
 	$eid = $_POST['txtfpdfeid'];
 	$date = $_POST['txtfpdffromdt'];	
 	$inm = date_format(new DateTime($date),"Ymd");		
@@ -13,6 +14,10 @@
 	
 	
 	$data = showEventDetailInv($conn,$eid);
+	
+	//$data = showEventDetailInvD($conn,$eid);
+	// print_r($data);
+	// exit;
 	
 	$data1 = showEv_Pl_Dtl($conn,$eid);
 	$cnt = count($data1);
@@ -109,8 +114,7 @@
 		  </tr>';
 		  
 		  for($a=0;$a<$cnt;$a++)
-		  {
-		  
+		  {		  
 		  $html .= '
 			  <tr>
 				<td class="tg-ywh4l0" colspan="8"><b>Order Places Detail</b><br></td>
