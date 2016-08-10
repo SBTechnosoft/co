@@ -471,6 +471,13 @@ function showEqpRsDtl($conn,$event_id)
 						where nepd.event_id = '".$event_id."' order by em.eq_name "; 
 		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
+function showEqpResource($conn,$event_id)
+	{
+		$sqlshowEqpResource = "select rpd.res_name as 'eq_name',rpd.qty,rpd.rate,rpd.amount 
+						from `res_places_dtl` rpd 						
+						where rpd.event_id = '".$event_id."' "; 
+		return $conn->getResultArray($sqlshowEqpResource);	
+	}
 function showClientInv($conn)
 	{
 		$sqlshowClientInv = 
