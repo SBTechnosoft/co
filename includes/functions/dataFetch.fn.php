@@ -123,11 +123,24 @@ function showEventDetailInvD($conn,$eid)
 	{
 		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',
 		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
-		`client_home_mob`,`from_date` as 'OrderDate',`to_date`,`invoice`,`status` ,`client_charges` as 'ClientCharge',
+		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
-		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount' 
-		from  `event_mst` 
-		where event_id = '".$eid."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img
+		from  `event_mst` em
+		right join company_mst cm on cm.cmp_id= em.cmp_id
+		where em.event_id = '".$eid."' and `status` != 'enquiry' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
+		return $conn->getResultArray($sqlEventDetail);	
+	}
+function showEventDetailQuaD($conn,$eid)
+	{
+		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',
+		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
+		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
+		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
+		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img
+		from  `event_mst` em
+		right join company_mst cm on cm.cmp_id= em.cmp_id
+		where em.event_id = '".$eid."' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}	
 
@@ -478,6 +491,14 @@ function showEqpResource($conn,$event_id)
 						where rpd.event_id = '".$event_id."' "; 
 		return $conn->getResultArray($sqlshowEqpResource);	
 	}
+function showQuoResource($conn,$event_id)
+	{
+		$sqlshowEqpResource = "select nepd.event_places_id,epd.event_vennue,epd.event_hall,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',sum(nepd.amount)as 'Amount'
+						from res_places_dtl nepd
+						right join event_places_dtl epd on epd.event_places_id = nepd.event_places_id
+						where nepd.event_id='".$event_id."' group by nepd.event_places_id "; 
+		return $conn->getResultArray($sqlshowEqpResource);	
+	}
 function showClientInv($conn)
 	{
 		$sqlshowClientInv = 
@@ -604,10 +625,28 @@ function showVennue($conn,$eid)
 		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`  from  `event_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
+function showVennueDtl($conn,$eid)
+	{
+		$sqlshowVennueDtl = " 
+		select nepd.event_places_id,epd.event_vennue,epd.event_hall,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',sum(nepd.amount)as 'Amount'
+		from new_event_places_dtl nepd
+		right join event_places_dtl epd on epd.event_places_id = nepd.event_places_id
+		where nepd.event_id='".$eid."' group by nepd.event_places_id "; 
+		return $conn->getResultArray($sqlshowVennueDtl);	
+	}
 function showVnDtl($conn,$epid)
 	{
-		$sqlshowVennue = " select `event_places_id`,`event_id`,`eq_id`,`rate`,`qty`,`amount`  
-		from  `new_event_places_dtl` where event_places_id = '".$epid."' "; 
+		$sqlshowVennue = " select `event_places_id`,`event_id`,`rate`,`qty`,`amount`,em.eq_name 
+		from  `new_event_places_dtl` epd
+		right join `equipment_mst` em on em.eq_id = epd.eq_id
+		where epd.event_places_id = '".$epid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showResDtl($conn,$epid)
+	{
+		$sqlshowVennue = " select `event_places_id`,`event_id`,`rate`,`qty`,`amount`,`res_name` as 'eq_name',`res_id`
+		from  `res_places_dtl` 		
+		where event_places_id = '".$epid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showResPlacesDtl($conn,$eid)
@@ -622,8 +661,30 @@ function showTemplate($conn)
 	}	
 function showInvBody($conn)
 	{
+		$sqlshowInvBody = " select `template_body` from  `template_mst` where `template_id` = 1; "; 
+		return $conn->getResultArray($sqlshowInvBody);	
+	}
+function showQuotBody($conn)
+	{
 		$sqlshowInvBody = " select `template_body` from  `template_mst` where `template_id` = 2; "; 
 		return $conn->getResultArray($sqlshowInvBody);	
+	}
+function showQuotCond($conn)
+	{
+		$sqlshowQuotCond = " select `template_body` from  `template_mst` where `template_id` = 3; "; 
+		return $conn->getResultArray($sqlshowQuotCond);	
+	}
+function showRtlInvBody($conn)
+	{
+		$sqlshowRtlInvBody = " select `template_body` from  `template_mst` where `template_id` = 4; "; 
+		return $conn->getResultArray($sqlshowRtlInvBody);	
+	}
+function showRtlInvDtl($conn,$event_id)
+	{
+		$sqlshowEqpRsDtl = "select rid.prod_id,pm.disp_nm as 'eq_name',rid.qty,rid.rate,rid.amount from retail_inv_dtl rid 
+							right join product_mst pm  on rid.prod_id=pm.prod_id
+							where event_id= '".$event_id."' "; 
+		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
 	
 	/*

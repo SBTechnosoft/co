@@ -569,7 +569,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -659,6 +659,20 @@
 									onclick: function (){ 
 										 
 										editor.insertContent('[TaxRate]');
+									}
+								});
+								editor.addMenuItem('item12', {
+									text: 'Delivery Date',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[DeliveryDate]');
+									}
+								});
+								editor.addMenuItem('item13', {
+									text: 'Organization',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[Organization]');
 									}
 								});
 								

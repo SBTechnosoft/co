@@ -2,6 +2,7 @@
 
 include_once('includes/header.php');
 require(DIR_WS_MPDF.'mpdf.php');
+require('html_dom/simple_html_dom.php');
 
 $date=date_create($_POST['txtfromdt']);
 $inm = date_format($date,"Ymd");
@@ -75,7 +76,7 @@ $inm = date_format($date,"Ymd");
 		$trdt = $_POST['txttodt'];
 		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		$ntrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
+		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
 
 		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['drpcmpnm'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
@@ -114,153 +115,154 @@ $inm = date_format($date,"Ymd");
 	
 	$fname = $inm."-".$eventlast_id."_1.pdf";
 		
+				$InvBody = showRtlInvBody($conn);
+				$input = showEventDetailInvD($conn,$eventlast_id);
+				
+				// $ResourceDtl = showEqpResource($conn,$_POST['txteid']);	
 				
 				
+				// if(!empty($ResourceDtl))
+				// {
+					// $dEqp = $ResourceDtl;
+				// }
+				// else
+				// {
+					// $dEqp = showEqpRsDtl($conn,$_POST['txteid']);
+				// }
 				
-				$html .= '
-
-					<style>
-					.trhw {height : 35px;}
-
-					</style>
-					<style type="text/css">
-					.tg  {border-collapse:collapse;border-spacing:0;}
-					.tg td{font-family:Calibri; sans-serif;font-size:12px;padding:7px 3px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
-					.tg th{font-family:Calibri; sans-serif;font-size:12px;font-weight:normal;padding:00px 0px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
-					.tg .tg-jtyd{font-family:Calibri; serif !important;;background-color:#9a9a9a;text-align:right;vertical-align:top}
-					.tg .tg-3gzm{font-family:Calibri; serif !important;;text-align:right;vertical-align:top}
-					.tg .tg-ullm{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:right;vertical-align:top}
-					.tg .tg-vi9z{font-family:Calibri; serif !important;;vertical-align:top}
-					.tg .tg-bjj3{font-style:italic;font-size:22px;font-family:Georgia, serif !important;;background-color:#d9d9d9;text-align:center;vertical-align:top}
-					.tg .tg-m36b{font-size:13px;font-family:Calibri; serif !important;;background-color:#999999;text-align:left;vertical-align:top}
-					.thsrno {width:50px;}
-					.theqp {width:400px;}
-					.thamt {width:90px;}
-					</style>
-
-					<html>
-						<body> 						
-						
-						<table class="tg" >							
-						  
-						  <tr>
-							<th colspan="5">
-								<img src="'.DIR_WS_IMAGES.'ombanner.jpg"> 
-							</th>
-						  </tr>
-						  
-						  <tr class="trhw">
-							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="3">To: '.$_POST['txtprdnm'].' <br></td>
-							<td class="tg-vi9z" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;" colspan="2"></td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Order:'.$_POST['txtfromdt'].'</td>
-							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Retail No:<br></td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Delivery Date :'.$_POST['txttodt'].' <br></td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="3" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">	</td>
-							<td class="tg-vi9z" colspan="2" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Invoice No:<br></td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" style="background-color:#d9d9d9;padding:4px 3px;font-family:Calibri;">Client:</td>
-						  </tr>
-						  
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
-						  </tr>
-						   <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" style="border-width:0px;background-color:#d9d9d9;padding:4px 3px;" > </td>
-						  </tr>
-						  
-						  
-						  <tr class="trhw" style="background-color:#9a9a9a;font-family:Calibri;">
-							<td class="tg-m36b thsrno">Sr.No</td>
-							<td class="tg-m36b theqp">Particulars</td>
-							<td class="tg-ullm thsrno">Qty.</td>
-							<td class="tg-ullm thamt">Unit Cost<br></td>
-							<td class="tg-ullm thamt">Amount</td>
-						  </tr>';
-						
-						$dEqp = $_POST['hdn'];
-						$a=1;
-						foreach($dEqp as $value)
+				$dEqp = showRtlInvDtl($conn,$eventlast_id);
+				$cnteqp = count($dEqp); 
+				if($cnteqp<11)
+				{
+					$cnteqp1 = 11;
+				}
+				else
+				{
+					$cnteqp1 = $cnteqp;
+				}
+				for($a=0;$a<$cnteqp1;$a++)
+				{
+					if($a < $cnteqp)
+					{
+						if($a%2==0)
 						{
+							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+							{				
 							
-							$html .= '
+							$outputD .= '
 								<tr class="trhw" >
-									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$a.'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9">'.$value['txtiprdnm'].'<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$value['txtiqty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$value['txtirate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9">'.$value['ptxtiamt'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
 								</tr>
 							';
-							$a++;
+							}
+							else
+							{				
+							
+							$outputD .= '
+								<tr class="trhw">
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
 						}
-						  
-						  
-						$html .= '  
-						
-						  <tr class="trhw">
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
-							<td class="tg-vi9z" style="background-color:#d9d9d9"> <br></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9"></td>
-						  </tr>
-						
-						  <tr class="trhw">
-							<td class="tg-jtyd" colspan="4">Charge<br></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$_POST['txtcharge'].'</td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-jtyd" colspan="4">Discount</td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$_POST['txtdisc'].'</td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-jtyd" colspan="4">S.Tax %<br></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$tax.'</td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-jtyd" colspan="4">Vat %<br></td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$vat.'</td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-jtyd" colspan="4">Total</td>
-							<td class="tg-3gzm" style="background-color:#d9d9d9">'.$gtot.'</td>
-						  </tr>
-						  <tr class="trhw">
-							<td class="tg-vi9z" colspan="5" rowspan="1" style="background-color:#d9d9d9">							
-							</td>
-						  </tr>						  					  
-						  <tr >
-							<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
-								
-							</td>
-							<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;">Remark </td>
-							<td class="tg-3gzm" colspan="2" style="text-align:center;vertical-align:bottom;background-color:#d9d9d9">
-								Venture Of
-							</td>
-						  </tr>
-						  <tr >
-								<td class="tg-3gzm" colspan="1" style="float:left;text-align:center;vertical-align:bottom;background-color:#d9d9d9">
-									
-								</td>
-								<td colspan="2" style="background-color:#d9d9d9;vertical-align:bottom;" > E.&.O.E. </td>
-								<td class="tg-3gzm" colspan="2" style="text-align:center;background-color:#d9d9d9">
-									<img src="smlogo.png">
-								</td>
-						  </tr>
-						 
-						</table>
-						</body>
-					</html>';
+						else
+						{
+							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+							{				
+							
+							$outputD .= '
+								<tr class="trhw" >
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+								</tr>
+							';
+							}
+							else
+							{				
+							
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+								</tr>';
+							}
+						}
+					}
+					else
+					{
+						if($a%2==0)
+						{
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+								</tr>';
+						}
+						else
+						{
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+								</tr>';
+						}
+					}					
+				}
+				$vennue = showVennue($conn,$_POST['txteid']);
+				$cntven = count($vennue);
+				for($t=0;$t<$cntven;$t++)
+				{
+					if($t== $cntven-1)
+					{
+						$VennueD .= $vennue[$t]['event_vennue'];
+					}
+					else
+					{
+						$VennueD .= $vennue[$t]['event_vennue'].', ';
+					}
+				}
+				$output =array(	
+						'Description' => $outputD,
+						'Venue' => $VennueD
+						);
+				
+				
+				$htmlbody = $InvBody[0]['template_body'];
+			
+ 
+				
+				$htmlData = str_get_html($htmlbody);			
+				foreach($input as $key => $value)
+				{
+					foreach($value as $key =>$value)
+					{						
+						$htmlData = str_replace('['.$key.']', $value, $htmlData);
+					}
+				}							
+				foreach($output as $key => $value)
+				{											
+					$htmlData = str_replace('['.$key.']', $value, $htmlData);
 					
-				// print_r($html);
-				// exit;
+				}
+				//$html = str_get_html($htmlData);				
+				$html = $htmlData;				
 					
 				$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 				 
