@@ -686,7 +686,25 @@ function showRtlInvDtl($conn,$event_id)
 							where event_id= '".$event_id."' "; 
 		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
-	
+
+function showResourceDtl($conn,$epldtlid)
+	{
+		$sqlshowResourceDtl = "select `res_pls_id`,`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount` 
+		from res_places_dtl where  event_places_id= '".$epldtlid."' "; 
+		return $conn->getResultArray($sqlshowResourceDtl);	
+	}
+
+function showEquipmentDtl($conn,$epldtlid)
+	{
+		$sqlshowEquipmentDtl = "select `places_id`,`event_id`,`event_places_id`,em.eq_name,nepd.eq_id,sm.first_name,`rate`,`qty`,`amount`,
+		nepd.staff_id,	nepd.vend_id,vm.vendor_name,`vend_price`,nepd.remark,`length`,`width`
+		from new_event_places_dtl nepd
+        right join equipment_mst em on em.eq_id = nepd.eq_id
+        right join staff_mst sm on sm.staff_id = nepd.staff_id
+        right join vendor_mst vm on vm.vend_id = nepd.vend_id
+        where nepd.event_places_id = '".$epldtlid."' "; 
+		return $conn->getResultArray($sqlshowEquipmentDtl);	
+	}
 	/*
 	
 select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id

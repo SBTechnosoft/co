@@ -567,14 +567,9 @@
 									
 								</div>
 								
-								<div>
-								
-									
-								
+								<div>		
 									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
-									</select>
-									
-									
+									</select>									
 									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
 									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
 									

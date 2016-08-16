@@ -429,7 +429,7 @@ input[type="color"].m-wrap {
 	  -webkit-border-radius: 0px;
 	     -moz-border-radius: 0px;
 	          border-radius: 0px;
-  background: transparent;   
+ /* background: transparent; *//*  comment done by the Divyesh for transperent remove in text box  */  
 }
 
 input.m-wrap {

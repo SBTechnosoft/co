@@ -623,6 +623,548 @@
 		}
 	}
 	
+	if(isset($_POST['newshoweventdtl']))
+	{
+		$edata = showEventPlacesDetail ($conn,$_POST['eid']);
+		$showEventPlacesCnt = count($edata);	
+		for($i=0;$i<$showEventPlacesCnt;$i++)
+		{
+			?>
+			<div id="dynamic_field">
+				<h4>
+					Order places 
+					<a name="add" id="add" class="btn blue event">
+						<i class="icon-plus"></i>								
+					</a>									
+				</h4>
+				<hr />
+				<div class="clearfix margin-bottom-10">
+					<input type="hidden" class="m-wrap" id="hdn[<?php echo $i; ?>][txtEventPlacesId]" name="hdn[<?php echo $i; ?>][txtEventPlacesId]" value="<?php echo $edata[$i]['event_places_id'];?>"   />
+					<input type="hidden" class="m-wrap" id="epldtlid<?php echo $i;?>" name="epldtlid<?php echo $i;?>" value="<?php echo $edata[$i]['event_places_id'];?>"   />
+					<br>
+					<label for="txtvenue">Venue </label>
+					<div class="input-icon left">
+						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txtvenue]" name="hdn[<?php echo $i; ?>][txtvenue]" value="<?php echo $edata[$i]['event_vennue'];?>" type="text"  />
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<label for="txthall">Hall </label>
+					<div class="input-icon left">
+						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txthall]" name="hdn[<?php echo $i; ?>][txthall]" value="<?php echo $edata[$i]['event_hall'];?>" type="text"  />
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<label for="txtldmark">Land Mark </label>
+					<div class="input-icon left">
+						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txtldmark]" name="hdn[<?php echo $i; ?>][txtldmark]" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" />
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<div class="pull-left margin-right-20">
+						<label for="txtfromdate">From Date </label>
+						<div id="datetimepickerPF<?php echo $i; ?>" class="input-append date">
+							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="hdn[<?php echo $i; ?>][txtfromdate]" id="hdn[<?php echo $i; ?>][txtfromdate]" value="<?php echo $edata[$i]['event_date'];?>" />
+							<span class="add-on">
+							  <i class="icon-time" class="icon-calendar"></i>
+							</span>
+						</div>
+					</div>
+					<div class="pull-right margin-right-20">
+					<label for="txttodate" class="well1">To Date </label>
+					<div id="datetimepickerPT<?php echo $i; ?>" class="input-append date">
+						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="hdn[<?php echo $i; ?>][txttodate]" id="hdn[<?php echo $i; ?>][txttodate]" value="<?php echo $edata[$i]['event_to_date'];?>" />
+						<span class="add-on">
+						  <i class="icon-time" class="icon-calendar"></i>
+						</span>
+					</div>
+					</div>									
+				</div>
+				
+				<div>
+					<input style="width:207px;" type="text"  value="Resources" readonly />									
+														
+					<input style="width:121px;" type="text"  value="Rate" readonly />
+					<input style="width:123px;" type="text"  value="Qty" readonly />
+					<input style="width:120px;" type="text"  value="Amount" readonly />									
+				</div>
+				<div>				
+					<select  name="drp_resource<?php echo $i; ?>" id="drp_resource<?php echo $i; ?>" class="medium m-wrap drp_resource<?php echo $i; ?>">											
+					</select>	
+					<input class="small m-wrap txtresrate<?php echo $i; ?>"  type="text"  id="txtresrate<?php echo $i; ?>" name="txtresrate<?php echo $i; ?>" value=""  />	
+					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
+					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
+					
+					<a name="addres" class="btn blue" id="addres" style="margin-left:15px;" >
+						Add								
+					</a>
+				</div>
+				<br>
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Resources</div>
+
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Resource</th>													
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>													
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="resrec<?php echo $i; ?>">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div>
+					<input style="width:190px;" type="text"  value="Equipment" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>							
+					
+					
+					<input style="width:120px;" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
+					<input style="width:120px;" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
+					
+					
+					
+				</div>
+				
+				<div>
+				
+					
+				
+					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="medium m-wrap drpneweqp<?php echo $i;?>">											
+					</select>
+					
+					
+					<input class="small m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
+					<input class="small m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+					
+				</div>
+				<div>
+					<input style="width:120px;" type="text"  value="Rate" readonly />
+					
+					<input style="width:125px;" type="hidden"  value="Type" readonly />
+					
+					<input style="width:123px;" type="text"  value="Qty" readonly />
+					<input style="width:123px;" type="text"  value="Amount" readonly />
+					
+					<input style="width:200px;" type="text"  value="Staff" readonly />
+					<input style="width:200px;" type="text"  value="Vendor" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>
+					<input style="width:124px;" type="text"  value="Price" readonly />
+				
+					
+				</div>
+				<div>
+				
+					<input class="small m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
+					
+					<input class="small m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
+					
+					<input class="small m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
+					
+					<input class="small m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
+					
+					<input class="small m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
+					
+					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="medium m-wrap drpnewstf<?php echo $i; ?>"> 											
+					</select>
+					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="medium m-wrap drpnewvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					
+					
+				</div>
+				
+				<div>
+					<input  type="text"  value="Remark" readonly />
+				</div>
+				
+				<div>
+					<textarea rows="2" cols="140" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea>
+					<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
+						Add								
+					</a>
+				</div>
+				<br/>
+				
+				
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Equipments</div>
+
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Equipment</th>
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>
+									<th> Staff</th>
+									<th> Vendor</th>
+									<th> Price</th>
+									<th> Remark</th>
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="eqprec<?php echo $i; ?>">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+			</div>
+			<script>
+					$('#datetimepickerPF<?php echo $i; ?>').datetimepicker({
+					language: 'pt-BR'
+				  });
+				   $('#datetimepickerPT<?php echo $i; ?>').datetimepicker({
+					language: 'pt-BR'
+				  });
+				function newshowResDtl<?php echo $i; ?> ()
+				{					
+					var epldtlid = 	$('#epldtlid<?php echo $i; ?>').val();
+					//alert(epldtlid);
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'newshowResDtl'  : 1,
+							'epldtlid'   : epldtlid,				
+							
+						},
+						success : function(rd1)
+						{										
+							 $('#resrec<?php echo $i; ?>').html(rd1);
+							 
+								// showdataeqp();
+								// showdatastf();
+								// showdatavend();
+								// showdatavendsel();										
+						}				
+					});	
+							
+				}			 
+				function newshowEqpDtl<?php echo $i; ?> ()
+				{					
+					var epldtlid = 	$('#epldtlid<?php echo $i; ?>').val();
+					//alert(epldtlid);
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'newshowEqpDtl'  : 1,
+							'epldtlid'   : epldtlid,				
+							
+						},
+						success : function(rd2)
+						{										
+							 $('#eqprec<?php echo $i; ?>').html(rd2);
+							 
+								// showdataeqp();
+								// showdatastf();
+								// showdatavend();
+								// showdatavendsel();										
+						}				
+					});	
+							
+				}		 
+				 
+				function shownewEqp<?php echo $i;?>()
+				{		
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'shownewEqp' : 1
+							
+						},
+						success : function(r)
+						{
+							$('#drpneweqp<?php echo $i;?>').html(r);	
+							
+						}
+						
+					});
+				}
+				function shownewStf<?php echo $i;?>()
+				{		
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'shownewStf' : 1
+							
+						},
+						success : function(r)
+						{
+							$('#drpnewstf<?php echo $i;?>').html(r);	
+							
+						}
+						
+					});
+				}
+				function shownewVend<?php echo $i;?>()
+				{		
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'shownewVend' : 1
+							
+						},
+						success : function(r)
+						{
+							$('#drpnewvend<?php echo $i;?>').html(r);	
+							
+						}
+						
+					});
+				}
+				function shownewRes<?php echo $i;?>()
+				{		
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'shownewRes' : 1
+							
+						},
+						success : function(r)
+						{
+							$('#drp_resource<?php echo $i;?>').html(r);	
+							
+						}
+						
+					});
+				}
+				$("#drpneweqp<?php echo $i;?>").on("change", function()
+				{
+					var eqpid    =   $('#drpneweqp<?php echo $i;?>').val();
+					
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'showeqpprice' : 1,
+							'eqpid' : eqpid,
+							
+						},
+						success : function(r)
+						{
+							$('#txtrate<?php echo $i;?>').val(r.price);
+							$('#txtamt<?php echo $i;?>').val(r.price);
+							$('#txthamt<?php echo $i;?>').val(r.price);
+							$('#txttype<?php echo $i;?>').val(r.price_type);
+							checkType();
+						}
+						
+					});
+				});
+				$("#drp_resource<?php echo $i; ?>").on("change", function()
+				{
+					var resid    =   $('#drp_resource<?php echo $i; ?>').val();
+					
+					$.ajax({
+						url : './includes/newEventsPost.php',
+						type : 'post',
+						async : false,
+						data : {
+							'showresprice' : 1,
+							'resid' : resid,
+							
+						},
+						success : function(r)
+						{
+							$('#txtresrate<?php echo $i; ?>').val(r.amount);
+							$('#txtresamt<?php echo $i; ?>').val(r.amount);
+											
+						}
+						
+					});
+				});
+				$("#txtresqty<?php echo $i; ?>").on("focusout", function()
+				{
+					var qty    =   $('#txtresqty<?php echo $i; ?>').val();
+					if(qty == "")
+					{
+						alert("Plz Insert The qty!!!");
+						return false;
+					}
+					if(qty != "")
+					{
+						if(isNaN(qty))
+						{
+							alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(qty == 0)
+						{
+							alert("Can't GIve qty 0");
+							return false;
+						}
+					}
+					var txtramt = $('#txtresrate<?php echo $i; ?>').val();			
+					var tot = parseInt(qty) * parseInt(txtramt);			
+					$('#txtresamt<?php echo $i; ?>').val(tot);			
+				});
+				$("#txtresrate<?php echo $i; ?>").on("focusout", function()
+				{
+							
+					var ratechg = $('#txtresrate<?php echo $i; ?>').val();		
+					if(ratechg == "")
+					{
+						alert("Plz Insert The Rate!!!");
+						return false;
+					}
+					if(ratechg != "")
+					{
+						if(isNaN(ratechg))
+						{
+							alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(ratechg == 0)
+						{
+							alert("Can't GIve rate 0");
+							return false;
+						}
+					}
+					var qty    =   $('#txtresqty<?php echo $i; ?>').val();			
+					var tot = parseInt(qty) * parseInt(ratechg);			
+					$('#txtresamt<?php echo $i; ?>').val(tot);
+					
+				});
+				
+				function checkType()
+				{	
+					var gettype = $('#txttype<?php echo $i; ?>').val();
+					
+					if(gettype == 2)
+					{
+						$('#labelLT<?php echo $i; ?>').show();
+						$('#labelWT<?php echo $i; ?>').show();
+						$('#txtlength<?php echo $i; ?>').show();
+						$('#txtwidth<?php echo $i; ?>').show();
+					}
+					else
+					{
+						$('#labelLT<?php echo $i; ?>').hide();
+						$('#labelWT<?php echo $i; ?>').hide();
+						$('#txtlength<?php echo $i; ?>').hide();
+						$('#txtwidth<?php echo $i; ?>').hide();
+					}					
+					
+				}
+				
+				newshowResDtl<?php echo $i; ?> ();
+				newshowEqpDtl<?php echo $i; ?> ();
+				shownewEqp<?php echo $i;?>();
+				shownewStf<?php echo $i;?>();
+				shownewVend<?php echo $i;?>();
+				shownewRes<?php echo $i;?>();
+				
+				$('#labelLT<?php echo $i; ?>').hide();
+				$('#labelWT<?php echo $i; ?>').hide();
+				$('#txtlength<?php echo $i; ?>').hide();
+				$('#txtwidth<?php echo $i; ?>').hide();
+			</script>
+			<?php
+		}
+	}
+	if(isset($_POST['newshowResDtl']))
+	{
+		$data = showResourceDtl($conn,$_POST['epldtlid']);
+		$showResCnt = count($data);
+		for($i=0;$i<$showResCnt;$i++)
+		{
+		 ?>	
+			
+			<tr id="resrow<?php echo $i; ?>">
+				<!--
+				<input id="hdn[0][1][resource][txtires]" name="hdn[0][1][resource][txtires]" value="2" type="hidden">
+				<input id="hdn[0][1][resource][txtiresnm]" name="hdn[0][1][resource][txtiresnm]" value="cinemetography" type="hidden">
+				<input id="hdn[0][1][resource][txtiqty]" name="hdn[0][1][resource][txtiqty]" value="1" type="hidden">
+				<input id="hdn[0][1][resource][txtirate]" name="hdn[0][1][resource][txtirate]" value="4500" type="hidden">
+				<input id="hdn[0][1][resource][rtxtiamt]" class="rtxtiamt" name="hdn[0][1][resource][rtxtiamt]" value="4500" type="hidden">
+				-->
+				<td><?php echo $data[$i]['res_name']; ?></td>
+				<td><?php echo $data[$i]['rate']; ?></td>
+				<td><?php echo $data[$i]['qty']; ?></td>
+				<td class="amount"><?php echo $data[$i]['amount']; ?></td>
+				<td>
+					<a id="1" class="resremove" style="cursor:pointer; margin-left:15px;">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</td>
+			</tr>
+            
+		 <?php	
+		}
+		
+	}
+	if(isset($_POST['newshowEqpDtl']))
+	{
+		$data = showEquipmentDtl($conn,$_POST['epldtlid']);
+		//print_r($data1);
+		$showEqpCnt = count($data);
+		for($j=0;$j<$showEqpCnt;$j++)
+		{
+		 ?>	
+			
+			<tr id="eqrow<?php echo $j; ?>">
+				<!--
+				<input id="hdn[0][1][equipment][txtieqp]" name="hdn[0][1][equipment][txtieqp]" value="4" type="hidden">
+				<input id="hdn[0][1][equipment][txtieqpnm]" name="hdn[0][1][equipment][txtieqpnm]" value="laptop" type="hidden">
+				<input id="hdn[0][1][equipment][txtirate]" name="hdn[0][1][equipment][txtirate]" value="15000" type="hidden">
+				<input id="hdn[0][1][equipment][txtiqty]" name="hdn[0][1][equipment][txtiqty]" value="1" type="hidden">
+				<input id="hdn[0][1][equipment][txtiamt]" class="txtiamt" name="hdn[0][1][equipment][txtiamt]" value="15000" type="hidden">
+				<input id="hdn[0][1][equipment][txtistf]" name="hdn[0][1][equipment][txtistf]" value="16" type="hidden">
+				<input id="hdn[0][1][equipment][txtistfnm]" name="hdn[0][1][equipment][txtistfnm]" value="ashish" type="hidden">
+				<input id="hdn[0][1][equipment][txtivend]" name="hdn[0][1][equipment][txtivend]" value="" type="hidden">
+				<input id="hdn[0][1][equipment][txtivendnm]" name="hdn[0][1][equipment][txtivendnm]" value="Select Vendor" type="hidden">
+				<input id="hdn[0][1][equipment][txtivendprice]" class="txtivendprice" name="hdn[0][1][equipment][txtivendprice]" value="" type="hidden">
+				<input id="hdn[0][1][equipment][txtiremark]" name="hdn[0][1][equipment][txtiremark]" value="" type="hidden">
+				<input id="hdn[0][1][equipment][txtilength]" name="hdn[0][1][equipment][txtilength]" value="" type="hidden">
+				<input id="hdn[0][1][equipment][txtiwidth]" name="hdn[0][1][equipment][txtiwidth]" value="" type="hidden">
+				-->
+				<td><?php echo $data[$j]['eq_name']; ?></td>
+				<td><?php echo $data[$j]['rate']; ?></td>
+				<td><?php echo $data[$j]['qty']; ?></td>
+				<td class="amount"><?php echo $data[$j]['amount']; ?></td>
+				<td><?php echo $data[$j]['first_name']; ?></td>
+				<td><?php echo $data[$j]['vendor_name']; ?></td>
+				<td><?php echo $data[$j]['vend_price']; ?></td>
+				<td><?php echo $data[$j]['remark']; ?></td>
+				<td>
+				<a id="1" class="remove" style="cursor:pointer; margin-left:15px;">
+				<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+				</td>
+			</tr>
+            
+		 <?php	
+		}
+		
+	}
 	if(isset($_POST['edit']))
 	{		
 		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2` FROM event_mst where `event_id` = '".$_POST['id']."' ");

@@ -492,8 +492,8 @@
 					//end of invoice data
 					
 					//call to display for evend places detail..
-					showeventplaces();
-					
+					//its old//showeventplaces();
+					newshoweventplaces();
 					//call of function which show the popup data that get the paid amt detail from event payment trn table					
 					showeventpaid();
 					$('#txtpeid').val(e.event_id);
@@ -569,7 +569,8 @@
 					//end of invoice data
 					
 					//call to display for evend places detail..
-					showeventplaces();
+					//its old//showeventplaces();
+					newshoweventplaces();
 					
 					//call of function which show the popup data that get the paid amt detail from event payment trn table					
 					showeventpaid();
@@ -588,7 +589,32 @@
 		
 		
 		//end of the default show data
-		
+		function newshoweventplaces ()
+		{
+			var eid    =   $('#eid').val();
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'newshoweventdtl'  : 1,
+					'eid'   : eid,				
+					
+				},
+				success : function(rd1)
+				{										
+					 $('#multiinsert').html(rd1);
+					 
+						// showdataeqp();
+						// showdatastf();
+						// showdatavend();
+						// showdatavendsel();										
+				}				
+			});	
+					
+		}
 		function showeventplaces ()
 		{
 			var eid    =   $('#eid').val();

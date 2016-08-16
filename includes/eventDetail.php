@@ -199,6 +199,7 @@ else
 							<!-- end invoice button-->
                             <table>
 								<input type="hidden" id="eid" name="eid" />
+								
                                 <div class="input-icon left">
                                     <tr>
                                         <td class="names"><label for="txteventnm"> Order Name </label></td>
@@ -372,28 +373,27 @@ else
                 <div id="tab_1_2" class="tab-pane">
                     <div class="row-fluid search-forms search-default">
                         <form class="form-search" action="#">
-                            <div id="dynamic_field">
-                                <h4>Order places </h4>
-                                <hr />
-                               
+						
+							<div id= "multiinsert">
 								
-								<div class="row-fluid">
-									
-									<h4>Order places Detail </h4>
+							</div>
+							
+                            <!--div id="dynamic_field">
+                                <h4>Order Places </h4>
+                                <hr />		
+								<div class="row-fluid">								
+									<h4>Order Places Detail </h4>
 									<div id="timeline" class="timeline-container">
 										<a class="timeline-toggle">
 											<i class="fa fa-arrows-alt" aria-hidden="true"></i>
 										</a>
 										<br class="clear">
 										 <div class="tab-content" id="showplsdtl">
-										 
+																							
 										</div>
-									</div>								
-									
-								</div>
-								
-								
-                            </div>
+									</div>
+								</div>		
+                            </div-->
                         </form>
 					</div>
                 </div>
