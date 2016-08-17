@@ -1541,7 +1541,7 @@
 					 <script type="text/javascript" src="vertical-timeline/js/timeliner.js"></script>
 					 
 					 <script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
-					 
+					 <script src="<?php echo HTTP_SERVER; ?>assets/scripts/multipleinsertion.js"></script>
 					 <script>
 					 // $(document).ready(function() {
 					   $.timeliner({

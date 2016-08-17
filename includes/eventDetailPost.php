@@ -694,7 +694,7 @@
 					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
 					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
 					
-					<a name="addres" class="btn blue" id="addres" style="margin-left:15px;" >
+					<a name="addres<?php echo $i;?>" class="btn blue" id="addres<?php echo $i;?>" style="margin-left:15px;" >
 						Add								
 					</a>
 				</div>
@@ -790,7 +790,7 @@
 				
 				<div>
 					<textarea rows="2" cols="140" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea>
-					<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
+					<a name="addeqp<?php echo $i; ?>" class="btn blue" id="addeqp<?php echo $i; ?>" style="margin-left:15px;" >
 						Add								
 					</a>
 				</div>
@@ -974,7 +974,7 @@
 							$('#txtamt<?php echo $i;?>').val(r.price);
 							$('#txthamt<?php echo $i;?>').val(r.price);
 							$('#txttype<?php echo $i;?>').val(r.price_type);
-							checkType();
+							checkType<?php echo $i;?>();
 						}
 						
 					});
@@ -1052,9 +1052,8 @@
 					var tot = parseInt(qty) * parseInt(ratechg);			
 					$('#txtresamt<?php echo $i; ?>').val(tot);
 					
-				});
-				
-				function checkType()
+				});				
+				function checkType<?php echo $i;?>()
 				{	
 					var gettype = $('#txttype<?php echo $i; ?>').val();
 					
@@ -1075,6 +1074,404 @@
 					
 				}
 				
+				$("#txtwidth<?php echo $i; ?>").on("focusout", function()
+				{
+					var txtlength    =   $('#txtlength<?php echo $i; ?>').val();
+					var txtwidth    =   $('#txtwidth<?php echo $i; ?>').val();
+					var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
+					
+					var rate = $('#txtrate<?php echo $i; ?>').val();	
+					
+					var tot = parseInt(sqfeet) * parseInt(rate);
+					$('#txthamt<?php echo $i; ?>').val(tot);
+					$('#txtamt<?php echo $i; ?>').val(tot);			
+				});
+				
+				$("#txtrate<?php echo $i; ?>").on("focusout", function()
+				{
+					
+					var gettype = $('#txttype<?php echo $i; ?>').val();
+					//alert(gettype);
+					var rate = $('#txtrate<?php echo $i; ?>').val();	
+					if(rate == "")
+					{
+						alert("Plz Insert The Rate!!!");
+						return false;
+					}
+					if(rate != "")
+					{
+						if(isNaN(rate))
+						{
+							alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(rate == 0)
+						{
+							alert("Can't GIve rate 0");
+							return false;
+						}
+					}
+					if(gettype == 2)
+					{
+						var txtlength    =   $('#txtlength<?php echo $i; ?>').val();
+						var txtwidth    =   $('#txtwidth<?php echo $i; ?>').val();
+						var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
+						
+						var rate = $('#txtrate<?php echo $i; ?>').val();	
+						
+						var tot = parseInt(sqfeet) * parseInt(rate);
+						$('#txthamt<?php echo $i; ?>').val(tot);
+						$('#txtamt<?php echo $i; ?>').val(tot);
+					}
+					else
+					{
+						var rate = $('#txtrate<?php echo $i; ?>').val();	
+						$('#txthamt<?php echo $i; ?>').val(rate);
+						$('#txtamt<?php echo $i; ?>').val(rate);
+					}
+				});
+				$("#drpqty<?php echo $i; ?>").on("focusout", function()
+				{
+					var qty    =   $('#drpqty<?php echo $i; ?>').val();
+					if(qty == "")
+					{
+						alert("Plz Insert The qty!!!");
+						return false;
+					}
+					if(qty != "")
+					{
+						if(isNaN(qty))
+						{
+							alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(qty == 0)
+						{
+							alert("Can't GIve qty 0");
+							return false;
+						}
+					}
+					var txthamt = $('#txthamt<?php echo $i; ?>').val();			
+					var tot = parseInt(qty) * parseInt(txthamt);			
+					$('#txtamt<?php echo $i; ?>').val(tot);			
+				});
+				
+				
+				var k = 3;
+				var i = 3;
+				$('#addeqp<?php echo $i; ?>').on('click',function()
+				{
+					var eqpid = $('.drpneweqp<?php echo $i; ?>').val();
+					var eqpnm = document.getElementById("drpneweqp<?php echo $i; ?>").options[(document.getElementById("drpneweqp<?php echo $i; ?>").options.selectedIndex)].text;										
+					var rate = $('.txtrate<?php echo $i; ?>').val();
+					var qty = $('.drpqty<?php echo $i; ?>').val();
+					var amt = $('.txtamt<?php echo $i; ?>').val();
+					var staff = $('.drpnewstf<?php echo $i; ?>').val();
+					var staffnm = document.getElementById("drpnewstf<?php echo $i; ?>").options[(document.getElementById("drpnewstf<?php echo $i; ?>").options.selectedIndex)].text;
+					var vend = $('.drpnewvend<?php echo $i; ?>').val();
+					var vendnm = document.getElementById("drpnewvend<?php echo $i; ?>").options[(document.getElementById("drpnewvend<?php echo $i; ?>").options.selectedIndex)].text;
+					var vprice = $('.txtvprice<?php echo $i; ?>').val();
+					var reamrk = $('.txtremark<?php echo $i; ?>').val();
+					
+					var length = $('.txtlength<?php echo $i; ?>').val();
+					var width = $('.txtwidth<?php echo $i; ?>').val();
+					var txttype = $('.txttype<?php echo $i; ?>').val();
+					
+					if(eqpid=='')
+					{
+						alert("Plz Select Equipment.");
+						return false;
+					}
+					if(rate=='')
+					{
+						alert("Plz Fill Rate.");
+						return false;
+					 }
+					if(rate != "")
+					{
+						if(isNaN(rate))
+						{
+							alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(rate == 0)
+						{
+							alert("Can't Give rate 0");
+							return false;
+						}
+					}
+					if(qty=='')
+					{
+						alert("Plz Fill Qty.");
+						return false;
+					}
+					if(qty != "")
+					{
+						if(isNaN(qty))
+						{
+							alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(qty == 0)
+						{
+							alert("Can't GIve qty 0");
+							return false;
+						}
+					}
+					if(txttype==2)
+					{
+						if(length=='')
+						{
+							alert("Plz Fill length.");
+							return false;
+						}
+						if(width=='')
+						{
+							alert("Plz Fill width.");
+							return false;
+						}
+					}
+					if(length != "")
+					{
+						if(isNaN(length))
+						{
+							alert("Please Only Numeric in length!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(length == 0)
+						{
+							alert("Can't GIve length 0");
+							return false;
+						}
+					}
+					if(width != "")
+					{
+						if(isNaN(width))
+						{
+							alert("Please Only Numeric in width!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(width == 0)
+						{
+							alert("Can't GIve width 0");
+							return false;
+						}
+					}					
+					i++;
+					var div=
+							'<tr id="eqrow'+i+'">'+
+								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtieqp]" name="hdn[0]['+i+'][equipment][txtieqp]" value="'+eqpid+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtieqpnm]" name="hdn[0]['+i+'][equipment][txtieqpnm]" value="'+eqpnm+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtirate]" name="hdn[0]['+i+'][equipment][txtirate]" value="'+rate+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtiqty]" name="hdn[0]['+i+'][equipment][txtiqty]" value="'+qty+'">'+
+								'<input   type="hidden" id="hdn[0]['+i+'][equipment][txtiamt]" name="hdn[0]['+i+'][equipment][txtiamt]"  class="txtiamt"  value="'+amt+'">'+
+								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtistf]" name="hdn[0]['+i+'][equipment][txtistf]" value="'+staff+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtistfnm]" name="hdn[0]['+i+'][equipment][txtistfnm]" value="'+staffnm+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtivend]" name="hdn[0]['+i+'][equipment][txtivend]" value="'+vend+'">'+
+								'<input type="hidden"  id="hdn[0]['+i+'][equipment][txtivendnm]" name="hdn[0]['+i+'][equipment][txtivendnm]" value="'+vendnm+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtivendprice]" name="hdn[0]['+i+'][equipment][txtivendprice]" class="txtivendprice" value="'+vprice+'">'+
+								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiremark]" name="hdn[0]['+i+'][equipment][txtiremark]" value="'+reamrk+'">'+
+								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtilength]" name="hdn[0]['+i+'][equipment][txtilength]" value="'+length+'">'+
+								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiwidth]" name="hdn[0]['+i+'][equipment][txtiwidth]" value="'+width+'">'+
+								
+								
+								
+								'<td>'+ eqpnm+'</td>'+
+								'<td>'+ rate+'</td>'+
+								'<td>'+ qty+'</td>'+
+								'<td class="amount">'+ amt+'</td>'+						
+								'<td>'+ staffnm+'</td>'+						
+								'<td>'+ vendnm+'</td>'+
+								'<td>'+ vprice+'</td>'+
+								'<td>'+ reamrk+'</td>'+						
+								'<td><a class="remove<?php echo $i; ?>" id="'+i+'" style= "cursor:pointer; margin-left:15px;">'+
+									'<i class="fa fa-times" aria-hidden="true"></i>'+							
+								'</a></td>'+
+							'</tr>';							
+					$('#eqprec<?php echo $i; ?>').append(div);
+					
+					// var txtrescharge = $('.txtrescharge').val();
+					// if(txtrescharge == "")
+					// {			
+						// var gtot = [];
+						// $.each($('.txtiamt'), function(){            
+							// gtot.push($(this).val());
+						// });
+						// var total_amt = 0;
+						// $.each(gtot,function() {
+							// total_amt += parseInt(this);
+						// });			
+						// var vtot = [];
+						// $.each($('.txtivendprice'), function(){            
+							// vtot.push($(this).val());
+						// });
+						// var total_vamt = 0;
+						// $.each(vtot,function() {
+							// total_vamt += parseInt(this);
+						// });
+						// $('.txtcharge').val(total_amt);
+						// $('.txtvcharge').val(total_vamt);
+					// }
+
+					// $('.drpneweqp').val('');
+					// $('.txtrate').val('');
+					// $('.drpqty').val('1');
+					// $('.txtamt').val('');
+					// $('.drpnewstf').val('');
+					// $('.drpnewvend').val('');
+					// $('.txtvprice').val('');
+					// $('.txtremark').val('');
+					// $('.txtlength').val('');
+					// $('.txtwidth').val('');
+					// $('#labelLT').hide();
+					// $('#labelWT').hide();
+					// $('#txtlength').hide();
+					// $('#txtwidth').hide();					
+				});
+				
+				$(document).on('click','.remove<?php echo $i; ?>',function()
+				{
+					var button_id = $(this).attr("id");
+					$("#eqrow"+button_id+"").remove();
+					
+					// var txtrescharge = $('.txtrescharge').val();
+					// if(txtrescharge == "")
+					// {
+						// var gtot = [];
+						// $.each($('.txtiamt'), function(){            
+							// gtot.push($(this).val());
+						// });
+						// var total_amt = 0;
+						// $.each(gtot,function() {
+							// total_amt += parseInt(this);
+						// });				
+						// var vtot = [];
+						// $.each($('.txtivendprice'), function(){            
+							// vtot.push($(this).val());
+						// });
+						// var total_vamt = 0;
+						// $.each(vtot,function() {
+							// total_vamt += parseInt(this);
+						// });				
+						// $('.txtcharge').val(total_amt);
+						// $('.txtvcharge').val(total_vamt);
+					// }
+				});
+				
+				$('#addres<?php echo $i; ?>').on('click',function()
+				{
+					var resid = $('.drp_resource<?php echo $i; ?>').val();
+					var resnm = document.getElementById("drp_resource<?php echo $i; ?>").options[(document.getElementById("drp_resource<?php echo $i; ?>").options.selectedIndex)].text;		
+					var qty = $('.txtresqty<?php echo $i; ?>').val();
+					var rate = $('.txtresrate<?php echo $i; ?>').val();
+					var amt = $('.txtresamt<?php echo $i; ?>').val();
+							
+					
+					if(resid=='')
+					{
+						alert("Plz Select Equipment.");
+						return false;
+					}
+					if(rate=='')
+					{
+						alert("Plz Fill Rate.");
+						return false;
+					 }
+					if(rate != "")
+					{
+						if(isNaN(rate))
+						{
+							alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(rate == 0)
+						{
+							alert("Can't Give rate 0");
+							return false;
+						}
+					}
+					if(qty=='')
+					{
+						alert("Plz Fill Qty.");
+						return false;
+					}
+					if(qty != "")
+					{
+						if(isNaN(qty))
+						{
+							alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+							return false;
+						}
+						if(qty == 0)
+						{
+							alert("Can't GIve qty 0");
+							return false;
+						}
+					}		
+					
+					k++;
+					var resdiv=
+							
+							
+							'<tr id="resrow'+k+'">'+
+								'<input   type="hidden"  id="hdn[0]['+k+'][resource][txtires]" name="hdn[0]['+k+'][resource][txtires]" value="'+resid+'">'+
+								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiresnm]" name="hdn[0]['+k+'][resource][txtiresnm]" value="'+resnm+'">'+
+								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiqty]" name="hdn[0]['+k+'][resource][txtiqty]" value="'+qty+'">'+
+								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtirate]" name="hdn[0]['+k+'][resource][txtirate]" value="'+rate+'">'+
+								'<input   type="hidden" id="hdn[0]['+k+'][resource][rtxtiamt]" name="hdn[0]['+k+'][resource][rtxtiamt]" class="rtxtiamt" value="'+amt+'">'+
+								
+								
+								'<td>'+ resnm+'</td>'+
+								'<td>'+ rate+'</td>'+
+								'<td>'+ qty+'</td>'+
+								'<td class="amount">'+ amt+'</td>'+						
+													
+								'<td><a class="resremove<?php echo $i; ?>" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
+									'<i class="fa fa-times" aria-hidden="true"></i>'+							
+								'</a></td>'+
+							'</tr>';					
+							
+					$('#resrec<?php echo $i; ?>').append(resdiv);
+					
+					// var rgtot = [];
+					// $.each($('.rtxtiamt<?php echo $i; ?>'), function(){            
+						// rgtot.push($(this).val());
+					// });
+					// var rtotal_amt = 0;
+					// $.each(rgtot,function() {
+						// rtotal_amt += parseInt(this);
+					// });
+					
+					// $('.txtcharge<?php echo $i; ?>').val(rtotal_amt);
+					// $('.txtrescharge<?php echo $i; ?>').val(rtotal_amt);
+					// $('.drp_resource<?php echo $i; ?>').val('');
+					// $('.txtresrate<?php echo $i; ?>').val('');
+					// $('.txtresqty<?php echo $i; ?>').val('1');
+					// $('.txtresamt<?php echo $i; ?>').val('');
+					
+					
+					
+				});
+				
+				$(document).on('click','.resremove<?php echo $i; ?>',function()
+				{
+					var button_id = $(this).attr("id");
+					$("#resrow"+button_id+"").remove();	
+
+					// var rgtot = [];
+					// $.each($('.rtxtiamt<?php echo $i; ?>'), function(){            
+						// rgtot.push($(this).val());
+					// });			
+
+					// var rtotal_amt = 0;
+					// $.each(rgtot,function() {
+						// rtotal_amt += parseInt(this);
+					// });
+					
+					// $('.txtcharge<?php echo $i; ?>').val(rtotal_amt);
+					// $('.txtrescharge<?php echo $i; ?>').val(rtotal_amt);
+				});
+				
 				newshowResDtl<?php echo $i; ?> ();
 				newshowEqpDtl<?php echo $i; ?> ();
 				shownewEqp<?php echo $i;?>();
@@ -1086,6 +1483,8 @@
 				$('#labelWT<?php echo $i; ?>').hide();
 				$('#txtlength<?php echo $i; ?>').hide();
 				$('#txtwidth<?php echo $i; ?>').hide();
+				
+				
 			</script>
 			<?php
 		}

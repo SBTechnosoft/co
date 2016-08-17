@@ -1453,7 +1453,8 @@
 			
 		});
 		
-		$(document).on('click','.resremove',function(){
+		$(document).on('click','.resremove',function()
+		{
 			var button_id = $(this).attr("id");
 			$("#resrow"+button_id+"").remove();	
 
