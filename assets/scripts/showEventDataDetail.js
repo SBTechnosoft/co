@@ -420,6 +420,7 @@
 //delete
 		$('body').delegate('.delete','click',function(){
 			var id = $(this).data('id');
+			
 			$.ajax({
 				url : 'includes/eventDetailPost.php',
 				type : 'POST',
@@ -506,6 +507,91 @@
 			});		
 		});		
 		//end
+		
+		
+			//removing the resources from the database
+			
+				$('body').delegate('.resdel','click',function()
+				{
+					//alert('hello Divyesh');
+					var id = $(this).data('id');					
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'resdel'  : 1,
+							'id' 	: id
+												
+						},
+						success : function(d)
+						{
+							alert("Delete Successfully");
+							//window.location.reload();
+						}
+						
+					});
+										
+				});
+				
+				
+			//end
+			//removing the resources from the database
+			
+				$('body').delegate('.epddel','click',function()
+				{
+					//alert('hello Divyesh');
+					var id = $(this).data('id');					
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'epddel'  : 1,
+							'id' 	: id
+												
+						},
+						success : function(d)
+						{
+							alert("Delete Successfully");
+							//window.location.reload();
+						}
+						
+					});
+										
+				});
+				
+				
+			//end
+			
+			//removing the Equipment from the database
+			
+				$('body').delegate('.eqpdel','click',function()
+				{
+					//alert('hello Divyesh');
+					var id = $(this).data('id');					
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'eqpdel'  : 1,
+							'id' 	: id
+												
+						},
+						success : function(d)
+						{
+							alert("Delete Successfully");
+							//window.location.reload();
+						}
+						
+					});
+										
+				});
+				
+				
+			//end
+			
 		//default show data in edit mode
 		function last_event()
 		{

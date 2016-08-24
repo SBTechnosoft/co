@@ -37,6 +37,41 @@
 		$date = date('Y-m-d H:i:s');
 		updEventDetail($conn,$_POST['eid'],$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$date);
 	}
+	if(isset($_POST['PlacesUpdate']))
+	{		
+		$date = date('Y-m-d H:i:s');
+		$fromdt = $_POST['txtfromdate'];
+		$tordt = $_POST['txttodate'];
+		
+		$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
+		$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
+		
+		updEventPlacesDetail($conn,$_POST['epldtlid'],$_POST['txtvenue'],$_POST['txthall'],$_POST['txtldmark'],$nfromdt,$ntordt,$date);
+	}
+	if(isset($_POST['ResourceIns']))
+	{	
+		$epldtlid =$_POST['epldtlid'];	
+		$evntid =$_POST['evntid'];
+		
+		for($j=0;$j<count($_POST['txtires']);$j++)
+			{
+				insResourceUpd($conn,$evntid,$epldtlid,$_POST['txtires'][$j],$_POST['txtiresnm'][$j],$_POST['txtiqty'][$j],
+				$_POST['txtirate'][$j],$_POST['rtxtiamt'][$j]);
+			}	
+	}
+	
+	if(isset($_POST['EquipmentIns']))
+	{	
+		$epldtlid =$_POST['epldtlid'];	
+		$evntid =$_POST['evntid'];
+		
+		for($j=0;$j<count($_POST['txtieqp']);$j++)
+			{
+				insEquipmentUpd($conn,$evntid,$epldtlid,$_POST['txtieqp'][$j],$_POST['txtirate'][$j],$_POST['txtiqty'][$j],
+				$_POST['txtiamt'][$j],$_POST['txtistf'][$j],$_POST['txtivend'][$j],$_POST['txtivendprice'][$j],
+				$_POST['txtiremark'][$j],$_POST['txtilength'][$j],$_POST['txtiwidth'][$j]);
+			}	
+	}
 	
 	if(isset($_POST['delete']))
 	{		
@@ -630,10 +665,14 @@
 		for($i=0;$i<$showEventPlacesCnt;$i++)
 		{
 			?>
+			
 			<div id="dynamic_field">
 				<h4>
 					Order places 
-					<a name="add" id="add" class="btn blue event">
+					<a id= "epddel" data-id="<?php echo $edata[$i]['event_places_id'];?>" class="btn blue event epddel" style="margin-left:75%" >
+						<i class="icon-minus"></i>
+					</a>
+					<a name="add" id="add" class="btn blue btn_remove">
 						<i class="icon-plus"></i>								
 					</a>									
 				</h4>
@@ -641,29 +680,30 @@
 				<div class="clearfix margin-bottom-10">
 					<input type="hidden" class="m-wrap" id="hdn[<?php echo $i; ?>][txtEventPlacesId]" name="hdn[<?php echo $i; ?>][txtEventPlacesId]" value="<?php echo $edata[$i]['event_places_id'];?>"   />
 					<input type="hidden" class="m-wrap" id="epldtlid<?php echo $i;?>" name="epldtlid<?php echo $i;?>" value="<?php echo $edata[$i]['event_places_id'];?>"   />
+					<input type="hidden" class="m-wrap evntid" id="evntid<?php echo $i;?>" name="evntid" value="<?php echo $edata[$i]['event_id'];?>"   />
 					<br>
 					<label for="txtvenue">Venue </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txtvenue]" name="hdn[<?php echo $i; ?>][txtvenue]" value="<?php echo $edata[$i]['event_vennue'];?>" type="text"  />
+						<input class="m-wrap" id="txtvenue<?php echo $i; ?>" name="txtvenue<?php echo $i; ?>" value="<?php echo $edata[$i]['event_vennue'];?>" type="text"  />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<label for="txthall">Hall </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txthall]" name="hdn[<?php echo $i; ?>][txthall]" value="<?php echo $edata[$i]['event_hall'];?>" type="text"  />
+						<input class="m-wrap" id="txthall<?php echo $i; ?>" name="txthall<?php echo $i; ?>" value="<?php echo $edata[$i]['event_hall'];?>" type="text"  />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<label for="txtldmark">Land Mark </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="hdn[<?php echo $i; ?>][txtldmark]" name="hdn[<?php echo $i; ?>][txtldmark]" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" />
+						<input class="m-wrap" id="txtldmark<?php echo $i; ?>" name="txtldmark<?php echo $i; ?>" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<div class="pull-left margin-right-20">
 						<label for="txtfromdate">From Date </label>
 						<div id="datetimepickerPF<?php echo $i; ?>" class="input-append date">
-							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="hdn[<?php echo $i; ?>][txtfromdate]" id="hdn[<?php echo $i; ?>][txtfromdate]" value="<?php echo $edata[$i]['event_date'];?>" />
+							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_date'];?>" />
 							<span class="add-on">
 							  <i class="icon-time" class="icon-calendar"></i>
 							</span>
@@ -672,12 +712,18 @@
 					<div class="pull-right margin-right-20">
 					<label for="txttodate" class="well1">To Date </label>
 					<div id="datetimepickerPT<?php echo $i; ?>" class="input-append date">
-						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="hdn[<?php echo $i; ?>][txttodate]" id="hdn[<?php echo $i; ?>][txttodate]" value="<?php echo $edata[$i]['event_to_date'];?>" />
+						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="txttodate<?php echo $i; ?>" id="txttodate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_to_date'];?>" />
 						<span class="add-on">
 						  <i class="icon-time" class="icon-calendar"></i>
 						</span>
 					</div>
 					</div>									
+				</div>
+				<div class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save" data-id="<?php echo $edata[$i]['event_places_id'];?>" id="updateEpd<?php echo $i; ?>" name="updateEpd<?php echo $i; ?>"  type="button" />
+					</div>
 				</div>
 				
 				<div>
@@ -716,11 +762,23 @@
 								</tr>
 							</thead>
 							<tbody id="resrec<?php echo $i; ?>">
-
 							</tbody>
 						</table>
 					</div>
 				</div>
+				
+				<!-- Save Button for resource Insertion -->
+				<div class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updResD<?php echo $i; ?>" name="updResD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+				<!-- End of Resource save button -->
+				
+				
+				
+				
 				
 				<div>
 					<input style="width:190px;" type="text"  value="Equipment" readonly />
@@ -823,6 +881,15 @@
 						</table>
 					</div>
 				</div>
+				
+				<!-- Save Button for Equipment Insertion -->
+				<div class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updEqpD<?php echo $i; ?>" name="updEqpD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+				<!-- End of Equipment save button -->
 				
 			</div>
 			<script>
@@ -1260,19 +1327,19 @@
 					i++;
 					var div=
 							'<tr id="eqrow'+i+'">'+
-								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtieqp]" name="hdn[0]['+i+'][equipment][txtieqp]" value="'+eqpid+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtieqpnm]" name="hdn[0]['+i+'][equipment][txtieqpnm]" value="'+eqpnm+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtirate]" name="hdn[0]['+i+'][equipment][txtirate]" value="'+rate+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtiqty]" name="hdn[0]['+i+'][equipment][txtiqty]" value="'+qty+'">'+
-								'<input   type="hidden" id="hdn[0]['+i+'][equipment][txtiamt]" name="hdn[0]['+i+'][equipment][txtiamt]"  class="txtiamt"  value="'+amt+'">'+
-								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtistf]" name="hdn[0]['+i+'][equipment][txtistf]" value="'+staff+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtistfnm]" name="hdn[0]['+i+'][equipment][txtistfnm]" value="'+staffnm+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtivend]" name="hdn[0]['+i+'][equipment][txtivend]" value="'+vend+'">'+
-								'<input type="hidden"  id="hdn[0]['+i+'][equipment][txtivendnm]" name="hdn[0]['+i+'][equipment][txtivendnm]" value="'+vendnm+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtivendprice]" name="hdn[0]['+i+'][equipment][txtivendprice]" class="txtivendprice" value="'+vprice+'">'+
-								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiremark]" name="hdn[0]['+i+'][equipment][txtiremark]" value="'+reamrk+'">'+
-								'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtilength]" name="hdn[0]['+i+'][equipment][txtilength]" value="'+length+'">'+
-								'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiwidth]" name="hdn[0]['+i+'][equipment][txtiwidth]" value="'+width+'">'+
+								'<input   type="hidden"  id="txtieqp<?php echo $i;?>" name="txtieqp<?php echo $i;?>" value="'+eqpid+'">'+
+								'<input  type="hidden"  id="txtieqpnm<?php echo $i;?>" name="txtieqpnm<?php echo $i;?>" value="'+eqpnm+'">'+
+								'<input  type="hidden"  id="txtirate<?php echo $i;?>" name="txtirate<?php echo $i;?>" value="'+rate+'">'+
+								'<input  type="hidden"  id="txtiqty<?php echo $i;?>" name="txtiqty<?php echo $i;?>" value="'+qty+'">'+
+								'<input   type="hidden" id="txtiamt<?php echo $i;?>" name="txtiamt<?php echo $i;?>"  class="txtiamt"  value="'+amt+'">'+
+								'<input   type="hidden"  id="txtistf<?php echo $i;?>" name="txtistf<?php echo $i;?>" value="'+staff+'">'+
+								'<input  type="hidden"  id="txtistfnm<?php echo $i;?>" name="txtistfnm<?php echo $i;?>" value="'+staffnm+'">'+
+								'<input  type="hidden"  id="txtivend<?php echo $i;?>" name="txtivend<?php echo $i;?>" value="'+vend+'">'+
+								'<input type="hidden"  id="txtivendnm<?php echo $i;?>" name="txtivendnm<?php echo $i;?>" value="'+vendnm+'">'+
+								'<input  type="hidden"  id="txtivendprice<?php echo $i;?>" name="txtivendprice<?php echo $i;?>" class="txtivendprice" value="'+vprice+'">'+
+								'<input   type="hidden"  id="txtiremark<?php echo $i;?>" name="txtiremark<?php echo $i;?>" value="'+reamrk+'">'+
+								'<input  type="hidden"  id="txtilength<?php echo $i;?>" name="txtilength<?php echo $i;?>" value="'+length+'">'+
+								'<input   type="hidden"  id="txtiwidth<?php echo $i;?>" name="txtiwidth<?php echo $i;?>" value="'+width+'">'+
 								
 								
 								
@@ -1414,11 +1481,11 @@
 							
 							
 							'<tr id="resrow'+k+'">'+
-								'<input   type="hidden"  id="hdn[0]['+k+'][resource][txtires]" name="hdn[0]['+k+'][resource][txtires]" value="'+resid+'">'+
-								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiresnm]" name="hdn[0]['+k+'][resource][txtiresnm]" value="'+resnm+'">'+
-								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiqty]" name="hdn[0]['+k+'][resource][txtiqty]" value="'+qty+'">'+
-								'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtirate]" name="hdn[0]['+k+'][resource][txtirate]" value="'+rate+'">'+
-								'<input   type="hidden" id="hdn[0]['+k+'][resource][rtxtiamt]" name="hdn[0]['+k+'][resource][rtxtiamt]" class="rtxtiamt" value="'+amt+'">'+
+								'<input   type="hidden"  id="txtires<?php echo $i; ?>" name="txtires<?php echo $i; ?>" value="'+resid+'">'+
+								'<input  type="hidden"  id="txtiresnm<?php echo $i; ?>" name="txtiresnm<?php echo $i; ?>" value="'+resnm+'">'+
+								'<input  type="hidden"  id="txtiqty<?php echo $i; ?>" name="txtiqty<?php echo $i; ?>" value="'+qty+'">'+
+								'<input  type="hidden"  id="txtirate<?php echo $i; ?>" name="txtirate<?php echo $i; ?>" value="'+rate+'">'+
+								'<input   type="hidden" id="rtxtiamt<?php echo $i; ?>" name="rtxtiamt<?php echo $i; ?>" class="rtxtiamt<?php echo $i; ?>" value="'+amt+'">'+
 								
 								
 								'<td>'+ resnm+'</td>'+
@@ -1472,6 +1539,175 @@
 					// $('.txtrescharge<?php echo $i; ?>').val(rtotal_amt);
 				});
 				
+				//update the eventplaces detail
+				$('#updateEpd<?php echo $i; ?>').click(function()
+				{
+					
+					// alert('hi <?php echo $i;?>');
+					// return false;
+					
+					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();					
+					var txtvenue = $('#txtvenue<?php echo $i; ?>').val();
+					var txthall = $('#txthall<?php echo $i; ?>').val();
+					var txtldmark = $('#txtldmark<?php echo $i; ?>').val();
+					var txtfromdate = $('#txtfromdate<?php echo $i; ?>').val();
+					var txttodate = $('#txttodate<?php echo $i; ?>').val();
+					
+					
+					$.ajax({
+							url : 'includes/eventDetailPost.php',
+							type : 'POST',
+							async : false,
+							data : {
+								'PlacesUpdate'  : 1,								
+								'epldtlid' 	: epldtlid,	
+								'txtvenue' 	: txtvenue,
+								'txthall' 	: txthall,
+								'txtldmark' 	: txtldmark,
+								'txtfromdate' 	: txtfromdate,
+								'txttodate' 	: txttodate,
+								
+								
+							},
+							success : function(v)
+							{
+								alert('Updated Successfully!!!');
+							}
+							
+						});			
+				});
+				//end
+				
+				//insert the resorce detail
+				$('#updResD<?php echo $i; ?>').click(function()
+				{									
+					
+					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();
+					var evntid = $('#evntid<?php echo $i; ?>').val();
+					
+					var txtires = [];
+					$.each($("input[name='txtires<?php echo $i;?>']"), function(){            
+						 txtires.push($(this).val());
+					});
+					var txtiresnm = [];
+					$.each($("input[name='txtiresnm<?php echo $i;?>']"), function(){            
+						 txtiresnm.push($(this).val());
+					});
+					var txtiqty = [];
+					$.each($("input[name='txtiqty<?php echo $i;?>']"), function(){            
+						 txtiqty.push($(this).val());
+					});
+					var txtirate = [];
+					$.each($("input[name='txtirate<?php echo $i;?>']"), function(){            
+						 txtirate.push($(this).val());
+					});
+					var rtxtiamt = [];
+					$.each($("input[name='rtxtiamt<?php echo $i;?>']"), function(){            
+						 rtxtiamt.push($(this).val());
+					});					
+					
+					$.ajax({
+							url : 'includes/eventDetailPost.php',
+							type : 'POST',
+							async : false,
+							data : {
+								'ResourceIns'  : 1,								
+								'epldtlid' 	: epldtlid,	
+								'evntid' 	: evntid,
+								'txtires' 	: txtires,
+								'txtiresnm' 	: txtiresnm,
+								'txtiqty' 	: txtiqty,
+								'txtirate' 	: txtirate,
+								'rtxtiamt' 	: rtxtiamt,
+								
+								
+							},
+							success : function(v)
+							{
+								alert('Updated Resources!!!');
+							}
+							
+						});			
+				});
+				//end
+				//insert the Equipment detail
+				$('#updEqpD<?php echo $i; ?>').click(function()
+				{									
+					
+					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();
+					var evntid = $('#evntid<?php echo $i; ?>').val();					
+					var txtieqp = [];
+					$.each($("input[name='txtieqp<?php echo $i;?>']"), function(){            
+						 txtieqp.push($(this).val());
+					});
+					var txtirate = [];
+					$.each($("input[name='txtirate<?php echo $i;?>']"), function(){            
+						 txtirate.push($(this).val());
+					});
+					var txtiqty = [];
+					$.each($("input[name='txtiqty<?php echo $i;?>']"), function(){            
+						 txtiqty.push($(this).val());
+					});					
+					var txtiamt = [];
+					$.each($("input[name='txtiamt<?php echo $i;?>']"), function(){            
+						 txtiamt.push($(this).val());
+					});	
+					var txtistf = [];
+					$.each($("input[name='txtistf<?php echo $i;?>']"), function(){            
+						 txtistf.push($(this).val());
+					});	
+					
+					var txtivend = [];
+					$.each($("input[name='txtivend<?php echo $i;?>']"), function(){            
+						 txtivend.push($(this).val());
+					});
+					var txtivendprice = [];
+					$.each($("input[name='txtivendprice<?php echo $i;?>']"), function(){            
+						 txtivendprice.push($(this).val());
+					});
+					var txtiremark = [];
+					$.each($("input[name='txtiremark<?php echo $i;?>']"), function(){            
+						 txtiremark.push($(this).val());
+					});
+					var txtilength = [];
+					$.each($("input[name='txtilength<?php echo $i;?>']"), function(){            
+						 txtilength.push($(this).val());
+					});
+					var txtiwidth = [];
+					$.each($("input[name='txtiwidth<?php echo $i;?>']"), function(){            
+						 txtiwidth.push($(this).val());
+					});
+					
+					$.ajax({
+							url : 'includes/eventDetailPost.php',
+							type : 'POST',
+							async : false,
+							data : {
+								'EquipmentIns'  : 1,								
+								'epldtlid' 	: epldtlid,	
+								'evntid' 	: evntid,								
+								'txtieqp' 	: txtieqp,
+								'txtirate' 	: txtirate,
+								'txtiqty' 	: txtiqty,								
+								'txtiamt' 	: txtiamt,								
+								'txtistf' 	: txtistf,
+								'txtivend' 	: txtivend,
+								'txtivendprice' 	: txtivendprice,								
+								'txtiremark' 	: txtiremark,
+								'txtilength' 	: txtilength,
+								'txtiwidth' 	: txtiwidth,
+								
+								
+							},
+							success : function(v)
+							{
+								alert('Updated Equipemnt!!!');
+							}
+							
+						});			
+				});
+				//end
+				
 				newshowResDtl<?php echo $i; ?> ();
 				newshowEqpDtl<?php echo $i; ?> ();
 				shownewEqp<?php echo $i;?>();
@@ -1487,7 +1723,7 @@
 				
 			</script>
 			<?php
-		}
+		}		
 	}
 	if(isset($_POST['newshowResDtl']))
 	{
@@ -1510,7 +1746,7 @@
 				<td><?php echo $data[$i]['qty']; ?></td>
 				<td class="amount"><?php echo $data[$i]['amount']; ?></td>
 				<td>
-					<a id="1" class="resremove" style="cursor:pointer; margin-left:15px;">
+					<a data-id = "<?php echo $data[$i]['res_pls_id']; ?>" class="resdel" style="cursor:pointer; margin-left:15px;">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</a>
 				</td>
@@ -1554,7 +1790,7 @@
 				<td><?php echo $data[$j]['vend_price']; ?></td>
 				<td><?php echo $data[$j]['remark']; ?></td>
 				<td>
-				<a id="1" class="remove" style="cursor:pointer; margin-left:15px;">
+				<a data-id = "<?php echo $data[$j]['places_id']; ?>" class="eqpdel" style="cursor:pointer; margin-left:15px;">
 				<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
 				</td>
@@ -1563,6 +1799,21 @@
 		 <?php	
 		}
 		
+	}
+	if(isset($_POST['resdel']))
+	{		
+		//$date = date('Y-m-d H:i:s');
+		delResourceUpd($conn,$_POST['id']);
+	}
+	if(isset($_POST['epddel']))
+	{		
+		//$date = date('Y-m-d H:i:s');
+		delEventPlacesUpd($conn,$_POST['id']);
+	}
+	if(isset($_POST['eqpdel']))
+	{		
+		//$date = date('Y-m-d H:i:s');
+		delEquipmentUpd($conn,$_POST['id']);
 	}
 	if(isset($_POST['edit']))
 	{		

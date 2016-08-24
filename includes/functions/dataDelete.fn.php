@@ -88,5 +88,32 @@ function delVend($conn,$id,$del_date)
 			//echo 12;
 			exit;
 		}
+function delResourceUpd($conn,$id)
+		{
+			$sqldelCmpNew = "Delete from `res_places_dtl` where  res_pls_id = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			exit;
+		}
+function delEquipmentUpd($conn,$id)
+		{
+			$sqldelCmpNew = "Delete from `new_event_places_dtl` where places_id = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			exit;
+		}
+function delEventPlacesUpd($conn,$id)
+		{
+			$sqldelPlaces = "Delete from `event_places_dtl` where `event_places_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelPlaces);
+			
+			$sqldelEquipment = "Delete from `new_event_places_dtl` where `event_places_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEquipment);
+			
+			$sqldelResource = "Delete from `res_places_dtl` where `event_places_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelResource);
+			//echo 12;
+			exit;
+		}
 
 ?>

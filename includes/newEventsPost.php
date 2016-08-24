@@ -234,19 +234,19 @@ if(isset($_POST['showtax']))
 				{									
 					if(@is_array ($subvalue['equipment'])&& isset($subvalue['equipment']) && !empty($subvalue['equipment']))
 					{
-						echo $subvalue['equipment']['txtieqp'];
-						echo $subvalue['equipment']['txtieqpnm'];
-						echo $subvalue['equipment']['txtirate'];
-						echo $subvalue['equipment']['txtiqty'];
-						echo $subvalue['equipment']['txtiamt'];
-						echo $subvalue['equipment']['txtistf'];
-						echo $subvalue['equipment']['txtistfnm'];
-						echo $subvalue['equipment']['txtivend'];
-						echo $subvalue['equipment']['txtivendnm'];
-						echo $subvalue['equipment']['txtivendprice'];
-						echo $subvalue['equipment']['txtiremark'];
-						echo $subvalue['equipment']['txtilength'];
-						echo $subvalue['equipment']['txtiwidth']."</br>";
+						// echo $subvalue['equipment']['txtieqp'];
+						// echo $subvalue['equipment']['txtieqpnm'];
+						// echo $subvalue['equipment']['txtirate'];
+						// echo $subvalue['equipment']['txtiqty'];
+						// echo $subvalue['equipment']['txtiamt'];
+						// echo $subvalue['equipment']['txtistf'];
+						// echo $subvalue['equipment']['txtistfnm'];
+						// echo $subvalue['equipment']['txtivend'];
+						// echo $subvalue['equipment']['txtivendnm'];
+						// echo $subvalue['equipment']['txtivendprice'];
+						// echo $subvalue['equipment']['txtiremark'];
+						// echo $subvalue['equipment']['txtilength'];
+						// echo $subvalue['equipment']['txtiwidth']."</br>";
 						
 						insNewEventPlac($conn,$eventlast_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtivendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);	
 						
@@ -276,10 +276,62 @@ if(isset($_POST['showtax']))
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
-		}
-		
-		
+		}		
 		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+	}
+	
+	if(isset($_POST['txtupdchk']))
+	{	
+		$evnt_id = $_POST['txtupdchk'];		
+		$hdn_ary = $_POST['hdn'];
+		
+		//now inserted in event_places_id
+		
+		
+		//here is loop coming for multiple record//
+		foreach($hdn_ary as $key => $value)
+		{
+					  
+		  if(is_array($value))
+		  {							
+				
+				
+			//insertion work start
+			$fromdt = $value['txtfromdate'];
+			$tordt = $value['txttodate'];
+			
+			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
+			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
+			
+			 insertEventPlaces($conn,$evnt_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 $last_vplc_id  =  mysql_insert_id();			
+			
+			//insertion of event_place over stop
+				
+			foreach($value as $key => $subvalue)
+			{
+			
+				if(is_array($subvalue) && !empty($subvalue) )
+				{									
+					if(@is_array ($subvalue['equipment'])&& isset($subvalue['equipment']) && !empty($subvalue['equipment']))
+					{					
+						insNewEventPlac($conn,$evnt_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtivendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);							
+					}
+					 if(@is_array ($subvalue['resource']) && isset($subvalue['resource']) && !empty($subvalue['resource']))
+					{
+						insNewRes($conn,$evnt_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiamt']);
+					}				
+				}
+				else
+				{				
+					
+				}				
+			}					
+		  }
+		  
+		}			
+		header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		
 	}
 	
 	if(isset($_POST['showEqp']))
