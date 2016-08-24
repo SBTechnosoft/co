@@ -437,7 +437,7 @@ function updateTemplate($conn,$txttempid,$txtename,$txttemplate)
 													`template_body` = '".$txttemplate."'
 													 where `template_id` = '".$txttempid."' ";
 		return $conn->getResultArray($sqlupdateTemplate);
-		//echo 1;		
+			
 	}
 function insResourceUpd($conn,$evntid,$epldtlid,$txtires,$txtiresnm,$txtiqty,$txtirate,$rtxtiamt)
 		{
@@ -454,6 +454,23 @@ function insEquipmentUpd($conn,$evntid,$epldtlid,$txtieqp,$txtirate,$txtiqty,$tx
 			VALUES ('".$evntid."','".$epldtlid."','".$txtieqp."','".$txtirate."','".$txtiqty."','".$txtiamt."',
 			'".$txtistf."','".$txtivend."','".$txtivendprice."','".$txtiremark."','".$txtilength."','".$txtiwidth."')"; 
 			$resultArray = $conn->insertQuery($sqlinsNewEqp);
+			
+		}
+function updResEventMst($conn,$evntid,$totammt,$txamt,$clcharge)
+		{
+			$sqlupdResEventMst = "Update `event_mst` set `total_amt` = '".$totammt."',
+														`service_tax_amt` = '".$txamt."',
+														`client_charges`= '".$clcharge."' where `event_id` = '".$evntid."'"; 
+			$resultArray = $conn->insertQuery($sqlupdResEventMst);
+			
+		}
+function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
+		{
+			$sqlupdResEventMst = "Update `event_mst` set `total_amt` = '".$totammt."',
+														`service_tax_amt` = '".$txamt."',
+														`client_charges`= '".$clcharge."',
+														`vendor_charges`= '".$vdcharge."'	where `event_id` = '".$evntid."'"; 
+			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
 		}
 // function insDesg($conn,$desgId,$designation)

@@ -194,7 +194,7 @@ function showEventEnquiry($conn)
 
 function showEventDataDet($conn,$id)
 	{
-		$sqlEventDataDetail = "select `event_name`,`client_name`,`client_email`,`status` from  `event_mst` where `event_id` = '".$id."' "; 
+		$sqlEventDataDetail = "select `event_name`,`client_name`,`client_email`,`status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`total_amt` from  `event_mst` where `event_id` = '".$id."' "; 
 		return $conn->getResultArray($sqlEventDataDetail);	
 	}	
 function showNew($conn)
@@ -704,6 +704,11 @@ function showEquipmentDtl($conn,$epldtlid)
         right join vendor_mst vm on vm.vend_id = nepd.vend_id
         where nepd.event_places_id = '".$epldtlid."' "; 
 		return $conn->getResultArray($sqlshowEquipmentDtl);	
+	}
+function showcntRes($conn,$event_id)
+	{
+		$sqlshowResourceDtl = "select count(*) as 'Count' from res_places_dtl where event_id='".$event_id."' "; 
+		return $conn->getResultArray($sqlshowResourceDtl);	
 	}
 	/*
 	

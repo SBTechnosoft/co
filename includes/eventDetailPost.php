@@ -57,7 +57,8 @@
 			{
 				insResourceUpd($conn,$evntid,$epldtlid,$_POST['txtires'][$j],$_POST['txtiresnm'][$j],$_POST['txtiqty'][$j],
 				$_POST['txtirate'][$j],$_POST['rtxtiamt'][$j]);
-			}	
+			}
+		updResEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge']);
 	}
 	
 	if(isset($_POST['EquipmentIns']))
@@ -70,7 +71,8 @@
 				insEquipmentUpd($conn,$evntid,$epldtlid,$_POST['txtieqp'][$j],$_POST['txtirate'][$j],$_POST['txtiqty'][$j],
 				$_POST['txtiamt'][$j],$_POST['txtistf'][$j],$_POST['txtivend'][$j],$_POST['txtivendprice'][$j],
 				$_POST['txtiremark'][$j],$_POST['txtilength'][$j],$_POST['txtiwidth'][$j]);
-			}	
+			}
+		updEqpEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);		
 	}
 	
 	if(isset($_POST['delete']))
@@ -661,13 +663,30 @@
 	if(isset($_POST['newshoweventdtl']))
 	{
 		$edata = showEventPlacesDetail ($conn,$_POST['eid']);
-		$showEventPlacesCnt = count($edata);	
+		
+		$mdata = showEventDataDet($conn,$_POST['eid']);
+		$cntres = showcntRes($conn,$_POST['eid']);
+		
+		$showEventPlacesCnt = count($edata);
+		?>
+		<input type="hidden" class="m-wrap" id="contres" name="contres" value="<?php echo $cntres[0]['Count'];?>" />
+		
+		<input type="hidden" class="m-wrap" id="clcharge" name="clcharge" value="<?php echo $mdata[0]['client_charges'];?>" />
+		<input type="hidden" class="m-wrap" id="clpdcharge" name="clpdcharge" value="<?php echo $mdata[0]['client_paid_amt'];?>" />
+		<input type="hidden" class="m-wrap" id="vdcharge" name="vdcharge" value="<?php echo $mdata[0]['vendor_charges'];?>" />
+		<input type="hidden" class="m-wrap" id="vdpdcharge" name="vdpdcharge" value="<?php echo $mdata[0]['vd_paid_amt'];?>" />
+		<input type="hidden" class="m-wrap" id="txmd" name="txmd" value="<?php echo $mdata[0]['taxmode'];?>" />
+		<input type="hidden" class="m-wrap" id="txrat" name="txrat" value="<?php echo $mdata[0]['service_tax_rate'];?>" />
+		<input type="hidden" class="m-wrap" id="txamt" name="txamt" value="<?php echo $mdata[0]['service_tax_amt'];?>" />
+		<input type="hidden" class="m-wrap" id="totammt" name="totammt" value="<?php echo $mdata[0]['total_amt'];?>" />
+		<?php
 		for($i=0;$i<$showEventPlacesCnt;$i++)
 		{
 			?>
 			
 			<div id="dynamic_field">
 				<h4>
+					<?php //print_r($mdata); ?>
 					Order places 
 					<a id= "epddel" data-id="<?php echo $edata[$i]['event_places_id'];?>" class="btn blue event epddel" style="margin-left:75%" >
 						<i class="icon-minus"></i>
@@ -1581,7 +1600,14 @@
 				//insert the resorce detail
 				$('#updResD<?php echo $i; ?>').click(function()
 				{									
-					
+					var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();					
+										
 					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();
 					var evntid = $('#evntid<?php echo $i; ?>').val();
 					
@@ -1604,7 +1630,30 @@
 					var rtxtiamt = [];
 					$.each($("input[name='rtxtiamt<?php echo $i;?>']"), function(){            
 						 rtxtiamt.push($(this).val());
-					});					
+					});	
+					
+					if( contres > 0 )
+					{													
+						var restotal_amt = 0;
+						$.each(rtxtiamt,function() {
+							restotal_amt += parseInt(this);
+						});
+						clcharge = parseInt(clcharge) +parseInt(restotal_amt);						
+						
+						
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(restotal_amt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) + parseInt(servtax);
+							totammt = parseInt(totammt) +parseInt(restotal_amt) + parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) +parseInt(restotal_amt);
+						}
+						
+						
+					}
 					
 					$.ajax({
 							url : 'includes/eventDetailPost.php',
@@ -1620,7 +1669,9 @@
 								'txtirate' 	: txtirate,
 								'rtxtiamt' 	: rtxtiamt,
 								
-								
+								'totammt'   : totammt,
+								'txamt'     : txamt,
+								'clcharge' : clcharge,
 							},
 							success : function(v)
 							{
@@ -1633,6 +1684,15 @@
 				//insert the Equipment detail
 				$('#updEqpD<?php echo $i; ?>').click(function()
 				{									
+					var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
+					
 					
 					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();
 					var evntid = $('#evntid<?php echo $i; ?>').val();					
@@ -1678,6 +1738,37 @@
 						 txtiwidth.push($(this).val());
 					});
 					
+					if( contres == 0 )
+					{													
+						var eqptotal_amt = 0;
+						$.each(txtiamt,function() {
+							eqptotal_amt += parseInt(this);
+						});
+						var vendtotal_amt = 0;
+						$.each(txtivendprice,function() {
+							vendtotal_amt += parseInt(this);
+						});
+						clcharge = parseInt(clcharge) + parseInt(eqptotal_amt);	
+						
+						vdcharge = parseInt(vdcharge) + parseInt(vendtotal_amt); 
+						// alert(clcharge);
+						// alert(vdcharge);
+						
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(eqptotal_amt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) + parseInt(servtax);
+							totammt = parseInt(totammt) +parseInt(eqptotal_amt) + parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) +parseInt(eqptotal_amt);
+						}
+						// alert(txamt);
+						// alert(totammt);
+						// return false;
+					}
+					
 					$.ajax({
 							url : 'includes/eventDetailPost.php',
 							type : 'POST',
@@ -1697,6 +1788,10 @@
 								'txtilength' 	: txtilength,
 								'txtiwidth' 	: txtiwidth,
 								
+								'totammt'   : totammt,
+								'txamt'     : txamt,
+								'clcharge' : clcharge,
+								'vdcharge' : vdcharge,
 								
 							},
 							success : function(v)
@@ -1706,7 +1801,7 @@
 							
 						});			
 				});
-				//end
+				//end				
 				
 				newshowResDtl<?php echo $i; ?> ();
 				newshowEqpDtl<?php echo $i; ?> ();
@@ -1739,8 +1834,9 @@
 				<input id="hdn[0][1][resource][txtiresnm]" name="hdn[0][1][resource][txtiresnm]" value="cinemetography" type="hidden">
 				<input id="hdn[0][1][resource][txtiqty]" name="hdn[0][1][resource][txtiqty]" value="1" type="hidden">
 				<input id="hdn[0][1][resource][txtirate]" name="hdn[0][1][resource][txtirate]" value="4500" type="hidden">
-				<input id="hdn[0][1][resource][rtxtiamt]" class="rtxtiamt" name="hdn[0][1][resource][rtxtiamt]" value="4500" type="hidden">
 				-->
+				<input id="rtxtiamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtiamt" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
+				
 				<td><?php echo $data[$i]['res_name']; ?></td>
 				<td><?php echo $data[$i]['rate']; ?></td>
 				<td><?php echo $data[$i]['qty']; ?></td>
@@ -1771,7 +1867,7 @@
 				<input id="hdn[0][1][equipment][txtieqpnm]" name="hdn[0][1][equipment][txtieqpnm]" value="laptop" type="hidden">
 				<input id="hdn[0][1][equipment][txtirate]" name="hdn[0][1][equipment][txtirate]" value="15000" type="hidden">
 				<input id="hdn[0][1][equipment][txtiqty]" name="hdn[0][1][equipment][txtiqty]" value="1" type="hidden">
-				<input id="hdn[0][1][equipment][txtiamt]" class="txtiamt" name="hdn[0][1][equipment][txtiamt]" value="15000" type="hidden">
+				
 				<input id="hdn[0][1][equipment][txtistf]" name="hdn[0][1][equipment][txtistf]" value="16" type="hidden">
 				<input id="hdn[0][1][equipment][txtistfnm]" name="hdn[0][1][equipment][txtistfnm]" value="ashish" type="hidden">
 				<input id="hdn[0][1][equipment][txtivend]" name="hdn[0][1][equipment][txtivend]" value="" type="hidden">
@@ -1781,6 +1877,9 @@
 				<input id="hdn[0][1][equipment][txtilength]" name="hdn[0][1][equipment][txtilength]" value="" type="hidden">
 				<input id="hdn[0][1][equipment][txtiwidth]" name="hdn[0][1][equipment][txtiwidth]" value="" type="hidden">
 				-->
+				<input id="txtiamt<?php echo $data[$j]['places_id']; ?>" class="txtiamt" name="txtiamt" value="<?php echo $data[$j]['amount']; ?>" type="hidden">
+				<input id="txtivendprice<?php echo $data[$j]['places_id']; ?>" class="txtivendprice" name="txtivendprice" value="<?php echo $data[$j]['vend_price']; ?>" type="hidden">
+				
 				<td><?php echo $data[$j]['eq_name']; ?></td>
 				<td><?php echo $data[$j]['rate']; ?></td>
 				<td><?php echo $data[$j]['qty']; ?></td>
@@ -1814,6 +1913,7 @@
 	{		
 		//$date = date('Y-m-d H:i:s');
 		delEquipmentUpd($conn,$_POST['id']);
+		updEqpEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
 	}
 	if(isset($_POST['edit']))
 	{		

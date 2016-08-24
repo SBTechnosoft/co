@@ -535,8 +535,81 @@
 				});
 				
 				
+			//end		
+			
+			//removing the Equipment from the database
+			
+				$('body').delegate('.eqpdel','click',function()
+				{					
+					var id = $(this).data('id');
+					var txtiamt = $('#txtiamt'+id).val();
+					var txtivendprice = $('#txtivendprice'+id).val();
+					var evnt_id = $('#eid').val();
+					alert(evnt_id);
+					
+					var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
+					
+					// alert(txtiamt);
+					// alert(contres);
+					
+					if( contres == 0 )
+					{													
+						
+						clcharge = parseInt(clcharge) - parseInt(txtiamt);	
+						
+						vdcharge = parseInt(vdcharge) - parseInt(txtivendprice); 
+						alert(clcharge);
+						alert(vdcharge);
+						
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(txtiamt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) - parseInt(servtax);
+							totammt = parseInt(totammt) - parseInt(txtiamt) - parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) - parseInt(txtiamt);
+						}
+						alert(txamt);
+						alert(totammt);
+						// return false;
+					}
+					
+					return false;
+					
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'eqpdel'  : 1,
+							'id' 	: id,
+							'evnt_id' : evnt_id,
+							'totammt'   : totammt,
+							'txamt'     : txamt,
+							'clcharge' : clcharge,
+							'vdcharge' : vdcharge,
+						},
+						success : function(d)
+						{
+							alert("Delete Successfully");							
+						}						
+					});
+										
+				});
+				
+				
 			//end
-			//removing the resources from the database
+			
+			//removing the equipment places dtl from the database
 			
 				$('body').delegate('.epddel','click',function()
 				{
@@ -548,34 +621,6 @@
 						async : false,
 						data : {
 							'epddel'  : 1,
-							'id' 	: id
-												
-						},
-						success : function(d)
-						{
-							alert("Delete Successfully");
-							//window.location.reload();
-						}
-						
-					});
-										
-				});
-				
-				
-			//end
-			
-			//removing the Equipment from the database
-			
-				$('body').delegate('.eqpdel','click',function()
-				{
-					//alert('hello Divyesh');
-					var id = $(this).data('id');					
-					$.ajax({
-						url : 'includes/eventDetailPost.php',
-						type : 'POST',
-						async : false,
-						data : {
-							'eqpdel'  : 1,
 							'id' 	: id
 												
 						},
