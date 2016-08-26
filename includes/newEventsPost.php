@@ -285,6 +285,51 @@ if(isset($_POST['showtax']))
 		$evnt_id = $_POST['txtupdchk'];		
 		$hdn_ary = $_POST['hdn'];
 		
+		if( $_POST['contresn'] == 0 )
+		{													
+			
+			$clcharge = $_POST['clchargen'] + $_POST['txtucharge'] ;						
+			$vdcharge = $_POST['vdchargen'] + $_POST['txtvcharge'] ; 
+			
+			
+			if($_POST['txmdn']=='Yes')
+			{							
+				$servtax  =	($_POST['txtucharge']*$_POST['txratn'])/100;
+				$txamt =  $_POST['txamtn'] + $servtax;
+				$totammt = $_POST['totammtn'] + $_POST['txtucharge'] + $servtax ;
+			}
+			else
+			{
+				$totammt = $_POST['totammtn'] + $_POST['txtucharge'];
+			}
+			// echo $clcharge."<br>";
+			// echo $vdcharge."<br>";
+			// echo $txamt."<br>";
+			// echo $totammt."<br>";
+			updEqpEventMst($conn,$evnt_id,$totammt,$txamt,$clcharge,$vdcharge);
+		}
+		else
+		{
+			
+			$clcharge = $_POST['clchargen'] + $_POST['txtrescharge'] ;	
+			
+			if($_POST['txmdn']=='Yes')
+			{							
+				$servtax  =	($_POST['txtrescharge']*$_POST['txratn'])/100;
+				$txamt =  $_POST['txamtn'] + $servtax;
+				$totammt = $_POST['totammtn'] + $_POST['txtrescharge'] + $servtax ;
+			}
+			else
+			{
+				$totammt = $_POST['totammtn'] + $_POST['txtrescharge'];
+			}
+			// echo $clcharge."<br>";
+			// echo $txamt."<br>";
+			// echo $totammt."<br>";
+			updResEventMst($conn,$evnt_id,$totammt,$txamt,$clcharge);
+		}
+		
+		// exit;
 		//now inserted in event_places_id
 		
 		
@@ -315,11 +360,11 @@ if(isset($_POST['showtax']))
 				{									
 					if(@is_array ($subvalue['equipment'])&& isset($subvalue['equipment']) && !empty($subvalue['equipment']))
 					{					
-						insNewEventPlac($conn,$evnt_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtivendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);							
+						insNewEventPlac($conn,$evnt_id,$last_vplc_id,$subvalue['equipment']['txtieqp'],$subvalue['equipment']['txtirate'],$subvalue['equipment']['txtiqty'],$subvalue['equipment']['txtiuamt'],$subvalue['equipment']['txtistf'],$subvalue['equipment']['txtivend'],$subvalue['equipment']['txtiuvendprice'],$subvalue['equipment']['txtiremark'],$subvalue['equipment']['txtilength'],$subvalue['equipment']['txtiwidth']);							
 					}
 					 if(@is_array ($subvalue['resource']) && isset($subvalue['resource']) && !empty($subvalue['resource']))
 					{
-						insNewRes($conn,$evnt_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiamt']);
+						insNewRes($conn,$evnt_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiuamt']);
 					}				
 				}
 				else
@@ -330,7 +375,7 @@ if(isset($_POST['showtax']))
 		  }
 		  
 		}			
-		header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		header ('location:'.HTTP_SERVER.'index.php?url=EVD&id='.$evnt_id.'#tab_1_2');
 		
 	}
 	

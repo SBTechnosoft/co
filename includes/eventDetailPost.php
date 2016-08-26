@@ -669,8 +669,7 @@
 		
 		$showEventPlacesCnt = count($edata);
 		?>
-		<input type="hidden" class="m-wrap" id="contres" name="contres" value="<?php echo $cntres[0]['Count'];?>" />
-		
+		<input type="hidden" class="m-wrap" id="contres" name="contres" value="<?php echo $cntres[0]['Count'];?>" />		
 		<input type="hidden" class="m-wrap" id="clcharge" name="clcharge" value="<?php echo $mdata[0]['client_charges'];?>" />
 		<input type="hidden" class="m-wrap" id="clpdcharge" name="clpdcharge" value="<?php echo $mdata[0]['client_paid_amt'];?>" />
 		<input type="hidden" class="m-wrap" id="vdcharge" name="vdcharge" value="<?php echo $mdata[0]['vendor_charges'];?>" />
@@ -679,6 +678,7 @@
 		<input type="hidden" class="m-wrap" id="txrat" name="txrat" value="<?php echo $mdata[0]['service_tax_rate'];?>" />
 		<input type="hidden" class="m-wrap" id="txamt" name="txamt" value="<?php echo $mdata[0]['service_tax_amt'];?>" />
 		<input type="hidden" class="m-wrap" id="totammt" name="totammt" value="<?php echo $mdata[0]['total_amt'];?>" />
+				
 		<?php
 		for($i=0;$i<$showEventPlacesCnt;$i++)
 		{
@@ -696,6 +696,12 @@
 					</a>									
 				</h4>
 				<hr />
+			<div id="vennuedtl<?php echo $i;?>">
+			
+				<a name="edtvn<?php echo $i; ?>" id="edtvn<?php echo $i; ?>" class="btn blue btn_remove">
+					<i class="fa fa-pencil-square-o"></i>								
+				</a>
+				
 				<div class="clearfix margin-bottom-10">
 					<input type="hidden" class="m-wrap" id="hdn[<?php echo $i; ?>][txtEventPlacesId]" name="hdn[<?php echo $i; ?>][txtEventPlacesId]" value="<?php echo $edata[$i]['event_places_id'];?>"   />
 					<input type="hidden" class="m-wrap" id="epldtlid<?php echo $i;?>" name="epldtlid<?php echo $i;?>" value="<?php echo $edata[$i]['event_places_id'];?>"   />
@@ -738,13 +744,16 @@
 					</div>
 					</div>									
 				</div>
-				<div class="clearfix margin-bottom-10">
+			</div>
+				<div id="shwvn<?php echo $i; ?>" class="clearfix margin-bottom-10">
 					<!--label for="txtldmark"> </label-->
 					<div class="input-icon left">
 						<input class="m-wrap btn blue" value="Save" data-id="<?php echo $edata[$i]['event_places_id'];?>" id="updateEpd<?php echo $i; ?>" name="updateEpd<?php echo $i; ?>"  type="button" />
 					</div>
 				</div>
 				
+				
+			<div id="resinfo<?php echo $i; ?>">
 				<div>
 					<input style="width:207px;" type="text"  value="Resources" readonly />									
 														
@@ -763,11 +772,16 @@
 						Add								
 					</a>
 				</div>
+			</div>	
 				<br>
 				<div class="portlet box green">
 					<div class="portlet-title">
 						<div class="caption"><i class="icon-reorder"></i>Resources</div>
-
+						
+						<a id="edtres<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
+						
 					</div>
 					<div class="portlet-body">
 						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
@@ -787,7 +801,7 @@
 				</div>
 				
 				<!-- Save Button for resource Insertion -->
-				<div class="clearfix margin-bottom-10">
+				<div id ="shwres<?php echo $i; ?>" class="clearfix margin-bottom-10">
 					<!--label for="txtldmark"> </label-->
 					<div class="input-icon left">
 						<input class="m-wrap btn blue" value="Save"  id="updResD<?php echo $i; ?>" name="updResD<?php echo $i; ?>"  type="button" />
@@ -798,7 +812,7 @@
 				
 				
 				
-				
+			<div id="eqpinfo<?php echo $i; ?>">	
 				<div>
 					<input style="width:190px;" type="text"  value="Equipment" readonly />
 					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
@@ -807,14 +821,10 @@
 					
 					<input style="width:120px;" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
 					<input style="width:120px;" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
-					
-					
-					
+									
 				</div>
 				
-				<div>
-				
-					
+				<div>	
 				
 					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="medium m-wrap drpneweqp<?php echo $i;?>">											
 					</select>
@@ -871,13 +881,16 @@
 						Add								
 					</a>
 				</div>
+			</div>
 				<br/>
 				
 				
 				<div class="portlet box green">
 					<div class="portlet-title">
 						<div class="caption"><i class="icon-reorder"></i>Equipments</div>
-
+						<a id="edteqp<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
 					</div>
 					<div class="portlet-body">
 						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
@@ -902,7 +915,7 @@
 				</div>
 				
 				<!-- Save Button for Equipment Insertion -->
-				<div class="clearfix margin-bottom-10">
+				<div id ="shweqp<?php echo $i; ?>" class="clearfix margin-bottom-10">
 					<!--label for="txtldmark"> </label-->
 					<div class="input-icon left">
 						<input class="m-wrap btn blue" value="Save"  id="updEqpD<?php echo $i; ?>" name="updEqpD<?php echo $i; ?>"  type="button" />
@@ -918,6 +931,43 @@
 				   $('#datetimepickerPT<?php echo $i; ?>').datetimepicker({
 					language: 'pt-BR'
 				  });
+				  //edit vennue
+				 $('#edtvn<?php echo $i;?>').click(function()
+					{
+						//$('#txtvat').removeAttr('readonly');
+						$("#edtvn<?php echo $i;?>").hide();
+						$("#shwvn<?php echo $i;?>").show();
+					});
+				
+				$("#shwvn<?php echo $i;?>").hide(); 
+				//exit
+				
+				//edit resource
+				$('#edtres<?php echo $i;?>').click(function()
+					{
+						//$('#txtvat').removeAttr('readonly');						
+						$("#edtres<?php echo $i;?>").hide();
+						$("#shwres<?php echo $i;?>").show();
+						$("#resinfo<?php echo $i;?>").show();
+					});
+				
+				$("#shwres<?php echo $i;?>").hide();
+				$("#resinfo<?php echo $i;?>").hide();
+				//exit 
+
+				//edit equipment
+				$('#edteqp<?php echo $i;?>').click(function()
+					{
+						//$('#txtvat').removeAttr('readonly');						
+						$("#edteqp<?php echo $i;?>").hide();
+						$("#shweqp<?php echo $i;?>").show();
+						$("#eqpinfo<?php echo $i;?>").show();
+					});
+				
+				$("#shweqp<?php echo $i;?>").hide();
+				$("#eqpinfo<?php echo $i;?>").hide();
+				//exit 
+				
 				function newshowResDtl<?php echo $i; ?> ()
 				{					
 					var epldtlid = 	$('#epldtlid<?php echo $i; ?>').val();
@@ -1041,6 +1091,7 @@
 						
 					});
 				}
+				
 				$("#drpneweqp<?php echo $i;?>").on("change", function()
 				{
 					var eqpid    =   $('#drpneweqp<?php echo $i;?>').val();
@@ -1243,8 +1294,8 @@
 				});
 				
 				
-				var k = 3;
-				var i = 3;
+				var k = 11;
+				var i = 11;
 				$('#addeqp<?php echo $i; ?>').on('click',function()
 				{
 					var eqpid = $('.drpneweqp<?php echo $i; ?>').val();
@@ -1591,6 +1642,8 @@
 							success : function(v)
 							{
 								alert('Updated Successfully!!!');
+								$("#edtvn<?php echo $i;?>").show();
+								$("#shwvn<?php echo $i;?>").hide();
 							}
 							
 						});			
@@ -1676,6 +1729,13 @@
 							success : function(v)
 							{
 								alert('Updated Resources!!!');
+								
+								$("#shwres<?php echo $i;?>").hide();
+								$("#resinfo<?php echo $i;?>").hide();
+								$("#edtres<?php echo $i;?>").show();
+								
+								newshowResDtl<?php echo $i; ?> ();
+								newshowEqpDtl<?php echo $i; ?> ();
 							}
 							
 						});			
@@ -1797,11 +1857,19 @@
 							success : function(v)
 							{
 								alert('Updated Equipemnt!!!');
+								$("#shweqp<?php echo $i;?>").hide();
+								$("#eqpinfo<?php echo $i;?>").hide();
+								$("#edteqp<?php echo $i;?>").show();
+								
+								newshowResDtl<?php echo $i; ?> ();
+								newshowEqpDtl<?php echo $i; ?> ();
 							}
 							
 						});			
 				});
 				//end				
+				
+				
 				
 				newshowResDtl<?php echo $i; ?> ();
 				newshowEqpDtl<?php echo $i; ?> ();
@@ -1836,6 +1904,8 @@
 				<input id="hdn[0][1][resource][txtirate]" name="hdn[0][1][resource][txtirate]" value="4500" type="hidden">
 				-->
 				<input id="rtxtiamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtiamt" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
+				
+				<input id="rtxtallpamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtallpamt<?php echo $data[$i]['event_places_id']; ?>" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
 				
 				<td><?php echo $data[$i]['res_name']; ?></td>
 				<td><?php echo $data[$i]['rate']; ?></td>
@@ -1880,6 +1950,9 @@
 				<input id="txtiamt<?php echo $data[$j]['places_id']; ?>" class="txtiamt" name="txtiamt" value="<?php echo $data[$j]['amount']; ?>" type="hidden">
 				<input id="txtivendprice<?php echo $data[$j]['places_id']; ?>" class="txtivendprice" name="txtivendprice" value="<?php echo $data[$j]['vend_price']; ?>" type="hidden">
 				
+				<input id="txtallpamt<?php echo $data[$j]['places_id']; ?>" class="txtallpamt<?php echo $data[$j]['event_places_id']; ?>" name="txtallpamt" value="<?php echo $data[$j]['amount']; ?>" type="hidden">
+				<input id="txtallpvendprice<?php echo $data[$j]['places_id']; ?>" class="txtallpvendprice<?php echo $data[$j]['event_places_id']; ?>" name="txtallpvendprice" value="<?php echo $data[$j]['vend_price']; ?>" type="hidden">
+				
 				<td><?php echo $data[$j]['eq_name']; ?></td>
 				<td><?php echo $data[$j]['rate']; ?></td>
 				<td><?php echo $data[$j]['qty']; ?></td>
@@ -1903,10 +1976,54 @@
 	{		
 		//$date = date('Y-m-d H:i:s');
 		delResourceUpd($conn,$_POST['id']);
+		updResEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge']);
 	}
 	if(isset($_POST['epddel']))
 	{		
 		//$date = date('Y-m-d H:i:s');
+		if( $_POST['contres'] == 0 )
+		{													
+			
+			$clcharge = $_POST['clcharge'] - $_POST['eqp_amt'] ;						
+			$vdcharge = $_POST['vdcharge'] - $_POST['ven_amt'] ; 
+			
+			
+			if($_POST['txmd']=='Yes')
+			{							
+				$servtax  =	($_POST['eqp_amt']*$_POST['txrat'])/100;
+				$txamt =  $_POST['txamt'] - $servtax;
+				$totammt = $_POST['totammt'] - $_POST['eqp_amt'] - $servtax ;
+			}
+			else
+			{
+				$totammt = $_POST['totammt'] - $_POST['eqp_amt'];
+			}
+			// echo $clcharge."<br>";
+			// echo $vdcharge."<br>";
+			// echo $txamt."<br>";
+			// echo $totammt."<br>";
+			updEqpEventMst($conn,$_POST['event_id'],$totammt,$txamt,$clcharge,$vdcharge);
+		}
+		else
+		{
+			
+			$clcharge = $_POST['clcharge'] - $_POST['res_amt'] ;	
+			
+			if($_POST['txmd']=='Yes')
+			{							
+				$servtax  =	($_POST['res_amt']*$_POST['txrat'])/100;
+				$txamt =  $_POST['txamt'] - $servtax;
+				$totammt = $_POST['totammt'] - $_POST['res_amt'] - $servtax ;
+			}
+			else
+			{
+				$totammt = $_POST['totammt'] - $_POST['res_amt'];
+			}
+			// echo $clcharge."<br>";
+			// echo $txamt."<br>";
+			// echo $totammt."<br>";
+			updResEventMst($conn,$_POST['event_id'],$totammt,$txamt,$clcharge);
+		}		
 		delEventPlacesUpd($conn,$_POST['id']);
 	}
 	if(isset($_POST['eqpdel']))
@@ -1917,16 +2034,26 @@
 	}
 	if(isset($_POST['edit']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
 		exit();	
 		
 	}
+	
 	if(isset($_POST['showlast']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['countRes']))
+	{		
+		$q = mysql_query("select count(*) as 'Count' from res_places_dtl where event_id='".$_POST['id']."'");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

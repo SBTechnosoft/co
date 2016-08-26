@@ -492,6 +492,17 @@
 					$('#txtpaid').val(e.client_paid_amt);
 					//end of invoice data
 					
+					//this for update
+					$('#clchargen').val(e.client_charges);
+					$('#clpdchargen').val(e.client_paid_amt);
+					$('#vdchargen').val(e.vendor_charges);
+					$('#vdpdchargen').val(e.vd_paid_amt);
+					$('#txmdn').val(e.taxmode);
+					$('#txratn').val(e.service_tax_rate);
+					$('#txamtn').val(e.service_tax_amt);
+					$('#totammtn').val(e.total_amt);
+					//end
+					
 					//call to display for evend places detail..
 					//its old//showeventplaces();
 					newshoweventplaces();
@@ -502,6 +513,7 @@
 					showvendorpaid();
 					showpdf();
 					showfullpdf();
+					countRes();
 				}
 				
 			});		
@@ -513,25 +525,61 @@
 			
 				$('body').delegate('.resdel','click',function()
 				{
-					//alert('hello Divyesh');
-					var id = $(this).data('id');					
+					
+					var id = $(this).data('id');
+					var rtxtiamt = $('#rtxtiamt'+id).val();					
+					var evnt_id = $('#eid').val();
+					
+					
+					
+					var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					
+					if( contres > 0 )
+					{													
+						
+						clcharge = parseInt(clcharge) - parseInt(rtxtiamt);		
+						
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(rtxtiamt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) - parseInt(servtax);
+							totammt = parseInt(totammt) - parseInt(rtxtiamt) - parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) - parseInt(rtxtiamt);
+						}
+						
+					}
+					
 					$.ajax({
 						url : 'includes/eventDetailPost.php',
 						type : 'POST',
 						async : false,
 						data : {
 							'resdel'  : 1,
-							'id' 	: id
-												
+							'id' 	: id,
+							'evnt_id' : evnt_id,
+							'totammt'   : totammt,
+							'txamt'     : txamt,
+							'clcharge' : clcharge,
+							
 						},
 						success : function(d)
 						{
 							alert("Delete Successfully");
-							//window.location.reload();
+							
 						}
 						
+						
 					});
-										
+					$( this ).parent().parent().css( "display", "none" );					
 				});
 				
 				
@@ -544,9 +592,7 @@
 					var id = $(this).data('id');
 					var txtiamt = $('#txtiamt'+id).val();
 					var txtivendprice = $('#txtivendprice'+id).val();
-					var evnt_id = $('#eid').val();
-					alert(evnt_id);
-					
+					var evnt_id = $('#eid').val();					
 					var contres = $('#contres').val();
 					var clcharge = $('#clcharge').val();
 					var clpdcharge = $('#clpdcharge').val();					
@@ -554,19 +600,15 @@
 					var txrat = $('#txrat').val();
 					var txamt = $('#txamt').val();
 					var totammt = $('#totammt').val();	
-					var vdcharge = $('#vdcharge').val();
+					var vdcharge = $('#vdcharge').val();			
 					
-					// alert(txtiamt);
-					// alert(contres);
 					
 					if( contres == 0 )
 					{													
 						
-						clcharge = parseInt(clcharge) - parseInt(txtiamt);	
-						
+						clcharge = parseInt(clcharge) - parseInt(txtiamt);						
 						vdcharge = parseInt(vdcharge) - parseInt(txtivendprice); 
-						alert(clcharge);
-						alert(vdcharge);
+						
 						
 						if(txmd=='Yes')
 						{							
@@ -578,12 +620,9 @@
 						{
 							totammt = parseInt(totammt) - parseInt(txtiamt);
 						}
-						alert(txamt);
-						alert(totammt);
-						// return false;
+						
 					}
-					
-					return false;
+								
 					
 					$.ajax({
 						url : 'includes/eventDetailPost.php',
@@ -603,7 +642,7 @@
 							alert("Delete Successfully");							
 						}						
 					});
-										
+					$( this ).parent().parent().css( "display", "none" );					
 				});
 				
 				
@@ -614,14 +653,66 @@
 				$('body').delegate('.epddel','click',function()
 				{
 					//alert('hello Divyesh');
-					var id = $(this).data('id');					
+					var id = $(this).data('id');
+					var event_id = $('#eid').val();
+					var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
+					//Resource
+					var res_sum = [];
+					$.each($('.rtxtallpamt'+id), function(){          
+						res_sum.push($(this).val());
+					});
+					var res_amt = 0;
+					$.each(res_sum,function() {
+						res_amt += parseInt(this);
+					});
+					
+					//Equipment
+					var eqp_sum = [];
+					$.each($('.txtallpamt'+id), function(){          
+						eqp_sum.push($(this).val());
+					});
+					
+					var eqp_amt = 0;
+					$.each(eqp_sum,function() {
+						eqp_amt += parseInt(this);
+					});
+					
+					//Vendor
+					var ven_sum = [];
+					$.each($('.txtallpvendprice'+id), function(){          
+						ven_sum.push($(this).val());
+					});
+					
+					var ven_amt = 0;
+					$.each(ven_sum,function() {
+						ven_amt += parseInt(this);
+					});			
+					
 					$.ajax({
 						url : 'includes/eventDetailPost.php',
 						type : 'POST',
 						async : false,
 						data : {
 							'epddel'  : 1,
-							'id' 	: id
+							'id' 	: id,
+							'contres' : contres,
+							'clcharge' : clcharge,
+							'txmd' : txmd,
+							'txrat' : txrat,
+							'txamt' : txamt,
+							'totammt' : totammt,
+							'vdcharge' : vdcharge,							
+							'res_amt' : res_amt,
+							'eqp_amt' : eqp_amt,
+							'ven_amt' : ven_amt,
+							'event_id': event_id,
 												
 						},
 						success : function(d)
@@ -631,7 +722,7 @@
 						}
 						
 					});
-										
+					$( this ).parent().parent().css( "display", "none" );					
 				});
 				
 				
@@ -699,6 +790,17 @@
 					$('#txtpaid').val(e.client_paid_amt);
 					//end of invoice data
 					
+					//this for update
+					$('#clchargen').val(e.client_charges);
+					$('#clpdchargen').val(e.client_paid_amt);
+					$('#vdchargen').val(e.vendor_charges);
+					$('#vdpdchargen').val(e.vd_paid_amt);
+					$('#txmdn').val(e.taxmode);
+					$('#txratn').val(e.service_tax_rate);
+					$('#txamtn').val(e.service_tax_amt);
+					$('#totammtn').val(e.total_amt);
+					//end
+					
 					//call to display for evend places detail..
 					//its old//showeventplaces();
 					newshoweventplaces();
@@ -715,11 +817,34 @@
 			});		
 		}
 		
+		
 		last_event();
 		
 		
-		
 		//end of the default show data
+		
+		function countRes()
+		{
+			var id = $('#eid').val();
+			//alert(id);
+			
+			$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'countRes'  : 1,
+					'id' 	: id,
+										
+				},
+				success : function(e)
+				{
+					$('#contresn').val(e.Count);
+				}
+			});
+		}
+		countRes();
+		
 		function newshoweventplaces ()
 		{
 			var eid    =   $('#eid').val();
@@ -746,6 +871,7 @@
 			});	
 					
 		}
+		
 		function showeventplaces ()
 		{
 			var eid    =   $('#eid').val();

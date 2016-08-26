@@ -93,14 +93,14 @@ function delResourceUpd($conn,$id)
 			$sqldelCmpNew = "Delete from `res_places_dtl` where  res_pls_id = '".$id."' "; 
 			$resultArray = $conn->insertQuery($sqldelCmpNew);
 			//echo 12;
-			exit;
+			
 		}
 function delEquipmentUpd($conn,$id)
 		{
 			$sqldelCmpNew = "Delete from `new_event_places_dtl` where places_id = '".$id."' "; 
 			$resultArray = $conn->insertQuery($sqldelCmpNew);
 			//echo 12;
-			exit;
+			//exit;
 		}
 function delEventPlacesUpd($conn,$id)
 		{

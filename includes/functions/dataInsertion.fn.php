@@ -458,10 +458,12 @@ function insEquipmentUpd($conn,$evntid,$epldtlid,$txtieqp,$txtirate,$txtiqty,$tx
 		}
 function updResEventMst($conn,$evntid,$totammt,$txamt,$clcharge)
 		{
+			
 			$sqlupdResEventMst = "Update `event_mst` set `total_amt` = '".$totammt."',
 														`service_tax_amt` = '".$txamt."',
-														`client_charges`= '".$clcharge."' where `event_id` = '".$evntid."'"; 
+														`client_charges`= '".$clcharge."' where `event_id` = '".$evntid."' "; 
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
+			
 			
 		}
 function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)

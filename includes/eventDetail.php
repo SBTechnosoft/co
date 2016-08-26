@@ -155,8 +155,8 @@ else
         <!--end tabbable-->
         <div class="tabbable tabbable-custom tabbable-full-width">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#tab_2_5">Details </a></li>
-                <li><a data-toggle="tab" href="#tab_1_2" >Places</a></li>
+                <li class="<?php if(!isset($_GET['id'])&& empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_2_5">Details </a></li>
+                <li class="<?php if(isset($_GET['id'])&& !empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_1_2" >Places</a></li>
                 <li><a data-toggle="tab" href="#tab_2_2" > Accounting </a></li>
 				<!-- id is removed here first given the ajax call o the id now no need on this click default fn call-->
 				<!--li><a data-toggle="tab" href="#tab_1_2" id="event_places_dtl">Places</a></li>
@@ -165,7 +165,7 @@ else
             </ul>
 			
             <div class="tab-content">				
-                <div id="tab_2_5" class="tab-pane active">
+                <div id="tab_2_5" class="tab-pane <?php if(!isset($_GET['id'])&& empty($_GET['id'])){ echo 'active'; }?>">
                     <div class="row-fluid">
 						<div class="span8 detail_content">
                         <div class="search-forms search-default">
@@ -370,14 +370,37 @@ else
                     </div>
                 </div>
                 <!--end tab-pane-->
-                <div id="tab_1_2" class="tab-pane">
+                <div id="tab_1_2" class="tab-pane <?php if(isset($_GET['id'])&& !empty($_GET['id'])){ echo 'active'; }?>">
                     <div class="row-fluid search-forms search-default">
-                        <form class="form-search" action="#">
+                        <!--form class="form-search" action="#"-->
 						
 							<div id= "multiinsert">
 								
 							</div>
-							
+							<form name="f1" method="post" action="includes/newEventsPost.php" >
+								<input type="hidden" class="m-wrap" id="contresn" name="contresn" value="" />		
+								<input type="hidden" class="m-wrap" id="clchargen" name="clchargen" value="" />
+								<input type="hidden" class="m-wrap" id="clpdchargen" name="clpdchargen" value="" />
+								<input type="hidden" class="m-wrap" id="vdchargen" name="vdchargen" value="" />
+								<input type="hidden" class="m-wrap" id="vdpdchargen" name="vdpdchargen" value="" />
+								<input type="hidden" class="m-wrap" id="txmdn" name="txmdn" value="" />
+								<input type="hidden" class="m-wrap" id="txratn" name="txratn" value="" />
+								<input type="hidden" class="m-wrap" id="txamtn" name="txamtn" value="" />
+								<input type="hidden" class="m-wrap" id="totammtn" name="totammtn" value="" />
+															
+								<input id="txtrescharge" class="m-wrap txtrescharge" name="txtrescharge" readonly="" type="hidden">
+								<input id="txtvcharge" class="m-wrap txtvcharge" name="txtvcharge" readonly="" type="hidden" >
+								<input id="txtucharge" class="m-wrap txtucharge" name="txtucharge" readonly="" type="hidden" >
+								
+								<div id= "multiupdinsert">
+									
+								</div>
+								<div class="clearfix margin-bottom-10">				
+									<div class="input-icon left">
+										<input class="m-wrap btn blue" value="Save" type="submit" />
+									</div>
+								</div>
+							</form>
                             <!--div id="dynamic_field">
                                 <h4>Order Places </h4>
                                 <hr />		
@@ -394,7 +417,7 @@ else
 									</div>
 								</div>		
                             </div-->
-                        </form>
+                        <!--/form-->
 					</div>
                 </div>
                 <!--end tab-pane-->

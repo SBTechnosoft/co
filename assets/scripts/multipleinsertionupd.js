@@ -8,15 +8,60 @@ $(document).on('click','#add',function()
 	$(document).on('click','.event',function(){
 		var button_id = $(this).attr("id");
 		$("#dynamic_field"+button_id+"").remove();
+		var gtot = [];
+		$.each($('.txtiuamt'), function(){           
+			gtot.push($(this).val());
+		});
+		
+		var total_amt = 0;
+		$.each(gtot,function() {
+			total_amt += parseInt(this);
+		});
+		
+		var vtot = [];
+		$.each($('.txtiuvendprice'), function(){           
+			vtot.push($(this).val());
+		});
+		var total_vamt = 0;
+		$.each(vtot,function() {
+			total_vamt += parseInt(this);
+		});
+		$('.txtucharge').val(total_amt);
+		$('.txtvcharge').val(total_vamt);
+		
+		var rgtot = [];
+		$.each($('.rtxtiuamt'), function(){          
+			rgtot.push($(this).val());
+		});
+		var rtotal_amt = 0;
+		$.each(rgtot,function() {
+			rtotal_amt += parseInt(this);
+		});		
+		$('.txtrescharge').val(rtotal_amt);
 	});
 	var i = 0;
 	function addnewdiv()
 	{
 		i++;
 		var evntid = $('#eid').val();
-			
+		var contres = $('#contres').val();
+		var clcharge = $('#clcharge').val();
+		var clpdcharge = $('#clpdcharge').val();					
+		var txmd = $('#txmd').val();
+		var txrat = $('#txrat').val();
+		var txamt = $('#txamt').val();
+		var totammt = $('#totammt').val();
+		// alert(evntid); 
+		// alert(contres);
+		// alert(clcharge);
+		// alert(txmd);
+		// alert(txrat);
+		// alert(txamt);
+		// alert(totammt);		 
+		// return false;
+		
 		var div1 = 
-		'<form name="f1" method="post" action="includes/newEventsPost.php" target="_blank">'+
+		//'<form name="f1" method="post" action="includes/newEventsPost.php" target="_blank">'+
 		'<input type="hidden" name="txtupdchk" id="txtupdchk" value="'+evntid+'" />'+	
 		'<div id="dynamic_field'+i+'">'+
 		'	<h4>'+
@@ -633,7 +678,7 @@ $(document).on('click','#add',function()
 		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="medium m-wrap drpnewvend'+i+'">'+ 											
 		'		</select>'+
 		
-		'		<input class="small m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="" />	'+								
+		'		<input class="small m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="0" />	'+								
 		'	</div>	'+							
 		'	<div>'+
 		'		<input  type="text"  value="Remark" readonly />'+
@@ -669,14 +714,14 @@ $(document).on('click','#add',function()
 		'			</table>'+
 		'		</div>'+
 		'	</div>	'+
-			'<div class="clearfix margin-bottom-10">'+				
-				'<div class="input-icon left">'+
-					'<input class="m-wrap btn blue" value="Ins New" type="submit" />'+
-				'</div>'+
-			'</div>'+
+			// '<div class="clearfix margin-bottom-10">'+				
+				// '<div class="input-icon left">'+
+					// '<input class="m-wrap btn blue" value="Ins New" type="submit" />'+
+				// '</div>'+
+			// '</div>'+
 		
 		'</div>'+
-		'</form>'+
+		//'</form>'+
 		'<script>'+
 		
 		
@@ -1065,12 +1110,12 @@ $(document).on('click','#add',function()
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqpnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtieqpnm]" value="\'+eqpnm+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtirate]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtirate]" value="\'+rate+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiqty]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiqty]" value="\'+qty+\'">\'+'+
-						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiamt]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiamt]" class="txtiamt" value="\'+amt+\'">\'+'+
+						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiuamt]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiuamt]" class="txtiuamt" value="\'+amt+\'">\'+'+
 						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistf]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistf]" value="\'+staff+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistfnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtistfnm]" value="\'+staffnm+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivend]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivend]" value="\'+vend+\'">\'+'+
 						'\'<input type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendnm]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendnm]" value="\'+vendnm+\'">\'+'+
-						'\'<input  type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtivendprice]" class="txtivendprice" value="\'+vprice+\'">\'+'+
+						'\'<input  type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiuvendprice]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiuvendprice]" class="txtiuvendprice" value="\'+vprice+\'">\'+'+
 						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiremark]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiremark]" value="\'+reamrk+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtilength]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtilength]" value="\'+length+\'">\'+'+
 						'\'<input   type="hidden"  id="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiwidth]" name="hdn[\'+col+\'][\'+row'+i+'+\'][equipment][txtiwidth]" value="\'+width+\'">\'+'+
@@ -1092,11 +1137,11 @@ $(document).on('click','#add',function()
 			'$(\'#eqprec'+i+'\').append(div);'+	
 			
 			
-			'var txtrescharge = $(\'.txtrescharge\').val();'+
-			'if(txtrescharge == "")'+
-			'{'+
+			// 'var txtrescharge = $(\'.txtrescharge\').val();'+
+			// 'if(txtrescharge == "")'+
+			// '{'+
 				'var gtot = [];'+
-				'$.each($(\'.txtiamt\'), function(){  '+          
+				'$.each($(\'.txtiuamt\'), function(){  '+          
 					'gtot.push($(this).val());'+
 				'});'+
 				
@@ -1106,16 +1151,16 @@ $(document).on('click','#add',function()
 				'});'+
 				
 				'var vtot = [];'+
-				'$.each($(\'.txtivendprice\'), function(){  ' +         
+				'$.each($(\'.txtiuvendprice\'), function(){  ' +         
 					'vtot.push($(this).val());'+
 				'});'+
 				'var total_vamt = 0;'+
 				'$.each(vtot,function() {'+
 					'total_vamt += parseInt(this);'+
 				'});'+
-				'$(\'.txtcharge\').val(total_amt);'+
+				'$(\'.txtucharge\').val(total_amt);'+
 				'$(\'.txtvcharge\').val(total_vamt);'+
-			'}'+
+			//'}'+
 			
 			'$(\'.drpneweqp'+i+'\').val(\'\');'+
 			'$(\'.txtrate'+i+'\').val(\'\');'+
@@ -1123,7 +1168,7 @@ $(document).on('click','#add',function()
 			'$(\'.txtamt'+i+'\').val(\'\');'+
 			'$(\'.drpnewstf'+i+'\').val(\'\');'+
 			'$(\'.drpnewvend'+i+'\').val(\'\');'+
-			'$(\'.txtvprice'+i+'\').val(\'\');'+
+			'$(\'.txtvprice'+i+'\').val(\'0\');'+
 			'$(\'.txtremark'+i+'\').val(\'\');'+
 			'$(\'.txtlength'+i+'\').val(\'\');'+
 			'$(\'.txtwidth'+i+'\').val(\'\');'+
@@ -1197,7 +1242,7 @@ $(document).on('click','#add',function()
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresnm]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresnm]" value="\'+resnm+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiqty]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiqty]" value="\'+qty+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" value="\'+rate+\'">\'+'+
-						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" class="rtxtiamt" value="\'+amt+\'">\'+'+			
+						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiuamt]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiuamt]" class="rtxtiuamt" value="\'+amt+\'">\'+'+			
 						
 						'\'<td>\'+ resnm+\'</td>\'+'+
 						'\'<td>\'+ rate+\'</td>\'+'+
@@ -1212,14 +1257,14 @@ $(document).on('click','#add',function()
 			'$(\'#resrec'+i+'\').append(resdiv);'+	
 			
 			'var rgtot = [];'+
-			'$.each($(\'.rtxtiamt\'), function(){ ' +          
+			'$.each($(\'.rtxtiuamt\'), function(){ ' +          
 				'rgtot.push($(this).val());'+
 			'});'+
 			'var rtotal_amt = 0;'+
 			'$.each(rgtot,function() {'+
 				'rtotal_amt += parseInt(this);'+
 			'});'	+		
-			'$(\'.txtcharge\').val(rtotal_amt);'+
+			'$(\'.txtrescharge\').val(rtotal_amt);'+
 
 			'$(\'.drp_resource'+i+'\').val(\'\');'+
 			'$(\'.txtresrate'+i+'\').val(\'\');'+
@@ -1235,14 +1280,14 @@ $(document).on('click','#add',function()
 			'$("#resrow"+button_id+"").remove();'+	
 			
 			'var rgtot = [];'+
-			'$.each($(\'.rtxtiamt\'), function(){ ' +          
+			'$.each($(\'.rtxtiuamt\'), function(){ ' +          
 				'rgtot.push($(this).val());'+
 			'});'+
 			'var rtotal_amt = 0;'+
 			'$.each(rgtot,function() {'+
 				'rtotal_amt += parseInt(this);'+
 			'});'	+		
-			'$(\'.txtcharge\').val(rtotal_amt);'+
+			'$(\'.txtrescharge\').val(rtotal_amt);'+
 			
 		'});'+
 		
@@ -1250,11 +1295,11 @@ $(document).on('click','#add',function()
 			'var button_id = $(this).attr("id");'+
 			'$("#eqrow"+button_id+"").remove();'+
 			
-			'var txtrescharge = $(\'.txtrescharge\').val();'+
-			'if(txtrescharge == "")'+
-			'{'+
+			// 'var txtrescharge = $(\'.txtrescharge\').val();'+
+			// 'if(txtrescharge == "")'+
+			// '{'+
 				'var gtot = [];'+
-				'$.each($(\'.txtiamt\'), function(){ '+           
+				'$.each($(\'.txtiuamt\'), function(){ '+           
 					'gtot.push($(this).val());'+
 				'});'+
 				
@@ -1264,23 +1309,23 @@ $(document).on('click','#add',function()
 				'});'+
 				
 				'var vtot = [];'+
-				'$.each($(\'.txtivendprice\'), function(){  ' +         
+				'$.each($(\'.txtiuvendprice\'), function(){  ' +         
 					'vtot.push($(this).val());'+
 				'});'+
 				'var total_vamt = 0;'+
 				'$.each(vtot,function() {'+
 					'total_vamt += parseInt(this);'+
 				'});'+				
-				'$(\'.txtcharge\').val(total_amt);'+
+				'$(\'.txtucharge\').val(total_amt);'+
 				'$(\'.txtvcharge\').val(total_vamt);'+
-			'}	'+
+			//'}	'+
 		'});'+
 		
 			 
 		'</script>';
 		
 	
-		$('#multiinsert').append(div1);
+		$('#multiupdinsert').append(div1);
 		
 		
 
