@@ -244,6 +244,11 @@
 						
 					</tr>
 					
+					
+		<?php	
+				}
+		}
+		?>
 					<script>
 					
 					$('.closec').click(function(){
@@ -261,9 +266,7 @@
 						return false;
 						});
 					</script>
-		<?php	
-				}
-		}
+		<?php
 		
 	}
 	

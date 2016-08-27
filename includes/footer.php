@@ -528,7 +528,11 @@
 						
 						$("#add_btn").click(function(){
 						$("#add_form").toggle();
-						});						
+						});	
+						
+						$("#cancel").click(function(){
+						$("#add_form").toggle();
+						});	
 						
 						
 						$(function() 

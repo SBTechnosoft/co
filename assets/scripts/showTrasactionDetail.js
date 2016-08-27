@@ -199,6 +199,7 @@ $('#addexp').click(function()
 					$('#msgs').addClass('fadeInDown').fadeIn('slow');
 					$('#msgs').addClass('fadeInDown').fadeOut('slow');	
 					$("#add_form").toggle();
+					showTrnDtl();
 											
 				// }					
 			}				
