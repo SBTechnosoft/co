@@ -709,26 +709,26 @@
 					<br>
 					<label for="txtvenue">Venue </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="txtvenue<?php echo $i; ?>" name="txtvenue<?php echo $i; ?>" value="<?php echo $edata[$i]['event_vennue'];?>" type="text"  />
+						<input class="m-wrap" id="txtvenue<?php echo $i; ?>" name="txtvenue<?php echo $i; ?>" value="<?php echo $edata[$i]['event_vennue'];?>" type="text" readonly />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<label for="txthall">Hall </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="txthall<?php echo $i; ?>" name="txthall<?php echo $i; ?>" value="<?php echo $edata[$i]['event_hall'];?>" type="text"  />
+						<input class="m-wrap" id="txthall<?php echo $i; ?>" name="txthall<?php echo $i; ?>" value="<?php echo $edata[$i]['event_hall'];?>" type="text" readonly />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<label for="txtldmark">Land Mark </label>
 					<div class="input-icon left">
-						<input class="m-wrap" id="txtldmark<?php echo $i; ?>" name="txtldmark<?php echo $i; ?>" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" />
+						<input class="m-wrap" id="txtldmark<?php echo $i; ?>" name="txtldmark<?php echo $i; ?>" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" readonly />
 					</div>
 				</div>
 				<div class="clearfix margin-bottom-10">
 					<div class="pull-left margin-right-20">
 						<label for="txtfromdate">From Date </label>
 						<div id="datetimepickerPF<?php echo $i; ?>" class="input-append date">
-							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_date'];?>" />
+							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_date'];?>" readonly />
 							<span class="add-on">
 							  <i class="icon-time" class="icon-calendar"></i>
 							</span>
@@ -737,7 +737,7 @@
 					<div class="pull-right margin-right-20">
 					<label for="txttodate" class="well1">To Date </label>
 					<div id="datetimepickerPT<?php echo $i; ?>" class="input-append date">
-						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="txttodate<?php echo $i; ?>" id="txttodate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_to_date'];?>" />
+						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="txttodate<?php echo $i; ?>" id="txttodate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_to_date'];?>" readonly />
 						<span class="add-on">
 						  <i class="icon-time" class="icon-calendar"></i>
 						</span>
@@ -934,7 +934,12 @@
 				  //edit vennue
 				 $('#edtvn<?php echo $i;?>').click(function()
 					{
-						//$('#txtvat').removeAttr('readonly');
+						$('#txtvenue<?php echo $i;?>').removeAttr('readonly');
+						$('#txthall<?php echo $i;?>').removeAttr('readonly');
+						$('#txtldmark<?php echo $i;?>').removeAttr('readonly');
+						$('#txtfromdate<?php echo $i;?>').removeAttr('readonly');
+						$('#txttodate<?php echo $i;?>').removeAttr('readonly');
+						
 						$("#edtvn<?php echo $i;?>").hide();
 						$("#shwvn<?php echo $i;?>").show();
 					});
@@ -1642,6 +1647,12 @@
 							success : function(v)
 							{
 								alert('Updated Successfully!!!');
+								$('#txtvenue<?php echo $i; ?>').attr('readonly','txtvenue<?php echo $i; ?>');
+								$('#txthall<?php echo $i; ?>').attr('readonly','txthall<?php echo $i; ?>');								
+								$('#txtldmark<?php echo $i; ?>').attr('readonly','txtldmark<?php echo $i; ?>');
+								$('#txtfromdate<?php echo $i; ?>').attr('readonly','txtfromdate<?php echo $i; ?>');
+								$('#txttodate<?php echo $i; ?>').attr('readonly','txttodate<?php echo $i; ?>');
+
 								$("#edtvn<?php echo $i;?>").show();
 								$("#shwvn<?php echo $i;?>").hide();
 							}

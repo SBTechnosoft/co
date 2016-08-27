@@ -2,7 +2,8 @@
 
 $(document).on('click','#add',function()
 	{
-		addnewdiv();		
+		addnewdiv();
+		$("#svbtn").show();
 	});
 
 	$(document).on('click','.event',function(){

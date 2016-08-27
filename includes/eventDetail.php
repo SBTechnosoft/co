@@ -395,7 +395,7 @@ else
 								<div id= "multiupdinsert">
 									
 								</div>
-								<div class="clearfix margin-bottom-10">				
+								<div id="svbtn" class="clearfix margin-bottom-10">				
 									<div class="input-icon left">
 										<input class="m-wrap btn blue" value="Save" type="submit" />
 									</div>

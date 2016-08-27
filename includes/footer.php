@@ -1454,6 +1454,7 @@
 						// $("#addvend").click(function(){
 						// $("#divvend").toggle();
 						// });
+						$("#svbtn").hide();
 					</script>				
 					
 					<script>						
