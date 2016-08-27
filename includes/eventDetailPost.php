@@ -1747,6 +1747,7 @@
 								
 								newshowResDtl<?php echo $i; ?> ();
 								newshowEqpDtl<?php echo $i; ?> ();
+								UpdateAcc();
 							}
 							
 						});			
@@ -1874,6 +1875,7 @@
 								
 								newshowResDtl<?php echo $i; ?> ();
 								newshowEqpDtl<?php echo $i; ?> ();
+								UpdateAcc();
 							}
 							
 						});			
@@ -2065,6 +2067,16 @@
 	if(isset($_POST['countRes']))
 	{		
 		$q = mysql_query("select count(*) as 'Count' from res_places_dtl where event_id='".$_POST['id']."'");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	
+	if(isset($_POST['UpdateAcc']))
+	{		
+		$q = mysql_query("select `total_amt`,`client_charges`,`vendor_charges`,`service_tax_amt` from `event_mst` where event_id='".$_POST['id']."'");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

@@ -574,7 +574,7 @@
 						success : function(d)
 						{
 							alert("Delete Successfully");
-							
+							UpdateAcc();
 						}
 						
 						
@@ -719,6 +719,7 @@
 						{
 							alert("Delete Successfully");
 							//window.location.reload();
+							UpdateAcc();
 						}
 						
 					});
@@ -844,6 +845,32 @@
 			});
 		}
 		countRes();
+		
+		function UpdateAcc()
+		{
+			var id = $('#eid').val();
+			//alert(id);
+			
+			$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'UpdateAcc'  : 1,
+					'id' 	: id,
+										
+				},
+				success : function(e)
+				{
+					$('#txtcharge').val(e.total_amt);
+					
+					$('#clcharge').val(e.client_charges);
+					$('#vdcharge').val(e.vendor_charges);
+					$('#txamt').val(e.service_tax_amt);
+					$('#totammt').val(e.total_amt);
+				}
+			});
+		}
 		
 		function newshoweventplaces ()
 		{
