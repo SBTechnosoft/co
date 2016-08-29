@@ -29,8 +29,7 @@
 	$cnm = $_POST['txtcnm'];
 	$charge = $_POST['txtcharge1'];
 	$cpaid = $_POST['txtpaid'];
-	$ramt = $charge - $cpaid;
-	
+	$ramt = $charge - $cpaid;	
 	
 	
 	if(isset($_POST['txteid']))
@@ -47,6 +46,9 @@
 				
 				$InvBody = showInvBody($conn);
 				$input = showEventDetailInvD($conn,$_POST['txteid']);
+				
+				print_r($input);
+				exit;
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
@@ -221,11 +223,14 @@
 			{
 				
 				$pos = substr($data[$i]['inv_file_name'],(strpos($data[$i]['inv_file_name'],"_") + 1),1);
-				$pos = $pos+ 1;
+				$pos = $pos + 1;
 				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
 				
 				$InvBody = showInvBody($conn);
 				$input = showEventDetailInvD($conn,$_POST['txteid']);
+				
+				print_r($input);
+				exit;
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);

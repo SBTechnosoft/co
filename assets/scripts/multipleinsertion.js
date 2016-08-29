@@ -916,11 +916,11 @@ $(document).on('click','#add',function()
 					'alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");'+
 					'return false;'+
 				'}'+
-				'if(rate == 0)'+
-				'{'+
-					'alert("Can not Give rate 0");'+
-					'return false;'+
-				'}'+
+				// 'if(rate == 0)'+
+				// '{'+
+					// 'alert("Can not Give rate 0");'+
+					// 'return false;'+
+				// '}'+
 			'}'+
 			'if(gettype == 2)'+
 			'{'+
@@ -1017,11 +1017,11 @@ $(document).on('click','#add',function()
 					'alert("Please Only Numeric in rate!!! (Allowed input:0-9)");'+
 					'return false;'+
 				'}'+
-				'if(rate == 0)'+
-				'{'+
-					'alert("Can not Give rate 0");'+
-					'return false;'+
-				'}'+
+				// 'if(rate == 0)'+
+				// '{'+
+					// 'alert("Can not Give rate 0");'+
+					// 'return false;'+
+				// '}'+
 			'}'+
 			'if(qty==\'\')'+
 			'{'+
