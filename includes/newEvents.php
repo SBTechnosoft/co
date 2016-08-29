@@ -510,10 +510,72 @@
 								
 								<!-- end of the popup for insert vendor -->
 								
+								<!--New pop up for insert the Resource -->
+								<div id="popup_ins_resource">
 								
+								</div>
+								<div id="popup_ins_resource_data">								
+									<span id="closeres"> &times; </span>													
+									<h4 align="center" style= "font-weight:bold;"> Add Resource Detail </h4>
+									<br>									
+									<div class="TableRowing">
+										&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+										<strong >Add Resource</strong>
+									</div>
+									</br></br>
+									<div class="span8 booking-search">
+										
+											<div class="clearfix margin-bottom-10">
+												<label> Resource Name </label>
+												<div class="input-icon left">
+													<input type="text" id="txtresnm" name="txtresnm" placeholder="Eg; Name of Resource ..." class="m-wrap" />
+												</div>
+											</div>
+											<div class="clearfix margin-bottom-10">
+												<label> Resource Price </label>
+												<div class="input-icon left">
+													<input type="text" id="txtresprice" name="txtresprice" placeholder="Eg; Price of the Resource..." class="m-wrap" />
+												</div>
+											</div>																					
+											
+											<div class="right-side">
+												<a class="btn blue" id="addResource">Add</a>										
+												<a class="btn blue" id="close1res">CANCEL</a>
+											</div>	
+										
+										<span id="msgs">
+											
+										</span>
+										<script>
+											function shownewRes()
+											{		
+												$.ajax({
+													url : './includes/newEventsPost.php',
+													type : 'post',
+													async : false,
+													data : {
+														'shownewRes' : 1
+														
+													},
+													success : function(r)
+													{
+														$('#drp_resource').html(r);	
+														
+													}
+													
+												});
+											}										
+										</script>
+
+										<!--end booking-search-->
+									</div>																
+								</div>
+								
+								<!-- end of the popup for insert vendor -->
 								<div>
-									<input style="width:207px;" type="text"  value="Resources" readonly />									
-																		
+									<input style="width:195px;" type="text"  value="Resources" readonly />									
+									<i class="fa fa-info-circle" title="New" id="newinsres" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>									
 									<input style="width:121px;" type="text"  value="Rate" readonly />
 									<input style="width:123px;" type="text"  value="Qty" readonly />
 									<input style="width:120px;" type="text"  value="Amount" readonly />									

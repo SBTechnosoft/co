@@ -547,9 +547,154 @@ $(document).on('click','#add',function()
 		'</script>'+
 		
 		//inserting resourses
+		'<style>'+
+			'#popup_ins_resource'+i+'{'+
+				'position: fixed;'+
+				'width: 100%;'+
+				'height: 900px;'+
+				'top: 0;'+
+				'left: 0;'+
+				'background: #000;'+
+				'opacity: .6;'+
+				'z-index: 1000;	'+			
+				'display: none;'+
+			'}'+
+			'#popup_ins_resource_data'+i+'{'+
+				'position: absolute;'+
+				'background: #fff;'+
+				'width: 76%;'+
+				'margin: 0 0 0 0%;'+
+				'padding: 10px;'+
+				'z-index: 2500;'+
+				'display:none;'+				
+			'}'+
+			'#closeres'+i+'{'+
+				'width: 30px;'+
+				'height: 30px;'+
+				'border-radius: 50%;'+
+				'border: 1px solid #999;'+
+				'text-align: center;'+
+				'line-height: 30px;'+
+				'font-size: 30px;'+
+				'float: right;'+
+				'cursor: pointer;'+				
+			'}'+		
+		'</style>'+
+		
+			'<div id="popup_ins_resource'+i+'">'+							
+			'</div>'+
+			'<div id="popup_ins_resource_data'+i+'">	'+							
+				'<span id="closeres'+i+'"> &times; </span>'+													
+				'<h4 align="center" style= "font-weight:bold;"> Add Resource Detail </h4>'+
+				'<br>'+									
+				'<div class="TableRowing">'+
+					'&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>'+
+					'<strong >Add Resource</strong>'+
+				'</div>'+
+				'</br></br>'+
+				'<div class="span8 booking-search">'+					
+						'<div class="clearfix margin-bottom-10">'+
+							'<label> Resource Name </label>'+
+							'<div class="input-icon left">'+
+								'<input type="text" id="txtresnm'+i+'" name="txtresnm'+i+'" placeholder="Eg; Name of Resource ..." class="m-wrap" />'+
+							'</div>'+
+						'</div>'+
+						'<div class="clearfix margin-bottom-10">'+
+							'<label> Resource Price </label>'+
+							'<div class="input-icon left">'+
+								'<input type="text" id="txtresprice'+i+'" name="txtresprice'+i+'" placeholder="Eg; Price of the Resource..." class="m-wrap" />'+
+							'</div>'+
+						'</div>'+						
+						'<div class="right-side">'+
+							'<a class="btn blue" id="addResource'+i+'">Add</a>'+										
+							'<a class="btn blue" id="close1res'+i+'">CANCEL</a>'+
+						'</div>'+					
+					'<span id="msgs">'+						
+					'</span>'+
+					'<script>'+
+						'function shownewRes'+i+'()'+
+						'{	'+	
+							'$.ajax({'+
+								'url : \'./includes/newEventsPost.php\','+
+								'type : \'post\','+
+								'async : false,'+
+								'data : {'+
+									'\'shownewRes\' : 1'+
+									
+								'},'+
+								'success : function(r)'+
+								'{'+
+									'$(\'#drp_resource'+i+'\').html(r);'+	
+									
+								'}'+
+								
+							'});'+
+						'}	'+									
+					'</script>'+				
+				'</div>'+																
+			'</div>'+
+			'<script>'+
+				'$(\'#newinsres'+i+'\').click(function(){'+							
+					'$(\'#popup_ins_resource'+i+'\').fadeIn();'+
+					'$(\'#popup_ins_resource_data'+i+'\').fadeIn();'+					
+					'return false;'+
+					'});'+
+				'$(\'#closeres'+i+'\').click(function(){'+					
+					'$(\'#popup_ins_resource'+i+'\').fadeOut();'+
+					'$(\'#popup_ins_resource_data'+i+'\').fadeOut();'+					
+					'return false;'+
+					'});'+
+				'$(\'#close1res'+i+'\').click(function(){'+					
+					'$(\'#popup_ins_resource'+i+'\').fadeOut();'+
+					'$(\'#popup_ins_resource_data'+i+'\').fadeOut();'+					
+					'return false;'+
+					'});'+
+			'</script>'+
+			'<script>'+				
+				'$(\'#addResource'+i+'\').click(function(){'+
+					'var txtresnm    =   $(\'#txtresnm'+i+'\').val();'+
+					'var txtresprice     =   $(\'#txtresprice'+i+'\').val();'+					
+					'if(txtresnm == "" )'+
+					'{'+
+						'alert(\'Plz Fill Resource Name \');'+
+						'return false;'+
+					'}'+
+					'if(txtresprice == "" )'+
+					'{'+
+						'alert(\'Plz Fill Resource Price \');'+
+						'return false;'+
+					'}'+					
+					'$.ajax({'+
+						'url : \'./includes/resourcesCategoryPost.php\','+
+						'type : \'POST\','+
+						'async : false,'+
+						'data : {'+
+							'\'saverecord\'  : 1,'+
+							'\'txtresnm\'   : txtresnm,'+
+							'\'txtresprice\'  : txtresprice,'+															
+						'},'+
+						'success : function(re)'+
+						'{'+
+							'if(re == 0)'+
+							' {	'+							
+								'$(\'#txtresnm'+i+'\').val(\'\');'+
+								'$(\'#txtresprice'+i+'\').val(\'\');'+								
+								'$(\'#msgs\').addClass(\'fadeInDown\').fadeIn(\'slow\');'+
+								'$(\'#msgs\').addClass(\'fadeInDown\').fadeOut(\'slow\');'+
+								'shownewRes'+i+'();'+
+								'$(\'#popup_ins_resource'+i+'\').fadeOut();'+
+								'$(\'#popup_ins_resource_data'+i+'\').fadeOut();'+
+								
+							' }	'+				
+						'}'+				
+					'});'+	
+								
+				'});'+	
+			'</script>'+
+		
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
-												
+				'<i class="fa fa-info-circle" title="New" id="newinsres'+i+'" data-toggle="tooltip" style="cursor:pointer;"></i>	'+							
 			'<input style="width:121px;" type="text"  value="Rate" readonly />'+
 			'<input style="width:123px;" type="text"  value="Qty" readonly />'+
 			'<input style="width:120px;" type="text"  value="Amount" readonly />'+									

@@ -67,6 +67,29 @@ $('.event_type').on('change',function()
 				
 			});
 	});
+	
+	$('#drpcmpnm').on('change',function() 
+	{
+		var value = $(this).val();
+		// alert(value);
+		// return false;
+		
+		$.ajax({
+				url : './includes/transactionDetailPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showTrnDetailCmpType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#showTrnDetail').html(r);					
+				}
+				
+			});
+	});
 
 
 

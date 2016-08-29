@@ -1959,6 +1959,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/multipleinsertion.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertVendorNewEvent.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertEquipmentNewEvent.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertResourcesNewEvent.js"></script>
 					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertDateTime.js" type="text/javascript"></script--->
 					<script type="text/javascript">
 						   $(function() 
@@ -2036,6 +2037,33 @@
 							
 							return false;
 							});
+							
+							//new resource add in popup
+							
+							$('#newinsres').click(function(){
+							
+							$('#popup_ins_resource').fadeIn();
+							$('#popup_ins_resource_data').fadeIn();
+							
+							return false;
+							});
+						$('#closeres').click(function(){
+							
+							$('#popup_ins_resource').fadeOut();
+							$('#popup_ins_resource_data').fadeOut();
+							
+							return false;
+							});
+						$('#close1res').click(function(){
+							
+							$('#popup_ins_resource').fadeOut();
+							$('#popup_ins_resource_data').fadeOut();
+							
+							return false;
+							});
+							
+							
+							//exit
 					
 					</script>
 					
