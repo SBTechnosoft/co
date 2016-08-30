@@ -161,13 +161,13 @@
                     </div>
 				</div>
 				</br>
-				<!--div class="chat-form">
+				<div class="chat-form">
                     <div class="input-cont">
                         <select name="drpcmpnm" id="drpcmpnm" class="large m-wrap"> 
 									
 						</select>						
                     </div>
-				</div-->
+				</div>
 				</br>
 				<div class="chat-form">
                     <div class="input-cont">
@@ -210,10 +210,11 @@
 							
 			<div class="input-icon left">
 				<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
+				<select name="drpcmpnmdtl" id="drpcmpnmdtl" class="medium m-wrap"> </select></br>
 				Event &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="Event" >
 				Retail &nbsp <input type="radio" name="event_type" class="event_type" id="event_type"  value="Retail" >
 				All &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="All" checked>
-				&nbsp <select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap"> </select>
+				
 				<br/>
 			</div>
 			

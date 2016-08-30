@@ -60,6 +60,28 @@
 			});
 	});
 		
+		$('#drpcmpnmdtl').on('change',function() 
+		{
+			var value = $(this).val();
+			// alert(value);
+			// return false;
+			
+			$.ajax({
+					url : './includes/paidAccountingPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'showClPaidAmtCmpType' : 1,
+						'value': value,
+						
+					},
+					success : function(r)
+					{
+						$('#showClientPaid').html(r);					
+					}
+					
+				});
+		});
 	
 	$('#paidexcel').click(function()
 		{	

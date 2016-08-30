@@ -418,6 +418,21 @@ if(isset($_POST['showtax']))
 		}
 		
 	}
+	if(isset($_POST['showCmpDtl']))
+	{	
+		$data = showCmpDrp($conn);
+		$showCmpCnt = count($data);
+		?>
+		<option select="selected" value="">All-Company</option>
+		<?php
+		for($i=0;$i<$showCmpCnt;$i++)
+		{
+		?>
+			<option  value="<?php echo $data[$i]['cmp_id'];?>"><?php echo $data[$i]['cmp_name'];?></option>
+		<?php	
+		}
+		
+	}
 	
 	//showctg js is showCtgDrp.js and its include the subcatg also
 	if(isset($_POST['showCtg']))

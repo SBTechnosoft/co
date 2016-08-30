@@ -301,6 +301,23 @@ function showClPaidAmtType($conn,$event_type)
 		
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}
+function showClPaidAmtCmpType($conn,$event_type)
+	{
+		$sqlClPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as rtotal
+		from `event_mst` 
+		where `payment_status` = 'Paid' and `status` != 'enquiry' and cmp_id = '".$event_type."'
+		order by event_id "; 
+		
+		return $conn->getResultArray($sqlClPaidAmt);	
+	}
 function showClientUnpaidAmt($conn)
 	{
 		$sqlClUPaidAmt = 
@@ -330,6 +347,22 @@ function showClientUnpaidAmtType($conn,$event_type)
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as rtotal
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."'
+		order by event_id "; 
+		return $conn->getResultArray($sqlClUPaidAmt);	
+	}
+function showClientUnpaidAmtCmpType($conn,$event_type)
+	{
+		$sqlClUPaidAmt = 
+		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
+		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ctotal,
+		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as dtotal,
+		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as stotal,
+		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ttotal,
+		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ptotal,
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as rtotal
+		from `event_mst` 
+		where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."'
 		order by event_id "; 
 		return $conn->getResultArray($sqlClUPaidAmt);	
 	}

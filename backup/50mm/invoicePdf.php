@@ -5,10 +5,7 @@
 	
 	include_once('includes/header.php');	
 	require(DIR_WS_MPDF.'mpdf.php');
-	require('html_dom/simple_html_dom.php');
-	
-	
-	
+	require('html_dom/simple_html_dom.php');	
 	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
@@ -37,15 +34,19 @@
 	{		
 		$data = showInvName($conn,$_POST['txteid']);
 		$cnt = count($data);
-		//echo $cnt."<br>";
+		echo $cnt."<br>";
 		
 		for($i=0;$i<$cnt;$i++)
 		{
 			if($data[$i]['inv_file_name']=='')
 			{				
+				
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
 				
+				
+				
 				$InvBody = showInvBody($conn);
+				
 				$input = showEventDetailInvD($conn,$_POST['txteid']);
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
@@ -56,10 +57,12 @@
 				if(!empty($ResourceDtl))
 				{
 					$dEqp = $ResourceDtl;
+					
 				}
 				else
 				{
 					$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
+					
 				}
 				$cnteqp = count($dEqp); 
 				if($cnteqp<11)

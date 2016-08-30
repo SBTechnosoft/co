@@ -45,10 +45,7 @@
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
 				
 				$InvBody = showInvBody($conn);
-				$input = showEventDetailInvD($conn,$_POST['txteid']);
-				
-				print_r($input);
-				exit;
+				$input = showEventDetailInvD($conn,$_POST['txteid']);			
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
@@ -227,10 +224,7 @@
 				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
 				
 				$InvBody = showInvBody($conn);
-				$input = showEventDetailInvD($conn,$_POST['txteid']);
-				
-				print_r($input);
-				exit;
+				$input = showEventDetailInvD($conn,$_POST['txteid']);				
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);

@@ -63,6 +63,29 @@
 			});
 	});
 	
+	$('#drpcmpnmdtl').on('change',function() 
+		{
+			var value = $(this).val();
+			// alert(value);
+			// return false;
+			
+			$.ajax({
+					url : './includes/unpaidAccountingPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'showClientUnpaidAmtCmpType' : 1,
+						'value': value,
+						
+					},
+					success : function(r)
+					{
+						$('#showClientUnpaid').html(r);					
+					}
+					
+				});
+		});
+	
 	$('#unpaidexcel').click(function()
 		{	
 			// alert(" use for excel");
