@@ -125,6 +125,15 @@
 					</div>
 				</div>
 				
+				<div class="clearfix margin-bottom-10">
+					<label> Expence By Vendor:  </label>
+					<div class="input-icon left">
+						<select id="showvnd">							
+																			
+						</select>
+					</div>
+				</div>
+				
 				<div class="clearfix margin-bottom-10">					
 					<div class="input-icon left" style="margin-top:15px;">
 						<button id="addexp" type="button" class="btn green">Add &nbsp;

@@ -5,7 +5,7 @@
 	{
 		$frdt = $_POST['txtfromdt'];		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf']);
+		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd']);
 		
 	}		
 	
@@ -859,6 +859,21 @@
 			<?php
 		}
 	}
+	
+	if(isset($_POST['showVendDrp']))
+	{
+		$data = showVendName($conn);
+		$showStfCnt = count($data);
+		?>
+		<option select="selected" value="">Select Vendor</option>
+		<?php
+		for($i=0;$i<$showStfCnt;$i++)
+		{
+			?>
+			<option  value="<?php echo $data[$i]['vend_id'];?>"><?php echo $data[$i]['vendor_name']."(".$data[$i]['vendor_cmp'] .")";?></option>
+			<?php
+		}
+	}
 	//show the popup detail of expence detail.
 	if(isset($_POST['ExpDtl']))
 	{			
@@ -871,7 +886,8 @@
 			<div class="Cell"><span style="float:left;">Event Name</span></div>
 			<div class="Cell"><span style="float:left;">Exp.Type</span></div>
 			<div class="Cell"><span style="float:left;">Exp date</span></div>
-			<div class="Cell"><span style="float:left;">Exp By</span></div>			
+			<div class="Cell"><span style="float:left;">Exp By</span></div>	
+			<div class="Cell"><span style="float:left;">Exp By Vendor</span></div>
 			<div class="Cell"><span style="float:left;">Amount</span></div>				
 		</div>
 		<?php
@@ -899,6 +915,11 @@
 				<div class="Cell">
 					<span style="float:left;">
 					<?php  if($expdtl[$a]['first_name']== ''){echo "-";}else{echo $expdtl[$a]['first_name']; } ?>
+					</span>
+				</div>
+				<div class="Cell">
+					<span style="float:left;">
+					<?php  if($expdtl[$a]['vendor_name']== ''){echo "-";}else{echo $expdtl[$a]['vendor_name']."(".$expdtl[$a]['vendor_cmp'].")"; } ?>
 					</span>
 				</div>
 				<div class="Cell">

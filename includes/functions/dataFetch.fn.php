@@ -653,9 +653,10 @@ function showInvCond($conn)
 function showExpDtl($conn,$eid)
 	{
 		$sqlshowEvent = 
-		" select ecm.cat_name,em.event_name,exp_date,sm.first_name,amount
+		" select ecm.cat_name,em.event_name,exp_date,sm.first_name,vm.vendor_name,vm.vendor_cmp,amount
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
+        inner join vendor_mst vm on vm.vend_id = exd.exp_by_vendor
 		inner join event_mst em on em.event_id = exd.event_id
 		inner join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id
 		where exd.event_id= '".$eid."' "; 
