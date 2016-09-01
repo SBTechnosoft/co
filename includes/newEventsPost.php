@@ -534,6 +534,16 @@ if(isset($_POST['showtax']))
 	{			
 		$q = mysql_query("select `price`,`price_type` from  equipment_mst where `eq_id` = '".$_POST['eqpid']."' ");
 		$row = mysql_fetch_array($q);
+		$r = mysql_query("select ea.as_name from equipment_mst em 
+			right join eq_accessories ea on em.category_id = ea.eq_id
+						where em.eq_id = '".$_POST['eqpid']."' ");		
+		$check = array();		
+		while($row2 = mysql_fetch_assoc($r))
+		{
+			$check[] = implode($row2);		
+		}
+		$result = implode(", ",$check);
+		$row['as_name'] = $result;
 		header("Content-type: text/x-json");
 		echo json_encode($row);
 		exit();	

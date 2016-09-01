@@ -657,7 +657,7 @@
 									<input class="small m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
 									
 									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
-									
+									<input class="small m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
 									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
 										<?php  
 											// for($i=1;$i<=10;$i++)
@@ -704,6 +704,7 @@
 											<thead>
 												<tr>
 													<th> Equipment</th>
+													<th> Asseccories</th>
 													<th> Rate</th>
 													<th> Qty</th>
 													<th> Amount</th>

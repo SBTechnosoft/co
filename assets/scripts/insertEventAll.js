@@ -936,6 +936,7 @@
 					$('#txtamt').val(r.price);
 					$('#txthamt').val(r.price);
 					$('#txttype').val(r.price_type);
+					$('#txtassdtl').val(r.as_name);					
 					checkType();
 				}
 				
@@ -1176,6 +1177,8 @@
 			var width = $('.txtwidth').val();
 			var txttype = $('.txttype').val();
 			
+			var txtassdtl = $('.txtassdtl').val();
+			
 			if(eqpid=='')
 			{
 				alert("Plz Select Equipment.");
@@ -1303,6 +1306,7 @@
 						
 						
 						'<td>'+ eqpnm+'</td>'+
+						'<td>'+ txtassdtl+'</td>'+
 						'<td>'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+						

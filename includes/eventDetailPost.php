@@ -698,7 +698,7 @@
 				<hr />
 			<div id="vennuedtl<?php echo $i;?>">
 			
-				<a name="edtvn<?php echo $i; ?>" id="edtvn<?php echo $i; ?>" class="btn blue btn_remove">
+				<a name="edtvn<?php echo $i; ?>" id="edtvn<?php echo $i; ?>" class="btn blue event" style="margin-left:90%">
 					<i class="fa fa-pencil-square-o"></i>								
 				</a>
 				
@@ -897,6 +897,7 @@
 							<thead>
 								<tr>
 									<th> Equipment</th>
+									<th> Asseccories</th>
 									<th> Rate</th>
 									<th> Qty</th>
 									<th> Amount</th>
@@ -1939,9 +1940,22 @@
 	{
 		$data = showEquipmentDtl($conn,$_POST['epldtlid']);
 		//print_r($data1);
+		
+		
+		
+		
 		$showEqpCnt = count($data);
 		for($j=0;$j<$showEqpCnt;$j++)
 		{
+			$r = mysql_query("select ea.as_name from equipment_mst em 
+			right join eq_accessories ea on em.category_id = ea.eq_id
+						where em.eq_id = '".$data[$j]['eq_id']."' ");		
+			$check = array();		
+			while($row2 = mysql_fetch_assoc($r))
+			{
+				$check[] = implode($row2);		
+			}
+			$result = implode(", ",$check);
 		 ?>	
 			
 			<tr id="eqrow<?php echo $j; ?>">
@@ -1967,6 +1981,7 @@
 				<input id="txtallpvendprice<?php echo $data[$j]['places_id']; ?>" class="txtallpvendprice<?php echo $data[$j]['event_places_id']; ?>" name="txtallpvendprice" value="<?php echo $data[$j]['vend_price']; ?>" type="hidden">
 				
 				<td><?php echo $data[$j]['eq_name']; ?></td>
+				<td><?php echo $result; ?></td>
 				<td><?php echo $data[$j]['rate']; ?></td>
 				<td><?php echo $data[$j]['qty']; ?></td>
 				<td class="amount"><?php echo $data[$j]['amount']; ?></td>

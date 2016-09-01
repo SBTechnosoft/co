@@ -764,6 +764,7 @@ $(document).on('click','#add',function()
 		'	<div>'+								
 		'		<input class="small m-wrap txtrate'+i+'"  type="text"  id="txtrate'+i+'" name="txtrate'+i+'" value=""  />'+									
 		'		<input class="small m-wrap txttype'+i+'"  type="hidden"  id="txttype'+i+'" name="txttype'+i+'" value="" readonly />'+									
+		'		<input class="small m-wrap txtassdtl'+i+'"  type="hidden"  id="txtassdtl'+i+'" name="txtassdtl'+i+'" value="" readonly />'+
 		'		<input class="small m-wrap drpqty'+i+'"  type="text"  id="drpqty'+i+'" name="drpqty'+i+'" value="1"  />'+									
 		'		<input class="small m-wrap txtamt'+i+'" type="text"  id="txtamt'+i+'" name="txtamt'+i+'" value="" readonly />	'+								
 		'		<input class="small m-wrap txthamt'+i+'" type="hidden"  id="txthamt'+i+'" name="txthamt'+i+'" value="" readonly />	'+
@@ -795,6 +796,7 @@ $(document).on('click','#add',function()
 		'				<thead>'+
 		'					<tr>'+
 		'						<th> Equipment</th>'+
+		'						<th> Asseccories</th>'+
 		'						<th> Rate</th>'+
 		'						<th> Qty</th>'+
 		'						<th> Amount</th>'+
@@ -918,6 +920,7 @@ $(document).on('click','#add',function()
 					'$(\'#txtamt'+i+'\').val(r.price);'+
 					'$(\'#txthamt'+i+'\').val(r.price);'+
 					'$(\'#txttype'+i+'\').val(r.price_type);'+
+					'$(\'#txtassdtl'+i+'\').val(r.as_name);'+
 					'checkType'+i+'();'+
 				'}'+
 				
@@ -1143,6 +1146,7 @@ $(document).on('click','#add',function()
 			'var length = $(\'.txtlength'+i+'\').val();'+
 			'var width = $(\'.txtwidth'+i+'\').val();'+
 			'var txttype = $(\'.txttype'+i+'\').val();'+
+			'var txtassdtl = $(\'.txtassdtl'+i+'\').val();'+
 			'var col = '+i+';'+
 			
 			'if(eqpid==\'\')'+
@@ -1212,6 +1216,7 @@ $(document).on('click','#add',function()
 						
 						
 						'\'<td>\'+ eqpnm+\'</td>\'+'+
+						'\'<td>\'+ txtassdtl+\'</td>\'+'+
 						'\'<td>\'+ rate+\'</td>\'+'+
 						'\'<td>\'+ qty+\'</td>\'+'+
 						'\'<td class="amount">\'+ amt+\'</td>\'+	'+					
