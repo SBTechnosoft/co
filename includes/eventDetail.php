@@ -372,12 +372,13 @@ else
                 <!--end tab-pane-->
                 <div id="tab_1_2" class="tab-pane <?php if(isset($_GET['id'])&& !empty($_GET['id'])){ echo 'active'; }?>">
                     <div class="row-fluid search-forms search-default">
-                        <!--form class="form-search" action="#"-->
+                        <form class="form-search" action="#">
 						
 							<div id= "multiinsert">
 								
 							</div>
-							<form name="f1" method="post" action="includes/newEventsPost.php" >
+						</form>
+							<form class="form-search" name="f1" method="post" action="includes/newEventsPost.php" >
 								<input type="hidden" class="m-wrap" id="contresn" name="contresn" value="" />		
 								<input type="hidden" class="m-wrap" id="clchargen" name="clchargen" value="" />
 								<input type="hidden" class="m-wrap" id="clpdchargen" name="clpdchargen" value="" />

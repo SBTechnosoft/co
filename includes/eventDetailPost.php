@@ -856,6 +856,8 @@
 					
 					<input class="small m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
 					
+					<input class="small m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
+					
 					<input class="small m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
 					
 					<input class="small m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
@@ -1117,6 +1119,7 @@
 							$('#txtamt<?php echo $i;?>').val(r.price);
 							$('#txthamt<?php echo $i;?>').val(r.price);
 							$('#txttype<?php echo $i;?>').val(r.price_type);
+							$('#txtassdtl<?php echo $i;?>').val(r.as_name);
 							checkType<?php echo $i;?>();
 						}
 						
@@ -1319,7 +1322,7 @@
 					var length = $('.txtlength<?php echo $i; ?>').val();
 					var width = $('.txtwidth<?php echo $i; ?>').val();
 					var txttype = $('.txttype<?php echo $i; ?>').val();
-					
+					var txtassdtl = $('.txtassdtl<?php echo $i; ?>').val();
 					if(eqpid=='')
 					{
 						alert("Plz Select Equipment.");
@@ -1420,6 +1423,7 @@
 								
 								
 								'<td>'+ eqpnm+'</td>'+
+								'<td>'+ txtassdtl+'</td>'+
 								'<td>'+ rate+'</td>'+
 								'<td>'+ qty+'</td>'+
 								'<td class="amount">'+ amt+'</td>'+						
