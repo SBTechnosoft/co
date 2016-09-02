@@ -71,26 +71,28 @@ $(document).on('click','#add',function()
 		'	</h4>'+
 		'	<hr />'+
 		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txtvenue">Venue </label>'+
-		'		<div class="input-icon left">'+
+		'	<div class="pull-left margin-right-20">'+
+		'		<label for="txtvenue">Venue :</label>'+
+		'		<div class="input-icon input-append">'+
 		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
-		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txthall">Hall </label>'+
-		'		<div class="input-icon left">'+
+		'	<div class="pull-left margin-right-20 abc">'+
+		'		<label for="txthall">Hall :</label>'+
+		'		<div class="input-icon input-append">'+
 		'			<input class="m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
-		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txtldmark">Land Mark </label>'+
-		'		<div class="input-icon left">'+
+		'	<div class="pull-right margin-right-20">'+
+		'		<label for="txtldmark">Land Mark :</label>'+
+		'		<div class="input-icon input-append">'+
 		'			<input class="m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
 		'		</div>'+
 		'	</div>'+
+		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'		<div class="pull-left margin-right-20">'+
-		'			<label for="txtfromdate">From Date </label>'+
+		'			<label for="txtfromdate">From Date :</label>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
 		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
 		'				<span class="add-on">'+
@@ -99,7 +101,7 @@ $(document).on('click','#add',function()
 		'			</div>'+
 		'		</div>'+
 		'		<div class="pull-right margin-right-20">'+
-		'		<label for="txttodate" class="well1">To Date </label>'+
+		'		<label for="txttodate" class="well1">To Date :</label>'+
 		'		<div id="datetimepickerPT'+i+'" class="input-append date">'+
 		'			<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
 		'			<span class="add-on">'+
@@ -612,10 +614,11 @@ $(document).on('click','#add',function()
 			'<input class="small m-wrap txtresqty'+i+'"  type="text"  id="txtresqty'+i+'" name="txtresqty'+i+'" value="1" />'+																	
 			'<input class="small m-wrap txtresamt'+i+'" type="text"  id="txtresamt'+i+'" name="txtresamt'+i+'" value="" readonly />'+	
 			
-			'<a name="addres'+i+'" class="btn blue" id="addres'+i+'" style="margin-left:15px;" >'+
+			'<a name="addres'+i+'" class="btn blue abc" id="addres'+i+'"  >'+
 				'Add'+								
 			'</a>'+
 		'</div>'+
+		'</br>'+
 		'<div class="portlet box green">'+
 			'<div class="portlet-title">'+
 				'<div class="caption"><i class="icon-reorder"></i>Resources</div>'+
@@ -642,56 +645,56 @@ $(document).on('click','#add',function()
 		
 		
 		'	<div>'+
-		'		<input style="width:190px;" type="text"  value="Equipment" readonly />'+
+		'		<input class="xyz" type="text"  value="Equipment" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinseqp'+i+'" data-toggle="tooltip" style="cursor:pointer;"> '+
 		'		</i>	'+		
 		'		<input style="width:120px;" type="text" id="labelLT'+i+'" name="labelLT'+i+'"  value="Length(FT)" readonly />'+
-		'		<input style="width:120px;" type="text" id="labelWT'+i+'" name="labelWT'+i+'" value="Width(FT)" readonly />'+								
-		'	</div>'+								
-		'	<div>	'+							
-		'		<select  name="drpneweqp'+i+'" id="drpneweqp'+i+'" class="medium m-wrap drpneweqp'+i+'">'+											
-		'		</select>'+		
-		
-		'		<input class="small m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value=""  />'+
-		'		<input class="small m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="" />'+									
-		'	</div>'+
-		'	<div>'+
-		'		<input style="width:120px;" type="text"  value="Rate" readonly />'+									
-		'		<input style="width:125px;" type="hidden"  value="Type" readonly />	'+								
-		'		<input style="width:123px;" type="text"  value="Qty" readonly />'+
-		'		<input style="width:123px;" type="text"  value="Amount" readonly />	'+								
-		'		<input style="width:200px;" type="text"  value="Staff" readonly />'+
-		'		<input style="width:200px;" type="text"  value="Vendor" readonly />'+
+		'	<input style="width:120px;" type="text" id="labelWT'+i+'" name="labelWT'+i+'" value="Width(FT)" readonly />'+	
+		'	<input style="" class="xyz123" type="text"  value="Rate" readonly />'+									
+		'		<input style="" class="xyz123" type="hidden"  value="Type" readonly />	'+								
+		'		<input style="" class="xyz123" type="text"  value="Qty" readonly />'+
+		'		<input style="" class="xyz123" type="text"  value="Amount" readonly />	'+								
+		'		<input style="" class="xyz123" type="text"  value="Staff" readonly />'+
+		'		<input style="" class="xyz123" type="text"  value="Vendor" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinsvd'+i+'" data-toggle="tooltip" style="cursor:pointer;">'+ 
 		'		</i>'+
-		'		<input style="width:124px;" type="text"  value="Price" readonly />'+									
+		'		<input style="" class="xyz123" type="text"  value="Price" readonly />'+		
+		'	</div>'+	
+		'<p></p>'+
+		'	<div>	'+							
+		'		<select  name="drpneweqp'+i+'" id="drpneweqp'+i+'" class="small set1 m-wrap drpneweqp'+i+'">'+					
+		'		</select>'+		
+		'		<input class="small m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value=""  />'+
+		'		<input class="small m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="" />'+
+        '		<input class="xyz m-wrap txtrate'+i+'"  type="text"  id="txtrate'+i+'" name="txtrate'+i+'" value=""  />'+									
+		'		<input class="xyz m-wrap txttype'+i+'"  type="hidden"  id="txttype'+i+'" name="txttype'+i+'" value="" readonly />'+									
+		'		<input class="xyz m-wrap txtassdtl'+i+'"  type="hidden"  id="txtassdtl'+i+'" name="txtassdtl'+i+'" value="" readonly />'+
+		'		<input class="xyz m-wrap drpqty'+i+'"  type="text"  id="drpqty'+i+'" name="drpqty'+i+'" value="1"  />'+									
+		'		<input class="xyz m-wrap txtamt'+i+'" type="text"  id="txtamt'+i+'" name="txtamt'+i+'" value="" readonly />	'+								
+		'		<input class="xyz m-wrap txthamt'+i+'" type="hidden"  id="txthamt'+i+'" name="txthamt'+i+'" value="" readonly />	'+
+		
+		'		<select name="drpnewstf'+i+'" id="drpnewstf'+i+'" class=" small set2 m-wrap drpnewstf'+i+'"> '+											
+		'		</select>'+
+		
+		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="small set1 m-wrap drpnewvend'+i+'">'+ 											
+		'		</select>'+
+		
+		'		<input class="xyz m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="0" />	'+							
 		'	</div>'+
-		'	<div>'+								
-		'		<input class="small m-wrap txtrate'+i+'"  type="text"  id="txtrate'+i+'" name="txtrate'+i+'" value=""  />'+									
-		'		<input class="small m-wrap txttype'+i+'"  type="hidden"  id="txttype'+i+'" name="txttype'+i+'" value="" readonly />'+									
-		'		<input class="small m-wrap txtassdtl'+i+'"  type="hidden"  id="txtassdtl'+i+'" name="txtassdtl'+i+'" value="" readonly />'+
-		'		<input class="small m-wrap drpqty'+i+'"  type="text"  id="drpqty'+i+'" name="drpqty'+i+'" value="1"  />'+									
-		'		<input class="small m-wrap txtamt'+i+'" type="text"  id="txtamt'+i+'" name="txtamt'+i+'" value="" readonly />	'+								
-		'		<input class="small m-wrap txthamt'+i+'" type="hidden"  id="txthamt'+i+'" name="txthamt'+i+'" value="" readonly />	'+
-		
-		'		<select name="drpnewstf'+i+'" id="drpnewstf'+i+'" class="medium m-wrap drpnewstf'+i+'"> '+											
-		'		</select>'+
-		
-		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="medium m-wrap drpnewvend'+i+'">'+ 											
-		'		</select>'+
-		
-		'		<input class="small m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="0" />	'+								
-		'	</div>	'+							
+		'<p></p>'+
 		'	<div>'+
 		'		<input  type="text"  value="Remark" readonly />'+
-		'	</div>	'+						
+		'	</div>	'+	
+		'<p></p>'+		
 		'	<div>'+
-		'		<textarea rows="2" cols="140" id="txtremark'+i+'" class="txtremark'+i+'" name="txtremark'+i+'"></textarea>'+
+		'		<textarea rows="2" cols="122" id="txtremark'+i+'" class="txtremark'+i+'" name="txtremark'+i+'"></textarea>'+
+		'	</div>'+
+		'	<br/>'+	
+		'<p>'+
 		'		<a name="addeqp'+i+'" class="btn blue" id="addeqp'+i+'" style="margin-left:15px;" >'+
 		'			Add	'+							
 		'		</a>'+
-		'	</div>'+
-		'	<br/>'+								
+		'</p>'+								
 		'	<div class="portlet box green">'+
 		'		<div class="portlet-title">'+
 		'			<div class="caption"><i class="icon-reorder"></i>Equipments</div>'+

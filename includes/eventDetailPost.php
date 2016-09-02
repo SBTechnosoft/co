@@ -685,45 +685,52 @@
 			?>
 			
 			<div id="dynamic_field">
-				<h4>
+			
 					<?php //print_r($mdata); ?>
-					Order places 
-					<a id= "epddel" data-id="<?php echo $edata[$i]['event_places_id'];?>" class="btn blue event epddel" style="margin-left:75%" >
+					<h4 >Order places
+					<div class="pqr">
+					<a id= "epddel" data-id="<?php echo $edata[$i]['event_places_id'];?>" class="btn blue epddel " style="" >
 						<i class="icon-minus"></i>
 					</a>
-					<a name="add" id="add" class="btn blue btn_remove">
+					<a name="add" id="add" class="btn blue btn_remove ">
 						<i class="icon-plus"></i>								
-					</a>									
-				</h4>
+					</a>
+					<a name="edtvn<?php echo $i; ?>" id="edtvn<?php echo $i; ?>" class="btn blue" style="">
+					<i class="fa fa-pencil-square-o"></i>								
+					</a>	
+					</div>					
+				</h4> 
 				<hr />
 			<div id="vennuedtl<?php echo $i;?>">
 			
-				<a name="edtvn<?php echo $i; ?>" id="edtvn<?php echo $i; ?>" class="btn blue event" style="margin-left:90%">
-					<i class="fa fa-pencil-square-o"></i>								
-				</a>
+				
 				
 				<div class="clearfix margin-bottom-10">
+					
 					<input type="hidden" class="m-wrap" id="hdn[<?php echo $i; ?>][txtEventPlacesId]" name="hdn[<?php echo $i; ?>][txtEventPlacesId]" value="<?php echo $edata[$i]['event_places_id'];?>"   />
 					<input type="hidden" class="m-wrap" id="epldtlid<?php echo $i;?>" name="epldtlid<?php echo $i;?>" value="<?php echo $edata[$i]['event_places_id'];?>"   />
 					<input type="hidden" class="m-wrap evntid" id="evntid<?php echo $i;?>" name="evntid" value="<?php echo $edata[$i]['event_id'];?>"   />
 					<br>
-					<label for="txtvenue">Venue </label>
-					<div class="input-icon left">
+					<div class="pull-left margin-right-20">
+					<label for="txtvenue">Venue :</label>
+					<div class="input-icon input-append">
 						<input class="m-wrap" id="txtvenue<?php echo $i; ?>" name="txtvenue<?php echo $i; ?>" value="<?php echo $edata[$i]['event_vennue'];?>" type="text" readonly />
 					</div>
 				</div>
-				<div class="clearfix margin-bottom-10">
-					<label for="txthall">Hall </label>
-					<div class="input-icon left">
+				<div class="pull-left margin-right-20 abc">
+					<label for="txthall">Hall :</label>
+					<div class="input-icon input-append">
 						<input class="m-wrap" id="txthall<?php echo $i; ?>" name="txthall<?php echo $i; ?>" value="<?php echo $edata[$i]['event_hall'];?>" type="text" readonly />
 					</div>
 				</div>
-				<div class="clearfix margin-bottom-10">
-					<label for="txtldmark">Land Mark </label>
-					<div class="input-icon left">
+				<div class="pull-right margin-right-20">
+					<label for="txtldmark">Land Mark :</label>
+					<div class="input-icon input-append">
 						<input class="m-wrap" id="txtldmark<?php echo $i; ?>" name="txtldmark<?php echo $i; ?>" value="<?php echo $edata[$i]['event_ld_mark'];?>" type="text" readonly />
 					</div>
 				</div>
+				</div>
+				
 				<div class="clearfix margin-bottom-10">
 					<div class="pull-left margin-right-20">
 						<label for="txtfromdate">From Date </label>
