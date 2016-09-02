@@ -394,7 +394,35 @@ label.m-wrap {
   display: block;
   margin-bottom: 5px;
 }
+.abc{
+	margin-left:5%;	
+}
+.pqr
+{
+	margin-left:80%;
+	margin-top:-2%
+}
 
+.xyz
+{
+	width:100px;
+	margin-right:1%;
+}
+.xyz123
+{
+	width:100px;
+	margin-right:1.5%;
+}
+.set1
+{
+	width:70px !important;
+	margin-right:0.5%;
+}
+.set2
+{
+	width:67px !important;
+	margin-right:0.5%;
+}
 .uneditable-input,
 textarea.m-wrap,
 input[type="text"].m-wrap,
