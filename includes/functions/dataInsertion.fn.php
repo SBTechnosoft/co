@@ -439,10 +439,10 @@ function updateTemplate($conn,$txttempid,$txtename,$txttemplate)
 		return $conn->getResultArray($sqlupdateTemplate);
 			
 	}
-function insResourceUpd($conn,$evntid,$epldtlid,$txtires,$txtiresnm,$txtiqty,$txtirate,$rtxtiamt)
+function insResourceUpd($conn,$evntid,$epldtlid,$txtires,$txtiresnm,$txtiqty,$txtirate,$rtxtiamt,$txtivend,$txtiresvendprice,$txtiremark)
 		{
-			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`) 
-				VALUES ('".$evntid."','".$epldtlid."','".$txtires."','".$txtiresnm."','".$txtiqty."','".$txtirate."','".$rtxtiamt."')"; 
+			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`,`res_vend_id`,`res_vend_price`,`res_remark`) 
+				VALUES ('".$evntid."','".$epldtlid."','".$txtires."','".$txtiresnm."','".$txtiqty."','".$txtirate."','".$rtxtiamt."','".$txtivend."','".$txtiresvendprice."','".$txtiremark."')"; 
 			$resultArray = $conn->insertQuery($sqlinsNewRes);
 			
 		}
@@ -456,12 +456,13 @@ function insEquipmentUpd($conn,$evntid,$epldtlid,$txtieqp,$txtirate,$txtiqty,$tx
 			$resultArray = $conn->insertQuery($sqlinsNewEqp);
 			
 		}
-function updResEventMst($conn,$evntid,$totammt,$txamt,$clcharge)
+function updResEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
 		{
 			
 			$sqlupdResEventMst = "Update `event_mst` set `total_amt` = '".$totammt."',
 														`service_tax_amt` = '".$txamt."',
-														`client_charges`= '".$clcharge."' where `event_id` = '".$evntid."' "; 
+														`client_charges`= '".$clcharge."',
+														`vendor_charges`= '".$vdcharge."' where `event_id` = '".$evntid."' "; 
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
 			

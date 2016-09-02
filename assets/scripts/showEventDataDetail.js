@@ -527,10 +527,9 @@
 				{
 					
 					var id = $(this).data('id');
-					var rtxtiamt = $('#rtxtiamt'+id).val();					
-					var evnt_id = $('#eid').val();
-					
-					
+					var rtxtiamt = $('#rtxtiamt'+id).val();	
+					var rtxtivendprice = $('#rtxtivendprice'+id).val();
+					var evnt_id = $('#eid').val();	
 					
 					var contres = $('#contres').val();
 					var clcharge = $('#clcharge').val();
@@ -539,12 +538,13 @@
 					var txrat = $('#txrat').val();
 					var txamt = $('#txamt').val();
 					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
 					
 					if( contres > 0 )
 					{													
 						
 						clcharge = parseInt(clcharge) - parseInt(rtxtiamt);		
-						
+						vdcharge = parseInt(vdcharge) - parseInt(rtxtivendprice);
 						if(txmd=='Yes')
 						{							
 							var servtax  =	(parseInt(rtxtiamt)* parseFloat(txrat))/100;
@@ -569,7 +569,7 @@
 							'totammt'   : totammt,
 							'txamt'     : txamt,
 							'clcharge' : clcharge,
-							
+							'vdcharge' : vdcharge,
 						},
 						success : function(d)
 						{
@@ -654,6 +654,7 @@
 				{
 					//alert('hello Divyesh');
 					var id = $(this).data('id');
+					
 					var event_id = $('#eid').val();
 					var contres = $('#contres').val();
 					var clcharge = $('#clcharge').val();
@@ -661,8 +662,10 @@
 					var txmd = $('#txmd').val();
 					var txrat = $('#txrat').val();
 					var txamt = $('#txamt').val();
-					var totammt = $('#totammt').val();	
+					var totammt = $('#totammt').val();
+					
 					var vdcharge = $('#vdcharge').val();
+					
 					//Resource
 					var res_sum = [];
 					$.each($('.rtxtallpamt'+id), function(){          
@@ -693,7 +696,18 @@
 					var ven_amt = 0;
 					$.each(ven_sum,function() {
 						ven_amt += parseInt(this);
-					});			
+					});	
+					
+					//Res Vendor
+					var rven_sum = [];
+					$.each($('.rtxtallpvendprice'+id), function(){          
+						rven_sum.push($(this).val());
+					});
+					
+					var rven_amt = 0;
+					$.each(rven_sum,function() {
+						rven_amt += parseInt(this);
+					});	
 					
 					$.ajax({
 						url : 'includes/eventDetailPost.php',
@@ -712,6 +726,7 @@
 							'res_amt' : res_amt,
 							'eqp_amt' : eqp_amt,
 							'ven_amt' : ven_amt,
+							'rven_amt' : rven_amt,
 							'event_id': event_id,
 												
 						},
@@ -813,6 +828,7 @@
 					showvendorpaid();
 					showpdf();
 					showfullpdf();
+					countRes();
 				}
 				
 			});		

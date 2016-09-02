@@ -1370,6 +1370,7 @@
 			var resvend = $('.drpnewresvend').val();
 			var resvendnm = document.getElementById("drpnewresvend").options[(document.getElementById("drpnewresvend").options.selectedIndex)].text;
 			var resvprice = $('.txtresvprice').val();
+			
 			var qty = $('.txtresqty').val();
 			var rate = $('.txtresrate').val();
 			var amt = $('.txtresamt').val();
@@ -1454,9 +1455,25 @@
 			var rtotal_amt = 0;
 			$.each(rgtot,function() {
 				rtotal_amt += parseInt(this);
-			});			
+			});	
+				
+			var rvtot = [];
+			$.each($('.txtiresvendprice'), function(){            
+				rvtot.push($(this).val());
+			});
+			var total_rvamt = 0;
+			$.each(rvtot,function() {
+				total_rvamt += parseInt(this);
+			});
+				
+			
+			$('.txtvcharge').val(total_rvamt);
+			
 			$('.txtcharge').val(rtotal_amt);
 			$('.txtrescharge').val(rtotal_amt);
+			
+			
+			
 			$('.drp_resource').val('');
 			$('.txtresrate').val('');
 			$('.txtresqty').val('1');
@@ -1477,14 +1494,24 @@
 			var rgtot = [];
 			$.each($('.rtxtiamt'), function(){            
 				rgtot.push($(this).val());
-			});
-			//alert (gtot);		
-		
+			});		
 
 			var rtotal_amt = 0;
 			$.each(rgtot,function() {
 				rtotal_amt += parseInt(this);
 			});
+			
+			var rvtot = [];
+			$.each($('.txtiresvendprice'), function(){            
+				rvtot.push($(this).val());
+			});
+			var total_rvamt = 0;
+			$.each(rvtot,function() {
+				total_rvamt += parseInt(this);
+			});
+				
+			
+			$('.txtvcharge').val(total_rvamt);
 			
 			$('.txtcharge').val(rtotal_amt);
 			$('.txtrescharge').val(rtotal_amt);

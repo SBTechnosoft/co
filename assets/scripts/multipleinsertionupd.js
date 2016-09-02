@@ -40,7 +40,7 @@ $(document).on('click','#add',function()
 		});		
 		$('.txtrescharge').val(rtotal_amt);
 	});
-	var i = 0;
+	var i = 11;
 	function addnewdiv()
 	{
 		i++;

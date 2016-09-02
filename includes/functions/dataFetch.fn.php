@@ -703,7 +703,7 @@ function showResDtl($conn,$epid)
 	}
 function showResPlacesDtl($conn,$eid)
 	{
-		$sqlshowVennue = " select `event_id`,`event_places_id`,`res_name`,`qty`,`amount`  from  `res_places_dtl` where event_id = '".$eid."' "; 
+		$sqlshowVennue = " select `event_id`,`event_places_id`,`res_name`,`qty`,`amount`,`res_vend_id`,`res_vend_price`,`res_remark`   from  `res_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showTemplate($conn)
@@ -741,8 +741,10 @@ function showRtlInvDtl($conn,$event_id)
 
 function showResourceDtl($conn,$epldtlid)
 	{
-		$sqlshowResourceDtl = "select `res_pls_id`,`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount` 
-		from res_places_dtl where  event_places_id= '".$epldtlid."' "; 
+		$sqlshowResourceDtl = "select `res_pls_id`,`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`,vm.vendor_name,vm.vendor_cmp,`res_vend_price`,`res_remark` 
+			 from res_places_dtl rpd
+			right join vendor_mst vm on vm.vend_id = rpd.res_vend_id
+			where  event_places_id= '".$epldtlid."' "; 
 		return $conn->getResultArray($sqlshowResourceDtl);	
 	}
 
