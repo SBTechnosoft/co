@@ -2,6 +2,8 @@
 
 $(document).on('click','#add',function()
 	{
+		
+		
 		addnewdiv();
 		$("#svbtn").show();
 	});
@@ -60,7 +62,13 @@ $(document).on('click','#add',function()
 		// alert(txamt);
 		// alert(totammt);		 
 		// return false;
-		
+		var hiddenres=$("#hiddenresource").val();
+		if(hiddenres=="resource")
+		{
+			alert('kjkje');
+		 $('#abcde').css("display","block");
+		 $('#pqr').css("display","none");
+		}
 		var div1 = 
 		//'<form name="f1" method="post" action="includes/newEventsPost.php" target="_blank">'+
 		'<input type="hidden" name="txtupdchk" id="txtupdchk" value="'+evntid+'" />'+	
@@ -593,12 +601,15 @@ $(document).on('click','#add',function()
 			'});'+	
 						
 		'});'+
-		
-		
-		
+				
 		'</script>'+
 		
+		
+		
+		
 		//inserting resourses
+		
+		'<div id="abcde">'+
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
 												
@@ -641,10 +652,9 @@ $(document).on('click','#add',function()
 				'</table>'+
 			'</div>'+
 		'</div>'+
-		
-		
-		
-		'	<div>'+
+		'</div>'+
+		'<div id="pqr">'+
+		'<div>'+
 		'		<input class="xyz" type="text"  value="Equipment" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinseqp'+i+'" data-toggle="tooltip" style="cursor:pointer;"> '+
 		'		</i>	'+		
@@ -720,6 +730,7 @@ $(document).on('click','#add',function()
 		'			</table>'+
 		'		</div>'+
 		'	</div>	'+
+		
 			// '<div class="clearfix margin-bottom-10">'+				
 				// '<div class="input-icon left">'+
 					// '<input class="m-wrap btn blue" value="Ins New" type="submit" />'+
@@ -727,6 +738,8 @@ $(document).on('click','#add',function()
 			// '</div>'+
 		
 		'</div>'+
+		'</div>'+
+		
 		//'</form>'+
 		'<script>'+
 		

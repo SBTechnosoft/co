@@ -423,6 +423,10 @@ label.m-wrap {
 	width:67px !important;
 	margin-right:0.5%;
 }
+.textalign
+{
+	text-align:right;
+}
 .uneditable-input,
 textarea.m-wrap,
 input[type="text"].m-wrap,

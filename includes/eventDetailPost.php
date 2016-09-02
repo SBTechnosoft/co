@@ -1,8 +1,12 @@
-
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
+	$setting2 = showSettingRes($conn);
+	if(isset($setting2) && !empty($setting2))
+	{
+		$setRes = $setting2[0]['resorce'];
 	
+	}
 	if(isset($_POST['savepaytrn']))
 	{
 		if($_POST['txtpamt']!= '')
@@ -136,14 +140,14 @@
 		{
 			$s3 = " `client_name` like '%".$_POST['txtclname']."%' ";
 		}
-		 if($_POST['txtbillno'] != '')
-		{
-			$s4 = " `bill_no` like '%".$_POST['txtbillno']."%' ";
-		}
-		if($_POST['txtfpno']!='')
-		{
-			$s5 = " `fp_no` like '%".$_POST['txtfpno']."%' ";
-		}
+		 //if($_POST['txtbillno'] != '')
+		//{
+			//$s4 = " `bill_no` like '%".$_POST['txtbillno']."%' ";
+		//}
+		//if($_POST['txtfpno']!='')
+		//{
+			//$s5 = " `fp_no` like '%".$_POST['txtfpno']."%' ";
+		//}
 		 if($_POST['txtfromdt'] !='')
 		{
 			$s6 = " `from_date` like '%".$_POST['txtfromdt']."%' ";
@@ -758,8 +762,8 @@
 						<input class="m-wrap btn blue" value="Save" data-id="<?php echo $edata[$i]['event_places_id'];?>" id="updateEpd<?php echo $i; ?>" name="updateEpd<?php echo $i; ?>"  type="button" />
 					</div>
 				</div>
-				
-				
+				<input type="hidden" value="<?php echo $setRes;?>" id="hiddenresource"/>
+				<?php if (isset($setRes) && $setRes == 'resource') {?>
 			<div id="resinfo<?php echo $i; ?>">
 				<div>
 					<input style="width:207px;" type="text"  value="Resources" readonly />									
@@ -816,7 +820,8 @@
 				</div>
 				<!-- End of Resource save button -->
 				
-				
+					<?php }
+								else if (isset($setRes) && $setRes == 'equipment') {?>
 				
 				
 			<div id="eqpinfo<?php echo $i; ?>">	
@@ -931,6 +936,178 @@
 						<input class="m-wrap btn blue" value="Save"  id="updEqpD<?php echo $i; ?>" name="updEqpD<?php echo $i; ?>"  type="button" />
 					</div>
 				</div>
+			<?php }
+				else
+			{?>
+		<div id="resinfo<?php echo $i; ?>">
+				<div>
+					<input style="width:207px;" type="text"  value="Resources" readonly />									
+														
+					<input style="width:121px;" type="text"  value="Rate" readonly />
+					<input style="width:123px;" type="text"  value="Qty" readonly />
+					<input style="width:120px;" type="text"  value="Amount" readonly />									
+				</div>
+				<div>				
+					<select  name="drp_resource<?php echo $i; ?>" id="drp_resource<?php echo $i; ?>" class="medium m-wrap drp_resource<?php echo $i; ?>">											
+					</select>	
+					<input class="small m-wrap txtresrate<?php echo $i; ?>"  type="text"  id="txtresrate<?php echo $i; ?>" name="txtresrate<?php echo $i; ?>" value=""  />	
+					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
+					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
+					
+					<a name="addres<?php echo $i;?>" class="btn blue" id="addres<?php echo $i;?>" style="margin-left:15px;" >
+						Add								
+					</a>
+				</div>
+			</div>	
+				<br>
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Resources</div>
+						
+						<a id="edtres<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
+						
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Resource</th>													
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>													
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="resrec<?php echo $i; ?>">
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Save Button for resource Insertion -->
+				<div id ="shwres<?php echo $i; ?>" class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updResD<?php echo $i; ?>" name="updResD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+				<!-- End of Resource save button -->
+			
+			<div id="eqpinfo<?php echo $i; ?>">	
+				<div>
+					<input style="width:190px;" type="text"  value="Equipment" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>							
+					
+					
+					<input style="width:120px;" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
+					<input style="width:120px;" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
+									
+				</div>
+				
+				<div>	
+				
+					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="medium m-wrap drpneweqp<?php echo $i;?>">											
+					</select>
+					
+					
+					<input class="small m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
+					<input class="small m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+					
+				</div>
+				<div>
+					<input style="width:120px;" type="text"  value="Rate" readonly />
+					
+					<input style="width:125px;" type="hidden"  value="Type" readonly />
+					
+					<input style="width:123px;" type="text"  value="Qty" readonly />
+					<input style="width:123px;" type="text"  value="Amount" readonly />
+					
+					<input style="width:200px;" type="text"  value="Staff" readonly />
+					<input style="width:200px;" type="text"  value="Vendor" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>
+					<input style="width:124px;" type="text"  value="Price" readonly />
+				
+					
+				</div>
+				<div>
+				
+					<input class="small m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
+					
+					<input class="small m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
+					
+					<input class="small m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
+					
+					<input class="small m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
+					
+					<input class="small m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
+					
+					<input class="small m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
+					
+					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="medium m-wrap drpnewstf<?php echo $i; ?>"> 											
+					</select>
+					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="medium m-wrap drpnewvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					
+					
+				</div>
+				
+				<div>
+					<input  type="text"  value="Remark" readonly />
+				</div>
+				
+				<div>
+					<textarea rows="2" cols="140" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea>
+					<a name="addeqp<?php echo $i; ?>" class="btn blue" id="addeqp<?php echo $i; ?>" style="margin-left:15px;" >
+						Add								
+					</a>
+				</div>
+			</div>
+				<br/>
+				
+				
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Equipments</div>
+						<a id="edteqp<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Equipment</th>
+									<th> Asseccories</th>
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>
+									<th> Staff</th>
+									<th> Vendor</th>
+									<th> Price</th>
+									<th> Remark</th>
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="eqprec<?php echo $i; ?>">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Save Button for Equipment Insertion -->
+				<div id ="shweqp<?php echo $i; ?>" class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updEqpD<?php echo $i; ?>" name="updEqpD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+			<?php }?>
 				<!-- End of Equipment save button -->
 				
 			</div>

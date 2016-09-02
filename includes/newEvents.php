@@ -1,3 +1,12 @@
+<?php
+$setting1 = showSettingRes($conn);
+if(isset($setting1) && !empty($setting1))
+{
+	$setRes = $setting1[0]['resorce'];
+	//echo $set;
+}
+
+?>
 <!-- BEGIN PAGE -->
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -125,21 +134,7 @@
 								</select>
 							</div>
 						</div>
-						
-						<div class="clearfix margin-bottom-10">
-							<label> Job Data Part1  </label>
-							<div class="input-icon left">
-								<input type="text" class="large m-wrap" id="txtjobdata1" name="txtjobdata1"  />
-							</div>
-						</div>
-						<div class="clearfix margin-bottom-10">
-							<label> Job Data Part2  </label>
-							<div class="input-icon left">
-								<input type="text" class="large m-wrap" id="txtjobdata2" name="txtjobdata2"  />
-							</div>
-						</div>
-						
-						
+												
 						</br>
 						<h4>Client Details </h4>
 						<hr />
@@ -572,6 +567,7 @@
 								</div>
 								
 								<!-- end of the popup for insert vendor -->
+								<?php if (isset($setRes) && $setRes == 'resource') {?>
 								<div>
 									<input style="width:195px;" type="text"  value="Resources" readonly />									
 									<i class="fa fa-info-circle" title="New" id="newinsres" data-toggle="tooltip" style="cursor:pointer;"> 
@@ -614,8 +610,8 @@
 										</table>
 									</div>
 								</div>
-								
-								
+								<?php }
+								else if (isset($setRes) && $setRes == 'equipment') {?>
 								<div>
 									<input style="width:190px;" type="text"  value="Equipment" readonly />
 									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
@@ -721,7 +717,157 @@
 										</table>
 									</div>
 								</div>
+								<?php }
+								else
+								{?>
+									<div>
+									<input style="width:195px;" type="text"  value="Resources" readonly />									
+									<i class="fa fa-info-circle" title="New" id="newinsres" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>									
+									<input style="width:121px;" type="text"  value="Rate" readonly />
+									<input style="width:123px;" type="text"  value="Qty" readonly />
+									<input style="width:120px;" type="text"  value="Amount" readonly />									
+								</div>
+								<div>
 								
+									<select  name="drp_resource" id="drp_resource" class="medium m-wrap drp_resource">											
+									</select>	
+									<input class="small m-wrap txtresrate"  type="text"  id="txtresrate" name="txtresrate" value=""  />	
+									<input class="small m-wrap txtresqty"  type="text"  id="txtresqty" name="txtresqty" value="1" />																	
+									<input class="small m-wrap txtresamt" type="text"  id="txtresamt" name="txtresamt" value="" readonly />	
+									
+									<a name="addres" class="btn blue" id="addres" style="margin-left:15px;" >
+										Add								
+									</a>
+								</div>
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>Resources</div>
+
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+											<thead>
+												<tr>
+													<th> Resource</th>													
+													<th> Rate</th>
+													<th> Qty</th>
+													<th> Amount</th>													
+													<th> Action</th>													 
+												</tr>
+											</thead>
+											<tbody id="resrec">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div>
+									<input style="width:190px;" type="text"  value="Equipment" readonly />
+									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>							
+									
+									
+									<input style="width:120px;" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
+									<input style="width:120px;" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
+									
+									
+									
+								</div>
+								
+								<div>		
+									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
+									</select>									
+									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
+									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									
+								</div>
+								<div>
+									<input style="width:120px;" type="text"  value="Rate" readonly />
+									
+									<input style="width:125px;" type="hidden"  value="Type" readonly />
+									
+									<input style="width:123px;" type="text"  value="Qty" readonly />
+									<input style="width:123px;" type="text"  value="Amount" readonly />
+									
+									<input style="width:200px;" type="text"  value="Staff" readonly />
+									<input style="width:200px;" type="text"  value="Vendor" readonly />
+									<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>
+									<input style="width:124px;" type="text"  value="Price" readonly />
+								
+									
+								</div>
+								<div>
+								
+									<input class="small m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
+									
+									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
+									<input class="small m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
+									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
+										<?php  
+											// for($i=1;$i<=10;$i++)
+											// {
+												// echo '<option value="'.$i.'">'.$i.'</option>';
+											// }
+										?>											
+									</select-->
+									<input class="small m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
+									
+									<input class="small m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
+									
+									<input class="small m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
+									
+									<select name="drpnewstf" id="drpnewstf" class="medium m-wrap drpnewstf"> 											
+									</select>
+									<select name="drpnewvend" id="drpnewvend" class="medium m-wrap drpnewvend"> 											
+									</select>
+									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
+									
+									
+								</div>
+								
+								<div>
+									<input  type="text"  value="Remark" readonly />
+								</div>
+								
+								<div>
+									<textarea rows="2" cols="140" id="txtremark" class="txtremark" name="txtremark"></textarea>
+									<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
+										Add								
+									</a>
+								</div>
+								<br/>
+								
+								
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>Equipments</div>
+
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+											<thead>
+												<tr>
+													<th> Equipment</th>
+													<th> Asseccories</th>
+													<th> Rate</th>
+													<th> Qty</th>
+													<th> Amount</th>
+													<th> Staff</th>
+													<th> Vendor</th>
+													<th> Price</th>
+													<th> Remark</th>
+													<th> Action</th>													 
+												</tr>
+											</thead>
+											<tbody id="eqprec">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<?php }?>
 								<!--div id="eqprec">
 								
 								</div-->

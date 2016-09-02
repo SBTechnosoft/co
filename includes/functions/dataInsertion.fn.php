@@ -344,7 +344,16 @@ function insOptionRtl($conn,$txtrtl)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
-		
+function insOptionResEqu($conn,$txtres_equ)
+		{
+			
+			$sqlinsEqu = "INSERT INTO `setting` (`id`,`resorce`) VALUES (1,'".$txtres_equ."')ON DUPLICATE KEY UPDATE `resorce` = `resorce`"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu);
+			
+			$sqlinsEqu1 = "UPDATE `setting` SET `resorce` = '".$txtres_equ."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu1);
+			
+		}
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{
 			$sqlinsNewEventPlac = "INSERT INTO `new_event_places_dtl` (`event_id`,`event_places_id`,`eq_id`,`rate`,`qty`,`amount`,`staff_id`,`vend_id`,`vend_price`,`remark`,`length`,`width`) 

@@ -508,7 +508,11 @@ function showSetting($conn)
 		$sqlshowPerm = "select `retail_sales` from  `setting` "; 
 		return $conn->getResultArray($sqlshowPerm);	
 	}
-
+function showSettingRes($conn)
+	{
+		$sqlshowResEqu = "select `resorce` from  `setting` "; 
+		return $conn->getResultArray($sqlshowResEqu);	
+	}
 function showEqpRsDtl($conn,$event_id)
 	{
 		$sqlshowEqpRsDtl = "select em.eq_name,nepd.qty,nepd.rate,nepd.amount,nepd.length,nepd.width 
