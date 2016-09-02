@@ -1430,7 +1430,7 @@
 						
 						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtivend]" name="hdn[0]['+k+'][resource][txtivend]" value="'+resvend+'">'+
 						'<input type="hidden"  id="hdn[0]['+k+'][resource][txtivendnm]" name="hdn[0]['+k+'][resource][txtivendnm]" value="'+resvendnm+'">'+
-						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtivendprice]" name="hdn[0]['+k+'][resource][txtivendprice]" class="txtivendprice" value="'+resvprice+'">'+
+						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiresvendprice]" name="hdn[0]['+k+'][resource][txtiresvendprice]" class="txtiresvendprice" value="'+resvprice+'">'+
 						'<input   type="hidden"  id="hdn[0]['+k+'][resource][txtiremark]" name="hdn[0]['+k+'][resource][txtiremark]" value="'+resreamrk+'">'+
 						
 						'<td>'+ resnm+'</td>'+

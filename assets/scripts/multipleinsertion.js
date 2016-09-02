@@ -1370,7 +1370,7 @@ $(document).on('click','#add',function()
 						
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivend]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivend]" value="\'+resvend+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendnm]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendnm]" value="\'+resvendnm+\'">\'+'+
-						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendprice]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendprice]" class="txtivendprice" value="\'+resvprice+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresvendprice]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresvendprice]" class="txtiresvendprice" value="\'+resvprice+\'">\'+'+
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiremark]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiremark]" value="\'+resreamrk+\'">\'+'+
 						
 						'\'<td>\'+ resnm+\'</td>\'+'+
