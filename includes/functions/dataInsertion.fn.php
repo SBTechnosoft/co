@@ -269,8 +269,8 @@ function insCmpNew($conn,$txtcmpnm,$txtcmprno,$txtbnrnm,$cur_date)
 		{
 			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."','".$cur_date."','','')"; 
 			$resultArray = $conn->insertQuery($sqlInsCmp);
-			echo 1;
-			exit;
+			//echo 1;
+			//exit;
 		}
 function updEnqFrm($conn,$id)
 		{

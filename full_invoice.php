@@ -65,11 +65,10 @@
 
 
 
-		<table class="tg" >
+		<table class="tg" >		  
 		  <tr>
-			<th class="tg-baqh"><img  src="assets/img/sblogo.png" ></th>
-			<th class="tg-ywh4l0" colspan="7"><b>Order information</b><br></th>
-		  </tr>
+            <th colspan="8"><img src="images/ombanner.jpg" width="1020" height="320" /></th>
+          </tr>
 		  <tr>
 			<td class="tg-ywh4l0" colspan="8"><b>Order Detail</b><br></td>
 		  </tr>

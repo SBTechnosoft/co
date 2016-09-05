@@ -53,7 +53,7 @@
 
         <div id="add_form" class="row-fluid search-forms search-default">
 
-            <form class="form-search" action="#">
+            <!--form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
                         <input type="text" id="txtcmpnm" name="txtcmpnm" placeholder="Eg; Company Name ..." class="m-wrap" />
@@ -77,8 +77,36 @@
                 <span id="msgs">
 
 				</span>
-            </form>
-
+            </form-->
+			<form class="form-search" id="uploadimage" action="" method="post" enctype="multipart/form-data">
+				
+				<div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtcmpnm" name="txtcmpnm" placeholder="Eg; Company Name ..." class="m-wrap" />
+                    </div>
+                </div>
+                <br />              
+                <div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtcmprnno" name="txtcmprnno" placeholder="Eg; Company Registeration Number..." class="m-wrap" />
+                    </div>
+                    <!--button id="addcmp" type="button" class="btn green">Add &nbsp;
+                        <i class="icon-plus-sign icon-white"></i>
+                    </button-->
+                </div>
+				
+				<div id="image_preview"><img id="previewing" src="" /></div>
+				
+				<div id="selectImage">
+					<label>Select Your Image</label><br/>
+					<div class="chat-form">
+					<input type="file" name="file" id="file" required />
+					
+						<input type="submit" value="Save" class=" btn green submit" />
+					</div>	
+				</div>
+			</form>
+			<div id="message"></div>
         </div>
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->

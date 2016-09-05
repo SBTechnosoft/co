@@ -125,7 +125,7 @@ function showEventDetailInvD($conn,$eid)
 		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
 		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
-		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img
+		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1'
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
 		where em.event_id = '".$eid."' and `status` != 'enquiry' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
@@ -137,11 +137,20 @@ function showEventDetailQuaD($conn,$eid)
 		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
 		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
-		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img
+		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1'
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
 		where em.event_id = '".$eid."' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
 		return $conn->getResultArray($sqlEventDetail);	
+	}
+
+function showBannerImg($conn,$eid)
+	{
+		$sqlshowBannerImg = "select cm.banner_img as 'Banner_Img'
+		from  `event_mst` em
+		right join company_mst cm on cm.cmp_id= em.cmp_id
+		where em.event_id = '".$eid."' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
+		return $conn->getResultArray($sqlshowBannerImg);	
 	}	
 
 function showEventDetail($conn)

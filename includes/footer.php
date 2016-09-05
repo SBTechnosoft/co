@@ -2438,7 +2438,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
-					
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/img_upd_script.js"></script>
 					
 					<script>
 						$("#search_btn").click(function(){

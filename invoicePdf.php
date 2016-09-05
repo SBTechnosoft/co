@@ -167,9 +167,17 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				$bnrimg = showBannerImg($conn,$_POST['txteid']);
+				$cntimg = count($bnrimg);
+				for($t=0;$t<$cntimg;$t++)
+				{					
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_WS_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					
+				}
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD
+						'Venue' => $VennueD,
+						'Banner_Img' => $BnrImg
 						);
 				
 				
@@ -346,9 +354,17 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				$bnrimg = showBannerImg($conn,$_POST['txteid']);
+				$cntimg = count($bnrimg);
+				for($t=0;$t<$cntimg;$t++)
+				{					
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_WS_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					
+				}
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD
+						'Venue' => $VennueD,
+						'Banner_Img' => $BnrImg
 						);
 				
 				
