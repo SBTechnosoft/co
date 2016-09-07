@@ -121,9 +121,9 @@ function showEventDetailInv($conn,$eid)
 	}
 function showEventDetailInvD($conn,$eid)
 	{
-		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',
-		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
-		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
+		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`event_ds` as 'OrderDesc',`client_name` as 'ClientName',
+		`client_cmp` as 'Company',`client_email` as 'Email',`client_work_mob` as 'WorkMob',
+		`client_home_mob` as 'HomeMob',`client_mob` as 'Mobile',DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
 		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1'
 		from  `event_mst` em
@@ -689,7 +689,7 @@ function showVennue($conn,$eid)
 function showVennueDtl($conn,$eid)
 	{
 		$sqlshowVennueDtl = " 
-		select nepd.event_places_id,epd.event_vennue,epd.event_hall,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',sum(nepd.amount)as 'Amount'
+		select nepd.event_places_id,epd.event_vennue,epd.event_hall,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',DATE_FORMAT(epd.event_to_date, '%D %M %Y') as 'event_to_date',sum(nepd.amount)as 'Amount'
 		from new_event_places_dtl nepd
 		right join event_places_dtl epd on epd.event_places_id = nepd.event_places_id
 		where nepd.event_id='".$eid."' group by nepd.event_places_id "; 
@@ -707,6 +707,14 @@ function showResDtl($conn,$epid)
 	{
 		$sqlshowVennue = " select `event_places_id`,`event_id`,`rate`,`qty`,`amount`,`res_name` as 'eq_name',`res_id`
 		from  `res_places_dtl` 		
+		where event_places_id = '".$epid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showResDtlInfo($conn,$epid)
+	{
+		$sqlshowVennue = " select `event_places_id`,`event_id`,`rate`,`qty`,`amount`,`res_name` as 'eq_name',`res_id`,vm.vendor_name,vm.vendor_cmp,`res_vend_id`,`res_vend_price`,`res_remark`
+		from  `res_places_dtl` rpd
+		right join vendor_mst vm on vm.vend_id = rpd.res_vend_id
 		where event_places_id = '".$epid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
@@ -739,6 +747,11 @@ function showRtlInvBody($conn)
 	{
 		$sqlshowRtlInvBody = " select `template_body` from  `template_mst` where `template_id` = 4; "; 
 		return $conn->getResultArray($sqlshowRtlInvBody);	
+	}
+function showEventInfoBody($conn)
+	{
+		$sqlshowEventInfoBody = " select `template_body` from  `template_mst` where `template_id` = 5; "; 
+		return $conn->getResultArray($sqlshowEventInfoBody);	
 	}
 function showRtlInvDtl($conn,$event_id)
 	{

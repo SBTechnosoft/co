@@ -154,6 +154,7 @@
 						}
 					}					
 				}
+				
 				$vennue = showVennue($conn,$_POST['txteid']);
 				$cntven = count($vennue);
 				for($t=0;$t<$cntven;$t++)
