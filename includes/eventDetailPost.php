@@ -56,9 +56,9 @@
 		for($j=0;$j<count($_POST['txtires']);$j++)
 			{
 				insResourceUpd($conn,$evntid,$epldtlid,$_POST['txtires'][$j],$_POST['txtiresnm'][$j],$_POST['txtiqty'][$j],
-				$_POST['txtirate'][$j],$_POST['rtxtiamt'][$j]);
+				$_POST['txtirate'][$j],$_POST['rtxtiamt'][$j],$_POST['txtivend'][$j],$_POST['txtiresvendprice'][$j],$_POST['txtiremark'][$j]);
 			}
-		updResEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge']);
+		updResEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
 	}
 	
 	if(isset($_POST['EquipmentIns']))
@@ -766,7 +766,9 @@
 														
 					<input style="width:121px;" type="text"  value="Rate" readonly />
 					<input style="width:123px;" type="text"  value="Qty" readonly />
-					<input style="width:120px;" type="text"  value="Amount" readonly />									
+					<input style="width:120px;" type="text"  value="Amount" readonly />
+					<input style="width:205px;" type="text"  value="Vendor" readonly />	
+					<input style="width:124px;" type="text"  value="Price" readonly />
 				</div>
 				<div>				
 					<select  name="drp_resource<?php echo $i; ?>" id="drp_resource<?php echo $i; ?>" class="medium m-wrap drp_resource<?php echo $i; ?>">											
@@ -774,11 +776,22 @@
 					<input class="small m-wrap txtresrate<?php echo $i; ?>"  type="text"  id="txtresrate<?php echo $i; ?>" name="txtresrate<?php echo $i; ?>" value=""  />	
 					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
 					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
-					
+					<select name="drpnewresvend<?php echo $i; ?>" id="drpnewresvend<?php echo $i; ?>" class="medium m-wrap drpnewresvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="" />
+								
+				</div>
+				<div>
+					<input  type="text"  value="Remark" readonly />
+				</div>
+				
+				<div>
+					<textarea rows="2" cols="140" id="txtresremark<?php echo $i; ?>" class="txtresremark<?php echo $i; ?>" name="txtresremark<?php echo $i; ?>"></textarea>
 					<a name="addres<?php echo $i;?>" class="btn blue" id="addres<?php echo $i;?>" style="margin-left:15px;" >
 						Add								
 					</a>
 				</div>
+				
 			</div>	
 				<br>
 				<div class="portlet box green">
@@ -797,7 +810,10 @@
 									<th> Resource</th>													
 									<th> Rate</th>
 									<th> Qty</th>
-									<th> Amount</th>													
+									<th> Amount</th>
+									<th> Vendor</th>
+									<th> Price</th>
+									<th> Remark</th>
 									<th> Action</th>													 
 								</tr>
 							</thead>
@@ -1083,7 +1099,7 @@
 						success : function(r)
 						{
 							$('#drpnewvend<?php echo $i;?>').html(r);	
-							
+							$('#drpnewresvend<?php echo $i;?>').html(r);
 						}
 						
 					});
@@ -1516,10 +1532,17 @@
 				{
 					var resid = $('.drp_resource<?php echo $i; ?>').val();
 					var resnm = document.getElementById("drp_resource<?php echo $i; ?>").options[(document.getElementById("drp_resource<?php echo $i; ?>").options.selectedIndex)].text;		
+					
+					var resvend = $('.drpnewresvend<?php echo $i; ?>').val();
+					var resvendnm = document.getElementById("drpnewresvend<?php echo $i; ?>").options[(document.getElementById("drpnewresvend<?php echo $i; ?>").options.selectedIndex)].text;
+					var resvprice = $('.txtresvprice<?php echo $i; ?>').val();
+			
+					
 					var qty = $('.txtresqty<?php echo $i; ?>').val();
 					var rate = $('.txtresrate<?php echo $i; ?>').val();
 					var amt = $('.txtresamt<?php echo $i; ?>').val();
-							
+					
+					var resreamrk = $('.txtresremark<?php echo $i; ?>').val();
 					
 					if(resid=='')
 					{
@@ -1574,12 +1597,19 @@
 								'<input  type="hidden"  id="txtirate<?php echo $i; ?>" name="txtirate<?php echo $i; ?>" value="'+rate+'">'+
 								'<input   type="hidden" id="rtxtiamt<?php echo $i; ?>" name="rtxtiamt<?php echo $i; ?>" class="rtxtiamt<?php echo $i; ?>" value="'+amt+'">'+
 								
+								'<input  type="hidden"  id="txtivend<?php echo $i; ?>" name="txtivend<?php echo $i; ?>" value="'+resvend+'">'+
+								'<input type="hidden"  id="txtivendnm<?php echo $i; ?>" name="txtivendnm<?php echo $i; ?>" value="'+resvendnm+'">'+
+								'<input  type="hidden"  id="txtiresvendprice<?php echo $i; ?>" name="txtiresvendprice<?php echo $i; ?>" class="txtiresvendprice<?php echo $i; ?>" value="'+resvprice+'">'+
+								'<input   type="hidden"  id="txtiremark<?php echo $i; ?>" name="txtiremark<?php echo $i; ?>" value="'+resreamrk+'">'+
 								
+										
 								'<td>'+ resnm+'</td>'+
 								'<td>'+ rate+'</td>'+
 								'<td>'+ qty+'</td>'+
 								'<td class="amount">'+ amt+'</td>'+						
-													
+								'<td>'+ resvendnm+'</td>'+
+								'<td>'+ resvprice+'</td>'+						
+								'<td>'+ resreamrk+'</td>'+						
 								'<td><a class="resremove<?php echo $i; ?>" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
 									'<i class="fa fa-times" aria-hidden="true"></i>'+							
 								'</a></td>'+
@@ -1683,7 +1713,8 @@
 					var txrat = $('#txrat').val();
 					var txamt = $('#txamt').val();
 					var totammt = $('#totammt').val();					
-										
+					var vdcharge = $('#vdcharge').val();
+					
 					var epldtlid = $('#epldtlid<?php echo $i; ?>').val();
 					var evntid = $('#evntid<?php echo $i; ?>').val();
 					
@@ -1708,6 +1739,21 @@
 						 rtxtiamt.push($(this).val());
 					});	
 					
+					var txtivend = [];
+					$.each($("input[name='txtivend<?php echo $i;?>']"), function(){            
+						 txtivend.push($(this).val());
+					});
+					
+					var txtiremark = [];
+					$.each($("input[name='txtiremark<?php echo $i;?>']"), function(){            
+						 txtiremark.push($(this).val());
+					});
+					
+					var txtiresvendprice =[];
+					$.each($("input[name='txtiresvendprice<?php echo $i;?>']"), function(){            
+						 txtiresvendprice.push($(this).val());
+					});
+					
 					if( contres > 0 )
 					{													
 						var restotal_amt = 0;
@@ -1715,7 +1761,7 @@
 							restotal_amt += parseInt(this);
 						});
 						clcharge = parseInt(clcharge) +parseInt(restotal_amt);						
-						
+						vdcharge = parseInt(vdcharge) + parseInt(txtiresvendprice);
 						
 						if(txmd=='Yes')
 						{							
@@ -1748,6 +1794,11 @@
 								'totammt'   : totammt,
 								'txamt'     : txamt,
 								'clcharge' : clcharge,
+								'vdcharge' : vdcharge,
+								'txtiresvendprice' :txtiresvendprice,
+								'txtivend' : txtivend,
+								'txtiremark' : txtiremark,
+								
 							},
 							success : function(v)
 							{
@@ -1928,14 +1979,21 @@
 				<input id="hdn[0][1][resource][txtiqty]" name="hdn[0][1][resource][txtiqty]" value="1" type="hidden">
 				<input id="hdn[0][1][resource][txtirate]" name="hdn[0][1][resource][txtirate]" value="4500" type="hidden">
 				-->
-				<input id="rtxtiamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtiamt" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
-				
+				<input id="rtxtiamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtiamt" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">				
 				<input id="rtxtallpamt<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtallpamt<?php echo $data[$i]['event_places_id']; ?>" name="rtxtiamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
+				
+				<input id="rtxtivendprice<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtivendprice" name="rtxtivendprice" value="<?php echo $data[$i]['res_vend_price']; ?>" type="hidden">
+				<input id="rtxtallpvendprice<?php echo $data[$i]['res_pls_id']; ?>" class="rtxtallpvendprice<?php echo $data[$i]['event_places_id']; ?>" name="rtxtallpvendprice" value="<?php echo $data[$i]['res_vend_price']; ?>" type="hidden">
+				
 				
 				<td><?php echo $data[$i]['res_name']; ?></td>
 				<td><?php echo $data[$i]['rate']; ?></td>
 				<td><?php echo $data[$i]['qty']; ?></td>
 				<td class="amount"><?php echo $data[$i]['amount']; ?></td>
+				<td><?php echo $data[$i]['vendor_name']."(".$data[$i]['vendor_cmp'].")"; ?></td>
+				<td><?php echo $data[$i]['res_vend_price']; ?></td>
+				<td><?php echo $data[$i]['res_remark']; ?></td>
+				
 				<td>
 					<a data-id = "<?php echo $data[$i]['res_pls_id']; ?>" class="resdel" style="cursor:pointer; margin-left:15px;">
 						<i class="fa fa-times" aria-hidden="true"></i>
@@ -2015,7 +2073,7 @@
 	{		
 		//$date = date('Y-m-d H:i:s');
 		delResourceUpd($conn,$_POST['id']);
-		updResEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge']);
+		updResEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
 	}
 	if(isset($_POST['epddel']))
 	{		
@@ -2048,6 +2106,8 @@
 			
 			$clcharge = $_POST['clcharge'] - $_POST['res_amt'] ;	
 			
+			$vdcharge = $_POST['vdcharge'] - $_POST['rven_amt'] ;
+			
 			if($_POST['txmd']=='Yes')
 			{							
 				$servtax  =	($_POST['res_amt']*$_POST['txrat'])/100;
@@ -2061,7 +2121,7 @@
 			// echo $clcharge."<br>";
 			// echo $txamt."<br>";
 			// echo $totammt."<br>";
-			updResEventMst($conn,$_POST['event_id'],$totammt,$txamt,$clcharge);
+			updResEventMst($conn,$_POST['event_id'],$totammt,$txamt,$clcharge,$vdcharge);
 		}		
 		delEventPlacesUpd($conn,$_POST['id']);
 	}

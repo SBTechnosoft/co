@@ -311,7 +311,9 @@ if(isset($_POST['showtax']))
 		else
 		{
 			
-			$clcharge = $_POST['clchargen'] + $_POST['txtrescharge'] ;	
+			$clcharge = $_POST['clchargen'] + $_POST['txtrescharge'] ;
+			
+			$vdcharge = $_POST['vdchargen'] + $_POST['txtresvcharge'] ;
 			
 			if($_POST['txmdn']=='Yes')
 			{							
@@ -326,7 +328,7 @@ if(isset($_POST['showtax']))
 			// echo $clcharge."<br>";
 			// echo $txamt."<br>";
 			// echo $totammt."<br>";
-			updResEventMst($conn,$evnt_id,$totammt,$txamt,$clcharge);
+			updResEventMst($conn,$evnt_id,$totammt,$txamt,$clcharge,$vdcharge);
 		}
 		
 		// exit;
@@ -364,7 +366,7 @@ if(isset($_POST['showtax']))
 					}
 					 if(@is_array ($subvalue['resource']) && isset($subvalue['resource']) && !empty($subvalue['resource']))
 					{
-						insNewRes($conn,$evnt_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiuamt']);
+						insNewRes($conn,$evnt_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiuamt'],$subvalue['resource']['txtivend'],$subvalue['resource']['txtiresvendprice'],$subvalue['resource']['txtiremark']);
 					}				
 				}
 				else

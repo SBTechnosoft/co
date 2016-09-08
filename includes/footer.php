@@ -573,7 +573,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -686,7 +686,41 @@
 										editor.insertContent('[Banner_Img]');
 									}
 								});
-								
+								editor.addMenuItem('item15', {
+									text: 'OrderDesc',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[OrderDesc]');
+									}
+								});
+								editor.addMenuItem('item16', {
+									text: 'Email',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[Email]');
+									}
+								});
+								editor.addMenuItem('item17', {
+									text: 'HomeMob',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[HomeMob]');
+									}
+								});
+								editor.addMenuItem('item18', {
+									text: 'WorkMob',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[WorkMob]');
+									}
+								});
+								editor.addMenuItem('item19', {
+									text: 'Mobile',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[Mobile]');
+									}
+								});
 							}
 							
 							
@@ -1962,6 +1996,13 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertResourcesNewEvent.js"></script>
 					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertDateTime.js" type="text/javascript"></script--->
 					<script type="text/javascript">
+						   
+						   $.fn.datetimepicker.defaults = {
+								//  maskInput: true,           // disables the text input mask
+								  pickDate: true,            // disables the date picker
+								  pickTime: true       // disables de time picker							  
+								};
+						   
 						   $(function() 
 						   {
 							  $('#datetimepicker1').datetimepicker({
@@ -2438,7 +2479,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
-					
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/img_upd_script.js"></script>
 					
 					<script>
 						$("#search_btn").click(function(){

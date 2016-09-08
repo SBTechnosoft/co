@@ -1397,7 +1397,20 @@ $(document).on('click','#add',function()
 			'var rtotal_amt = 0;'+
 			'$.each(rgtot,function() {'+
 				'rtotal_amt += parseInt(this);'+
-			'});'	+		
+			'});'	+	
+
+			'var rvtot = [];'+
+			'$.each($(\'.txtiresvendprice\'), function(){  ' +         
+				'rvtot.push($(this).val());'+
+			'});'+
+			'var total_rvamt = 0;'+
+			'$.each(rvtot,function() {'+
+				'total_rvamt += parseInt(this);'+
+			'});'+
+				
+			
+			'$(\'.txtvcharge\').val(total_rvamt);'+
+			
 			'$(\'.txtcharge\').val(rtotal_amt);'+
 
 			'$(\'.drp_resource'+i+'\').val(\'\');'+
@@ -1424,7 +1437,20 @@ $(document).on('click','#add',function()
 			'var rtotal_amt = 0;'+
 			'$.each(rgtot,function() {'+
 				'rtotal_amt += parseInt(this);'+
-			'});'	+		
+			'});'	+	
+			
+			'var rvtot = [];'+
+			'$.each($(\'.txtiresvendprice\'), function(){' +           
+				'rvtot.push($(this).val());'+
+			'});'+
+			'var total_rvamt = 0;'+
+			'$.each(rvtot,function() {'+
+				'total_rvamt += parseInt(this);'+
+			'});'+
+				
+			
+			'$(\'.txtvcharge\').val(total_rvamt);'+
+				
 			'$(\'.txtcharge\').val(rtotal_amt);'+
 			
 		'});'+

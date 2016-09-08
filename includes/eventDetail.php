@@ -392,7 +392,7 @@ else
 								<input id="txtrescharge" class="m-wrap txtrescharge" name="txtrescharge" readonly="" type="hidden">
 								<input id="txtvcharge" class="m-wrap txtvcharge" name="txtvcharge" readonly="" type="hidden" >
 								<input id="txtucharge" class="m-wrap txtucharge" name="txtucharge" readonly="" type="hidden" >
-								
+								<input id="txtresvcharge" class="m-wrap txtresvcharge" name="txtresvcharge" readonly="" type="hidden" >
 								<div id= "multiupdinsert">
 									
 								</div>
