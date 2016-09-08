@@ -62,13 +62,7 @@ $(document).on('click','#add',function()
 		// alert(txamt);
 		// alert(totammt);		 
 		// return false;
-		var hiddenres=$("#hiddenresource").val();
-		if(hiddenres=="resource")
-		{
-			alert('kjkje');
-		 $('#abcde').css("display","block");
-		 $('#pqr').css("display","none");
-		}
+		
 		var div1 = 
 		//'<form name="f1" method="post" action="includes/newEventsPost.php" target="_blank">'+
 		'<input type="hidden" name="txtupdchk" id="txtupdchk" value="'+evntid+'" />'+	
@@ -77,7 +71,7 @@ $(document).on('click','#add',function()
 		'		Order places '+
 		'		<a style="margin-left:75%" name="remove" id='+i+' class="btn blue event"><i class="icon-minus"></i></a> <a  name="add" id="add" class="btn blue btn_remove"><i class="icon-plus"></i></a>'+							
 		'	</h4>'+
-		'	<hr />'+
+		'	<hr class="hr1"/>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'	<div class="pull-left margin-right-20">'+
 		'		<label for="txtvenue">Venue :</label>'+
@@ -263,7 +257,24 @@ $(document).on('click','#add',function()
 		'		</div>	'+							
 		'		<br/>'+								
 		'	</div>'+
-		
+		'<script>'+
+		'var hiddenres=$(\'#hiddenresource\').val();'+
+		'if(hiddenres=="resource")'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').hide();'+
+		'}'+
+		'else if(hiddenres=="equipment")'+
+		'{'+
+		 '$(\'#a1'+i+'\').hide();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'else'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'</script>'+
 		'<script>'+
 		
 		//show the dropdown in popup equipment
@@ -609,7 +620,7 @@ $(document).on('click','#add',function()
 		
 		//inserting resourses
 		
-		'<div id="abcde">'+
+		'<div id="a1'+i+'">'+
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
 												
@@ -653,19 +664,19 @@ $(document).on('click','#add',function()
 			'</div>'+
 		'</div>'+
 		'</div>'+
-		'<div id="pqr">'+
+		'<div id="b2'+i+'">'+
 		'<div>'+
 		'		<input class="xyz" type="text"  value="Equipment" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinseqp'+i+'" data-toggle="tooltip" style="cursor:pointer;"> '+
 		'		</i>	'+		
-		'		<input style="width:120px;" type="text" id="labelLT'+i+'" name="labelLT'+i+'"  value="Length(FT)" readonly />'+
-		'	<input style="width:120px;" type="text" id="labelWT'+i+'" name="labelWT'+i+'" value="Width(FT)" readonly />'+	
+		'		<input class="xyz123" type="text" id="labelLT'+i+'" name="labelLT'+i+'"  value="Length(FT)" readonly />'+
+		'	<input class="xyz123" type="text" id="labelWT'+i+'" name="labelWT'+i+'" value="Width(FT)" readonly />'+	
 		'	<input style="" class="xyz123" type="text"  value="Rate" readonly />'+									
 		'		<input style="" class="xyz123" type="hidden"  value="Type" readonly />	'+								
 		'		<input style="" class="xyz123" type="text"  value="Qty" readonly />'+
 		'		<input style="" class="xyz123" type="text"  value="Amount" readonly />	'+								
 		'		<input style="" class="xyz123" type="text"  value="Staff" readonly />'+
-		'		<input style="" class="xyz123" type="text"  value="Vendor" readonly />'+
+		'		<input style="" class="xyz" type="text"  value="Vendor" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinsvd'+i+'" data-toggle="tooltip" style="cursor:pointer;">'+ 
 		'		</i>'+
 		'		<input style="" class="xyz123" type="text"  value="Price" readonly />'+		
@@ -674,8 +685,8 @@ $(document).on('click','#add',function()
 		'	<div>	'+							
 		'		<select  name="drpneweqp'+i+'" id="drpneweqp'+i+'" class="small set1 m-wrap drpneweqp'+i+'">'+					
 		'		</select>'+		
-		'		<input class="small m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value=""  />'+
-		'		<input class="small m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="" />'+
+		'		<input class="xyz m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value=""  />'+
+		'		<input class="xyz m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="" />'+
         '		<input class="xyz m-wrap txtrate'+i+'"  type="text"  id="txtrate'+i+'" name="txtrate'+i+'" value=""  />'+									
 		'		<input class="xyz m-wrap txttype'+i+'"  type="hidden"  id="txttype'+i+'" name="txttype'+i+'" value="" readonly />'+									
 		'		<input class="xyz m-wrap txtassdtl'+i+'"  type="hidden"  id="txtassdtl'+i+'" name="txtassdtl'+i+'" value="" readonly />'+
@@ -683,10 +694,10 @@ $(document).on('click','#add',function()
 		'		<input class="xyz m-wrap txtamt'+i+'" type="text"  id="txtamt'+i+'" name="txtamt'+i+'" value="" readonly />	'+								
 		'		<input class="xyz m-wrap txthamt'+i+'" type="hidden"  id="txthamt'+i+'" name="txthamt'+i+'" value="" readonly />	'+
 		
-		'		<select name="drpnewstf'+i+'" id="drpnewstf'+i+'" class=" small set2 m-wrap drpnewstf'+i+'"> '+											
+		'		<select name="drpnewstf'+i+'" id="drpnewstf'+i+'" class=" set3 m-wrap drpnewstf'+i+'"> '+											
 		'		</select>'+
 		
-		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="small set1 m-wrap drpnewvend'+i+'">'+ 											
+		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="set3 m-wrap drpnewvend'+i+'">'+ 											
 		'		</select>'+
 		
 		'		<input class="xyz m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="0" />	'+							

@@ -704,11 +704,9 @@
 					</a>	
 					</div>					
 				</h4> 
-				<hr />
+				<hr class="hr1"/>
 			<div id="vennuedtl<?php echo $i;?>">
-			
-				
-				
+							
 				<div class="clearfix margin-bottom-10">
 					
 					<input type="hidden" class="m-wrap" id="hdn[<?php echo $i; ?>][txtEventPlacesId]" name="hdn[<?php echo $i; ?>][txtEventPlacesId]" value="<?php echo $edata[$i]['event_places_id'];?>"   />
@@ -826,74 +824,68 @@
 				
 			<div id="eqpinfo<?php echo $i; ?>">	
 				<div>
-					<input style="width:190px;" type="text"  value="Equipment" readonly />
+					<input class="xyz" type="text"  value="Equipment" readonly />
 					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
 					</i>							
 					
 					
-					<input style="width:120px;" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
-					<input style="width:120px;" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
-									
-				</div>
-				
-				<div>	
-				
-					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="medium m-wrap drpneweqp<?php echo $i;?>">											
-					</select>
+					<input class="xyz123" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
+					<input class="xyz123" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
+					<input class="xyz123" type="text"  value="Rate" readonly />
 					
+					<input class="xyz123" type="hidden"  value="Type" readonly />
 					
-					<input class="small m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
-					<input class="small m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+					<input class="xyz123" type="text"  value="Qty" readonly />
+					<input class="xyz123" type="text"  value="Amount" readonly />
 					
-				</div>
-				<div>
-					<input style="width:120px;" type="text"  value="Rate" readonly />
-					
-					<input style="width:125px;" type="hidden"  value="Type" readonly />
-					
-					<input style="width:123px;" type="text"  value="Qty" readonly />
-					<input style="width:123px;" type="text"  value="Amount" readonly />
-					
-					<input style="width:200px;" type="text"  value="Staff" readonly />
-					<input style="width:200px;" type="text"  value="Vendor" readonly />
+					<input class="xyz123" type="text"  value="Staff" readonly />
+					<input class="xyz" type="text"  value="Vendor" readonly />
 					<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
 					</i>
-					<input style="width:124px;" type="text"  value="Price" readonly />
+					<input class="xyz123" type="text"  value="Price" readonly />				
+				</div>
+				<p></p>
+				<div>	
 				
+					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="small set1 m-wrap drpneweqp<?php echo $i;?>">											
+					</select>
+					
+					
+					<input class="xyz m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
+					<input class="xyz m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+								
+					<input class="xyz m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
+					
+					<input class="xyz m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
+					
+					<input class="xyz m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
+					
+					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class=" set3 m-wrap drpnewstf<?php echo $i; ?>"> 											
+					</select>
+					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="set3 m-wrap drpnewvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="xyz m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					
 					
 				</div>
-				<div>
-				
-					<input class="small m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
-					
-					<input class="small m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
-					
-					<input class="small m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
-					
-					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="medium m-wrap drpnewstf<?php echo $i; ?>"> 											
-					</select>
-					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="medium m-wrap drpnewvend<?php echo $i; ?>"> 											
-					</select>
-					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
-					
-					
-				</div>
-				
+				<p></p>
 				<div>
 					<input  type="text"  value="Remark" readonly />
 				</div>
-				
+				<p></p>
 				<div>
-					<textarea rows="2" cols="140" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea>
+					<textarea rows="2" cols="122" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea><br/>
+					<p>
 					<a name="addeqp<?php echo $i; ?>" class="btn blue" id="addeqp<?php echo $i; ?>" style="margin-left:15px;" >
 						Add								
 					</a>
+					</p>
 				</div>
 			</div>
 				<br/>
@@ -997,74 +989,68 @@
 			
 			<div id="eqpinfo<?php echo $i; ?>">	
 				<div>
-					<input style="width:190px;" type="text"  value="Equipment" readonly />
+					<input class="xyz" type="text"  value="Equipment" readonly />
 					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
 					</i>							
 					
 					
-					<input style="width:120px;" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
-					<input style="width:120px;" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
-									
-				</div>
-				
-				<div>	
-				
-					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="medium m-wrap drpneweqp<?php echo $i;?>">											
-					</select>
+					<input class="xyz123" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
+					<input class="xyz123" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
+					<input class="xyz123" type="text"  value="Rate" readonly />
 					
+					<input class="xyz123"" type="hidden"  value="Type" readonly />
 					
-					<input class="small m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
-					<input class="small m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+					<input class="xyz123" type="text"  value="Qty" readonly />
+					<input class="xyz123" type="text"  value="Amount" readonly />
 					
-				</div>
-				<div>
-					<input style="width:120px;" type="text"  value="Rate" readonly />
-					
-					<input style="width:125px;" type="hidden"  value="Type" readonly />
-					
-					<input style="width:123px;" type="text"  value="Qty" readonly />
-					<input style="width:123px;" type="text"  value="Amount" readonly />
-					
-					<input style="width:200px;" type="text"  value="Staff" readonly />
-					<input style="width:200px;" type="text"  value="Vendor" readonly />
+					<input class="xyz123" type="text"  value="Staff" readonly />
+					<input class="xyz" type="text"  value="Vendor" readonly />
 					<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
 					</i>
-					<input style="width:124px;" type="text"  value="Price" readonly />
+					<input class="xyz123" type="text"  value="Price" readonly />				
+				</div>
+				<p></p>
+				<div>	
 				
+					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="small set1 m-wrap drpneweqp<?php echo $i;?>">											
+					</select>
+					
+					
+					<input class="xyz m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
+					<input class="xyz m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+												
+					<input class="xyz m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
+					
+					<input class="xyz m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
+					
+					<input class="xyz m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
+					
+					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="set3 m-wrap drpnewstf<?php echo $i; ?>"> 											
+					</select>
+					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="set3 m-wrap drpnewvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="xyz m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					
 					
 				</div>
-				<div>
-				
-					<input class="small m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
-					
-					<input class="small m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
-					
-					<input class="small m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
-					
-					<input class="small m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
-					
-					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="medium m-wrap drpnewstf<?php echo $i; ?>"> 											
-					</select>
-					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="medium m-wrap drpnewvend<?php echo $i; ?>"> 											
-					</select>
-					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
-					
-					
-				</div>
-				
+				<p></p>
 				<div>
 					<input  type="text"  value="Remark" readonly />
 				</div>
-				
+				<p></p>
 				<div>
-					<textarea rows="2" cols="140" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea>
+					<textarea rows="2" cols="122" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea><br/>
+					<p>
 					<a name="addeqp<?php echo $i; ?>" class="btn blue" id="addeqp<?php echo $i; ?>" style="margin-left:15px;" >
 						Add								
 					</a>
+					</p>
 				</div>
 			</div>
 				<br/>

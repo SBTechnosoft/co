@@ -47,7 +47,7 @@ if(isset($setting1) && !empty($setting1))
         <div class="row-fluid">
 			<div class="row-fluid">
 				<div class="span12 booking-search">
-					<h4>Order Details </h4><hr/>
+					<h4>Order Details </h4><hr class="hr2"/>
 					<!--form action="<?php echo HTTP_SERVER; ?>includes/newEventsPost.php" name="Form" method ="post" class="form-horizontal" role="form" -->
 					<!--form name="f2" action="./includes/newEventsPost.php" method="post" id="f2">
 					
@@ -55,22 +55,29 @@ if(isset($setting1) && !empty($setting1))
 						<input type="submit" value="div" />
 					
 					</form-->
-					
+						<input type="hidden" value="<?php echo $setRes;?>" id="hiddenresource"/>
 					<form name="f1" action="./includes/newEventsPost.php" method="post" id="f1">
-						<div class="clearfix margin-bottom-10">
-							
-							<div class="input-icon left">
+					<div class="clearfix margin-bottom-10">
+							<div class="pull-left margin-right-20">
 								<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
 								Enquiry &nbsp <input type="radio" name="order_type" id="" value="enquiry" > /
 								Order &nbsp <input type="radio" name="order_type" id="" value="new" checked><br/>
-							</div>
-							
-						</div>
-					
+							</div>	
+					</div>
 						<div class="clearfix margin-bottom-10">
-							<label> Order Name <font color="red">*</font> </label>
-							<div class="input-icon left">
-								<input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  />
+							
+							<div class="pull-left margin-right-20 ">
+								<div class="input-icon input-append">
+									<label> Order Name : </label>
+								</div>
+								<input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /><font color="red">*</font>
+							</div>
+							<div class="pull-right margin-right-20">
+								<div class="input-icon input-append">
+									<label for="">Company:</label>
+								</div>
+								<select name="drpcmpnm" id="drpcmpnm" class="large m-wrap selectcom">								
+								</select>
 							</div>
 						</div>
 						<!--div class="clearfix margin-bottom-10" >
@@ -84,24 +91,30 @@ if(isset($setting1) && !empty($setting1))
 							</div>
 						</div-->
 						<div class="clearfix margin-bottom-10">
-							<label for="">Category</label>
-							<div class="input-icon left">
-								<select name="drpctgnm" id="drpctgnm" class="large m-wrap"> 
-									
+							<div class="pull-left margin-right-10">
+								<div class="input-icon input-append ">
+									<label for="">Category:</label>
+								</div>
+								<select name="drpctgnm" id="drpctgnm" class="large m-wrap select12 "> 
 								</select>
 							</div>
-						</div>
-						
-						<div class="clearfix margin-bottom-10">
-							<label for="">Sub Category</label>
-							<div class="input-icon left">
+							<div class="pull-right margin-right-10 ">
+								<div class="input-icon input-append">
+									<label for="">Sub Category:</label>
+								</div>
 								<select name="drpsubctgnm" id="drpsubctgnm" class="large m-wrap"> 
-									
 								</select>
 							</div>
 						</div>
-						
-						
+						<div class="clearfix margin-bottom-10">
+							<div class="pull-left margin-right-20">
+								<div class="input-icon input-append">
+									<label for="txteventds">Description:</label>
+								</div>
+						    	<textarea rows="2" cols="109"  class="txtremark" id="txteventds" name="txteventds">
+								</textarea>	
+					    	</div>
+					    </div>	
 						<!--div class="clearfix margin-bottom-10" >
 							<label for="sub_category">Sub Category </label>
 							<div class="input-icon left">
@@ -119,38 +132,23 @@ if(isset($setting1) && !empty($setting1))
 								</select>
 							</div>
 						</div-->
-						<div class="clearfix margin-bottom-10">
-							<label for="txteventds">Description</label>
-							<div class="input-icon left">
-								<!--input class="large m-wrap" id="txteventds" name="txteventds" type="textarea" /-->
-								<textarea rows="4" cols="50"  class="large m-wrap" id="txteventds" name="txteventds">
-								</textarea>								
-							</div>
-						</div>
-						<div class="clearfix margin-bottom-10">
-							<label for="">Company</label>
-							<div class="input-icon left">
-								<select name="drpcmpnm" id="drpcmpnm" class="large m-wrap">									
-								</select>
-							</div>
-						</div>
-												
-						</br>
+						
 						<h4>Client Details </h4>
 						<hr />
 						<div class="clearfix margin-bottom-10">
-							<label for="txtclnm">Client Name </label>
-							<div class="input-icon left">
-								<input type="text" id="txtclnm" name="txtclnm"  class="m-wrap" />
+							<div class="pull-left margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtclnm">Client Name: </label>
+								</div>
+								<input type="text" id="txtclnm" name="txtclnm"  class="large m-wrap" />
+							</div>
+							<div class="pull-right margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtclcmp">Client Company: </label>
+								</div>
+								<input class="large m-wrap" id="txtclcmp" name="txtclcmp" type="text" />
 							</div>
 						</div>
-						<div class="clearfix margin-bottom-10">
-							<label for="txtclcmp">Client Company </label>
-							<div class="input-icon left">
-								<input class="m-wrap" id="txtclcmp" name="txtclcmp" type="text" />
-							</div>
-						</div>
-						
 						<!--div class="clearfix margin-bottom-10">
 							<label for="txtmob">FP No. </label>
 							<div class="input-icon left">
@@ -166,30 +164,33 @@ if(isset($setting1) && !empty($setting1))
 						
 						
 						<div class="clearfix margin-bottom-10">
-							<label for="txtclemail">Email ID </label>
-							<div class="input-icon left">
-								<input type="text" class="m-wrap" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
+							<div class="pull-left margin-right-20 ">
+								<div class="input-icon input-append">
+									<label for="txtclemail">Email ID: </label>
+								</div>
+								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
+							</div>
+							<div class="pull-right margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtworkmob">Work:</label>
+								</div>
+								<input type="text" id="txtworkmob" name="txtworkmob" class="large m-wrap mob1" placeholder="Eg; +919858784525"/>
 							</div>
 						</div>
 						<div class="clearfix margin-bottom-10">
-							<div class="pull-left margin-right-20">
-								<label for="txtworkmob">Work</label>
-								<div class="input-icon left">
-									<input type="text" id="txtworkmob" name="txtworkmob" class="m-wrap" placeholder="Eg; +919858784525"/>
+							<div class="pull-right margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txthmmob" class="well1">Home:</label>
 								</div>
+								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap mob1" />
 							</div>
-							<div class="pull-right margin-right-20">
-								<label for="txthmmob" class="well1">Home</label>
-								<div class="input-icon left">
-									<input type="text" id="txthmmob" name="txthmmob" class="m-wrap" />
+						
+						    <div class="pull-left margin-right-20">
+								<div class="input-icon input-append">
+									<label for="txtmob">Mobile: </label>
 								</div>
-							</div>
-						</div>
-						<div class="clearfix margin-bottom-10">
-							<label for="txtmob">Mobile <font color="red">*</font></label>
-							<div class="input-icon left">
-								<input type="text" id="txtmob" name="txtmob" class="m-wrap" />
-							</div>
+								<input type="text" id="txtmob" name="txtmob" class="large m-wrap mob1" /><font color="red">*</font>
+						   </div>
 						</div>
 						
 						
@@ -197,18 +198,22 @@ if(isset($setting1) && !empty($setting1))
 						<div class="">
 							<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-20">
-								<label for="txtfromdt">From Date </label>
+							<div class="input-icon input-append">
+								<label for="txtfromdt">From Date: </label>
+							</div>
 								<div id="datetimepicker1" class="input-append date">
-									<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+									<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
 								</div>
 							</div>
-							<div class="pull-right margin-right-20">
-								<label for="txttodt" class="well1">To Date </label> 
+							<div class="pull-right margin-right-10">
+							<div class="input-icon input-append">
+								<label for="txttodt" class="well1">To Date: </label> 
+							</div>
 								<div id="datetimepicker2" class="input-append date">
-									<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
+									<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -220,7 +225,7 @@ if(isset($setting1) && !empty($setting1))
 						<br />
 						
 						
-						<div id= "multiinsert">
+						<div id= "multiinsert" class="divcli">
 							<div id="dynamic_field">
 								<h4>
 									Order places 
@@ -230,37 +235,43 @@ if(isset($setting1) && !empty($setting1))
 								</h4>
 								<hr />
 								<div class="clearfix margin-bottom-10">
-									<label for="txtvenue">Venue </label>
-									<div class="input-icon left">
+									<div class="pull-left margin-right-10">
+										<div class="input-icon input-append">
+											<label for="txtvenue">Venue: </label>
+										</div>
 										<input class="m-wrap" id="hdn[0][txtvenue]" name="hdn[0][txtvenue]" type="text"  />
 									</div>
-								</div>
-								<div class="clearfix margin-bottom-10">
-									<label for="txthall">Hall </label>
-									<div class="input-icon left">
-										<input class="m-wrap" id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
+									<div class="pull-left margin-right-10">
+										<div class="input-icon input-append abc1">
+											<label for="txthall">Hall: </label>
+										</div>
+										<input class="m-wrap " id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
 									</div>
-								</div>
-								<div class="clearfix margin-bottom-10">
-									<label for="txtldmark">Land Mark </label>
-									<div class="input-icon left">
+									<div class="pull-right margin-right-10">
+										<div class="input-icon input-append">
+											<label for="txtldmark">Land Mark: </label>
+										</div>
 										<input class="m-wrap" id="hdn[0][txtldmark]" name="hdn[0][txtldmark]" type="text" />
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
 									<div class="pull-left margin-right-20">
-										<label for="txtfromdate">From Date </label>
+									<div class="input-icon input-append">
+										<label for="txtfromdate">From Date: </label>
+									</div>
 										<div id="datetimepickerPF" class="input-append date">
-											<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
+											<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
 											<span class="add-on">
 											  <i class="icon-time" class="icon-calendar"></i>
 											</span>
 										</div>
 									</div>
-									<div class="pull-right margin-right-20">
-									<label for="txttodate" class="well1">To Date </label>
+									<div class="pull-right margin-right-10">
+									<div class="input-icon input-append">
+									<label for="txttodate" class="well1">To Date: </label>
+									</div>
 									<div id="datetimepickerPT" class="input-append date">
-										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
+										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="large m-wrap textArea" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
 										<span class="add-on">
 										  <i class="icon-time" class="icon-calendar"></i>
 										</span>
@@ -613,77 +624,57 @@ if(isset($setting1) && !empty($setting1))
 								<?php }
 								else if (isset($setRes) && $setRes == 'equipment') {?>
 								<div>
-									<input style="width:190px;" type="text"  value="Equipment" readonly />
+									<input class="xyz" type="text"  value="Equipment" readonly />
 									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
 									</i>							
 									
 									
-									<input style="width:120px;" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
-									<input style="width:120px;" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
+									<input class="xyz123" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
+									<input class="xyz123" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
+									<input class="xyz123" type="text"  value="Rate" readonly />
 									
+									<input class="xyz123" type="hidden"  value="Type" readonly />
 									
+									<input class="xyz123" type="text"  value="Qty" readonly />
+									<input class="xyz123" type="text"  value="Amount" readonly />
 									
-								</div>
-								
-								<div>		
-									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
-									</select>									
-									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
-									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
-									
-								</div>
-								<div>
-									<input style="width:120px;" type="text"  value="Rate" readonly />
-									
-									<input style="width:125px;" type="hidden"  value="Type" readonly />
-									
-									<input style="width:123px;" type="text"  value="Qty" readonly />
-									<input style="width:123px;" type="text"  value="Amount" readonly />
-									
-									<input style="width:200px;" type="text"  value="Staff" readonly />
-									<input style="width:200px;" type="text"  value="Vendor" readonly />
+									<input class="xyz123" type="text"  value="Staff" readonly />
+									<input class="xyz" type="text"  value="Vendor" readonly />
 									<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
 									</i>
-									<input style="width:124px;" type="text"  value="Price" readonly />
-								
-									
+									<input class="xyz123" type="text"  value="Price" readonly />							
 								</div>
-								<div>
-								
-									<input class="small m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
+								<p></p>
+								<div>		
+									<select  name="drpneweqp" id="drpneweqp" class="small set1 m-wrap drpneweqp">											
+									</select>									
+									<input class="xyz m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
+									<input class="xyz m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									<input class="xyz m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
 									
-									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
-									<input class="small m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
-									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
-										<?php  
-											// for($i=1;$i<=10;$i++)
-											// {
-												// echo '<option value="'.$i.'">'.$i.'</option>';
-											// }
-										?>											
-									</select-->
-									<input class="small m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
+									<input class="xyz m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
+									<input class="xyz m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
+									<input class="xyz m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
 									
-									<input class="small m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
+									<input class="xyz m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
 									
-									<input class="small m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
+									<input class="xyz m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
 									
-									<select name="drpnewstf" id="drpnewstf" class="medium m-wrap drpnewstf"> 											
+									<select name="drpnewstf" id="drpnewstf" class="set3 m-wrap drpnewstf"> 											
 									</select>
-									<select name="drpnewvend" id="drpnewvend" class="medium m-wrap drpnewvend"> 											
+									<select name="drpnewvend" id="drpnewvend" class="set3 m-wrap drpnewvend"> 											
 									</select>
-									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
-									
-									
+									<input class="xyz m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
 								</div>
+								
 								
 								<div>
 									<input  type="text"  value="Remark" readonly />
 								</div>
 								
 								<div>
-									<textarea rows="2" cols="140" id="txtremark" class="txtremark" name="txtremark"></textarea>
-									<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
+									<textarea rows="2" cols="113" id="txtremark" class="txtremark" name="txtremark"></textarea>
+									<a name="addeqp" class="btn blue" id="addeqp"  >
 										Add								
 									</a>
 								</div>
@@ -763,76 +754,58 @@ if(isset($setting1) && !empty($setting1))
 									</div>
 								</div>
 								<div>
-									<input style="width:190px;" type="text"  value="Equipment" readonly />
+									<input class="xyz" type="text"  value="Equipment" readonly />
 									<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
 									</i>							
 									
 									
-									<input style="width:120px;" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
-									<input style="width:120px;" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
+									<input class="xyz123" type="text" id="labelLT" name="labelLT"  value="Length(FT)" readonly />
+									<input class="xyz123" type="text" id="labelWT" name="labelWT" value="Width(FT)" readonly />
+									<input class="xyz123" type="text"  value="Rate" readonly />
 									
+									<input class="xyz123" type="hidden"  value="Type" readonly />
+									
+									<input class="xyz123" type="text"  value="Qty" readonly />
+									<input class="xyz123" type="text"  value="Amount" readonly />
+									
+									<input class="xyz123" type="text"  value="Staff" readonly />
+									<input class="xyz" type="text"  value="Vendor" readonly />
+									<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+									</i>
+									<input class="xyz123" type="text"  value="Price" readonly />
 									
 									
 								</div>
 								
 								<div>		
-									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
+									<select  name="drpneweqp" id="drpneweqp" class="small set1 m-wrap drpneweqp">											
 									</select>									
-									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
-									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									<input class="xyz m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
+									<input class="xyz m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									<input class="xyz m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
 									
-								</div>
-								<div>
-									<input style="width:120px;" type="text"  value="Rate" readonly />
+									<input class="xyz m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
+									<input class="xyz m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
+									<input class="xyz m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
 									
-									<input style="width:125px;" type="hidden"  value="Type" readonly />
+									<input class="xyz m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
 									
-									<input style="width:123px;" type="text"  value="Qty" readonly />
-									<input style="width:123px;" type="text"  value="Amount" readonly />
+									<input class="xyz m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
 									
-									<input style="width:200px;" type="text"  value="Staff" readonly />
-									<input style="width:200px;" type="text"  value="Vendor" readonly />
-									<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
-									</i>
-									<input style="width:124px;" type="text"  value="Price" readonly />
-								
-									
-								</div>
-								<div>
-								
-									<input class="small m-wrap txtrate"  type="text"  id="txtrate" name="txtrate" value=""  />
-									
-									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
-									<input class="small m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
-									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
-										<?php  
-											// for($i=1;$i<=10;$i++)
-											// {
-												// echo '<option value="'.$i.'">'.$i.'</option>';
-											// }
-										?>											
-									</select-->
-									<input class="small m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
-									
-									<input class="small m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
-									
-									<input class="small m-wrap txthamt" type="hidden"  id="txthamt" name="txthamt" value="" readonly />
-									
-									<select name="drpnewstf" id="drpnewstf" class="medium m-wrap drpnewstf"> 											
+									<select name="drpnewstf" id="drpnewstf" class="set3 m-wrap drpnewstf"> 											
 									</select>
-									<select name="drpnewvend" id="drpnewvend" class="medium m-wrap drpnewvend"> 											
+									<select name="drpnewvend" id="drpnewvend" class="set3 m-wrap drpnewvend"> 											
 									</select>
-									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
-									
-									
+									<input class="xyz m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
 								</div>
+								
 								
 								<div>
 									<input  type="text"  value="Remark" readonly />
 								</div>
 								
 								<div>
-									<textarea rows="2" cols="140" id="txtremark" class="txtremark" name="txtremark"></textarea>
+									<textarea rows="2" cols="113" id="txtremark" class="txtremark" name="txtremark"></textarea>
 									<a name="addeqp" class="btn blue" id="addeqp" style="margin-left:15px;" >
 										Add								
 									</a>
@@ -938,34 +911,38 @@ if(isset($setting1) && !empty($setting1))
 						
 						
 						
-						</br>
 						<h4>Payment Details </h4>
 						<hr />
 						<input type="hidden" id="txtrescharge" name="txtrescharge" class="m-wrap txtrescharge" readonly  />
 						
 						<input type="hidden" id="txtvcharge" name="txtvcharge" class="m-wrap txtvcharge" readonly  />
 						<div class="clearfix margin-bottom-10">
-							<label for="txtcharge">Client Charge </label>
-							<div class="input-icon left">
-								<input type="text" id="txtcharge" name="txtcharge" class="m-wrap txtcharge" readonly />
+							<div class="pull-left margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtcharge">Client Charge:</label>
+								</div>
+								<input type="text" id="txtcharge" name="txtcharge" class=" large m-wrap txtcharge" readonly />
 							</div>
-						</div>
-						<div class="clearfix margin-bottom-10">
-							<label for="txtpaid">Paid Amount / Advance </label>
-							<div class="input-icon left">
-								<input type="number" id="txtpaid" name="txtpaid" class="m-wrap" />
+							<div class="pull-right margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtpaid">Paid Amount / Advance: </label>
+							    </div>
+								<input type="number" id="txtpaid" name="txtpaid" class="large m-wrap" />
 							</div>
-						</div>
-						<div class="clearfix margin-bottom-10">
-							<label for="txtpaid">Discount </label>
-							<div class="input-icon left">
-								<input type="text" id="txtdisc" name="txtdisc" class="m-wrap" />
-							</div>
+							
 						</div>
 						<div class="clearfix margin-bottom-10" >
-							<label for="paymentMode">Payment Mode </label>
-							<div class="input-icon left">
-								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();'> 
+							<div class="pull-left margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtpaid">Discount: </label>
+								</div>
+								<input type="text" id="txtdisc" name="txtdisc" class="large m-wrap" />
+							</div>
+							<div class="pull-right margin-right-10">
+								<div class="input-icon input-append">
+									<label for="paymentMode">Payment Mode: </label>
+								</div>
+								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();' class="large m-wrap"> 
 									<option value="cash">Cash</option>
 									<option value="cheque">Cheque</option>
 								</select>
@@ -973,26 +950,26 @@ if(isset($setting1) && !empty($setting1))
 						</div>
 						<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">
 							<div class="pull-left margin-right-20">
-								<label for="txtbanknm">Bank Name</label>
+								<label for="txtbanknm">Bank Name:</label>
 								<div class="input-icon left">
 									<input type="text" id="txtbanknm" name="txtbanknm" class="m-wrap" />
 								</div>
 							</div>
 							<div class="pull-right margin-right-20">
-								<label for="txtchkno" class="well1">Cheque No</label>
+								<label for="txtchkno" class="well1">Cheque No:</label>
 								<div class="input-icon left">
 									<input type="text" id="txtchkno" name="txtchkno" class="m-wrap" />
 								</div>
 							</div>
 						</div>
 						<div class="clearfix margin-bottom-10" >
-							<label for="">Service Tax Applicability </label>
-							<div class="input-icon left">
-								<select name="taxmode" id="taxmode" > 
-									<option select="selected" value="No">No</option>
-									<option value="Yes">Yes</option>
-								</select>
+							<div class="pull-left margin-right-10">
+								<label for="">Service Tax Applicability: </label>
 							</div>
+							<select name="taxmode" id="taxmode" class="large m-wrap"> 
+								<option select="selected" value="No">No</option>
+								<option value="Yes">Yes</option>
+							</select>
 						</div>
 						<input type="hidden" id="txtstax" name="txtstax" value=""/>
 						<br/>

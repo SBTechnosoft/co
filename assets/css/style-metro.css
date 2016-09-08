@@ -394,8 +394,38 @@ label.m-wrap {
   display: block;
   margin-bottom: 5px;
 }
+.hr1{
+	margin:-4px;
+	
+}
+.divcli{
+	margin-top:-25px;
+	
+}
+.hr2{
+	margin:4px;
+	
+}
 .abc{
 	margin-left:5%;	
+}
+.abc1{
+	margin-left:50px;	
+}
+.select12{
+	margin-left:28px;	
+}
+.selectcom{
+	margin-right:-18px;	
+}
+.textArea{
+	   margin-left: 15px;
+}
+.eid1{
+	   margin-left: 28px;
+}
+.mob1{
+	   margin-left: 36px;
 }
 .pqr
 {
@@ -417,6 +447,11 @@ label.m-wrap {
 {
 	width:70px !important;
 	margin-right:0.5%;
+}
+.set3
+{
+	width:124px !important;
+	margin-right:0.7%;
 }
 .set2
 {
