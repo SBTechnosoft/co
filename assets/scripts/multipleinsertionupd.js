@@ -69,7 +69,7 @@ $(document).on('click','#add',function()
 		'		Order places '+
 		'		<a style="margin-left:75%" name="remove" id='+i+' class="btn blue event"><i class="icon-minus"></i></a> <a  name="add" id="add" class="btn blue btn_remove"><i class="icon-plus"></i></a>'+							
 		'	</h4>'+
-		'	<hr />'+
+		'	<hr class="hr1"/>'+
 		'	<div class="clearfix margin-bottom-10">'+
 		'	<div class="pull-left margin-right-20">'+
 		'		<label for="txtvenue">Venue :</label>'+
@@ -91,7 +91,18 @@ $(document).on('click','#add',function()
 		'	</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
-		'		<div class="pull-left margin-right-20">'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'				<label for="txtfunction">Function: </label>'+
+		'			</div>'+
+		'			<select name="hdn['+i+'][txtfunction]" id="hdn['+i+'][txtfunction]" class="medium m-wrap">'+
+		'				<option value="Mahendi">Mahendi</option>'+
+		'				<option value="Sangit">Sangit</option>'+
+		'				<option value="Reception">Reception</option>'+
+		'				<option value="Ghruhshanti">Ghruhshanti</option>'+
+		'			</select>'+
+		'		</div>'+
+		'		<div class="pull-left margin-right-10">'+
 		'			<label for="txtfromdate">From Date :</label>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
 		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
@@ -255,7 +266,24 @@ $(document).on('click','#add',function()
 		'		</div>	'+							
 		'		<br/>'+								
 		'	</div>'+
-		
+		'<script>'+
+		'var hiddenres=$(\'#hiddenresource\').val();'+
+		'if(hiddenres=="resource")'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').hide();'+
+		'}'+
+		'else if(hiddenres=="equipment")'+
+		'{'+
+		 '$(\'#a1'+i+'\').hide();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'else'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'</script>'+
 		'<script>'+
 		
 		//show the dropdown in popup equipment
@@ -599,6 +627,8 @@ $(document).on('click','#add',function()
 		'</script>'+
 		
 		//inserting resourses
+		
+		'<div id="a1'+i+'">'+
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
 												
@@ -660,7 +690,8 @@ $(document).on('click','#add',function()
 				'</table>'+
 			'</div>'+
 		'</div>'+
-		
+		'</div>'+
+		'<div id="b2'+i+'">'+
 		
 		
 		'	<div>'+
@@ -745,6 +776,7 @@ $(document).on('click','#add',function()
 				// '</div>'+
 			// '</div>'+
 		
+		'</div>'+
 		'</div>'+
 		//'</form>'+
 		'<script>'+

@@ -147,7 +147,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="span6">
+						<div class="span6">			
+							
 							<!--div class="portlet box blue">
 								<div class="portlet-title">
 									<div class="caption"><i class="icon-calendar"></i>Server Stats</div>
@@ -186,6 +187,13 @@
 						</div>
 					</div>
 					<div class="clearfix"></div>
+					<div class="row-fluid">
+						<div id="divifm">
+							<iframe id="ifmCalendar" src="https://www.google.com/calendar/embed?height=550&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=suafag3ku0re5rnvjl4beriljc@group.calendar.google.com&amp;color=%238C500B&amp;ctz=Asia%2FCalcutta"
+								style="border-width: 0" width="950" height="520" frameborder="0" scrolling="no">
+							</iframe>
+						</div>
+					</div>
 					<!--div class="row-fluid">
 						<div class="span6">
 							

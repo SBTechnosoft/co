@@ -71,6 +71,10 @@
 			$.each($("input[name='txtldmark']"), function(){            
                  txtldmark.push($(this).val());
             });
+		  var txtfunction = [];
+			$.each($("select[name='txtfunction']"), function(){            
+                 txtfunction.push($(this).val());
+            });
 			//alert(txtldmark);
 			
 			var txtfromdate = [];
@@ -355,6 +359,7 @@
 					'taxmode'	:taxmode,
 					'txtvenue'  : txtvenue,	
 					'txtldmark'   : txtldmark,
+					'txtfunction':txtfunction,
 					'txtfromdate'  : txtfromdate,
 					'txttodate'   : txttodate,
 					'status' : 'new',
@@ -416,6 +421,7 @@
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');
+						$('#txtfunction').val('');
 						$('#txtcharge').val('');
 						$('#txtpaid').val('');
 						
@@ -481,6 +487,10 @@
                  txtldmark.push($(this).val());
             });
 			//alert(txtldmark);
+		   	var txtfunction = [];
+			$.each($("select[name='txtfunction']"), function(){            
+                 txtfunction.push($(this).val());
+            });
 			
 			var txtfromdate = [];
 			$.each($("input[name='txtfromdate']"), function(){            
@@ -763,6 +773,7 @@
 					'taxmode'	:taxmode,
 					'txtvenue'  : txtvenue,	
 					'txtldmark'   : txtldmark,
+					'txtfunction' :txtfunction,
 					'txtfromdate'  : txtfromdate,
 					'txttodate'   : txttodate,
 					'status' : 'enquiry',
@@ -822,6 +833,7 @@
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');
+					   $('#txtfunction').val('');
 						$('#txtcharge').val('');
 						$('#txtpaid').val('');
 						

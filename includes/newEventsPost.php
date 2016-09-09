@@ -69,7 +69,7 @@ if(isset($_POST['showtax']))
 		//here is loop coming for multiple record//
 		for($i=0;$i<count($_POST['txtvenue']); $i++)
 		{
-			insertEventPlaces($conn,$eventlast_id,$_POST['txtvenue'][$i],$_POST['txthall'][$i],$_POST['txtldmark'][$i],$_POST['txtfromdate'][$i],$_POST['txttodate'][$i]);
+			insertEventPlaces($conn,$eventlast_id,$_POST['txtvenue'][$i],$_POST['txthall'][$i],$_POST['txtldmark'][$i],$_POST['txtfunction'][$i],$_POST['txtfromdate'][$i],$_POST['txttodate'][$i]);
 			
 			//select last record inserted from event_places_dtl
 			
@@ -195,7 +195,7 @@ if(isset($_POST['showtax']))
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
 		$ntrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
 
-		insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
+		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
@@ -222,7 +222,7 @@ if(isset($_POST['showtax']))
 			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 			
-			 insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$value['txtfunction'],$nfromdt,$ntordt);			
 			 $last_vplc_id  =  mysql_insert_id();			
 			
 			//insertion of event_place over stop
@@ -276,9 +276,164 @@ if(isset($_POST['showtax']))
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
-		}		
-		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
-	}
+		}
+		?>
+			<script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
+			
+			<script type="text/javascript">
+				// date variables
+				var now = new Date();
+				today = now.toISOString();
+				
+				var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+				twoHoursLater = twoHoursLater.toISOString();
+
+				// Google api console clientID and apiKey 
+				var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
+				var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
+
+				// enter the scope of current project (this API must be turned on in the Google console)
+				var scopes = 'https://www.googleapis.com/auth/calendar';
+
+				// OAuth2 functions
+				function handleClientLoad() {
+					gapi.client.setApiKey(apiKey);
+					window.setTimeout(checkAuth, 1);
+				}
+
+				function checkAuth() {
+					gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+				}
+
+				// show/hide the 'authorize' button, depending on application state
+				function handleAuthResult(authResult) {
+					//var authorizeButton = document.getElementById('authorize-button');
+				   // var eventButton = document.getElementById('btnCreateEvents');
+				   
+				   // var eventButton = document.getElementById('btnDeleteEvents');
+				   // var insertBtn = document.getElementById('myBtn');
+				   // var updateBtn = document.getElementById('updateBtn');
+					
+					var resultPanel = document.getElementById('result-panel');
+					var resultTitle = document.getElementById('result-title');
+
+					if (authResult && !authResult.error) {
+						//authorizeButton.style.visibility = 'hidden'; 		// if authorized, hide button
+						resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+						resultPanel.className += ' panel-success'; 			// add green class
+						resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+						// eventButton.style.visibility = 'visible';
+						// insertBtn.style.visibility = 'visible';
+						// updateBtn.style.visibility = 'visible';
+						$("#txtEventDetails").attr("visibility", "visible");
+					} else {													// otherwise, show button
+						//authorizeButton.style.visibility = 'visible';
+						$("#txtEventDetails").attr("visibility", "hidden");
+						// eventButton.style.visibility = 'hidden';
+						// insertBtn.style.visibility = 'hidden';
+						// updateBtn.style.visibility = 'hidden';
+						resultPanel.className += ' panel-danger'; 			// make panel red
+						//authorizeButton.onclick = handleAuthClick; 			// setup function to handle button click
+					}
+				}
+
+				// function triggered when user authorizes app
+				function handleAuthClick(event) {
+					gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+					return false;
+				}	  
+			</script>
+			<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
+			
+			<script>
+				function myFunction1() {
+
+					// var now = new Date();
+					// today = now.toISOString();
+				
+					var evnt_name = 'today test';
+					var sdt = '2016-09-09T16:06:47.445Z';
+					var edt = '2016-09-15T16:06:47.445Z';
+					
+					alert('done');
+					 // var evnt_stdt = $('#datetimepicker1').data('datetimepicker')._date.toISOString();
+					  // var start_date = new Date(evnt_stdt);
+						// start_date.setHours(start_date.getHours()-5);
+						// start_date.setMinutes(start_date.getMinutes()-30);
+						
+						
+					  // var evnt_endt = $('#datetimepicker2').data('datetimepicker')._date.toISOString();
+					  // var end_date = new Date(evnt_endt);
+						// end_date.setHours(end_date.getHours()-5);
+						// end_date.setMinutes(end_date.getMinutes()-30);							
+					
+					var add_resource = {
+						"summary": evnt_name,
+						"start": {
+							"dateTime":  sdt
+						},
+						"end": {
+							"dateTime":  edt
+						},
+						"description":"Testing"
+					};
+					insertEvent(add_resource);
+					
+					//document.getElementById("f1").submit();						
+					
+				}
+				myFunction1();
+				//Insert Event Function
+				function insertEvent(add_resource) {
+						var eventResponse = document.getElementById('event-response');
+						//alert('df');
+					   console.log(add_resource);
+					   
+						gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
+							var request = gapi.client.calendar.events.insert
+							({
+								'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
+								//'eventId':'i9lsd13tarh37rk27b0ge7uno8',
+								"resource": add_resource			// pass event details with api call
+							});
+							
+							// handle the response from our api call
+							request.execute(function (resp) {
+							
+								if (resp.status == 'confirmed') {
+								
+									//eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
+									//eventResponse.className += ' panel-success';
+									// refreshICalendarframe();
+									// $('.updateModal-body').empty();
+									// makeApiCall1();
+									alert('insert successfully');
+									window.location = "<?php echo HTTP_SERVER.'index.php?url=EVD';?>";
+									
+								} else {
+									// document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
+									// eventResponse.className += ' panel-danger';
+									alert('Bad Luck');
+									window.location = "<?php echo HTTP_SERVER.'index.php?url=EVE';?>";
+								}
+							});
+						});
+					}
+					
+			</script>
+		<?php
+		//header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		//if($_POST['order_type'] == 'enquiry')
+		//{
+		//	header ('location:'.HTTP_SERVER.'index.php?url=ENR');
+		//}	
+		//else
+		//{
+		//	header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		//}
+
+
+}
 	
 	if(isset($_POST['txtupdchk']))
 	{	
@@ -350,7 +505,7 @@ if(isset($_POST['showtax']))
 			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 			
-			 insertEventPlaces($conn,$evnt_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 insertEventPlaces($conn,$evnt_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$value['txtfunction'],$nfromdt,$ntordt);			
 			 $last_vplc_id  =  mysql_insert_id();			
 			
 			//insertion of event_place over stop

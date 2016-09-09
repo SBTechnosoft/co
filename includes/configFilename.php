@@ -99,6 +99,8 @@ define('FILENAME_PRDADD',DIR_WS_INCLUDES.'productAdd.php');
 define('FILENAME_PRDVIEW',DIR_WS_INCLUDES.'productView.php');
 define('FILENAME_RSALES',DIR_WS_INCLUDES.'retailSales.php');
 
+define('NFILENAME_CALENDAR',DIR_WS_INCLUDES.'calendarTest.php');
+
 //registration files
 //define('FILENAME_REGISTRATION',DIR_WS_INCLUDES.'registration.php');
 //define('FILENAME_REGISTER_POST','registerFormPost.php');

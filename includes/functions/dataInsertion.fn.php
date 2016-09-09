@@ -184,10 +184,10 @@ function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirat
 			//exit;
 		}		
 	
-function insertEventPlaces($conn,$eventlast_id,$txtvenue,$txthall,$txtldmark,$txtfromdate,$txttodate)
+function insertEventPlaces($conn,$eventlast_id,$txtvenue,$txthall,$txtldmark,$txtfunction,$txtfromdate,$txttodate)
 		{
-			$sqlInsEventPlaces = "INSERT INTO `event_places_dtl` (`event_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`,`event_to_date`) 
-			VALUES ('".$eventlast_id."','".$txtvenue."','".$txthall."','".$txtldmark."','".$txtfromdate."','".$txttodate."')"; 
+			$sqlInsEventPlaces = "INSERT INTO `event_places_dtl` (`event_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`function`,`event_date`,`event_to_date`) 
+			VALUES ('".$eventlast_id."','".$txtvenue."','".$txthall."','".$txtldmark."','".$txtfunction."','".$txtfromdate."','".$txttodate."')"; 
 			$resultArray1 = $conn->insertQuery($sqlInsEventPlaces);
 			echo 2;
 			//exit;
@@ -344,7 +344,16 @@ function insOptionRtl($conn,$txtrtl)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
-		
+function insOptionResEqu($conn,$txtres_equ)
+		{
+			
+			$sqlinsEqu = "INSERT INTO `setting` (`id`,`resorce`) VALUES (1,'".$txtres_equ."')ON DUPLICATE KEY UPDATE `resorce` = `resorce`"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu);
+			
+			$sqlinsEqu1 = "UPDATE `setting` SET `resorce` = '".$txtres_equ."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu1);
+			
+		}		
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{
 			$sqlinsNewEventPlac = "INSERT INTO `new_event_places_dtl` (`event_id`,`event_places_id`,`eq_id`,`rate`,`qty`,`amount`,`staff_id`,`vend_id`,`vend_price`,`remark`,`length`,`width`) 
@@ -382,12 +391,13 @@ function updEventDetail($conn,$eid,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$t
 			echo 0;
 			exit;
 		}
-function updEventPlacesDetail($conn,$epldtlid,$txtvenue,$txthall,$txtldmark,$txtfromdate,$txttodate,$date)
+function updEventPlacesDetail($conn,$epldtlid,$txtvenue,$txthall,$txtldmark,$txtfunction,$txtfromdate,$txttodate,$date)
 		{
 			
 			$sqlupdEventDetail = "UPDATE `event_places_dtl` set `event_vennue` = '".$txtvenue."',
 													`event_hall` = '".$txthall."',
 													`event_ld_mark` = '".$txtldmark."',
+													`function`='".$txtfunction."',
 													`event_date` = '".$txtfromdate."',
 													`event_to_date` = '".$txttodate."'													
 													where `event_places_id` = '".$epldtlid."'	";

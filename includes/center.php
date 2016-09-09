@@ -130,6 +130,9 @@
 				case 'RSE':
 					$url = FILENAME_RSALES;
 					break;
+				case 'NCAL':
+					$url = NFILENAME_CALENDAR;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

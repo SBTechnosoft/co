@@ -490,6 +490,12 @@
 					$('#txtcmpnm').val(e.client_cmp);
 					$('#txtcharge1').val(e.total_amt);
 					$('#txtpaid').val(e.client_paid_amt);
+					$('#client_charges').val(e.client_charges);
+					$('#st').val(e.service_tax_amt);
+					var cli_charge=$('#client_charges').val();
+					var cli_disc=$('#txtcldesc').val();
+					var disamt=cli_charge-cli_disc;
+					$('#disamt').val(disamt);
 					//end of invoice data
 					
 					//this for update

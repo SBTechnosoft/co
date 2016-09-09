@@ -21,26 +21,41 @@ $(document).on('click','#add',function()
 		'	</h4>'+
 		'	<hr />'+
 		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txtvenue">Venue </label>'+
-		'		<div class="input-icon left">'+
-		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'				<label for="txtvenue">Venue: </label>'+
+		'			</div>'+	
+		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+	
 		'		</div>'+
-		'	</div>'+
-		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txthall">Hall </label>'+
-		'		<div class="input-icon left">'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append abc1">'+
+		'				<label for="txthall">Hall: </label>'+
+		'			</div>'+
 		'			<input class="m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
 		'		</div>'+
-		'	</div>'+
-		'	<div class="clearfix margin-bottom-10">'+
-		'		<label for="txtldmark">Land Mark </label>'+
-		'		<div class="input-icon left">'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'				<label for="txtldmark">Land Mark: </label>'+
+		'			</div>'+
 		'			<input class="m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
-		'		<div class="pull-left margin-right-20">'+
-		'			<label for="txtfromdate">From Date </label>'+
+	    '		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'				<label for="txtfunction">Function: </label>'+
+		'			</div>'+
+		'			<select name="hdn['+i+'][txtfunction]" id="hdn['+i+'][txtfunction]" class="medium m-wrap">'+
+		'				<option value="Mahendi">Mahendi</option>'+
+		'				<option value="Sangit">Sangit</option>'+
+		'				<option value="Reception">Reception</option>'+
+		'				<option value="Ghruhshanti">Ghruhshanti</option>'+
+		'			</select>'+
+		'		</div>'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'			<label for="txtfromdate">From Date: </label>'+
+		'	</div>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
 		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
 		'				<span class="add-on">'+
@@ -48,8 +63,10 @@ $(document).on('click','#add',function()
 		'				</span>'+
 		'			</div>'+
 		'		</div>'+
-		'		<div class="pull-right margin-right-20">'+
-		'		<label for="txttodate" class="well1">To Date </label>'+
+		'		<div class="pull-right margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'		<label for="txttodate" class="well1">To Date: </label>'+
+		'		</div>'+
 		'		<div id="datetimepickerPT'+i+'" class="input-append date">'+
 		'			<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
 		'			<span class="add-on">'+
@@ -59,7 +76,7 @@ $(document).on('click','#add',function()
 		'		</div>	'+								
 		'	</div>	'+						
 		'	</br>'+
-		'	</br>	'+	
+		'	</br>	'+
 		
 		'<style>'+
 		
@@ -203,7 +220,24 @@ $(document).on('click','#add',function()
 		'		</div>	'+							
 		'		<br/>'+								
 		'	</div>'+
-		
+		'<script>'+
+		'var hiddenres=$(\'#hiddenresource\').val();'+
+		'if(hiddenres=="resource")'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').hide();'+
+		'}'+
+		'else if(hiddenres=="equipment")'+
+		'{'+
+		 '$(\'#a1'+i+'\').hide();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'else'+
+		'{'+
+		 '$(\'#a1'+i+'\').show();'+
+		 '+$(\'#b2'+i+'\').show();'+
+		'}'+
+		'</script>'+
 		'<script>'+
 		
 		//show the dropdown in popup equipment
@@ -692,6 +726,7 @@ $(document).on('click','#add',function()
 				'});'+	
 			'</script>'+
 		
+		'<div id="a1'+i+'">'+
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
 				'<i class="fa fa-info-circle" title="New" id="newinsres'+i+'" data-toggle="tooltip" style="cursor:pointer;"></i>	'+							
@@ -753,9 +788,9 @@ $(document).on('click','#add',function()
 				'</table>'+
 			'</div>'+
 		'</div>'+
+		'</div>'+
 		
-		
-		
+		'<div id="b2'+i+'">'+
 		'	<div>'+
 		'		<input style="width:190px;" type="text"  value="Equipment" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinseqp'+i+'" data-toggle="tooltip" style="cursor:pointer;"> '+
@@ -801,7 +836,7 @@ $(document).on('click','#add',function()
 		'		<input  type="text"  value="Remark" readonly />'+
 		'	</div>	'+						
 		'	<div>'+
-		'		<textarea rows="2" cols="140" id="txtremark'+i+'" class="txtremark'+i+'" name="txtremark'+i+'"></textarea>'+
+		'		<textarea rows="2" cols="122" id="txtremark'+i+'" class="txtremark'+i+'" name="txtremark'+i+'"></textarea>'+
 		'		<a name="addeqp'+i+'" class="btn blue" id="addeqp'+i+'" style="margin-left:15px;" >'+
 		'			Add	'+							
 		'		</a>'+
@@ -833,6 +868,7 @@ $(document).on('click','#add',function()
 		'		</div>'+
 		'	</div>	'+								
 		'</div>'+
+	   '</div>'+
 		
 		'<script>'+
 		
