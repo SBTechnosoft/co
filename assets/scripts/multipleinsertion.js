@@ -748,7 +748,9 @@ $(document).on('click','#add',function()
 				'<i class="fa fa-info-circle" title="New" id="newinsres'+i+'" data-toggle="tooltip" style="cursor:pointer;"></i>	'+							
 			'<input style="width:121px;" type="text"  value="Rate" readonly />'+
 			'<input style="width:123px;" type="text"  value="Qty" readonly />'+
-			'<input style="width:120px;" type="text"  value="Amount" readonly />'+									
+			'<input style="width:120px;" type="text"  value="Amount" readonly />'+	
+			'<input style="width:205px;" type="text"  value="Vendor" readonly />'+	
+			'<input style="width:124px;" type="text"  value="Price" readonly />'+
 		'</div>'+
 		'<div>'+
 		
@@ -758,10 +760,25 @@ $(document).on('click','#add',function()
 			'<input class="small m-wrap txtresqty'+i+'"  type="text"  id="txtresqty'+i+'" name="txtresqty'+i+'" value="1" />'+																	
 			'<input class="small m-wrap txtresamt'+i+'" type="text"  id="txtresamt'+i+'" name="txtresamt'+i+'" value="" readonly />'+	
 			
+			'<select name="drpnewresvend'+i+'" id="drpnewresvend'+i+'" class="medium m-wrap drpnewresvend'+i+'"> '+											
+			'</select>'+
+			'<input class="small m-wrap txtresvprice'+i+'" type="text"  id="txtresvprice'+i+'" name="txtresvprice'+i+'" value="" />'+
+									
+			
+			
+		'</div>'+
+		
+		'<div>'+
+			'<input  type="text"  value="Remark" readonly />'+
+		'</div>'+
+		
+		'<div>'+
+			'<textarea rows="2" cols="140" id="txtresremark'+i+'" class="txtresremark'+i+'" name="txtresremark'+i+'"></textarea>'+
 			'<a name="addres'+i+'" class="btn blue" id="addres'+i+'" style="margin-left:15px;" >'+
 				'Add'+								
 			'</a>'+
 		'</div>'+
+		
 		'<div class="portlet box green">'+
 			'<div class="portlet-title">'+
 				'<div class="caption"><i class="icon-reorder"></i>Resources</div>'+
@@ -774,7 +791,10 @@ $(document).on('click','#add',function()
 							'<th> Resource</th>	'+												
 							'<th> Rate</th>'+
 							'<th> Qty</th>'+
-							'<th> Amount</th>'+													
+							'<th> Amount</th>'+	
+							'<th> Vendor</th>'+
+							'<th> Price</th>'+
+							'<th> Remark</th>'+							
 							'<th> Action</th>'	+												 
 						'</tr>'+
 					'</thead>'+
@@ -924,6 +944,7 @@ $(document).on('click','#add',function()
 				'success : function(r)'+
 				'{'+
 					'$(\'#drpnewvend'+i+'\').html(r);'	+
+					'$(\'#drpnewresvend'+i+'\').html(r);'+
 					
 				'}'+
 				
@@ -1331,9 +1352,17 @@ $(document).on('click','#add',function()
 		'{'+
 			'var resid = $(\'.drp_resource'+i+'\').val();'+
 			'var resnm = document.getElementById("drp_resource'+i+'").options[(document.getElementById("drp_resource'+i+'").options.selectedIndex)].text;'+
+			
+			'var resvend = $(\'.drpnewresvend'+i+'\').val();'+
+			'var resvendnm = document.getElementById("drpnewresvend'+i+'").options[(document.getElementById("drpnewresvend'+i+'").options.selectedIndex)].text;'+
+			'var resvprice = $(\'.txtresvprice'+i+'\').val();'+
+ 			
+			
 			'var qty = $(\'.txtresqty'+i+'\').val();'+
 			'var rate = $(\'.txtresrate'+i+'\').val();'+
-			'var amt = $(\'.txtresamt'+i+'\').val();'+		
+			'var amt = $(\'.txtresamt'+i+'\').val();'+
+			'var resreamrk = $(\'.txtresremark'+i+'\').val();'+	
+			
 			'var col = '+i+';'+
 			'if(resid=="")'+
 			'{'+
@@ -1390,10 +1419,20 @@ $(document).on('click','#add',function()
 						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtirate]" value="\'+rate+\'">\'+'+
 						'\'<input   type="hidden" id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][rtxtiamt]" class="rtxtiamt" value="\'+amt+\'">\'+'+			
 						
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivend]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivend]" value="\'+resvend+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendnm]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtivendnm]" value="\'+resvendnm+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresvendprice]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiresvendprice]" class="txtiresvendprice" value="\'+resvprice+\'">\'+'+
+						'\'<input  type="hidden"  id="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiremark]" name="hdn[\'+col+\'][\'+rrow'+i+'+\'][resource][txtiremark]" value="\'+resreamrk+\'">\'+'+
+						
 						'\'<td>\'+ resnm+\'</td>\'+'+
 						'\'<td>\'+ rate+\'</td>\'+'+
 						'\'<td>\'+ qty+\'</td>\'+'+
-						'\'<td class="amount">\'+ amt+\'</td>\'+'+					
+						'\'<td class="amount">\'+ amt+\'</td>\'+'+	
+						
+						'\'<td>\'+ resvendnm+\'</td>\'+'+
+						'\'<td>\'+ resvprice+\'</td>\'+'+
+						'\'<td>\'+ resreamrk+\'</td>\'+'+
+						
 											
 						'\'<td><a class="resremove'+i+'" id="\'+i+\'\'+k+\'" style= "cursor:pointer; margin-left:15px;">\'+'+
 							'\'<i class="fa fa-times" aria-hidden="true"></i>\'+	'+						
@@ -1416,6 +1455,10 @@ $(document).on('click','#add',function()
 			'$(\'.txtresrate'+i+'\').val(\'\');'+
 			'$(\'.txtresqty'+i+'\').val(\'1\');'+
 			'$(\'.txtresamt'+i+'\').val(\'\');'+
+			
+			'$(\'.drpnewresvend'+i+'\').val(\'\');'+
+			'$(\'.txtresvprice'+i+'\').val(\'\');'+
+			'$(\'.txtresremark'+i+'\').val(\'\');'+
 			
 			
 			

@@ -450,10 +450,10 @@ function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf,
 			//echo 4;
 			//exit;
 		}
-function insNewRes($conn,$event_id,$event_plc_id,$res_id,$res_nm,$qty,$rate,$amount)
+function insNewRes($conn,$event_id,$event_plc_id,$res_id,$res_nm,$qty,$rate,$amount,$txtivend,$txtiresvendprice,$txtiremark)
 		{
-			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`) 
-				VALUES ('".$event_id."','".$event_plc_id."','".$res_id."','".$res_nm."','".$qty."','".$rate."','".$amount."')"; 
+			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`,`res_vend_id`,`res_vend_price`,`res_remark`) 
+				VALUES ('".$event_id."','".$event_plc_id."','".$res_id."','".$res_nm."','".$qty."','".$rate."','".$amount."','".$txtivend."','".$txtiresvendprice."','".$txtiremark."')"; 
 			$resultArray = $conn->insertQuery($sqlinsNewRes);
 			
 		}

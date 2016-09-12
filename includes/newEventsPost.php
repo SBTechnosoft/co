@@ -258,7 +258,7 @@ if(isset($_POST['showtax']))
 						// echo $subvalue['resource']['txtiqty'];
 						// echo $subvalue['resource']['txtirate'];
 						// echo $subvalue['resource']['rtxtiamt']."</br>";
-						insNewRes($conn,$eventlast_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiamt']);
+						insNewRes($conn,$eventlast_id,$last_vplc_id,$subvalue['resource']['txtires'],$subvalue['resource']['txtiresnm'],$subvalue['resource']['txtiqty'],$subvalue['resource']['txtirate'],$subvalue['resource']['rtxtiamt'],$subvalue['resource']['txtivend'],$subvalue['resource']['txtiresvendprice'],$subvalue['resource']['txtiremark']);
 					}				
 				}
 				else

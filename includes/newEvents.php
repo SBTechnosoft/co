@@ -594,8 +594,11 @@ if(isset($setting1) && !empty($setting1))
 									<i class="fa fa-info-circle" title="New" id="newinsres" data-toggle="tooltip" style="cursor:pointer;"> 
 									</i>									
 									<input style="width:121px;" type="text"  value="Rate" readonly />
-									<input style="width:123px;" type="text"  value="Qty" readonly />
-									<input style="width:120px;" type="text"  value="Amount" readonly />									
+									<input style="width:123px;" type="text"  value="Qty" readonly />									
+									<input style="width:120px;" type="text"  value="Amount" readonly />
+									
+									<input style="width:205px;" type="text"  value="Vendor" readonly />	
+									<input style="width:124px;" type="text"  value="Price" readonly />
 								</div>
 								<div>
 								
@@ -605,10 +608,25 @@ if(isset($setting1) && !empty($setting1))
 									<input class="small m-wrap txtresqty"  type="text"  id="txtresqty" name="txtresqty" value="1" />																	
 									<input class="small m-wrap txtresamt" type="text"  id="txtresamt" name="txtresamt" value="" readonly />	
 									
+									<select name="drpnewresvend" id="drpnewresvend" class="medium m-wrap drpnewresvend"> 											
+									</select>
+									<input class="small m-wrap txtresvprice" type="text"  id="txtresvprice" name="txtresvprice" value="" />
+									
+									
+									
+								</div>
+								
+								<div>
+									<input  type="text"  value="Remark" readonly />
+								</div>
+								
+								<div>
+									<textarea rows="2" cols="140" id="txtresremark" class="txtresremark" name="txtresremark"></textarea>
 									<a name="addres" class="btn blue" id="addres" style="margin-left:15px;" >
 										Add								
 									</a>
 								</div>
+								
 								<div class="portlet box green">
 									<div class="portlet-title">
 										<div class="caption"><i class="icon-reorder"></i>Resources</div>
@@ -621,7 +639,10 @@ if(isset($setting1) && !empty($setting1))
 													<th> Resource</th>													
 													<th> Rate</th>
 													<th> Qty</th>
-													<th> Amount</th>													
+													<th> Amount</th>
+													<th> Vendor</th>
+													<th> Price</th>
+													<th> Remark</th>
 													<th> Action</th>													 
 												</tr>
 											</thead>

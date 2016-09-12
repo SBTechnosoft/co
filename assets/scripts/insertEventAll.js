@@ -907,7 +907,7 @@
 				success : function(r)
 				{
 					$('#drpnewvend').html(r);	
-					
+					$('#drpnewresvend').html(r);
 				}
 				
 			});
@@ -1387,10 +1387,13 @@
 		{
 			var resid = $('.drp_resource').val();
 			var resnm = document.getElementById("drp_resource").options[(document.getElementById("drp_resource").options.selectedIndex)].text;		
+			var resvend = $('.drpnewresvend').val();
+			var resvendnm = document.getElementById("drpnewresvend").options[(document.getElementById("drpnewresvend").options.selectedIndex)].text;
+			var resvprice = $('.txtresvprice').val();
 			var qty = $('.txtresqty').val();
 			var rate = $('.txtresrate').val();
 			var amt = $('.txtresamt').val();
-					
+			var resreamrk = $('.txtresremark').val();		
 			
 			if(resid=='')
 			{
@@ -1445,12 +1448,18 @@
 						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtirate]" name="hdn[0]['+k+'][resource][txtirate]" value="'+rate+'">'+
 						'<input   type="hidden" id="hdn[0]['+k+'][resource][rtxtiamt]" name="hdn[0]['+k+'][resource][rtxtiamt]" class="rtxtiamt" value="'+amt+'">'+
 						
+						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtivend]" name="hdn[0]['+k+'][resource][txtivend]" value="'+resvend+'">'+
+						'<input type="hidden"  id="hdn[0]['+k+'][resource][txtivendnm]" name="hdn[0]['+k+'][resource][txtivendnm]" value="'+resvendnm+'">'+
+						'<input  type="hidden"  id="hdn[0]['+k+'][resource][txtiresvendprice]" name="hdn[0]['+k+'][resource][txtiresvendprice]" class="txtiresvendprice" value="'+resvprice+'">'+
+						'<input   type="hidden"  id="hdn[0]['+k+'][resource][txtiremark]" name="hdn[0]['+k+'][resource][txtiremark]" value="'+resreamrk+'">'+
 						
 						'<td>'+ resnm+'</td>'+
 						'<td>'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
-						'<td class="amount">'+ amt+'</td>'+						
-											
+						'<td class="amount">'+ amt+'</td>'+	
+						'<td>'+ resvendnm+'</td>'+
+						'<td>'+ resvprice+'</td>'+						
+						'<td>'+ resreamrk+'</td>'+					
 						'<td><a class="resremove" id="'+k+'" style= "cursor:pointer; margin-left:15px;">'+
 							'<i class="fa fa-times" aria-hidden="true"></i>'+							
 						'</a></td>'+
@@ -1473,6 +1482,9 @@
 			$('.txtresqty').val('1');
 			$('.txtresamt').val('');
 			
+			$('.drpnewresvend').val('');
+			$('.txtresvprice').val('');
+			$('.txtresremark').val('');
 			
 			
 		});
