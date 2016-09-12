@@ -199,7 +199,7 @@ else
 							<!-- end invoice button-->
                             <table>
 								<input type="hidden" id="eid" name="eid" />
-								<input type="hidden" id="event_cal_id" name="event_cal_id" />
+								
                                 <div class="input-icon left">
                                     <tr>
                                         <td class="names"><label for="txteventnm"> Order Name </label></td>

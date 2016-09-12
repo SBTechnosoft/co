@@ -39,7 +39,6 @@ if(isset($_POST['showtax']))
 	}
 	
 	
-	
 	if(isset($_POST['saverecord']))
 	{	
 				
@@ -115,7 +114,7 @@ if(isset($_POST['showtax']))
 	
 	if(isset($_POST['txteventnm']))
 	{	
-		$evnt_nm = $_POST['txteventnm'];
+		
 		if($_POST['taxmode'] == 'Yes')
 		{
 			if($_POST['txtdisc']=='')
@@ -194,14 +193,8 @@ if(isset($_POST['showtax']))
 		$trdt = $_POST['txttodt'];
 		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
-		
-		$date1=date_create($_POST['txtfromdt']);
-		$sdate =  date_format($date1,DATE_ISO8601);
-		
-		$date2=date_create($_POST['txttodt']);
-		$edate =  date_format($date2,DATE_ISO8601);
-		
+		$ntrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
+
 		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
 		
 		//select last record inserted from event_mst	
@@ -285,7 +278,7 @@ if(isset($_POST['showtax']))
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 		}
 		?>
-			<script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
+			<!--script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
 			
 			<script type="text/javascript">
 				
@@ -343,29 +336,31 @@ if(isset($_POST['showtax']))
 			<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
 			
 			<script>
-				
+				function myFunction1() {			
+					var evnt_name = 'today test';
+					var sdt = '2016-09-09T16:06:47.445Z';
+					var edt = '2016-09-15T16:06:47.445Z';
+					
+					alert('done');
+					 
+					var add_resource = {
+						"summary": evnt_name,
+						"start": {
+							"dateTime":  sdt
+						},
+						"end": {
+							"dateTime":  edt
+						},
+						"description":"Testing"
+					};
+					insertEvent(add_resource);					
+				}
+				myFunction1();
 				//Insert Event Function
-				function insertEvent() {
-					
-						var evnt_name = '<?php echo $evnt_nm ; ?>';
-						var sdt = '<?php echo  $sdate ; ?>';
-						var edt = '<?php echo  $edate ; ?>';					
-						alert('done');
-						 
-						var add_resource = {
-							"summary": evnt_name,
-							"start": {
-								"dateTime":  sdt
-							},
-							"end": {
-								"dateTime":  edt
-							},
-							"description":"done"
-						};
-					
+				function insertEvent(add_resource) {
 						var eventResponse = document.getElementById('event-response');
 						//alert('df');
-					  // console.log(add_resource);
+					   console.log(add_resource);
 					   
 						gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
 							var request = gapi.client.calendar.events.insert
@@ -385,60 +380,35 @@ if(isset($_POST['showtax']))
 									// refreshICalendarframe();
 									// $('.updateModal-body').empty();
 									// makeApiCall1();
-									//alert('insert successfully');
-									//alert(resp.id);
-									var cal_id = resp.id;
-									var eid = '<?php echo $eventlast_id;?>';									
-									//updEvent
-									$.ajax({
-										//url : './includes/newEventsPost.php',
-										url : '<?php  DIR_WS_INCLUDES.'newEventsPost.php';?>',
-										type : 'POST',
-										async : false,
-										data : {
-											'addcalid'  : 1,
-											'cal_id'   : cal_id,
-											'eid'	: eid
-																										
-										},
-										success : function()
-										{
-											alert('Success');
-											window.location = "<?php echo HTTP_SERVER.'index.php?url=EVD';?>";				
-										}				
-									});
-									
+									alert('insert successfully');
+									window.location = "<?php //echo HTTP_SERVER.'index.php?url=EVD';?>";
 									
 								} else {
 									// document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
 									// eventResponse.className += ' panel-danger';
 									alert('Bad Luck');
-									window.location = "<?php echo HTTP_SERVER.'index.php?url=EVE';?>";
+									window.location = "<?php// echo HTTP_SERVER.'index.php?url=EVE';?>";
 								}
 							});
 						});
 					}
-					insertEvent();	
-			</script>
+					
+			</script-->
 		<?php
 		
-		// header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
-		// if($_POST['order_type'] == 'enquiry')
-		// {
-			// header ('location:'.HTTP_SERVER.'index.php?url=ENR');
-		// }	
-		// else
-		// {
-			// header ('location:'.HTTP_SERVER.'index.php?url=EVD');
-		// }
+		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		if($_POST['order_type'] == 'enquiry')
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
+		}	
+		else
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		}
 
 
 }
-	if(isset($_POST['addcalid']))
-	{	
-		updEventCalId($conn,$_POST['eid'],$_POST['cal_id']);
-		
-	}
+	
 	if(isset($_POST['txtupdchk']))
 	{	
 		$evnt_id = $_POST['txtupdchk'];		

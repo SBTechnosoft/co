@@ -486,6 +486,14 @@ function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
 		}
+		
+function updEventCalId($conn,$eid,$cal_id)
+		{
+			$sqlEventCalId = "Update `event_mst`  set `event_cal_id` = '".$cal_id."' where `event_id` = '".$eid."' "; 
+			$resultArray = $conn->insertQuery($sqlEventCalId);
+			
+			//exit;
+		}
 // function insDesg($conn,$desgId,$designation)
 // {
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 

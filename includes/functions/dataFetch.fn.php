@@ -155,7 +155,7 @@ function showBannerImg($conn,$eid)
 
 function showEventDetail($conn)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`event_cal_id` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}								
 function searchEventDetail($conn,$where)

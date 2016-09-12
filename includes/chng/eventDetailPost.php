@@ -291,7 +291,7 @@
 	if(isset($_POST['show']))
 	{	
 		$data = showEventDetail ($conn);
-		
+		//echo json_encode($data);
 		$showEventCnt = count($data);	
 		for($i=0;$i<$showEventCnt;$i++)
 		{
@@ -374,7 +374,7 @@
 					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
 						<i class="fa fa-pencil-square-o"></i>
 					</a> &nbsp;&nbsp;&nbsp;
-					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_cal_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>		
 				
 			</tr>
@@ -2322,7 +2322,7 @@
 	}
 	if(isset($_POST['edit']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`event_cal_id` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
@@ -2332,7 +2332,7 @@
 	
 	if(isset($_POST['showlast']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`event_cal_id` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

@@ -1526,66 +1526,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>					 
-					<![endif]--> 
-					      
-			
-					<script type="text/javascript">
-						
-						var now = new Date();
-						today = now.toISOString();
-						
-						var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
-						twoHoursLater = twoHoursLater.toISOString();
-
-						
-						var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
-						var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
-
-						
-						var scopes = 'https://www.googleapis.com/auth/calendar';
-
-						
-						function handleClientLoad() {
-							gapi.client.setApiKey(apiKey);
-							window.setTimeout(checkAuth, 1);
-						}
-
-						function checkAuth() {
-							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
-						}
-
-						
-						function handleAuthResult(authResult) {
-							
-							var resultPanel = document.getElementById('result-panel');
-							var resultTitle = document.getElementById('result-title');
-
-							if (authResult && !authResult.error) {
-									
-								resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
-								resultPanel.className += ' panel-success'; 			// add green class
-								resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
-								
-								$("#txtEventDetails").attr("visibility", "visible");
-							} else {													// otherwise, show button
-								
-								$("#txtEventDetails").attr("visibility", "hidden");
-								
-								resultPanel.className += ' panel-danger'; 			// make panel red
-											
-							}
-						}
-
-						
-						function handleAuthClick(event) {
-							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
-							return false;
-						}	  
-					</script>
-					<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script> 
-			
-			
-			
+					<![endif]-->   
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
