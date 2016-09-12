@@ -55,4 +55,40 @@
 		}
 		
 	}
+	
+	
+	if(isset($_POST['search']))
+	{	
+		$s2 = '';$s3 = '';
+		if($_POST['txtacces']!='')
+		{
+			$s2 = " `as_name` like '%".$_POST['txtacces']."%' ";
+		}
+		 if($_POST['txtcatid']!='')
+		{
+			$s3 = " `eq_id` like '%".$_POST['txtcatid']."%' ";
+		}
+		$data = showAcs ($conn);
+		
+		$showAcsCnt = count($data);	
+		for($i=0;$i<$showAcsCnt;$i++)
+		{
+		?>
+			<tr>
+				
+				<td><?php echo $data[$i]['as_id'];?></td>
+				<td><?php echo ucfirst($data[$i]['as_name']);?></td>
+				
+				<td><?php echo $data[$i]['cat_name'];?></td>
+				
+				<td><?php echo ucfirst($data[$i]['remark']);?></td>
+				<td>				
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['as_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
+				</td>
+				
+			</tr>
+		<?php	
+		}
+		
+	}
 ?>

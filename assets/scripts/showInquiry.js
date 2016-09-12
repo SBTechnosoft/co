@@ -40,7 +40,7 @@ $('#enquiryexcel').click(function()
 		showdata();
 		
 	//edit(update the enquiry as order)
-		$('body').delegate('.editprod','click',function(){
+		$('body').delegate('.editenq','click',function(){
 			//alert('hello Divyesh');
 			var id = $(this).data('id');
 			// alert(id);
