@@ -723,9 +723,9 @@ if(isset($setting1) && !empty($setting1))
 												<tr>
 													<th> Equipment</th>
 													<th> Asseccories</th>
-													<th> Rate</th>
+													<th id="onratetbl"> Rate</th>
 													<th> Qty</th>
-													<th> Amount</th>
+													<th id="onamttbl"> Amount</th>
 													<th> Staff</th>
 													<th> Vendor</th>
 													<th> Price</th>
@@ -855,9 +855,9 @@ if(isset($setting1) && !empty($setting1))
 												<tr>
 													<th> Equipment</th>
 													<th> Asseccories</th>
-													<th> Rate</th>
+													<th id="ratetbl"> Rate</th>
 													<th> Qty</th>
-													<th> Amount</th>
+													<th id="amttbl"> Amount</th>
 													<th> Staff</th>
 													<th> Vendor</th>
 													<th> Price</th>

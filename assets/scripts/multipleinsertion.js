@@ -867,9 +867,9 @@ $(document).on('click','#add',function()
 		'					<tr>'+
 		'						<th> Equipment</th>'+
 		'						<th> Asseccories</th>'+
-		'						<th> Rate</th>'+
+		'						<th id="ratetbl"> Rate</th>'+
 		'						<th> Qty</th>'+
-		'						<th> Amount</th>'+
+		'						<th id="amttbl"> Amount</th>'+
 		'						<th> Staff</th>'+
 		'						<th> Vendor</th>'+
 		'						<th> Price</th>'+
@@ -1268,6 +1268,8 @@ $(document).on('click','#add',function()
 			
 			'row'+i+'++;'+
 			
+						
+						
 			'var div =	'+				
 					
 					'\'<tr id="eqrow\'+i+\'\'+j+\'">\'+'+
@@ -1291,8 +1293,8 @@ $(document).on('click','#add',function()
 						'\'<td>\'+ txtassdtl+\'</td>\'+'+
 						'\'<td>\'+ rate+\'</td>\'+'+
 						'\'<td>\'+ qty+\'</td>\'+'+
-						'\'<td class="amount">\'+ amt+\'</td>\'+	'+					
-						'\'<td>\'+ staffnm+\'</td>\'+	'+					
+						'\'<td class="amount">\'+ amt+\'</td>\'+'+					
+						'\'<td>\'+ staffnm+\'</td>\'+'+					
 						'\'<td>\'+ vendnm+\'</td>\'+'+
 						'\'<td>\'+ vprice+\'</td>\'+'+
 						'\'<td>\'+ reamrk+\'</td>\'+'+						
@@ -1300,6 +1302,8 @@ $(document).on('click','#add',function()
 							'\'<i class="fa fa-times" aria-hidden="true"></i>\'+'+							
 						'\'</a></td>\'+'+
 					'\'</tr>\';	'+	
+					
+
 					
 			'$(\'#eqprec'+i+'\').append(div);'+	
 			

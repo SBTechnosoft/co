@@ -1174,11 +1174,12 @@
 			$('#txtamt').val(tot);			
 		});
 		
-		
+		var flag=0;
 		var i = 0; 
 		var k = 0;
 		$('#addeqp').on('click',function()
 		{
+			
 			var eqpid = $('.drpneweqp').val();
 			var eqpnm = document.getElementById("drpneweqp").options[(document.getElementById("drpneweqp").options.selectedIndex)].text;
 			
@@ -1216,11 +1217,10 @@
 					alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
 					return false;
 				}
-				// if(rate == 0)
-				// {
-					// alert("Can't Give rate 0");
-					// return false;
-				// }
+				if(rate == 0)
+				{
+					
+				}
 			}
 			if(qty=='')
 			{
@@ -1289,6 +1289,7 @@
 			// alert(vend);
 			
 			i++;
+			
 			var div=
 					//'<div id="eqrow'+i+'">'+					
 					/*'<tr>'+
@@ -1323,11 +1324,26 @@
 						'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtilength]" name="hdn[0]['+i+'][equipment][txtilength]" value="'+length+'">'+
 						'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiwidth]" name="hdn[0]['+i+'][equipment][txtiwidth]" value="'+width+'">'+
 						
+						'<script>'+
 						
+					'if('+rate+'==0 || flag==1)'+
+					'{'+
+						'var flag=1;'+
+						
+						'$(\'.rate1\').hide();'+
+						'$(\'.amount\').hide();'+
+						'$(\'#ratetbl\').hide();'+
+						'$(\'#amttbl\').hide();'+
+						'$(\'#onratetbl\').hide();'+
+						'$(\'#onamttbl\').hide();'+
+						
+					'}'+
+					
+					'</script>'+
 						
 						'<td>'+ eqpnm+'</td>'+
 						'<td>'+ txtassdtl+'</td>'+
-						'<td>'+ rate+'</td>'+
+						'<td class="rate1">'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+						
 						'<td>'+ staffnm+'</td>'+						
@@ -1455,7 +1471,7 @@
 						'<input   type="hidden"  id="hdn[0]['+k+'][resource][txtiremark]" name="hdn[0]['+k+'][resource][txtiremark]" value="'+resreamrk+'">'+
 						
 						'<td>'+ resnm+'</td>'+
-						'<td>'+ rate+'</td>'+
+						'<td >'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+	
 						'<td>'+ resvendnm+'</td>'+
