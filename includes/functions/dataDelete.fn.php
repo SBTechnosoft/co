@@ -11,7 +11,7 @@ include_once(DIR_WS_FUNCTIONS.'general.fn.php');
 
 function delevent($conn,$id,$date)
 		{
-			$sqldelEvent = "Update `event_mst`  set `deleted_at` = '".$date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_cal_id` = '".$id."' "; 
+			$sqldelEvent = "Update `event_mst`  set `deleted_at` = '".$date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_id` = '".$id."' "; 
 			$resultArray = $conn->insertQuery($sqldelEvent);
 			//echo 12;
 			exit;

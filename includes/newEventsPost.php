@@ -285,7 +285,7 @@ if(isset($_POST['showtax']))
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 		}
 		?>
-			<script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
+			<!--script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
 			
 			<script type="text/javascript">
 				
@@ -419,21 +419,22 @@ if(isset($_POST['showtax']))
 						});
 					}
 					insertEvent();	
-			</script>
+			</script-->
 		<?php
 		
-		// header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
-		// if($_POST['order_type'] == 'enquiry')
-		// {
-			// header ('location:'.HTTP_SERVER.'index.php?url=ENR');
-		// }	
-		// else
-		// {
-			// header ('location:'.HTTP_SERVER.'index.php?url=EVD');
-		// }
+		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		if($_POST['order_type'] == 'enquiry')
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
+		}	
+		else
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		}
 
 
-}
+	}
+	
 	if(isset($_POST['addcalid']))
 	{	
 		updEventCalId($conn,$_POST['eid'],$_POST['cal_id']);

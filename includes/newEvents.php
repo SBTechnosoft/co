@@ -1048,71 +1048,7 @@ if(isset($setting1) && !empty($setting1))
 						</form-->
 						
 						
-					</form>
-					
-					<script>
-						function myFunction() {						
-							var evnt_name = document.getElementById('txteventnm').value;
-							
-							 var evnt_stdt = $('#datetimepicker1').data('datetimepicker')._date.toISOString();
-							  var start_date = new Date(evnt_stdt);
-								start_date.setHours(start_date.getHours()-5);
-								start_date.setMinutes(start_date.getMinutes()-30);
-								
-								
-							  var evnt_endt = $('#datetimepicker2').data('datetimepicker')._date.toISOString();
-							  var end_date = new Date(evnt_endt);
-								end_date.setHours(end_date.getHours()-5);
-								end_date.setMinutes(end_date.getMinutes()-30);							
-							
-							var add_resource = {
-								"summary": evnt_name,
-								"start": {
-									"dateTime": start_date 
-								},
-								"end": {
-									"dateTime":  end_date
-								},
-								"description":"Testing"
-							};
-							insertEvent(add_resource);
-							
-							document.getElementById("f1").submit();						
-							
-						}
-						//Insert Event Function
-						function insertEvent(add_resource) {
-								var eventResponse = document.getElementById('event-response');
-								//alert('df');
-							   
-								gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
-									var request = gapi.client.calendar.events.insert
-									({
-										'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
-										//'eventId':'i9lsd13tarh37rk27b0ge7uno8',
-										"resource": add_resource			// pass event details with api call
-									});
-									
-									// handle the response from our api call
-									request.execute(function (resp) {
-									console.log(resp);
-										if (resp.status == 'confirmed') {
-										
-											//eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
-											//eventResponse.className += ' panel-success';
-											// refreshICalendarframe();
-											// $('.updateModal-body').empty();
-											// makeApiCall1();
-											//alert('insert successfully');
-										} else {
-											// document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
-											// eventResponse.className += ' panel-danger';
-											//alert('Bad Luck');
-										}
-									});
-								});
-							}
-					</script>
+					</form>					
 				</div>
 			</div>
 		<!-- END PAGE CONTENT-->

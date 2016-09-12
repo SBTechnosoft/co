@@ -103,7 +103,7 @@
 					$('#txtjobdata2').attr('readonly','txtjobdata2');
 					
 					$("#showeditbtn").fadeOut();
-					updateEvent() ;
+					//updateEvent() ;
 					//window.location.reload();
 					
 				}
@@ -115,41 +115,42 @@
 	});	
 //end
 //update calendarId
-	function updateEvent() 
-	{
-		var eventResponse = document.getElementById('event-response');
-		//alert('df');
+
+	// function updateEvent() 
+	// {
+		// var eventResponse = document.getElementById('event-response');
 		
 		
-		var id = $('#event_cal_id').val();
-		var evnt_name = $('#txteventnm').val();	
 		
-		var add_resource = {
-            "summary": evnt_name,			
-		};
+		// var id = $('#event_cal_id').val();
+		// var evnt_name = $('#txteventnm').val();	
+		
+		// var add_resource = {
+            // "summary": evnt_name,			
+		// };
 		
 	   
-		gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
-			var request = gapi.client.calendar.events.patch
-			({
-				'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
-				'eventId': id,
-				"resource": add_resource			// pass event details with api call
-			});
+		// gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
+			// var request = gapi.client.calendar.events.patch
+			// ({
+				// 'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
+				// 'eventId': id,
+				// "resource": add_resource			// pass event details with api call
+			// });
 			
-			// handle the response from our api call
-			request.execute(function (resp) {
-			   // alert(resp.htmlLink);
-				if (resp.status == 'confirmed') {
+			
+			// request.execute(function (resp) {
+			   
+				// if (resp.status == 'confirmed') {
 				
 				  
-					alert('updated successfully');
-				} else {
-					alert('sorry!!!');
-				}
-			});
-		});
-    }
+					// alert('updated successfully');
+				// } else {
+					// alert('sorry!!!');
+				// }
+			// });
+		// });
+    // }
 
 
 //end
@@ -473,7 +474,7 @@
 				},
 				success : function(d)
 				{
-					deleteEvent(id);
+					//deleteEvent(id);
 					alert("Delete Successfully");
 					window.location.reload();
 					
@@ -485,22 +486,22 @@
 //end
 
 //event del from call
-	function deleteEvent(id) 
-	{
+	// function deleteEvent(id) 
+	// {
     
-	  gapi.client.load('calendar', 'v3', function() {  
+	  // gapi.client.load('calendar', 'v3', function() {  
 	   
-	   var request = gapi.client.calendar.events.delete({
-		 'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
-		 'eventId': id
-		  });
+	   // var request = gapi.client.calendar.events.delete({
+		 // 'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
+		 // 'eventId': id
+		  // });
 		 
-		request.execute(function(resp) {
+		// request.execute(function(resp) {
 		
-	   });
-	   });
+	   // });
+	   // });
   
-    }
+    // }
 
 //end
 
@@ -523,7 +524,7 @@
 				success : function(e)
 				{
 					$('#eid').val(e.event_id);
-					$('#event_cal_id').val(e.event_cal_id);
+					//$('#event_cal_id').val(e.event_cal_id);
 					$('#txteventnm').val(e.event_name);
 					$('#txteventds').val(e.event_ds);
 					$('#txtclnm').val(e.client_name);
@@ -844,7 +845,7 @@
 				success : function(e)
 				{
 					$('#eid').val(e.event_id);
-					$('#event_cal_id').val(e.event_cal_id);
+					//$('#event_cal_id').val(e.event_cal_id);
 					$('#txteventnm').val(e.event_name);
 					$('#txteventds').val(e.event_ds);
 					$('#txtclnm').val(e.client_name);

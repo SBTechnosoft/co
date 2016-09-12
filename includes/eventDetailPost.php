@@ -374,7 +374,7 @@
 					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
 						<i class="fa fa-pencil-square-o"></i>
 					</a> &nbsp;&nbsp;&nbsp;
-					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_cal_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>		
 				
 			</tr>
