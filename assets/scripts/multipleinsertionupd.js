@@ -93,7 +93,18 @@ $(document).on('click','#add',function()
 		'	</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
-		'		<div class="pull-left margin-right-20">'+
+		'		<div class="pull-left margin-right-10">'+
+		'			<div class="input-icon input-append">'+
+		'				<label for="txtfunction">Function: </label>'+
+		'			</div>'+
+		'			<select name="hdn['+i+'][txtfunction]" id="hdn['+i+'][txtfunction]" class="medium m-wrap">'+
+		'				<option value="Mahendi">Mahendi</option>'+
+		'				<option value="Sangit">Sangit</option>'+
+		'				<option value="Reception">Reception</option>'+
+		'				<option value="Ghruhshanti">Ghruhshanti</option>'+
+		'			</select>'+
+		'		</div>'+
+		'		<div class="pull-left margin-right-10">'+
 		'			<label for="txtfromdate">From Date :</label>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
 		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+

@@ -9,15 +9,33 @@
 	
 	if(isset($_POST['show']))
 	{	
+		
 		$data = showProduct ($conn);
-		$showStudCnt = count($data);	
+		$showStudCnt = count($data);
 		for($i=0;$i<$showStudCnt;$i++)
 		{
 		?>
 			<tr>
 				
 				<td><?php echo ucfirst($data[$i]['prd_cat_name']);?></td>
-				<td><?php echo ucfirst($data[$i]['prd_cat_parent_id']);?></td>
+				<?php 
+				$data1= showProduct ($conn);
+				$showStudCnt1 = count($data1);
+				?>
+				
+				<td>
+					<?php 
+						for($j=0;$j<$showStudCnt1;$j++)
+						{
+							if($data[$i]['prd_cat_parent_id']==$data1[$j]['prd_cat_id'])
+							{
+								echo ucfirst($data1[$j]['prd_cat_name']);
+								break;
+							}
+							
+						}?>
+				</td>
+			
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['prd_cat_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>

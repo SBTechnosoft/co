@@ -1,3 +1,6 @@
+
+
+
 //delete
 		$('body').delegate('.delete','click',function(){
 			var id = $(this).data('id');

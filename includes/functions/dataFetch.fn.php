@@ -32,6 +32,7 @@ function showProduct($conn)
 		`deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+
 function showProductMst($conn,$ctgprod)
 	{
 		$sqlShowCatg = "select `prod_id`,`disp_nm` from  `product_mst` where `prd_cat_id` = '".$ctgprod."' and
@@ -373,7 +374,7 @@ function showCatInEqp($conn)
 	}
 function showEventPlacesDetail($conn,$epdid)
 	{
-		$sqlShowPlacesDtl = "SELECT `event_places_id`,`event_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`,`event_to_date` FROM event_places_dtl where `event_id` = '".$epdid."' "; 
+		$sqlShowPlacesDtl = "SELECT `event_places_id`,`event_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`function`,`event_date`,`event_to_date` FROM event_places_dtl where `event_id` = '".$epdid."' "; 
 		return $conn->getResultArray($sqlShowPlacesDtl);	
 	}
 function showVendName($conn)

@@ -50,7 +50,8 @@
 		$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 		$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 		
-		updEventPlacesDetail($conn,$_POST['epldtlid'],$_POST['txtvenue'],$_POST['txthall'],$_POST['txtldmark'],$nfromdt,$ntordt,$date);
+		updEventPlacesDetail($conn,$_POST['epldtlid'],$_POST['txtvenue'],$_POST['txthall'],$_POST['txtldmark'],
+		$_POST['txtfunction'],$nfromdt,$ntordt,$date);
 	}
 	if(isset($_POST['ResourceIns']))
 	{	
@@ -734,7 +735,18 @@
 				</div>
 				
 				<div class="clearfix margin-bottom-10">
-					<div class="pull-left margin-right-20">
+					<div class="pull-left margin-right-10">
+						<div class="input-icon input-append">
+							<label for="txtfunction">Function: </label>
+						</div>
+						<select name="txtfunction<?php echo $i; ?>" id="txtfunction<?php echo $i; ?>" class="medium m-wrap">
+											<option  value="Mahendi">Mahendi</option>
+											<option value="Sangit">Sangit</option>
+											<option value="Reception">Reception</option>
+											<option value="Ghruhshanti">Ghruhshanti</option>
+										</select>
+					</div>
+					<div class="pull-left margin-right-10">
 						<label for="txtfromdate">From Date </label>
 						<div id="datetimepickerPF<?php echo $i; ?>" class="input-append date">
 							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_date'];?>" readonly />
@@ -1110,6 +1122,7 @@
 						$('#txtvenue<?php echo $i;?>').removeAttr('readonly');
 						$('#txthall<?php echo $i;?>').removeAttr('readonly');
 						$('#txtldmark<?php echo $i;?>').removeAttr('readonly');
+						$('#txtfunction<?php echo $i;?>').removeAttr('readonly');
 						$('#txtfromdate<?php echo $i;?>').removeAttr('readonly');
 						$('#txttodate<?php echo $i;?>').removeAttr('readonly');
 						
@@ -1800,6 +1813,7 @@
 					var txtvenue = $('#txtvenue<?php echo $i; ?>').val();
 					var txthall = $('#txthall<?php echo $i; ?>').val();
 					var txtldmark = $('#txtldmark<?php echo $i; ?>').val();
+					var txtfunction = $('#txtfunction<?php echo $i; ?>').val();
 					var txtfromdate = $('#txtfromdate<?php echo $i; ?>').val();
 					var txttodate = $('#txttodate<?php echo $i; ?>').val();
 					
@@ -1814,6 +1828,7 @@
 								'txtvenue' 	: txtvenue,
 								'txthall' 	: txthall,
 								'txtldmark' 	: txtldmark,
+								'txtfunction' 	: txtfunction,
 								'txtfromdate' 	: txtfromdate,
 								'txttodate' 	: txttodate,
 								
@@ -1825,6 +1840,7 @@
 								$('#txtvenue<?php echo $i; ?>').attr('readonly','txtvenue<?php echo $i; ?>');
 								$('#txthall<?php echo $i; ?>').attr('readonly','txthall<?php echo $i; ?>');								
 								$('#txtldmark<?php echo $i; ?>').attr('readonly','txtldmark<?php echo $i; ?>');
+								$('#txtfunction<?php echo $i; ?>').attr('readonly','txtfunction<?php echo $i; ?>');
 								$('#txtfromdate<?php echo $i; ?>').attr('readonly','txtfromdate<?php echo $i; ?>');
 								$('#txttodate<?php echo $i; ?>').attr('readonly','txttodate<?php echo $i; ?>');
 

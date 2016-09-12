@@ -1,5 +1,8 @@
+	
+	
 	$( function() 
-	{		
+	{	
+
 		//save data
 		
 		$('#newaddevent').click(function()
@@ -70,6 +73,10 @@
 			var txtldmark = [];
 			$.each($("input[name='txtldmark']"), function(){            
                  txtldmark.push($(this).val());
+            });
+			var txtfunction = [];
+			$.each($("select[name='txtfunction']"), function(){            
+                 txtfunction.push($(this).val());
             });
 			//alert(txtldmark);
 			
@@ -355,6 +362,7 @@
 					'taxmode'	:taxmode,
 					'txtvenue'  : txtvenue,	
 					'txtldmark'   : txtldmark,
+					'txtfunction':txtfunction,
 					'txtfromdate'  : txtfromdate,
 					'txttodate'   : txttodate,
 					'status' : 'new',
@@ -416,6 +424,7 @@
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');
+						$('#txtfunction').val('');
 						$('#txtcharge').val('');
 						$('#txtpaid').val('');
 						
@@ -480,7 +489,16 @@
 			$.each($("input[name='txtldmark']"), function(){            
                  txtldmark.push($(this).val());
             });
-			//alert(txtldmark);
+						
+			var txtfunction = [];
+			$.each($("select[name='txtfunction']"), function(){            
+                 txtfunction.push($(this).val());
+            });
+			
+			var txtfromdate = [];
+			$.each($("input[name='txtfromdate']"), function(){            
+                 txtfromdate.push($(this).val());
+            });
 			
 			var txtfromdate = [];
 			$.each($("input[name='txtfromdate']"), function(){            
@@ -763,6 +781,7 @@
 					'taxmode'	:taxmode,
 					'txtvenue'  : txtvenue,	
 					'txtldmark'   : txtldmark,
+					'txtfunction' :txtfunction,
 					'txtfromdate'  : txtfromdate,
 					'txttodate'   : txttodate,
 					'status' : 'enquiry',
@@ -822,6 +841,7 @@
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');
+						$('#txtfunction').val('');
 						$('#txtcharge').val('');
 						$('#txtpaid').val('');
 						
@@ -1507,4 +1527,16 @@
 				$('.txtvcharge').val(total_vamt);
 			}
 		});
+		
+					$('#datetimepicker1').on('changeDate',function(selected){
+							
+						 var pickerEnd = $('#datetimepicker2').data('datetimepicker');
+						pickerEnd.setDate(selected.date);
+						
+						var picker1 = $('#datetimepickerPF').data('datetimepicker');
+						picker1.setDate(selected.date);
+						
+						var picker2 = $('#datetimepickerPT').data('datetimepicker');
+						picker2.setDate(selected.date);
+					});
 	});	

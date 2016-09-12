@@ -51,5 +51,11 @@
 		}
 		
 	}
+	if(isset($_POST['updprod']))
+	{	
+		$cur_date = date('Y-m-d H:i:s');
+		updProduct($conn,$_POST['txtprdnm'],$_POST['txtprdid'],$_POST['txtitmcd'],$_POST['txtdispnm'],$_POST['txtcgrp'],
+		$_POST['drpprdctg'],$_POST['txtrprice'],$_POST['txtpprice'],$_POST['drptype'],$upd_date,$_POST['prod_id']);	
+	}	
 ?>
 				

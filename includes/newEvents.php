@@ -164,12 +164,12 @@ if(isset($setting1) && !empty($setting1))
 						
 						
 						<div class="clearfix margin-bottom-10">
-							<div class="pull-left margin-right-20 ">
+							<div class="pull-left margin-right-20">
 								<div class="input-icon input-append">
-									<label for="txtclemail">Email ID: </label>
+									<label for="txtmob">Mobile: </label>
 								</div>
-								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
-							</div>
+								<input type="text" id="txtmob" name="txtmob" class="large m-wrap mob1" /><font color="red">*</font>
+						   </div>
 							<div class="pull-right margin-right-10">
 								<div class="input-icon input-append">
 									<label for="txtworkmob">Work:</label>
@@ -178,19 +178,18 @@ if(isset($setting1) && !empty($setting1))
 							</div>
 						</div>
 						<div class="clearfix margin-bottom-10">
-							<div class="pull-right margin-right-10">
+							<div class="pull-left margin-right-10">
 								<div class="input-icon input-append">
 									<label for="txthmmob" class="well1">Home:</label>
 								</div>
-								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap mob1" />
+								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap eid1" />
 							</div>
-						
-						    <div class="pull-left margin-right-20">
+							<div class="pull-right margin-right-10 ">
 								<div class="input-icon input-append">
-									<label for="txtmob">Mobile: </label>
+									<label for="txtclemail">Email ID: </label>
 								</div>
-								<input type="text" id="txtmob" name="txtmob" class="large m-wrap mob1" /><font color="red">*</font>
-						   </div>
+								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
+							</div>
 						</div>
 						
 						
@@ -255,12 +254,23 @@ if(isset($setting1) && !empty($setting1))
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
-									<div class="pull-left margin-right-20">
+									<div class="pull-left margin-right-10">
+										<div class="input-icon input-append">
+											<label for="txtfunction">Function: </label>
+										</div>
+										<select name="hdn[0][txtfunction]" id="hdn[0][txtfunction]" class="medium m-wrap">
+											<option value="Mahendi">Mahendi</option>
+											<option value="Sangit">Sangit</option>
+											<option value="Reception">Reception</option>
+											<option value="Ghruhshanti">Ghruhshanti</option>
+										</select>
+									</div>
+									<div class="pull-left margin-right-10">
 									<div class="input-icon input-append">
 										<label for="txtfromdate">From Date: </label>
 									</div>
 										<div id="datetimepickerPF" class="input-append date">
-											<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
+											<input data-format="dd-MM-yyyy HH:mm PP" class="medium m-wrap " value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
 											<span class="add-on">
 											  <i class="icon-time" class="icon-calendar"></i>
 											</span>
@@ -271,7 +281,7 @@ if(isset($setting1) && !empty($setting1))
 									<label for="txttodate" class="well1">To Date: </label>
 									</div>
 									<div id="datetimepickerPT" class="input-append date">
-										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="large m-wrap textArea" value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
+										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="medium m-wrap " value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
 										<span class="add-on">
 										  <i class="icon-time" class="icon-calendar"></i>
 										</span>
@@ -917,36 +927,38 @@ if(isset($setting1) && !empty($setting1))
 						
 						<input type="hidden" id="txtvcharge" name="txtvcharge" class="m-wrap txtvcharge" readonly  />
 						<div class="clearfix margin-bottom-10">
-							<div class="pull-left margin-right-10">
+							
 								<div class="input-icon input-append">
 									<label for="txtcharge">Client Charge:</label>
 								</div>
-								<input type="text" id="txtcharge" name="txtcharge" class=" large m-wrap txtcharge" readonly />
-							</div>
-							<div class="pull-right margin-right-10">
+								<input type="text" id="txtcharge" name="txtcharge" class=" large m-wrap txtcharge client" readonly />
+						</div>
+						<div class="clearfix margin-bottom-10">
 								<div class="input-icon input-append">
 									<label for="txtpaid">Paid Amount / Advance: </label>
 							    </div>
-								<input type="number" id="txtpaid" name="txtpaid" class="large m-wrap" />
-							</div>
-							
+								<input type="number" id="txtpaid" name="txtpaid" class="large m-wrap sertax" />
 						</div>
+							
+						
 						<div class="clearfix margin-bottom-10" >
-							<div class="pull-left margin-right-10">
+							
 								<div class="input-icon input-append">
 									<label for="txtpaid">Discount: </label>
 								</div>
-								<input type="text" id="txtdisc" name="txtdisc" class="large m-wrap" />
-							</div>
-							<div class="pull-right margin-right-10">
+								<input type="text" id="txtdisc" name="txtdisc" class="large m-wrap discount1" />
+							
+						</div>
+						<div class="clearfix margin-bottom-10">
+							
 								<div class="input-icon input-append">
 									<label for="paymentMode">Payment Mode: </label>
 								</div>
-								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();' class="large m-wrap"> 
+								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();' class="large m-wrap selectpay"> 
 									<option value="cash">Cash</option>
 									<option value="cheque">Cheque</option>
 								</select>
-							</div>
+							
 						</div>
 						<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">
 							<div class="pull-left margin-right-20">
@@ -966,7 +978,7 @@ if(isset($setting1) && !empty($setting1))
 							<div class="pull-left margin-right-10">
 								<label for="">Service Tax Applicability: </label>
 							</div>
-							<select name="taxmode" id="taxmode" class="large m-wrap"> 
+							<select name="taxmode" id="taxmode" class="large m-wrap sertax"> 
 								<option select="selected" value="No">No</option>
 								<option value="Yes">Yes</option>
 							</select>
@@ -977,7 +989,7 @@ if(isset($setting1) && !empty($setting1))
 						<div class="right-side">
 							<!--a class="btn blue" id="newaddevent">SAVE <i class="icon-download"></i></a-->
 							
-							<a class="btn blue" onclick="myFunction()">SAVE <i class="icon-download"></i></a>
+							<a class="btn blue " onclick="myFunction()">SAVE <i class="icon-download"></i></a>
 							
 							<!--input  class="btn blue" type="button" onclick="myFunction()" value="SAVE">
 							
@@ -999,6 +1011,7 @@ if(isset($setting1) && !empty($setting1))
 							document.getElementById("f1").submit();
 						}
 					</script>
+					
 				</div>
 			</div>
 		<!-- END PAGE CONTENT-->
