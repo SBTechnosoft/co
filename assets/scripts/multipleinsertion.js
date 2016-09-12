@@ -25,19 +25,19 @@ $(document).on('click','#add',function()
 		'			<div class="input-icon input-append">'+
 		'				<label for="txtvenue">Venue: </label>'+
 		'			</div>'+	
-		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+	
+		'			<input class="venuetxt m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+	
 		'		</div>'+
 		'		<div class="pull-left margin-right-10">'+
 		'			<div class="input-icon input-append abc1">'+
 		'				<label for="txthall">Hall: </label>'+
 		'			</div>'+
-		'			<input class="m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
+		'			<input class="venuetxt m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
 		'		</div>'+
-		'		<div class="pull-left margin-right-10">'+
+		'		<div class="pull-right margin-right-10">'+
 		'			<div class="input-icon input-append">'+
 		'				<label for="txtldmark">Land Mark: </label>'+
 		'			</div>'+
-		'			<input class="m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
+		'			<input class="venuetxt m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="clearfix margin-bottom-10">'+
@@ -52,12 +52,12 @@ $(document).on('click','#add',function()
 		'				<option value="Ghruhshanti">Ghruhshanti</option>'+
 		'			</select>'+
 		'		</div>'+
-		'		<div class="pull-left margin-right-10">'+
+		'		<div class="pull-left margin-right-10" style="margin-left:40px;">'+
 		'			<div class="input-icon input-append">'+
 		'			<label for="txtfromdate">From Date: </label>'+
 		'	</div>'+
 		'			<div id="datetimepickerPF'+i+'" class="input-append date">'+
-		'				<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
+		'				<input data-format="dd-MM-yyyy HH:mm PP" class="fdate1 m-wrap" value="" type="text" name="hdn['+i+'][txtfromdate]" id="hdn['+i+'][txtfromdate]"></input>'+
 		'				<span class="add-on">'+
 		'				  <i class="icon-time" class="icon-calendar"></i>'+
 		'				</span>'+
@@ -68,7 +68,7 @@ $(document).on('click','#add',function()
 		'		<label for="txttodate" class="well1">To Date: </label>'+
 		'		</div>'+
 		'		<div id="datetimepickerPT'+i+'" class="input-append date">'+
-		'			<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
+		'			<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="fdate1 m-wrap" value="" name="hdn['+i+'][txttodate]" id="hdn['+i+'][txttodate]"></input>'+
 		'			<span class="add-on">'+
 		'			  <i class="icon-time" class="icon-calendar"></i>'+
 		'			</span>'+

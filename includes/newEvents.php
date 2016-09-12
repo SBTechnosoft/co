@@ -238,19 +238,19 @@ if(isset($setting1) && !empty($setting1))
 										<div class="input-icon input-append">
 											<label for="txtvenue">Venue: </label>
 										</div>
-										<input class="m-wrap" id="hdn[0][txtvenue]" name="hdn[0][txtvenue]" type="text"  />
+										<input class="venuetxt m-wrap" id="hdn[0][txtvenue]" name="hdn[0][txtvenue]" type="text"  />
 									</div>
 									<div class="pull-left margin-right-10">
 										<div class="input-icon input-append abc1">
 											<label for="txthall">Hall: </label>
 										</div>
-										<input class="m-wrap " id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
+										<input class="venuetxt m-wrap " id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
 									</div>
 									<div class="pull-right margin-right-10">
 										<div class="input-icon input-append">
 											<label for="txtldmark">Land Mark: </label>
 										</div>
-										<input class="m-wrap" id="hdn[0][txtldmark]" name="hdn[0][txtldmark]" type="text" />
+										<input class="venuetxt m-wrap" id="hdn[0][txtldmark]" name="hdn[0][txtldmark]" type="text" />
 									</div>
 								</div>
 								<div class="clearfix margin-bottom-10">
@@ -265,12 +265,12 @@ if(isset($setting1) && !empty($setting1))
 											<option value="Ghruhshanti">Ghruhshanti</option>
 										</select>
 									</div>
-									<div class="pull-left margin-right-10">
+									<div class="pull-left margin-right-10" style="margin-left:40px;">
 									<div class="input-icon input-append">
 										<label for="txtfromdate">From Date: </label>
 									</div>
-										<div id="datetimepickerPF" class="input-append date">
-											<input data-format="dd-MM-yyyy HH:mm PP" class="medium m-wrap " value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
+										<div id="datetimepickerPF" class="input-append date" >
+											<input data-format="dd-MM-yyyy HH:mm PP" class="fdate1 m-wrap " value="<?php echo Date;?>" type="text" name="hdn[0][txtfromdate]" id="hdn[0][txtfromdate]"></input>
 											<span class="add-on">
 											  <i class="icon-time" class="icon-calendar"></i>
 											</span>
@@ -281,7 +281,7 @@ if(isset($setting1) && !empty($setting1))
 									<label for="txttodate" class="well1">To Date: </label>
 									</div>
 									<div id="datetimepickerPT" class="input-append date">
-										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="medium m-wrap " value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
+										<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="fdate1 m-wrap " value="<?php echo Date;?>" name="hdn[0][txttodate]" id="hdn[0][txttodate]"></input>
 										<span class="add-on">
 										  <i class="icon-time" class="icon-calendar"></i>
 										</span>
