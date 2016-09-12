@@ -237,6 +237,23 @@ $(document).on('click','#add',function()
 		 '$(\'#a1'+i+'\').show();'+
 		 '+$(\'#b2'+i+'\').show();'+
 		'}'+
+		
+			 ' $(\'#datetimepickerPF'+i+'\').datetimepicker({'+
+			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			'language: \'en\','+
+			 'pick12HourFormat: true,'+
+			
+			 '});'+
+			 ' $(\'#datetimepickerPT'+i+'\').datetimepicker({'+
+			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			 'language: \'en\','+
+			 'pick12HourFormat: true,'+
+			
+			 '});'+
+			' var picker3 = $(\'#datetimepickerPF'+i+'\').data(\'datetimepicker\');'+
+			'picker3.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+			'var picker4 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
+			'picker4.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
 		'</script>'+
 		'<script>'+
 		

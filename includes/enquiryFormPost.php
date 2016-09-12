@@ -13,7 +13,11 @@
 	{		
 		updEnqFrm($conn,$_POST['id']);	
 	}
-	
+	if(isset($_POST['delete']))
+	{	
+		$del_date = date('Y-m-d H:i:s');
+		delEnq($conn,$_POST['id'],$del_date);	
+	}
 	
 	if(isset($_POST['show']))
 	{	
@@ -92,7 +96,9 @@
 					<a href="#" data-id="<?php echo $data[$i]['event_id']; ?>" class="editenq" data-toggle="tooltip" title="Order">
 						<i class="fa fa-file-text"></i>
 						Order
-					</a> &nbsp;&nbsp;&nbsp;
+					</a>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="delete" data-toggle="tooltip" title="Delete">
+					<i class="fa fa-trash-o"></i> </a> 
 					 
 				</td>		
 				

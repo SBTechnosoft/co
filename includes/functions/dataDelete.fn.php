@@ -74,6 +74,14 @@ function delAcs($conn,$id,$del_date)
 			//echo 12;
 			exit;
 		}
+function delEnq($conn,$id,$del_date)
+{
+	$sqldelCmpNew = "Update `event_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_id` = '".$id."' "; 
+	$resultArray = $conn->insertQuery($sqldelCmpNew);
+	
+	$sqldelCmpNew1 = "delete from `event_places_dtl` where `event_id` = '".$id."' "; 
+	$resultArray = $conn->insertQuery($sqldelCmpNew1);
+}	
 function delSubCatg($conn,$id,$del_date)
 		{
 			$sqldelCmpNew = "Update `new_sub_catg`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `as_id` = '".$id."' "; 

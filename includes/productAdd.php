@@ -1,3 +1,13 @@
+<?php
+
+if(isset($_POST['prod_id']))
+{
+	$prod_id = $_POST['prod_id'];
+	
+}
+
+
+?>
 <!-- BEGIN PAGE -->
 <div class="page-content">
     <!-- BEGIN PAGE CONTAINER-->
@@ -40,6 +50,7 @@
                         <div class="row-fluid">
                             <div class="span8 booking-search">
                                 <form action="#">
+								<input type="hidden" id="prod_id" name="prod_id" value="<?php if(isset($_POST['prod_id'])){echo $_POST['prod_id'];}  ?>" />
                                     <div class="clearfix margin-bottom-10">
                                         <label> Name </label>
                                         <div class="input-icon left">
@@ -111,9 +122,13 @@
                                     </div>
 									<!--button class="btn blue right-side">SAVE <i class="icon-download"></i></button-->
 									<div class="right-side">
+									<?php if(!isset($_POST['prod_id'])) {?>
 									<button id="addprod" type="button" class="btn blue">Save
                                         <i class="icon-download"></i>
                                     </button>
+									<?php } else { ?>	
+										<a id="updprod" type="button" class="btn blue">UPDATE <i class="icon-download"></i></a>
+									<?php } ?>
                                     <button class="btn blue ">CANCEL <i class="icon-remove-sign"></i></button>
 									</div>
                                 </form>

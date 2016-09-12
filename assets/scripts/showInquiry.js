@@ -72,6 +72,27 @@ $('#enquiryexcel').click(function()
 		});		
 		//end
 		
+		$('body').delegate('.delete','click',function(){
+		
+			var id = $(this).data('id');
+			$.ajax({
+				url : 'includes/enquiryFormPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'delete'  : 1,
+					'id' 	: id
+										
+				},
+				success : function(d)
+				{
+					alert("Delete Successfully");
+					window.location.reload();
+				}
+				
+			});
+			
+		});	
 		
 		//edit detail with data on evd .
 		// $('body').delegate('.editenq','click',function(){

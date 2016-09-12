@@ -1558,4 +1558,18 @@
 				$('.txtvcharge').val(total_vamt);
 			}
 		});
+		
+		$('#datetimepicker1').on('changeDate',function(selected)
+		{
+							
+			 var pickerEnd = $('#datetimepicker2').data('datetimepicker');
+			pickerEnd.setDate(selected.date);
+			
+			var picker1 = $('#datetimepickerPF').data('datetimepicker');
+			picker1.setDate(selected.date);
+			
+			var picker2 = $('#datetimepickerPT').data('datetimepicker');
+			picker2.setDate(selected.date);
+		});
+		
 	});	

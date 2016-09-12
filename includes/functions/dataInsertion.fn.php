@@ -45,6 +45,23 @@ function insProductAdd($conn,$txtprdnm,$txtprdid,$txtitmcd,$txtdispnm,$txtcgrp,$
 			echo 0;
 			exit;
 		}
+function updProduct($conn,$prod_nm,$prd_id,$item_code,$disp_nm,$commodity_grp,$commodity_grp,$retail_price,$pur_price,$type,$upd_date,$prod_id)
+		{
+			$sqlInsEqup = "UPDATE  `product_mst` set `prod_nm` = '".$prod_nm."',
+														`prd_id` = '".$prd_id."',
+														`item_code` = '".$item_code."',
+														`disp_nm` = '".$disp_nm."',
+														`commodity_grp` = '".$commodity_grp."',
+														`retail_price` = '".$retail_price."',
+														`pur_price` = '".$pur_price."',
+														`type` = '".$type."',
+														`updated_at` = '".$upd_date."' where `prod_id` = '".$prod_id."'  "; 
+			$resultArray = $conn->insertQuery($sqlInsEqup);
+			//print_r($resultArray);			
+			echo 0;
+			exit;
+		}	
+
 function insCatgNew($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `new_category_mst` (`cat_name`,`description`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcatgnm."','".$txtcatgdes."','".$cur_date."','','')"; 

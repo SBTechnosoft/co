@@ -23,9 +23,11 @@
                     </li>
                     &nbsp;&nbsp;&nbsp;
                     <li id="add_btn">
-                        <button type="button" class="btn green">Add
-                            <i class="icon-plus-sign icon-white"></i>
-                        </button>
+                        <a href="<?php echo HTTP_SERVER.'index.php?url=PADD';?>"> 
+						   <button type="button" class="btn green">Add
+								 <i class="icon-plus-sign icon-white"></i>                      
+						   </button>
+					    </a>
                     </li>
 
                     <li id="search_btn">
@@ -51,7 +53,7 @@
             </form>
         </div>
 
-        <div id="add_form" class="row-fluid search-forms search-default">
+        <!--div id="add_form" class="row-fluid search-forms search-default">
 
             <form class="form-search" action="#">
                 <div class="chat-form">
@@ -74,7 +76,7 @@
 				</span>
             </form>
 
-        </div>
+        </div-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
         <div class="row-fluid">
