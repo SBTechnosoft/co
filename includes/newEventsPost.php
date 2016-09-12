@@ -69,7 +69,7 @@ if(isset($_POST['showtax']))
 		//here is loop coming for multiple record//
 		for($i=0;$i<count($_POST['txtvenue']); $i++)
 		{
-			insertEventPlaces($conn,$eventlast_id,$_POST['txtvenue'][$i],$_POST['txthall'][$i],$_POST['txtldmark'][$i],$_POST['txtfromdate'][$i],$_POST['txttodate'][$i]);
+			insertEventPlaces($conn,$eventlast_id,$_POST['txtvenue'][$i],$_POST['txthall'][$i],$_POST['txtldmark'][$i],$_POST['txtfunction'][$i],$_POST['txtfromdate'][$i],$_POST['txttodate'][$i]);
 			
 			//select last record inserted from event_places_dtl
 			
@@ -222,7 +222,7 @@ if(isset($_POST['showtax']))
 			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 			
-			 insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 insertEventPlaces($conn,$eventlast_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$value['txtfunction'],$nfromdt,$ntordt);			
 			 $last_vplc_id  =  mysql_insert_id();			
 			
 			//insertion of event_place over stop
@@ -276,8 +276,16 @@ if(isset($_POST['showtax']))
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
-		}		
-		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		}	
+		if($_POST['order_type'] == 'enquiry')
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
+		}	
+		else
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		}
+				
 	}
 	
 	if(isset($_POST['txtupdchk']))
@@ -350,7 +358,7 @@ if(isset($_POST['showtax']))
 			$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 			$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 			
-			 insertEventPlaces($conn,$evnt_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$nfromdt,$ntordt);			
+			 insertEventPlaces($conn,$evnt_id, $value['txtvenue'],$value['txthall'],$value['txtldmark'],$value['txtfunction'],$nfromdt,$ntordt);			
 			 $last_vplc_id  =  mysql_insert_id();			
 			
 			//insertion of event_place over stop

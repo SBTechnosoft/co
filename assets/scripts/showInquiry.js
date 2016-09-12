@@ -40,7 +40,7 @@ $('#enquiryexcel').click(function()
 		showdata();
 		
 	//edit(update the enquiry as order)
-		$('body').delegate('.editenq','click',function(){
+		$('body').delegate('.editprod','click',function(){
 			//alert('hello Divyesh');
 			var id = $(this).data('id');
 			// alert(id);
@@ -70,6 +70,27 @@ $('#enquiryexcel').click(function()
 				
 			});		
 		});		
+		$('body').delegate('.delete','click',function(){
+		
+			var id = $(this).data('id');
+			$.ajax({
+				url : 'includes/enquiryFormPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'delete'  : 1,
+					'id' 	: id
+										
+				},
+				success : function(d)
+				{
+					alert("Delete Successfully");
+					window.location.reload();
+				}
+				
+			});
+			
+		});	
 		//end
 		
 		

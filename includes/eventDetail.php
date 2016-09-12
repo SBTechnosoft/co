@@ -1,3 +1,4 @@
+
 <!-- BEGIN PAGE -->
 <?php
 if(isset($_GET['id'])&& !empty($_GET['id']))
@@ -72,7 +73,7 @@ else
                     </div>
 				</div>
 				</br>
-				<div class="chat-form">
+				<!--<div class="chat-form">
                     <div class="input-cont">
                         <input type="text" id="txtfpno" name="txtfpno" placeholder="Eg; FP.No...." class="m-wrap" />						
                     </div>
@@ -82,8 +83,8 @@ else
                     <div class="input-cont">
                         <input type="text" id="txtbillno" name="txtbillno" placeholder="Eg; Bill No...." class="m-wrap" />						
                     </div>
-				</div>
-				</br>
+				</div>-->
+				
 				<div class="chat-form">
                     <div class="input-cont">
                         <input type="text" id="txtfromdt" name="txtfromdt" placeholder="Eg; From Date..." class="m-wrap" />						
@@ -433,10 +434,50 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="showeqp">Client Charge</label></td>
+													<td class="names"><label for="showeqp">Total Amount</label></td>
 													<td>
-														<input  id="txtcharge" name="txtcharge" type="text" readonly />
+														<input  class="textalign" id="client_charges" name="client_charges" type="text" readonly />
 													</td>                                            
+												</tr>
+											</div>
+										</div>
+										<div class="input-icon left">
+											<div class="controls">
+												<tr>
+													<td class="names"><label for="txtstf"> Discount</label></td>
+													<td>
+														<input  class="textalign" id="txtcldesc" name="txtcldesc" type="text" readonly />
+													</td> 
+												</tr>
+											</div>
+										</div>
+										<div class="input-icon left">
+											<div class="controls">
+												<tr>
+													<td class="names"><label for="txtstf"> Discounted Amount</label></td>
+													<td>
+														<input  class="textalign" id="disamt" name="disamt" type="text" readonly />
+													</td> 
+												</tr>
+											</div>
+										</div>
+										<div class="input-icon left">
+											<div class="controls">
+												<tr>
+													<td class="names"><label for="txtstf"> Service Tax</label></td>
+													<td>
+														<input  class="textalign" id="st" name="st" type="text" readonly />
+													</td> 
+												</tr>
+											</div>
+										</div>
+										<div class="input-icon left">
+											<div class="controls">
+												<tr>
+													<td class="names"><label for="txtstf"> Final Amount</label></td>
+													<td>
+														<input  class="textalign" id="txtcharge" name="txtcharge" type="text" readonly />
+													</td> 
 												</tr>
 											</div>
 										</div>
@@ -583,23 +624,14 @@ else
 												<tr>
 													<td class="names"><label for="txtstf">Paid Amount</label></td>
 													<td>
-														<input  id="txtpaidamt" name="txtpaidamt" type="text" readonly />
+														<input  class="textalign" id="txtpaidamt" name="txtpaidamt" type="text" readonly />
 														<button type="button" class=" btn blue" id="open" > <i class="icon-plus"> </i></button>
 													</td> 
 												</tr>
 											</div>
 										</div>	
 										
-										<div class="input-icon left">
-											<div class="controls">
-												<tr>
-													<td class="names"><label for="txtstf">Client Discount</label></td>
-													<td>
-														<input  id="txtcldesc" name="txtcldesc" type="text" readonly />
-													</td> 
-												</tr>
-											</div>
-										</div>
+										
 									</table>
 									<br/>
 								</div>	

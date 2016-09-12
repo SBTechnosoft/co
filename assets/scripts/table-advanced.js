@@ -7,10 +7,10 @@ var TableAdvanced = function  () {
         {
             var aData = oTable.fnGetData( nTr );
             var sOut = '<table>';
-            sOut += '<tr><td>Client Name:</td><td>'+aData[3]+'</td></tr>';           
-            sOut += '<tr><td>FP No.:</td><td>'+aData[4]+'</td></tr>';
-			sOut += '<tr><td>Bill No.:</td><td>'+aData[5]+'</td></tr>';
-            sOut += '<tr><td>Client Email:</td><td>Could provide a link here</td></tr>';
+            //sOut += '<tr><td>Client Name:</td><td>'+aData[3]+'</td></tr>';           
+            //sOut += '<tr><td>FP No.:</td><td>'+aData[4]+'</td></tr>';
+			//sOut += '<tr><td>Bill No.:</td><td>'+aData[5]+'</td></tr>';
+            //sOut += '<tr><td>Client Email:</td><td>Could provide a link here</td></tr>';
             sOut += '</table>';
              
             return sOut;
