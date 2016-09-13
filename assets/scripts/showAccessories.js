@@ -38,3 +38,33 @@ function showdata()
 			});
 		}
 		showCtgAcc();
+	$('#filter_acces').click(function()
+		{			
+			var txtacces    =   $('#txtacces').val();
+			var txtcatid    =   $('#txtcatid').val();
+						
+			if(txtacces == '' && txtcatid == '' )
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+						
+			$.ajax({
+				url : 'includes/accessoriesEquipmentsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'txtacces'   : txtacces,
+					'txtcatid' : txtcatid,
+										
+				},
+				success : function(v)
+				{	
+											
+					$('#showAcs').html(v);
+					
+				}				
+			});	
+						
+		});

@@ -1166,7 +1166,7 @@
 			$('#txtamt').val(tot);			
 		});
 		
-		
+		var flag=0;
 		var i = 0; 
 		var k = 0;
 		$('#addeqp').on('click',function()
@@ -1213,6 +1213,10 @@
 					// alert("Can't Give rate 0");
 					// return false;
 				// }
+				if(rate == 0)
+				{
+					
+				}
 			}
 			if(qty=='')
 			{
@@ -1315,11 +1319,26 @@
 						'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtilength]" name="hdn[0]['+i+'][equipment][txtilength]" value="'+length+'">'+
 						'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiwidth]" name="hdn[0]['+i+'][equipment][txtiwidth]" value="'+width+'">'+
 						
+						'<script>'+
+ 						
+						'if('+rate+'==0 || flag==1)'+
+						'{'+
+							'var flag=1;'+
+							
+							'$(\'.rate1\').hide();'+
+							'$(\'.amount\').hide();'+
+							'$(\'#ratetbl\').hide();'+
+							'$(\'#amttbl\').hide();'+
+							'$(\'#onratetbl\').hide();'+
+							'$(\'#onamttbl\').hide();'+
+							
+						'}'+
 						
+						'</script>'+
 						
 						'<td>'+ eqpnm+'</td>'+
 						'<td>'+ txtassdtl+'</td>'+
-						'<td>'+ rate+'</td>'+
+						'<td class="rate1" >'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+						
 						'<td>'+ staffnm+'</td>'+						

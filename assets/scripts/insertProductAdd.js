@@ -108,6 +108,7 @@
 						$('#txtitmcd').val('');
 						$('#txtdispnm').val('');						
 						$('#txtcgrp').val('');
+						$('#drpprdctg').val('');
 						$('#txtrprice').val('');
 						$('#txtpprice').val('');
 						$('#drptype').val('');

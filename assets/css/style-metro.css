@@ -477,7 +477,21 @@ label.m-wrap {
 {
 	text-align:right;
 }
-
+.venuetxt
+{
+	width:255px;
+	
+}
+.fdate1
+{
+	width:240px;
+	
+}
+.selectfun
+{
+	width:254px;
+	
+}
 .uneditable-input,
 textarea.m-wrap,
 input[type="text"].m-wrap,

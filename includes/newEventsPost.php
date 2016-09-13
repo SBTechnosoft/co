@@ -284,6 +284,14 @@ if(isset($_POST['showtax']))
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 		}
+		if($_POST['order_type'] == 'enquiry')
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
+		}	
+		else
+		{
+			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
+		}
 		?>
 			<!--script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
 			
@@ -422,15 +430,8 @@ if(isset($_POST['showtax']))
 			</script-->
 		<?php
 		
-		header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
-		if($_POST['order_type'] == 'enquiry')
-		{
-			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
-		}	
-		else
-		{
-			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
-		}
+		//header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		
 
 
 	}
