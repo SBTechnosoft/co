@@ -23,7 +23,10 @@
 				<td><?php echo $data[$i]['type'];?></td>
 				<td><?php echo $data[$i]['start_at'];?></td>
 				<td><?php echo $data[$i]['next_val'];?>	</td>			
-				<td><?php echo $data[$i]['created_at'];?>	</td>		
+				<?php $from_date=date_create($data[$i]['created_at']);
+					$inm1= date_format($from_date,dateFormat);  
+				?>
+				<td><?php echo $inm1;?></td>		
 				
 				
 			</tr>
