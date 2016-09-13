@@ -641,7 +641,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19 item20'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -787,6 +787,13 @@
 									context: 'newmenu',
 									onclick: function (){										 
 										editor.insertContent('[Mobile]');
+									}
+								});
+								editor.addMenuItem('item20', {
+									text: 'ADATE',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[ADATE]');
 									}
 								});
 							}

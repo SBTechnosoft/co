@@ -693,7 +693,7 @@ function showNewEv_Pl_Dtl($conn,$eid)
 	}
 function showVennue($conn,$eid)
 	{
-		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,DATE_FORMAT(event_date, '%d %M %Y') as 'event_date'  from  `event_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showVennueDtl($conn,$eid)
