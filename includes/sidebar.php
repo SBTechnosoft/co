@@ -655,6 +655,10 @@ if(isset($setting) && !empty($setting))
 						{
 							echo "active ";
 						}
+						elseif(isset($_GET['url']) && strtoupper($_GET['url']) == 'INSE')
+						{
+							echo "active ";
+						}
 						else
 						{
 							echo" ";
@@ -722,6 +726,16 @@ if(isset($setting) && !empty($setting))
 					<li class="">
 						<a href="<?php echo HTTP_SERVER.'index.php?url=TEMP';?>">
 							<i class="icon-file"></i> Templates</a>
+					</li>
+					
+					<?php
+				}
+				if(isset($arr1) && !empty($arr1) && in_array("TEMP", $arr1))
+				{
+					?>
+					<li class="">
+						<a href="<?php echo HTTP_SERVER.'index.php?url=INSE';?>">
+							<i class="icon-file"></i> Invoice#</a>
 					</li>
 					
 					<?php
