@@ -130,6 +130,9 @@
 				case 'RSE':
 					$url = FILENAME_RSALES;
 					break;
+				case 'INSE':
+					$url = FILENAME_INVOICESETTING;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

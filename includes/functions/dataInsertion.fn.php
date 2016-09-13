@@ -502,6 +502,14 @@ function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
 		}
+
+function insInvoicSet($conn,$txtlabel,$type,$start_at,$cur_date)
+		{
+			$sqlInsCatg = "INSERT INTO `invoice_config` (`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$txtlabel."','".$type."','".$start_at."','','".$cur_date."')"; 
+			$resultArray = $conn->insertQuery($sqlInsCatg);
+			echo 0;
+			exit;
+		}
 // function insDesg($conn,$desgId,$designation)
 // {
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 

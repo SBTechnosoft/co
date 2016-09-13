@@ -2521,6 +2521,55 @@
 				
 				<?php
 					break;
+					case 'INSE':
+				?>
+					<!-- BEGIN CORE PLUGINS -->		
+					
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+					<!-- END CORE PLUGINS -->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertInvoiceSetting.js"></script> 
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showInvoiceSetting.js"></script> 
+					
+					
+					<!-- END JAVASCRIPTS -->
+					
+					<!-- BEGIN PAGE LEVEL PLUGINS -->
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script-->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
+					<!-- END PAGE LEVEL PLUGINS -->
+					<!-- BEGIN PAGE LEVEL SCRIPTS -->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script> 
+					<script>
+						jQuery(document).ready(function() {    
+						   App.init();
+						   Search.init();
+						   TableAdvanced.init();
+						});
+					</script>
+					<script>
+						$("#search_btn").click(function(){
+						$("#search_form").toggle();
+						});
+						$("#add_btn").click(function(){
+						$("#add_form").toggle();
+						});
+					</script>
+					<script>
+						$(document).ready(function(){
+							$('[data-toggle="tooltip"]').tooltip();   
+						});
+					</script>
+					<?php
+					break;
 			}
 		}
 		else

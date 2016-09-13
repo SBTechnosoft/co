@@ -20,7 +20,27 @@ $('#tranexcel').click(function()
 						
 		});
 
-
+$('body').delegate('.delete1','click',function()
+{
+	var id = $(this).data('id');
+			$.ajax({
+				url : 'includes/transactionDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'delete'  : 1,
+					'id' 	: id
+										
+				},
+				success : function(d)
+				{
+					alert("Delete Successfully");
+					window.location.reload();
+				}
+				
+			});
+		
+});
 $('body').delegate('.expopen','click',function()
 	{			
 			

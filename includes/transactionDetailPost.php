@@ -8,7 +8,11 @@
 		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd']);
 		
 	}		
-	
+	if(isset($_POST['delete']))
+	{	
+		
+		deltranc($conn,$_POST['id']);	
+	}
 	if(isset($_POST['showTrnDtl']))
 	{	
 		$ETrnDtl = showTransDtl ($conn);
@@ -888,7 +892,8 @@
 			<div class="Cell"><span style="float:left;">Exp date</span></div>
 			<div class="Cell"><span style="float:left;">Exp By</span></div>	
 			<div class="Cell"><span style="float:left;">Exp By Vendor</span></div>
-			<div class="Cell"><span style="float:left;">Amount</span></div>				
+			<div class="Cell"><span style="float:left;">Amount</span></div>	
+			<div class="Cell"><span style="float:left;">Action</span></div>	
 		</div>
 		<?php
 		for($a=0;$a<$cntexpdtl;$a++)
@@ -927,7 +932,13 @@
 					<?php if($expdtl[$a]['amount']== ''){echo "-";}else{echo $expdtl[$a]['amount']; }  ?>
 					</span>
 				</div>
-				
+				<div class="Cell">								
+					<a data-id="<?php echo $expdtl[$a]['exp_id']; ?>" class="edit" data-toggle="tooltip" title="View">
+						<i class="fa fa-pencil-square-o"></i>
+					</a> &nbsp;&nbsp;&nbsp;
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $expdtl[$a]['exp_id']; ?>" class="delete1"> <i class="fa fa-trash-o"></i> 
+					</a> 
+				</div>
 			</div>
             
 		 <?php	

@@ -16,6 +16,7 @@ function delevent($conn,$id,$date)
 			//echo 12;
 			exit;
 		}
+
 function delCmpNew($conn,$id,$del_date)
 		{
 			$sqldelCmpNew = "Update `company_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `cmp_id` = '".$id."' "; 
@@ -99,6 +100,13 @@ function delVend($conn,$id,$del_date)
 function delResourceUpd($conn,$id)
 		{
 			$sqldelCmpNew = "Delete from `res_places_dtl` where  res_pls_id = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			
+		}
+function deltranc($conn,$id)
+		{
+			$sqldelCmpNew = "Delete from `expence_dtl` where  exp_id = '".$id."' "; 
 			$resultArray = $conn->insertQuery($sqldelCmpNew);
 			//echo 12;
 			

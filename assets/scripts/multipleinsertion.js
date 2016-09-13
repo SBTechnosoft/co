@@ -867,9 +867,9 @@ $(document).on('click','#add',function()
 		'					<tr>'+
 		'						<th> Equipment</th>'+
 		'						<th> Asseccories</th>'+
-		'						<th id="ratetbl"> Rate</th>'+
+		'						<th id="mulratetbl"> Rate</th>'+
 		'						<th> Qty</th>'+
-		'						<th id="amttbl"> Amount</th>'+
+		'						<th id="mulamttbl"> Amount</th>'+
 		'						<th> Staff</th>'+
 		'						<th> Vendor</th>'+
 		'						<th> Price</th>'+
@@ -1200,9 +1200,10 @@ $(document).on('click','#add',function()
 		// 'var col = 0;'+
 		 'var row'+i+' = 0;'+
 		 'var rrow'+i+' = 0;'+
-		
+		'var flag=0;'+
 		'$(\'#addeqp'+i+'\').on(\'click\',function()'+
 		'{'+
+		
 			'var eqpid = $(\'.drpneweqp'+i+'\').val();'+
 			'var eqpnm = document.getElementById("drpneweqp'+i+'").options[(document.getElementById("drpneweqp'+i+'").options.selectedIndex)].text;'+			
 			'var rate = $(\'.txtrate'+i+'\').val();'+
@@ -1220,6 +1221,7 @@ $(document).on('click','#add',function()
 			'var txttype = $(\'.txttype'+i+'\').val();'+
 			'var txtassdtl = $(\'.txtassdtl'+i+'\').val();'+
 			'var col = '+i+';'+
+			
 			
 			'if(eqpid==\'\')'+
 			'{'+
@@ -1264,12 +1266,20 @@ $(document).on('click','#add',function()
 			'}'+	
 			
 			
+			
 			'j++;'+
 			
 			'row'+i+'++;'+
 			
-						
-						
+						'if(rate == 0||flag == 1)'+
+					'{'+
+					'flag=1;'+
+					'$(\'.mulrate\').hide();'+
+					'$(\'.amount\').hide();'+
+					'$(\'#mulratetbl\').hide();'+
+					'$(\'#mulamttbl\').hide();'+
+					
+					'}'+				
 			'var div =	'+				
 					
 					'\'<tr id="eqrow\'+i+\'\'+j+\'">\'+'+
@@ -1291,7 +1301,7 @@ $(document).on('click','#add',function()
 						
 						'\'<td>\'+ eqpnm+\'</td>\'+'+
 						'\'<td>\'+ txtassdtl+\'</td>\'+'+
-						'\'<td>\'+ rate+\'</td>\'+'+
+						'\'<td class="mulrate">\'+ rate+\'</td>\'+'+
 						'\'<td>\'+ qty+\'</td>\'+'+
 						'\'<td class="amount">\'+ amt+\'</td>\'+'+					
 						'\'<td>\'+ staffnm+\'</td>\'+'+					
@@ -1302,9 +1312,7 @@ $(document).on('click','#add',function()
 							'\'<i class="fa fa-times" aria-hidden="true"></i>\'+'+							
 						'\'</a></td>\'+'+
 					'\'</tr>\';	'+	
-					
-
-					
+										
 			'$(\'#eqprec'+i+'\').append(div);'+	
 			
 			
