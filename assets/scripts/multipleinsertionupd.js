@@ -695,7 +695,13 @@ $(document).on('click','#add',function()
 		'</div>'+
 		'</div>'+
 		'<div id="b2'+i+'">'+
+<<<<<<< HEAD
 		'<div>'+
+=======
+		
+		
+		'	<div>'+
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		'		<input class="xyz" type="text"  value="Equipment" readonly />'+
 		'		<i class="fa fa-info-circle" title="New" id="newinseqp'+i+'" data-toggle="tooltip" style="cursor:pointer;"> '+
 		'		</i>	'+		
@@ -780,7 +786,10 @@ $(document).on('click','#add',function()
 		
 		'</div>'+
 		'</div>'+
+<<<<<<< HEAD
 		
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		//'</form>'+
 		'<script>'+
 		

@@ -120,7 +120,7 @@ div.checker {
     div.checker span.checked {
       background-position: -76px -260px; }
   div.checker input {
-    opacity: 0;
+    opacity: 1;/* change by divyesh 0 to 1 */
     filter: alpha(opacity=0);
     -moz-opacity: 0;
     border: none;

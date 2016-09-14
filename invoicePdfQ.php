@@ -176,9 +176,9 @@
 							$outputD .= '
 							
 								<tr class="" style="font-family:Calibri;">
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['event_hall'].''.$vennue[$m]['event_ld_mark'].''.$vennue[$m]['event_vennue'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
 								$new = $vennue [$m]['event_places_id'];
 									
@@ -209,9 +209,9 @@
 								$outputD .= '
 							
 								<tr class="" style="font-family:Calibri;">
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
-									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['event_hall'].''.$vennue[$m]['event_ld_mark'].''.$vennue[$m]['event_vennue'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
 								$new = $vennue [$m]['event_places_id'];
 									
@@ -252,12 +252,31 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				for($t=0;$t<$cntven;$t++)
+				{
+					if($t== $cntven-1)
+					{
+						$ADATE .= $vennue[$t]['event_date'];
+					}
+					else
+					{
+						$ADATE .= date_format(date_create($vennue[$t]['event_date']),"d").', ';
+					}
+				}
 				
-				
+				$bnrimg = showBannerImg($conn,$_POST['txteid']);
+				$cntimg = count($bnrimg);
+				for($t=0;$t<$cntimg;$t++)
+				{					
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					
+				}
 				
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD
+						'Venue' => $VennueD,
+						'ADATE' => $ADATE,
+						'Banner_Img' => $BnrImg
 						);
 				
 				// print_r($output);

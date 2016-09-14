@@ -129,7 +129,7 @@ function showEventDetailInvD($conn,$eid)
 		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1'
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
-		where em.event_id = '".$eid."' and `status` != 'enquiry' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
+		where em.event_id = '".$eid."' and `status` != 'enquiry' and em.deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}
 function showEventDetailQuaD($conn,$eid)
@@ -156,7 +156,7 @@ function showBannerImg($conn,$eid)
 
 function showEventDetail($conn)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`event_cal_id` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}								
 function searchEventDetail($conn,$where)
@@ -164,6 +164,12 @@ function searchEventDetail($conn,$where)
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id` from  `event_mst` where" .$where." and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}
+function searchAccesDetail($conn,$where)
+{
+	$sqlEventDetail = "select `as_id`,`as_name`,`eq_id`,cm.cat_name,`remark` from  `eq_accessories` ea inner join eq_category_mst cm on cm.cat_id = eq_id  where" .$where." and ea.deleted_at = '0000-00-00 00:00:00'   "; 
+	return $conn->getResultArray($sqlEventDetail);	
+	
+}
 function searchEventAll($conn,$where)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,
@@ -667,7 +673,7 @@ function showInvCond($conn)
 function showExpDtl($conn,$eid)
 	{
 		$sqlshowEvent = 
-		" select ecm.cat_name,em.event_name,exp_date,sm.first_name,vm.vendor_name,vm.vendor_cmp,amount
+		" select ecm.cat_name,em.event_name,exp_id,exp_date,sm.first_name,vm.vendor_name,vm.vendor_cmp,amount
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
         inner join vendor_mst vm on vm.vend_id = exd.exp_by_vendor
@@ -688,7 +694,7 @@ function showNewEv_Pl_Dtl($conn,$eid)
 	}
 function showVennue($conn,$eid)
 	{
-		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,`event_date`  from  `event_places_dtl` where event_id = '".$eid."' "; 
+		$sqlshowVennue = " select `event_places_id`,`event_vennue`,`event_hall`,`event_ld_mark`,DATE_FORMAT(event_date, '%d %M %Y') as 'event_date'  from  `event_places_dtl` where event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showVennueDtl($conn,$eid)
@@ -790,6 +796,11 @@ function showcntRes($conn,$event_id)
 	{
 		$sqlshowResourceDtl = "select count(*) as 'Count' from res_places_dtl where event_id='".$event_id."' "; 
 		return $conn->getResultArray($sqlshowResourceDtl);	
+	}
+function showInvoiceSet($conn)
+	{
+		$sqlShowCatg = "select `invoice_conf_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
+		return $conn->getResultArray($sqlShowCatg);		
 	}
 	/*
 	

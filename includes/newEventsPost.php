@@ -39,6 +39,7 @@ if(isset($_POST['showtax']))
 	}
 	
 	
+	
 	if(isset($_POST['saverecord']))
 	{	
 				
@@ -114,7 +115,7 @@ if(isset($_POST['showtax']))
 	
 	if(isset($_POST['txteventnm']))
 	{	
-		
+		$evnt_nm = $_POST['txteventnm'];
 		if($_POST['taxmode'] == 'Yes')
 		{
 			if($_POST['txtdisc']=='')
@@ -193,9 +194,15 @@ if(isset($_POST['showtax']))
 		$trdt = $_POST['txttodt'];
 		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		$ntrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-
-		insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
+		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
+		
+		$date1=date_create($_POST['txtfromdt']);
+		$sdate =  date_format($date1,DATE_ISO8601);
+		
+		$date2=date_create($_POST['txttodt']);
+		$edate =  date_format($date2,DATE_ISO8601);
+		
+		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
@@ -276,7 +283,11 @@ if(isset($_POST['showtax']))
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
+<<<<<<< HEAD
 		}	
+=======
+		}
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		if($_POST['order_type'] == 'enquiry')
 		{
 			header ('location:'.HTTP_SERVER.'index.php?url=ENR');
@@ -285,9 +296,159 @@ if(isset($_POST['showtax']))
 		{
 			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
 		}
+<<<<<<< HEAD
 				
+=======
+		?>
+			<!--script src="../assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>      
+			
+			<script type="text/javascript">
+				
+				var now = new Date();
+				today = now.toISOString();
+				
+				var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+				twoHoursLater = twoHoursLater.toISOString();
+
+				
+				var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
+				var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
+
+				
+				var scopes = 'https://www.googleapis.com/auth/calendar';
+
+				
+				function handleClientLoad() {
+					gapi.client.setApiKey(apiKey);
+					window.setTimeout(checkAuth, 1);
+				}
+
+				function checkAuth() {
+					gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+				}
+
+				
+				function handleAuthResult(authResult) {
+					
+					var resultPanel = document.getElementById('result-panel');
+					var resultTitle = document.getElementById('result-title');
+
+					if (authResult && !authResult.error) {
+							
+						resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+						resultPanel.className += ' panel-success'; 			// add green class
+						resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+						
+						$("#txtEventDetails").attr("visibility", "visible");
+					} else {													// otherwise, show button
+						
+						$("#txtEventDetails").attr("visibility", "hidden");
+						
+						resultPanel.className += ' panel-danger'; 			// make panel red
+									
+					}
+				}
+
+				
+				function handleAuthClick(event) {
+					gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+					return false;
+				}	  
+			</script>
+			<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
+			
+			<script>
+				
+				//Insert Event Function
+				function insertEvent() {
+					
+						var evnt_name = '<?php echo $evnt_nm ; ?>';
+						var sdt = '<?php echo  $sdate ; ?>';
+						var edt = '<?php echo  $edate ; ?>';					
+						alert('done');
+						 
+						var add_resource = {
+							"summary": evnt_name,
+							"start": {
+								"dateTime":  sdt
+							},
+							"end": {
+								"dateTime":  edt
+							},
+							"description":"done"
+						};
+					
+						var eventResponse = document.getElementById('event-response');
+						//alert('df');
+					  // console.log(add_resource);
+					   
+						gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
+							var request = gapi.client.calendar.events.insert
+							({
+								'calendarId': 'suafag3ku0re5rnvjl4beriljc@group.calendar.google.com',
+								//'eventId':'i9lsd13tarh37rk27b0ge7uno8',
+								"resource": add_resource			// pass event details with api call
+							});
+							
+							// handle the response from our api call
+							request.execute(function (resp) {
+							
+								if (resp.status == 'confirmed') {
+								
+									//eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
+									//eventResponse.className += ' panel-success';
+									// refreshICalendarframe();
+									// $('.updateModal-body').empty();
+									// makeApiCall1();
+									//alert('insert successfully');
+									//alert(resp.id);
+									var cal_id = resp.id;
+									var eid = '<?php echo $eventlast_id;?>';									
+									//updEvent
+									$.ajax({
+										//url : './includes/newEventsPost.php',
+										url : '<?php  DIR_WS_INCLUDES.'newEventsPost.php';?>',
+										type : 'POST',
+										async : false,
+										data : {
+											'addcalid'  : 1,
+											'cal_id'   : cal_id,
+											'eid'	: eid
+																										
+										},
+										success : function()
+										{
+											alert('Success');
+											window.location = "<?php echo HTTP_SERVER.'index.php?url=EVD';?>";				
+										}				
+									});
+									
+									
+								} else {
+									// document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
+									// eventResponse.className += ' panel-danger';
+									alert('Bad Luck');
+									window.location = "<?php echo HTTP_SERVER.'index.php?url=EVE';?>";
+								}
+							});
+						});
+					}
+					insertEvent();	
+			</script-->
+		<?php
+		
+		//header ('location:'.HTTP_SERVER.'index.php?url=EVD');		
+		
+
+
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	}
 	
+	if(isset($_POST['addcalid']))
+	{	
+		updEventCalId($conn,$_POST['eid'],$_POST['cal_id']);
+		
+	}
 	if(isset($_POST['txtupdchk']))
 	{	
 		$evnt_id = $_POST['txtupdchk'];		

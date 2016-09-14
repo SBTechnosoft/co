@@ -76,7 +76,7 @@ $(document).on('click','#add',function()
 		'		</div>	'+								
 		'	</div>	'+						
 		'	</br>'+
-		'	</br>	'+	
+		'	</br>	'+
 		
 		'<style>'+
 		
@@ -236,6 +236,7 @@ $(document).on('click','#add',function()
 		'{'+
 		 '$(\'#a1'+i+'\').show();'+
 		 '+$(\'#b2'+i+'\').show();'+
+<<<<<<< HEAD
 	     '}'+
 		 ' $(\'#datetimepickerPF'+i+'\').datetimepicker({'+
          'format: \'dd/MM/yyyy HH:mm PP\','+
@@ -253,6 +254,26 @@ $(document).on('click','#add',function()
 		'picker3.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
 		'var picker4 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
 		'picker4.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+=======
+		'}'+
+		
+			 ' $(\'#datetimepickerPF'+i+'\').datetimepicker({'+
+			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			'language: \'en\','+
+			 'pick12HourFormat: true,'+
+			
+			 '});'+
+			 ' $(\'#datetimepickerPT'+i+'\').datetimepicker({'+
+			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			 'language: \'en\','+
+			 'pick12HourFormat: true,'+
+			
+			 '});'+
+			' var picker3 = $(\'#datetimepickerPF'+i+'\').data(\'datetimepicker\');'+
+			'picker3.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+			'var picker4 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
+			'picker4.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		'</script>'+
 		'<script>'+
 		
@@ -741,7 +762,11 @@ $(document).on('click','#add',function()
 								
 				'});'+	
 			'</script>'+
+<<<<<<< HEAD
 			
+=======
+		
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		'<div id="a1'+i+'">'+
 		'<div>'+
 			'<input style="width:207px;" type="text"  value="Resources" readonly />	'+								
@@ -849,9 +874,12 @@ $(document).on('click','#add',function()
 		'<p></p>'+
 		'	<div>'+
 		'		<textarea rows="2" cols="122" id="txtremark'+i+'" class="txtremark'+i+'" name="txtremark'+i+'"></textarea>'+
+<<<<<<< HEAD
 		'	</div>'+
 		'	<br/>'+	
 		'<p>'+		
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		'		<a name="addeqp'+i+'" class="btn blue" id="addeqp'+i+'" style="margin-left:15px;" >'+
 		'			Add	'+							
 		'		</a>'+
@@ -884,6 +912,7 @@ $(document).on('click','#add',function()
 		'	</div>	'+	
 		'</div>'+		
 		'</div>'+
+	   '</div>'+
 		
 		'<script>'+
 		

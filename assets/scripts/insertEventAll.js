@@ -74,7 +74,11 @@
 			$.each($("input[name='txtldmark']"), function(){            
                  txtldmark.push($(this).val());
             });
+<<<<<<< HEAD
 			var txtfunction = [];
+=======
+		  var txtfunction = [];
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			$.each($("select[name='txtfunction']"), function(){            
                  txtfunction.push($(this).val());
             });
@@ -489,6 +493,7 @@
 			$.each($("input[name='txtldmark']"), function(){            
                  txtldmark.push($(this).val());
             });
+<<<<<<< HEAD
 						
 			var txtfunction = [];
 			$.each($("select[name='txtfunction']"), function(){            
@@ -499,6 +504,13 @@
 			$.each($("input[name='txtfromdate']"), function(){            
                  txtfromdate.push($(this).val());
             });
+=======
+			//alert(txtldmark);
+		   	var txtfunction = [];
+			$.each($("select[name='txtfunction']"), function(){            
+                 txtfunction.push($(this).val());
+            });
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			
 			var txtfromdate = [];
 			$.each($("input[name='txtfromdate']"), function(){            
@@ -841,7 +853,11 @@
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');
+<<<<<<< HEAD
 						$('#txtfunction').val('');
+=======
+					   $('#txtfunction').val('');
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 						$('#txtcharge').val('');
 						$('#txtpaid').val('');
 						
@@ -1174,7 +1190,7 @@
 			$('#txtamt').val(tot);			
 		});
 		
-		
+		var flag=0;
 		var i = 0; 
 		var k = 0;
 		$('#addeqp').on('click',function()
@@ -1221,6 +1237,10 @@
 					// alert("Can't Give rate 0");
 					// return false;
 				// }
+				if(rate == 0)
+				{
+					
+				}
 			}
 			if(qty=='')
 			{
@@ -1323,11 +1343,26 @@
 						'<input  type="hidden"  id="hdn[0]['+i+'][equipment][txtilength]" name="hdn[0]['+i+'][equipment][txtilength]" value="'+length+'">'+
 						'<input   type="hidden"  id="hdn[0]['+i+'][equipment][txtiwidth]" name="hdn[0]['+i+'][equipment][txtiwidth]" value="'+width+'">'+
 						
+						'<script>'+
+ 						
+						'if('+rate+'==0 || flag==1)'+
+						'{'+
+							'var flag=1;'+
+							
+							'$(\'.rate1\').hide();'+
+							'$(\'.amount\').hide();'+
+							'$(\'#ratetbl\').hide();'+
+							'$(\'#amttbl\').hide();'+
+							'$(\'#onratetbl\').hide();'+
+							'$(\'#onamttbl\').hide();'+
+							
+						'}'+
 						
+						'</script>'+
 						
 						'<td>'+ eqpnm+'</td>'+
 						'<td>'+ txtassdtl+'</td>'+
-						'<td>'+ rate+'</td>'+
+						'<td class="rate1" >'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+						
 						'<td>'+ staffnm+'</td>'+						
@@ -1567,6 +1602,7 @@
 			}
 		});
 		
+<<<<<<< HEAD
 					$('#datetimepicker1').on('changeDate',function(selected){
 							
 						 var pickerEnd = $('#datetimepicker2').data('datetimepicker');
@@ -1578,4 +1614,19 @@
 						var picker2 = $('#datetimepickerPT').data('datetimepicker');
 						picker2.setDate(selected.date);
 					});
+=======
+		$('#datetimepicker1').on('changeDate',function(selected)
+		{
+							
+			 var pickerEnd = $('#datetimepicker2').data('datetimepicker');
+			pickerEnd.setDate(selected.date);
+			
+			var picker1 = $('#datetimepickerPF').data('datetimepicker');
+			picker1.setDate(selected.date);
+			
+			var picker2 = $('#datetimepickerPT').data('datetimepicker');
+			picker2.setDate(selected.date);
+		});
+		
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	});	

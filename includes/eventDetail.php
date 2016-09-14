@@ -73,7 +73,11 @@ else
                     </div>
 				</div>
 				</br>
+<<<<<<< HEAD
 				<!--<div class="chat-form">
+=======
+				<!--div class="chat-form">
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
                     <div class="input-cont">
                         <input type="text" id="txtfpno" name="txtfpno" placeholder="Eg; FP.No...." class="m-wrap" />						
                     </div>
@@ -83,7 +87,11 @@ else
                     <div class="input-cont">
                         <input type="text" id="txtbillno" name="txtbillno" placeholder="Eg; Bill No...." class="m-wrap" />						
                     </div>
+<<<<<<< HEAD
 				</div>-->
+=======
+				</div-->
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 				
 				<div class="chat-form">
                     <div class="input-cont">
@@ -200,7 +208,7 @@ else
 							<!-- end invoice button-->
                             <table>
 								<input type="hidden" id="eid" name="eid" />
-								
+								<input type="hidden" id="event_cal_id" name="event_cal_id" />
                                 <div class="input-icon left">
                                     <tr>
                                         <td class="names"><label for="txteventnm"> Order Name </label></td>

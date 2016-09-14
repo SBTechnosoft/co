@@ -17,7 +17,12 @@
 	{		
 		insOptionRtl($conn,$_POST['txtrtl']);	
 	}
+<<<<<<< HEAD
 	if(isset($_POST['saveResEqu']))
+=======
+	
+   	if(isset($_POST['saveResEqu']))
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	{		
 		insOptionResEqu($conn,$_POST['txtres_equ']);	
 	}

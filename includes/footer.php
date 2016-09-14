@@ -37,8 +37,74 @@
 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-					<!--[if lt IE 9]>					 
-					<![endif]-->   
+					<!--[if lt IE 9]-->
+					<script type="text/javascript">
+						// date variables
+						var now = new Date();
+						today = now.toISOString();
+						
+						var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+						twoHoursLater = twoHoursLater.toISOString();
+
+						// Google api console clientID and apiKey 
+						var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
+						var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
+
+						// enter the scope of current project (this API must be turned on in the Google console)
+						var scopes = 'https://www.googleapis.com/auth/calendar';
+
+						// OAuth2 functions
+						function handleClientLoad() {
+							gapi.client.setApiKey(apiKey);
+							window.setTimeout(checkAuth, 1);
+						}
+
+						function checkAuth() {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+						}
+
+						// show/hide the 'authorize' button, depending on application state
+						function handleAuthResult(authResult) {
+							//var authorizeButton = document.getElementById('authorize-button');
+						   // var eventButton = document.getElementById('btnCreateEvents');
+						   
+						   // var eventButton = document.getElementById('btnDeleteEvents');
+						   // var insertBtn = document.getElementById('myBtn');
+						   // var updateBtn = document.getElementById('updateBtn');
+							
+							var resultPanel = document.getElementById('result-panel');
+							var resultTitle = document.getElementById('result-title');
+
+							if (authResult && !authResult.error) {
+								//authorizeButton.style.visibility = 'hidden'; 		// if authorized, hide button
+								resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+								resultPanel.className += ' panel-success'; 			// add green class
+								resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+								// eventButton.style.visibility = 'visible';
+								// insertBtn.style.visibility = 'visible';
+								// updateBtn.style.visibility = 'visible';
+								$("#txtEventDetails").attr("visibility", "visible");
+							} else {													// otherwise, show button
+								//authorizeButton.style.visibility = 'visible';
+								$("#txtEventDetails").attr("visibility", "hidden");
+								// eventButton.style.visibility = 'hidden';
+								// insertBtn.style.visibility = 'hidden';
+								// updateBtn.style.visibility = 'hidden';
+								resultPanel.className += ' panel-danger'; 			// make panel red
+								//authorizeButton.onclick = handleAuthClick; 			// setup function to handle button click
+							}
+						}
+
+						// function triggered when user authorizes app
+						function handleAuthClick(event) {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+							return false;
+						}	  
+					</script>
+					
+					<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
+					
+					<!--![endif]-->   
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
@@ -80,7 +146,9 @@
 						   Index.initDashboardDaterange();
 						   Index.initIntro();
 						});
-					</script>		
+					</script>
+					
+					
 					
 				<?php
 					break;
@@ -573,7 +641,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19 item20'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -719,6 +787,13 @@
 									context: 'newmenu',
 									onclick: function (){										 
 										editor.insertContent('[Mobile]');
+									}
+								});
+								editor.addMenuItem('item20', {
+									text: 'ADATE',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[ADATE]');
 									}
 								});
 							}
@@ -1458,7 +1533,66 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>					 
-					<![endif]-->   
+					<![endif]--> 
+					      
+			
+					<script type="text/javascript">
+						
+						var now = new Date();
+						today = now.toISOString();
+						
+						var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+						twoHoursLater = twoHoursLater.toISOString();
+
+						
+						var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
+						var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
+
+						
+						var scopes = 'https://www.googleapis.com/auth/calendar';
+
+						
+						function handleClientLoad() {
+							gapi.client.setApiKey(apiKey);
+							window.setTimeout(checkAuth, 1);
+						}
+
+						function checkAuth() {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+						}
+
+						
+						function handleAuthResult(authResult) {
+							
+							var resultPanel = document.getElementById('result-panel');
+							var resultTitle = document.getElementById('result-title');
+
+							if (authResult && !authResult.error) {
+									
+								resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+								resultPanel.className += ' panel-success'; 			// add green class
+								resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+								
+								$("#txtEventDetails").attr("visibility", "visible");
+							} else {													// otherwise, show button
+								
+								$("#txtEventDetails").attr("visibility", "hidden");
+								
+								resultPanel.className += ' panel-danger'; 			// make panel red
+											
+							}
+						}
+
+						
+						function handleAuthClick(event) {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+							return false;
+						}	  
+					</script>
+					<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script> 
+			
+			
+			
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
@@ -1974,6 +2108,70 @@
 				?>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+					<script type="text/javascript">
+						// date variables
+						var now = new Date();
+						today = now.toISOString();
+						
+						var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+						twoHoursLater = twoHoursLater.toISOString();
+
+						// Google api console clientID and apiKey 
+						var clientId = '998888557917-udke5p4to575koi31aboismo8gjvr1me.apps.googleusercontent.com';
+						var apiKey = 'AIzaSyDrZMvRi0Csy68Rl0J56_AuEJLg91kO2Kk';
+
+						// enter the scope of current project (this API must be turned on in the Google console)
+						var scopes = 'https://www.googleapis.com/auth/calendar';
+
+						// OAuth2 functions
+						function handleClientLoad() {
+							gapi.client.setApiKey(apiKey);
+							window.setTimeout(checkAuth, 1);
+						}
+
+						function checkAuth() {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+						}
+
+						// show/hide the 'authorize' button, depending on application state
+						function handleAuthResult(authResult) {
+							//var authorizeButton = document.getElementById('authorize-button');
+						   // var eventButton = document.getElementById('btnCreateEvents');
+						   
+						   // var eventButton = document.getElementById('btnDeleteEvents');
+						   // var insertBtn = document.getElementById('myBtn');
+						   // var updateBtn = document.getElementById('updateBtn');
+							
+							var resultPanel = document.getElementById('result-panel');
+							var resultTitle = document.getElementById('result-title');
+
+							if (authResult && !authResult.error) {
+								//authorizeButton.style.visibility = 'hidden'; 		// if authorized, hide button
+								resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+								resultPanel.className += ' panel-success'; 			// add green class
+								resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+								// eventButton.style.visibility = 'visible';
+								// insertBtn.style.visibility = 'visible';
+								// updateBtn.style.visibility = 'visible';
+								$("#txtEventDetails").attr("visibility", "visible");
+							} else {													// otherwise, show button
+								//authorizeButton.style.visibility = 'visible';
+								$("#txtEventDetails").attr("visibility", "hidden");
+								// eventButton.style.visibility = 'hidden';
+								// insertBtn.style.visibility = 'hidden';
+								// updateBtn.style.visibility = 'hidden';
+								resultPanel.className += ' panel-danger'; 			// make panel red
+								//authorizeButton.onclick = handleAuthClick; 			// setup function to handle button click
+							}
+						}
+
+						// function triggered when user authorizes app
+						function handleAuthClick(event) {
+							gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+							return false;
+						}	  
+					</script>
+					<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
 					<!--[if lt IE 9]>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/excanvas.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/respond.min.js"></script>  
@@ -2517,7 +2715,55 @@
 					</script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertCmpNew.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmp.js"></script>
-				
+				<?php
+ 					break;
+				case 'INSE':
+				?>
+					<!-- BEGIN CORE PLUGINS -->		
+					
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+					<!-- END CORE PLUGINS -->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertInvoiceSetting.js"></script> 
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showInvoiceSetting.js"></script> 
+					
+					
+					<!-- END JAVASCRIPTS -->
+					
+					<!-- BEGIN PAGE LEVEL PLUGINS -->
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script-->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
+					<!-- END PAGE LEVEL PLUGINS -->
+					<!-- BEGIN PAGE LEVEL SCRIPTS -->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script> 
+					<script>
+						jQuery(document).ready(function() {    
+						   App.init();
+						   Search.init();
+						   TableAdvanced.init();
+						});
+					</script>
+					<script>
+						$("#search_btn").click(function(){
+						$("#search_form").toggle();
+						});
+						$("#add_btn").click(function(){
+						$("#add_form").toggle();
+						});
+					</script>
+					<script>
+						$(document).ready(function(){
+							$('[data-toggle="tooltip"]').tooltip();   
+						});
+					</script>
 				
 				<?php
 					break;

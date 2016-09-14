@@ -8,7 +8,10 @@ if(isset($_POST['prod_id']))
 
 
 ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 <!-- BEGIN PAGE -->
 <div class="page-content">
     <!-- BEGIN PAGE CONTAINER-->

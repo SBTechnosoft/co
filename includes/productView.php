@@ -23,10 +23,18 @@
                     </li>
                     &nbsp;&nbsp;&nbsp;
                     <li id="add_btn">
+<<<<<<< HEAD
                        <a href="<?php echo HTTP_SERVER.'index.php?url=PADD';?>"> 
 					   <button type="button" class="btn green">Add
                             <i class="icon-plus-sign icon-white"></i>
                         </button></a>
+=======
+                        <a href="<?php echo HTTP_SERVER.'index.php?url=PADD';?>"> 
+						   <button type="button" class="btn green">Add
+								 <i class="icon-plus-sign icon-white"></i>                      
+						   </button>
+					    </a>
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
                     </li>
 
                     <li id="search_btn">

@@ -44,9 +44,16 @@
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
-                        <input type="text" placeholder="Eg; Name of the Accessories..." class="m-wrap" />
+                        <input type="text" id="txtacces" name="txtacces" placeholder="Eg; Name of the Accessories..." class="m-wrap" />
                     </div>
-                    <button type="button" class="btn green">Search &nbsp;
+                </div></br>
+				<div class="chat-form">
+					<div class="input-cont">
+						<select type="text" id="txtcatid" name="txtcatid"  class=" large m-wrap" >
+						
+						</select>
+					</div>
+                    <button type="button"  id="filter_acces" class="btn green">Search &nbsp;
                         <i class="icon-search m-icon-white"></i>
                     </button>
                 </div>

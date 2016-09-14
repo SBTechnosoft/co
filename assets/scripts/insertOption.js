@@ -109,7 +109,11 @@
 				
 		});
 		
+<<<<<<< HEAD
 		$('#updres_equ').click(function(){
+=======
+ $('#updres_equ').click(function(){
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			
 			var txtres_equ    =   $('#txtres_equ').val();
 					
@@ -135,7 +139,10 @@
 			});	
 				
 		});
+<<<<<<< HEAD
 		
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		function showdata()
 		{		
 			$.ajax({
@@ -153,8 +160,12 @@
 					$('#txtdays').val(r.upcoming_days);
 					$('#txtvat').val(r.vat);
 					$('#txtrtl').val(r.retail_sales);
+<<<<<<< HEAD
 					$('#txtres_equ').val(r.resorce);
 					
+=======
+				   $('#txtres_equ').val(r.resorce);
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 				}
 				
 			});

@@ -29,7 +29,8 @@
 	$cnm = $_POST['txtcnm'];
 	$charge = $_POST['txtcharge1'];
 	$cpaid = $_POST['txtpaid'];
-	$ramt = $charge - $cpaid;	
+	$ramt = $charge - $cpaid;
+	
 	
 	
 	if(isset($_POST['txteid']))
@@ -45,7 +46,7 @@
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
 				
 				$InvBody = showInvBody($conn);
-				$input = showEventDetailInvD($conn,$_POST['txteid']);			
+				$input = showEventDetailInvD($conn,$_POST['txteid']);
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
@@ -154,7 +155,6 @@
 						}
 					}					
 				}
-				
 				$vennue = showVennue($conn,$_POST['txteid']);
 				$cntven = count($vennue);
 				for($t=0;$t<$cntven;$t++)
@@ -168,17 +168,9 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
-				$bnrimg = showBannerImg($conn,$_POST['txteid']);
-				$cntimg = count($bnrimg);
-				for($t=0;$t<$cntimg;$t++)
-				{					
-					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
-					
-				}
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD,
-						'Banner_Img' => $BnrImg
+						'Venue' => $VennueD
 						);
 				
 				
@@ -229,11 +221,11 @@
 			{
 				
 				$pos = substr($data[$i]['inv_file_name'],(strpos($data[$i]['inv_file_name'],"_") + 1),1);
-				$pos = $pos + 1;
+				$pos = $pos+ 1;
 				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
 				
 				$InvBody = showInvBody($conn);
-				$input = showEventDetailInvD($conn,$_POST['txteid']);				
+				$input = showEventDetailInvD($conn,$_POST['txteid']);
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
@@ -355,17 +347,9 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
-				$bnrimg = showBannerImg($conn,$_POST['txteid']);
-				$cntimg = count($bnrimg);
-				for($t=0;$t<$cntimg;$t++)
-				{					
-					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
-					
-				}
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD,
-						'Banner_Img' => $BnrImg
+						'Venue' => $VennueD
 						);
 				
 				

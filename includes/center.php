@@ -130,6 +130,12 @@
 				case 'RSE':
 					$url = FILENAME_RSALES;
 					break;
+				case 'INSE':
+					$url = FILENAME_INVOICESETTING;
+					break;
+				case 'NCAL':
+					$url = NFILENAME_CALENDAR;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

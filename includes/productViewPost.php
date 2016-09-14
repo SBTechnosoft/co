@@ -32,9 +32,15 @@
 						onclick="document.getElementById('<?php echo $data[$i]['prod_id']; ?>').submit();">
 							<i class="fa fa-pencil-square-o"></i>
 					</a>			
+<<<<<<< HEAD
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['prod_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 					</form>
 				</td>
+=======
+ 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['prod_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
+					</form>
+ 				</td>
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			</tr>
 		<?php	
 		}
@@ -45,7 +51,10 @@
 		$del_date = date('Y-m-d H:i:s');
 		delProductAdd($conn,$_POST['id'],$del_date);	
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	if(isset($_POST['prodEdit']))
 	{	 
 		$q = mysql_query("select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`retail_price`, `pur_price`,`type` from  `product_mst` where `prod_id` = '".$_POST['prod_id']."' ");

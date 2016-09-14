@@ -1,10 +1,19 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
+<<<<<<< HEAD
 	$setting2 = showSettingRes($conn);
 	if(isset($setting2) && !empty($setting2))
 	{
 		$setRes = $setting2[0]['resorce'];
+=======
+   $setting2 = showSettingRes($conn);
+	if(isset($setting2) && !empty($setting2))
+	{
+		$setRes = $setting2[0]['resorce'];
+	
+	}
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	
 	}
 	if(isset($_POST['savepaytrn']))
@@ -50,8 +59,12 @@
 		$nfromdt = date_format(new DateTime($fromdt),'Y-m-d H:i:s');
 		$ntordt = date_format(new DateTime($tordt),'Y-m-d H:i:s');
 		
+<<<<<<< HEAD
 		updEventPlacesDetail($conn,$_POST['epldtlid'],$_POST['txtvenue'],$_POST['txthall'],$_POST['txtldmark'],
 		$_POST['txtfunction'],$nfromdt,$ntordt,$date);
+=======
+		updEventPlacesDetail($conn,$_POST['epldtlid'],$_POST['txtvenue'],$_POST['txthall'],$_POST['txtldmark'],$_POST['txtfunction'],$nfromdt,$ntordt,$date);
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	}
 	if(isset($_POST['ResourceIns']))
 	{	
@@ -141,13 +154,22 @@
 		{
 			$s3 = " `client_name` like '%".$_POST['txtclname']."%' ";
 		}
+<<<<<<< HEAD
 		 //if($_POST['txtbillno'] != '')
+=======
+		// if($_POST['txtbillno'] != '')
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		//{
 			//$s4 = " `bill_no` like '%".$_POST['txtbillno']."%' ";
 		//}
 		//if($_POST['txtfpno']!='')
+<<<<<<< HEAD
 		//{
 			//$s5 = " `fp_no` like '%".$_POST['txtfpno']."%' ";
+=======
+	//	{
+		//	$s5 = " `fp_no` like '%".$_POST['txtfpno']."%' ";
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		//}
 		 if($_POST['txtfromdt'] !='')
 		{
@@ -290,7 +312,7 @@
 	if(isset($_POST['show']))
 	{	
 		$data = showEventDetail ($conn);
-		//echo json_encode($data);
+		
 		$showEventCnt = count($data);	
 		for($i=0;$i<$showEventCnt;$i++)
 		{
@@ -705,7 +727,11 @@
 					</a>	
 					</div>					
 				</h4> 
+<<<<<<< HEAD
 				<hr class="hr1"/>
+=======
+				<hr class="hr1" />
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			<div id="vennuedtl<?php echo $i;?>">
 							
 				<div class="clearfix margin-bottom-10">
@@ -773,7 +799,13 @@
 					</div>
 				</div>
 				<input type="hidden" value="<?php echo $setRes;?>" id="hiddenresource"/>
+<<<<<<< HEAD
 				<?php if (isset($setRes) && $setRes == 'resource') {?>
+=======
+				
+				<?php if (isset($setRes) && $setRes == 'resource') {?>
+				
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 			<div id="resinfo<?php echo $i; ?>">
 				<div>
 					<input style="width:207px;" type="text"  value="Resources" readonly />									
@@ -846,7 +878,11 @@
 				</div>
 				<!-- End of Resource save button -->
 				
+<<<<<<< HEAD
 					<?php }
+=======
+				<?php }
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 								else if (isset($setRes) && $setRes == 'equipment') {?>
 				
 				
@@ -1123,7 +1159,172 @@
 				</div>
 			<?php }?>
 				<!-- End of Equipment save button -->
+				<?php }
+						else
+					{?>
+				<div id="resinfo<?php echo $i; ?>">
+				<div>
+					<input style="width:207px;" type="text"  value="Resources" readonly />									
+														
+					<input style="width:121px;" type="text"  value="Rate" readonly />
+					<input style="width:123px;" type="text"  value="Qty" readonly />
+					<input style="width:120px;" type="text"  value="Amount" readonly />									
+				</div>
+				<div>				
+					<select  name="drp_resource<?php echo $i; ?>" id="drp_resource<?php echo $i; ?>" class="medium m-wrap drp_resource<?php echo $i; ?>">											
+					</select>	
+					<input class="small m-wrap txtresrate<?php echo $i; ?>"  type="text"  id="txtresrate<?php echo $i; ?>" name="txtresrate<?php echo $i; ?>" value=""  />	
+					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
+					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
+					
+					<a name="addres<?php echo $i;?>" class="btn blue" id="addres<?php echo $i;?>" style="margin-left:15px;" >
+						Add								
+					</a>
+				</div>
+			</div>	
+				<br>
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Resources</div>
+						
+						<a id="edtres<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
+						
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Resource</th>													
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>													
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="resrec<?php echo $i; ?>">
+							</tbody>
+						</table>
+					</div>
+				</div>
 				
+				<!-- Save Button for resource Insertion -->
+				<div id ="shwres<?php echo $i; ?>" class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updResD<?php echo $i; ?>" name="updResD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+				<!-- End of Resource save button -->
+			
+			<div id="eqpinfo<?php echo $i; ?>">	
+				<div>
+					<input class="xyz" type="text"  value="Equipment" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinseqp" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>							
+					
+					
+					<input class="xyz123" type="text" id="labelLT<?php echo $i; ?>" name="labelLT<?php echo $i; ?>"  value="Length(FT)" readonly />
+					<input class="xyz123" type="text" id="labelWT<?php echo $i; ?>" name="labelWT<?php echo $i; ?>" value="Width(FT)" readonly />
+					<input class="xyz123" type="text"  value="Rate" readonly />
+					
+					<input class="xyz123"" type="hidden"  value="Type" readonly />
+					
+					<input class="xyz123" type="text"  value="Qty" readonly />
+					<input class="xyz123" type="text"  value="Amount" readonly />
+					
+					<input class="xyz123" type="text"  value="Staff" readonly />
+					<input class="xyz" type="text"  value="Vendor" readonly />
+					<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+					</i>
+					<input class="xyz123" type="text"  value="Price" readonly />				
+				</div>
+				<p></p>
+				<div>	
+				
+					<select  name="drpneweqp<?php echo $i;?>" id="drpneweqp<?php echo $i;?>" class="small set1 m-wrap drpneweqp<?php echo $i;?>">											
+					</select>
+					
+					
+					<input class="xyz m-wrap txtlength<?php echo $i; ?>"  type="text"  id="txtlength<?php echo $i; ?>" name="txtlength<?php echo $i; ?>" value=""  />
+					<input class="xyz m-wrap txtwidth<?php echo $i; ?>"  type="text"  id="txtwidth<?php echo $i; ?>" name="txtwidth<?php echo $i; ?>" value="" />
+												
+					<input class="xyz m-wrap txtrate<?php echo $i;?>"  type="text"  id="txtrate<?php echo $i;?>" name="txtrate<?php echo $i;?>" value=""  />
+					
+					<input class="xyz m-wrap txttype<?php echo $i;?>"  type="hidden"  id="txttype<?php echo $i;?>" name="txttype<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txtassdtl<?php echo $i;?>"  type="hidden"  id="txtassdtl<?php echo $i;?>" name="txtassdtl<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap drpqty<?php echo $i;?>"  type="text"  id="drpqty<?php echo $i;?>" name="drpqty<?php echo $i;?>" value="1"  />
+					
+					<input class="xyz m-wrap txtamt<?php echo $i;?>" type="text"  id="txtamt<?php echo $i;?>" name="txtamt<?php echo $i;?>" value="" readonly />
+					
+					<input class="xyz m-wrap txthamt<?php echo $i;?>" type="hidden"  id="txthamt<?php echo $i;?>" name="txthamt<?php echo $i;?>" value="" readonly />
+					
+					<select name="drpnewstf<?php echo $i; ?>" id="drpnewstf<?php echo $i; ?>" class="set3 m-wrap drpnewstf<?php echo $i; ?>"> 											
+					</select>
+					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="set3 m-wrap drpnewvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="xyz m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					
+					
+				</div>
+				<p></p>
+				<div>
+					<input  type="text"  value="Remark" readonly />
+				</div>
+				<p></p>
+				<div>
+					<textarea rows="2" cols="122" id="txtremark<?php echo $i;?>" class="txtremark<?php echo $i;?>" name="txtremark<?php echo $i;?>"></textarea><br/>
+					<p>
+					<a name="addeqp<?php echo $i; ?>" class="btn blue" id="addeqp<?php echo $i; ?>" style="margin-left:15px;" >
+						Add								
+					</a>
+					</p>
+				</div>
+			</div>
+				<br/>
+				
+				
+				<div class="portlet box green">
+					<div class="portlet-title">
+						<div class="caption"><i class="icon-reorder"></i>Equipments</div>
+						<a id="edteqp<?php echo $i;?>" class="invoice invoice_excel">
+							<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+							<thead>
+								<tr>
+									<th> Equipment</th>
+									<th> Asseccories</th>
+									<th> Rate</th>
+									<th> Qty</th>
+									<th> Amount</th>
+									<th> Staff</th>
+									<th> Vendor</th>
+									<th> Price</th>
+									<th> Remark</th>
+									<th> Action</th>													 
+								</tr>
+							</thead>
+							<tbody id="eqprec<?php echo $i; ?>">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Save Button for Equipment Insertion -->
+				<div id ="shweqp<?php echo $i; ?>" class="clearfix margin-bottom-10">
+					<!--label for="txtldmark"> </label-->
+					<div class="input-icon left">
+						<input class="m-wrap btn blue" value="Save"  id="updEqpD<?php echo $i; ?>" name="updEqpD<?php echo $i; ?>"  type="button" />
+					</div>
+				</div>
+				<?php }?>
 			</div>
 			<script>
 					$('#datetimepickerPF<?php echo $i; ?>').datetimepicker({
@@ -1138,7 +1339,11 @@
 						$('#txtvenue<?php echo $i;?>').removeAttr('readonly');
 						$('#txthall<?php echo $i;?>').removeAttr('readonly');
 						$('#txtldmark<?php echo $i;?>').removeAttr('readonly');
+<<<<<<< HEAD
 						$('#txtfunction<?php echo $i;?>').removeAttr('readonly');
+=======
+					   $('#txtfunction<?php echo $i;?>').removeAttr('readonly');
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 						$('#txtfromdate<?php echo $i;?>').removeAttr('readonly');
 						$('#txttodate<?php echo $i;?>').removeAttr('readonly');
 						
@@ -1870,7 +2075,11 @@
 								$('#txtvenue<?php echo $i; ?>').attr('readonly','txtvenue<?php echo $i; ?>');
 								$('#txthall<?php echo $i; ?>').attr('readonly','txthall<?php echo $i; ?>');								
 								$('#txtldmark<?php echo $i; ?>').attr('readonly','txtldmark<?php echo $i; ?>');
+<<<<<<< HEAD
 								$('#txtfunction<?php echo $i; ?>').attr('readonly','txtfunction<?php echo $i; ?>');
+=======
+							   $('#txtfunction<?php echo $i; ?>').attr('readonly','txtfunction<?php echo $i; ?>');
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 								$('#txtfromdate<?php echo $i; ?>').attr('readonly','txtfromdate<?php echo $i; ?>');
 								$('#txttodate<?php echo $i; ?>').attr('readonly','txttodate<?php echo $i; ?>');
 
@@ -2312,7 +2521,7 @@
 	}
 	if(isset($_POST['edit']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`event_cal_id` FROM event_mst where `event_id` = '".$_POST['id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
@@ -2322,7 +2531,7 @@
 	
 	if(isset($_POST['showlast']))
 	{		
-		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt` FROM event_mst where `event_id` = '".$_POST['id']."' ");
+		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`event_cal_id` FROM event_mst where `event_id` = '".$_POST['id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

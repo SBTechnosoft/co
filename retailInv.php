@@ -238,9 +238,19 @@ $inm = date_format($date,"Ymd");
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				
+				$bnrimg = showBannerImg($conn,$eventlast_id);
+				$cntimg = count($bnrimg);
+				for($t=0;$t<$cntimg;$t++)
+				{					
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					
+				}
+				
 				$output =array(	
 						'Description' => $outputD,
-						'Venue' => $VennueD
+						'Venue' => $VennueD,
+						'Banner_Img' => $BnrImg
 						);
 				
 				

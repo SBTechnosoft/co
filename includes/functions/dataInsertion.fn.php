@@ -60,7 +60,12 @@ function updProduct($conn,$prod_nm,$prd_id,$item_code,$disp_nm,$commodity_grp,$c
 			//print_r($resultArray);			
 			echo 0;
 			exit;
+<<<<<<< HEAD
 		}			
+=======
+		}	
+
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 function insCatgNew($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `new_category_mst` (`cat_name`,`description`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcatgnm."','".$txtcatgdes."','".$cur_date."','','')"; 
@@ -369,7 +374,11 @@ function insOptionResEqu($conn,$txtres_equ)
 			$sqlinsEqu1 = "UPDATE `setting` SET `resorce` = '".$txtres_equ."' WHERE `id` = 1"; 
 			$resultArray = $conn->insertQuery($sqlinsEqu1);
 			
+<<<<<<< HEAD
 		}
+=======
+		}		
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 function insNewEventPlac($conn,$event_id,$event_plc_id,$txtieqp,$txtirate,$txtiqty,$txtiamt,$txtistf,$txtivend,$txtivendprice,$txtiremark,$txtilength,$txtiwidth)
 		{
 			$sqlinsNewEventPlac = "INSERT INTO `new_event_places_dtl` (`event_id`,`event_places_id`,`eq_id`,`rate`,`qty`,`amount`,`staff_id`,`vend_id`,`vend_price`,`remark`,`length`,`width`) 
@@ -501,6 +510,21 @@ function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
 														`vendor_charges`= '".$vdcharge."'	where `event_id` = '".$evntid."'"; 
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
+		}
+		
+function updEventCalId($conn,$eid,$cal_id)
+		{
+			$sqlEventCalId = "Update `event_mst`  set `event_cal_id` = '".$cal_id."' where `event_id` = '".$eid."' "; 
+			$resultArray = $conn->insertQuery($sqlEventCalId);
+			
+			//exit;
+		}
+function insInvoicSet($conn,$txtlabel,$type,$start_at,$cur_date)
+		{
+			$sqlInsCatg = "INSERT INTO `invoice_config` (`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$txtlabel."','".$type."','".$start_at."','','".$cur_date."')"; 
+			$resultArray = $conn->insertQuery($sqlInsCatg);
+			echo 0;
+			exit;
 		}
 // function insDesg($conn,$desgId,$designation)
 // {

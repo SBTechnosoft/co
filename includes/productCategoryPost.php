@@ -35,7 +35,10 @@
 							
 						}?>
 				</td>
+<<<<<<< HEAD
 			
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['prd_cat_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>

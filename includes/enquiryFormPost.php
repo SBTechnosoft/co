@@ -13,12 +13,19 @@
 	{		
 		updEnqFrm($conn,$_POST['id']);	
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	if(isset($_POST['delete']))
 	{	
 		$del_date = date('Y-m-d H:i:s');
 		delEnq($conn,$_POST['id'],$del_date);	
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 	if(isset($_POST['show']))
 	{	
 		$data = showEventEnquiry ($conn);
@@ -96,9 +103,16 @@
 					<a href="#" data-id="<?php echo $data[$i]['event_id']; ?>" class="editenq" data-toggle="tooltip" title="Order">
 						<i class="fa fa-file-text"></i>
 						Order
+<<<<<<< HEAD
 					</a> 
 					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="delete" data-toggle="tooltip" title="Delete">
 					<i class="fa fa-trash-o"></i> </a> 
+=======
+					</a>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="delete" data-toggle="tooltip" title="Delete">
+					<i class="fa fa-trash-o"></i> </a> 
+					 
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 				</td>		
 				
 			</tr>

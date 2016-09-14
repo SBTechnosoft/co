@@ -8,8 +8,8 @@ position: relative;
 }
 ul.checktree-root label input {
 position: relative;
-top: 2px;
-left: -5px;
+top: 0px;
+left: 0px;
 }
 </style>
 

@@ -60,7 +60,12 @@
 		});		
 	});	
 
+<<<<<<< HEAD
 $( function() {		
+=======
+	
+	$( function() {		
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 		//save data
 		$('#updprod').click(function(){
 			var txtprdnm    =   $('#txtprdnm').val();
@@ -107,6 +112,10 @@ $( function() {
 						$('#txtitmcd').val('');
 						$('#txtdispnm').val('');						
 						$('#txtcgrp').val('');
+<<<<<<< HEAD
+=======
+						$('#drpprdctg').val('');
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 						$('#txtrprice').val('');
 						$('#txtpprice').val('');
 						$('#drptype').val('');
@@ -176,4 +185,8 @@ $( function() {
 				});	
 			
 		}
+<<<<<<< HEAD
 		showproddetail();	
+=======
+		showproddetail();			
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5

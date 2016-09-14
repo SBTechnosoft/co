@@ -402,6 +402,13 @@ label.m-wrap {
 	margin-top:-25px;
 	
 }
+<<<<<<< HEAD
+=======
+.invoice
+{
+	margin-left:33px;	
+}
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 .hr2{
 	margin:4px;
 	
@@ -477,6 +484,24 @@ label.m-wrap {
 {
 	text-align:right;
 }
+<<<<<<< HEAD
+=======
+.venuetxt
+{
+	width:255px;
+	
+}
+.fdate1
+{
+	width:240px;
+	
+}
+.selectfun
+{
+	width:254px;
+	
+}
+>>>>>>> a76782b0fe4489ccb97e61e4babd72472ea116e5
 .uneditable-input,
 textarea.m-wrap,
 input[type="text"].m-wrap,
