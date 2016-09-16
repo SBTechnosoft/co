@@ -260,7 +260,7 @@
 					}
 					else
 					{
-						$ADATE .= date_format(date_create($vennue[$t]['event_date']),"d").', ';
+						$ADATE .= date_format(date_create($vennue[$t]['event_date']),"d M").', ';
 					}
 				}
 				

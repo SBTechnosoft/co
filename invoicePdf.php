@@ -168,6 +168,17 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				for($t=0;$t<$cntven;$t++)
+				{
+					if($t== $cntven-1)
+					{
+						$ADATE .= $vennue[$t]['event_date'];
+					}
+					else
+					{
+						$ADATE .= date_format(date_create($vennue[$t]['event_date']),"d M").', ';
+					}
+				}
 				$bnrimg = showBannerImg($conn,$_POST['txteid']);
 				$cntimg = count($bnrimg);
 				for($t=0;$t<$cntimg;$t++)
@@ -175,9 +186,27 @@
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
 					
 				}
+				
+				$inv_id = showInvoiceId($conn);
+				$cnf_id = $inv_id[0]['invoice_conf_id'];
+				if($inv_id[0]['type'] == 'prefix')
+				{
+					$INVID = $inv_id[0]['label'].$inv_id[0]['next_val'];
+					$nextval = $inv_id[0]['next_val'] + 1;
+				}
+				else
+				{
+					$INVID = $inv_id[0]['next_val'].$inv_id[0]['label'];
+					$nextval = $inv_id[0]['next_val'] + 1;
+				}
+				
+				
+				
 				$output =array(	
 						'Description' => $outputD,
 						'Venue' => $VennueD,
+						'ADATE' => $ADATE,
+						'INVID' => $INVID,
 						'Banner_Img' => $BnrImg
 						);
 				
@@ -218,7 +247,10 @@
 				
 				
 				$date1 = date('Y-m-d H:i:s');
-				updInvEM($conn,$id,$fname);
+				updInvEM($conn,$id,$fname,$INVID);
+				
+				updInvConfig($conn,$cnf_id,$nextval);
+				
 				insInvECID($conn,$id,$fname,$date1,$_SESSION['USER_ID']);
 				
 				header('Location: upload/minvoice/'.$fname);
@@ -355,6 +387,17 @@
 						$VennueD .= $vennue[$t]['event_vennue'].', ';
 					}
 				}
+				for($t=0;$t<$cntven;$t++)
+				{
+					if($t== $cntven-1)
+					{
+						$ADATE .= $vennue[$t]['event_date'];
+					}
+					else
+					{
+						$ADATE .= date_format(date_create($vennue[$t]['event_date']),"d M").', ';
+					}
+				}
 				$bnrimg = showBannerImg($conn,$_POST['txteid']);
 				$cntimg = count($bnrimg);
 				for($t=0;$t<$cntimg;$t++)
@@ -362,9 +405,12 @@
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
 					
 				}
+				$INVID = $input[0]['inv_file_id'];
 				$output =array(	
 						'Description' => $outputD,
 						'Venue' => $VennueD,
+						'ADATE' => $ADATE,
+						'INVID' => $INVID,
 						'Banner_Img' => $BnrImg
 						);
 				

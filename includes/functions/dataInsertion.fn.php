@@ -303,9 +303,15 @@ function updEnqFrm($conn,$id)
 			//echo 12;
 			exit;
 		}*/
-function updInvEM($conn,$id,$fname)
+function updInvEM($conn,$id,$fname,$INVID)
 		{
-			$sqlinsInvEM = "Update `event_mst` set `inv_file_name` = '".$fname."' where event_id = '".$id."'"; 
+			$sqlinsInvEM = "Update `event_mst` set `inv_file_name` = '".$fname."' ,`inv_file_id` = '".$INVID."' where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqlinsInvEM);
+			
+		}
+function updInvConfig($conn,$cnf_id,$nextval)
+		{
+			$sqlinsInvEM = "Update `invoice_config` set `next_val` = '".$nextval."' where `invoice_conf_id` = '".$cnf_id."'"; 
 			$resultArray = $conn->insertQuery($sqlinsInvEM);
 			
 		}
