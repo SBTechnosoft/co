@@ -1,8 +1,8 @@
 $( function() {		
 		//save data
 		$('#addinset').click(function(){
-			var txtlabel    =   $('#txtlabel').val();
-			var prefix     =   $('#prefix').val();	
+			var txtlabel    =   $('#txtlabel').val();			
+			var prefix     =  $("input[name='prefix']:checked"). val();		
 			var start_at     =   $('#start_at').val();
 			
 			if(txtlabel == "" || start_at == "" )

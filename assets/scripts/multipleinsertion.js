@@ -239,13 +239,13 @@ $(document).on('click','#add',function()
 		'}'+
 		
 			 ' $(\'#datetimepickerPF'+i+'\').datetimepicker({'+
-			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			 'format: \'dd-MM-yyyy HH:mm PP\','+
 			'language: \'en\','+
 			 'pick12HourFormat: true,'+
 			
 			 '});'+
 			 ' $(\'#datetimepickerPT'+i+'\').datetimepicker({'+
-			 'format: \'dd/MM/yyyy HH:mm PP\','+
+			 'format: \'dd-MM-yyyy HH:mm PP\','+
 			 'language: \'en\','+
 			 'pick12HourFormat: true,'+
 			
