@@ -16,6 +16,11 @@ function showCatg($conn)
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `eq_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function showContactList($conn)
+	{
+		$sqlShowCatg = "select `client_id`,`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address` from  `contact_dtl`"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showCatgNew($conn)
 	{
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `new_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 

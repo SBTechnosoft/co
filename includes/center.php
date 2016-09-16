@@ -133,6 +133,9 @@
 				case 'INSE':
 					$url = FILENAME_INVOICESETTING;
 					break;
+				case 'CON':
+					$url = FILENAME_CONTACTLIST;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

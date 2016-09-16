@@ -744,6 +744,23 @@ if(isset($setting) && !empty($setting))
             </ul>
         </li>
 			<?php } ?>
+			<li class="start
+					<?php 
+						if(isset($_GET['url']) && strtoupper($_GET['url']) == 'CON') 
+						{
+							echo " active ";
+						}
+						else
+						{
+							echo " ";
+						}
+					?>">
+            <a href="<?php echo HTTP_SERVER.'index.php?url=CON';?>">
+                <i class="icon-home"></i>
+                <span class="title">ContactList</span>
+                <span class="selected"></span>
+            </a>
+        </li>
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>

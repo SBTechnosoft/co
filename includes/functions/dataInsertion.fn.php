@@ -18,6 +18,11 @@ function insCatg($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 			echo 0;
 			exit;
 		}
+function insContactList($conn,$clientName,$companyName,$mobileNo,$workNo,$emailId,$address)
+{
+	$sqlInsCatg = "INSERT INTO contact_dtl (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."')"; 
+	$resultArray = $conn->insertQuery($sqlInsCatg);
+}
 function insResource($conn,$txtresnm,$txtresprice,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `resource_mst` (`res_name`,`amount`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtresnm."','".$txtresprice."','".$cur_date."','','')"; 
