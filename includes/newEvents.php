@@ -113,6 +113,7 @@ if(isset($setting1) && !empty($setting1))
 						
 						<h4>Client Details </h4>
 						<hr />
+						
 						<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-10">
 								<div class="input-icon input-append">

@@ -359,7 +359,7 @@
 						
 						//alert( html(vp));
 						
-						alert(vp);
+						//alert(vp);
 						alert('successfull pdf generated!!!');
 						
 						//window.location.href= 'upload/invoice/19700101_95.pdf';
@@ -829,9 +829,7 @@
 			{
 				var id = $('#txtenqid').val();
 			}
-			//alert(id);
 			
-			//var id = $('#lasteid').val();
 			
 			$.ajax({
 				url : 'includes/eventDetailPost.php',

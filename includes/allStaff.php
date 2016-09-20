@@ -97,13 +97,18 @@ left: 0px;
 							<div class="span8 booking-search">
 								<form action="#">
 									<input type="hidden"  name="txtid" id="txtid" value="" />
+									<input type="hidden"  name="txtidper" id="txtidper" value="" />
 									<ul id="tree">										
 										<li>
 											<label>
-												<input type="checkbox" name="myCheckbox" id="myCheckbox" value="ENR">
+											
+													<input type="checkbox" name="myCheckbox" id="myCheckbox" value="ENR">
+												
 												Enquiry
+												
 											</label>
 										</li>
+										
 										<li>
 											<label>
 											<input type="checkbox" name="myCheckbox" id="myCheckbox" value="EVD">

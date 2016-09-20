@@ -41,7 +41,8 @@
 					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
 						<?php echo ucfirst($data[$i]['event_name']);?></td>
 					</a>
-				<td>
+				</td>
+				 <td>
 					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
 					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
 					Client Email:<?php echo ucfirst($data[$i]['client_email']);?><br>

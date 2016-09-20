@@ -1997,11 +1997,24 @@
 						
 						$('.newperadd').on('click',function(){
 							var id = $(this).data('id');
-							//alert(id);
-							$('#txtid').val(id);
+							$.ajax({
+								url : 'includes/addEditStaffPost.php',
+								type : 'POST',
+								async : false,
+								data : {
+									'editStaffPer'  : 1,
+									'id' 	: id														
+								},
+								success : function(e)
+								{
+									$('#txtid').val(id);
+									$('#txtidper').val(e.permission);
+									$('#popup_staff_per').fadeIn();
+									$('#popup_staff_per_data').fadeIn();
+								}
+							});	
 							
-							$('#popup_staff_per').fadeIn();
-							$('#popup_staff_per_data').fadeIn();
+							
 							
 							return false;
 							});

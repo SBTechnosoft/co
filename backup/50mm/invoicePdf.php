@@ -5,7 +5,10 @@
 	
 	include_once('includes/header.php');	
 	require(DIR_WS_MPDF.'mpdf.php');
-	require('html_dom/simple_html_dom.php');	
+	require('html_dom/simple_html_dom.php');
+	
+	
+	
 	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
@@ -26,28 +29,23 @@
 	$cnm = $_POST['txtcnm'];
 	$charge = $_POST['txtcharge1'];
 	$cpaid = $_POST['txtpaid'];
-	$ramt = $charge - $cpaid;
-	
+	$ramt = $charge - $cpaid;	
 	
 	
 	if(isset($_POST['txteid']))
 	{		
 		$data = showInvName($conn,$_POST['txteid']);
 		$cnt = count($data);
-		echo $cnt."<br>";
+		//echo $cnt."<br>";
 		
 		for($i=0;$i<$cnt;$i++)
 		{
 			if($data[$i]['inv_file_name']=='')
 			{				
-				
 				$fname = $inm."-".$_POST['txteid']."_1.pdf";
 				
-				
-				
 				$InvBody = showInvBody($conn);
-				
-				$input = showEventDetailInvD($conn,$_POST['txteid']);
+				$input = showEventDetailInvD($conn,$_POST['txteid']);			
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
@@ -57,12 +55,10 @@
 				if(!empty($ResourceDtl))
 				{
 					$dEqp = $ResourceDtl;
-					
 				}
 				else
 				{
 					$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
-					
 				}
 				$cnteqp = count($dEqp); 
 				if($cnteqp<11)
@@ -224,11 +220,11 @@
 			{
 				
 				$pos = substr($data[$i]['inv_file_name'],(strpos($data[$i]['inv_file_name'],"_") + 1),1);
-				$pos = $pos+ 1;
+				$pos = $pos + 1;
 				$newFileName = substr($data[$i]['inv_file_name'],0,strpos($data[$i]['inv_file_name'],"_") + 1) . (int)$pos . ".pdf" ;
 				
 				$InvBody = showInvBody($conn);
-				$input = showEventDetailInvD($conn,$_POST['txteid']);
+				$input = showEventDetailInvD($conn,$_POST['txteid']);				
 				
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);

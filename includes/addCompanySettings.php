@@ -89,10 +89,7 @@
                 <div class="chat-form">
                     <div class="input-cont">
                         <input type="text" id="txtcmprnno" name="txtcmprnno" placeholder="Eg; Company Registeration Number..." class="m-wrap" />
-                    </div>
-                    <!--button id="addcmp" type="button" class="btn green">Add &nbsp;
-                        <i class="icon-plus-sign icon-white"></i>
-                    </button-->
+                    </div>                    
                 </div>
 				
 				<div id="image_preview"><img id="previewing" src="" /></div>

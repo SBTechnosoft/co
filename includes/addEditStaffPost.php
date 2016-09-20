@@ -107,5 +107,15 @@
 		exit();	
 		
 	}
+	if(isset($_POST['editStaffPer']))
+	{	 
+		$q = mysql_query("select `permission` from  `staff_permission` where `user_id` = '".$_POST['id']."' ");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		
+		exit();	
+		
+	}
 ?>
 				
