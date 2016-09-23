@@ -555,7 +555,7 @@
 						<link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/css/datepicker.css" />
 						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
 						<link href="<?php echo HTTP_SERVER; ?>assets/css/pages/search.css" rel="stylesheet" type="text/css"/>
-						
+						<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 						<!-- BEGIN PAGE LEVEL STYLES -->
 						<link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2_metro.css" />
 						<link rel="stylesheet" href="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.css" />

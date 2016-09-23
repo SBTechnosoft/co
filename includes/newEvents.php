@@ -191,7 +191,16 @@ if(isset($setting1) && !empty($setting1))
 								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
 							</div>
 						</div>
-						
+						<div class="clearfix margin-bottom-10">
+							<div class="pull-left margin-right-10">
+								<div class="input-icon input-append">
+									<label for="txtaddress" class="well1">Client Address:</label>
+								</div>
+								<textarea rows="2" cols="115"  class="txtremark" id="txtaddress" name="txtaddress">
+								</textarea>	
+							</div>
+							
+						</div>
 						
 						
 						<div class="">
@@ -201,7 +210,7 @@ if(isset($setting1) && !empty($setting1))
 								<label for="txtfromdt">From Date: </label>
 							</div>
 								<div id="datetimepicker1" class="input-append date">
-									<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+									<input  class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -212,7 +221,7 @@ if(isset($setting1) && !empty($setting1))
 								<label for="txttodt" class="well1">To Date: </label> 
 							</div>
 								<div id="datetimepicker2" class="input-append date">
-									<input data-format="dd-MM-yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
+									<input data-format="dd/MM/yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -242,7 +251,7 @@ if(isset($setting1) && !empty($setting1))
 									</div>
 									<div class="pull-left margin-right-10">
 										<div class="input-icon input-append abc1">
-											<label for="txthall">Hall: </label>
+											<label for="txthall">Hall:</label>
 										</div>
 										<input class="venuetxt m-wrap " id="hdn[0][txthall]" name="hdn[0][txthall]" type="text"  />
 									</div>
@@ -258,12 +267,8 @@ if(isset($setting1) && !empty($setting1))
 										<div class="input-icon input-append">
 											<label for="txtfunction">Function: </label>
 										</div>
-										<select name="hdn[0][txtfunction]" id="hdn[0][txtfunction]" class="medium m-wrap">
-											<option value="Mahendi">Mahendi</option>
-											<option value="Sangit">Sangit</option>
-											<option value="Reception">Reception</option>
-											<option value="Ghruhshanti">Ghruhshanti</option>
-										</select>
+										<input class="venuetxt m-wrap" id="hdn[0][txtfunction]" name="hdn[0][txtfunction]" type="text" />
+										
 									</div>
 									<div class="pull-left margin-right-10" style="margin-left:40px;">
 									<div class="input-icon input-append">

@@ -38,7 +38,25 @@ function showdata()
 			});
 		}
 		showCtgAcc();
-		
+		function showCtSearch()
+		{		
+			$.ajax({
+				url : './includes/accessoriesEquipmentsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showCtgSerach' : 1
+					
+				},
+				success : function(r1)
+				{
+					$('#txtcatSearch').html(r1);					
+					
+				}
+				
+			});
+		}
+		showCtSearch();
 		$('#filter_acces').click(function()
 		{			
 			var txtacces    =   $('#txtacces').val();

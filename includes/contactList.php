@@ -6,7 +6,7 @@
             <div class="span12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-							ContactList
+							Client Master
 						</h3>
                 <ul class="breadcrumb">
                     <li>
@@ -15,7 +15,7 @@
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#">ContactList </a>
+                        <a href="#">Client Master </a>
                         <i class="icon-angle-right"></i>
                     </li>
                    
@@ -25,13 +25,39 @@
                             <i class="icon-plus-sign icon-white"></i>
                         </button>
                     </li>
+					<li id="search_btn">
+                        <button type="button" class="btn green" data-toggle="tooltip" title="Search">
+                            <i class="icon-search m-icon-white"></i>
+                        </button>&nbsp;
 
+                    </li>
                    
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
             </div>
         </div>
-
+		<div id="search_form" class="row-fluid search-forms search-default">
+            <form class="form-search" action="#">
+                <div class="chat-form">
+                    <div class="input-cont">
+                       <input type="text" id="client_name" name="client_name" placeholder="Eg; Client Name" class="m-wrap" />
+                    </div>
+			    </div></br>
+				<div class="chat-form">
+                    <div class="input-cont">
+                       <input type="text" id="company_name" name="company_name" placeholder="Eg; Company Name" class="m-wrap" />
+                    </div>
+			    </div></br>
+				<div class="chat-form">
+					<div class="input-cont">
+                       <input type="text" id="mobile_no" name="mobile_no" placeholder="Eg; Mobile no" class="m-wrap" />
+                    </div>
+                    <button type="button"  id="search_contact" class="btn green">Search &nbsp;
+                        <i class="icon-search m-icon-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
         <div id="add_form" class="row-fluid search-forms search-default">
 
             <form class="form-search" action="#">
@@ -107,7 +133,7 @@
 											<th>Work NO</th>
 											<th>Email Id</th>
 											<th>Address</th>
-											
+											<th>Client Type</th>
                                         </tr>
                                     </thead>
                                     <tbody id="showContact">

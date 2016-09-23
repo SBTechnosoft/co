@@ -18,7 +18,7 @@ function showCatg($conn)
 	}
 function showContactList($conn)
 	{
-		$sqlShowCatg = "select `client_id`,`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address` from  `contact_dtl`"; 
+		$sqlShowCatg = "select `client_id`,`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type` from  `contact_dtl`"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showCatgNew($conn)
@@ -52,6 +52,11 @@ function showProductAdd($conn)
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showCtgdrp($conn)
+	{
+		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
+		return $conn->getResultArray($sqlShowCatgdrp);		
+	}
+function showCtgdrpSearch($conn)
 	{
 		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
 		return $conn->getResultArray($sqlShowCatgdrp);		
@@ -175,6 +180,13 @@ function searchAccesDetail($conn,$where)
 	return $conn->getResultArray($sqlEventDetail);	
 	
 }
+function searchCoantactDetail($conn,$where)
+{
+	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address` from where" .$where.""; 
+	return $conn->getResultArray($sqlEventDetail);	
+	
+}
+
 function searchEventAll($conn,$where)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,
@@ -804,8 +816,13 @@ function showcntRes($conn,$event_id)
 	}
 	function showInvoiceSet($conn)
 	{
-		$sqlShowCatg = "select `invoice_conf_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
+		$sqlShowCatg = "select `invoice_conf_id`,`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
 		return $conn->getResultArray($sqlShowCatg);		
+	}
+	function showCmpDrp1($conn,$id)
+	{
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' and `cmp_id`='".$id."'"; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 	/*
 	

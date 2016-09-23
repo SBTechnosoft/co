@@ -166,5 +166,21 @@
 		
 	}
 	
+$s = $_POST['txtmobno'];
+$a=array();
+if(strlen($s)>0){
+	
+    $query="SELECT `mobile_no` from contact_dtl where `mobile_no` LIKE '%". $s ."%'";
+    $res=mysql_query($query);
+ 
+  if(mysql_num_rows($res)>0){
+	$i=0;
+   while($row2=mysql_fetch_array($res)){
+		$a[$i] = $row2['mobile_no'];
+		$i++;
+    }
+   }
+   echo json_encode($a);
+}
 ?>
 				

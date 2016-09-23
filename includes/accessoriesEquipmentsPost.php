@@ -56,7 +56,23 @@
 		
 	}
 	
-	
+	if(isset($_POST['showCtgSerach']))
+	{	
+		$ctg1 = showCtgdrpSearch($conn);
+		?>
+		
+		<option select="select" value = "">Select the Category </option>
+		<?php
+		$showctgCntSearch = count($ctg1);	
+		 for($i=0;$i<$showctgCntSearch;$i++)
+		 {
+		?>
+			<option  value = "<?php echo $ctg1[$i]['cat_id'];?>"> <?php echo $ctg1[$i]['cat_name']?> </option>
+						
+		 <?php	
+		}
+		
+	}
 	if(isset($_POST['search']))
 	{	
 		$s2 = '';$s3 = '';

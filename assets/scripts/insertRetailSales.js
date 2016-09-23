@@ -369,3 +369,59 @@ function showtax()
 		}
 		
 		showtax();
+		
+		
+		
+$('#datetimepicker1').on('changeDate',function(selected){
+	var t1;
+	$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'show' : 1
+					
+				},
+				success : function(r)
+				{
+					t1=r.retail_sales_day;
+				//	alert(t1);
+					
+				}
+				
+			});
+	var end_date=$('#datetimepicker2').data('datetimepicker');
+	start_date = new Date(selected.date);
+    start_date.setDate(start_date.getDate()+parseInt(t1));
+	end_date.setDate(start_date);
+   
+	
+});
+
+
+
+$('#txtmobno').keyup(function(){
+	
+    var txtmobno = $('#txtmobno').val();
+	
+    $.ajax({
+      type: 'POST',
+      dataType:'json',
+      url: './includes/retailSalesPost.php',
+      data: { 
+	  txtmobno: txtmobno
+	  }
+	  
+    })
+    .done(function(msg) {
+	 console.log(msg);
+       $('#txtmobno').autocomplete({
+    source: msg
+           
+    });
+    //console.log(msg[4]);
+     //$('#output').html(msg[5]);
+       // $('#total_values').html(msg[2]);
+    });
+});
+ 

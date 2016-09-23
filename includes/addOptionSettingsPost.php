@@ -22,9 +22,13 @@
 		insOptionResEqu($conn,$_POST['txtres_equ']);	
 	}
 	
+	if(isset($_POST['saveAutoSetDate']))
+	{		
+		insOptionAutoSetDate($conn,$_POST['txtAutoSet']);	
+	}
 	if(isset($_POST['show']))
 	{	
-		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce` from setting ");
+		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day` from setting ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

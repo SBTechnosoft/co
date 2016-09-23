@@ -1342,7 +1342,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertRetailSales.js"></script> 
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
-					
+					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 					<script>
 						$("#search_btn").click(function(){
 						$("#search_form").toggle();
@@ -2053,14 +2053,21 @@
 						   
 						   $.fn.datetimepicker.defaults = {
 								//  maskInput: true,           // disables the text input mask
-								  pickDate: true,            // disables the date picker
-								  pickTime: true       // disables de time picker							  
+								  pickDate: true, // disables the date picker
+								  							 
+								  pickTime: true     // disables de time picker
+																	  
 								};
 						   
 						   $(function() 
 						   {
 							  $('#datetimepicker1').datetimepicker({
-								language: 'pt-BR'
+								   changeMonth: true,
+								    
+									minViewMode: "months",
+									language: 'tr',
+									format: 'dd M yyyy HH:mm PP',	
+									
 							  });
 							   $('#datetimepicker2').datetimepicker({
 								language: 'pt-BR'

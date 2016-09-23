@@ -757,7 +757,7 @@ if(isset($setting) && !empty($setting))
 					?>">
             <a href="<?php echo HTTP_SERVER.'index.php?url=CON';?>">
                 <i class="icon-home"></i>
-                <span class="title">ContactList</span>
+                <span class="title">Client Master</span>
                 <span class="selected"></span>
             </a>
         </li>

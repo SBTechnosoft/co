@@ -38,6 +38,16 @@
                         <div class="row-fluid">
                             <div class="span8 booking-search">
                                 <form action="#">
+								<div class="clearfix margin-bottom-10">
+										<div class="pull-left margin-right-20 ">
+											<div class="input-icon input-append">
+												<label> Company Name: </label>
+											</div>
+											<select name="drpcomp" id="drpcomp" class="medium m-wrap">								
+								</select>
+										</div>
+										
+								</div>
 									<div class="clearfix margin-bottom-10">
 										<div class="pull-left margin-right-20 ">
 											<div class="input-icon input-append">
@@ -91,6 +101,7 @@
                                     <tr>
                                         
                                         <th> Sr.No. </th>
+										 <th> Company Name </th>
                                         <th> Label</th>
                                         <th> Prefix/Postfix</th>
                                         <th>Start At</th>

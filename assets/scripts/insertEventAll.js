@@ -19,6 +19,7 @@
 			var txtworkmob     =   $('#txtworkmob').val();
 			var txthmmob    =   $('#txthmmob').val();
 			var txtmob    =   $('#txtmob').val();
+			var txtaddress    =   $('#txtaddress').val();
 			var txtfromdt =	  $('#txtfromdt').val();
 			
 			var txttodt = 	$('#txttodt').val();
@@ -341,7 +342,7 @@
 					'txtworkmob'  : txtworkmob,
 					'txthmmob'   : txthmmob,
 					'txtmob'  : txtmob,
-					
+					'txtaddress'  : txtaddress,
 					'txtfpno'  :txtfpno,
 					'txtbillno' : txtbillno,
 					
@@ -411,7 +412,7 @@
 						$('#txtworkmob').val('');
 						$('#txthmmob').val('');
 						$('#txtmob').val('');
-						
+						$('#txtaddress').val('');
 						$('#txtfpno').val('');
 						$('#txtbillno').val('');
 						
@@ -454,6 +455,7 @@
 			var txtworkmob     =   $('#txtworkmob').val();
 			var txthmmob    =   $('#txthmmob').val();
 			var txtmob    =   $('#txtmob').val();
+			var txtaddress    =   $('#txtaddress').val();
 			var txtfromdt =	  $('#txtfromdt').val();
 			
 			var txttodt = 	$('#txttodt').val();
@@ -761,7 +763,7 @@
 					'txtworkmob'  : txtworkmob,
 					'txthmmob'   : txthmmob,
 					'txtmob'  : txtmob,
-					
+					'txtaddress'  : txtaddress,
 					'txtfpno'  :txtfpno,
 					'txtbillno' : txtbillno,			
 						
@@ -828,7 +830,7 @@
 						$('#txtworkmob').val('');
 						$('#txthmmob').val('');
 						$('#txtmob').val('');
-						
+						$('#txtaddress').val('');
 						$('#txtfpno').val('');
 						$('#txtbillno').val('');
 						

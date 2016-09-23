@@ -114,16 +114,7 @@
 					<a id="updays" name="updays" class="btn btn-default"> Save</a>
 				</div>				
 			</div>
-			<div class="control-group">
-				<label class="control-label">Retail Sales</label>
-				<div class="controls" id="updefault">
-					<select id="txtrtl" name="txtrtl" >						
-						<option value="Enable"> Enable</option>
-						<option selected value="Disable"> Disable</option>						
-					</select>						
-					<a id="updrtl" name="updrtl" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
-				</div>				
-			</div>
+			
 			<div class="control-group">
 				<label class="control-label">Resource/Equipment </label>
 				<div class="controls" id="updefault">
@@ -135,8 +126,23 @@
 					<a id="updres_equ" name="updres_equ" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
 				</div>				
 			</div>
-			
-			
+			<div class="control-group">
+				<label class="control-label">Retail Sales</label>
+				<div class="controls" id="updefault">
+					<select id="txtrtl" name="txtrtl" >						
+						<option value="Enable"> Enable</option>
+						<option selected value="Disable"> Disable</option>						
+					</select>						
+					<a id="updrtl" name="updrtl" class="btn btn-default" style="margin-bottom:10px;">Save</a>
+				</div>				
+			</div>
+			<div class="control-group">
+				<label class="control-label">Auto Set Delivery Date After</label>
+				<div class="controls" id="updefault">
+						<input id="txtAutoSet" class="m-wrap medium" type="text" name="txtAutoSet" placeholder="Days">				
+					<a id="updAutoSet" name="updAutoSet" class="btn btn-default" style="margin-bottom:10px;">Save</a>
+				</div>				
+			</div>
            
         </div>
         <!--end tabbable-->
