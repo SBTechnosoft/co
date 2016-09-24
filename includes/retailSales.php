@@ -158,6 +158,10 @@
 									<div class="clearfix margin-bottom-10">
 										<label for="txtdisc">Discount </label>
 										<div class="input-icon left">
+											<select name="txttypedis" id="txttypedis" class="discountres"> 
+												<option value="Flat">Flat</option>
+												<option value="Percentage">Percentage</option>
+											</select>
 											<input type="text" id="txtdisc" name="txtdisc" class="m-wrap" />
 										</div>
 									</div>
