@@ -1,118 +1,189 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
-			
-	
 	if(isset($_POST['caluculate']))
 	{	
-		
 		$txmode =  $_POST['taxmode'];		
 		$txrt = $_POST['stax'];
 		$vtrt =  $_POST['vat'];
+		$txttypedis =  $_POST['txttypedis'];
 		$dic =  $_POST['disc'];
 		$clcharge =  $_POST['clientcharge'];
-		
 		$txticomgrp = $_POST['txticomgrp'];
 		$ptxtiamt = $_POST['ptxtiamt'];
-		
 		$cnt = count($txticomgrp);
 		
 		if($txmode == 'Yes')
 		{
-			$tax = 0;
-			$vat = 0;
-			for($i=0;$i<$cnt;$i++)
+			if($txttypedis == 'Flat')
 			{
-				
-				if($txticomgrp[$i] == 'Services')
+				$tax = 0;
+				$vat = 0;
+				for($i=0;$i<$cnt;$i++)
 				{
-					$tax += round(($ptxtiamt[$i]*$txrt)/100);
+					if($txticomgrp[$i] == 'Services')
+					{
+						$tax += round(($ptxtiamt[$i]*$txrt)/100);
+					}
+					else
+					{
+						$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+					}
 				}
-				else
-				{
-					$vat += round(($ptxtiamt[$i] * $vtrt)/100);
-				}
-				
+				$totamt = round($clcharge - $dic ) + $tax + $vat ;
+?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />														
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+<?php						
 			}
-			//echo $tax."<br>";
-			//echo $vat."<br>";
+			else
+			{
+				$tax = 0;
+				$vat = 0;
+				for($i=0;$i<$cnt;$i++)
+				{
+					if($txticomgrp[$i] == 'Services')
+					{
+						$tax += round(($ptxtiamt[$i]*$txrt)/100);
+					}
+					else
+					{
+						$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+					}
+				}
+				$per=$clcharge*($dic/100);
+				$totamt = round($clcharge - $per ) + $tax + $vat ;
 			
-			$totamt = round($clcharge - $dic ) + $tax + $vat ;
-			//echo $totamt."<br>";
-			?>
+?>
 			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
 			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
-			<?php						
+			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />	
+<?php
+			}
 		}
 		else
 		{
-			$totamt = round($clcharge - $dic )  ;
-			?>
+			if($txttypedis == 'Flat')
+			{
+				$totamt = round($clcharge - $dic )  ;
+?>
 			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
 			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
 			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
-			
-			<?php
+<?php
+			}
+			else
+			{
+				$per=$clcharge*($disc/100);
+				$totamt = round($clcharge - $per )  ;
+?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />	
+<?php
+			}
 		}
-		
-		
 	}
+
 	if(isset($_POST['CalDiscount']))
 	{	
-		
 		$txmode =  $_POST['taxmode'];		
 		$txrt = $_POST['stax'];
 		$vtrt =  $_POST['vat'];
+		$txttypedis =  $_POST['txttypedis'];
 		$dic =  $_POST['disc'];
 		$clcharge =  $_POST['clientcharge'];
-		
 		$txticomgrp = $_POST['txticomgrp'];
 		$ptxtiamt = $_POST['ptxtiamt'];
-		
 		$cnt = count($txticomgrp);
-		
 		if($txmode == 'Yes')
 		{
-			$tax = 0;
-			$vat = 0;
-			for($i=0;$i<$cnt;$i++)
+			if($txttypedis== 'Flat')
+			{
+					
+				$tax = 0;
+				$vat = 0;
+				for($i=0;$i<$cnt;$i++)
+				{
+					
+					if($txticomgrp[$i] == 'Services')
+					{
+						$tax += round(($ptxtiamt[$i]*$txrt)/100);
+					}
+					else
+					{
+						$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+					}
+					
+				}			
+			
+				$totamt = round($clcharge - $dic ) + $tax + $vat ;
+				?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+				<?php						
+			}
+			else
 			{
 				
-				if($txticomgrp[$i] == 'Services')
+				$tax = 0;
+				$vat = 0;
+				for($i=0;$i<$cnt;$i++)
 				{
-					$tax += round(($ptxtiamt[$i]*$txrt)/100);
-				}
-				else
-				{
-					$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+					
+					if($txticomgrp[$i] == 'Services')
+					{
+						$tax += round(($ptxtiamt[$i]*$txrt)/100);
+					}
+					else
+					{
+						$vat += round(($ptxtiamt[$i] * $vtrt)/100);
+					}
+					
 				}
 				
+				
+				$per=$clcharge*($dic/100);
+				$totamt = round($clcharge - $per ) + $tax + $vat ;
+				?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />	
+				<?php
 			}
-			//echo $tax."<br>";
-			//echo $vat."<br>";
-			
-			$totamt = round($clcharge - $dic ) + $tax + $vat ;
-			//echo $totamt."<br>";
-			?>
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "<?php echo $tax; ?>" readonly />	
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "<?php echo $vat; ?>" readonly />																	
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
-			<?php						
 		}
 		else
 		{
-			$totamt = round($clcharge - $dic )  ;
-			?>
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
-			<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+			if($txttypedis== 'Flat')
+			{
+				$totamt = round($clcharge - $dic )  ;
+				?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+				
+				<?php
+			}
+			else
+			{
+					$per=$clcharge*($dic/100);
+					$totamt = round($clcharge - $per )  ;
 			
-			<?php
+			
+				?>
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txttaxamt"  type="text"  id="txttaxamt" name="txttaxamt" value = "0" readonly />	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtvatamt"  type="text"  id="txtvatamt" name="txtvatamt" value = "0" readonly />																	
+				<input style="border: 1px solid #ccc;" class="medium m-wrap txtgtotamt" type="text"  id="txtgtotamt" name="txtgtotamt" value = "<?php echo $totamt; ?>" readonly />											
+				
+				<?php
+			}
 		}
 		
-		
 	}
+		
+	
 	
 	if(isset($_POST['showPrdCtg']))
 	{	
@@ -165,23 +236,25 @@
 		exit();	
 		
 	}
-	$s = $_POST['txtmobno'];
-	$a=array();
-	if(strlen($s)>0)
-	{
-		
-		$query="SELECT `mobile_no` from contact_dtl where `mobile_no` LIKE '%". $s ."%'";
-	   $res=mysql_query($query);
-	 
-	  if(mysql_num_rows($res)>0){
-		$i=0;
-	   while($row2=mysql_fetch_array($res)){
-			$a[$i] = $row2['mobile_no'];
-			$i++;
+	if(isset($_POST['txtmobno']))
+	{	
+		$s = $_POST['txtmobno'];
+		$a=array();
+		if(strlen($s)>0)
+		{
+			
+			$query="SELECT `mobile_no` from contact_dtl where `mobile_no` LIKE '%". $s ."%'";
+		   $res=mysql_query($query);
+		 
+		  if(mysql_num_rows($res)>0){
+			$i=0;
+		   while($row2=mysql_fetch_array($res)){
+				$a[$i] = $row2['mobile_no'];
+				$i++;
+			}
+		   }
+		   echo json_encode($a);
 		}
-	   }
-	   echo json_encode($a);
 	}
-	
 ?>
 				

@@ -65,7 +65,7 @@
                                         <label> Client Address </label>
                                         <div class="input-icon left">
 											<textarea rows="2" cols="115"  class="txtremark" id="txtadd" name="txtadd">
-+											</textarea>	
+											</textarea>	
                                         </div>
                                     </div>									
                                     <div class="clearfix margin-bottom-10">
@@ -156,6 +156,10 @@
 									<div class="clearfix margin-bottom-10">
 										<label for="txtdisc">Discount </label>
 										<div class="input-icon left">
+											<select name="txttypedis" id="txttypedis" class="discountres"> 
+												<option value="Flat">Flat</option>
+												<option value="Percentage">Percentage</option>
+											</select>
 											<input type="text" id="txtdisc" name="txtdisc" class="m-wrap" />
 										</div>
 									</div>

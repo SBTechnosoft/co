@@ -3,6 +3,7 @@ $("#taxmode").on("change", function()
 			var taxmode    =   $('#taxmode').val();
 			var stax = $('#txtstax').val();
 			var vat = $('#txtvat').val();
+			var txttypedis = $('#txttypedis').val();
 			var disc = $('#txtdisc').val();
 			var clientcharge = $('#txtcharge').val();			
 			var txticomgrp = [];
@@ -23,6 +24,7 @@ $("#taxmode").on("change", function()
 					 'taxmode' : taxmode,
 					 'stax' : stax,
 					 'vat' : vat,
+					 'txttypedis' : txttypedis,
 					 'disc' : disc,
 					 'clientcharge' : clientcharge,
 					'txticomgrp' : txticomgrp,
@@ -44,6 +46,7 @@ $("#txtdisc").on("focusout", function()
 			var stax = $('#txtstax').val();
 			var vat = $('#txtvat').val();
 			var disc = $('#txtdisc').val();
+			var txttypedis = $('#txttypedis').val();
 			var clientcharge = $('#txtcharge').val();			
 			var txticomgrp = [];
 			$.each($('.txticomgrp'), function(){            
@@ -63,6 +66,7 @@ $("#txtdisc").on("focusout", function()
 					 'taxmode' : taxmode,
 					 'stax' : stax,
 					 'vat' : vat,
+					 'txttypedis' : txttypedis,
 					 'disc' : disc,
 					 'clientcharge' : clientcharge,
 					'txticomgrp' : txticomgrp,
