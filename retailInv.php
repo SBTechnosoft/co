@@ -78,11 +78,11 @@ $inm = date_format($date,"Ymd");
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
 		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
 
-		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['drpcmpnm'],
+		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
-		
+		insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
 		
 		
 		//select last record inserted from event_mst	

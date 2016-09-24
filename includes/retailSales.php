@@ -40,7 +40,15 @@
                         <div class="row-fluid">
                             <div class="span12 booking-search">
                                 <form name="fm1" id="fm1" method="post" action="retailInv.php" target="_blank">
-                                    <div class="clearfix margin-bottom-10">
+                                    
+									<div class="clearfix margin-bottom-10">
+                                        <label> Contact No. </label>
+                                        <div class="input-icon left ui-widget">
+										
+											<input class="m-wrap" type="text" id="txtmobno" name="txtmobno" placeholder="Display Mobile number">
+                                        </div>
+                                    </div>	
+									<div class="clearfix margin-bottom-10">
                                         <label> Name </label>
                                         <div class="input-icon left">
                                             <input class="m-wrap" type="text" id="txtprdnm" name="txtprdnm" placeholder="Client name">
@@ -54,9 +62,10 @@
 										</div>
 									</div>
 									<div class="clearfix margin-bottom-10">
-                                        <label> Contact No. </label>
+                                        <label> Client Address </label>
                                         <div class="input-icon left">
-											<input class="m-wrap" type="text" id="txtmobno" name="txtmobno" placeholder="Display Mobile number">
+											<textarea rows="2" cols="115"  class="txtremark" id="txtadd" name="txtadd">
++											</textarea>	
                                         </div>
                                     </div>									
                                     <div class="clearfix margin-bottom-10">

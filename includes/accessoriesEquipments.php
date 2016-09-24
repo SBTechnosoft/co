@@ -49,7 +49,7 @@
                 </div></br>
 				<div class="chat-form">
 					<div class="input-cont">
-						<select type="text" id="txtcatid" name="txtcatid"  class=" large m-wrap" >
+						<select type="text" id="txtcatSearch" name="txtcatSearch"  class=" large m-wrap" >
 						
 						</select>
 					</div>

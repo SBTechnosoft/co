@@ -133,6 +133,9 @@
 				case 'INSE':
 					$url = FILENAME_INVOICESETTING;
 					break;
+				case 'CON':
+					$url = FILENAME_CONTACTLIST;
+					break;
 				case 'NCAL':
 					$url = NFILENAME_CALENDAR;
 					break;

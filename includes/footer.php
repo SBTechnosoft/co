@@ -1133,6 +1133,61 @@
 						});
 						
 					</script>
+					
+				<?php
+ 					break;
+					case 'CON':
+				?>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+					<!--[if lt IE 9]>					 
+					<![endif]-->   
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+					<!-- END CORE PLUGINS -->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertContactList.js"></script> 
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showContactList.js"></script> 
+					
+					<script>
+						$("#search_btn").click(function(){
+						$("#search_form").toggle();
+						});
+						$("#add_btn").click(function(){
+						$("#add_form").toggle();
+						});
+					</script>
+					<script>
+						$(document).ready(function(){
+							$('[data-toggle="tooltip"]').tooltip();   
+						});
+					</script>
+					
+					<!-- END JAVASCRIPTS -->
+					
+					<!-- BEGIN PAGE LEVEL PLUGINS -->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
+					<!-- END PAGE LEVEL PLUGINS -->
+					<!-- BEGIN PAGE LEVEL SCRIPTS -->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>	
+					<script>
+						jQuery(document).ready(function() {    
+						   App.init();
+						   Search.init();
+						   TableAdvanced.init();
+						   //TableAdvanced.init();
+
+						});
+						
+					</script>
 				<?php
 					break;
 				case 'OCTG':
@@ -1370,7 +1425,7 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertRetailSales.js"></script> 
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
-					
+					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 					<script>
 						$("#search_btn").click(function(){
 						$("#search_form").toggle();
@@ -2224,7 +2279,11 @@
 						   $(function() 
 						   {
 							  $('#datetimepicker1').datetimepicker({
-								language: 'pt-BR'
+								changeMonth: true,
+								    
+									minViewMode: "months",
+									language: 'tr',
+									format: 'dd M yyyy HH:mm PP',	
 							  });
 							   $('#datetimepicker2').datetimepicker({
 								language: 'pt-BR'

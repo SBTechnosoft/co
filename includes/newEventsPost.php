@@ -56,7 +56,7 @@ if(isset($_POST['showtax']))
 			$pay_status = "Paid";
 		}
 		
-		insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtfromdt'],$_POST['txttodt'],$_POST['status'],$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$_POST['tax'],$_POST['gtot'],$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2']);
+		insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtaddress'],$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtfromdt'],$_POST['txttodt'],$_POST['status'],$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$_POST['tax'],$_POST['gtot'],$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2']);
 		
 		//select last rescord inserted from event_mst
 		//select event_id from event_mst order by event_id desc limit 1;
@@ -64,7 +64,7 @@ if(isset($_POST['showtax']))
 		$getdata = mysql_query("SELECT `event_id` FROM event_mst order by `event_id` desc  limit 1");
 		$row = mysql_fetch_array($getdata);
 		$eventlast_id = $row['event_id'];
-		
+		insertContactEvent($conn,$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtmob'],$_POST['txtworkmob'],$_POST['txtclemail'],$_POST['txtaddress']);
 		//now inserted in event_places_id
 		
 		//here is loop coming for multiple record//
@@ -202,12 +202,12 @@ if(isset($_POST['showtax']))
 		$date2=date_create($_POST['txttodt']);
 		$edate =  date_format($date2,DATE_ISO8601);
 		
-		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
+		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtaddress'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
 		//now inserted in event_places_id
-		
+		insertContactEvent($conn,$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtmob'],$_POST['txtworkmob'],$_POST['txtclemail'],$_POST['txtaddress']);
 		
 		//here is loop coming for multiple record//
 		foreach($hdn_ary as $key => $value)

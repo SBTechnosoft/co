@@ -2442,14 +2442,17 @@
 		{
 		 ?>	
 			
-			<div class="Row" >			
-				<div class="Cell"><?php echo $paidtrn[$a]['payment_date'];?></div>
+			<div class="Row" >
+					<?php $from_date=date_create($paidtrn[$a]['payment_date']);
+					$pnm= date_format($from_date,dateFormat);  
+					?>		
+				<div class="Cell"><?php echo $pnm;?></div>
 				<div class="Cell"><?php echo $paidtrn[$a]['event_id'];?></div>
-				<div class="Cell"><?php if($paidtrn[$a]['client_paid_amt']== ''){echo "null";}else{echo $paidtrn[$a]['client_paid_amt']; } ?></div>
-				<div class="Cell"><?php if($paidtrn[$a]['payment_mode']== ''){echo "null";}else{echo $paidtrn[$a]['payment_mode']; } ?></div>
-				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "null";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
-				<div class="Cell"><?php  if($paidtrn[$a]['bank_name']== ''){echo "null";}else{echo $paidtrn[$a]['bank_name']; } ?></div>
-				<div class="Cell"><?php if($paidtrn[$a]['trn_type']== ''){echo "null";}else{echo $paidtrn[$a]['trn_type']; }  ?></div>
+				<div class="Cell"><?php if($paidtrn[$a]['client_paid_amt']== ''){echo "";}else{echo $paidtrn[$a]['client_paid_amt']; } ?></div>
+				<div class="Cell"><?php if($paidtrn[$a]['payment_mode']== ''){echo "";}else{echo $paidtrn[$a]['payment_mode']; } ?></div>
+				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
+				<div class="Cell"><?php  if($paidtrn[$a]['bank_name']== ''){echo "";}else{echo $paidtrn[$a]['bank_name']; } ?></div>
+				<div class="Cell"><?php if($paidtrn[$a]['trn_type']== ''){echo "";}else{echo $paidtrn[$a]['trn_type']; }  ?></div>
 				
 			</div>
             

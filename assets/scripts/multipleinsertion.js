@@ -45,12 +45,7 @@ $(document).on('click','#add',function()
 		'			<div class="input-icon input-append">'+
 		'				<label for="txtfunction">Function: </label>'+
 		'			</div>'+
-		'			<select name="hdn['+i+'][txtfunction]" id="hdn['+i+'][txtfunction]" class="medium m-wrap">'+
-		'				<option value="Mahendi">Mahendi</option>'+
-		'				<option value="Sangit">Sangit</option>'+
-		'				<option value="Reception">Reception</option>'+
-		'				<option value="Ghruhshanti">Ghruhshanti</option>'+
-		'			</select>'+
+		'		<input class="venuetxt m-wrap" id="hdn['+i+'][txtfunction]" name="hdn['+i+'][txtfunction]" type="text" />'+
 		'		</div>'+
 		'		<div class="pull-left margin-right-10">'+
 		'			<div class="input-icon input-append">'+

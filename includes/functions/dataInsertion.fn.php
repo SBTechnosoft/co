@@ -18,6 +18,22 @@ function insCatg($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 			echo 0;
 			exit;
 		}
+function insContactList($conn,$clientName,$companyName,$mobileNo,$workNo,$emailId,$address)
+{
+	$sqlInsCatg = "INSERT INTO contact_dtl (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."')"; 
+	$resultArray = $conn->insertQuery($sqlInsCatg);
+}
+function insertContactEvent($conn,$clientName1,$companyName1,$mobileNo1,$workNo1,$emailId1,$address1)
+{
+	$sqlInsCnt = "INSERT INTO contact_dtl (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName1."','".$companyName1."','".$mobileNo1."','".$workNo1."','".$emailId1."','".$address1."','Event')"; 
+	$resultArray = $conn->insertQuery($sqlInsCnt);
+}
+
+function insertContactRetail($conn,$clientName2,$mobileNo2,$address2)
+{
+	$sqlInsCnt = "INSERT INTO contact_dtl (`client_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName2."','".$mobileNo2."','','','".$address2."','Retail')"; 
+	$resultArray = $conn->insertQuery($sqlInsCnt);
+}
 function insResource($conn,$txtresnm,$txtresprice,$cur_date)
 		{
 			$sqlInsCatg = "INSERT INTO `resource_mst` (`res_name`,`amount`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtresnm."','".$txtresprice."','".$cur_date."','','')"; 
@@ -172,10 +188,10 @@ function updEqup($conn,$txteqpnm,$txtserno,$txtmodel,$txtcateqp,$txtpurdate,$txt
 			exit;
 		}			
 
-function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2,$txtvcharge)
+function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtclemail,$txtworkmob,$txthmmob,$txtmob,$address,$txtcharge,$txtpaid,$fromdate,$todate,$status,$cur_date,$pay_status,$drpcmpnm,$taxmode,$txtbillno,$txtfpno,$tax,$gtot,$txtstax,$txtdisc,$cat_id,$sub_cat_id,$txtjobpart1,$txtjobpart2,$txtvcharge)
 		{
-			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`,`order_type`) 
-			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtvcharge."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."','Event')"; 
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`client_address`,`status`,`from_date`,`to_date`,`payment_status`,`client_charges`,`client_paid_amt`,`vendor_charges`,`client_discount_amt`,`created_at`,`deleted_at`,`updated_at`,`cmp_id`,`taxmode`,`bill_no`,`fp_no`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cat_id`,`sub_cat_id`,`job_data_1`,`job_data_2`,`order_type`) 
+			VALUES ('".$txteventnm."','".$txteventds."','".$txtclnm."','".$txtclcmp."','".$txtclemail."','".$txtworkmob."','".$txthmmob."','".$txtmob."','".$address."','".$status."','".$fromdate."','".$todate."','".$pay_status."','".$txtcharge."','".$txtpaid."','".$txtvcharge."','".$txtdisc."','".$cur_date."','','','".$drpcmpnm."','".$taxmode."','".$txtbillno."','".$txtfpno."','".$tax."','".$gtot."','".$txtstax."','".$cat_id."','".$sub_cat_id."','".$txtjobpart1."','".$txtjobpart2."','Event')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
@@ -183,10 +199,10 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 function insertRetailAdd($conn,$txtprdnm,$txtmobno,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
 							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat)
 		{
-			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`cmp_id`,`client_charges`,
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,
 			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
 			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`) 
-			VALUES ('".$txtprdnm."','".$txtmobno."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
+			VALUES ('".$txtprdnm."','".$txtmobno."','".$txtAdd."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
 			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
@@ -367,6 +383,16 @@ function insOptionRtl($conn,$txtrtl)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionAutoSetDate($conn,$txtAutoSetDate)
+		{
+			
+			$sqlinsEqu = "INSERT INTO `setting` (`id`,`retail_sales_day`) VALUES (1,'".$txtAutoSetDate."')ON DUPLICATE KEY UPDATE `retail_sales_day` = `retail_sales_day`"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu);
+			
+			$sqlinsEqu1 = "UPDATE `setting` SET `retail_sales_day` = '".$txtAutoSetDate."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsEqu1);
+			
+		}
 function insOptionResEqu($conn,$txtres_equ)
 		{
 			
@@ -517,9 +543,9 @@ function updEventCalId($conn,$eid,$cal_id)
 			
 			//exit;
 		}
-function insInvoicSet($conn,$txtlabel,$type,$start_at,$cur_date)
+function insInvoicSet($conn,$drpcomp,$txtlabel,$type,$start_at,$cur_date)
 		{
-			$sqlInsCatg = "INSERT INTO `invoice_config` (`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$txtlabel."','".$type."','".$start_at."','','".$cur_date."')"; 
+			$sqlInsCatg = "INSERT INTO `invoice_config` (`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$txtlabel."','".$type."','".$start_at."','','".$cur_date."')"; 
 			$resultArray = $conn->insertQuery($sqlInsCatg);
 			echo 0;
 			exit;

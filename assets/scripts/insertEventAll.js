@@ -20,7 +20,7 @@
 			
 			var txttodt = 	$('#txttodt').val();
 			var drpcmpnm = $('#drpcmpnm').val();
-
+			var txtaddress    =   $('#txtaddress').val();
 			var txtjobdata1 = $('#txtjobdata1').val();
 			var txtjobdata2 = $('#txtjobdata2').val();
 			
@@ -338,7 +338,7 @@
 					'txtworkmob'  : txtworkmob,
 					'txthmmob'   : txthmmob,
 					'txtmob'  : txtmob,
-					
+					'txtaddress'  : txtaddress,
 					'txtfpno'  :txtfpno,
 					'txtbillno' : txtbillno,
 					
@@ -411,7 +411,7 @@
 						
 						$('#txtfpno').val('');
 						$('#txtbillno').val('');
-						
+						$('#txtaddress').val('');
 						$('#txtfromdt').val('');
 						$('#txttodt').val('');
 						
@@ -452,7 +452,7 @@
 			var txthmmob    =   $('#txthmmob').val();
 			var txtmob    =   $('#txtmob').val();
 			var txtfromdt =	  $('#txtfromdt').val();
-			
+			var txtaddress    =   $('#txtaddress').val();
 			var txttodt = 	$('#txttodt').val();
 			var drpcmpnm = $('#drpcmpnm').val();
 			
@@ -762,7 +762,7 @@
 					
 					'txtcharge' : txtcharge,
 					'txtpaid'   : txtpaid,
-					
+					'txtaddress'  : txtaddress,
 					'paymentMode': paymentMode,
 					'txtbanknm' : txtbanknm,
 					'txtchkno'  : txtchkno,
@@ -829,7 +829,7 @@
 						
 						$('#txtjobdata1').val();
 						$('#txtjobdata2').val();
-						
+						$('#txtaddress').val('');
 						$('#txtvenue').val('');
 						$('#txthall').val('');
 						$('#txtldmark').val('');

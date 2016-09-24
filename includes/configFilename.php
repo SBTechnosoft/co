@@ -84,7 +84,7 @@ define('FILENAME_VERTICALTIMELINE',DIR_WS_INCLUDES.'verticalTimeline.php');
 define('FILENAME_ADDCOMPANY',DIR_WS_INCLUDES.'addCompanySettings.php');
 define('FILENAME_ADDOPTION',DIR_WS_INCLUDES.'addOptionSettings.php');
 define('FILENAME_INVOICE',DIR_WS_INCLUDES.'invoiceList.php');
-
+define('FILENAME_CONTACTLIST',DIR_WS_INCLUDES.'contactList.php');
 define('FILENAME_TRANSACTION',DIR_WS_INCLUDES.'transactionDetail.php');
 
 define('FILENAME_CATEGORYNEW',DIR_WS_INCLUDES.'categoryNew.php');

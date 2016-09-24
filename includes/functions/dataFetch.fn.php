@@ -16,6 +16,11 @@ function showCatg($conn)
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `eq_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function showContactList($conn)
+	{
+		$sqlShowCatg = "select `client_id`,`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type` from  `contact_dtl`"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showCatgNew($conn)
 	{
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `new_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
@@ -46,6 +51,11 @@ function showProductAdd($conn)
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showCtgdrp($conn)
+	{
+		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
+		return $conn->getResultArray($sqlShowCatgdrp);		
+	}
+function showCtgdrpSearch($conn)
 	{
 		$sqlShowCatgdrp = "select `cat_id`,`cat_name` from  `eq_category_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` "; 
 		return $conn->getResultArray($sqlShowCatgdrp);		
@@ -167,6 +177,12 @@ function searchEventDetail($conn,$where)
 function searchAccesDetail($conn,$where)
 {
 	$sqlEventDetail = "select `as_id`,`as_name`,`eq_id`,cm.cat_name,`remark` from  `eq_accessories` ea inner join eq_category_mst cm on cm.cat_id = eq_id  where" .$where." and ea.deleted_at = '0000-00-00 00:00:00'   "; 
+	return $conn->getResultArray($sqlEventDetail);	
+	
+}
+function searchCoantactDetail($conn,$where)
+{
+	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address` from where" .$where.""; 
 	return $conn->getResultArray($sqlEventDetail);	
 	
 }
@@ -799,8 +815,13 @@ function showcntRes($conn,$event_id)
 	}
 function showInvoiceSet($conn)
 	{
-		$sqlShowCatg = "select `invoice_conf_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
+		$sqlShowCatg = "select `invoice_conf_id`,`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
 		return $conn->getResultArray($sqlShowCatg);		
+	}
+function showCmpDrp1($conn,$id)
+	{
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' and `cmp_id`='".$id."'"; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 function showInvoiceId($conn)
 	{
