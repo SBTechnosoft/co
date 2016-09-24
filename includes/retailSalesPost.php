@@ -51,7 +51,7 @@ if(isset($_POST['caluculate']))
 						$vat += round(($ptxtiamt[$i] * $vtrt)/100);
 					}
 				}
-				$per=$clcharge*($disc/100);
+				$per=$clcharge*($dic/100);
 				$totamt = round($clcharge - $per ) + $tax + $vat ;
 			
 ?>
