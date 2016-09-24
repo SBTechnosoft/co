@@ -17,8 +17,6 @@
 	{	
 		$ETrnDtl = showTransDtl ($conn);
 		
-		// print_r($ETrnDtl);
-		// exit;
 		
 		$VTrnDtl = showTransVend($conn);
 		

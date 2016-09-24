@@ -114,11 +114,7 @@ function showStaffDrp($conn)
 		$sqlShowStaffDrp = "select `staff_id`,`first_name` from  staff_mst where `staff_type`= 'staff'  or `staff_type`= 'admin' "; 
 		return $conn->getResultArray($sqlShowStaffDrp);	
 	}
-function showEventDetail($conn)
-	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
-		return $conn->getResultArray($sqlEventDetail);	
-   }
+
 function showEventDetailInv($conn,$eid)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where event_id = '".$eid."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 

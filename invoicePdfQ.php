@@ -10,29 +10,7 @@
 	require(DIR_WS_MPDF.'mpdf.php');
 	require('html_dom/simple_html_dom.php');
 	
-	// $vennue = showVennue($conn,15);	
-	// $cnt = count($vennue);	
-	// for($m=0;$m<$cnt;$m++)
-	// {
-		
-		// echo "date=".$vennue[$m]['event_date'];
-		// echo "vennue=".$vennue[$m]['event_vennue'];
-		// echo "hall=".$vennue[$m]['event_date'];
-		// echo "land-mark=".$vennue[$m]['event_date']."<br>";
-		
-		// $new = $vennue [$m]['event_places_id'];
-		
-		// $vndtl = showVnDtl($conn,$new);
-		// $subcnt = count($vndtl);
-		// for($n=0;$n<$subcnt;$n++)
-		// {
-		// echo $vndtl[$n]['eq_name'];
-		// echo $vndtl[$n]['qty'];
-		// echo $vndtl[$n]['amount']."<br>";
-		// }
-	// }
 	
-	// exit;
 	
 	$date=date_create($_POST['txtfdate']);
 	$inm = date_format($date,"Ymd");
@@ -305,7 +283,20 @@
 				$html = $htmlData;
 					
 				$html1= $CondBody[0]['template_body'];
+				
+				foreach($input as $key => $value)
+				{
+					foreach($value as $key =>$value)
+					{						
+						$html1 = str_replace('['.$key.']', $value, $html1);
+					}
+				}							
+				foreach($output as $key => $value)
+				{											
+					$html1 = str_replace('['.$key.']', $value, $html1);
 					
+				}
+				
 				$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 				 
 				$mpdf->SetDisplayMode('fullpage');

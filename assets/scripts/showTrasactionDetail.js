@@ -110,9 +110,6 @@ $('.event_type').on('change',function()
 				
 			});
 	});
-
-
-
 function showTrnDtl()
 		{		
 			$.ajax({
