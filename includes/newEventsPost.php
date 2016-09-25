@@ -125,8 +125,18 @@ if(isset($_POST['showtax']))
 			}
 			else
 			{
-				$tax =  round(((($_POST['txtcharge']) - ($_POST['txtdisc'])) * ($_POST['txtstax']))/100);				
-				$gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) ) + ($tax) ;
+				if($_POST['txttypedis'] == 'Flat')
+				{
+					$percentage=$_POST['txtdisc'];
+					$tax =  round(((($_POST['txtcharge']) - $percentage) * ($_POST['txtstax']))/100);	
+					$gtot =  (($_POST['txtcharge']) - ($percentage)) + ($tax) ;
+				}
+				else
+				{
+					$percentage=$_POST['txtcharge']*($_POST['txtdisc']/100);
+					$tax =  round(((($_POST['txtcharge']) - $percentage) * ($_POST['txtstax']))/100);				
+					$gtot =  (($_POST['txtcharge']) - ($percentage)) + ($tax) ;
+				}
 			}
 		}
 		else
@@ -136,10 +146,17 @@ if(isset($_POST['showtax']))
 				$gtot = ($_POST['txtcharge']);
 			}
 			else
-			{
-				
-				$gtot =  (($_POST['txtcharge']) - ($_POST['txtdisc']) )  ;
-				
+			{				
+				if($_POST['txttypedis'] == 'Flat')
+				{
+					$percentage=$_POST['txtdisc'];
+					$gtot =  (($_POST['txtcharge']) - $percentage);	
+				}
+				else
+				{
+				$percentage=$_POST['txtcharge']*($_POST['txtdisc']/100);
+				$gtot =  (($_POST['txtcharge']) - $percentage);
+				}				
 			}
 				
 			
@@ -202,7 +219,7 @@ if(isset($_POST['showtax']))
 		$date2=date_create($_POST['txttodt']);
 		$edate =  date_format($date2,DATE_ISO8601);
 		
-		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtaddress'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$_POST['txtdisc'],$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
+		@insertEventAdd($conn,$_POST['txteventnm'],$_POST['txteventds'],$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtclemail'],$_POST['txtworkmob'],$_POST['txthmmob'],$_POST['txtmob'],$_POST['txtaddress'],$_POST['txtcharge'],$_POST['txtpaid'],$nfrdt,$ntrdt,$estatus,$cur_date,$pay_status,$_POST['drpcmpnm'],$_POST['taxmode'],$_POST['txtbillno'],$_POST['txtfpno'],$tax,$gtot,$_POST['txtstax'],$percentage,$_POST['drpctgnm'],$_POST['drpsubctgnm'],$_POST['txtjobdata1'],$_POST['txtjobdata2'],$vtot);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;

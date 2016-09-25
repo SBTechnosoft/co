@@ -997,6 +997,10 @@ if(isset($setting1) && !empty($setting1))
 							<div class="input-icon input-append">
 								<label for="txtpaid">Discount: </label>
 							</div>
+							<select name="txttypedis" id="txttypedis" class="discountres"> 
+								<option value="Flat">Flat</option>
+								<option value="Percentage">Percentage</option>
+							</select>
 							<input type="text" id="txtdisc" name="txtdisc" class="large m-wrap discount1" />							
 						</div>
 						
