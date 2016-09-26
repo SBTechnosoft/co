@@ -123,13 +123,12 @@
 				},
 				success : function(re)
 				{
-					if(re == 1)
-					 {
+					
 						alert ("Inserted Data Successfully");
 								
-					 }
+					 
 					showdata();
-					window.location.reload();
+					//window.location.reload();
 					
 				}				
 			});	
