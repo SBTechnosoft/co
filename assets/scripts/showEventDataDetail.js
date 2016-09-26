@@ -867,13 +867,19 @@
 					$('#txteid').val(e.event_id);
 					$('#txtfpdfeid').val(e.event_id);
 					$('#txtfpdffromdt').val(e.from_date);
-
+					
 					$('#txtenm').val(e.event_name);
 					$('#txtfdate').val(e.from_date);
 					$('#txtcnm').val(e.client_name);
 					$('#txtcmpnm').val(e.client_cmp);
 					$('#txtcharge1').val(e.total_amt);
 					$('#txtpaid').val(e.client_paid_amt);
+					$('#client_charges').val(e.client_charges);
+					$('#st').val(e.service_tax_amt);
+					var cli_charge=$('#client_charges').val();
+					var cli_disc=$('#txtcldesc').val();
+					var disamt=cli_charge-cli_disc;
+					$('#disamt').val(disamt);
 					//end of invoice data
 					
 					//this for update
@@ -886,7 +892,6 @@
 					$('#txamtn').val(e.service_tax_amt);
 					$('#totammtn').val(e.total_amt);
 					//end
-					
 					//call to display for evend places detail..
 					//its old//showeventplaces();
 					newshoweventplaces();

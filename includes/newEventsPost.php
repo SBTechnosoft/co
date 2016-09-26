@@ -655,7 +655,7 @@ if(isset($_POST['showtax']))
 		$data = showEqupDrp($conn);
 		$showEqpCnt = count($data);
 	?>
-		<option select= "selected" value=""> Select the Equipment </option>
+		<option select= "selected" value="0"> Select the Equipment </option>
 	<?php
 		for($i=0;$i<$showEqpCnt;$i++)		
 		{
@@ -669,7 +669,7 @@ if(isset($_POST['showtax']))
 		$data = showStaffDrp($conn);
 		$showStaffCnt = count($data);
 	?>
-		<option select= "selected" value=""> Select Staff </option>
+		<option select= "selected" value="0"> Select Staff </option>
 	<?php
 		for($i=0;$i<$showStaffCnt;$i++)
 		{
@@ -683,7 +683,7 @@ if(isset($_POST['showtax']))
 		$data = showVendName($conn);
 		$showVendCnt = count($data);
 		?>
-			<option select= "selected" value=""> Select Vendor </option>
+			<option select= "selected" value="0"> Select Vendor </option>
 		<?php
 		
 		for($i=0;$i<$showVendCnt;$i++)

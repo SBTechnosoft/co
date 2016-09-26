@@ -753,7 +753,7 @@ if(isset($setting1) && !empty($setting1))
 									
 									<select name="drpnewresvend" id="drpnewresvend" class="medium m-wrap drpnewresvend"> 											
 									</select>
-									<input class="small m-wrap txtresvprice" type="text"  id="txtresvprice" name="txtresvprice" value="" />
+									<input class="small m-wrap txtresvprice" type="text"  id="txtresvprice" name="txtresvprice" value="0" />
 									
 									
 									
@@ -812,8 +812,8 @@ if(isset($setting1) && !empty($setting1))
 								<div>		
 									<select  name="drpneweqp" id="drpneweqp" class="medium m-wrap drpneweqp">											
 									</select>									
-									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value=""  />
-									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="" />
+									<input class="small m-wrap txtlength"  type="text"  id="txtlength" name="txtlength" value="0"  />
+									<input class="small m-wrap txtwidth"  type="text"  id="txtwidth" name="txtwidth" value="0" />
 									
 								</div>
 								<div>
@@ -856,7 +856,7 @@ if(isset($setting1) && !empty($setting1))
 									</select>
 									<select name="drpnewvend" id="drpnewvend" class="medium m-wrap drpnewvend"> 											
 									</select>
-									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="" />
+									<input class="small m-wrap txtvprice" type="text"  id="txtvprice" name="txtvprice" value="0" />
 									
 									
 								</div>

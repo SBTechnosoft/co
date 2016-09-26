@@ -2279,11 +2279,7 @@
 						   $(function() 
 						   {
 							  $('#datetimepicker1').datetimepicker({
-								changeMonth: true,
-								    
-									minViewMode: "months",
-									language: 'tr',
-									format: 'dd M yyyy HH:mm PP',	
+								language: 'pt-BR'	
 							  });
 							   $('#datetimepicker2').datetimepicker({
 								language: 'pt-BR'

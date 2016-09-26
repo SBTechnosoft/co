@@ -758,7 +758,7 @@ $(document).on('click','#add',function()
 			
 			'<select name="drpnewresvend'+i+'" id="drpnewresvend'+i+'" class="medium m-wrap drpnewresvend'+i+'"> '+											
 			'</select>'+
-			'<input class="small m-wrap txtresvprice'+i+'" type="text"  id="txtresvprice'+i+'" name="txtresvprice'+i+'" value="" />'+
+			'<input class="small m-wrap txtresvprice'+i+'" type="text"  id="txtresvprice'+i+'" name="txtresvprice'+i+'" value="0" />'+
 									
 			
 			
@@ -814,8 +814,8 @@ $(document).on('click','#add',function()
 		'		<select  name="drpneweqp'+i+'" id="drpneweqp'+i+'" class="medium m-wrap drpneweqp'+i+'">'+											
 		'		</select>'+		
 		
-		'		<input class="small m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value=""  />'+
-		'		<input class="small m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="" />'+									
+		'		<input class="small m-wrap txtlength"  type="text"  id="txtlength'+i+'" name="txtlength'+i+'" value="0"  />'+
+		'		<input class="small m-wrap txtwidth"  type="text"  id="txtwidth'+i+'" name="txtwidth'+i+'" value="0" />'+									
 		'	</div>'+
 		'	<div>'+
 		'		<input style="width:120px;" type="text"  value="Rate" readonly />'+									
@@ -842,7 +842,7 @@ $(document).on('click','#add',function()
 		'		<select name="drpnewvend'+i+'" id="drpnewvend'+i+'" class="medium m-wrap drpnewvend'+i+'">'+ 											
 		'		</select>'+
 		
-		'		<input class="small m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="" />	'+								
+		'		<input class="small m-wrap txtvprice'+i+'" type="text"  id="txtvprice'+i+'" name="txtvprice'+i+'" value="0" />	'+								
 		'	</div>	'+							
 		'	<div>'+
 		'		<input  type="text"  value="Remark" readonly />'+
@@ -1330,12 +1330,12 @@ $(document).on('click','#add',function()
 			'$(\'.txtrate'+i+'\').val(\'\');'+
 			'$(\'.drpqty'+i+'\').val(\'1\');'+
 			'$(\'.txtamt'+i+'\').val(\'\');'+
-			'$(\'.drpnewstf'+i+'\').val(\'\');'+
-			'$(\'.drpnewvend'+i+'\').val(\'\');'+
-			'$(\'.txtvprice'+i+'\').val(\'\');'+
+			'$(\'.drpnewstf'+i+'\').val(\'0\');'+
+			'$(\'.drpnewvend'+i+'\').val(\'0\');'+
+			'$(\'.txtvprice'+i+'\').val(\'0\');'+
 			'$(\'.txtremark'+i+'\').val(\'\');'+
-			'$(\'.txtlength'+i+'\').val(\'\');'+
-			'$(\'.txtwidth'+i+'\').val(\'\');'+
+			'$(\'.txtlength'+i+'\').val(\'0\');'+
+			'$(\'.txtwidth'+i+'\').val(\'0\');'+
 			'$(\'#labelLT'+i+'\').hide();'+
 			'$(\'#labelWT'+i+'\').hide();'+
 			'$(\'#txtlength'+i+'\').hide();'+
@@ -1467,7 +1467,7 @@ $(document).on('click','#add',function()
 			'$(\'.txtresamt'+i+'\').val(\'\');'+
 			
 			'$(\'.drpnewresvend'+i+'\').val(\'\');'+
-			'$(\'.txtresvprice'+i+'\').val(\'\');'+
+			'$(\'.txtresvprice'+i+'\').val(\'0\');'+
 			'$(\'.txtresremark'+i+'\').val(\'\');'+
 			
 			

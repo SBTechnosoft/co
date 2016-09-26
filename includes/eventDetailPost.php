@@ -1008,7 +1008,10 @@
 									<th> Resource</th>													
 									<th> Rate</th>
 									<th> Qty</th>
-									<th> Amount</th>													
+									<th> Amount</th>
+									<th> Vendor</th>
+									<th> Price</th>
+									<th> Remark</th>
 									<th> Action</th>													 
 								</tr>
 							</thead>
@@ -2405,11 +2408,11 @@
 			<div class="Row" >			
 				<div class="Cell"><?php echo $vendpaidtrn[$a]['event_id'];?></div>
 				<div class="Cell"><?php echo $vendpaidtrn[$a]['event_vendor_id'];?></div>
-				<div class="Cell"><?php if($vendpaidtrn[$a]['payment_date']== ''){echo "null";}else{echo $vendpaidtrn[$a]['payment_date']; } ?></div>
-				<div class="Cell"><?php if($vendpaidtrn[$a]['payment_mode']== ''){echo "null";}else{echo $vendpaidtrn[$a]['payment_mode']; } ?></div>
-				<div class="Cell"><?php if($vendpaidtrn[$a]['vend_bank_name']== ''){echo "null";}else{echo $vendpaidtrn[$a]['vend_bank_name']; } ?></div>
-				<div class="Cell"><?php if($vendpaidtrn[$a]['vend_cheque_no']== ''){echo "null";}else{echo $vendpaidtrn[$a]['vend_cheque_no']; } ?></div>
-				<div class="Cell"><?php  if($vendpaidtrn[$a]['paid_amt']== ''){echo "null";}else{echo $vendpaidtrn[$a]['paid_amt']; } ?></div>
+				<div class="Cell"><?php if($vendpaidtrn[$a]['payment_date']== ''){echo "";}else{echo $vendpaidtrn[$a]['payment_date']; } ?></div>
+				<div class="Cell"><?php if($vendpaidtrn[$a]['payment_mode']== ''){echo "";}else{echo $vendpaidtrn[$a]['payment_mode']; } ?></div>
+				<div class="Cell"><?php if($vendpaidtrn[$a]['vend_bank_name']== ''){echo "";}else{echo $vendpaidtrn[$a]['vend_bank_name']; } ?></div>
+				<div class="Cell"><?php if($vendpaidtrn[$a]['vend_cheque_no']== ''){echo "";}else{echo $vendpaidtrn[$a]['vend_cheque_no']; } ?></div>
+				<div class="Cell"><?php  if($vendpaidtrn[$a]['paid_amt']== ''){echo "";}else{echo $vendpaidtrn[$a]['paid_amt']; } ?></div>
 				
 				
 			</div>
@@ -2429,7 +2432,8 @@
 		
 		<div class="Heading">
 			<div class="Cell">Payment Date</div>
-			<div class="Cell">Event Id</div>
+			<div class="Cell">Event Name</div>
+			<div class="Cell">Client Name</div>
 			<div class="Cell">Amount</div>
 			<div class="Cell">Payment Mode</div>
 			<div class="Cell">Bank Name</div>
@@ -2447,7 +2451,8 @@
 					$pnm= date_format($from_date,dateFormat);  
 					?>		
 				<div class="Cell"><?php echo $pnm;?></div>
-				<div class="Cell"><?php echo $paidtrn[$a]['event_id'];?></div>
+				<div class="Cell"><?php echo $paidtrn[$a]['event_name'];?></div>
+				<div class="Cell"><?php echo $paidtrn[$a]['client_name'];?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['client_paid_amt']== ''){echo "";}else{echo $paidtrn[$a]['client_paid_amt']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['payment_mode']== ''){echo "";}else{echo $paidtrn[$a]['payment_mode']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>

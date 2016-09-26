@@ -426,7 +426,7 @@ function showvendpaidtrn($conn,$eveid)
 		$sqlShowEVend = "select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id,evd.vend_id,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,evd.event_vendor_id 
 							from vendor_mst vm 
 							inner join event_vendor_dtl evd on vm.vend_id = evd.vend_id 
-							where evd.event_id = '".$eveid."' order by vm.vendor_name "; 
+							where evd.event_id = '".$eveid."' and evd.vend_id <> 0 order by vm.vendor_name "; 
 		return $conn->getResultArray($sqlShowEVend);		
 	}
 function showEventVendpaidtrn($conn,$txtevent_vend_id,$txtvend_evnt_id)
@@ -453,26 +453,28 @@ function showTotPaidTrnVd($conn,$vetpid)
 function showVendorPaidAmt($conn)
 	{
 		$sqlVdPaidAmt = 
-		"select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,
+		"select evd.event_vendor_id,evd.event_id,em.event_name,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,
 		evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
 		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as vtotal,
 		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as ptotal
 		from event_vendor_dtl evd 
 		inner join vendor_mst vm on evd.vend_id = vm.vend_id 
-		where evd.vendor_paid_status = 'paid' " ;
+	   right join event_mst em on em.event_id = evd.event_id
+		where evd.vendor_paid_status = 'paid' and evd.vend_id <> 0 " ;
 		return $conn->getResultArray($sqlVdPaidAmt);	
 	}
 function showVendorUnPaidAmt($conn)
 	{
 		$sqlVdUnPaidAmt = 
-		"select evd.event_vendor_id,evd.event_id,evd.event_places_id,evd.vend_id,vm.vendor_name,
+		"select evd.event_vendor_id,evd.event_id,em.event_name,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,
 		vm.vendor_cmp,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
 		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as vtotal,
 		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as ptotal,
 		(select sum(evd.vendor_charges - evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as rtotal
 		from event_vendor_dtl evd 
 		inner join vendor_mst vm on evd.vend_id = vm.vend_id 
-		where evd.vendor_paid_status = 'unpaid'"; 
+		right join event_mst em on em.event_id = evd.event_id
+		where evd.vendor_paid_status = 'unpaid' and evd.vend_id <> 0 "; 
 		return $conn->getResultArray($sqlVdUnPaidAmt);	
 	}
 function showCmp($conn)

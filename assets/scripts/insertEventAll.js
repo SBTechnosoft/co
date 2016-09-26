@@ -1380,12 +1380,12 @@
 			$('.txtrate').val('');
 			$('.drpqty').val('1');
 			$('.txtamt').val('');
-			$('.drpnewstf').val('');
-			$('.drpnewvend').val('');
-			$('.txtvprice').val('');
+			$('.drpnewstf').val('0');
+			$('.drpnewvend').val('0');
+			$('.txtvprice').val('0');
 			$('.txtremark').val('');
-			$('.txtlength').val('');
-			$('.txtwidth').val('');
+			$('.txtlength').val('0');
+			$('.txtwidth').val('0');
 			$('#labelLT').hide();
 			$('#labelWT').hide();
 			$('#txtlength').hide();
@@ -1511,7 +1511,7 @@
 			$('.txtresamt').val('');
 			
 			$('.drpnewresvend').val('');
-			$('.txtresvprice').val('');
+			$('.txtresvprice').val('0');
 			$('.txtresremark').val('');
 			
 			
