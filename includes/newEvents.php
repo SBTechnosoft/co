@@ -210,7 +210,7 @@ if(isset($setting1) && !empty($setting1))
 								<label for="txtfromdt">From Date: </label>
 							</div>
 								<div id="datetimepicker1" class="input-append date">
-									<input  class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
+									<input  data-format="dd-MM-yyyy" class="large m-wrap textArea" value="<?php echo Date1;?>" type="text" name="txtfromdt" id="txtfromdt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>
@@ -221,7 +221,7 @@ if(isset($setting1) && !empty($setting1))
 								<label for="txttodt" class="well1">To Date: </label> 
 							</div>
 								<div id="datetimepicker2" class="input-append date">
-									<input data-format="dd/MM/yyyy HH:mm PP" class="large m-wrap textArea" value="<?php echo Date;?>" type="text" name="txttodt" id="txttodt"></input>
+									<input data-format="dd-MM-yyyy" class="large m-wrap textArea" value="<?php echo Date1;?>" type="text" name="txttodt" id="txttodt"></input>
 									<span class="add-on">
 									  <i class="icon-time" class="icon-calendar"></i>
 									</span>

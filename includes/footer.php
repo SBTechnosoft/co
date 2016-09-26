@@ -2066,7 +2066,7 @@
 								    
 									minViewMode: "months",
 									language: 'tr',
-									format: 'dd M yyyy HH:mm PP',	
+									format: 'dd-MM-yyyy',	
 									
 							  });
 							   $('#datetimepicker2').datetimepicker({

@@ -66,7 +66,7 @@
 						</td>
 						<?php 
 							$from_date=date_create($ETrnDtl[$i]['from_date']);
-							$inm1= date_format($from_date,dateFormat);  
+							$inm1= date_format($from_date,dateForm);  
 						?>
 						<td>					
 							<?php echo $inm1;?>
@@ -178,7 +178,7 @@
 						</td>
 						<?php 
 							$from_date=date_create($ETrnDtl[$i]['from_date']);
-							$inm1= date_format($from_date,dateFormat);  
+							$inm1= date_format($from_date,dateForm);  
 						?>
 						<td>					
 							<?php echo $inm1;?>
