@@ -21,6 +21,9 @@
 								<i class="icon-angle-right"></i>
 							</li>
 							<li><a href="#">Dashboard</a></li>
+							<li class="pull-right no-text-shadow">
+								<span style="margin-right:20px;"> <?php echo date("d-M-Y"); ?></span>
+							</li>
 							<!--li class="pull-right no-text-shadow">
 								<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 									<i class="icon-calendar"></i>
@@ -49,7 +52,7 @@
 										Enquiry
 									</div>
 								</div>
-								<a class="more" href="<?php echo HTTP_SERVER.'index.php?url=NEW';?>">
+								<a class="more" href="<?php echo HTTP_SERVER.'index.php?url=ENR';?>">
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
