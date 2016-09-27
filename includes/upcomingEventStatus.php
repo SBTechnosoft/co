@@ -32,7 +32,7 @@
                     <a href="#">Upcoming</a>
                 </li>
 				
-                <li class="pull-right no-text-shadow">
+                <!--li class="pull-right no-text-shadow">
                     <div id="dashboard-report-range" 
 						class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" 
 						data-tablet="" data-desktop="tooltips" data-placement="top" 
@@ -41,7 +41,7 @@
                         <span></span>
                         <i class="icon-angle-down"></i>
                     </div>
-                </li>
+                </li-->
 				<li id="search_btn">
 					<button type="button" class="btn green" data-toggle="tooltip" title="Search">
 						<i class="icon-search m-icon-white"></i>
