@@ -2279,7 +2279,9 @@
 						   $(function() 
 						   {
 							  $('#datetimepicker1').datetimepicker({
-								language: 'pt-BR'	
+								minViewMode: "months",
+								language: 'tr',
+								format: 'dd-MM-yyyy',	
 							  });
 							   $('#datetimepicker2').datetimepicker({
 								language: 'pt-BR'

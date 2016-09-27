@@ -232,7 +232,7 @@
 				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
 				<td> <?php// echo $data[$i]['bill_no'];?> </td-->				
 				<?php $from_date=date_create($data[$i]['from_date']);
-						$inm1= date_format($from_date,dateFormat);  
+						$inm1= date_format($from_date,dateForm);  
 				?>
 				<td><?php echo $inm1;?></td>
 				
@@ -333,7 +333,7 @@
 
 				
 				<?php $from_date=date_create($data[$i]['from_date']);
-						$inm1= date_format($from_date,dateFormat);  
+						$inm1= date_format($from_date,dateForm);  
 				?>
 				<td><?php echo $inm1;?></td>
 				
