@@ -91,7 +91,14 @@
 						</select>
 					</div>
 				</div>
-				
+				<div class="clearfix margin-bottom-10">
+					<label> Company Name:  </label>
+					<div class="input-icon left">
+						<select id="showComapny">							
+								
+						</select>
+					</div>
+				</div>
 				<div class="clearfix margin-bottom-10">
 					<label for="txtfromdt">From Date </label>
 					<div class="input-icon left">

@@ -106,9 +106,9 @@ function insEnqFrm($conn,$txtclnm,$txtcladd,$txtclmail,$txtclmob,$txtclenqdate,$
 			echo 0;
 			exit;
 		}
-function insVend($conn,$txtvendnm,$drp_cat_vend,$txtvendcmp,$cur_date)
+function insVend($conn,$txtvendnm,$txtemail,$txtcontact,$drp_cat_vend,$txtvendcmp,$cur_date)
 		{
-			$sqlInsVend = "INSERT INTO `vendor_mst` (`vendor_name`,`cat_id`,`vendor_cmp`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtvendnm."','".$drp_cat_vend."','".$txtvendcmp."','".$cur_date."','','')"; 
+			$sqlInsVend = "INSERT INTO `vendor_mst` (`vendor_name`,`vendor_email`,`vendor_contact`,`cat_id`,`vendor_cmp`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtvendnm."','".$txtemail."','".$txtcontact."','".$drp_cat_vend."','".$txtvendcmp."','".$cur_date."','','')"; 
 			$resultArray = $conn->insertQuery($sqlInsVend);
 			echo 0;
 			exit;
@@ -298,10 +298,19 @@ function updatePaidAmtVendP($conn,$vueid,$total_amt_paid)
 		}
 function insCmpNew($conn,$txtcmpnm,$txtcmprno,$txtbnrnm,$cur_date)
 		{
-			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."','".$cur_date."','','')"; 
+			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_default`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."',0,'".$cur_date."','','')"; 
 			$resultArray = $conn->insertQuery($sqlInsCmp);
 			//echo 1;
 			//exit;
+		}
+function Updatecmpdisplay($conn,$id,$value,$cur_date)
+		{
+			$sqlupdampFrm = "Update `company_mst` set `cmp_default`='".$value."',updated_at='".$cur_date."' where `cmp_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqlupdampFrm);
+			
+			$sqlupdampFrm1 = "Update `company_mst` set `cmp_default`=0,updated_at='".$cur_date."' where `cmp_id` != '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqlupdampFrm1);
+			
 		}
 function updEnqFrm($conn,$id)
 		{
@@ -467,10 +476,10 @@ function upd_vend_dtl($conn,$evd_id,$vend_paid_amt)
 			$resultArray = $conn->insertQuery($sqlUpd_vend_dtl);
 			
 		}
-function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf,$showvnd)
+function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf,$showvnd,$cmpid)
 		{
-			$sqlinsertExpence = "INSERT INTO `expence_dtl` (`exp_cat_id`,`event_id`,`exp_date`,`amount`,`exp_by`,`exp_by_vendor`) 
-			VALUES ('".$showexpctg."','".$showevent."','".$txtfromdt."','".$txtamt."','".$showstf."','".$showvnd."')"; 
+			$sqlinsertExpence = "INSERT INTO `expence_dtl` (`exp_cat_id`,`event_id`,`exp_date`,`amount`,`exp_by`,`exp_by_vendor`,`cmp_id`) 
+			VALUES ('".$showexpctg."','".$showevent."','".$txtfromdt."','".$txtamt."','".$showstf."','".$showvnd."','".$cmpid."')"; 
 			$resultArray = $conn->insertQuery($sqlinsertExpence);
 			//echo 4;
 			//exit;

@@ -173,6 +173,42 @@ function showEvent()
 			});
 		}
 		showEvent();
+$('#showevent').on('change',function() 
+		{	
+		var value1 = $(this).val();		
+			$.ajax({
+				url : './includes/transactionDetailPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showCompany' : 1,
+					'value1': value1,
+				},
+				success : function(r)
+				{
+					$('#showComapny').html(r);					
+				}
+				
+			});
+		});
+	function showcompany()
+		{		
+			$.ajax({
+				url : './includes/transactionDetailPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showCompany' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#showComapny').html(r);					
+				}
+				
+			});
+		}
+		showcompany();	
 		
 function showStaffDrp()
 		{		
@@ -220,7 +256,7 @@ $('#addexp').click(function()
 		var txtamt    =   $('#txtamt').val();
 		var showstf     =   $('#showstf').val();
 		var showvnd     =   $('#showvnd').val();
-		
+		var cmpid     =   $('#showComapny').val();
 		// alert(showexpctg);
 		// alert(showevent);
 		// alert(txtfromdt);
@@ -242,6 +278,7 @@ $('#addexp').click(function()
 				'txtamt'   : txtamt,
 				'showstf'  : showstf,
 				'showvnd'  : showvnd,
+				'cmpid'  : cmpid,
 				
 			},
 			success : function(re)
@@ -255,7 +292,7 @@ $('#addexp').click(function()
 					$('#txtfromdt').val('');
 					$('#txtamt').val('');
 					$('#showstf').val('');
-					
+					$('#showComapny').val('');
 					
 					
 					$("#msgs").html("<i class=\"fa fa-check-circle-o\"> Successfully Updated!!");

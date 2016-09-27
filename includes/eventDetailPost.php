@@ -739,12 +739,8 @@
 						<div class="input-icon input-append">
 							<label for="txtfunction">Function: </label>
 						</div>
-						<select name="txtfunction<?php echo $i; ?>" id="txtfunction<?php echo $i; ?>" class="medium m-wrap">
-											<option  value="Mahendi">Mahendi</option>
-											<option value="Sangit">Sangit</option>
-											<option value="Reception">Reception</option>
-											<option value="Ghruhshanti">Ghruhshanti</option>
-										</select>
+						<input class="medium m-wrap" id="txtfunction<?php echo $i; ?>" name="txtfunction<?php echo $i; ?>" type="text" value="<?php echo $edata[$i]['function'];?>" readonly />
+						
 					</div>
 					<div class="pull-left margin-right-10">
 						<label for="txtfromdate">From Date </label>

@@ -4,7 +4,7 @@
 	if(isset($_POST['saverecord']))
 	{		
 		$cur_date = date('Y-m-d H:i:s');
-		insVend($conn,$_POST['txtvendnm'],$_POST['drp_cat_vend'],$_POST['txtvendcmp'],$cur_date);	
+		insVend($conn,$_POST['txtvendnm'],$_POST['txtvendemail'],$_POST['txtContact'],$_POST['drp_cat_vend'],$_POST['txtvendcmp'],$cur_date);	
 	}
 	if(isset($_POST['delete']))
 	{	
@@ -55,6 +55,8 @@
 						}
 					?>
 				</td>
+				<td><?php echo ucfirst($data[$i]['vendor_email']);?></td>
+				<td><?php echo ucfirst($data[$i]['vendor_contact']);?></td>
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['vend_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>

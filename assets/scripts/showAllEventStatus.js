@@ -21,7 +21,28 @@
 		});
 //end
 
-
+$('#drpcmpnmdtl').on('change',function() 
+	{
+		var value = $(this).val();
+		// alert(value);
+		// return false;
+		
+		$.ajax({
+				url : './includes/allEventStatusPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'show' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#all_event').html(r);					
+				}
+				
+			});
+	});
 
 function showdata()
 		{		

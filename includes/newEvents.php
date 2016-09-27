@@ -166,13 +166,13 @@ if(isset($setting1) && !empty($setting1))
 						<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-20">
 								<div class="input-icon input-append">
-									<label for="txtmob">Mobile: </label>
+									<label for="txtmob" class="mob2">Mobile: </label>
 								</div>
 								<input type="text" id="txtmob" name="txtmob" class="large m-wrap mob1" /><font color="red">*</font>
 						   </div>
 							<div class="pull-right margin-right-10">
 								<div class="input-icon input-append">
-									<label for="txtworkmob">Work:</label>
+									<label for="txtworkmob" class="mob2">Work:</label>
 								</div>
 								<input type="text" id="txtworkmob" name="txtworkmob" class="large m-wrap mob1" placeholder="Eg; +919858784525"/>
 							</div>
@@ -180,13 +180,13 @@ if(isset($setting1) && !empty($setting1))
 						<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-10">
 								<div class="input-icon input-append">
-									<label for="txthmmob" class="well1">Home:</label>
+									<label for="txthmmob" class="mob2">Home:</label>
 								</div>
-								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap eid1" />
+								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap eid2" />
 							</div>
 							<div class="pull-right margin-right-10 ">
 								<div class="input-icon input-append">
-									<label for="txtclemail">Email ID: </label>
+									<label for="txtclemail" class="mob2">Email ID: </label>
 								</div>
 								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
 							</div>
@@ -987,6 +987,7 @@ if(isset($setting1) && !empty($setting1))
 								<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();' class="large m-wrap selectpay"> 
 									<option value="cash">Cash</option>
 									<option value="cheque">Cheque</option>
+									<option value="creditcard">Credit Card</option>
 								</select>
 							
 						</div>

@@ -98,7 +98,7 @@
 				</button>
             </form>
         </div>
-		
+		<select name="drpcmpnmdtl" id="drpcmpnmdtl" class="medium m-wrap"> </select></br>
         <!-- END PAGE TITLE & BREADCRUMB-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->

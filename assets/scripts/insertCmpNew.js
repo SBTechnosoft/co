@@ -5,7 +5,8 @@
 		$('#addcmp').click(function(){
 			var txtcmpnm    =   $('#txtcmpnm').val();
 			var txtcmprnno     =   $('#txtcmprnno').val();
-			var txtbnrnm     =   $('#txtbnrnm').val();		
+			var txtbnrnm     =   $('#txtbnrnm').val();	
+		
 			$.ajax({
 				url : './includes/addCompanySettingsPost.php',
 				type : 'POST',
@@ -15,6 +16,7 @@
 					'txtcmpnm'   : txtcmpnm,
 					'txtcmprnno'  : txtcmprnno,	
 					'txtbnrnm'  : txtbnrnm,
+				
 				},
 				success : function(re)
 				{
@@ -57,5 +59,25 @@
 			});
 			
 		});
-//end 	
+//end 
+$('body').delegate('.default','click',function(){
+			var id = $(this).data('id');
+			var value=1;
+			$.ajax({
+				url : 'includes/addCompanySettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'default'  : 1,
+					'id' 	: id,
+					'value':value					
+				},
+				success : function(d)
+				{
+					alert("Default Successfully");
+					//window.location.reload();
+				}
+				
+			});
 			
+		});

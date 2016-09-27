@@ -5,7 +5,7 @@
 	{
 		$frdt = $_POST['txtfromdt'];		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd']);
+		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd'],$_POST['cmpid']);
 		
 	}		
 	if(isset($_POST['delete']))
@@ -847,6 +847,36 @@
 			?>
 			<option  value="<?php echo $data[$i]['event_id'];?>"><?php echo $data[$i]['event_name'];?></option>
 			<?php
+		}
+	}
+	if(isset($_POST['showCompany']))
+	{
+		if(isset($_POST['value1']))
+		{
+			$data = showCmpanytran1($conn,$_POST['value1']);
+			$showcmp = count($data);
+		
+			for($i=0;$i<$showcmp;$i++)
+			{
+		?>
+			<option  value="<?php echo $data[$i]['cmp_id'];?>"><?php echo $data[$i]['cmp_name'];?></option>
+		<?php
+			}
+		}
+		
+		else
+		{
+			$data1 = showCmpanytran($conn);
+			$showcmp1 = count($data1);
+		?>
+			<option select="selected" value="">Select Comapany</option>
+		<?php
+			for($j=0;$j<$showcmp1;$j++)
+			{
+		?>
+			<option  value="<?php echo $data1[$j]['cmp_id'];?>"><?php echo $data1[$j]['cmp_name'];?></option>
+		<?php
+			}
 		}
 	}
 	if(isset($_POST['showStaffDrp']))

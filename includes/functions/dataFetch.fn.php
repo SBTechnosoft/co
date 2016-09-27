@@ -97,7 +97,7 @@ function showEnq($conn)
 	}
 function showVend($conn)
 	{
-		$sqlShowVend = "select `vend_id`,`vendor_name`,`vendor_cmp`,`cat_id` from  `vendor_mst` where `deleted_at` = '0000-00-00 00:00:00'  "; 
+		$sqlShowVend = "select `vend_id`,`vendor_name`,`vendor_email`,`vendor_contact`,`vendor_cmp`,`cat_id` from  `vendor_mst` where `deleted_at` = '0000-00-00 00:00:00'  "; 
 		return $conn->getResultArray($sqlShowVend);	
 	}
 function showStaff($conn)
@@ -241,12 +241,16 @@ function showNew($conn)
 		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
 	}
-function showAll($conn)
+function showAll($conn,$value)
 	{
-		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
+		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where cmp_id='".$value."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
 		return $conn->getResultArray($sqlEventAllStatus);	
 	}
-	
+	function showAll1($conn)
+	{
+		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
+		return $conn->getResultArray($sqlEventAllStatus);	
+	}
 function showUpDays($conn)
 	{
 		$sqlUpDays = "select `upcoming_days` from  `setting` "; 
@@ -478,15 +482,19 @@ function showVendorUnPaidAmt($conn)
 	}
 function showCmp($conn)
 	{
-		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no`,`banner_img` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_default` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
 		return $conn->getResultArray($sqlShowCmp);		
 	}	
 function showCmpDrp($conn)
 	{
-		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` ,`cmp_default` from  `company_mst` where `cmp_default`=1 and `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
-	
+	function showCmpDrp2($conn)
+	{
+		$sqlShowCmpDrp1 = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		return $conn->getResultArray($sqlShowCmpDrp1);		
+	}
 function login($conn,$userid,$userpass)
 	{
 		$sqlLogin = "select count(emp_id) as tot,`first_name`,`last_name` from  staff_mst where `emp_id` = '".$userid."' && `password` = '".$userpass."'  "; 
@@ -822,6 +830,17 @@ function showcntRes($conn,$event_id)
 	function showCmpDrp1($conn,$id)
 	{
 		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' and `cmp_id`='".$id."'"; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
+	}
+	function showCmpanytran($conn)
+	{
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00'"; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
+	}
+	
+	function showCmpanytran1($conn,$value)
+	{
+		$sqlShowCmpDrp = "select * from event_mst m,company_mst c where c.cmp_id=m.cmp_id and c.deleted_at = '0000-00-00 00:00:00' and m.event_id='".$value."'"; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 	/*

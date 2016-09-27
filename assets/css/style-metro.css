@@ -445,9 +445,15 @@ label.m-wrap {
 	   margin-left: 20px;
 }
 .eid1{
-	   margin-left: 28px;
+	   margin-left: 1px;
+}
+.eid2{
+	   margin-left: 5px;
 }
 .mob1{
+	   margin-left: 1px;
+}
+.mob2{
 	   margin-left: 36px;
 }
 .pqr

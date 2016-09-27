@@ -171,6 +171,7 @@
 											<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();'> 
 												<option value="cash">Cash</option>
 												<option value="cheque">Cheque</option>
+												<option value="creditcard">Credit Card</option>
 											</select>
 										</div>
 									</div>
