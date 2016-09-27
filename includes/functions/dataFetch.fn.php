@@ -132,7 +132,7 @@ function showEventDetailInv($conn,$eid)
 	}
 function showEventDetailInvD($conn,$eid)
 	{
-		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`event_ds` as 'OrderDesc',`client_name` as 'ClientName',
+		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`event_ds` as 'OrderDesc',`client_name` as 'ClientName',`client_address` as 'CLIENTADD',
 		`client_cmp` as 'Company',`client_email` as 'Email',`client_work_mob` as 'WorkMob',
 		`client_home_mob` as 'HomeMob',`client_mob` as 'Mobile',DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
@@ -144,7 +144,7 @@ function showEventDetailInvD($conn,$eid)
 	}
 function showEventDetailQuaD($conn,$eid)
 	{
-		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',
+		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`client_name` as 'ClientName',`client_address` as 'CLIENTADD',
 		`client_cmp` as 'Company',`client_email` as 'ClientMail',`client_work_mob` as 'Mobile',
 		`client_home_mob`,DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
 		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
