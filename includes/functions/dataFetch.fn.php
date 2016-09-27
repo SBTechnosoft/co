@@ -523,6 +523,7 @@ function showCntStatus($conn,$days)
 				(SELECT COUNT(*) FROM event_mst 
 				where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$days." DAY) and `status` != 'enquiry'  and `deleted_at` = '0000-00-00 00:00:00') as upcoming,
 				(select COUNT(*) from `event_mst` where  `to_date` < curdate() and `status` != 'enquiry' and `deleted_at` = '0000-00-00 00:00:00') as completed,
+				(select COUNT(*) from `event_mst` where  `status` = 'enquiry' and `deleted_at` = '0000-00-00 00:00:00') as enquiry,
 				(SELECT COUNT(`status`) FROM event_mst where status != 'enquiry' and  deleted_at = '0000-00-00 00:00:00'  ) as tot
 			FROM event_mst limit 1 "; 
 		return $conn->getResultArray($sqlCntStatus);		

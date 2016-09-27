@@ -27,7 +27,7 @@
 				$dataday = showUpDays($conn);
 				$data = showCntStatus($conn,$dataday[0]['upcoming_days']);
 				?>
-				<b><?php echo $data[0]['new1'];?></b>				
+				<b><?php echo $data[0]['enquiry'];?></b>				
 			<?php
 			}
 		if(isset($_POST['showUPCEventCnt']))

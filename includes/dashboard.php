@@ -46,7 +46,7 @@
 										
 									</div>
 									<div class="desc">                           
-										New Orders
+										Enquiry
 									</div>
 								</div>
 								<a class="more" href="<?php echo HTTP_SERVER.'index.php?url=NEW';?>">
@@ -54,7 +54,7 @@
 								</a>                 
 							</div>
 						</div>
-						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+						<!--div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat green">
 								<div class="visual">
 									<i class="icon-shopping-cart"></i>
@@ -67,7 +67,7 @@
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
-						</div>
+						</div-->
 						<div class="span3 responsive" data-tablet="span6  fix-offset" data-desktop="span3">
 							<div class="dashboard-stat purple">
 								<div class="visual">
@@ -82,7 +82,7 @@
 								</a>                 
 							</div>
 						</div>
-						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+						<!--div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat yellow">
 								<div class="visual">
 									<i class="icon-bullseye"></i>
@@ -95,7 +95,7 @@
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
-						</div>
+						</div-->
 					</div>
 					<!-- END DASHBOARD STATS -->
 					<div class="clearfix"></div>
