@@ -281,6 +281,30 @@ if(isset($setting) && !empty($setting))
 
         </li>
 	<?php } ?>	
+	
+		<?php 
+			if(isset($arr1) && !empty($arr1) && in_array("RES", $arr1))
+			{					
+		?>
+        <li class="
+					<?php 
+						if(isset($_GET['url']) && strtoupper($_GET['url']) == 'DLVB') 
+						{
+							echo " active ";
+						}
+						else
+						{
+							echo " ";
+						}
+					?>">
+            <a href="<?php echo HTTP_SERVER.'index.php?url=DLVB';?>">
+                <i class="fa fa-book"></i>
+                <span class="title">Deliverable</span>
+                <span class="arrow "></span>
+            </a>
+
+        </li>
+	<?php } ?>
 			
 			<?php 
 			if(isset($arr1) && !empty($arr1) && in_array("Category", $arr1))
@@ -741,9 +765,14 @@ if(isset($setting) && !empty($setting))
 					<?php
 				}
 			?>
+			
+			
+			
+			
             </ul>
         </li>
 			<?php } ?>
+		
 		<li class="start
 					<?php 
 						if(isset($_GET['url']) && strtoupper($_GET['url']) == 'CON') 
@@ -761,6 +790,7 @@ if(isset($setting) && !empty($setting))
                 <span class="selected"></span>
             </a>
         </li>
+			
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>

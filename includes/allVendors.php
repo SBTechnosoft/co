@@ -62,6 +62,18 @@
                     </div>
                 </div>
                 <br />
+				<div class="chat-form">
+                    <div class="input-cont">
+                       <input type="text" id="txtvendemail" name="txtvendemail" placeholder="Eg; Name of the Email Id" class="m-wrap" />
+                    </div>
+                </div>
+                <br />
+				<div class="chat-form">
+                    <div class="input-cont">
+                        <input type="text" id="txtContact" name="txtContact" placeholder="Eg; Enter Contact No" class="m-wrap" />
+                    </div>
+                </div>
+               <br />
                 <div class="chat-form">
                     <div class="input-cont">
                         <select class="medium m-wrap" id="drp_cat_vend" name="drp_cat_vend">
@@ -108,6 +120,8 @@
                                         <th>Name</th>
 										<th> Company Name </th>
                                         <th> Category </th>
+										<th> Email Id </th>
+										<th> Contact No </th>
 										 <th> Action </th>
                                     </tr>
                                 </thead>

@@ -886,6 +886,7 @@
 				
 			});
 		}
+		
 		function shownewVend()
 		{		
 			$.ajax({
@@ -900,6 +901,7 @@
 				{
 					$('#drpnewvend').html(r);	
 					$('#drpnewresvend').html(r);
+					$('#drpdelvvend').html(r);
 				}
 				
 			});
@@ -922,11 +924,29 @@
 				
 			});
 		}
+		function showDelv()
+		{		
+			$.ajax({
+				url : './includes/newEventsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'shownewDelv' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#drp_delvrble').html(r);	
+					
+				}
+				
+			});
+		}
 		shownewEqp();
 		shownewStf();
 		shownewVend();
 		shownewRes();
-		
+		showDelv();
 		
 		
 		$("#drpneweqp").on("change", function()
@@ -950,6 +970,30 @@
 					$('#txttype').val(r.price_type);
 					$('#txtassdtl').val(r.as_name);					
 					checkType();
+				}
+				
+			});
+		});
+		
+		$("#drp_delvrble").on("change", function()
+		{
+			var delv_id    =   $('#drp_delvrble').val();
+			
+			$.ajax({
+				url : './includes/newEventsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showdelvprice' : 1,
+					'delv_id' : delv_id,
+					
+				},
+				success : function(r)
+				{
+					$('#txtdelvrate').val(r.amount);
+					$('#txtdelvamt').val(r.amount);					
+					$('#txtdelvtype').val(r.delv_type);									
+					checkTypeDelv();
 				}
 				
 			});
@@ -1056,7 +1100,106 @@
 			
 			
 		}
+		$('#labelLTD').hide();
+		$('#labelWTD').hide();
+		$('#txtlengthd').hide();
+		$('#txtwidthd').hide();
 		
+		
+		
+		$("#drpdelvqty").on("focusout", function()
+		{
+			var qty    =   $('#drpdelvqty').val();
+			if(qty == "")
+			{
+				alert("Plz Insert The qty!!!");
+				return false;
+			}
+			if(qty != "")
+			{
+				if(isNaN(qty))
+				{
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(qty == 0)
+				{
+					alert("Can't GIve qty 0");
+					return false;
+				}
+			}
+			var txtramt = $('#txtdelvrate').val();			
+			var tot = parseInt(qty) * parseInt(txtramt);			
+			$('#txtdelvamt').val(tot);			
+		});
+		
+		$("#txtdelvrate").on("focusout", function()
+		{
+					
+			var ratechg = $('#txtdelvrate').val();		
+			if(ratechg == "")
+			{
+				alert("Plz Insert The Rate!!!");
+				return false;
+			}
+			if(ratechg != "")
+			{
+				if(isNaN(ratechg))
+				{
+					alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				// if(ratechg == 0)
+				// {
+					// alert("Can't GIve rate 0");
+					// return false;
+				// }
+			}
+			var qty    =   $('#drpdelvqty').val();			
+			var tot = parseInt(qty) * parseInt(ratechg);			
+			$('#txtdelvamt').val(tot);
+			
+		});
+		
+		function checkTypeDelv()
+		{	
+			var gettype = $('#txtdelvtype').val();
+			
+			if(gettype == 2)
+			{
+				$('#labelLTD').show();
+				$('#labelWTD').show();
+				$('#txtlengthd').show();
+				$('#txtwidthd').show();
+			}
+			else
+			{
+				$('#labelLTD').hide();
+				$('#labelWTD').hide();
+				$('#txtlengthd').hide();
+				$('#txtwidthd').hide();
+			}
+			
+			
+		}
+		//for deliverble
+		// $("#txtlength").on("focusout", function()
+		// {
+			// var txtlength    =   $('#txtlength').val();						
+		// });
+		
+		$("#txtwidthd").on("focusout", function(){
+			var txtlength    =   $('#txtlengthd').val();
+			var txtwidth    =   $('#txtwidthd').val();
+			var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
+			
+			var rate = $('#txtdelvrate').val();	
+			
+			var tot = parseInt(sqfeet) * parseInt(rate);
+			//$('#txthamt').val(tot);
+			$('#txtdelvamt').val(tot);			
+		});
+		//end
 		$("#txtlength").on("focusout", function()
 		{
 			var txtlength    =   $('#txtlength').val();
@@ -1256,11 +1399,11 @@
 					alert("Please Only Numeric in length!!! (Allowed input:0-9)");
 					return false;
 				}
-				if(length == 0)
-				{
-					alert("Can't GIve length 0");
-					return false;
-				}
+				// if(length == 0)
+				// {
+					// alert("Can't GIve length 0");
+					// return false;
+				// }
 			}
 			if(width != "")
 			{
@@ -1269,11 +1412,11 @@
 					alert("Please Only Numeric in width!!! (Allowed input:0-9)");
 					return false;
 				}
-				if(width == 0)
-				{
-					alert("Can't GIve width 0");
-					return false;
-				}
+				// if(width == 0)
+				// {
+					// alert("Can't GIve width 0");
+					// return false;
+				// }
 			}
 			
 			
@@ -1356,6 +1499,9 @@
 			var txtrescharge = $('.txtrescharge').val();
 			if(txtrescharge == "")
 			{			
+				var txtdcharge = $('#txtdcharge').val();
+				var txtdvendcharge = $('#txtdvendcharge').val();
+				
 				var gtot = [];
 				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
@@ -1372,6 +1518,10 @@
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
 				});
+				
+				total_amt += parseInt(txtdcharge);
+				total_vamt += parseInt(txtdvendcharge);
+				
 				$('.txtcharge').val(total_amt);
 			    $('.txtvcharge').val(total_vamt);
 			}
@@ -1444,7 +1594,7 @@
 				}
 				if(qty == 0)
 				{
-					alert("Can't GIve qty 0");
+					alert("Can not Give qty 0");
 					return false;
 				}
 			}		
@@ -1479,6 +1629,9 @@
 					
 			$('#resrec').append(resdiv);
 			
+			var txtdcharge = $('#txtdcharge').val();
+			var txtdvendcharge = $('#txtdvendcharge').val();
+			
 			var rgtot = [];
 			$.each($('.rtxtiamt'), function(){            
 				rgtot.push($(this).val());
@@ -1487,7 +1640,8 @@
 			$.each(rgtot,function() {
 				rtotal_amt += parseInt(this);
 			});	
-				
+			
+			
 			var rvtot = [];
 			$.each($('.txtiresvendprice'), function(){            
 				rvtot.push($(this).val());
@@ -1496,7 +1650,9 @@
 			$.each(rvtot,function() {
 				total_rvamt += parseInt(this);
 			});
-				
+			
+			rtotal_amt += parseInt(txtdcharge);
+			total_rvamt += parseInt(txtdvendcharge);	
 			
 			$('.txtvcharge').val(total_rvamt);
 			
@@ -1510,11 +1666,231 @@
 			$('.txtresqty').val('1');
 			$('.txtresamt').val('');
 			
-			$('.drpnewresvend').val('');
+			$('.drpnewresvend').val('0');
 			$('.txtresvprice').val('0');
 			$('.txtresremark').val('');
 			
 			
+		});
+		var d = 0;
+		$('#addDlvb').on('click',function()
+		{
+			var drp_delvrble = $('.drp_delvrble').val();
+			var delvnm = document.getElementById("drp_delvrble").options[(document.getElementById("drp_delvrble").options.selectedIndex)].text;
+			
+			
+			var rate = $('.txtdelvrate').val();
+			var qty = $('.drpdelvqty').val();
+			var amt = $('.txtdelvamt').val();
+			var vend = $('.drpdelvvend').val();
+			var vendnm = document.getElementById("drpdelvvend").options[(document.getElementById("drpdelvvend").options.selectedIndex)].text;
+			var vprice = $('.txtdelvvprice').val();
+			var reamrk = $('.txtdelvremark').val();
+			
+			var length = $('.txtlengthd').val();
+			var width = $('.txtwidthd').val();
+			var txttype = $('.txtdelvtype').val();
+			
+			
+			
+			if(drp_delvrble=='')
+			{
+				alert("Plz Select Equipment.");
+				return false;
+			}
+			if(rate=='')
+			{
+				alert("Plz Fill Rate.");
+				return false;
+			 }
+			if(rate != "")
+			{
+				if(isNaN(rate))
+				{
+					alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+				
+			}
+			if(qty=='')
+			{
+				alert("Plz Fill Qty.");
+				return false;
+			}
+			if(qty != "")
+			{
+				if(isNaN(qty))
+				{
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(qty == 0)
+				{
+					alert("Can't GIve qty 0");
+					return false;
+				}
+			}
+			if(txttype==2)
+			{
+				if(length=='')
+				{
+					alert("Plz Fill length.");
+					return false;
+				}
+				if(width=='')
+				{
+					alert("Plz Fill width.");
+					return false;
+				}
+			}
+			if(length != "")
+			{
+				if(isNaN(length))
+				{
+					alert("Please Only Numeric in length!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+			}
+			if(width != "")
+			{
+				if(isNaN(width))
+				{
+					alert("Please Only Numeric in width!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+			}
+			
+			d++;
+			var div=
+					
+					'<tr id="delvrec'+d+'">'+
+						'<input   type="hidden"  id="delv['+d+'][txtdelvid]" name="delv['+d+'][txtdelvid]" value="'+drp_delvrble+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvnm]" name="delv['+d+'][txtdelvnm]" value="'+delvnm+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvrate]" name="delv['+d+'][txtdelvrate]" value="'+rate+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvqty]" name="delv['+d+'][txtdelvqty]" value="'+qty+'">'+
+						'<input   type="hidden" id="delv['+d+'][txtdelvamount]" name="delv['+d+'][txtdelvamount]"  class="txtdelvamount"  value="'+amt+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvend]" name="delv['+d+'][txtdelvend]" value="'+vend+'">'+
+						'<input type="hidden"  id="delv['+d+'][txtdelvendnm]" name="delv['+d+'][txtdelvendnm]" value="'+vendnm+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvendprice]" name="delv['+d+'][txtdelvendprice]" class="txtdelvendprice" value="'+vprice+'">'+
+						'<input   type="hidden"  id="delv['+d+'][txtdelvrmk]" name="delv['+d+'][txtdelvrmk]" value="'+reamrk+'">'+
+						'<input  type="hidden"  id="delv['+d+'][txtdelvlg]" name="delv['+d+'][txtdelvlg]" value="'+length+'">'+
+						'<input   type="hidden"  id="delv['+d+'][txtdelvwt]" name="delv['+d+'][txtdelvwt]" value="'+width+'">'+
+						
+						// '<script>'+
+ 						
+						// 'if('+rate+'==0 || flag==1)'+
+						// '{'+
+							// 'var flag=1;'+
+							
+							// '$(\'.rate1\').hide();'+
+							// '$(\'.amount\').hide();'+
+							// '$(\'#ratetbl\').hide();'+
+							// '$(\'#amttbl\').hide();'+
+							// '$(\'#onratetbl\').hide();'+
+							// '$(\'#onamttbl\').hide();'+
+							
+						// '}'+
+						
+						// '</script>'+
+						
+						'<td>'+ delvnm+'</td>'+
+						
+						'<td class="rate1" >'+ rate+'</td>'+
+						'<td>'+ qty+'</td>'+
+						'<td class="amount">'+ amt+'</td>'+						
+												
+						'<td>'+ vendnm+'</td>'+
+						'<td>'+ vprice+'</td>'+
+						'<td>'+ reamrk+'</td>'+						
+						'<td><a class="delremove" id="'+d+'" style= "cursor:pointer; margin-left:15px;">'+
+							'<i class="fa fa-times" aria-hidden="true"></i>'+							
+						'</a></td>'+
+					'</tr>';
+					
+					
+			$('#delvrec').append(div);		
+			
+				
+			// var txtrescharge = $('.txtrescharge').val();
+			// if(txtrescharge == "")
+			// {
+				
+				
+				
+				var gtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					gtot.push($(this).val());
+				});
+				var total_amt = 0;
+				$.each(gtot,function() {
+					total_amt += parseInt(this);
+				});			
+				var vtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				$('.txtdcharge').val(total_amt);
+			    $('.txtdvendcharge').val(total_vamt);
+				
+				var txtcharge = $('#txtcharge').val();
+				var txtvcharge = $('#txtvcharge').val();
+				var lastamt = parseInt(total_amt) + parseInt(txtcharge);
+				var lastvendamt = parseInt(total_vamt) + parseInt(txtvcharge);
+				
+				$('#txtcharge').val(lastamt);
+				$('#txtvcharge').val(lastvendamt);
+				
+			// }
+
+			$('.drp_delvrble').val('');
+			$('.txtdelvrate').val('');
+			$('.drpdelvqty').val('1');
+			$('.txtdelvamt').val('');
+			
+			$('.drpdelvvend').val('0');
+			$('.txtdelvvprice').val('0');
+			$('.txtdelvremark').val('');
+			$('.txtlengthd').val('0');
+			$('.txtwidthd').val('0');
+			
+			$('#labelLTD').hide();
+			$('#labelWTD').hide();
+			$('#txtlengthd').hide();
+			$('#txtwidthd').hide();
+		   
+			
+		});
+		
+		$(document).on('click','.delremove',function()
+		{
+			var button_id = $(this).attr("id");
+			$("#delvrec"+button_id+"").remove();	
+				
+				var gtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					gtot.push($(this).val());
+				});
+				var total_amt = 0;
+				$.each(gtot,function() {
+					total_amt += parseInt(this);
+				});			
+				var vtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				$('.txtdcharge').val(total_amt);
+			    $('.txtdvendcharge').val(total_vamt);
 		});
 		
 		$(document).on('click','.resremove',function()

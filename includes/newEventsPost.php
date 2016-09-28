@@ -293,7 +293,27 @@ if(isset($_POST['showtax']))
 		  }
 		  
 		}
-	
+		if(isset($_POST['delv']))
+		{
+			$delv_ary = $_POST['delv'];
+			foreach($delv_ary as $key => $value)
+			{
+				// echo $value['txtdelvid']."</br>";
+				// echo $value['txtdelvnm']."</br>";
+				// echo $value['txtdelvrate']."</br>";
+				// echo $value['txtdelvqty']."</br>";
+				// echo $value['txtdelvamount']."</br>";				
+				// echo $value['txtdelvend']."</br>";
+				// echo $value['txtdelvendnm']."</br>";
+				// echo $value['txtdelvendprice']."</br>";
+				// echo $value['txtdelvrmk']."</br>";
+				// echo $value['txtdelvlg']."</br>";
+				// echo $value['txtdelvwt']."</br>";
+				insDeliverableDtl($conn,$eventlast_id,$last_vplc_id,$value['txtdelvid'],$value['txtdelvqty'],
+				$value['txtdelvrate'],$value['txtdelvamount'],$value['txtdelvend'],$value['txtdelvendprice'],
+				$value['txtdelvrmk'],$value['txtdelvwt'],$value['txtdelvlg']);
+			}
+		}
 		
 		$client_charge = $_POST['txtcharge'];
 		$cur_date = date('Ymd');
@@ -587,9 +607,7 @@ if(isset($_POST['showtax']))
 	{	
 		$data = showCmpDrp($conn);
 		$showCmpCnt = count($data);
-		?>
-		<option select="selected" value="">Select Company</option>
-		<?php
+		
 		for($i=0;$i<$showCmpCnt;$i++)
 		{
 		?>
@@ -600,7 +618,7 @@ if(isset($_POST['showtax']))
 	}
 	if(isset($_POST['showCmpDtl']))
 	{	
-		$data = showCmpDrp($conn);
+		$data = showCmpDrp2($conn);
 		$showCmpCnt = count($data);
 		?>
 		<option select="selected" value="">All-Company</option>
@@ -710,6 +728,22 @@ if(isset($_POST['showtax']))
 		<?php	
 		}		
 	}
+	
+	if(isset($_POST['shownewDelv']))
+	{	
+		$data = showDelvDrp($conn);
+		$showResoCnt = count($data);
+	?>
+		<option select= "selected" value=""> Select the Deliverable </option>
+	<?php
+		for($i=0;$i<$showResoCnt;$i++)		
+		{
+		?>
+			<option  value="<?php echo $data[$i]['delv_id'];?>"><?php echo $data[$i]['delv_name'];?></option>
+		<?php	
+		}		
+	}
+	
 	if(isset($_POST['showeqpprice']))
 	{			
 		$q = mysql_query("select `price`,`price_type` from  equipment_mst where `eq_id` = '".$_POST['eqpid']."' ");
@@ -731,6 +765,14 @@ if(isset($_POST['showtax']))
 	if(isset($_POST['showresprice']))
 	{			
 		$q = mysql_query("select `amount` from  resource_mst where `res_id` = '".$_POST['resid']."' ");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+	}
+	if(isset($_POST['showdelvprice']))
+	{			
+		$q = mysql_query("select `delv_type`,`amount` from  deliverable_mst where `delv_id` = '".$_POST['delv_id']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

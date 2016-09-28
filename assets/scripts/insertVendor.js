@@ -5,6 +5,8 @@
 			var txtvendnm     =   $('#txtvendnm').val();
 			var drp_cat_vend  =   $('#drp_cat_vend').val();
 			var txtvendcmp    =   $('#txtvendcmp').val();
+			var txtvendemail  =   $('#txtvendemail').val();
+			var txtContact  =   $('#txtContact').val();
 			if(txtvendnm == "" )
 			{
 				alert('Plz Fill Vendor Name ');
@@ -24,7 +26,9 @@
 					'saverecord'  : 1,
 					'txtvendnm'   : txtvendnm,
 					'txtvendcmp'  : txtvendcmp,
-					'drp_cat_vend'  : drp_cat_vend,															
+					'drp_cat_vend'  : drp_cat_vend,
+					'txtvendemail'  : txtvendemail,	
+					'txtContact'  : txtContact,	
 				},
 				success : function(re)
 				{
@@ -34,6 +38,8 @@
 						$('#txtvendnm').val('');
 						$('#txtvendcmp').val('');
 						$('#drp_cat_vend').val('');
+						$('#txtvendemail').val('');
+						$('#txtContact').val('');
 						$("#msgs").html("<i class=\"fa fa-check-circle-o\"> Successfully Subscribed!!");
 						$('#msgs').addClass('fadeInDown').fadeIn('slow');
 						$('#msgs').addClass('fadeInDown').fadeOut('slow');						

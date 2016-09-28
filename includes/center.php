@@ -139,6 +139,9 @@
 				case 'NCAL':
 					$url = NFILENAME_CALENDAR;
 					break;
+				case 'DLVB':
+					$url = FILENAME_DELIVERABLE;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

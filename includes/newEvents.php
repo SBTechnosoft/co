@@ -131,13 +131,13 @@ if(isset($setting1) && !empty($setting1))
 						<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-20">
 								<div class="input-icon input-append">
-									<label for="txtmob">Mobile: </label>
+									<label for="txtmob" class="mob2">Mobile: </label>
 								</div>
 								<input type="text" id="txtmob" name="txtmob" class="large m-wrap mob1" /><font color="red">*</font>
 						   </div>
 							<div class="pull-right margin-right-10">
 								<div class="input-icon input-append">
-									<label for="txtworkmob">Work:</label>
+									<label for="txtworkmob" class="mob2">Work:</label>
 								</div>
 								<input type="text" id="txtworkmob" name="txtworkmob" class="large m-wrap mob1" placeholder="Eg; +919858784525"/>
 							</div>
@@ -145,13 +145,13 @@ if(isset($setting1) && !empty($setting1))
 						<div class="clearfix margin-bottom-10">
 							<div class="pull-left margin-right-10">
 								<div class="input-icon input-append">
-									<label for="txthmmob" class="well1">Home:</label>
+									<label for="txthmmob" class="mob2">Home:</label>
 								</div>
-								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap eid1" />
+								<input type="text" id="txthmmob" name="txthmmob" class="large m-wrap eid2" />
 							</div>
 							<div class="pull-right margin-right-10 ">
 								<div class="input-icon input-append">
-									<label for="txtclemail">Email ID: </label>
+									<label for="txtclemail" class="mob2">Email ID: </label>
 								</div>
 								<input type="text" class="large m-wrap eid1" id="txtclemail" name="txtclemail" placeholder="Eg; www.siliconbrain.com"/>
 							</div>
@@ -838,14 +838,7 @@ if(isset($setting1) && !empty($setting1))
 									
 									<input class="small m-wrap txttype"  type="hidden"  id="txttype" name="txttype" value="" readonly />
 									<input class="small m-wrap txtassdtl"  type="hidden"  id="txtassdtl" name="txtassdtl" value="" readonly />
-									<!--select name="drpqty" id="drpqty" class="small m-wrap drpqty">											
-										<?php  
-											// for($i=1;$i<=10;$i++)
-											// {
-												// echo '<option value="'.$i.'">'.$i.'</option>';
-											// }
-										?>											
-									</select-->
+									
 									<input class="small m-wrap drpqty"  type="text"  id="drpqty" name="drpqty" value="1"  />
 									
 									<input class="small m-wrap txtamt" type="text"  id="txtamt" name="txtamt" value="" readonly />
@@ -971,11 +964,91 @@ if(isset($setting1) && !empty($setting1))
 							</div>
 						</div>
 						
+						</br>
+						<h4>Deliverable Details </h4>
+						<hr />
 						
+						<div>
+							<input style="width:190px;" type="text"  value="Deliverable" readonly />
+							<i class="fa fa-info-circle" title="New" id="newinsdelv" data-toggle="tooltip" style="cursor:pointer;"> 
+							</i>						
+							<input style="width:120px;" type="text" id="labelLTD" name="labelLTD"  value="Length(FT)" readonly />
+							<input style="width:120px;" type="text" id="labelWTD" name="labelLTD" value="Width(FT)" readonly />							
+						</div>						
+						<div>		
+							<select  name="drp_delvrble" id="drp_delvrble" class="medium m-wrap drp_delvrble">											
+							</select>									
+							<input class="small m-wrap txtlengthd"  type="text"  id="txtlengthd" name="txtlengthd" value="0"  />
+							<input class="small m-wrap txtwidthd"  type="text"  id="txtwidthd" name="txtwidthd" value="0" />							
+						</div>
+						<div>
+							<input style="width:120px;" type="text"  value="Rate" readonly />							
+							<input style="width:125px;" type="hidden"  value="Type" readonly />							
+							<input style="width:123px;" type="text"  value="Qty" readonly />
+							<input style="width:123px;" type="text"  value="Amount" readonly />							
+							<input style="width:200px;" type="text"  value="Vendor" readonly />
+							<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+							</i>
+							<input style="width:124px;" type="text"  value="Price" readonly />							
+						</div>
+						<div>
 						
+							<input class="small m-wrap txtdelvrate"  type="text"  id="txtdelvrate" name="txtdelvrate" value=""  />
+							
+							<input class="small m-wrap txtdelvtype"  type="hidden"  id="txtdelvtype" name="txtdelvtype" value="" readonly />						
+							
+							<input class="small m-wrap drpdelvqty"  type="text"  id="drpdelvqty" name="drpdelvqty" value="1"  />
+							
+							<input class="small m-wrap txtdelvamt" type="text"  id="txtdelvamt" name="txtdelvamt" value="" readonly />							
+							
+							<select name="drpdelvvend" id="drpdelvvend" class="medium m-wrap drpdelvvend"> 											
+							</select>
+							<input class="small m-wrap txtdelvvprice" type="text"  id="txtdelvvprice" name="txtdelvvprice" value="0" />
+							
+							
+						</div>					
+						<div>
+							<input  type="text"  value="Remark" readonly />
+						</div>
+						
+						<div>
+							<textarea rows="2" cols="140" id="txtdelvremark" class="txtdelvremark" name="txtdelvremark"></textarea>
+							<a name="addres" class="btn blue" id="addDlvb" style="margin-left:15px;" >
+								Add								
+							</a>
+						</div>
+						
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>Deliverable</div>
+
+							</div>
+							<div class="portlet-body">
+								<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+									<thead>
+										<tr>
+											<th> Deliverable</th>													
+											<th> Rate</th>
+											<th> Qty</th>
+											<th> Amount</th>
+											<th> Vendor</th>
+											<th> Price</th>
+											<th> Remark</th>
+											<th> Action</th>													 
+										</tr>
+									</thead>
+									<tbody id="delvrec">
+
+									</tbody>
+								</table>
+							</div>
+						</div>
 						</br>
 						<h4>Payment Details </h4>
 						<hr />
+						<input type="hidden" id="txtdcharge" name="txtdcharge" class="m-wrap txtdcharge" value="0" readonly  />
+						<input type="hidden" id="txtdvendcharge" name="txtdvendcharge" class="m-wrap txtdvendcharge" value="0" readonly  />
+						
 						<input type="hidden" id="txtrescharge" name="txtrescharge" class="m-wrap txtrescharge" readonly  />
 						
 						<input type="hidden" id="txtvcharge" name="txtvcharge" class="m-wrap txtvcharge" readonly  />
@@ -983,7 +1056,7 @@ if(isset($setting1) && !empty($setting1))
 							<div class="input-icon input-append">
 								<label for="txtcharge">Client Charge:</label>
 							</div>
-							<input type="text" id="txtcharge" name="txtcharge" class=" large m-wrap txtcharge client" readonly />
+							<input type="text" id="txtcharge" name="txtcharge" value = "0" class=" large m-wrap txtcharge client" readonly />
 						</div>
 						
 						<div class="clearfix margin-bottom-10">
@@ -1011,6 +1084,7 @@ if(isset($setting1) && !empty($setting1))
 							<select name="paymentMode" id="paymentMode" onchange='ShowHideDiv();' class="large m-wrap selectpay"> 
 								<option value="cash">Cash</option>
 								<option value="cheque">Cheque</option>
+								<option value="creditcard">Credit Card</option>
 							</select>							
 						</div>
 						<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">

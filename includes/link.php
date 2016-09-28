@@ -488,6 +488,31 @@
 						<link rel="shortcut icon" href="favicon.ico" />	
 					<?php
 						break;
+					case 'DLVB':
+					?>
+						<!-- BEGIN GLOBAL MANDATORY STYLES -->
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+						<!-- END GLOBAL MANDATORY STYLES -->
+						<!-- BEGIN PAGE LEVEL STYLES --> 
+						<link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+						<link href="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+						<link href="<?php echo HTTP_SERVER; ?>assets/css/pages/search.css" rel="stylesheet" type="text/css"/>
+						
+						<!-- BEGIN PAGE LEVEL STYLES -->
+						<link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2_metro.css" />
+						<link rel="stylesheet" href="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.css" />
+						<!-- END PAGE LEVEL STYLES -->
+						<link rel="shortcut icon" href="favicon.ico" />	
+					<?php
+						break;
 					case 'PRD':
 					?>
 						<!-- BEGIN GLOBAL MANDATORY STYLES -->

@@ -51,6 +51,13 @@ function delResources($conn,$id,$del_date)
 			//echo 12;
 			exit;
 		}
+function delDeliverable($conn,$id,$del_date)
+		{
+			$sqldelCmpNew = "Update `deliverable_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `delv_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			exit;
+		}
 function delProduct($conn,$id,$del_date)
 		{
 			$sqldelCmpNew = "Update `product_cat_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' 
