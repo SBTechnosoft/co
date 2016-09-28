@@ -500,7 +500,7 @@ function showCmp($conn)
 	}	
 function showCmpDrp($conn)
 	{
-		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name`,`cmp_default` from  `company_mst` where `cmp_default` = 1 and `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name`,`cmp_default` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_default` DESC "; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 function showCmpDrp2($conn)
