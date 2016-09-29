@@ -560,7 +560,7 @@ function showPerm($conn)
 	}
 function showSetting($conn)
 	{
-		$sqlshowPerm = "select `retail_sales` from  `setting` "; 
+		$sqlshowPerm = "select `retail_sales`,`deliverable` from  `setting` "; 
 		return $conn->getResultArray($sqlshowPerm);	
 	}
 function showSettingRes($conn)
@@ -863,6 +863,17 @@ function showCmpanytran1($conn,$value)
 	$sqlShowCmpDrp = "select * from event_mst m,company_mst c where c.cmp_id=m.cmp_id and c.deleted_at = '0000-00-00 00:00:00' and m.event_id='".$value."'"; 
 	return $conn->getResultArray($sqlShowCmpDrp);		
 }	
+
+function showdeliverabledtl($conn,$eid)
+{
+	$sqlshowEquipmentDtl = "select `delv_plc_id`,`event_id`,edd.delv_id,edd.qty,edd.rate,edd.amount,dm.delv_name,
+			edd.delv_vend_id,vm.vendor_name,vm.vendor_cmp,`delv_vend_price`,edd.delv_remark,`width`,`height`
+		from event_deliverable_dtl edd       
+        right join deliverable_mst dm on dm.delv_id = edd.delv_id
+        right join vendor_mst vm on vm.vend_id = edd.delv_vend_id
+        where edd.event_id = '".$eid."' "; 
+		return $conn->getResultArray($sqlshowEquipmentDtl);		
+}
 	/*
 	
 select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id

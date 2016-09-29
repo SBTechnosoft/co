@@ -963,7 +963,7 @@ if(isset($setting1) && !empty($setting1))
 								
 							</div>
 						</div>
-						
+						 <?php if(isset ($delvbl) && $delvbl == 'Enable'){?> 
 						</br>
 						<h4>Deliverable Details </h4>
 						<hr />
@@ -1044,6 +1044,7 @@ if(isset($setting1) && !empty($setting1))
 							</div>
 						</div>
 						</br>
+						 <?php } ?>
 						<h4>Payment Details </h4>
 						<hr />
 						<input type="hidden" id="txtdcharge" name="txtdcharge" class="m-wrap txtdcharge" value="0" readonly  />

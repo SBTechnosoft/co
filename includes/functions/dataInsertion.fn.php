@@ -400,6 +400,16 @@ function insOptionRtl($conn,$txtrtl)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionDelv($conn,$txtdelv)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`deliverable`) VALUES (1,'".$txtdelv."')ON DUPLICATE KEY UPDATE `deliverable` = `deliverable`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `deliverable` = '".$txtdelv."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 function insOptionAutoSetDate($conn,$txtAutoSetDate)
 		{
 			
@@ -539,6 +549,16 @@ function insEquipmentUpd($conn,$evntid,$epldtlid,$txtieqp,$txtirate,$txtiqty,$tx
 			`amount`,`staff_id`,`vend_id`,`vend_price`,`remark`,`length`,`width`) 
 			VALUES ('".$evntid."','".$epldtlid."','".$txtieqp."','".$txtirate."','".$txtiqty."','".$txtiamt."',
 			'".$txtistf."','".$txtivend."','".$txtivendprice."','".$txtiremark."','".$txtilength."','".$txtiwidth."')"; 
+			$resultArray = $conn->insertQuery($sqlinsNewEqp);
+			
+		}
+function insDeliverableUpd($conn,$evntid,$txtdelvid,$txtdelvrate,$txtdelvqty,$txtdelvamount,$txtdelvend,$txtdelvendprice,
+$txtdelvrmk,$txtdelvlg,$txtdelvwt)
+		{
+			$sqlinsNewEqp = "INSERT INTO `event_deliverable_dtl` (`event_id`,`event_places_id`,`delv_id`,`rate`,`qty`,
+			`amount`,`delv_vend_id`,`delv_vend_price`,`delv_remark`,`height`,`width`) 
+			VALUES ('".$evntid."','0','".$txtdelvid."','".$txtdelvrate."','".$txtdelvqty."','".$txtdelvamount."',
+			'".$txtdelvend."','".$txtdelvendprice."','".$txtdelvrmk."','".$txtdelvlg."','".$txtdelvwt."')"; 
 			$resultArray = $conn->insertQuery($sqlinsNewEqp);
 			
 		}

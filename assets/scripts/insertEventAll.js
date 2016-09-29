@@ -1499,9 +1499,8 @@
 			var txtrescharge = $('.txtrescharge').val();
 			if(txtrescharge == "")
 			{			
-				var txtdcharge = $('#txtdcharge').val();
-				var txtdvendcharge = $('#txtdvendcharge').val();
 				
+				//resource or equip tot
 				var gtot = [];
 				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
@@ -1518,12 +1517,30 @@
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
 				});
+				//end
 				
-				total_amt += parseInt(txtdcharge);
-				total_vamt += parseInt(txtdvendcharge);
-				
-				$('.txtcharge').val(total_amt);
-			    $('.txtvcharge').val(total_vamt);
+				//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+				var finalAmt = parseInt(total_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_vamt) +  parseInt(totald_vamt);
+				$('.txtcharge').val(finalAmt);
+			    $('.txtvcharge').val(finalVendAmt);
 			}
 
 			$('.drpneweqp').val('');
@@ -1629,9 +1646,8 @@
 					
 			$('#resrec').append(resdiv);
 			
-			var txtdcharge = $('#txtdcharge').val();
-			var txtdvendcharge = $('#txtdvendcharge').val();
 			
+			//resource tot
 			var rgtot = [];
 			$.each($('.rtxtiamt'), function(){            
 				rgtot.push($(this).val());
@@ -1650,14 +1666,33 @@
 			$.each(rvtot,function() {
 				total_rvamt += parseInt(this);
 			});
+			//end
 			
-			rtotal_amt += parseInt(txtdcharge);
-			total_rvamt += parseInt(txtdvendcharge);	
+			//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+			var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+			var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
 			
-			$('.txtvcharge').val(total_rvamt);
+			$('.txtvcharge').val(finalVendAmt);
 			
-			$('.txtcharge').val(rtotal_amt);
-			$('.txtrescharge').val(rtotal_amt);
+			$('.txtcharge').val(finalAmt);
+			$('.txtrescharge').val(finalAmt);
 			
 			
 			
@@ -1818,10 +1853,13 @@
 			// if(txtrescharge == "")
 			// {
 				
+		var txtrescharge = $('.txtrescharge').val();
+			if(txtrescharge == "")
+			{			
 				
-				
+				//resource or equip tot
 				var gtot = [];
-				$.each($('.txtdelvamount'), function(){            
+				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
 				});
 				var total_amt = 0;
@@ -1829,23 +1867,114 @@
 					total_amt += parseInt(this);
 				});			
 				var vtot = [];
-				$.each($('.txtdelvendprice'), function(){            
+				$.each($('.txtivendprice'), function(){            
 					vtot.push($(this).val());
 				});
 				var total_vamt = 0;
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
 				});
-				$('.txtdcharge').val(total_amt);
-			    $('.txtdvendcharge').val(total_vamt);
+				//end
 				
-				var txtcharge = $('#txtcharge').val();
-				var txtvcharge = $('#txtvcharge').val();
-				var lastamt = parseInt(total_amt) + parseInt(txtcharge);
-				var lastvendamt = parseInt(total_vamt) + parseInt(txtvcharge);
+				//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+				var finalAmt = parseInt(total_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_vamt) +  parseInt(totald_vamt);
+				$('.txtcharge').val(finalAmt);
+			    $('.txtvcharge').val(finalVendAmt);
+			}
+			else
+			{
+				//resource tot
+			var rgtot = [];
+			$.each($('.rtxtiamt'), function(){            
+				rgtot.push($(this).val());
+			});
+			var rtotal_amt = 0;
+			$.each(rgtot,function() {
+				rtotal_amt += parseInt(this);
+			});	
+			
+			
+			var rvtot = [];
+			$.each($('.txtiresvendprice'), function(){            
+				rvtot.push($(this).val());
+			});
+			var total_rvamt = 0;
+			$.each(rvtot,function() {
+				total_rvamt += parseInt(this);
+			});
+			//end
+			
+			//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+			var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+			var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
+			
+			$('.txtvcharge').val(finalVendAmt);
+			
+			$('.txtcharge').val(finalAmt);
+			$('.txtrescharge').val(finalAmt);
+			}
 				
-				$('#txtcharge').val(lastamt);
-				$('#txtvcharge').val(lastvendamt);
+				// var gtot = [];
+				// $.each($('.txtdelvamount'), function(){            
+					// gtot.push($(this).val());
+				// });
+				// var total_amt = 0;
+				// $.each(gtot,function() {
+					// total_amt += parseInt(this);
+				// });			
+				// var vtot = [];
+				// $.each($('.txtdelvendprice'), function(){            
+					// vtot.push($(this).val());
+				// });
+				// var total_vamt = 0;
+				// $.each(vtot,function() {
+					// total_vamt += parseInt(this);
+				// });
+				// $('.txtdcharge').val(total_amt);
+			    // $('.txtdvendcharge').val(total_vamt);
+				
+				// var txtcharge = $('#txtcharge').val();
+				// var txtvcharge = $('#txtvcharge').val();
+				// var lastamt = parseInt(total_amt) + parseInt(txtcharge);
+				// var lastvendamt = parseInt(total_vamt) + parseInt(txtvcharge);
+				
+				// $('#txtcharge').val(lastamt);
+				// $('#txtvcharge').val(lastvendamt);
 				
 			// }
 
@@ -1873,8 +2002,13 @@
 			var button_id = $(this).attr("id");
 			$("#delvrec"+button_id+"").remove();	
 				
+				var txtrescharge = $('.txtrescharge').val();
+			if(txtrescharge == "")
+			{			
+				
+				//resource or equip tot
 				var gtot = [];
-				$.each($('.txtdelvamount'), function(){            
+				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
 				});
 				var total_amt = 0;
@@ -1882,31 +2016,50 @@
 					total_amt += parseInt(this);
 				});			
 				var vtot = [];
-				$.each($('.txtdelvendprice'), function(){            
+				$.each($('.txtivendprice'), function(){            
 					vtot.push($(this).val());
 				});
 				var total_vamt = 0;
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
 				});
-				$('.txtdcharge').val(total_amt);
-			    $('.txtdvendcharge').val(total_vamt);
-		});
-		
-		$(document).on('click','.resremove',function()
-		{
-			var button_id = $(this).attr("id");
-			$("#resrow"+button_id+"").remove();	
-
+				//end
+				
+				//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+				var finalAmt = parseInt(total_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_vamt) +  parseInt(totald_vamt);
+				$('.txtcharge').val(finalAmt);
+			    $('.txtvcharge').val(finalVendAmt);
+			}
+			else
+			{
+				//resource tot
 			var rgtot = [];
 			$.each($('.rtxtiamt'), function(){            
 				rgtot.push($(this).val());
-			});		
-
+			});
 			var rtotal_amt = 0;
 			$.each(rgtot,function() {
 				rtotal_amt += parseInt(this);
-			});
+			});	
+			
 			
 			var rvtot = [];
 			$.each($('.txtiresvendprice'), function(){            
@@ -1916,12 +2069,87 @@
 			$.each(rvtot,function() {
 				total_rvamt += parseInt(this);
 			});
-				
+			//end
 			
-			$('.txtvcharge').val(total_rvamt);
+			//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+			var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+			var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
 			
-			$('.txtcharge').val(rtotal_amt);
-			$('.txtrescharge').val(rtotal_amt);
+			$('.txtvcharge').val(finalVendAmt);
+			
+			$('.txtcharge').val(finalAmt);
+			$('.txtrescharge').val(finalAmt);
+			}
+		});
+		
+		$(document).on('click','.resremove',function()
+		{
+			var button_id = $(this).attr("id");
+			$("#resrow"+button_id+"").remove();	
+
+			//resource tot
+			var rgtot = [];
+			$.each($('.rtxtiamt'), function(){            
+				rgtot.push($(this).val());
+			});
+			var rtotal_amt = 0;
+			$.each(rgtot,function() {
+				rtotal_amt += parseInt(this);
+			});	
+			
+			
+			var rvtot = [];
+			$.each($('.txtiresvendprice'), function(){            
+				rvtot.push($(this).val());
+			});
+			var total_rvamt = 0;
+			$.each(rvtot,function() {
+				total_rvamt += parseInt(this);
+			});
+			//end
+			
+			//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+			var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+			var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
+			
+			$('.txtvcharge').val(finalVendAmt);
+			
+			$('.txtcharge').val(finalAmt);
+			$('.txtrescharge').val(finalAmt);
 		});
 		
 		
@@ -1933,6 +2161,7 @@
 			var txtrescharge = $('.txtrescharge').val();
 			if(txtrescharge == "")
 			{
+				//resource or equip tot
 				var gtot = [];
 				$.each($('.txtiamt'), function(){            
 					gtot.push($(this).val());
@@ -1940,7 +2169,7 @@
 				var total_amt = 0;
 				$.each(gtot,function() {
 					total_amt += parseInt(this);
-				});				
+				});			
 				var vtot = [];
 				$.each($('.txtivendprice'), function(){            
 					vtot.push($(this).val());
@@ -1948,9 +2177,31 @@
 				var total_vamt = 0;
 				$.each(vtot,function() {
 					total_vamt += parseInt(this);
-				});				
-				$('.txtcharge').val(total_amt);
-				$('.txtvcharge').val(total_vamt);
+				});
+				//end
+				
+				//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+				var finalAmt = parseInt(total_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_vamt) +  parseInt(totald_vamt);
+				$('.txtcharge').val(finalAmt);
+			    $('.txtvcharge').val(finalVendAmt);
 			}
 		});
 		

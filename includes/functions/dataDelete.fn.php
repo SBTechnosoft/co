@@ -110,6 +110,13 @@ function delResourceUpd($conn,$id)
 			//echo 12;
 			
 		}
+function delDeliverableUpd($conn,$id)
+		{
+			$sqldelCmpNew = "Delete from `event_deliverable_dtl` where  delv_plc_id = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
+			//echo 12;
+			
+		}
 function deltranc($conn,$id)
 		{
 			$sqldelCmpNew = "Delete from `expence_dtl` where  exp_id = '".$id."' "; 

@@ -577,6 +577,7 @@
 					//call to display for evend places detail..
 					//its old//showeventplaces();
 					newshoweventplaces();
+					showdeliverable();
 					//call of function which show the popup data that get the paid amt detail from event payment trn table					
 					showeventpaid();
 					$('#txtpeid').val(e.event_id);
@@ -895,6 +896,8 @@
 					//call to display for evend places detail..
 					//its old//showeventplaces();
 					newshoweventplaces();
+					showdeliverable();
+					
 					
 					//call of function which show the popup data that get the paid amt detail from event payment trn table					
 					showeventpaid();
@@ -914,6 +917,30 @@
 		
 		
 		//end of the default show data
+		//show deliverable
+		function showdeliverable ()
+		{
+			var eid    =   $('#eid').val();
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'showdeliverable'  : 1,
+					'eid'   : eid,				
+					
+				},
+				success : function(rd1)
+				{										
+					 $('#delvrec').html(rd1);															
+				}				
+			});	
+					
+		}
+		
+		//end
 		
 		function countRes()
 		{
@@ -1256,4 +1283,559 @@
 					
 				});
 			}
-	
+				//edit Deliverable
+				$('#edtdelv').click(function()
+					{
+											
+						$("#edtdelv").hide();
+						$("#shwDilv").show();
+						$("#delvInfo").show();
+					});
+				
+				$("#shwDilv").hide();
+				$("#delvInfo").hide();
+				//exit 
+			function showDelv()
+			{		
+				$.ajax({
+					url : './includes/newEventsPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'shownewDelv' : 1
+						
+					},
+					success : function(r)
+					{
+						$('#drp_delvrble').html(r);	
+						
+					}
+					
+				});
+			}
+			function shownewVend()
+			{		
+				$.ajax({
+					url : './includes/newEventsPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'shownewVend' : 1
+						
+					},
+					success : function(r)
+					{
+						// $('#drpnewvend').html(r);	
+						// $('#drpnewresvend').html(r);
+						$('#drpdelvvend').html(r);
+					}
+					
+				});
+			}
+			shownewVend();
+			showDelv();
+			$("#drp_delvrble").on("change", function()
+			{
+				var delv_id    =   $('#drp_delvrble').val();
+				
+				$.ajax({
+					url : './includes/newEventsPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'showdelvprice' : 1,
+						'delv_id' : delv_id,
+						
+					},
+					success : function(r)
+					{
+						$('#txtdelvrate').val(r.amount);
+						$('#txtdelvamt').val(r.amount);					
+						$('#txtdelvtype').val(r.delv_type);									
+						checkTypeDelv();
+					}
+					
+				});
+			});
+			$("#drpdelvqty").on("focusout", function()
+			{
+				var qty    =   $('#drpdelvqty').val();
+				if(qty == "")
+				{
+					alert("Plz Insert The qty!!!");
+					return false;
+				}
+				if(qty != "")
+				{
+					if(isNaN(qty))
+					{
+						alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+						return false;
+					}
+					if(qty == 0)
+					{
+						alert("Can't GIve qty 0");
+						return false;
+					}
+				}
+				var txtramt = $('#txtdelvrate').val();			
+				var tot = parseInt(qty) * parseInt(txtramt);			
+				$('#txtdelvamt').val(tot);			
+			});
+			
+			$("#txtdelvrate").on("focusout", function()
+			{
+						
+				var ratechg = $('#txtdelvrate').val();		
+				if(ratechg == "")
+				{
+					alert("Plz Insert The Rate!!!");
+					return false;
+				}
+				if(ratechg != "")
+				{
+					if(isNaN(ratechg))
+					{
+						alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+						return false;
+					}
+					// if(ratechg == 0)
+					// {
+						// alert("Can't GIve rate 0");
+						// return false;
+					// }
+				}
+				var qty    =   $('#drpdelvqty').val();			
+				var tot = parseInt(qty) * parseInt(ratechg);			
+				$('#txtdelvamt').val(tot);
+				
+			});
+			
+			function checkTypeDelv()
+			{	
+				var gettype = $('#txtdelvtype').val();
+				
+				if(gettype == 2)
+				{
+					$('#labelLTD').show();
+					$('#labelWTD').show();
+					$('#txtlengthd').show();
+					$('#txtwidthd').show();
+				}
+				else
+				{
+					$('#labelLTD').hide();
+					$('#labelWTD').hide();
+					$('#txtlengthd').hide();
+					$('#txtwidthd').hide();
+				}
+				
+				
+			}
+			$('#labelLTD').hide();
+			$('#labelWTD').hide();
+			$('#txtlengthd').hide();
+			$('#txtwidthd').hide();
+			//for deliverble
+		// $("#txtlength").on("focusout", function()
+		// {
+			// var txtlength    =   $('#txtlength').val();						
+		// });
+		
+		$("#txtwidthd").on("focusout", function(){
+			var txtlength    =   $('#txtlengthd').val();
+			var txtwidth    =   $('#txtwidthd').val();
+			var sqfeet = parseInt(txtlength) * parseInt(txtwidth);
+			
+			var rate = $('#txtdelvrate').val();	
+			
+			var tot = parseInt(sqfeet) * parseInt(rate);
+			//$('#txthamt').val(tot);
+			$('#txtdelvamt').val(tot);			
+		});
+		//end
+		var d = 0;
+		$('#addDlvb').on('click',function()
+		{
+			var drp_delvrble = $('.drp_delvrble').val();
+			var delvnm = document.getElementById("drp_delvrble").options[(document.getElementById("drp_delvrble").options.selectedIndex)].text;
+			
+			
+			var rate = $('.txtdelvrate').val();
+			var qty = $('.drpdelvqty').val();
+			var amt = $('.txtdelvamt').val();
+			var vend = $('.drpdelvvend').val();
+			var vendnm = document.getElementById("drpdelvvend").options[(document.getElementById("drpdelvvend").options.selectedIndex)].text;
+			var vprice = $('.txtdelvvprice').val();
+			var reamrk = $('.txtdelvremark').val();
+			
+			var length = $('.txtlengthd').val();
+			var width = $('.txtwidthd').val();
+			var txttype = $('.txtdelvtype').val();
+			
+			
+			
+			if(drp_delvrble=='')
+			{
+				alert("Plz Select Equipment.");
+				return false;
+			}
+			if(rate=='')
+			{
+				alert("Plz Fill Rate.");
+				return false;
+			 }
+			if(rate != "")
+			{
+				if(isNaN(rate))
+				{
+					alert("Please Only Numeric in rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+				
+			}
+			if(qty=='')
+			{
+				alert("Plz Fill Qty.");
+				return false;
+			}
+			if(qty != "")
+			{
+				if(isNaN(qty))
+				{
+					alert("Please Only Numeric in qty!!! (Allowed input:0-9)");
+					return false;
+				}
+				if(qty == 0)
+				{
+					alert("Can't GIve qty 0");
+					return false;
+				}
+			}
+			if(txttype==2)
+			{
+				if(length=='')
+				{
+					alert("Plz Fill length.");
+					return false;
+				}
+				if(width=='')
+				{
+					alert("Plz Fill width.");
+					return false;
+				}
+			}
+			if(length != "")
+			{
+				if(isNaN(length))
+				{
+					alert("Please Only Numeric in length!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+			}
+			if(width != "")
+			{
+				if(isNaN(width))
+				{
+					alert("Please Only Numeric in width!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+			}
+			
+			d++;
+			var div=
+					
+					'<tr id="delvrec'+d+'">'+
+						'<input   type="hidden"  id="txtdelvid" name="txtdelvid" value="'+drp_delvrble+'">'+
+						'<input  type="hidden"  id="txtdelvnm" name="txtdelvnm" value="'+delvnm+'">'+
+						'<input  type="hidden"  id="txtdelvrate" name="txtdelvrate" value="'+rate+'">'+
+						'<input  type="hidden"  id="txtdelvqty" name="txtdelvqty" value="'+qty+'">'+
+						'<input   type="hidden" id="txtdelvamount" name="txtdelvamount"  class="txtdelvamount"  value="'+amt+'">'+
+						'<input  type="hidden"  id="txtdelvend" name="txtdelvend" value="'+vend+'">'+
+						'<input type="hidden"  id="txtdelvendnm" name="txtdelvendnm" value="'+vendnm+'">'+
+						'<input  type="hidden"  id="txtdelvendprice" name="txtdelvendprice" class="txtdelvendprice" value="'+vprice+'">'+
+						'<input   type="hidden"  id="txtdelvrmk" name="txtdelvrmk" value="'+reamrk+'">'+
+						'<input  type="hidden"  id="txtdelvlg" name="txtdelvlg" value="'+length+'">'+
+						'<input   type="hidden"  id="txtdelvwt" name="txtdelvwt" value="'+width+'">'+
+						
+						// '<script>'+
+ 						
+						
+						// 'if('+rate+'==0 || flag==1)'+
+						// '{'+
+							// 'var flag=1;'+
+							
+							// '$(\'.rate1\').hide();'+
+							// '$(\'.amount\').hide();'+
+							// '$(\'#ratetbl\').hide();'+
+							// '$(\'#amttbl\').hide();'+
+							// '$(\'#onratetbl\').hide();'+
+							// '$(\'#onamttbl\').hide();'+
+							
+						// '}'+
+						
+						// '</script>'+
+						
+						'<td>'+ delvnm+'</td>'+
+						
+						'<td class="rate1" >'+ rate+'</td>'+
+						'<td>'+ qty+'</td>'+
+						'<td class="amount">'+ amt+'</td>'+						
+												
+						'<td>'+ vendnm+'</td>'+
+						'<td>'+ vprice+'</td>'+
+						'<td>'+ reamrk+'</td>'+						
+						'<td><a class="delremove" id="'+d+'" style= "cursor:pointer; margin-left:15px;">'+
+							'<i class="fa fa-times" aria-hidden="true"></i>'+							
+						'</a></td>'+
+					'</tr>';
+					
+					
+			$('#delvrec').append(div);		
+			
+				
+			// var txtrescharge = $('.txtrescharge').val();
+			// if(txtrescharge == "")
+			// {
+				
+				
+				
+				var gtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					gtot.push($(this).val());
+				});
+				var total_amt = 0;
+				$.each(gtot,function() {
+					total_amt += parseInt(this);
+				});			
+				var vtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				$('.txtdcharge').val(total_amt);
+			    $('.txtdvendcharge').val(total_vamt);
+				
+				var txtcharge = $('#txtcharge').val();
+				var txtvcharge = $('#txtvcharge').val();
+				var lastamt = parseInt(total_amt) + parseInt(txtcharge);
+				var lastvendamt = parseInt(total_vamt) + parseInt(txtvcharge);
+				
+				$('#txtcharge').val(lastamt);
+				$('#txtvcharge').val(lastvendamt);
+				
+			// }
+
+			$('.drp_delvrble').val('');
+			$('.txtdelvrate').val('');
+			$('.drpdelvqty').val('1');
+			$('.txtdelvamt').val('');
+			
+			$('.drpdelvvend').val('0');
+			$('.txtdelvvprice').val('0');
+			$('.txtdelvremark').val('');
+			$('.txtlengthd').val('0');
+			$('.txtwidthd').val('0');
+			
+			$('#labelLTD').hide();
+			$('#labelWTD').hide();
+			$('#txtlengthd').hide();
+			$('#txtwidthd').hide();
+		   
+			
+		});
+		
+	//insert the Deliverable detail
+				$('#updDilv').click(function()
+				{									
+					//var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
+					
+					
+					//var epldtlid = $('#epldtlid').val();
+					var evntid = $('#eid').val();
+					
+					// alert (epldtlid);
+					// alert (txmd);
+					//return false;
+					           
+					
+					var txtdelvid = [];
+					$.each($("input[name='txtdelvid']"), function(){            
+						 txtdelvid.push($(this).val());
+					});
+					var txtdelvrate = [];
+					$.each($("input[name='txtdelvrate']"), function(){            
+						 txtdelvrate.push($(this).val());
+					});
+					var txtdelvqty = [];
+					$.each($("input[name='txtdelvqty']"), function(){            
+						 txtdelvqty.push($(this).val());
+					});					
+					var txtdelvamount = [];
+					$.each($("input[name='txtdelvamount']"), function(){            
+						 txtdelvamount.push($(this).val());
+					});	
+					
+					
+					var txtdelvend = [];
+					$.each($("input[name='txtdelvend']"), function(){            
+						 txtdelvend.push($(this).val());
+					});
+					var txtdelvendprice = [];
+					$.each($("input[name='txtdelvendprice']"), function(){            
+						 txtdelvendprice.push($(this).val());
+					});
+					var txtdelvrmk = [];
+					$.each($("input[name='txtdelvrmk']"), function(){            
+						 txtdelvrmk.push($(this).val());
+					});
+					var txtdelvlg = [];
+					$.each($("input[name='txtdelvlg']"), function(){            
+						 txtdelvlg.push($(this).val());
+					});
+					var txtdelvwt = [];
+					$.each($("input[name='txtdelvwt']"), function(){            
+						 txtdelvwt.push($(this).val());
+					});
+					
+																		
+						var deltotal_amt = 0;
+						$.each(txtdelvamount,function() {
+							deltotal_amt += parseInt(this);
+						});
+						var vendtotal_amt = 0;
+						$.each(txtdelvendprice,function() {
+							vendtotal_amt += parseInt(this);
+						});
+						clcharge = parseInt(clcharge) + parseInt(deltotal_amt);	
+						
+						vdcharge = parseInt(vdcharge) + parseInt(vendtotal_amt); 
+						// alert(clcharge);
+						// alert(vdcharge);
+						
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(deltotal_amt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) + parseInt(servtax);
+							totammt = parseInt(totammt) +parseInt(deltotal_amt) + parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) +parseInt(deltotal_amt);
+						}
+						// alert(txamt);
+						// alert(totammt);
+						// return false;
+					
+					
+					$.ajax({
+							url : 'includes/eventDetailPost.php',
+							type : 'POST',
+							async : false,
+							data : {
+								'DeliverbleIns'  : 1,								
+								//'epldtlid' 	: epldtlid,	
+								'evntid' 	: evntid,				    				
+								'txtdelvid' 	: txtdelvid,
+								'txtdelvrate' 	: txtdelvrate,
+								'txtdelvqty' 	: txtdelvqty,								
+								'txtdelvamount' 	: txtdelvamount,						     
+								'txtdelvend' 	: txtdelvend,
+								'txtdelvendprice' 	: txtdelvendprice,								
+								'txtdelvrmk' 	: txtdelvrmk,
+								'txtdelvlg' 	: txtdelvlg,
+								'txtdelvwt' 	: txtdelvwt,
+								
+								'totammt'   : totammt,
+								'txamt'     : txamt,
+								'clcharge' : clcharge,
+								'vdcharge' : vdcharge,
+								
+							},
+							success : function(v)
+							{
+								alert('Updated Deliverable!!!');
+								$("#shwDilv").hide();
+								$("#delvInfo").hide();
+								$("#edtdelv").show();								
+								UpdateAcc();
+							}
+							
+						});			
+				});
+				//end
+				
+		//removing the deliverable from the database
+			
+				$('body').delegate('.delvdel','click',function()
+				{
+					
+					var id = $(this).data('id');
+					var rtxtiamt = $('#txtdelveamt'+id).val();	
+					var rtxtivendprice = $('#txtdelvendprice'+id).val();
+					var evnt_id = $('#eid').val();	
+					
+					//var contres = $('#contres').val();
+					var clcharge = $('#clcharge').val();
+					var clpdcharge = $('#clpdcharge').val();					
+					var txmd = $('#txmd').val();
+					var txrat = $('#txrat').val();
+					var txamt = $('#txamt').val();
+					var totammt = $('#totammt').val();	
+					var vdcharge = $('#vdcharge').val();
+					
+																		
+						
+						clcharge = parseInt(clcharge) - parseInt(rtxtiamt);		
+						vdcharge = parseInt(vdcharge) - parseInt(rtxtivendprice);
+						if(txmd=='Yes')
+						{							
+							var servtax  =	(parseInt(rtxtiamt)* parseFloat(txrat))/100;
+							txamt =  parseInt(txamt) - parseInt(servtax);
+							totammt = parseInt(totammt) - parseInt(rtxtiamt) - parseInt(servtax) ;
+						}
+						else
+						{
+							totammt = parseInt(totammt) - parseInt(rtxtiamt);
+						}
+						
+					
+					// alert(id);
+					// return false;
+					
+					$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'delvdel'  : 1,
+							'id' 	: id,
+							'evnt_id' : evnt_id,
+							'totammt'   : totammt,
+							'txamt'     : txamt,
+							'clcharge' : clcharge,
+							'vdcharge' : vdcharge,
+						},
+						success : function(d)
+						{
+							alert("Delete Successfully");
+							UpdateAcc();
+						}
+						
+						
+					});
+					$( this ).parent().parent().css( "display", "none" );					
+				});

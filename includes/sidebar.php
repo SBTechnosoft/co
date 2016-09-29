@@ -7,6 +7,7 @@ $setting = showSetting($conn);
 if(isset($setting) && !empty($setting))
 {
 	$set = $setting[0]['retail_sales'];
+	$delvbl = $setting[0]['deliverable'];
 	//echo $set;
 }
 
@@ -283,7 +284,7 @@ if(isset($setting) && !empty($setting))
 	<?php } ?>	
 	
 		<?php 
-			if(isset($arr1) && !empty($arr1) && in_array("RES", $arr1))
+			if(isset($arr1) && !empty($arr1) && in_array("RES", $arr1) && $delvbl == 'Enable')
 			{					
 		?>
         <li class="

@@ -14,6 +14,15 @@ else
 	<input type="hidden" id="txtenqid" name="txtenqid" value=""/>
 	<?php
 }
+// $setting = showSetting($conn);
+
+// if(isset($setting) && !empty($setting))
+// {
+	
+	// $delvbl = $setting[0]['deliverable'];
+	
+// }
+
 ?>
 <div class="page-content">
     <div class="container-fluid">
@@ -157,7 +166,8 @@ else
             <ul class="nav nav-tabs">
                 <li class="<?php if(!isset($_GET['id'])&& empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_2_5">Details </a></li>
                 <li class="<?php if(isset($_GET['id'])&& !empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_1_2" >Places</a></li>
-                <li><a data-toggle="tab" href="#tab_2_2" > Accounting </a></li>
+                <?php if(isset($delvbl) && $delvbl == 'Enable'){?><li><a data-toggle="tab" href="#tab_2_7" > Deliverable </a></li><?php } ?>
+				<li><a data-toggle="tab" href="#tab_2_2" > Accounting </a></li>
 				<!-- id is removed here first given the ajax call o the id now no need on this click default fn call-->
 				<!--li><a data-toggle="tab" href="#tab_1_2" id="event_places_dtl">Places</a></li>
                 <li><a data-toggle="tab" href="#tab_2_2" id="event_eqp_stf_dtl"> Accounting </a></li-->
@@ -421,6 +431,105 @@ else
                         
 					</div>
                 </div>
+                <!--end tab-pane-->
+				<?php if(isset ($delvbl) && $delvbl == 'Enable'){?>
+				<div id="tab_2_7" class="tab-pane">
+                    <div class="row-fluid search-forms search-default">
+						<form class="form-search" action="#">
+					
+							<div class="row-fluid search-forms search-default">
+								</br>
+								<h4>Deliverable Details </h4>
+								<hr />
+								<div id="delvInfo">
+									<div>
+										<input style="width:190px;" type="text"  value="Deliverable" readonly />
+										<i class="fa fa-info-circle" title="New" id="newinsdelv" data-toggle="tooltip" style="cursor:pointer;"> 
+										</i>						
+										<input style="width:120px;" type="text" id="labelLTD" name="labelLTD"  value="Length(FT)" readonly />
+										<input style="width:120px;" type="text" id="labelWTD" name="labelLTD" value="Width(FT)" readonly />							
+									</div>						
+									<div>		
+										<select  name="drp_delvrble" id="drp_delvrble" class="medium m-wrap drp_delvrble">											
+										</select>									
+										<input class="small m-wrap txtlengthd"  type="text"  id="txtlengthd" name="txtlengthd" value="0"  />
+										<input class="small m-wrap txtwidthd"  type="text"  id="txtwidthd" name="txtwidthd" value="0" />							
+									</div>
+									<div>
+										<input style="width:120px;" type="text"  value="Rate" readonly />							
+										<input style="width:125px;" type="hidden"  value="Type" readonly />							
+										<input style="width:123px;" type="text"  value="Qty" readonly />
+										<input style="width:123px;" type="text"  value="Amount" readonly />							
+										<input style="width:200px;" type="text"  value="Vendor" readonly />
+										<i class="fa fa-info-circle" title="New" id="newinsvd" data-toggle="tooltip" style="cursor:pointer;"> 
+										</i>
+										<input style="width:124px;" type="text"  value="Price" readonly />							
+									</div>
+									<div>
+									
+										<input class="small m-wrap txtdelvrate"  type="text"  id="txtdelvrate" name="txtdelvrate" value=""  />
+										
+										<input class="small m-wrap txtdelvtype"  type="hidden"  id="txtdelvtype" name="txtdelvtype" value="" readonly />						
+										
+										<input class="small m-wrap drpdelvqty"  type="text"  id="drpdelvqty" name="drpdelvqty" value="1"  />
+										
+										<input class="small m-wrap txtdelvamt" type="text"  id="txtdelvamt" name="txtdelvamt" value="" readonly />							
+										
+										<select name="drpdelvvend" id="drpdelvvend" class="medium m-wrap drpdelvvend"> 											
+										</select>
+										<input class="small m-wrap txtdelvvprice" type="text"  id="txtdelvvprice" name="txtdelvvprice" value="0" />
+										
+										
+									</div>					
+									<div>
+										<input  type="text"  value="Remark" readonly />
+									</div>
+									
+									<div>
+										<textarea rows="2" cols="140" id="txtdelvremark" class="txtdelvremark" name="txtdelvremark"></textarea>
+										<a name="addres" class="btn blue" id="addDlvb" style="margin-left:15px;" >
+											Add								
+										</a>
+									</div>
+								</div>
+								</br>
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>Deliverable</div>
+										<a id="edtdelv" class="invoice invoice_excel">
+											<i class="fa fa-pencil-square-o" style="color:white; margin-top:10%;" aria-hidden="true"></i>
+										</a>
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
+											<thead>
+												<tr>
+													<th> Deliverable</th>													
+													<th> Rate</th>
+													<th> Qty</th>
+													<th> Amount</th>
+													<th> Vendor</th>
+													<th> Price</th>
+													<th> Remark</th>
+													<th> Action</th>													 
+												</tr>
+											</thead>
+											<tbody id="delvrec">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div id ="shwDilv" class="clearfix margin-bottom-10">									
+									<div class="input-icon left">
+										<input class="m-wrap btn blue" value="Save"  id="updDilv" name="updDilv"  type="button" />
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+                </div>
+				<?php } ?>
                 <!--end tab-pane-->
                 <div id="tab_2_2" class="tab-pane">
 					<div class="row-fluid search-forms search-default">
@@ -730,12 +839,8 @@ else
 												<button class="btn blue" id="remove_vend_row"> Remove</button>
 											</div-->
 										</div>								
-										
-																												
+																											
 									</div>
-									
-									
-									
 									
 									<h4>Vendor Detail </h4>
 									

@@ -80,6 +80,19 @@
 			}
 		updEqpEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);		
 	}
+	if(isset($_POST['DeliverbleIns']))
+	{	
+			
+		$evntid = $_POST['evntid'];
+		
+		for($k=0;$k<count($_POST['txtdelvid']);$k++)
+			{
+				insDeliverableUpd($conn,$evntid,$_POST['txtdelvid'][$k],$_POST['txtdelvrate'][$k],$_POST['txtdelvqty'][$k],
+				$_POST['txtdelvamount'][$k],$_POST['txtdelvend'][$k],$_POST['txtdelvendprice'][$k],$_POST['txtdelvrmk'][$k],
+				$_POST['txtdelvlg'][$k],$_POST['txtdelvwt'][$k]);
+			}
+		updEqpEventMst($conn,$evntid,$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);		
+	}
 	
 	if(isset($_POST['delete']))
 	{		
@@ -2256,10 +2269,50 @@
 		}
 		
 	}
+	
+	if(isset($_POST['showdeliverable']))
+	{
+		$data = showdeliverabledtl($conn,$_POST['eid']);
+		$showdelvCnt = count($data);
+		for($i=0;$i<$showdelvCnt;$i++)
+		{
+		 ?>	
+			
+			<tr id="delvrow<?php echo $i; ?>">
+				
+				<input id="txtdelveamt<?php echo $data[$i]['delv_plc_id']; ?>" class="txtdelveamt" name="txtdelveamt" value="<?php echo $data[$i]['amount']; ?>" type="hidden">
+				<input id="txtdelvendprice<?php echo $data[$i]['delv_plc_id']; ?>" class="txtdelvendprice" name="txtdelvendprice" value="<?php echo $data[$i]['delv_vend_price']; ?>" type="hidden">
+				
+				
+				<td><?php echo $data[$i]['delv_name']; ?></td>
+				<td><?php echo $data[$i]['rate']; ?></td>
+				<td><?php echo $data[$i]['qty']; ?></td>
+				<td class="amount"><?php echo $data[$i]['amount']; ?></td>
+				<td><?php echo $data[$i]['vendor_name']."(".$data[$i]['vendor_cmp'].")"; ?></td>
+				<td><?php echo $data[$i]['delv_vend_price']; ?></td>
+				<td><?php echo $data[$i]['delv_remark']; ?></td>
+				
+				<td>
+					<a data-id = "<?php echo $data[$i]['delv_plc_id']; ?>" class="delvdel" style="cursor:pointer; margin-left:15px;">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+				</td>
+			</tr>
+            
+		 <?php	
+		}
+		
+	}
 	if(isset($_POST['resdel']))
 	{		
 		//$date = date('Y-m-d H:i:s');
 		delResourceUpd($conn,$_POST['id']);
+		updResEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
+	}
+	if(isset($_POST['delvdel']))
+	{		
+		//$date = date('Y-m-d H:i:s');
+		delDeliverableUpd($conn,$_POST['id']);
 		updResEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
 	}
 	if(isset($_POST['epddel']))

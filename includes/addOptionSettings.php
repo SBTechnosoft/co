@@ -142,7 +142,16 @@
 					<a id="updAutoSet" name="updAutoSet" class="btn btn-default" style="margin-bottom:10px;">Save</a>
 				</div>				
 			</div>
-			
+			<div class="control-group">
+				<label class="control-label">Deliverable</label>
+				<div class="controls" id="updefault">
+					<select id="txtdelv" name="txtdelv" >						
+						<option  value="Enable"> Enable</option>
+						<option selected value="Disable"> Disable</option>						
+					</select>						
+					<a id="upddelv" name="upddelv" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
+				</div>				
+			</div>
 			
            
         </div>

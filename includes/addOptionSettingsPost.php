@@ -17,6 +17,10 @@
 	{		
 		insOptionRtl($conn,$_POST['txtrtl']);	
 	}
+	if(isset($_POST['saveDelv']))
+	{		
+		insOptionDelv($conn,$_POST['txtdelv']);	
+	}
 	
    	if(isset($_POST['saveResEqu']))
 	{		
@@ -28,7 +32,7 @@
 	}
 	if(isset($_POST['show']))
 	{	
-		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day` from setting ");
+		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day`,`deliverable` from setting ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
