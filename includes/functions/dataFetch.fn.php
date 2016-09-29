@@ -47,8 +47,7 @@ function showProductMst($conn,$ctgprod)
 function showProductAdd($conn)
 	{
 		$sqlShowCatg = "select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
-			`pur_price`,`type` from  `product_mst` where  
-		`deleted_at` = '0000-00-00 00:00:00'  "; 
+			`pur_price`,`type` from  `product_mst` where `deleted_at` = '0000-00-00 00:00:00'  "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showCtgdrp($conn)
@@ -487,7 +486,7 @@ function showCmp($conn)
 	}	
 function showCmpDrp($conn)
 	{
-		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` ,`cmp_default` from  `company_mst` where `cmp_default`=1 and `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` ,`cmp_default` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_default` DESC"; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 	function showCmpDrp2($conn)

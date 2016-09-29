@@ -21,7 +21,7 @@
 				<td><?php echo ucfirst($data[$i]['prd_id']);?></td>
 				<td><?php echo ucfirst($data[$i]['item_code']);?></td>
 				<td><?php echo ucfirst($data[$i]['disp_nm']);?></td>
-				<td><?php echo ucfirst($data[$i]['commodity_grp']);?></td>
+				<td><?php echo $data[$i]['commodity_grp']; ?></td>
 				<td><?php echo ucfirst($resultCat[$i]['prd_cat_name']);?></td>
 				<td><?php echo ucfirst($data[$i]['retail_price']);?></td>
 				<td><?php echo ucfirst($data[$i]['pur_price']);?></td>

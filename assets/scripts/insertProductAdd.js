@@ -72,7 +72,10 @@ $( function() {
 			var txtrprice    =   $('#txtrprice').val();
 			var txtpprice     =   $('#txtpprice').val();
 			var drptype    =   $('#drptype').val();
-			var prod_id = $('#prod_id').val();			
+			var prod_id = $('#prod_id').val();	
+
+			// alert(txtcgrp);
+			// return false;
 			if(txtprdnm == "" )
 			{
 				alert('Plz Fill Resource Name ');
