@@ -248,5 +248,33 @@ if(isset($_POST['CalDiscount']))
 			echo json_encode($a);
 		}
 	}
+	if(isset($_POST['getname']))
+	{	
+		$s1 = $_POST['txtmobno2'];
+		$a1=array();
+		if(strlen($s1)>0)
+		{
+			$query="SELECT `client_name` from contact_dtl where mobile_no='".$s1."'";
+			$res=mysql_query($query);
+			if(mysql_num_rows($res)>0)
+			{
+				$i=0;
+				while($row2=mysql_fetch_array($res))
+				{
+					$a1[$i] = $row2['client_name'];
+					$i++;
+				}
+			}
+			echo json_encode($a1);
+		}
+	}
+	
+	if(isset($_POST['showInvoice1']))
+	{	
+	$abc=showInvoiceSet1($conn);
+	print_r($abc[0]["next_val"]);
+		 
+		
+	}
 ?>
 				

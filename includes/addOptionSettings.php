@@ -139,7 +139,7 @@
 			<div class="control-group">
 				<label class="control-label">Auto Set Delivery Date After</label>
 				<div class="controls" id="updefault">
-						<input id="txtAutoSet" class="m-wrap medium" type="text" name="txtAutoSet" placeholder="Days">				
+						<input id="txtAutoSet" class="m-wrap medium" type="text" name="txtAutoSet" placeholder="Days">			
 					<a id="updAutoSet" name="updAutoSet" class="btn btn-default" style="margin-bottom:10px;">Save</a>
 				</div>				
 			</div>

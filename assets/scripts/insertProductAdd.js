@@ -168,8 +168,9 @@ $( function() {
 						$('#txtprdid').val(v.prd_id);						
 						$('#txtitmcd').val(v.item_code);
 						$('#txtdispnm').val(v.disp_nm);						
+						$('#txtcgrp').val(v.commodity_grp);	
+						$('#drpprdctg').val(v.prd_cat_id);
 						
-						$('#txtcgrp').val(v.commodity_grp);						
 						$('#txtrprice').val(v.retail_price);
 						$('#txtpprice').val(v.pur_price);
 						$('#drptype').val(v.type);						

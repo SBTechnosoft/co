@@ -47,8 +47,10 @@ function showProductMst($conn,$ctgprod)
 function showProductAdd($conn)
 	{
 		$sqlShowCatg = "select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
-			`pur_price`,`type` from  `product_mst` where `deleted_at` = '0000-00-00 00:00:00'  "; 
-		return $conn->getResultArray($sqlShowCatg);		
+			`pur_price`,`type` from `product_mst` where `deleted_at` = '0000-00-00 00:00:00'  "; 
+		return $conn->getResultArray($sqlShowCatg);	
+
+	
 	}
 function showCtgdrp($conn)
 	{
@@ -62,8 +64,7 @@ function showCtgdrpSearch($conn)
 	}
 function showPrdCtgdrp($conn)
 	{
-		$sqlShowCatgdrp = "select `prd_cat_id`,`prd_cat_name` from  `product_cat_mst`  
-		where `deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
+		$sqlShowCatgdrp = "select `prd_cat_id`,`prd_cat_name` from `product_cat_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name`"; 
 		return $conn->getResultArray($sqlShowCatgdrp);		
 	}
 function showCtgdrpNew($conn)
@@ -824,6 +825,12 @@ function showcntRes($conn,$event_id)
 	function showInvoiceSet($conn)
 	{
 		$sqlShowCatg = "select `invoice_conf_id`,`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at` from `invoice_config`"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+	
+	function showInvoiceSet1($conn)
+	{
+		$sqlShowCatg = "select `next_val` from `invoice_config` ORDER BY next_val DESC LIMIT 1"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 	function showCmpDrp1($conn,$id)

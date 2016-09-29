@@ -1339,7 +1339,8 @@
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>   
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>  
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/ShowRetailSales.js"></script> 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertRetailSales.js"></script> 
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
 					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -1374,6 +1375,7 @@
 							  $('#datetimepicker3').datetimepicker({
 								language: 'pt-BR'
 							  });
+							  
 						   });
 			
 					</script>

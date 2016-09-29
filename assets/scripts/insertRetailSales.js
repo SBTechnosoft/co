@@ -1,3 +1,4 @@
+
 $("#taxmode").on("change", function()
 		{
 			var taxmode    =   $('#taxmode').val();
@@ -376,9 +377,11 @@ function showtax()
 		showtax();
 		
 		
+
+		 
 		
 $('#datetimepicker1').on('changeDate',function(selected){
-	var t1;
+	var tt;
 	$.ajax({
 				url : './includes/addOptionSettingsPost.php',
 				type : 'post',
@@ -389,15 +392,22 @@ $('#datetimepicker1').on('changeDate',function(selected){
 				},
 				success : function(r)
 				{
-					t1=r.retail_sales_day;
+					tt=r.retail_sales_day;
 				//	alert(t1);
 					
 				}
 				
 			});
+	
 	var end_date=$('#datetimepicker2').data('datetimepicker');
 	start_date = new Date(selected.date);
-    start_date.setDate(start_date.getDate()+parseInt(t1));
+    start_date.setDate(start_date.getDate()+parseInt(tt));
+	
+	if(start_date.getDay()==1)
+	{
+		
+		start_date.setDate(start_date.getDate()+1);
+	}
 	end_date.setDate(start_date);
    
 	
@@ -418,15 +428,49 @@ $('#txtmobno').keyup(function(){
 	  }
 	  
     })
-    .done(function(msg) {
-	 console.log(msg);
-       $('#txtmobno').autocomplete({
-    source: msg
-           
-    });
-    //console.log(msg[4]);
-     //$('#output').html(msg[5]);
-       // $('#total_values').html(msg[2]);
+		.done(function(msg) {
+		console.log(msg);
+		$('#txtmobno').autocomplete({
+		source: msg,
+        select: function( event, ui ) {
+			alert(ui.item.value);
+			$.ajax({
+				type: 'POST',
+				dataType:'json',
+				url: './includes/retailSalesPost.php',
+				data: { 
+					getname:1,
+					txtmobno2: ui.item.value
+					}
+	  
+					})
+			.done(function(msg2) {
+			$('#txtprdnm').val(msg2);
+								});
+						}
+  
+			});
+   
     });
 });
- 
+
+function showInvoice()
+		{		
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showInvoice1' : 1
+					
+				},
+				success : function(r3)
+				{
+				
+					$('#invoice1').val(r3);					
+					
+				}
+				
+			});
+		}
+		showInvoice();

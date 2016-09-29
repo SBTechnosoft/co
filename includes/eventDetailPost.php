@@ -286,7 +286,7 @@
 	
 	
 	
-	
+	/*
 	if(isset($_POST['show']))
 	{	
 		$data = showEventDetail ($conn);
@@ -382,7 +382,7 @@
 			
 		}
 		
-	}
+	}*/
 	if(isset($_POST['showPdf']))
 	{	
 		$data = showPdf ($conn,$_POST['eid']);
