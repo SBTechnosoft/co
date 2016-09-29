@@ -247,10 +247,22 @@ $inm = date_format($date,"Ymd");
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
 					
 				}
-				
+				$inv_id = showInvoiceId($conn,$input[0]['cmp_id']);
+				$cnf_id = $inv_id[0]['invoice_conf_id'];
+				if($inv_id[0]['type'] == 'prefix')
+				{
+					$INVID = $inv_id[0]['label'].$inv_id[0]['next_val'];
+					$nextval = $inv_id[0]['next_val'] + 1;
+				}
+				else
+				{
+					$INVID = $inv_id[0]['next_val'].$inv_id[0]['label'];
+					$nextval = $inv_id[0]['next_val'] + 1;
+				}
 				$output =array(	
 						'Description' => $outputD,
 						'Venue' => $VennueD,
+						'INVID' => $INVID,
 						'Banner_Img' => $BnrImg
 						);
 				
