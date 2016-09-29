@@ -58,13 +58,15 @@ function insProduct($conn,$txtprdnm,$txtcatid,$cur_date)
 			exit;
 		}
 		
-function insProductAdd($conn,$txtprdnm,$txtprdid,$txtitmcd,$txtdispnm,$txtcgrp,$drpprdctg,$txtrprice,$txtpprice,$drptype,$cur_date)
+function insProductAdd($conn,$txtprdnm,$txtprdid,$txtitmcd,$txtdispnm,$txtcgrp,$drpprdctg,$txtrprice,$txtpprice,
+$drptype,$cur_date,$txtrtaxmode,$txttaxrt,$txttaxamt,$txtactAmt)
 		{
 			$sqlinsProductAdd = "INSERT INTO `product_mst` 
 			(`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
-			`pur_price`,`type`,`created_at`,`deleted_at`,`updated_at`) 
+			`pur_price`,`type`,`created_at`,`deleted_at`,`updated_at`,`tax_mode`,`tax_rate`,`tax_amt`,`actual_amt`) 
 			VALUES ('".$txtprdnm."','".$txtprdid."','".$txtitmcd."','".$txtdispnm."','".$txtcgrp."',
-			'".$drpprdctg."','".$txtrprice."','".$txtpprice."','".$drptype."','".$cur_date."','','')"; 
+			'".$drpprdctg."','".$txtrprice."','".$txtpprice."','".$drptype."','".$cur_date."','','',
+			'".$txtrtaxmode."','".$txttaxrt."','".$txttaxamt."','".$txtactAmt."')"; 
 			$resultArray = $conn->insertQuery($sqlinsProductAdd);
 			echo 0;
 			exit;

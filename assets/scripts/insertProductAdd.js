@@ -11,6 +11,13 @@
 			var txtrprice    =   $('#txtrprice').val();
 			var txtpprice     =   $('#txtpprice').val();
 			var drptype    =   $('#drptype').val();
+			
+			//for tax call
+			var txtrtaxmode     =   $('#txtrtaxmode').val();
+			var txttaxrt    =   $('#txttaxrt').val();
+			var txttaxamt     =   $('#txttaxamt').val();
+			var txtactAmt    =   $('#txtactAmt').val();
+			//exit
 						
 			if(txtprdnm == "" )
 			{
@@ -33,7 +40,13 @@
 					'drpprdctg'  : drpprdctg,	
 					'txtrprice'   : txtrprice,					
 					'txtpprice'   : txtpprice,
-					'drptype'  : drptype,	
+					'drptype'  : drptype,
+					
+					'txtrtaxmode'  : txtrtaxmode,	
+					'txttaxrt'   : txttaxrt,					
+					'txttaxamt'   : txttaxamt,
+					'txtactAmt'  : txtactAmt,
+					
 				},
 				success : function(re)
 				{
@@ -49,6 +62,12 @@
 						$('#txtpprice').val('');
 						$('#drptype').val('');
 						
+						$('#txtrtaxmode').val('');
+						
+						$('#txttaxamt').val('0');
+						$('#txtactAmt').val('0');
+						
+						
 						$("#msgs").html("<i class=\"fa fa-check-circle-o\"> Successfully Subscribed!!");
 						$('#msgs').addClass('fadeInDown').fadeIn('slow');
 						$('#msgs').addClass('fadeInDown').fadeOut('slow');						
@@ -57,7 +76,69 @@
 				}				
 			});	
 			//showdata();			
+		});	
+
+		$('#txtrprice').on('focusout', function()
+		{
+					
+			var txtrprice = $('#txtrprice').val();
+			var txtrtaxmode  = $('#txtrtaxmode').val();//tax mode yes  or no
+			var txttaxrt = $('#txttaxrt').val(); //tax rate
+			
+			if(txtrprice == "")
+			{
+				alert("Plz Insert The Price!!!");
+				return false;
+			}
+			if(txtrprice != "")
+			{
+				if(isNaN(txtrprice))
+				{
+					alert("Please Only Numeric in Rate!!! (Allowed input:0-9)");
+					return false;
+				}
+				
+			}
+			if(txtrtaxmode == 'Yes')
+			{
+				var taxamt = Math.round((parseInt(txtrprice)* parseInt(txttaxrt))/(100 + parseInt(txttaxrt)));
+				var actAmt = Math.round(parseInt(txtrprice) - parseInt(taxamt));
+				$('#txttaxamt').val(taxamt);
+				$('#txtactAmt').val(actAmt);
+			}
+			else
+			{
+				$('#txtactAmt').val(txtrprice);
+				$('#txtrprice').val(txtrprice);
+			}
+			
 		});		
+		
+		$("#txtrtaxmode").on("change", function(){
+		
+			var txtrtaxmode  = $('#txtrtaxmode').val();//tax mode yes  or no
+			var txtrprice = $('#txtrprice').val(); //with tax valuue
+			var txttaxrt = $('#txttaxrt').val(); //tax rate
+			if(txtrtaxmode == 'Yes')
+			{
+				var taxamt = Math.round((parseInt(txtrprice)* parseInt(txttaxrt))/(100 + parseInt(txttaxrt)));
+				var actAmt = Math.round(parseInt(txtrprice) - parseInt(taxamt));
+				$('#txttaxamt').val(taxamt);
+				$('#txtactAmt').val(actAmt);
+			}
+			else
+			{
+				$('#txtactAmt').val(txtrprice);
+				$('#txtrprice').val(txtrprice);
+				$('#txttaxamt').val('0');
+			}
+			
+					
+		});
+
+
+
+		
 	});	
 
 	
@@ -178,4 +259,22 @@
 				});	
 			
 		}
-		showproddetail();			
+		showproddetail();
+	function fetchtax()
+	{
+		$.ajax({
+					url : 'includes/productAddPost.php',
+					type : 'POST',
+					async : false,
+					data : {
+						'fetch_tax'  : 1,					
+						
+					},
+					success : function(v)
+					{					
+						$('#txttaxrt').val(v.service_tax);						
+					}
+					
+				});	
+	}
+	fetchtax();

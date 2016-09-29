@@ -6,7 +6,8 @@
 	{	
 		$cur_date = date('Y-m-d H:i:s');
 		insProductAdd($conn,$_POST['txtprdnm'],$_POST['txtprdid'],$_POST['txtitmcd'],$_POST['txtdispnm'],$_POST['txtcgrp'],
-		$_POST['drpprdctg'],$_POST['txtrprice'],$_POST['txtpprice'],$_POST['drptype'],$cur_date);	
+		$_POST['drpprdctg'],$_POST['txtrprice'],$_POST['txtpprice'],$_POST['drptype'],$cur_date,$_POST['txtrtaxmode'],
+		$_POST['txttaxrt'],$_POST['txttaxamt'],$_POST['txtactAmt']);	
 	}		
 	
 	if(isset($_POST['show']))
@@ -56,6 +57,16 @@
 		$cur_date = date('Y-m-d H:i:s');
 		updProduct($conn,$_POST['txtprdnm'],$_POST['txtprdid'],$_POST['txtitmcd'],$_POST['txtdispnm'],$_POST['txtcgrp'],
 		$_POST['drpprdctg'],$_POST['txtrprice'],$_POST['txtpprice'],$_POST['drptype'],$upd_date,$_POST['prod_id']);	
+	}
+	if(isset($_POST['fetch_tax']))
+	{	
+		
+		$vap = mysql_query("select `service_tax` from `setting` ");
+		$vendrow = mysql_fetch_array($vap);
+		header("Content-type: text/x-json");
+		echo json_encode($vendrow);
+		exit();	
+		
 	}	
 ?>
 				

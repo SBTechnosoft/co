@@ -50,6 +50,7 @@ if(isset($_POST['prod_id']))
                         <div class="row-fluid">
                             <div class="span8 booking-search">
                                 <form action="#">
+								<input type="hidden" id="txttaxrt" name="txttaxrt" >
 								<input type="hidden" id="prod_id" name="prod_id" value="<?php if(isset($_POST['prod_id'])){echo $_POST['prod_id'];}  ?>" />
                                     <div class="clearfix margin-bottom-10">
                                         <label> Name </label>
@@ -103,10 +104,35 @@ if(isset($_POST['prod_id']))
                                             <input class="m-wrap" type="text"  id="txtrprice" name="txtrprice" placeholder="Your Retail Price" />
                                         </div>
                                     </div>
+									
+									<div class="control-group">
+                                        <label class="control-label">Tax</label>
+                                        <div class="controls">
+                                            <select class="large m-wrap" id="txtrtaxmode" name="txtrtaxmode" >
+												<option selected="select" value="">Select Tax </option>
+                                                <option value="Yes">With Tax </option>
+                                                <option value="No"> Without Tax </option>                                               
+                                            </select>
+                                        </div>
+                                    </div>
+									
+									<div class="clearfix margin-bottom-10">
+                                        <label> Tax Amount </label>
+                                        <div class="input-icon left">
+                                            <input class="m-wrap" type="text"  id="txttaxamt" name="txttaxamt" value="0" />
+                                        </div>
+                                    </div>
+									<div class="clearfix margin-bottom-10">
+                                        <label> Actual Amount </label>
+                                        <div class="input-icon left">
+                                            <input class="m-wrap" type="text"  id="txtactAmt" name="txtactAmt" value="0" />
+                                        </div>
+                                    </div>
+									
 									<div class="clearfix margin-bottom-10">
                                         <label> Purchase Price </label>
                                         <div class="input-icon left">
-                                            <input class="m-wrap" type="text"  id="txtpprice" name="txtpprice" placeholder="Your Purchase Price" />
+                                            <input class="m-wrap" type="text"  id="txtpprice" name="txtpprice"  placeholder="Your Purchase Price" />
                                         </div>
                                     </div>
 									<div class="control-group">
