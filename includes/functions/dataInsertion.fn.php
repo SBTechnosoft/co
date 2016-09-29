@@ -204,7 +204,7 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 			echo 1;
 			//exit;
 		}
-function insertRetailAdd($conn,$txtprdnm,$txtmobno,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
+function insertRetailAdd($conn,$txtprdnm,$txtmobno,$txtAdd,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
 							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat)
 		{
 			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,

@@ -299,7 +299,7 @@ if(isset($setting) && !empty($setting))
 						}
 					?>">
             <a href="<?php echo HTTP_SERVER.'index.php?url=DLVB';?>">
-                <i class="fa fa-book"></i>
+                <i class="fa fa-shopping-bag"></i>
                 <span class="title">Deliverable</span>
                 <span class="arrow "></span>
             </a>

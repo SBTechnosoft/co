@@ -302,7 +302,12 @@ function showstfdtl($conn,$event_plc_dtl_stf)
 	}
 function showpaidtrn($conn,$epid)
 	{
-		$sqlShowEventPaidTrn = "select `payment_date`,`event_id`,`client_paid_amt`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type` from `event_client_payment_trn` where `event_id` = '".$epid."' "; 
+		$sqlShowEventPaidTrn = 
+		"select `payment_date`,ect.`event_id`,em.event_name,em.client_name,ect.`client_paid_amt`,`payment_mode`,`cheque_no`,
+`bank_name`,`trn_type` 
+from `event_client_payment_trn` ect
+right join event_mst em on em.event_id= ect.event_id
+where ect.`event_id` = '".$epid."' "; 
 		return $conn->getResultArray($sqlShowEventPaidTrn);	
 	}
 function showTotPaidTrn($conn,$etpid)

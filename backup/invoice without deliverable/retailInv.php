@@ -82,13 +82,12 @@ $inm = date_format($date,"Ymd");
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
-		//select last record inserted from event_mst	
-		$eventlast_id = mysql_insert_id();;
-		//now inserted in event_places_id
 		insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
 		
 		
-		
+		//select last record inserted from event_mst	
+		$eventlast_id = mysql_insert_id();;
+		//now inserted in event_places_id
 		
 		
 		//here is loop coming for multiple record//

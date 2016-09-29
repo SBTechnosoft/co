@@ -2499,8 +2499,8 @@
 					$pnm= date_format($from_date,dateFormat);  
 					?>		
 				<div class="Cell"><?php echo $pnm;?></div>
-				<div class="Cell"><?php echo $paidtrn[$a]['event_name'];?></div>
-				<div class="Cell"><?php echo $paidtrn[$a]['client_name'];?></div>
+				<div class="Cell"><?php echo ucfirst($paidtrn[$a]['event_name']);?></div>
+				<div class="Cell"><?php echo ucfirst($paidtrn[$a]['client_name']);?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['client_paid_amt']== ''){echo "";}else{echo $paidtrn[$a]['client_paid_amt']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['payment_mode']== ''){echo "";}else{echo $paidtrn[$a]['payment_mode']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
