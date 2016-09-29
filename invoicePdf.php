@@ -63,16 +63,20 @@
 				{
 					$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
 				}
-				$cnteqp = count($dEqp); 
-				if($cnteqp<11)
+				$cnteqp = count($dEqp);
+				
+				if($cnteqp < $cnteqp+1)
 				{
-					$cnteqp1 = 11;
+					$cnteqp1 = $cnteqp+1;
 				}
 				else
 				{
 					$cnteqp1 = $cnteqp;
 				}
-				for($a=0;$a<$cnteqp;$a++)
+				
+				
+				$count = 0;
+				for($a=0;$a<$cnteqp1;$a++)
 				{
 					if($a < $cnteqp)
 					{
@@ -155,7 +159,148 @@
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
 								</tr>';
 						}
-					}					
+					}
+					
+					
+					$count++;
+				}
+				
+				$DelvDtl = showdeliverabledtl($conn,$_POST['txteid']);
+				$cntdelv = count($DelvDtl);
+				
+				if($count % 2 == 0)
+				{
+					$outputD .= '
+					<tr class="trhw" >
+						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+						<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
+						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+					</tr>				';
+					$count ++;
+				}
+				else
+				{
+					$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								</tr>';
+					$count ++;
+				}
+				for($b=0;$b<=$cntdelv;$b++)
+				{
+					if($b < $cntdelv)
+					{
+						if($count % 2 == 0)
+						{
+							if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
+							{				
+							
+							$outputD .= '
+								<tr class="trhw" >
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+								</tr>
+							';
+							}
+							else
+							{				
+							
+							$outputD .= '
+								<tr class="trhw">
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+								</tr>
+							';
+							}
+						}
+						else
+						{
+							if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
+							{				
+							
+							$outputD .= '
+								<tr class="trhw" >
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+								</tr>
+							';
+							}
+							else
+							{				
+							
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+								</tr>';
+							}
+						}
+					}
+					else
+					{
+						if($count%2==0)
+						{
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								</tr>';
+						}
+						else
+						{
+							$outputD .= '<tr class="trhw">
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								</tr>';
+						}
+					}
+					$count++;
+				}
+				
+				while($count<11)
+				{
+					if($count%2==0)
+					{
+						$outputD .= '<tr class="trhw">
+								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+							</tr>';
+					}
+					else
+					{
+						$outputD .= '<tr class="trhw">
+								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+							</tr>';
+					}
+					$count++;
 				}
 				
 				
@@ -192,7 +337,7 @@
 					
 				}
 				
-				$inv_id = showInvoiceId($conn);
+				$inv_id = showInvoiceId($conn,$input[0]['cmp_id']);
 				$cnf_id = $inv_id[0]['invoice_conf_id'];
 				if($inv_id[0]['type'] == 'prefix')
 				{
@@ -499,7 +644,7 @@
 					$count++;
 				}
 				
-				while($count<=11)
+				while($count<11)
 				{
 					if($count%2==0)
 					{

@@ -846,10 +846,10 @@ function showCmpDrp1($conn,$id)
 		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' and `cmp_id`='".$id."'"; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
-function showInvoiceId($conn)
+function showInvoiceId($conn,$cmp_id)
 	{
 		$sqlInvoiceId = "select `invoice_conf_id`,`label`,`type`,`next_val` 
-							from invoice_config order by invoice_conf_id desc limit 1"; 
+							from invoice_config where cmp_id = '".$cmp_id."' order by invoice_conf_id desc limit 1"; 
 		return $conn->getResultArray($sqlInvoiceId);		
 	}
 function showCmpanytran($conn)
