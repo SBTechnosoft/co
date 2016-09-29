@@ -71,13 +71,14 @@ $drptype,$cur_date,$txtrtaxmode,$txttaxrt,$txttaxamt,$txtactAmt)
 			echo 0;
 			exit;
 		}
-function updProduct($conn,$prod_nm,$prd_id,$item_code,$disp_nm,$commodity_grp,$commodity_grp,$retail_price,$pur_price,$type,$upd_date,$prod_id)
+function updProduct($conn,$prod_nm,$prd_id,$item_code,$disp_nm,$commodity_grp,$prd_cat_id,$retail_price,$pur_price,$type,$upd_date,$prod_id)
 		{
 			$sqlInsEqup = "UPDATE  `product_mst` set `prod_nm` = '".$prod_nm."',
 														`prd_id` = '".$prd_id."',
 														`item_code` = '".$item_code."',
 														`disp_nm` = '".$disp_nm."',
 														`commodity_grp` = '".$commodity_grp."',
+														`prd_cat_id`='".$prd_cat_id."',
 														`retail_price` = '".$retail_price."',
 														`pur_price` = '".$pur_price."',
 														`type` = '".$type."',

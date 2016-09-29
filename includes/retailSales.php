@@ -55,10 +55,19 @@
                                         </div>
                                     </div>
                                     <div class="clearfix margin-bottom-10">
-										<label for="">Company</label>
-										<div class="input-icon left">
-											<select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap">									
-											</select>
+										<div class="pull-left margin-right-20">
+											<label for="">Company</label>
+											<div class="input-icon left">
+												<select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap">									
+												</select>
+											</div>
+										</div>
+										<div class="pull-right margin-right-20">
+											<label for="">Invoice</label>
+												<div class="input-icon left">
+													<input class="m-wrap" type="text" id="invoice1" name="invoice1" readonly />
+													
+												</div>
 										</div>
 									</div>
 									<div class="clearfix margin-bottom-10">
