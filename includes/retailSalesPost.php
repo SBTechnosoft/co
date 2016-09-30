@@ -271,10 +271,34 @@ if(isset($_POST['CalDiscount']))
 	
 	if(isset($_POST['showInvoice1']))
 	{	
-	$abc=showInvoiceSet1($conn);
-	print_r($abc[0]["next_val"]);
-		 
+		$abc=showInvoiceSet1($conn);
+		if($abc[0]["type"]=='prefix')
+		{
+		$inv2=$abc[0]["label"].$abc[0]["next_val"];
+			print_r($inv2);
+		}
+		else
+		{
+			$inv3=$abc[0]["next_val"].$abc[0]["label"];
+			print_r($inv3);
+		}
+	
+	}
+	if(isset($_POST['showInvoiceCmp']))
+	{	
 		
+		$abc1=showInvoiceSet2($conn,$_POST['cmp']);
+		if($abc1[0]["type"]=='prefix')
+		{
+		$inv=$abc1[0]["label"].$abc1[0]["next_val"];
+			print_r($inv);
+		}
+		else
+		{
+			$inv1=$abc1[0]["next_val"].$abc1[0]["label"];
+			print_r($inv1);
+		}
+				
 	}
 ?>
 				

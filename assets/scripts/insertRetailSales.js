@@ -382,17 +382,21 @@ function showtax()
 		
 $('#datetimepicker1').on('changeDate',function(selected){
 	var tt;
+	 var str;
+	  var arr;
 	$.ajax({
 				url : './includes/addOptionSettingsPost.php',
 				type : 'post',
 				async : false,
 				data : {
-					'show' : 1
+					'showset' : 1
 					
 				},
 				success : function(r)
 				{
-					tt=r.retail_sales_day;
+					str = String(r);
+					 arr = str.split(",");
+					//tt=r.retail_sales_day;
 				//	alert(t1);
 					
 				}
@@ -401,7 +405,9 @@ $('#datetimepicker1').on('changeDate',function(selected){
 	
 	var end_date=$('#datetimepicker2').data('datetimepicker');
 	start_date = new Date(selected.date);
-    start_date.setDate(start_date.getDate()+parseInt(tt));
+   start_date.setDate(start_date.getDate()+parseInt(arr[0]));
+start_date.setHours(5+parseInt(arr[1]));
+start_date.setMinutes(30+parseInt(arr[2]));
 	
 	if(start_date.getDay()==1)
 	{
@@ -433,7 +439,7 @@ $('#txtmobno').keyup(function(){
 		$('#txtmobno').autocomplete({
 		source: msg,
         select: function( event, ui ) {
-			alert(ui.item.value);
+			//alert(ui.item.value);
 			$.ajax({
 				type: 'POST',
 				dataType:'json',
@@ -456,6 +462,8 @@ $('#txtmobno').keyup(function(){
 
 function showInvoice()
 		{		
+		var comp=$('#drpcmpnm').val();
+		
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -466,6 +474,7 @@ function showInvoice()
 				},
 				success : function(r3)
 				{
+					
 				
 					$('#invoice1').val(r3);					
 					
@@ -474,3 +483,24 @@ function showInvoice()
 			});
 		}
 		showInvoice();
+		
+$("#drpcmpnm").on("change", function()
+		{
+			var cmp =$('#drpcmpnm').val();
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showInvoiceCmp' : 1,
+					'cmp':cmp
+					
+				},
+				success : function(r7)
+				{
+					
+					 $('#invoice1').val(r7);									
+				}
+				
+			});
+		});

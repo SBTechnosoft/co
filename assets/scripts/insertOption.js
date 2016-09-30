@@ -138,14 +138,23 @@
 		$('#updAutoSet').click(function(){
 			
 			var txtAutoSet    =   $('#txtAutoSet').val();
-					
+			var hours    =   $('#hours').val();
+			var minutes    =   $('#minutes').val();
+			var txtset=[];
+			for(var i=1;i<2;i++)
+			{
+				txtset.push($('#txtAutoSet').val());
+				txtset.push($('#hours').val());
+				txtset.push($('#minutes').val());
+			}
 			$.ajax({
 				url : './includes/addOptionSettingsPost.php',
 				type : 'POST',
 				async : false,
 				data : {
 					'saveAutoSetDate'  : 1,
-					'txtAutoSet'   : txtAutoSet,																			
+					'txtAutoSet'   : txtset,
+					
 				},
 				success : function(re)
 				{
@@ -180,7 +189,7 @@
 					$('#txtvat').val(r.vat);
 					$('#txtrtl').val(r.retail_sales);
 					$('#txtres_equ').val(r.resorce);
-					$('#txtAutoSet').val(r.retail_sales_day);
+					//$('#txtAutoSet').val(r.retail_sales_day);
 					
 				}
 				
@@ -189,4 +198,75 @@
 		
 		showdata();
 	});		
-			
+function showset()
+		{	
+var str;	
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showset' : 1
+					
+				},
+				success : function(r)
+				{
+					 str = String(r);
+					 arr = str.split(",");
+						// i;
+					// alert(arr[0]);
+					// for(i in arr){
+						// alert(arr[i]);
+					
+					// }
+					$('#txtAutoSet').val(arr[0]);
+					$('#hours').val(arr[1]);
+					 $('#minutes').val(arr[2]);
+					
+					
+				}
+				
+			});
+		}
+		
+		showset();
+function showHours()
+		{		
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'hours' : 1
+					
+				},
+				success : function(r)
+				{
+				
+					$('#hours').html(r);					
+					
+				}
+				
+			});
+		}
+		showHours();	
+function showMin()
+		{		
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'minutes' : 1
+					
+				},
+				success : function(r)
+				{
+				
+					$('#minutes').html(r);					
+					
+				}
+				
+			});
+		}
+		showMin();	

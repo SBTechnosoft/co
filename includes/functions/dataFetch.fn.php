@@ -830,7 +830,12 @@ function showcntRes($conn,$event_id)
 	
 	function showInvoiceSet1($conn)
 	{
-		$sqlShowCatg = "select `next_val` from `invoice_config` ORDER BY next_val DESC LIMIT 1"; 
+		$sqlShowCatg = "select * from company_mst c,invoice_config i where i.cmp_id=c.cmp_id and c.cmp_default=1 ORDER BY i.created_at DESC LIMIT 1"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+	function showInvoiceSet2($conn,$id)
+	{
+		$sqlShowCatg = "select cmp_id,label,type,next_val from invoice_config where cmp_id='".$id."' ORDER BY next_val DESC LIMIT 1"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 	function showCmpDrp1($conn,$id)

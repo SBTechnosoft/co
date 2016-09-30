@@ -24,15 +24,67 @@
 	
 	if(isset($_POST['saveAutoSetDate']))
 	{		
-		insOptionAutoSetDate($conn,$_POST['txtAutoSet']);	
+		$Auto=json_encode($_REQUEST['txtAutoSet']);
+		insOptionAutoSetDate($conn,$Auto);	
+	}
+	if(isset($_POST['showset']))
+	{	
+		$q = mysql_query("SELECT `retail_sales_day` from setting ");
+		
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		$var = json_encode($row[0]);
+		echo $var1 =  json_decode($var);
+		
+		
+		
 	}
 	if(isset($_POST['show']))
 	{	
 		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day` from setting ");
+		
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
 		exit();	
 		
 	}
+	
+	if(isset($_POST['hours']))
+	{	
+		
+		?>
+		
+		<option select="select" value ="">Select Hours </option>
+		<?php
+		
+		 for($i=1;$i<=24;$i++)
+		 {
+		?>
+			<option  value = "<?php echo $i; ?>"> <?php echo $i; ?> </option>
+						
+		 <?php	
+		 
+		}
+		
+	}
+	if(isset($_POST['minutes']))
+	{	
+		
+		?>
+		
+		<option select="select" value ="">Select Minutes</option>
+		<?php
+		
+		 for($i=1;$i<=60;$i++)
+		 {
+		?>
+			<option  value = "<?php echo $i; ?>"> <?php echo $i; ?> </option>
+						
+		 <?php	
+		 
+		}
+		
+	}
+	
 ?>				

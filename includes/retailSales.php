@@ -51,6 +51,9 @@
                                         <label> Name </label>
                                         <div class="input-icon left">
                                             <input class="m-wrap" type="text" id="txtprdnm" name="txtprdnm" placeholder="Client name">
+											<a class="expopen" data-id ="" style="">
+													<i class="fa fa-info-circle" aria-hidden="true" id="open"></i>
+											</a>
                                         </div>
                                     </div>
                                     <div class="clearfix margin-bottom-10">
