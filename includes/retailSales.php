@@ -70,6 +70,15 @@
 												</div>
 										</div>
 									</div>
+									<div class="clearfix margin-bottom-10" >
+										<label for="">Tax Applicability </label>
+										<div class="input-icon left">
+											<select name="taxmode" id="taxmode" > 
+												<option select="selected" value="No">No</option>
+												<option value="Yes">Yes</option>
+											</select>
+										</div>
+									</div>
 									<div class="clearfix margin-bottom-10">
                                         <label> Client Address </label>
                                         <div class="input-icon left">
@@ -101,6 +110,7 @@
 										<input style="width:207px;" type="text"  value="Product Category" readonly />									
 										<input style="width:207px;" type="text"  value="Product" readonly />									
 										<input style="width:121px;" type="text"  value="Rate" readonly />
+										<input style="width:121px;" type="text"  value="Tax" readonly />
 										<input style="width:123px;" type="text"  value="Qty" readonly />
 										<input style="width:120px;" type="text"  value="Amount" readonly />									
 									</div>
@@ -111,8 +121,13 @@
 										</select>
 										<select  name="drpProd" id="drpProd" class="medium m-wrap drpProd">											
 										</select>
-										<input class="small m-wrap txtcomgrp"  type="hidden"  id="txtcomgrp" name="txtcomgrp" value=""  />	
-										<input class="small m-wrap txtprdrate"  type="text"  id="txtprdrate" name="txtprdrate" value=""  />	
+										<input class="small m-wrap txtcomgrp"  type="hidden"  id="txtcomgrp" name="txtcomgrp" value=""  />
+										
+										<input class="small m-wrap htxtprdrate"  type="hidden"  id="htxtprdrate" name="htxtprdrate" value=""  />
+										<input class="small m-wrap htxtprdtax"  type="hidden"  id="htxtprdtax" name="htxtprdtax" value=""  />
+										
+										<input class="small m-wrap txtprdrate"  type="text"  id="txtprdrate" name="txtprdrate" value=""  />
+										<input class="small m-wrap txtprdtax"  type="text"  id="txtprdtax" name="txtprdtax" value=""  />
 										<input class="small m-wrap txtprdqty"  type="text"  id="txtprdqty" name="txtprdqty" value="1" />																	
 										<input class="small m-wrap txtprdamt" type="text"  id="txtprdamt" name="txtprdamt" value="" readonly />	
 										
@@ -133,6 +148,7 @@
 														<th> Product </th>
 														<th> Group </th>
 														<th> Rate</th>
+														<th> Tax</th>
 														<th> Qty</th>
 														<th> Amount</th>													
 														<th> Action</th>													 
@@ -157,11 +173,18 @@
 										</div>
 									</div>
 									<div class="clearfix margin-bottom-10">
-										<label for="txtpaid">Paid Amount / Advance </label>
+										<label for="txttottax">Tax </label>
 										<div class="input-icon left">
-											<input type="number" id="txtpaid" name="txtpaid" class="m-wrap" />
+											<input type="text" id="txttottax" name="txttottax" class="m-wrap txttottax" readonly />
 										</div>
 									</div>
+									<div class="clearfix margin-bottom-10">
+										<label for="txttotamt">Total Amount </label>
+										<div class="input-icon left">
+											<input type="text" id="txttotamt" name="txttotamt" class="m-wrap txttotamt" readonly />
+										</div>
+									</div>
+									
 									<div class="clearfix margin-bottom-10">
 										<label for="txtdisc">Discount </label>
 										<div class="input-icon left">
@@ -169,9 +192,36 @@
 												<option value="Flat">Flat</option>
 												<option value="Percentage">Percentage</option>
 											</select>
-											<input type="text" id="txtdisc" name="txtdisc" class="m-wrap" />
+											<input type="text" id="txtdisc" name="txtdisc" value="0" class="m-wrap" />
 										</div>
 									</div>
+									<div class="clearfix margin-bottom-10">
+										<label for="txtdiscamt">Discount Amount </label>
+										<div class="input-icon left">
+											<input type="text" id="txtdiscamt" name="txtdiscamt" value="0" class="m-wrap txtdiscamt" readonly />
+										</div>
+									</div>
+									
+									<div class="clearfix margin-bottom-10">
+										<label for="txtfinAmt">Final Amount </label>
+										<div class="input-icon left">
+											<input type="text" id="txtfinAmt" name="txtfinAmt" class="m-wrap txtfinAmt" readonly />
+										</div>
+									</div>
+									<div class="clearfix margin-bottom-10">
+										<label for="txtpaid">Paid Amount / Advance </label>
+										<div class="input-icon left">
+											<input type="number" id="txtpaid" name="txtpaid" value="0" class="m-wrap" />
+										</div>
+									</div>
+									
+									<div class="clearfix margin-bottom-10">
+										<label for="txtremAmt">Remain Amount </label>
+										<div class="input-icon left">
+											<input type="text" id="txtremAmt" name="txtremAmt" class="m-wrap txtremAmt" readonly />
+										</div>
+									</div>
+									
 									<div class="clearfix margin-bottom-10" >
 										<label for="paymentMode">Payment Mode </label>
 										<div class="input-icon left">
@@ -197,25 +247,17 @@
 										</div>
 									</div>
 									
-									<div class="clearfix margin-bottom-10" >
-										<label for="">Tax Applicability </label>
-										<div class="input-icon left">
-											<select name="taxmode" id="taxmode" > 
-												<option select="selected" value="No">No</option>
-												<option value="Yes">Yes</option>
-											</select>
-										</div>
-									</div>
 									
 									
-									<div>										
+									
+									<!--div>										
 										<input style="width:207px;" type="text"  value="Service Tax" readonly  />									
 										<input style="width:207px;" type="text"  value="Vat" readonly />									
 										<input style="width:207px;" type="text"  value="Total" readonly  />																			
 									</div>
 									
 									<div id ="totdata">									
-									</div>
+									</div-->
 									
 									
 									

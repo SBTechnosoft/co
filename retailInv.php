@@ -40,8 +40,8 @@ $inm = date_format($date,"Ymd");
 			
 		// }
 		
-		$gtot = $_POST['txtgtotamt'];
-		$tax =  $_POST['txttaxamt'];
+		$gtot = $_POST['txtfinAmt'];
+		$tax =  $_POST['txttottax'];
 		$vat =  $_POST['txtvatamt'];
 		
 		
@@ -79,7 +79,7 @@ $inm = date_format($date,"Ymd");
 		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
 
 		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
-		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
+		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdiscamt'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
 		//select last record inserted from event_mst	

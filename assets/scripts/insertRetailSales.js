@@ -1,94 +1,131 @@
-$("#taxmode").on("change", function()
-		{
-			var taxmode    =   $('#taxmode').val();
-			var stax = $('#txtstax').val();
-			var vat = $('#txtvat').val();
-			var txttypedis = $('#txttypedis').val();
-			var disc = $('#txtdisc').val();
-			var clientcharge = $('#txtcharge').val();			
-			var txticomgrp = [];
-			$.each($('.txticomgrp'), function(){            
-                 txticomgrp.push($(this).val());
-            });			
-			var ptxtiamt = [];
-			$.each($('.ptxtiamt'), function(){            
-                 ptxtiamt.push($(this).val());
-            });		
+// $("#taxmode").on("change", function()
+		// {
+			// var taxmode    =   $('#taxmode').val();
+			// var stax = $('#txtstax').val();
+			// var vat = $('#txtvat').val();
+			// var txttypedis = $('#txttypedis').val();
+			// var disc = $('#txtdisc').val();
+			// var clientcharge = $('#txtcharge').val();			
+			// var txticomgrp = [];
+			// $.each($('.txticomgrp'), function(){            
+                 // txticomgrp.push($(this).val());
+            // });			
+			// var ptxtiamt = [];
+			// $.each($('.ptxtiamt'), function(){            
+                 // ptxtiamt.push($(this).val());
+            // });		
 			
-			$.ajax({
-				url : './includes/retailSalesPost.php',
-				type : 'post',
-				async : false,
-				data : {
-					'caluculate' : 1,
-					 'taxmode' : taxmode,
-					 'stax' : stax,
-					 'vat' : vat,
-					 'txttypedis' : txttypedis,
-					 'disc' : disc,
-					 'clientcharge' : clientcharge,
-					'txticomgrp' : txticomgrp,
-					'ptxtiamt' : ptxtiamt,
-				},
-				success : function(r1)
-				{
-					$('#totdata').html(r1);
+			// $.ajax({
+				// url : './includes/retailSalesPost.php',
+				// type : 'post',
+				// async : false,
+				// data : {
+					// 'caluculate' : 1,
+					 // 'taxmode' : taxmode,
+					 // 'stax' : stax,
+					 // 'vat' : vat,
+					 // 'txttypedis' : txttypedis,
+					 // 'disc' : disc,
+					 // 'clientcharge' : clientcharge,
+					// 'txticomgrp' : txticomgrp,
+					// 'ptxtiamt' : ptxtiamt,
+				// },
+				// success : function(r1)
+				// {
+					// $('#totdata').html(r1);
 									
-				}
+				// }
 				
-			});
+			// });
 			
+			
+		// });
+// $("#txtdisc").on("focusout", function()
+		// {
+			// var taxmode    =  $('#taxmode').val();
+			// var stax = $('#txtstax').val();
+			// var vat = $('#txtvat').val();
+			// var disc = $('#txtdisc').val();
+			// var txttypedis = $('#txttypedis').val();
+			// var clientcharge = $('#txtcharge').val();			
+			// var txticomgrp = [];
+			// $.each($('.txticomgrp'), function(){            
+                 // txticomgrp.push($(this).val());
+            // });			
+			// var ptxtiamt = [];
+			// $.each($('.ptxtiamt'), function(){            
+                 // ptxtiamt.push($(this).val());
+            // });		
+			
+			// $.ajax({
+				// url : './includes/retailSalesPost.php',
+				// type : 'post',
+				// async : false,
+				// data : {
+					// 'CalDiscount' : 1,
+					 // 'taxmode' : taxmode,
+					 // 'stax' : stax,
+					 // 'vat' : vat,
+					 // 'txttypedis' : txttypedis,
+					 // 'disc' : disc,
+					 // 'clientcharge' : clientcharge,
+					// 'txticomgrp' : txticomgrp,
+					// 'ptxtiamt' : ptxtiamt,
+				// },
+				// success : function(r1)
+				// {
+					// $('#totdata').html(r1);
+									
+				// }
+				
+			// });
+			
+			
+		// });
+
+	$("#txtdisc").on("focusout", function()
+		{
+			var txttypedis = $('#txttypedis').val();
+			var txtdisc = $('#txtdisc').val();
+			var txttotamt = $('#txttotamt').val();
+			
+			if(txttypedis == 'Flat')
+			{
+				var txtfinAmt = parseInt(txttotamt) -  parseInt(txtdisc) ;
+				
+				$('#txtdiscamt').val(txtdisc);
+				$('#txtfinAmt').val(txtfinAmt);
+				$('#txtremAmt').val(txtfinAmt);
+			}
+			else if (txttypedis == 'Percentage')
+			{
+				var txtdiscamt = (parseInt(txttotamt) * parseInt(txtdisc)) / 100 ;
+				var txtfinAmt = parseInt(txttotamt) - parseInt(txtdiscamt);
+				$('#txtdiscamt').val(txtdiscamt);
+				$('#txtfinAmt').val(txtfinAmt);
+				$('#txtremAmt').val(txtfinAmt);
+			}
+			else
+			{
+				
+			}
 			
 		});
-$("#txtdisc").on("focusout", function()
+	
+	
+	$("#txtpaid").on("focusout", function()
 		{
-			var taxmode    =  $('#taxmode').val();
-			var stax = $('#txtstax').val();
-			var vat = $('#txtvat').val();
-			var disc = $('#txtdisc').val();
-			var txttypedis = $('#txttypedis').val();
-			var clientcharge = $('#txtcharge').val();			
-			var txticomgrp = [];
-			$.each($('.txticomgrp'), function(){            
-                 txticomgrp.push($(this).val());
-            });			
-			var ptxtiamt = [];
-			$.each($('.ptxtiamt'), function(){            
-                 ptxtiamt.push($(this).val());
-            });		
-			
-			$.ajax({
-				url : './includes/retailSalesPost.php',
-				type : 'post',
-				async : false,
-				data : {
-					'CalDiscount' : 1,
-					 'taxmode' : taxmode,
-					 'stax' : stax,
-					 'vat' : vat,
-					 'txttypedis' : txttypedis,
-					 'disc' : disc,
-					 'clientcharge' : clientcharge,
-					'txticomgrp' : txticomgrp,
-					'ptxtiamt' : ptxtiamt,
-				},
-				success : function(r1)
-				{
-					$('#totdata').html(r1);
-									
-				}
-				
-			});
-			
-			
+			alert('hi');
+			var txtfinAmt = $('#txtfinAmt').val();
+			var txtpaid = $('#txtpaid').val();
+			var txtremAmt = parseInt(txtfinAmt) - parseInt(txtpaid);
+			$('#txtremAmt').val(txtremAmt);
 		});
-
-
-
 
 $("#drpProd").on("change", function()
 		{
 			var prod    =   $('#drpProd').val();
+			var taxmode =  $('#taxmode').val();
 			// alert(prod);
 			// return false;
 			$.ajax({
@@ -102,10 +139,28 @@ $("#drpProd").on("change", function()
 				},
 				success : function(r)
 				{
-					$('#txtprdrate').val(r.retail_price);
-					$('#txtprdamt').val(r.retail_price);
-					$('#txtcomgrp').val(r.commodity_grp);
-									
+					if(taxmode == 'Yes')
+					{
+						$('#txtprdrate').val(r.actual_amt);
+						$('#txtprdtax').val(r.tax_amt);
+						
+						$('#htxtprdrate').val(r.actual_amt);
+						$('#htxtprdtax').val(r.tax_amt);
+						
+						$('#txtprdamt').val(r.retail_price);
+						$('#txtcomgrp').val(r.commodity_grp);
+					}
+					else
+					{
+						$('#txtprdrate').val(r.actual_amt);
+						$('#txtprdtax').val('0');
+						
+						$('#htxtprdrate').val(r.actual_amt);
+						$('#htxtprdtax').val('0');
+						
+						$('#txtprdamt').val(r.actual_amt);
+						$('#txtcomgrp').val(r.commodity_grp);
+					}
 				}
 				
 			});
@@ -133,9 +188,12 @@ $("#drpProd").on("change", function()
 					return false;
 				}
 			}
-			var txtramt = $('#txtprdrate').val();			
-			var tot = parseInt(qty) * parseInt(txtramt);			
-			$('#txtprdamt').val(tot);			
+			var txtramt = $('#htxtprdrate').val();
+			var txttax = $('#htxtprdtax').val();
+			var tot = parseInt(qty) * (parseInt(txtramt) + parseInt(txttax)) ;	
+			var tottax = parseInt(qty) * parseInt(txttax) ;	
+			$('#txtprdamt').val(tot);
+			$('#txtprdtax').val(tottax);	
 		});
 		$("#txtprdrate").on("focusout", function()
 		{
@@ -176,6 +234,7 @@ $("#drpProd").on("change", function()
 			var qty = $('.txtprdqty').val();
 			var rate = $('.txtprdrate').val();
 			var amt = $('.txtprdamt').val();
+			var tax = $('.txtprdtax').val();
 			
 			if(ctgid=='')
 			{
@@ -237,11 +296,13 @@ $("#drpProd").on("change", function()
 						'<input  type="hidden"  id="hdn['+k+'][txtiqty]" name="hdn['+k+'][txtiqty]"  value="'+qty+'">'+
 						'<input  type="hidden"  id="hdn['+k+'][txtirate]" name="hdn['+k+'][txtirate]"  value="'+rate+'">'+
 						'<input   type="hidden" id="hdn['+k+'][ptxtiamt]" name="hdn['+k+'][ptxtiamt]"  class="ptxtiamt" value="'+amt+'">'+
-																	
+						'<input   type="hidden" id="hdn['+k+'][ptxtitax]" name="hdn['+k+'][ptxtitax]"  class="ptxtitax" value="'+tax+'">'+
+						
 						'<td>'+ ctgnm+'</td>'+
 						'<td>'+ prdnm+'</td>'+
 						'<td>'+ comgrp+'</td>'+
 						'<td>'+ rate+'</td>'+
+						'<td>'+ tax+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td class="amount">'+ amt+'</td>'+						
 											
@@ -252,17 +313,72 @@ $("#drpProd").on("change", function()
 					
 			$('#prdrec').append(prddiv);
 			
-			var rgtot = [];
-			$.each($('.ptxtiamt'), function(){            
-				rgtot.push($(this).val());
-			});
-			var rtotal_amt = 0;
-			$.each(rgtot,function() {
-				rtotal_amt += parseInt(this);
-			});			
-			$('.txtcharge').val(rtotal_amt);
-			// $('.txtrescharge').val(rtotal_amt);
 			
+			var taxmode = $('#taxmode').val();
+			if(taxmode == 'Yes')
+			{
+				
+				//total of final amt
+				var rgtot = [];
+				$.each($('.ptxtiamt'), function(){            
+					rgtot.push($(this).val());
+				});
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				//exit
+				//total of tax
+				var tottax = [];
+				$.each($('.ptxtitax'), function(){            
+					tottax.push($(this).val());
+				});
+				var rtotal_tax = 0;
+				$.each(tottax,function() {
+					rtotal_tax += parseInt(this);
+				});
+				//exit
+				
+				var client_charge = parseInt(rtotal_amt) - parseInt(rtotal_tax)
+				
+				$('.txtcharge').val(client_charge);
+				$('.txttottax').val(rtotal_tax);
+				$('.txttotamt').val(rtotal_amt);
+				$('.txtfinAmt').val(rtotal_amt);
+				
+				// $('.txtrescharge').val(rtotal_amt);
+			}
+			else
+			{
+				//total of final amt
+				var rgtot = [];
+				$.each($('.ptxtiamt'), function(){            
+					rgtot.push($(this).val());
+				});
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				//exit
+				//total of tax
+				var tottax = [];
+				$.each($('.ptxtitax'), function(){            
+					tottax.push($(this).val());
+				});
+				var rtotal_tax = 0;
+				$.each(tottax,function() {
+					rtotal_tax += parseInt(this);
+				});
+				//exit
+				
+				var client_charge = parseInt(rtotal_amt) - parseInt(rtotal_tax)
+				
+				$('.txtcharge').val(client_charge);
+				$('.txttottax').val('0');
+				$('.txttotamt').val(client_charge);
+				$('.txtfinAmt').val(client_charge);
+				// $('.txtrescharge').val(rtotal_amt);
+			}
 			$('.prdCtgDrp').val('');
 			$('.drpProd').val('');
 			$('.txtprdrate').val('');
@@ -277,18 +393,71 @@ $("#drpProd").on("change", function()
 			var button_id = $(this).attr("id");
 			$("#prdrow"+button_id+"").remove();	
 
-			var rgtot = [];
-			$.each($('.ptxtiamt'), function(){            
-				rgtot.push($(this).val());
-			});
-			
-			var rtotal_amt = 0;
-			$.each(rgtot,function() {
-				rtotal_amt += parseInt(this);
-			});
-			
-			$('.txtcharge').val(rtotal_amt);
-			// $('.txtrescharge').val(rtotal_amt);
+			var taxmode = $('#taxmode').val();
+			if(taxmode == 'Yes')
+			{
+				
+				//total of final amt
+				var rgtot = [];
+				$.each($('.ptxtiamt'), function(){            
+					rgtot.push($(this).val());
+				});
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				//exit
+				//total of tax
+				var tottax = [];
+				$.each($('.ptxtitax'), function(){            
+					tottax.push($(this).val());
+				});
+				var rtotal_tax = 0;
+				$.each(tottax,function() {
+					rtotal_tax += parseInt(this);
+				});
+				//exit
+				
+				var client_charge = parseInt(rtotal_amt) - parseInt(rtotal_tax)
+				
+				$('.txtcharge').val(client_charge);
+				$('.txttottax').val(rtotal_tax);
+				$('.txttotamt').val(rtotal_amt);
+				$('.txtfinAmt').val(rtotal_amt);
+				
+				// $('.txtrescharge').val(rtotal_amt);
+			}
+			else
+			{
+				//total of final amt
+				var rgtot = [];
+				$.each($('.ptxtiamt'), function(){            
+					rgtot.push($(this).val());
+				});
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				//exit
+				//total of tax
+				var tottax = [];
+				$.each($('.ptxtitax'), function(){            
+					tottax.push($(this).val());
+				});
+				var rtotal_tax = 0;
+				$.each(tottax,function() {
+					rtotal_tax += parseInt(this);
+				});
+				//exit
+				
+				var client_charge = parseInt(rtotal_amt) - parseInt(rtotal_tax)
+				
+				$('.txtcharge').val(client_charge);
+				$('.txttottax').val('0');
+				$('.txttotamt').val(client_charge);
+				$('.txtfinAmt').val(client_charge);
+				// $('.txtrescharge').val(rtotal_amt);
+			}
 		});
 
 function showPrdCtg()
@@ -374,7 +543,8 @@ function showtax()
 		
 		showtax();
 	
-$('#datetimepicker1').on('changeDate',function(selected){
+
+ $('#datetimepicker1').on('changeDate',function(selected){
 	var tt;
 	$.ajax({
 				url : './includes/addOptionSettingsPost.php',
@@ -392,15 +562,16 @@ $('#datetimepicker1').on('changeDate',function(selected){
 				}
 				
 			});
+	
 	var end_date=$('#datetimepicker2').data('datetimepicker');
-	 start_date.setDate(start_date.getDate()+parseInt(tt));
+	start_date = new Date(selected.date);
+    start_date.setDate(start_date.getDate()+parseInt(tt));
 	
 	if(start_date.getDay()==1)
 	{
 		
 		start_date.setDate(start_date.getDate()+1);
 	}
-    
 	end_date.setDate(start_date);
    
 	
@@ -412,7 +583,7 @@ $('#txtmobno').keyup(function(){
 	
     var txtmobno = $('#txtmobno').val();
 	
-	$.ajax({
+    $.ajax({
       type: 'POST',
       dataType:'json',
       url: './includes/retailSalesPost.php',
@@ -421,15 +592,32 @@ $('#txtmobno').keyup(function(){
 	  }
 	  
     })
-     start_date.setDate(start_date.getDate()+parseInt(tt));
-	
-	if(start_date.getDay()==1)
-	{
-		
-		start_date.setDate(start_date.getDate()+1);
-	}
-   });
-);
+		.done(function(msg) {
+		console.log(msg);
+		$('#txtmobno').autocomplete({
+		source: msg,
+        select: function( event, ui ) {
+			//alert(ui.item.value);
+			$.ajax({
+				type: 'POST',
+				dataType:'json',
+				url: './includes/retailSalesPost.php',
+				data: { 
+					getname:1,
+					txtmobno2: ui.item.value
+					}
+	  
+					})
+			.done(function(msg2) {
+			$('#txtprdnm').val(msg2);
+								});
+						}
+  
+			});
+   
+    });
+});
+   	
 
 function showInvoice()
 		{		

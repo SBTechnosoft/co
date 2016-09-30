@@ -221,7 +221,7 @@
 	}
 	if(isset($_POST['showProdprice']))
 	{			
-		$q = mysql_query("select `retail_price`,`commodity_grp` from  product_mst where `prod_id` = '".$_POST['prod']."' ");
+		$q = mysql_query("select `retail_price`,`commodity_grp`,`tax_amt`,`actual_amt` from  product_mst where `prod_id` = '".$_POST['prod']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
