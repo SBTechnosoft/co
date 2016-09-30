@@ -1549,8 +1549,36 @@
  
 						});
 						
-					</script>	
-				<?php
+					</script>
+					<script  type="text/javascript">						
+						$('#open1').click(function(){
+							
+							$('#Rse_pop_background').fadeIn();
+							$('#Rse_pop_box').fadeIn();
+							
+							return false;
+							});
+						
+						$('#Rse_close').click(function(){
+							
+							$('#Rse_pop_background').fadeOut();
+							$('#Rse_pop_box').fadeOut();
+							
+							return false;
+							});
+						
+						$('#close_Rse').click(function(){
+							
+							$('#Rse_pop_background').fadeOut();
+							$('#Rse_pop_box').fadeOut();
+							
+							return false;
+							});
+															
+							return false;
+							});
+					</script>
+			<?php
 					break;
 				case 'PVIW':
 				?>

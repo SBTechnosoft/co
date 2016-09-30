@@ -85,7 +85,20 @@ $inm = date_format($date,"Ymd");
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
 		//now inserted in event_places_id
-		insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
+		if(isset($_POST['txtmobno']))
+		{
+			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
+				$res=mysql_query($qry);
+			 if($res!='')
+			 {
+				
+			 }
+			 else
+			 {
+				
+				insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
+			}
+		 }
 		
 		
 		

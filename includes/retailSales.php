@@ -52,8 +52,35 @@
                                         <label> Name </label>
                                         <div class="input-icon left">
                                             <input class="m-wrap" type="text" id="txtprdnm" name="txtprdnm" placeholder="Client name">
+											<a id ="open1" style="">
+													<i class="fa fa-info-circle" aria-hidden="true" id=""></i>
+ 											</a>
                                         </div>
                                     </div>
+									<div id="Rse_pop_background">		
+										</div>
+										<div id="Rse_pop_box">
+											<span id="Rse_close"> &times; </span>													
+											<h4 align="center" style= "font-weight:bold;"> Client History </h4>
+											<br>
+ 											
+												
+											<div class="TableRowing">
+												&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+												<strong> Client History</strong>
+											</div>
+											<div class="Table" id="showClient">																	
+											</div>
+											<!--div class="Table" id="showeventpaidtrn">																	
+											</div-->
+											<br/><br/>
+											<div class="right-side">
+												
+												
+												<button class="btn blue" id="close_Rse">CANCEL</button>
+											</div>
+											<br/>
+											</div>
                                     <div class="clearfix margin-bottom-10">
 										<div class="pull-left margin-right-20">
 											<label for="">Company</label>
@@ -61,7 +88,7 @@
 												<select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap">									
 												</select>
 											</div>
-										</div>
+									</div>
 										<div class="pull-right margin-right-20">
 											<label for="">Invoice</label>
 												<div class="input-icon left">

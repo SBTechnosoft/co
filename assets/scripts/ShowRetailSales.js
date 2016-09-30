@@ -1,5 +1,8 @@
 $(function() 
   {
+	var str;
+	var arr;
+	
 	$('#datetimepicker2').datetimepicker({
 	language: 'pt-BR'
 	});
@@ -9,13 +12,13 @@ $(function()
 				type : 'post',
 				async : false,
 				data : {
-					'show' : 1
+					'showset' : 1
 					
 				},
 				success : function(r)
 				{
-					t1=r.retail_sales_day;
-				//	alert(t1);
+					 str = String(r);
+					 arr = str.split(",");
 					
 				}
 				
@@ -23,7 +26,9 @@ $(function()
 var end_date2=$('#datetimepicker2').data('datetimepicker');
 var start_date1 = new Date();
 
-start_date1.setDate(start_date1.getDate()+parseInt(t1));
+start_date1.setDate(start_date1.getDate()+parseInt(arr[0]));
+start_date1.setHours(5+parseInt(arr[1]));
+start_date1.setMinutes(30+parseInt(arr[2]));
 if(start_date1.getDay()==0)
 {
 	start_date1.setDate(start_date1.getDate()+parseInt(1));

@@ -5718,7 +5718,87 @@ div.upload input {
 	
 }
 
+#Rse_pop_background{
+	position: fixed;
+	width: 100%;
+	height: 900px;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: .6;
+	z-index: 1000;
+	
+	display: none;
+}
 
+
+
+
+#Rse_pop_box{
+	position: absolute;
+	background: #fff;
+	width: 80%;
+	margin: 0 0 0 0%;
+	padding: 10px;
+	z-index: 2000;
+	display:none;
+	margin-left: -10%;
+}
+
+
+
+
+#closevd{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+	float: right;
+	cursor: pointer;
+	
+}
+
+#closeres{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+	float: right;
+	cursor: pointer;
+	
+}
+
+#closeRse{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+	float: right;
+	cursor: pointer;
+	
+}
+
+#Rse_close{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #999;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+	float: right;
+	cursor: pointer;
+	
+}
 .TableRowing {
 		display: block;
 		background-color:green;
