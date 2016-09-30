@@ -65,7 +65,20 @@ if(isset($_POST['showtax']))
 		$row = mysql_fetch_array($getdata);
 		$eventlast_id = $row['event_id'];
 		
-		insertContactEvent($conn,$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtmob'],$_POST['txtworkmob'],$_POST['txtclemail'],$_POST['txtaddress']);
+		 if(isset($_POST['txtmob']))
+		{
+			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmob']."'";
+			$res=mysql_query($qry);
+			 if($res!='')
+			 {
+				
+			 }
+			 else
+			 {
+				
+				insertContactEvent($conn,$_POST['txtclnm'],$_POST['txtclcmp'],$_POST['txtmob'],$_POST['txtworkmob'],$_POST['txtclemail'],$_POST['txtaddress']);
+			}
+		 }
 		//now inserted in event_places_id
 		
 		//here is loop coming for multiple record//

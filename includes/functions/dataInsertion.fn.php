@@ -20,7 +20,8 @@ function insCatg($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		}
 function insContactList($conn,$clientName,$companyName,$mobileNo,$workNo,$emailId,$address)
 {
-	$sqlInsCatg = "INSERT INTO contact_dtl (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."')"; 
+	 $sqlInsCatg = "INSERT INTO contact_dtl (client_name,company_name,mobile_no,work_no,email_id,address) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."')"; 
+	
 	$resultArray = $conn->insertQuery($sqlInsCatg);
 }
 function insertContactEvent($conn,$clientName1,$companyName1,$mobileNo1,$workNo1,$emailId1,$address1)

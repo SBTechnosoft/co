@@ -453,6 +453,20 @@ $('#txtmobno').keyup(function(){
 			.done(function(msg2) {
 			$('#txtprdnm').val(msg2);
 								});
+			$.ajax({
+				type: 'POST',
+				dataType:'json',
+				url: './includes/retailSalesPost.php',
+				data: { 
+					getnid:1,
+					txtclient: ui.item.value
+					}
+	  
+					})
+			.done(function(msg3) {
+			$('#open1').attr("title",msg3);
+			showclient();
+								});					
 						}
   
 			});
@@ -504,3 +518,29 @@ $("#drpcmpnm").on("change", function()
 				
 			});
 		});
+function showclient()
+	{
+		
+		var client1=$('#open1').attr('title');
+		//alert(client1);
+		// var txtvend_evnt_id =  $('#txtvend_evnt_id').val();
+		//alert('hhhh');
+		$.ajax({
+				url : 'includes/retailSalesPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'Show_Client'  : 1,
+					'client1':client1
+					// 'txtevent_vend_id' 	: txtevent_vend_id,
+					// 'txtvend_evnt_id' 	: txtvend_evnt_id,
+				},
+				success : function(va)
+				{
+					$('#showClient').html(va);
+				}
+				
+			});	
+		
+	}
+	

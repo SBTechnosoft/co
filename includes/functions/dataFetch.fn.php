@@ -854,6 +854,12 @@ function showcntRes($conn,$event_id)
 		$sqlShowCmpDrp = "select * from event_mst m,company_mst c where c.cmp_id=m.cmp_id and c.deleted_at = '0000-00-00 00:00:00' and m.event_id='".$value."'"; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
+	
+	function showClient($conn,$value)
+	{
+		$sqlShowCmpDrp = "select * from event_mst  where event_id='".$value."'"; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
+	}
 	/*
 	
 select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id

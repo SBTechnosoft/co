@@ -269,6 +269,26 @@ if(isset($_POST['CalDiscount']))
 		}
 	}
 	
+	if(isset($_POST['getnid']))
+	{	
+		$s1 = $_POST['txtclient'];
+		$a1=array();
+		if(strlen($s1)>0)
+		{
+			$query="select event_id from event_mst where client_work_mob='".$s1."'";
+			$res=mysql_query($query);
+			if(mysql_num_rows($res)>0)
+			{
+				$i=0;
+				while($row2=mysql_fetch_array($res))
+				{
+					$a1[$i] = $row2['event_id'];
+					$i++;
+				}
+			}
+			echo json_encode($a1);
+		}
+	}
 	if(isset($_POST['showInvoice1']))
 	{	
 		$abc=showInvoiceSet1($conn);
@@ -300,5 +320,42 @@ if(isset($_POST['CalDiscount']))
 		}
 				
 	}
+	if(isset($_POST['Show_Client']))
+	{		
+		
+		$ShowClient = showClient($conn,$_POST['client1']);		
+		
+		$showCli = count($ShowClient);
+		?>
+		
+		<div class="Heading">			
+			<div class="Cell">Event Id</div>
+			<div class="Cell">Order Name</div>
+			<div class="Cell">Order Date</div>
+			<div class="Cell">Client Charge</div>
+			<div class="Cell">Payment Status</div>
+						
+		</div>
+		<?php
+		for($a=0;$a<$showCli;$a++)
+		{
+		 ?>	
+			
+			<div class="Row" >			
+				<div class="Cell"><?php echo $ShowClient[$a]['event_id'];?></div>
+				<div class="Cell"><?php echo $ShowClient[$a]['event_name'];?></div>
+				<div class="Cell"><?php echo $ShowClient[$a]['from_date'];?></div>
+				<div class="Cell"><?php echo $ShowClient[$a]['client_charges']; ?></div>
+				<div class="Cell"><?php echo $ShowClient[$a]['payment_status']; ?></div>
+				
+				
+				
+			</div>
+            
+		 <?php	
+		}	
+		
+	}
+	
 ?>
 				

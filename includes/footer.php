@@ -1379,55 +1379,33 @@
 						   });
 			
 					</script>
-					<script>						
-						$('#open').click(function(){
+					<script type="text/javascript">
+						$('#open1').click(function(){
 							
-							$('#pop_background').fadeIn();
-							$('#pop_box').fadeIn();
-							
-							return false;
-							});
-						$('#close').click(function(){
-							
-							$('#pop_background').fadeOut();
-							$('#pop_box').fadeOut();
-							
-							return false;
-							});	
-						$('#vend_close').click(function(){
-							
-							$('#vend_pop_background').fadeOut();
-							$('#vend_pop_box').fadeOut();
+							$('#Rse_pop_background').fadeIn();
+							$('#Rse_pop_box').fadeIn();
 							
 							return false;
 							});
-						$('#close1').click(function(){
+						
+						$('#Rse_close').click(function(){
 							
-							$('#pop_background').fadeOut();
-							$('#pop_box').fadeOut();
+							$('#Rse_pop_background').fadeOut();
+							$('#Rse_pop_box').fadeOut();
 							
 							return false;
 							});
-						$('#close_vend').click(function(){
+						
+						$('#close_Rse').click(function(){
 							
-							$('#vend_pop_background').fadeOut();
-							$('#vend_pop_box').fadeOut();
+							$('#Rse_pop_background').fadeOut();
+							$('#Rse_pop_box').fadeOut();
 							
 							return false;
 							});
 							
-						$('#addrow').click(function(){							
-							
-							$('#add_div').fadeOut();
-							$('#insrow').fadeIn();
-							return false;
-							});
-						$('#removerow').click(function(){							
-							$('#add_div').fadeIn();							
-							$('#insrow').fadeOut();
-								
-							return false;
-							});
+						
+					
 					</script>
 					<script type="text/javascript">
 						function ShowHideDiv() {

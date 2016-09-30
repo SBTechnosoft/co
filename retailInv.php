@@ -82,8 +82,20 @@ $inm = date_format($date,"Ymd");
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdisc'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
-		insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
-		
+		if(isset($_POST['txtmobno']))
+		{
+			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
+				$res=mysql_query($qry);
+			 if($res!='')
+			 {
+				
+			 }
+			 else
+			 {
+				
+				insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
+			}
+		 }
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
