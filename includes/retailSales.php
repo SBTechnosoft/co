@@ -101,8 +101,9 @@
 										<label for="">Tax Applicability </label>
 										<div class="input-icon left">
 											<select name="taxmode" id="taxmode" > 
-												<option select="selected" value="No">No</option>
-												<option value="Yes">Yes</option>
+												<option  value="No">No</option>
+												<option selected="selected" value="Yes">Yes</option>
+												
 											</select>
 										</div>
 									</div>
@@ -133,13 +134,15 @@
 											</div>
 										</div>	
 									</div>
+									
+									
 									<div>
-										<input style="width:207px;" type="text"  value="Product Category" readonly />									
-										<input style="width:207px;" type="text"  value="Product" readonly />									
-										<input style="width:121px;" type="text"  value="Rate" readonly />
-										<input style="width:121px;" type="text"  value="Tax" readonly />
-										<input style="width:123px;" type="text"  value="Qty" readonly />
-										<input style="width:120px;" type="text"  value="Amount" readonly />									
+										<input style="width:207px;" type="text"  value="Product Category" tabindex="-1" readonly />									
+										<input style="width:207px;" type="text"  value="Product" tabindex="-1" readonly />									
+										<input style="width:121px;" type="text"  value="Rate" tabindex="-1" readonly />
+										<input style="width:121px;" type="text"  value="Tax" tabindex="-1" readonly />
+										<input style="width:123px;" type="text"  value="Qty" tabindex="-1" readonly />
+										<input style="width:120px;" type="text"  value="Amount" tabindex="-1" readonly />									
 									</div>
 									
 									<div>
@@ -158,9 +161,11 @@
 										<input class="small m-wrap txtprdqty"  type="text"  id="txtprdqty" name="txtprdqty" value="1" />																	
 										<input class="small m-wrap txtprdamt" type="text"  id="txtprdamt" name="txtprdamt" value="" readonly />	
 										
-										<a name="addpdDtl" class="btn blue" id="addpdDtl" style="margin-left:15px;" >
-											Add								
+										
+										<a name="addpdDtl" href="javascript:;" class="btn blue" id="addpdDtl" style="margin-left:15px;" >
+											Add							
 										</a>
+										
 									</div>
 									<div class="portlet box green">
 										<div class="portlet-title">

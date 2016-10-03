@@ -595,7 +595,7 @@ function updEventCalId($conn,$eid,$cal_id)
 		}
 function insInvoicSet($conn,$drpcomp,$txtlabel,$type,$start_at,$cur_date)
 		{
-			$sqlInsCatg = "INSERT INTO `invoice_config` (`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$drpcomp."','".$txtlabel."','".$type."','".$start_at."','','".$cur_date."')"; 
+			$sqlInsCatg = "INSERT INTO `invoice_config` (`cmp_id`,`label`,`type`,`start_at`,`next_val`,`created_at`) VALUES ('".$drpcomp."','".$txtlabel."','".$type."','".$start_at."','".$start_at."','".$cur_date."')"; 
 			$resultArray = $conn->insertQuery($sqlInsCatg);
 			echo 0;
 			exit;

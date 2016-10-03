@@ -115,7 +115,7 @@
 	
 	$("#txtpaid").on("focusout", function()
 		{
-			alert('hi');
+			
 			var txtfinAmt = $('#txtfinAmt').val();
 			var txtpaid = $('#txtpaid').val();
 			var txtremAmt = parseInt(txtfinAmt) - parseInt(txtpaid);
@@ -707,3 +707,11 @@ $("#drpcmpnm").on("change", function()
 				
 			});
 		});
+ // $(document).ready(function(){ 
+        // $(document).keyup(function(event){
+            // if (event.keyCode == 13){
+            // $("#addpdDtl").trigger('click');       
+
+            // }
+        // })
+    // });

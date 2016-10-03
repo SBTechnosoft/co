@@ -54,7 +54,7 @@ $inm = date_format($date,"Ymd");
 		
 		
 		
-		if($tot_amt - $paid_amt != 0)
+		if($_POST['txtfinAmt'] - $_POST['txtpaid'] != 0)
 		{
 			$pay_status = "Unpaid";
 		}

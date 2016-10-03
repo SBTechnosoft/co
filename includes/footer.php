@@ -1550,7 +1550,7 @@
 						});
 						
 					</script>
-					<script  type="text/javascript">						
+					<script  type= "text/javascript" >						
 						$('#open1').click(function(){
 							
 							$('#Rse_pop_background').fadeIn();
@@ -1575,8 +1575,7 @@
 							return false;
 							});
 															
-							return false;
-							});
+							
 					</script>
 			<?php
 					break;
