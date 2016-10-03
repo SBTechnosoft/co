@@ -3,7 +3,7 @@
 	//include_once('./footer.php');
 	if(isset($_POST['show']))
 	{	
-		$data = showAll($conn);
+		//$data = showAll($conn);
 		if(isset($_POST['value']))
 		{
 		$data = showAll($conn,$_POST['value']);

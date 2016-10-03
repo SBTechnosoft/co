@@ -668,7 +668,7 @@ function showclient()
 
 function showInvoice()
 		{	
-			var comp=$('#drpcmpnm').val();
+			var comp = $('#drpcmpnm').val();
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -687,6 +687,7 @@ function showInvoice()
 			});
 		}
 		showInvoice(); 
+		
 $("#drpcmpnm").on("change", function()
 		{
 			var cmp =$('#drpcmpnm').val();

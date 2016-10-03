@@ -49,8 +49,7 @@
 		<?php
 		for($i=0;$i<$showcmpCnt;$i++)
 		{
-			if($i==0)
-			{
+			
 		?>
 			
 			<option  value="<?php echo $showcmp[$i]['cmp_id'];?>">
@@ -58,14 +57,7 @@
 			</option>
 			
 		<?php
-			}
-			else
-			{
-				?>
-						<?php echo $showcmp[$i]['cmp_name'];?> 
-					</option>
-				<?php
-			}
+
 		}
 		
 	}

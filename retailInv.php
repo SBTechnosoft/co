@@ -260,7 +260,8 @@ $inm = date_format($date,"Ymd");
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
 					
 				}
-				$inv_id = showInvoiceId($conn,$input[0]['cmp_id']);
+				
+				$inv_id = showInvoiceId($conn,$_POST['drpcmpnm']);
 				$cnf_id = $inv_id[0]['invoice_conf_id'];
 				if($inv_id[0]['type'] == 'prefix')
 				{
@@ -316,7 +317,7 @@ $inm = date_format($date,"Ymd");
 				$date1 = date('Y-m-d H:i:s');
 				updInvEM($conn,$id,$fname);
 				//insInvECID($conn,$id,$fname,$date1,$_SESSION['USER_ID']);
-				
+				updInvConfig($conn,$cnf_id,$nextval);
 				header('Location: upload/minvoice/'.$fname);
 ?>
 
