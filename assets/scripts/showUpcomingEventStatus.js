@@ -106,7 +106,7 @@ function showdays()
 			
 			//alert(eid);
 			$.ajax({
-				url : 'includes/upcomingEventStatusPost.php',
+				url : './includes/upcomingEventStatusPost.php',
 				type : 'POST',
 				async : false,
 				data : {
@@ -136,17 +136,22 @@ function showdays()
 			});	
 						
 		});
+		
 		$('.event_type').on('change',function() 
-	{
+		{
+			
 		var value = $(this).val();
+		
 		$.ajax({
+			
 				url : './includes/upcomingEventStatusPost.php',
 				type : 'post',
 				async : false,
 				data : {
 					'showDetailType' : 1,
-					'value': value,
 					'txtupdays' : txtupdays,
+					'value': value
+					
 					
 				},
 				success : function(r)

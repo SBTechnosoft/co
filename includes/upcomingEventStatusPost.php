@@ -337,8 +337,8 @@
 	{	
 		if($_POST['value']=='All')
 		{
-		(int)$txtupdays = $_POST['txtupdays'];
-		$data = showUpcomingRadio($conn,$txtupdays);
+		(int)$txtupdays1 = $_POST['txtupdays'];
+		$data = showUpcomingRadio($conn,$txtupdays1);
 		$showUpcomingCntRadio = count($data);	
 		for($i=0;$i<$showUpcomingCntRadio;$i++)
 		{
@@ -461,8 +461,9 @@
 	}
 	else
 	{
-		(int)$txtupdays = $_POST['txtupdays'];
-		$data = showUpcomingRadioEvent($conn,$txtupdays,$_POST['value']);
+		(int)$txtupdays2 = $_POST['txtupdays'];
+		$value=$_POST['value'];
+		$data = showUpcomingRadioEvent($conn,$txtupdays2,$value);
 		$showUpcomingCntRadioEvent = count($data);	
 		for($i=0;$i<$showUpcomingCntRadioEvent;$i++)
 		{

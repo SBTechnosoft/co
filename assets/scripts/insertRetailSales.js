@@ -452,7 +452,8 @@ $('#txtmobno').keyup(function(){
 					})
 			.done(function(msg2) {
 			$('#txtprdnm').val(msg2[0]);
-			$('#txtadd').val(msg2[1]);
+			$('#email').val(msg2[1]);
+			$('#txtadd').val(msg2[2]);
 								});
 			$.ajax({
 				type: 'POST',

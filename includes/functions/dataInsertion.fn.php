@@ -30,9 +30,9 @@ function insertContactEvent($conn,$clientName1,$companyName1,$mobileNo1,$workNo1
 	$resultArray = $conn->insertQuery($sqlInsCnt);
 }
 
-function insertContactRetail($conn,$clientName2,$mobileNo2,$address2)
+function insertContactRetail($conn,$clientName2,$mobileNo2,$email,$address2)
 {
-	$sqlInsCnt = "INSERT INTO contact_dtl (client_name,mobile_no,work_no,email_id,address,client_type) VALUES ('".$clientName2."','".$mobileNo2."','','','".$address2."','Retail')"; 
+	$sqlInsCnt = "INSERT INTO contact_dtl (client_name,mobile_no,work_no,email_id,address,client_type) VALUES ('".$clientName2."','".$mobileNo2."','','".$email."','".$address2."','Retail')"; 
 	$resultArray = $conn->insertQuery($sqlInsCnt);
 }
 function insResource($conn,$txtresnm,$txtresprice,$cur_date)
@@ -197,13 +197,13 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 			echo 1;
 			//exit;
 		}
-function insertRetailAdd($conn,$txtprdnm,$txtmobno,$txtAdd,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
+function insertRetailAdd($conn,$txtprdnm,$email,$txtmobno,$txtAdd,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
 							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat)
 		{
-			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,
+			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_email`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,
 			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
 			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`) 
-			VALUES ('".$txtprdnm."','".$txtmobno."','".$txtAdd."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."','".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."')"; 
+			VALUES ('".$txtprdnm."','".$email."','".$txtmobno."','".$txtAdd."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."','".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
