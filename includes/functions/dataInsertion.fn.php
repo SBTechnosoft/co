@@ -32,7 +32,7 @@ function insertContactEvent($conn,$clientName1,$companyName1,$mobileNo1,$workNo1
 
 function insertContactRetail($conn,$clientName2,$mobileNo2,$address2)
 {
-	$sqlInsCnt = "INSERT INTO contact_dtl (`client_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName2."','".$mobileNo2."','','','".$address2."','Retail')"; 
+	$sqlInsCnt = "INSERT INTO contact_dtl (client_name,mobile_no,work_no,email_id,address,client_type) VALUES ('".$clientName2."','".$mobileNo2."','','','".$address2."','Retail')"; 
 	$resultArray = $conn->insertQuery($sqlInsCnt);
 }
 function insResource($conn,$txtresnm,$txtresprice,$cur_date)

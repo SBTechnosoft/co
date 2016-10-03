@@ -136,3 +136,23 @@ function showdays()
 			});	
 						
 		});
+		$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/upcomingEventStatusPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showDetailType' : 1,
+					'value': value,
+					'txtupdays' : txtupdays,
+					
+				},
+				success : function(r)
+				{
+					$('#upcoming_event').html(r);					
+				}
+				
+			});
+	});

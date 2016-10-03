@@ -344,7 +344,10 @@ if(isset($_POST['CalDiscount']))
 			<div class="Row" >			
 				<div class="Cell"><?php echo $ShowClient[$a]['event_id'];?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['event_name'];?></div>
-				<div class="Cell"><?php echo $ShowClient[$a]['from_date'];?></div>
+				<?php $from_date=date_create($ShowClient[$a]['from_date']);
+						$inm1= date_format($from_date,dateFormat);  
+				?>
+				<div class="Cell"><?php echo $inm1;?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['client_charges']; ?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['payment_status']; ?></div>
 				

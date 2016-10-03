@@ -293,6 +293,7 @@ if(isset($setting1) && !empty($setting1))
 									</div>
 									</div>									
 								</div>
+								
 								<!--div class="clearfix margin-bottom-10">
 									<label for="eqpdrp">Equipment</label>
 									<div class="multiselect input-icon left">

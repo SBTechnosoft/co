@@ -39,7 +39,7 @@
 	
 	if(isset($_POST['showCompany']))
 	{	
-		$showcmp = showCmpDrp ($conn);
+		$showcmp = showCmpDrp($conn);
 		$showcmpCnt = count($showcmp);
 		?>
 		<option selected="select" value="">
@@ -48,8 +48,7 @@
 		<?php
 		for($i=0;$i<$showcmpCnt;$i++)
 		{
-			if($i==0)
-			{
+			
 		?>
 			
 			<option  value="<?php echo $showcmp[$i]['cmp_id'];?>">
@@ -57,15 +56,7 @@
 			</option>
 			
 		<?php
-			}
-			else
-			{
-				?>
-					<option  value="<?php echo $showcmp[$i]['cmp_id'];?>">
-						<?php echo $showcmp[$i]['cmp_name'];?> 
-					</option>
-				<?php
-			}
+			
 		}
 		
 	}

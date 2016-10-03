@@ -100,7 +100,7 @@
 									<div class="clearfix margin-bottom-10">
                                         <label> Client Address </label>
                                         <div class="input-icon left">
-											<textarea rows="2" cols="115"  class="txtremark" id="txtadd" name="txtadd">
+											<textarea rows="2" cols="115" class="txtremark" id="txtadd" name="txtadd">
 											</textarea>	
                                         </div>
                                     </div>										
