@@ -254,7 +254,7 @@ if(isset($_POST['CalDiscount']))
 		$a1=array();
 		if(strlen($s1)>0)
 		{
-			$query="SELECT `client_name` from contact_dtl where mobile_no='".$s1."'";
+			$query="SELECT `client_name`,`address` from contact_dtl where mobile_no='".$s1."'";
 			$res=mysql_query($query);
 			if(mysql_num_rows($res)>0)
 			{
@@ -263,6 +263,8 @@ if(isset($_POST['CalDiscount']))
 				{
 					$a1[$i] = $row2['client_name'];
 					$i++;
+					$a1[$i]=$row2['address'];
+					
 				}
 			}
 			echo json_encode($a1);
