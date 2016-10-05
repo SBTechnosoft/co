@@ -9,7 +9,7 @@
 			var emailId     =   $('#emailId').val();
 			var address     =   $('#address').val();
 			
-			alert(mobileNo);
+		
 			$.ajax({
 				url : './includes/contactListPost.php',
 				type : 'POST',
@@ -27,20 +27,16 @@
 				{
 					if(re == 0)
 					 {
-						//alert ("Inserted Data Successfully");
+						//alert (re);
 						$('#clientName').val('');
 						$('#companyName').val('');
 						$('#mobileNo').val('');
 						$('#workNo').val('');
 						$('#emailId').val('');
 						$('#address').val('');
-											
-						window.location.reload();						
+												
 					 }
-						else{
-							alert('Already in Table...');
-							window.location.reload();
-						}
+						window.location.reload(); 
 				}				
 			});	
 			//showdata();			

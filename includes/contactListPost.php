@@ -5,22 +5,20 @@
 	{	
 		 if(isset($_POST['mobileNo']))
 		{
-			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['mobileNo']."'";
-			$res=mysql_query($qry);
-			 if($res!='')
+			 
+			$data = showContactMobile ($conn,$_POST['mobileNo']);
+			$showCntm = count($data);
+			  if($showCntm!= '')
 			 {
 				
 			 }
 			 else
 			 {
-			
-				
 				$result=insContactList($conn,$_POST['clientName'],$_POST['companyName'],$_POST['mobileNo'],$_POST['workNo'],$_POST['emailId'],$_POST['address']);
 			}
 		 }
-		
-			
-	}		
+		 
+	}			
 	
 	if(isset($_POST['show']))
 	{	

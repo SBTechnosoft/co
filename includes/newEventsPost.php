@@ -218,9 +218,9 @@ if(isset($_POST['showtax']))
 		//now inserted in event_places_id
 		if(isset($_POST['txtmob']))
 		{
-			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmob']."'";
-			$res=mysql_query($qry);
-			 if($res!='')
+			 $data = showContactMobile ($conn,$_POST['txtmob']);
+			$showCntm = count($data);
+			if($showCntm!='')
 			 {
 				
 			 }

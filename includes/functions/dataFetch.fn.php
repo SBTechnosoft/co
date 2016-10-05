@@ -9,6 +9,11 @@
 
 include_once(DIR_WS_FUNCTIONS.'general.fn.php');
 
+function showContactMobile($conn,$mobile)
+	{
+		$sqlShowCatg = "select mobile_no from contact_dtl where mobile_no='".$mobile."'"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 
 //function to insert designation
 function showCatg($conn)

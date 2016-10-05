@@ -13,18 +13,19 @@ $inm = date_format($date,"Ymd");
 		if(isset($_POST['txtmobno']))
 		{
 				
-			  $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
-			  $res=mysql_query($qry);
-				if($res!='')
+			 $data = showContactMobile ($conn,$_POST['txtmobno']);
+			$showCntm = count($data);
+				if($showCntm!='')
 			  {
 				
-				}
+			  }
 			  else
 			 {
 				
 				$result=insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['email'],$_POST['txtadd']);
 			 }
 		  }
+		
 		
 		// if($_POST['taxmode'] == 'Yes')
 		// {
