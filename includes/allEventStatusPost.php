@@ -16,7 +16,7 @@
 							
 			
 			<tr>
-				<td></td>
+				
 				<td>						
 					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -152,7 +152,7 @@
 							
 			
 			<tr>
-				<td></td>
+				
 				<td>						
 					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						

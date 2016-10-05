@@ -20,19 +20,19 @@ function insCatg($conn,$txtcatgnm,$txtcatgdes,$cur_date)
 		}
 function insContactList($conn,$clientName,$companyName,$mobileNo,$workNo,$emailId,$address)
 {
-	 $sqlInsCatg = "INSERT INTO contact_dtl (client_name,company_name,mobile_no,work_no,email_id,address) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."')"; 
-	$resultArray = $conn->insertQuery($sqlInsCatg);
+	 $sqlInsCong = "INSERT INTO `contact_dtl` (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName."','".$companyName."','".$mobileNo."','".$workNo."','".$emailId."','".$address."','')"; 	
+	$resultArray = $conn->insertQuery($sqlInsCong);
 }
 function insertContactEvent($conn,$clientName1,$companyName1,$mobileNo1,$workNo1,$emailId1,$address1)
 {
-	$sqlInsCnt = "INSERT INTO contact_dtl (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName1."','".$companyName1."','".$mobileNo1."','".$workNo1."','".$emailId1."','".$address1."','Event')"; 
-	$resultArray = $conn->insertQuery($sqlInsCnt);
+	$sqlInsConevt = "INSERT INTO `contact_dtl` (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName1."','".$companyName1."','".$mobileNo1."','".$workNo1."','".$emailId1."','".$address1."','Event')"; 
+	$resultArray = $conn->insertQuery($sqlInsConevt);
 }
 
 function insertContactRetail($conn,$clientName2,$mobileNo2,$email,$address2)
 {
-	$sqlInsCnt = "INSERT INTO contact_dtl (`client_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName2."','".$mobileNo2."','','".$email."','".$address2."','Retail')"; 
-	$resultArray = $conn->insertQuery($sqlInsCnt);
+	$sqlInsConretail = "INSERT INTO `contact_dtl` (`client_name`,`company_name`,`mobile_no`,`work_no`,`email_id`,`address`,`client_type`) VALUES ('".$clientName2."','','".$mobileNo2."','','".$email."','".$address2."','Retail')"; 
+	$resultArray = $conn->insertQuery($sqlInsConretail);
 }
 function insResource($conn,$txtresnm,$txtresprice,$cur_date)
 		{

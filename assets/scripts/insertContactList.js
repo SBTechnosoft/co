@@ -8,7 +8,7 @@
 			var emailId     =   $('#emailId').val();
 			var address     =   $('#address').val();
 			
-			alert(mobileNo);
+			//alert(mobileNo);
 			$.ajax({
 				url : './includes/contactListPost.php',
 				type : 'POST',
@@ -34,12 +34,13 @@
 						$('#emailId').val('');
 						$('#address').val('');
 											
-						window.location.reload();						
+												
 					 }
 					else{
 							alert('Already in Table...');
 							window.location.reload();
 						}
+						window.location.reload();
 				}				
 			});	
 			//showdata();			

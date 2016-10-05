@@ -11,6 +11,11 @@ include_once(DIR_WS_FUNCTIONS.'general.fn.php');
 
 
 //function to insert designation
+function showContactMobile($conn,$mobile)
+	{
+		$sqlShowCatg = "select mobile_no from contact_dtl where mobile_no='".$mobile."'"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showCatg($conn)
 	{
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `eq_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 

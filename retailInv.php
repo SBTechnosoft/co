@@ -12,9 +12,9 @@ $inm = date_format($date,"Ymd");
 	{	
 		if(isset($_POST['txtmobno']))
 		{
-			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
-				$res=mysql_query($qry);
-			 if($res!='')
+			 $data = showContactMobile ($conn,$_POST['txtmobno']);
+			$showCntm = count($data);
+				if($showCntm!='')
 			 {
 				
 			 }
