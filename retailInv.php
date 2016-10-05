@@ -10,7 +10,20 @@ $inm = date_format($date,"Ymd");
 
 	if(isset($_POST['txtprdnm']))
 	{	
-		
+		if(isset($_POST['txtmobno']))
+		{
+			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
+				$res=mysql_query($qry);
+			 if($res!='')
+			 {
+				
+			 }
+			 else
+			 {
+				
+				insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['email'],$_POST['txtadd']);
+			}
+		 }
 		// if($_POST['taxmode'] == 'Yes')
 		// {
 			// if($_POST['txtdisc']=='')
@@ -78,27 +91,14 @@ $inm = date_format($date,"Ymd");
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
 		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
 
-		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
+		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['email'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdiscamt'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
 		//now inserted in event_places_id
-		if(isset($_POST['txtmobno']))
-		{
-			 $qry="select mobile_no from contact_dtl where mobile_no='".$_POST['txtmobno']."'";
-				$res=mysql_query($qry);
-			 if($res!='')
-			 {
-				
-			 }
-			 else
-			 {
-				
-				insertContactRetail($conn,$_POST['txtprdnm'],$_POST['txtmobno'],$_POST['txtadd']);
-			}
-		 }
+		
 		
 		
 		

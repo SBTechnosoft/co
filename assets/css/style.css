@@ -5742,7 +5742,8 @@ div.upload input {
 	padding: 10px;
 	z-index: 2000;
 	display:none;
-	margin-left: -10%;
+	margin-left: -5%;
+	margin-top: -20%;
 }
 
 

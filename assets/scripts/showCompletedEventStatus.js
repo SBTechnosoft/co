@@ -20,7 +20,25 @@
 			
 		});
 //end
-
+	$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/completedEventStatusPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showDetailType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#completed_event').html(r);					
+				}
+				
+			});
+	});
 function showdata()
 		{		
 			$.ajax({

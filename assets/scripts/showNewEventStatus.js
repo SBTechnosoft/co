@@ -109,3 +109,22 @@ function showdata()
 			});	
 						
 		});
+		$('.event_type').on('change',function() 
+		{
+			var value = $(this).val();
+			$.ajax({
+					url : './includes/newEventStatusPost.php',
+					type : 'post',
+					async : false,
+					data : {
+						'showDetailType' : 1,
+						'value': value,
+						
+					},
+					success : function(r)
+					{
+						$('#new_event').html(r);					
+					}
+					
+				});
+		});

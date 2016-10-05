@@ -100,6 +100,15 @@
 
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+		<div class="input-icon left">
+				
+			
+				Event &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="Event" >
+				Retail &nbsp <input type="radio" name="event_type" class="event_type" id="event_type"  value="Retail" >
+				All &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="All" checked>
+				
+				<br/>
+			</div>
         <div class="tabbable tabbable-custom tabbable-full-width">
             <div class="tab-content">
                 <div id="tab_1_2" class="tab-pane active">

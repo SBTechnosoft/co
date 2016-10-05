@@ -43,6 +43,26 @@ $('#drpcmpnmdtl').on('change',function()
 				
 			});
 	});
+	
+$('.event_type').on('change',function() 
+	{
+		var value = $(this).val();
+		$.ajax({
+				url : './includes/allEventStatusPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showDetailType' : 1,
+					'value': value,
+					
+				},
+				success : function(r)
+				{
+					$('#all_event').html(r);					
+				}
+				
+			});
+	});
 
 function showdata()
 		{		

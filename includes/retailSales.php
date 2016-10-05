@@ -113,7 +113,13 @@
 											<textarea rows="2" cols="115"  class="txtremark" id="txtadd" name="txtadd">
 											</textarea>	
                                         </div>
-                                    </div>									
+                                    </div>
+									<div class="clearfix margin-bottom-10">
+                                        <label> Email-Id </label>
+                                        <div class="input-icon left">
+											<input class="m-wrap" type="text" id="email" name="email"/>
+                                        </div>
+                                    </div>
                                     <div class="clearfix margin-bottom-10">
 										<div class="pull-left margin-right-20">
 											<label for="txtfromdt"> Date </label>

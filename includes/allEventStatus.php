@@ -99,6 +99,19 @@
             </form>
         </div>
 		<select name="drpcmpnmdtl" id="drpcmpnmdtl" class="medium m-wrap"> </select></br>
+		<div class="clearfix margin-bottom-10">
+							
+			<div class="input-icon left">
+				<!--input type="text" class="large m-wrap" id="txteventnm" name="txteventnm"  /-->
+			
+				Event &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="Event" >
+				Retail &nbsp <input type="radio" name="event_type" class="event_type" id="event_type"  value="Retail" >
+				All &nbsp <input type="radio" name="event_type" class="event_type" id="event_type" value="All" checked>
+				
+				<br/>
+			</div>
+			
+		</div>
         <!-- END PAGE TITLE & BREADCRUMB-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->

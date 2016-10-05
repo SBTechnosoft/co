@@ -260,10 +260,42 @@ function showNew($conn)
 		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
 	}
+function showNewRadio($conn)
+	{
+		//$sqlEventNewStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'new' and  deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventNewStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
+		return $conn->getResultArray($sqlEventNewStatus);	
+	}
+function showNewRadioEvent($conn,$value)
+	{
+		//$sqlEventNewStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'new' and  deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventNewStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		from  `event_mst` 
+		where  `order_type`='".$value."' and `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
+		return $conn->getResultArray($sqlEventNewStatus);	
+	}
 function showAll($conn,$value)
 	{
 		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where cmp_id='".$value."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC ";
 		
+		return $conn->getResultArray($sqlEventAllStatus);	
+	}
+function showAllEventRadioVal($conn,$value)
+	{
+		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type` from  `event_mst` where order_type='".$value."' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
+		return $conn->getResultArray($sqlEventAllStatus);	
+	}
+function showAllEventRadio($conn)
+	{
+		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
 		return $conn->getResultArray($sqlEventAllStatus);	
 	}
 function showAll1($conn)
@@ -271,10 +303,54 @@ function showAll1($conn)
 		$sqlEventAllStatus = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`cmp_id`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' order by `from_date` DESC "; 
  		return $conn->getResultArray($sqlEventAllStatus);	
  	}
+function showUpcomingRadio($conn,$updy)
+	{
+		$sqlEventUpcomingStatus = 
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
+		`deleted_at` = '0000-00-00 00:00:00' "; 	 
+		
+		return $conn->getResultArray($sqlEventUpcomingStatus);	
+	}
+	function showUpcomingRadioEvent($conn,$updy,$value)
+	{
+		$sqlEventUpcomingStatus = 
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		from  `event_mst` 
+		where  `order_type`='".$value."' and `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
+		`deleted_at` = '0000-00-00 00:00:00' "; 	 
+		
+		return $conn->getResultArray($sqlEventUpcomingStatus);	
+	}
 function showUpDays($conn)
 	{
 		$sqlUpDays = "select `upcoming_days` from  `setting` "; 
 		return $conn->getResultArray($sqlUpDays);	
+	}
+function showCompletedRadio($conn)
+	{
+		$sqlEventCompletedStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		from  `event_mst` 
+		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
+		return $conn->getResultArray($sqlEventCompletedStatus);	
+	}
+	function showCompletedRadioEvent($conn,$value)
+	{
+		$sqlEventCompletedStatus = 		
+		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
+		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		from  `event_mst` 
+		where  `order_type`='".$value."' and `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
+		return $conn->getResultArray($sqlEventCompletedStatus);	
 	}
 function showUpcoming($conn,$updy)
 	{
@@ -893,6 +969,7 @@ function showdeliverabledtl($conn,$eid)
         where edd.event_id = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowEquipmentDtl);		
 }
+
 	/*
 	
 select vm.vendor_name,vm.vendor_cmp,vm.cat_id,evd.event_places_id

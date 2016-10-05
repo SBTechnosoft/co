@@ -262,7 +262,7 @@
 		$a1=array();
 		if(strlen($s1)>0)
 		{
-			$query="SELECT `client_name` from contact_dtl where mobile_no='".$s1."'";
+			$query="SELECT `client_name`,`email_id`,`address` from contact_dtl where mobile_no='".$s1."'";
 			$res=mysql_query($query);
 			if(mysql_num_rows($res)>0)
 			{
@@ -271,6 +271,9 @@
 				{
 					$a1[$i] = $row2['client_name'];
 					$i++;
+					$a1[$i]=$row2['email_id'];
+					$i++;
+					$a1[$i]=$row2['address'];
 				}
 			}
 			echo json_encode($a1);
@@ -352,7 +355,10 @@
 			<div class="Row" >			
 				<div class="Cell"><?php echo $ShowClient[$a]['event_id'];?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['event_name'];?></div>
-				<div class="Cell"><?php echo $ShowClient[$a]['from_date'];?></div>
+				<?php $from_date=date_create($ShowClient[$a]['from_date']);
+						$inm1= date_format($from_date,dateFormat);  
+				?>
+				<div class="Cell"><?php echo $inm1;?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['client_charges']; ?></div>
 				<div class="Cell"><?php echo $ShowClient[$a]['payment_status']; ?></div>
 				
