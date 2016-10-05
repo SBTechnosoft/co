@@ -118,7 +118,15 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>										
+				</td>
+				<td>
+				<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -151,7 +159,7 @@
 							
 			
 			<tr>
-				
+			
 				<td>						
 					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -254,7 +262,15 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>										
+				</td>
+				<td>
+				<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+				</td>				
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -403,6 +419,14 @@
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
 				</td>
+				<td>
+				<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -545,7 +569,15 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>										
+				</td>	
+<td>
+				<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+				</td>				
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -681,7 +713,15 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
-				</td>										
+				</td>
+			<td>
+				<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+				</td>				
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 

@@ -128,6 +128,16 @@
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
 				</td>
+				<td>					
+					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
+					<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+					
+				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -318,6 +328,16 @@
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
 				</td>
+				<td>					
+					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
+					<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+					
+				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -448,6 +468,16 @@
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
 				</td>
+				<td>					
+					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
+					<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+					
+				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -572,6 +602,16 @@
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
 					</span>
+				</td>
+				<td>					
+					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
+					<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+					
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 

@@ -390,7 +390,7 @@ function showClientPaidAmt($conn)
 	{
 		$sqlClPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as stotal,
@@ -407,7 +407,7 @@ function showClPaidAmtType($conn,$event_type)
 	{
 		$sqlClPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry' and order_type = '".$event_type."') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as stotal,
@@ -424,7 +424,7 @@ function showClPaidAmtCmpType($conn,$event_type)
 	{
 		$sqlClPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as stotal,
@@ -441,7 +441,7 @@ function showClientUnpaidAmt($conn)
 	{
 		$sqlClUPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as stotal,
@@ -457,7 +457,7 @@ function showClientUnpaidAmtType($conn,$event_type)
 	{
 		$sqlClUPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as stotal,
@@ -473,7 +473,7 @@ function showClientUnpaidAmtCmpType($conn,$event_type)
 	{
 		$sqlClUPaidAmt = 
 		"select `event_id`,`event_name`,`client_name`,`client_work_mob`,`client_cmp`,`client_email`,`client_home_mob`,
-		`client_charges`,`client_discount_amt`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
+		`client_charges`,`client_discount_amt`,`inv_file_name`,`service_tax_amt`,`total_amt`,`client_paid_amt`,((total_amt) - (client_paid_amt)) as remain_amt, 
 		(select sum(client_charges) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ctotal,
 		(select sum(client_discount_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as dtotal,
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as stotal,
@@ -680,7 +680,7 @@ function showTransDtlType($conn,$event_type)
 	{
 		$sqlTransDtl = 		
 		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
-		client_charges,client_discount_amt,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
+		client_charges,client_discount_amt,inv_file_name,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
 			from expence_dtl 
@@ -688,7 +688,7 @@ function showTransDtlType($conn,$event_type)
 		) as amount
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";
@@ -698,7 +698,7 @@ function showTransDtlCmpType($conn,$event_type)
 	{
 		$sqlTransDtl = 		
 		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
-		client_charges,client_discount_amt,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
+		client_charges,client_discount_amt,inv_file_name,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
 			from expence_dtl 
@@ -706,7 +706,7 @@ function showTransDtlCmpType($conn,$event_type)
 		) as amount
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and cmp_id = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";
@@ -716,8 +716,7 @@ function showTransDtlCmpType($conn,$event_type)
 function showTransDtl($conn)
 	{
 		$sqlTransDtl = 		
-		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
-		client_charges,client_discount_amt,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
+		"select event_id,'Event Expense',event_name,client_name,from_date,null, client_charges,client_discount_amt,inv_file_name,service_tax_amt,service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid,vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
 			from expence_dtl 
@@ -725,7 +724,7 @@ function showTransDtl($conn)
 		) as amount
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";

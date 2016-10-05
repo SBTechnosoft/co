@@ -54,6 +54,14 @@
 								<i class="fa fa-trash-o"></i> 
 							</a> 
 						</td>
+						<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -104,7 +112,15 @@
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_discount_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['service_tax_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>				
+				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>	
+				<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -170,6 +186,19 @@
 						<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
 						<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>				
 						
+						<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -220,8 +249,20 @@
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_discount_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['service_tax_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>				
-				
+				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>	
+				<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
+				<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 				
 			</tr>
 		<?php
@@ -284,6 +325,19 @@
 						<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
 						<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>				
 						
+						<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
+						<td>
+							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
+								<i class="fa fa-trash-o"></i> 
+							</a> 
+						</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -334,8 +388,20 @@
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_discount_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['service_tax_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>				
-				
+				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>	
+				<td>					
+							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
+				<td>
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
+					<i class="fa fa-trash-o"></i> 
+					</a> 
+				</td>
 				
 			</tr>
 		<?php
