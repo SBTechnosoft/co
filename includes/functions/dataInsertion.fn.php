@@ -208,13 +208,13 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 			//exit;
 		}
 function insertRetailAdd($conn,$txtprdnm,$email,$txtmobno,$txtAdd,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
-							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat)
+							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat,$staff)
 		{
 			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_email`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,
 			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
-			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`) 
+			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`,`staff_id`) 
 			VALUES ('".$txtprdnm."','".$email."','".$txtmobno."','".$txtAdd."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
-			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."')"; 
+			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."','".$staff."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;

@@ -140,7 +140,15 @@
 											</div>
 										</div>	
 									</div>
-									
+									<div class="clearfix margin-bottom-10" >
+										<label for="">Operator Name </label>
+										<div class="input-icon left">
+											<select name="staff" id="staff"> 
+												
+												
+											</select>
+										</div>
+									</div>
 									
 									<div>
 										<input style="width:207px;" type="text"  value="Product Category" tabindex="-1" readonly />									

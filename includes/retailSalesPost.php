@@ -219,6 +219,23 @@
 		}
 		
 	}
+	if(isset($_POST['showStaff']))
+	{	
+		$stg = showStaffRetail($conn);
+		?>
+		
+		<option select="select" value = "">Select the Operator</option>
+		<?php
+		$showStaff = count($stg);	
+		 for($i=0;$i<$showStaff;$i++)
+		 {
+		?>
+			<option  value = "<?php echo $stg[$i]['staff_id'];?>"> <?php echo $stg[$i]['first_name']?> </option>
+						
+		 <?php	
+		}
+		
+	}
 	if(isset($_POST['showProdprice']))
 	{			
 		$q = mysql_query("select `retail_price`,`commodity_grp`,`tax_amt`,`actual_amt` from  product_mst where `prod_id` = '".$_POST['prod']."' ");

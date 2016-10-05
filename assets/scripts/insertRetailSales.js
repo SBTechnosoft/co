@@ -710,6 +710,25 @@ $("#drpcmpnm").on("change", function()
 				
 			});
 		});
+	function showStaff()
+		{		
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showStaff' : 1
+					
+				},
+				success : function(r1)
+				{
+					$('#staff').html(r1);					
+					
+				}
+				
+			});
+		}
+		showStaff();
  // $(document).ready(function(){ 
         // $(document).keyup(function(event){
             // if (event.keyCode == 13){

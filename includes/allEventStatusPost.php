@@ -16,7 +16,7 @@
 							
 			
 			<tr>
-				
+				<td></td>
 				<td>						
 					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -127,6 +127,10 @@
 						</i>
 					</a>						
 					<?php } ?>
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
@@ -271,7 +275,11 @@
 						</i>
 					</a>						
 					<?php } ?>
-				</td>	
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id']; ?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -428,6 +436,10 @@
 					</a>						
 					<?php } ?>
 				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -578,7 +590,11 @@
 						</i>
 					</a>						
 					<?php } ?>
-				</td>					
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -722,6 +738,10 @@
 						</i>
 					</a>						
 					<?php } ?>
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
