@@ -130,7 +130,7 @@ $inm = date_format($date,"Ymd");
 	$fname = $inm."-".$eventlast_id."_1.pdf";
 		
 				$InvBody = showRtlInvBody($conn);
-				$input = showEventDetailInvD($conn,$eventlast_id);
+				$input = showEventDetailRetailD($conn,$eventlast_id);
 				
 				// $ResourceDtl = showEqpResource($conn,$_POST['txteid']);	
 				

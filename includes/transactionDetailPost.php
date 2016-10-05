@@ -128,7 +128,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 						
 					</tr>
 					<!--tr>
@@ -243,7 +250,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 					</tr>
 					
 					
@@ -395,7 +409,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 						
 					</tr>
 					<!--tr>
@@ -510,7 +531,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 					</tr>
 					
 					<script>
@@ -659,7 +687,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 						
 					</tr>
 					<!--tr>
@@ -774,7 +809,14 @@
 								<?php echo $pl; //echo  ($ETrnDtl[$i]['client_charges'] - $ETrnDtl[$i]['client_discount_amt'] )- ($ETrnDtl[$i]['vendor_charges'] + $ETrnDtl[$i]['amount']) ;?>
 							</span>
 						</td>
-						
+						<td>					
+							<?php if($ETrnDtl[$i]['inv_file_name']!='') {?>
+								<a href="upload/minvoice/<?php echo $ETrnDtl[$i]['inv_file_name'] ;?>" target="_blank" >
+									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+									</i>
+								</a>						
+							<?php } ?>
+						</td>
 					</tr>
 					
 					<script>

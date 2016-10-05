@@ -136,6 +136,7 @@
 										<th>S.Tax</th>
 										<th>Amt</th>
                                         <th>Paid Amount</th>
+										<th>Inv</th>
 										<th> Action </th>
                                     </tr>										
                                 </thead>

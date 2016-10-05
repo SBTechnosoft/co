@@ -140,6 +140,7 @@
 										<th> Tot Amt </th>										
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
+										<th> Inv </th>
 										<th> Order Status </th>
 										<th> Action</th>
                                     </tr>

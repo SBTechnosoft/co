@@ -138,6 +138,7 @@
 										<th>Amt</th>
                                         <th>Paid Amt</th>
                                         <th>Remain Amt</th>
+										<th>Inv</th>
 										<th>Action</th>
                                     </tr>
                                 </thead>
