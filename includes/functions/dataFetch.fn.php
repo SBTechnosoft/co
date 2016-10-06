@@ -622,7 +622,7 @@ function showCmpDrp2($conn)
 	}	
 function login($conn,$userid,$userpass)
 	{
-		$sqlLogin = "select count(emp_id) as tot,`first_name`,`last_name` from  staff_mst where `emp_id` = '".$userid."' && `password` = '".$userpass."'  "; 
+		$sqlLogin = "select `staff_id`,count(emp_id) as tot,`first_name`,`last_name` from  staff_mst where `emp_id` = '".$userid."' && `password` = '".$userpass."'  "; 
 		return $conn->getResultArray($sqlLogin);		
 	}
 function showProfile($conn)

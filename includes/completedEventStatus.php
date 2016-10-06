@@ -135,7 +135,7 @@
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
 										<th>Inv </th>
-										<th>Inv No.</th>
+										<th>Invoice#</th>
 										<th> Action </th>
                                     </tr>
                                 </thead>

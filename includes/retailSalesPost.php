@@ -230,7 +230,7 @@
 		 for($i=0;$i<$showStaff;$i++)
 		 {
 		?>
-			<option  value = "<?php echo $stg[$i]['staff_id'];?>"> <?php echo $stg[$i]['first_name']?> </option>
+			<option  value = "<?php echo $stg[$i]['staff_id'];?>" <?php if($stg[$i]['staff_id']==$_SESSION['staff_id']) { ?>  selected="selected"<?php } ?>> <?php echo $stg[$i]['first_name']?> </option>
 						
 		 <?php	
 		}

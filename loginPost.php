@@ -20,6 +20,7 @@
 			$_SESSION['USER_ID'] = $_POST['username'];
 			$_SESSION['F_Name'] = $data[0]['first_name'];
 			$_SESSION['L_Name'] = $data[0]['last_name'];
+			$_SESSION['staff_id'] = $data[0]['staff_id'];
 			//echo $_SESSION['USER_ID'];
 			//echo $_SESSION['F_Name'];
 			//exit;

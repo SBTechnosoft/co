@@ -139,7 +139,7 @@
                                         <th>Paid Amt</th>
                                         <th>Remain Amt</th>
 										<th>Inv</th>
-										<th>Inv No.</th>
+										<th>Invoice#</th>
 										<th>Action</th>
                                     </tr>
                                 </thead>
