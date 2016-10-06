@@ -58,13 +58,17 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
 						</td>
 					</tr>
 					<tr>
-						<td></td>
+						
 						<td></td>
 						<td></td>						
 						<td><b> Grand Total</b></td>
@@ -74,6 +78,8 @@
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ptotal'];?></b> </span></td>
 						<td style="color:red;"><span style="float:right;"><b><?php echo $ClUnpaid[$i]['rtotal'];?></b></span></td>
+						<td></td>
+						<td></td>
 						<td></td>
 					</tr>
 					
@@ -124,6 +130,10 @@
 						</a>						
 					<?php } ?>
 				</td>
+				<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -199,6 +209,10 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
@@ -216,6 +230,10 @@
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ptotal'];?></b> </span></td>
 						<td style="color:red;"><span style="float:right;"><b><?php echo $ClUnpaid[$i]['rtotal'];?></b></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						
 					</tr>
 					
 					
@@ -265,6 +283,10 @@
 						</a>						
 					<?php } ?>
 				</td>
+				<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -342,14 +364,17 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
 						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						
 						<td></td>
 						<td></td>
 						<td><b> Grand Total</b></td>
@@ -359,6 +384,10 @@
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClUnpaid[$i]['ptotal'];?></b> </span></td>
 						<td style="color:red;"><span style="float:right;"><b><?php echo $ClUnpaid[$i]['rtotal'];?></b></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					
 					</tr>
 					
 					
@@ -408,6 +437,10 @@
 						</a>						
 					<?php } ?>
 				</td>
+				<td>
+						<?php echo $ClUnpaid[$i]['inv_file_id'];?>
+								
+						</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClUnpaid[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 

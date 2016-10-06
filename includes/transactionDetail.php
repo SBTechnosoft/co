@@ -290,7 +290,8 @@
                                         <th>Exp.</th> 
 										<th>Other Exp.</th>
 										<th>P/L</th>
-										<th>Inv</th>	
+										<th>Inv</th>
+										<th>Inv NO.</th>
                                     </tr>
                                 </thead>
                                 <tbody id="showTrnDetail">

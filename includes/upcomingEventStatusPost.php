@@ -139,6 +139,10 @@
 					
 				</td>
 				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
 					</a> 
@@ -339,6 +343,10 @@
 					
 				</td>
 				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
 					</a> 
@@ -477,6 +485,10 @@
 					
 				</td>
 				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
 					</a> 
@@ -609,6 +621,10 @@
 					</a>						
 					<?php } ?>
 					
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 

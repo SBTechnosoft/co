@@ -208,12 +208,12 @@ function showBannerImg($conn,$eid)
 
 function showEventDetail($conn)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`event_cal_id` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = 'Event' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`event_cal_id`,`inv_file_id` from  `event_mst` where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = 'Event' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}								
 function searchEventDetail($conn,$where)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id` from  `event_mst` where" .$where." and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id`,`inv_file_id` from  `event_mst` where" .$where." and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}
 function searchAccesDetail($conn,$where)
@@ -240,7 +240,7 @@ function searchEventNew($conn,$where)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id`
 		from  `event_mst` 
 		where " .$where." and  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'"; 
 		return $conn->getResultArray($sqlEventDetail);	
@@ -249,7 +249,7 @@ function searchEventUpc($conn,$where,$updy)
 	{
 		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` 
 		from  `event_mst` 
 		where  ".$where." and `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
 		`deleted_at` = '0000-00-00 00:00:00' "; 
@@ -257,12 +257,12 @@ function searchEventUpc($conn,$where,$updy)
 	}
 function searchEventCom($conn,$where)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id` from  `event_mst` where" .$where." and `status` != 'completed' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id`,`inv_file_id` from  `event_mst` where" .$where." and `status` != 'completed' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}	
 function showEventEnquiry($conn)
 	{
-		$sqlEventEnquiry = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` from  `event_mst` where `status` = 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventEnquiry = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` from  `event_mst` where `status` = 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventEnquiry);	
 	}
 
@@ -277,7 +277,7 @@ function showNew($conn)
 		$sqlEventNewStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` 
 		from  `event_mst` 
 		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
@@ -288,7 +288,7 @@ function showNewRadio($conn)
 		$sqlEventNewStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id`
 		from  `event_mst` 
 		where  `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
@@ -299,7 +299,7 @@ function showNewRadioEvent($conn,$value)
 		$sqlEventNewStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`,`inv_file_id`
 		from  `event_mst` 
 		where  `order_type`='".$value."' and `to_date` > curdate()  and `deleted_at` = '0000-00-00 00:00:00'";
 		return $conn->getResultArray($sqlEventNewStatus);	
@@ -330,7 +330,7 @@ function showUpcomingRadio($conn,$updy)
 		$sqlEventUpcomingStatus = 
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` 
 		from  `event_mst` 
 		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
 		`deleted_at` = '0000-00-00 00:00:00' "; 	 
@@ -342,7 +342,7 @@ function showUpcomingRadio($conn,$updy)
 		$sqlEventUpcomingStatus = 
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`,`inv_file_id`
 		from  `event_mst` 
 		where  `order_type`='".$value."' and `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
 		`deleted_at` = '0000-00-00 00:00:00' "; 	 
@@ -359,7 +359,7 @@ function showCompletedRadio($conn)
 		$sqlEventCompletedStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id`
 		from  `event_mst` 
 		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
@@ -369,7 +369,7 @@ function showCompletedRadio($conn)
 		$sqlEventCompletedStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`order_type`,`inv_file_id`
 		from  `event_mst` 
 		where  `order_type`='".$value."' and `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
@@ -379,7 +379,7 @@ function showUpcoming($conn,$updy)
 		$sqlEventUpcomingStatus = 
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` 
 		from  `event_mst` 
 		where  `from_date` between curdate() and date_add(curdate(),INTERVAL ".$updy." DAY)  and 
 		`deleted_at` = '0000-00-00 00:00:00' "; 	 
@@ -391,7 +391,7 @@ function showCompleted($conn)
 		$sqlEventCompletedStatus = 		
 		"select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,
 		`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,
-		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate` 
+		`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id`
 		from  `event_mst` 
 		where  `to_date` < curdate() and status!='enquiry' and `deleted_at` = '0000-00-00 00:00:00' ";
 		return $conn->getResultArray($sqlEventCompletedStatus);	
@@ -437,7 +437,7 @@ function showClientPaidAmt($conn)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry'  
 		order by event_id "; 
@@ -454,7 +454,7 @@ function showClPaidAmtType($conn,$event_type)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry' and order_type = '".$event_type."'
 		order by event_id "; 
@@ -471,7 +471,7 @@ function showClPaidAmtCmpType($conn,$event_type)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry' and cmp_id = '".$event_type."'
 		order by event_id "; 
@@ -488,7 +488,7 @@ function showClientUnpaidAmt($conn)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' 
 		order by event_id "; 
@@ -504,7 +504,7 @@ function showClientUnpaidAmtType($conn,$event_type)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' and order_type = '".$event_type."'
 		order by event_id "; 
@@ -520,7 +520,7 @@ function showClientUnpaidAmtCmpType($conn,$event_type)
 		(select sum(service_tax_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as stotal,
 		(select sum(total_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Unpaid' and `status` != 'enquiry' and cmp_id = '".$event_type."'
 		order by event_id "; 
@@ -713,7 +713,7 @@ function showClientInv($conn)
 		(select sum(service_tax_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as stotal,
 		(select sum(total_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ttotal,
 		(select sum(client_paid_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as ptotal,
-		(select sum(total_amt - client_paid_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as rtotal
+		(select sum(total_amt - client_paid_amt) from event_mst where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `inv_file_name` != '' and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' ";
 		
@@ -729,10 +729,10 @@ function showTransDtlType($conn,$event_type)
 			select sum(amount) 
 			from expence_dtl 
 			where expence_dtl.event_id=event_mst.event_id
-		) as amount
+		) as amount,inv_file_id
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";
@@ -747,10 +747,10 @@ function showTransDtlCmpType($conn,$event_type)
 			select sum(amount) 
 			from expence_dtl 
 			where expence_dtl.event_id=event_mst.event_id
-		) as amount
+		) as amount,inv_file_id
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and cmp_id = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";
@@ -766,10 +766,10 @@ function showTransDtl($conn)
 			select sum(amount) 
 			from expence_dtl 
 			where expence_dtl.event_id=event_mst.event_id
-		) as amount
+		) as amount,inv_file_id
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount
+		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
 		where event_id = 0";

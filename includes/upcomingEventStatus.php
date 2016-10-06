@@ -144,6 +144,7 @@
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
 										<th> Inv </th>
+										<th> Inv NO. </th>
 										<th> Action </th>
                                     </tr>
                                 </thead>

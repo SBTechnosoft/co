@@ -136,7 +136,10 @@
 								</a>						
 							<?php } ?>
 						</td>
-						
+						<td>
+						<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+								
+						</td>
 					</tr>
 					<!--tr>
 						<td></td>	
@@ -257,6 +260,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					
@@ -417,7 +423,9 @@
 								</a>						
 							<?php } ?>
 						</td>
-						
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+						</td>
 					</tr>
 					<!--tr>
 						<td></td>	
@@ -538,6 +546,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					
@@ -695,7 +706,9 @@
 								</a>						
 							<?php } ?>
 						</td>
-						
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+						</td>
 					</tr>
 					<!--tr>
 						<td></td>	
@@ -816,6 +829,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					
