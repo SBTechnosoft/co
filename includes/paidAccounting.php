@@ -137,6 +137,7 @@
 										<th>Amt</th>
                                         <th>Paid Amount</th>
 										<th>Inv</th>
+										<th>Invoice#</th>
 										<th> Action </th>
                                     </tr>										
                                 </thead>

@@ -93,7 +93,7 @@ $inm = date_format($date,"Ymd");
 
 		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['email'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdiscamt'],$nfrdt,$ntrdt,$cur_date,
-		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat);
+		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat,$_POST['staff'],$_POST['taxmode']);
 		
 		//select last record inserted from event_mst	
 		$eventlast_id = mysql_insert_id();;
@@ -107,7 +107,7 @@ $inm = date_format($date,"Ymd");
 		//here is loop coming for multiple record//
 		foreach($hdn_ary as $value )
 		{				
-			insertRetailDtl($conn,$eventlast_id,$value['txtictg'],$value['txtprdid'],$value['txticomgrp'],$value['txtirate'],$value['txtiqty'],$value['ptxtiamt']);		
+			insertRetailDtl($conn,$eventlast_id,$value['txtictg'],$value['txtprdid'],$value['txticomgrp'],$value['txtirate'],$value['txtiqty'],$value['ptxtiamt'],$value['ptxtitax']);		
 		}			
 			
 		$client_charge = $_POST['txtcharge'];

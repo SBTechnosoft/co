@@ -208,21 +208,21 @@ function insertEventAdd($conn,$txteventnm,$txteventds,$txtclnm,$txtclcmp,$txtcle
 			//exit;
 		}
 function insertRetailAdd($conn,$txtprdnm,$email,$txtmobno,$txtAdd,$drpcmpnm,$txtcharge,$txtpaid,$txtdisc,
-							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat)
+							$nfrdt,$ntrdt,$cur_date,$pay_status,$tax,$gtot,$txtstax,$vat,$staff,$taxmode)
 		{
 			$sqlInsEventAdd = "INSERT INTO `event_mst` (`client_name`,`client_email`,`client_work_mob`,`client_address`,`cmp_id`,`client_charges`,
 			`client_paid_amt`,`client_discount_amt`,`from_date`,`to_date`,`created_at`,`payment_status`,`service_tax_amt`,
-			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`) 
+			`total_amt`,`service_tax_rate`,`order_type`,`status`,`deleted_at`,`updated_at`,`vat`,`staff_id`,`taxmode`) 
 			VALUES ('".$txtprdnm."','".$email."','".$txtmobno."','".$txtAdd."','".$drpcmpnm."','".$txtcharge."','".$txtpaid."','".$txtdisc."',
-			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."')"; 
+			'".$nfrdt."','".$ntrdt."','".$cur_date."','".$pay_status."','".$tax."','".$gtot."','".$txtstax."','Retail','complete','','','".$vat."','".$staff."','".$taxmode."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
 		}
-function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt)
+function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax)
 		{
-			$sqlInsEventAdd = "INSERT INTO `retail_inv_dtl` (`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`) 
-			VALUES ('".$event_id."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."')"; 
+			$sqlInsEventAdd = "INSERT INTO `retail_inv_dtl` (`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`) 
+			VALUES ('".$event_id."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
@@ -599,6 +599,35 @@ function insInvoicSet($conn,$drpcomp,$txtlabel,$type,$start_at,$cur_date)
 			$resultArray = $conn->insertQuery($sqlInsCatg);
 			echo 0;
 			exit;
+		}
+function insRetailUpd($conn,$evntid,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax)
+		{
+			$sqlInsRetail = "INSERT INTO `retail_inv_dtl` 
+			(`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`) 
+			VALUES ('".$evntid."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."')"; 
+			$resultArray = $conn->insertQuery($sqlInsRetail);
+			
+		}
+		
+function updRetailMst($conn,$evntid,$totclcharge,$tottaxamt,$totfinalAmt)
+		{
+			$sqlRtlUpd = "Update `event_mst`  set `client_charges` = '".$totclcharge."',
+														`service_tax_amt` = '".$tottaxamt."',
+														`total_amt` = '".$totfinalAmt."'
+				where `event_id` = '".$evntid."' "; 
+			$resultArray = $conn->insertQuery($sqlRtlUpd);
+			
+			//exit;
+		}
+function updRetailEventMst($conn,$evntid,$totclcharge,$tottaxamt,$totfinalAmt)
+		{
+			$sqlRtlUpd = "Update `event_mst`  set `client_charges` = '".$totclcharge."',
+														`service_tax_amt` = '".$tottaxamt."',
+														`total_amt` = '".$totfinalAmt."'
+				where `event_id` = '".$evntid."' "; 
+			$resultArray = $conn->insertQuery($sqlRtlUpd);
+			
+			//exit;
 		}
 // function insDesg($conn,$desgId,$designation)
 // {

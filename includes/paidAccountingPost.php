@@ -18,14 +18,14 @@
 					<tr>
 				
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ClPaid[$i]['event_id'];?>
 							</a>
 							<?php //echo $ClPaid[$i]['event_id'];?>
 						</td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 							</a>
@@ -58,6 +58,10 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClPaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
@@ -65,7 +69,7 @@
 						
 					</tr>
 					<tr>
-						<td></td>
+						
 						<td></td>
 						<td></td>						
 						<td><b> Grand Total</b></td>
@@ -74,6 +78,8 @@
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['stotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ptotal'];?></b> </span></td>
+						<td></td>
+						<td></td>
 						<td></td>
 					</tr>
 					
@@ -87,14 +93,14 @@
 			<tr>
 				
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $ClPaid[$i]['event_id'];?>
 					</a>
 					<?php //echo $ClPaid[$i]['event_id'];?>
 				</td>
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 					</a>
@@ -116,13 +122,16 @@
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['total_amt'];?></span></td>
 				<td><span style="float:right;"><?php echo $ClPaid[$i]['client_paid_amt'];?></span></td>	
 				<td>					
-							<?php if($ClPaid[$i]['inv_file_name']!='') {?>
-								<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
-									<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
-									</i>
-								</a>						
-							<?php } ?>
-						</td>
+					<?php if($ClPaid[$i]['inv_file_name']!='') {?>
+						<a href="upload/minvoice/<?php echo $ClPaid[$i]['inv_file_name'] ;?>" target="_blank" >
+							<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+							</i>
+						</a>						
+					<?php } ?>
+				</td>
+				<td>
+					<?php echo $ClPaid[$i]['inv_file_id'];?>						
+				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
@@ -156,14 +165,14 @@
 					<tr>
 				
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ClPaid[$i]['event_id'];?>
 							</a>
 							<?php //echo $ClPaid[$i]['event_id'];?>
 						</td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 							</a>
@@ -196,6 +205,10 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClPaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
@@ -203,7 +216,7 @@
 						
 					</tr>
 					<tr>
-						<td></td>
+						
 						<td></td>
 						<td></td>
 						<td></td>						
@@ -213,7 +226,8 @@
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['stotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ptotal'];?></b> </span></td>
-						
+						<td></td>
+						<td></td>
 					</tr>
 					
 					
@@ -226,14 +240,14 @@
 			<tr>
 				
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $ClPaid[$i]['event_id'];?>
 					</a>
 					<?php //echo $ClPaid[$i]['event_id'];?>
 				</td>
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 					</a>
@@ -261,6 +275,10 @@
 							</i>
 						</a>						
 					<?php } ?>
+				</td>
+				<td>
+						<?php echo $ClPaid[$i]['inv_file_id'];?>
+								
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
@@ -298,14 +316,14 @@
 					<tr>
 				
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ClPaid[$i]['event_id'];?>
 							</a>
 							<?php //echo $ClPaid[$i]['event_id'];?>
 						</td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 							data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 							</a>
@@ -338,6 +356,10 @@
 							<?php } ?>
 						</td>
 						<td>
+						<?php echo $ClPaid[$i]['inv_file_id'];?>
+								
+						</td>
+						<td>
 							<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 
 								<i class="fa fa-trash-o"></i> 
 							</a> 
@@ -345,8 +367,7 @@
 						
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						
 						<td></td>
 						<td></td>
 						<td><b> Grand Total</b></td>
@@ -355,7 +376,9 @@
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['stotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ttotal'];?> </b></span></td>
 						<td><span style="float:right;"><b><?php echo $ClPaid[$i]['ptotal'];?></b> </span></td>
-						
+						<td></td>
+						<td></td>
+						<td></td>
 					</tr>
 					
 					
@@ -368,14 +391,14 @@
 			<tr>
 				
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $ClPaid[$i]['event_id'];?>
 					</a>
 					<?php //echo $ClPaid[$i]['event_id'];?>
 				</td>
 				<td>
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClPaid[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClPaid[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClPaid[$i]['event_id'];?>" 
 					data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($ClPaid[$i]['event_name']);?>
 					</a>
@@ -403,6 +426,10 @@
 							</i>
 						</a>						
 					<?php } ?>
+				</td>
+				<td>
+				<?php echo $ClPaid[$i]['inv_file_id'];?>
+						
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $ClPaid[$i]['event_id']; ?>" class="delete"> 

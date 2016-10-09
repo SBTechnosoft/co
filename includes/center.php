@@ -142,6 +142,9 @@
 				case 'DLVB':
 					$url = FILENAME_DELIVERABLE;
 					break;
+				case 'RTL':
+					$url = FILENAME_RTLDETAIL;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

@@ -1893,6 +1893,162 @@
 				
 				<?php
 					break;
+				case 'RTL':
+				?>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+					<!--[if lt IE 9]>					 
+					<![endif]--> 			
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+					<!-- END CORE PLUGINS -->
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script-->
+					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>      
+					<script>
+						jQuery(document).ready(function() {    
+						   App.init();
+						   Search.init();
+						   TableAdvanced.init();
+
+						});
+					</script>
+					<script>
+						$("#search_btn").click(function(){
+						$("#search_form").toggle();
+						});
+						
+						$("#add_btn").click(function(){
+						$("#add_form").toggle();
+						});
+						$("#vendaddrow").click(function(){
+						$("#ins_vend_row").toggle();
+						});
+						
+						$('#datetimepickerPF').datetimepicker({
+							language: 'pt-BR'
+						  });
+						   $('#datetimepickerPT').datetimepicker({
+							language: 'pt-BR'
+						  });
+					</script>
+					<script>
+						// $("#addvend").click(function(){
+						// $("#divvend").toggle();
+						// });
+						$("#svbtn").hide();
+					</script>				
+					
+					<script>						
+						$('#open').click(function(){
+							
+							$('#pop_background').fadeIn();
+							$('#pop_box').fadeIn();
+							
+							return false;
+							});
+						$('#close').click(function(){
+							
+							$('#pop_background').fadeOut();
+							$('#pop_box').fadeOut();
+							
+							return false;
+							});	
+						$('#vend_close').click(function(){
+							
+							$('#vend_pop_background').fadeOut();
+							$('#vend_pop_box').fadeOut();
+							
+							return false;
+							});
+						$('#close1').click(function(){
+							
+							$('#pop_background').fadeOut();
+							$('#pop_box').fadeOut();
+							
+							return false;
+							});
+						$('#close_vend').click(function(){
+							
+							$('#vend_pop_background').fadeOut();
+							$('#vend_pop_box').fadeOut();
+							
+							return false;
+							});
+							
+						$('#addrow').click(function(){							
+							
+							$('#add_div').fadeOut();
+							$('#insrow').fadeIn();
+							return false;
+							});
+						$('#removerow').click(function(){							
+							$('#add_div').fadeIn();							
+							$('#insrow').fadeOut();
+								
+							return false;
+							});
+					</script>
+					<script type="text/javascript">
+						function ShowHideDiv1() {
+							var txtvpmode = document.getElementById("txtvpmode");
+							var showHide1 = document.getElementById("showHide1");
+							showHide1.style.display = txtvpmode.value == "cheque" ? "block" : "none";
+						}
+						function ShowHideDiv() {
+							var txtpmode = document.getElementById("txtpmode");
+							var ShowHide = document.getElementById("ShowHide");
+							ShowHide.style.display = txtpmode.value == "cheque" ? "block" : "none";
+						}
+					</script>
+					<script>
+						$(document).ready(function(){
+							$('[data-toggle="tooltip"]').tooltip();   
+						});
+					</script>
+					
+					<!-- END JAVASCRIPTS -->
+					
+					<!-- BEGIN PAGE LEVEL PLUGINS -->
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
+					<!-- END PAGE LEVEL PLUGINS -->
+					<!-- BEGIN PAGE LEVEL SCRIPTS -->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>
+					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertPaymentTrn.js"></script-->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showRetailDetail.js"></script> 
+					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEventDataDetail.js"></script--> 
+					<script type="text/javascript" src="vertical-timeline/inc/colorbox.js"></script>
+					 <script type="text/javascript" src="vertical-timeline/js/timeliner.js"></script>
+					 
+					 <script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
+					 <!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/multipleinsertionupd.js"></script-->
+					 <script>
+					 // $(document).ready(function() {
+					   $.timeliner({
+						//startOpen:['#19550828', '#19630828'],
+					   });
+					   $.timeliner({
+						timelineContainer: '#timeline-js',
+						timelineSectionMarker: '.milestone',
+						oneOpen: true,
+						startState: 'flat',
+						expandAllText: '+ Show All',
+						collapseAllText: '- Hide All'
+					   });
+					   // Colorbox Modal
+					   $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+					 // });
+					 </script>
+				
+				<?php
+					break;
 				case 'EQA':
 				?>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      

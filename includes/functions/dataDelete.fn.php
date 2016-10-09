@@ -117,6 +117,13 @@ function delDeliverableUpd($conn,$id)
 			//echo 12;
 			
 		}
+function delRetailUpd($conn,$id)
+		{
+			$sqldelRtlDtl = "Delete from `retail_inv_dtl` where  retail_inv_id = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelRtlDtl);
+			//echo 12;
+			
+		}
 function deltranc($conn,$id)
 		{
 			$sqldelCmpNew = "Delete from `expence_dtl` where  exp_id = '".$id."' "; 

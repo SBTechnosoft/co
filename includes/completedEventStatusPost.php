@@ -12,14 +12,14 @@
 			<tr>
 				
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -123,6 +123,10 @@
 					</a>						
 					<?php } ?>
 					
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
@@ -212,14 +216,14 @@
 			<tr>
 				<td> </td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -325,6 +329,10 @@
 					
 				</td>
 				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
 					</a> 
@@ -350,14 +358,14 @@
 			<tr>
 				<td></td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -463,6 +471,10 @@
 					
 				</td>
 				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 
 						<i class="fa fa-trash-o"></i> 
 					</a> 
@@ -484,14 +496,14 @@
 			<tr>
 				<td></td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -595,6 +607,10 @@
 					</a>						
 					<?php } ?>
 					
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td>
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> 

@@ -143,7 +143,7 @@ else
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
 										<th> Inv.</th>
-										
+										<th>Invoice#</th>
 										<th> Action </th>
 									</tr>
                                 </thead>

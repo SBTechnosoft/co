@@ -16,16 +16,16 @@
 							
 			
 			<tr>
-				
+				<td></td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -127,6 +127,10 @@
 						</i>
 					</a>						
 					<?php } ?>
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
@@ -162,14 +166,14 @@
 			<tr>
 				
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -271,7 +275,11 @@
 						</i>
 					</a>						
 					<?php } ?>
-				</td>	
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id']; ?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -428,6 +436,10 @@
 					</a>						
 					<?php } ?>
 				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -469,14 +481,14 @@
 			<tr>
 				<td></td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -578,7 +590,11 @@
 						</i>
 					</a>						
 					<?php } ?>
-				</td>					
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 
 							class="label label-success " 
@@ -613,14 +629,14 @@
 			<tr>
 				<td></td>
 				<td>						
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo $data[$i]['event_id'];?>
 					</a>
 				</td>
 				<td>
 					
-					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" 
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($data[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $data[$i]['event_id'];?>" 
 					data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 						<?php echo ucfirst($data[$i]['event_name']);?>
 					</a>
@@ -722,6 +738,10 @@
 						</i>
 					</a>						
 					<?php } ?>
+				</td>
+				<td>
+				<?php echo $data[$i]['inv_file_id'];?>
+								
 				</td>
 				<td  style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['status']) == 'Completed' ){ ?> 

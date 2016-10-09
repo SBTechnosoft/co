@@ -141,6 +141,7 @@
 										<th>Rec.Amt</th>
 										<th> Payment Status </th>
 										<th> Inv </th>
+										<th> Invoice# </th>
 										<th> Order Status </th>
 										<th> Action</th>
                                     </tr>

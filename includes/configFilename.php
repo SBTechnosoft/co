@@ -104,6 +104,7 @@ define('FILENAME_RSALES',DIR_WS_INCLUDES.'retailSales.php');
 
 define('NFILENAME_CALENDAR',DIR_WS_INCLUDES.'calendarTest.php');
 define('FILENAME_DELIVERABLE',DIR_WS_INCLUDES.'deliverableCategory.php');
+define('FILENAME_RTLDETAIL',DIR_WS_INCLUDES.'retailDetail.php');
 
 //registration files
 //define('FILENAME_REGISTRATION',DIR_WS_INCLUDES.'registration.php');

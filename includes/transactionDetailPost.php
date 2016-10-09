@@ -37,7 +37,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -46,7 +46,7 @@
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -136,7 +136,10 @@
 								</a>						
 							<?php } ?>
 						</td>
-						
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+							
+						</td>
 					</tr>
 					<!--tr>
 						<td></td>	
@@ -157,7 +160,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -165,7 +168,7 @@
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -257,6 +260,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					
@@ -318,7 +324,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -327,7 +333,7 @@
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -417,7 +423,9 @@
 								</a>						
 							<?php } ?>
 						</td>
-						
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+						</td>
 					</tr>
 					<!--tr>
 						<td></td>	
@@ -438,7 +446,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -446,7 +454,7 @@
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -538,6 +546,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					
@@ -596,7 +607,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -605,7 +616,7 @@
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -695,6 +706,9 @@
 								</a>						
 							<?php } ?>
 						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
+						</td>
 						
 					</tr>
 					<!--tr>
@@ -716,7 +730,7 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ETrnDtl[$i]['event_id'];?>
 							</a>
@@ -724,7 +738,7 @@
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ETrnDtl[$i]['event_name']);?>
 							</a>
@@ -816,6 +830,9 @@
 									</i>
 								</a>						
 							<?php } ?>
+						</td>
+						<td>
+							<?php echo $ETrnDtl[$i]['inv_file_id'];?>
 						</td>
 					</tr>
 					

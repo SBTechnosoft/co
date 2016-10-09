@@ -41,14 +41,14 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClInv[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClInv[$i]['event_id'];?>" 
 							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ClInv[$i]['event_id'];?>
 							</a>
 							<?php //echo $ClInv[$i]['event_id'];?>
 						</td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClInv[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClInv[$i]['event_id'];?>" 
 							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ClInv[$i]['event_name']);?>
 							</a>
@@ -93,14 +93,14 @@
 					<tr>
 						
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClInv[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClInv[$i]['event_id'];?>" 
 							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo $ClInv[$i]['event_id'];?>
 							</a>
 							<?php //echo $ClInv[$i]['event_id'];?>
 						</td>
 						<td>
-							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $ClInv[$i]['event_id'];?>" 
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ClInv[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ClInv[$i]['event_id'];?>" 
 							data-id="<?php echo $ClInv[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
 								<?php echo ucfirst($ClInv[$i]['event_name']);?>
 							</a>
