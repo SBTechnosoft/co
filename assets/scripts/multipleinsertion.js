@@ -249,6 +249,12 @@ $(document).on('click','#add',function()
 			'picker3.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
 			'var picker4 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
 			'picker4.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+			'$(\'#datetimepickerPF'+i+'\').on(\'changeDate\',function(selected)'+
+			'{'+
+			' var pickerEnd1 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
+			'pickerEnd1.setDate(selected.date);'+
+			'});'+
+			
 		'</script>'+
 		'<script>'+
 		

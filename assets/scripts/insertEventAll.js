@@ -2217,5 +2217,11 @@
 			var picker2 = $('#datetimepickerPT').data('datetimepicker');
 			picker2.setDate(selected.date);
 		});
+		$('#datetimepickerPF').on('changeDate',function(selected)
+		{
+				
+			var picker3 = $('#datetimepickerPT').data('datetimepicker');
+			picker3.setDate(selected.date);
+		});
 		
 	});	
