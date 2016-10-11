@@ -12,6 +12,49 @@ include_once(DIR_WS_FUNCTIONS.'general.fn.php');
 function delevent($conn,$id,$date)
 		{
 			$sqldelEvent = "Update `event_mst`  set `deleted_at` = '".$date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEvent);						
+			
+			$sqldelECID = " delete  from `event_client_invoice_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelECID);
+			
+			$sqldelECPT = " delete  from `event_client_payment_trn` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelECPT);
+			
+			$sqldelDelv = " delete  from `event_deliverable_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelDelv);			
+			
+			$sqldelEED = " delete  from `event_equipment_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEED);
+			
+			$sqldelEPD = " delete  from `event_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEPD);
+			
+			$sqldelESD = " delete  from `event_staff_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelESD);			
+			
+			$sqldelEVPT = " delete  from `event_vend_payment_trn` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEVPT);
+			
+			$sqldelEVD = " delete  from `event_vendor_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEVD);
+			
+			$sqldelED = " delete  from `expence_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelED);
+			
+			$sqldelNPD = " delete  from `new_event_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelNPD);
+
+			$sqldelRPD = " delete  from `res_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelRPD);	
+			
+			$sqldelRID = " delete  from `retail_inv_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelRID);					
+			
+			exit;
+		}
+function delStaff($conn,$id)
+		{
+			$sqldelEvent = "Delete from `staff_mst` where  staff_id = '".$id."' ";
 			$resultArray = $conn->insertQuery($sqldelEvent);
 			//echo 12;
 			exit;
@@ -83,11 +126,44 @@ function delAcs($conn,$id,$del_date)
 		}
 function delEnq($conn,$id,$del_date)
 {
-	$sqldelCmpNew = "Update `event_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_id` = '".$id."' "; 
-	$resultArray = $conn->insertQuery($sqldelCmpNew);
+			$sqldelCmpNew = "Update `event_mst`  set `deleted_at` = '".$del_date."',`deleted_by` = '".$_SESSION['USER_ID']."' where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelCmpNew);
 	
-	$sqldelCmpNew1 = "delete from `event_places_dtl` where `event_id` = '".$id."' "; 
-	$resultArray = $conn->insertQuery($sqldelCmpNew1);
+			$sqldelECID = " delete  from `event_client_invoice_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelECID);
+			
+			$sqldelECPT = " delete  from `event_client_payment_trn` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelECPT);
+			
+			$sqldelDelv = " delete  from `event_deliverable_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelDelv);			
+			
+			$sqldelEED = " delete  from `event_equipment_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEED);
+			
+			$sqldelEPD = " delete  from `event_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEPD);
+			
+			$sqldelESD = " delete  from `event_staff_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelESD);			
+			
+			$sqldelEVPT = " delete  from `event_vend_payment_trn` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEVPT);
+			
+			$sqldelEVD = " delete  from `event_vendor_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelEVD);
+			
+			$sqldelED = " delete  from `expence_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelED);
+			
+			$sqldelNPD = " delete  from `new_event_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelNPD);
+
+			$sqldelRPD = " delete  from `res_places_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelRPD);	
+			
+			$sqldelRID = " delete  from `retail_inv_dtl` where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqldelRID);
 }	
 function delSubCatg($conn,$id,$del_date)
 		{

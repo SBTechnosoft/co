@@ -47,11 +47,12 @@
 				$input = showEventDetailQuaD($conn,$_POST['txteid']);
 				
 				$ResourceDtl = showQuoResource($conn,$_POST['txteid']);
+				$DeliverableDtl = showdeliverabledtl($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
 				// exit;
 				
 				//print_r($ResourceDtl);
-				
+				$counter =0;
 				if(!empty($ResourceDtl))
 				{
 					$vennue = $ResourceDtl;
@@ -66,9 +67,9 @@
 				
 				$cnteqp = count($vennue);
 				//echo $cnt;
-				if($cnteqp<5)
+				if($cnteqp<4)
 				{
-					$cnteqp1 = 5;
+					$cnteqp1 = 4;
 				}
 				else
 				{
@@ -113,6 +114,7 @@
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
 								</tr>
 									';
+								$counter++;
 						}
 						else
 						{
@@ -144,7 +146,7 @@
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
 								</tr>
 									';
-							
+							$counter++;
 						}
 					}
 					else
@@ -181,6 +183,7 @@
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
 								</tr>
 									';
+								$counter++;
 							}
 						 else
 							{
@@ -214,9 +217,76 @@
 									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
 								</tr>
 									';
+								$counter++;
 							}
 					}					
 				}
+				// echo $counter;
+				// exit;
+				$DeliverableDtl = showdeliverabledtl($conn,$_POST['txteid']);
+				if(!empty($DeliverableDtl))
+				{
+					if($counter%2 == 0)
+					{
+						$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+								</tr>
+									';
+						
+						
+						$delvcnt = count($DeliverableDtl);
+						for($delv=0;$delv<$delvcnt;$delv++)
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+								</tr>
+									';
+						}
+					}
+					else
+					{
+						$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+								</tr>
+									';
+						
+						
+						$delvcnt = count($DeliverableDtl);
+						for($delv=0;$delv<$delvcnt;$delv++)
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+								</tr>
+									';
+						}
+					}
+				}
+				
 				$vennue = showVennue($conn,$_POST['txteid']);
 				$cntven = count($vennue);
 				for($t=0;$t<$cntven;$t++)

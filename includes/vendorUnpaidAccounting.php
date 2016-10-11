@@ -184,8 +184,8 @@
                                     <tr>
                                         <!--th> Order Vendor Id</th-->
                                         <th> Order Id </th>
-                                        <!--th>Event Places Id </th>
-                                        <th>Vendor Id</th-->
+                                        <th>Event Name </th>
+                                        <th>Event Date</th>
 										<th>Vendor Name</th>
 										<th>Vendor Company</th>
                                         <th>Vendor Charges</th>

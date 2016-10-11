@@ -25,6 +25,17 @@
 							</a>
 							<?php //echo $VdPaid[$i]['event_id'];?>
 						</td>
+						<td>
+							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $VdPaid[$i]['event_id'];?>" 
+							data-id="<?php echo $VdPaid[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
+								<?php echo $VdPaid[$i]['event_name'];?>
+							</a>
+							<?php //echo $VdPaid[$i]['event_id'];?>
+						</td>
+						<?php $from_date=date_create($VdPaid[$i]['from_date']);
+								$inm1= date_format($from_date,dateForm);  
+						?>
+						<td><?php echo $inm1;?></td>
 						<!--td><?php //echo $VdPaid[$i]['event_places_id'];?></td>
 						<td><?php //echo $VdPaid[$i]['vend_id'];?></td-->
 						<td>
@@ -46,6 +57,8 @@
 						
 					</tr>
 					<tr>
+						<td></td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td><b> Grand Total</b></td>

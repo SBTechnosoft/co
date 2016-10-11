@@ -199,7 +199,7 @@ function showEventDetailQuaD($conn,$eid)
 
 function showBannerImg($conn,$eid)
 	{
-		$sqlshowBannerImg = "select cm.banner_img as 'Banner_Img'
+		$sqlshowBannerImg = "select cm.banner_img as 'Banner_Img',cm.cmp_logo as 'CMPLOGO'
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
 		where em.event_id = '".$eid."' and em.deleted_at = '0000-00-00 00:00:00' ;"; 
@@ -586,20 +586,20 @@ function showTotPaidTrnVd($conn,$vetpid)
 function showVendorPaidAmt($conn)
 	{
 		$sqlVdPaidAmt = 
-		"select evd.event_vendor_id,evd.event_id,em.event_name,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,
+		"select evd.event_vendor_id,evd.event_id,em.event_name,em.from_date,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,vm.vendor_cmp,
 		evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
 		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as vtotal,
 		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'paid') as ptotal,`inv_file_id`
 		from event_vendor_dtl evd 
 		inner join vendor_mst vm on evd.vend_id = vm.vend_id 
-	   right join event_mst em on em.event_id = evd.event_id
+		right join event_mst em on em.event_id = evd.event_id
 		where evd.vendor_paid_status = 'paid' and evd.vend_id <> 0 " ;
 		return $conn->getResultArray($sqlVdPaidAmt);	
 	}
 function showVendorUnPaidAmt($conn)
 	{
 		$sqlVdUnPaidAmt = 
-		"select evd.event_vendor_id,evd.event_id,em.event_name,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,
+		"select evd.event_vendor_id,evd.event_id,em.event_name,em.from_date,em.client_name,evd.event_places_id,evd.vend_id,vm.vendor_name,
 		vm.vendor_cmp,evd.vendor_charges,evd.vendor_paid_amt,evd.vendor_paid_status,
 		(select sum(evd.vendor_charges) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as vtotal,
 		(select sum(evd.vendor_paid_amt) from event_vendor_dtl evd where evd.vendor_paid_status = 'unpaid') as ptotal,
@@ -612,7 +612,7 @@ function showVendorUnPaidAmt($conn)
 	}
 function showCmp($conn)
 	{
-		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_default` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
+		$sqlShowCmp = "select `cmp_id`,`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_logo`,`cmp_default` from  `company_mst`  where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
 		return $conn->getResultArray($sqlShowCmp);		
 	}	
 function showCmpDrp($conn)
@@ -856,10 +856,10 @@ function showVennue($conn,$eid)
 function showVennueDtl($conn,$eid)
 	{
 		$sqlshowVennueDtl = " 
-		select nepd.event_places_id,epd.event_vennue,epd.event_hall,epd.function,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',DATE_FORMAT(epd.event_to_date, '%D %M %Y') as 'event_to_date',sum(nepd.amount)as 'Amount'
-		from new_event_places_dtl nepd
-		right join event_places_dtl epd on epd.event_places_id = nepd.event_places_id
-		where nepd.event_id='".$eid."' group by nepd.event_places_id "; 
+		select epd.event_places_id,epd.event_vennue,epd.event_hall,epd.function,epd.event_ld_mark,DATE_FORMAT(epd.event_date, '%D %M %Y') as 'event_date',DATE_FORMAT(epd.event_to_date, '%D %M %Y') as 'event_to_date'
+		from event_places_dtl epd		
+		where epd.event_id= '".$eid."'
+		 "; 
 		return $conn->getResultArray($sqlshowVennueDtl);	
 	}
 function showVnDtl($conn,$epid)
@@ -883,6 +883,15 @@ function showResDtlInfo($conn,$epid)
 		from  `res_places_dtl` rpd
 		right join vendor_mst vm on vm.vend_id = rpd.res_vend_id
 		where event_places_id = '".$epid."' "; 
+		return $conn->getResultArray($sqlshowVennue);	
+	}
+function showDeliverableDtlInfo($conn,$event_id)
+	{
+		$sqlshowVennue = " select edd.`delv_id`,dm.delv_name,`event_id`,`qty`,`delv_vend_id`,`delv_remark`,vm.vendor_name,vm.vendor_cmp
+		from  `event_deliverable_dtl` edd
+		right join vendor_mst vm on vm.vend_id = edd.delv_vend_id
+        right join deliverable_mst dm on dm.delv_id=edd.delv_id 
+		where event_id = '".$event_id."' "; 
 		return $conn->getResultArray($sqlshowVennue);	
 	}
 function showResPlacesDtl($conn,$eid)

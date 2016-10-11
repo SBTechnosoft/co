@@ -309,9 +309,9 @@ function updatePaidAmtVendP($conn,$vueid,$total_amt_paid)
 			echo 8;
 			//exit;
 		}
-function insCmpNew($conn,$txtcmpnm,$txtcmprno,$txtbnrnm,$cur_date)
+function insCmpNew($conn,$txtcmpnm,$txtcmprno,$txtbnrnm,$cmp_logo,$cur_date)
 		{
-			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_default`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."',0,'".$cur_date."','','')"; 
+			$sqlInsCmp = "INSERT INTO `company_mst` (`cmp_name`,`cmp_reg_no`,`banner_img`,`cmp_logo`,`cmp_default`,`created_at`,`deleted_at`,`updated_at`) VALUES ('".$txtcmpnm."','".$txtcmprno."','".$txtbnrnm."','".$cmp_logo."',0,'".$cur_date."','','')"; 
 			$resultArray = $conn->insertQuery($sqlInsCmp);
 			//echo 1;
 			//exit;

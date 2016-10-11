@@ -99,6 +99,15 @@
 					<div class="chat-form">
 					<input type="file" name="file" id="file" required />
 					
+						
+					</div>	
+				</div>
+				</br>
+				<div id="selectLogo">
+					<label>Select Your Logo</label><br/>
+					<div class="chat-form">
+					<input type="file" name="logo" id="logo" required />
+					
 						<input type="submit" value="Save" class=" btn green submit" />
 					</div>	
 				</div>
@@ -126,6 +135,8 @@
                                             <th> Company Name</th>
                                             <th> Registration Number</th>
 											<th> Banner Img</th>
+											<th> Company logo</th>
+											<th> Default</th>
 											<th> Action</th>
                                         </tr>
                                     </thead>

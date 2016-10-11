@@ -258,7 +258,7 @@ $inm = date_format($date,"Ymd");
 				for($t=0;$t<$cntimg;$t++)
 				{					
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
-					
+					$CmpLogo .= '<img src=" '.DIR_IMAGES.$bnrimg[$t]['CMPLOGO'].' "  />';
 				}
 				
 				$inv_id = showInvoiceId($conn,$_POST['drpcmpnm']);
@@ -277,7 +277,8 @@ $inm = date_format($date,"Ymd");
 						'Description' => $outputD,
 						'Venue' => $VennueD,
 						'INVID' => $INVID,
-						'Banner_Img' => $BnrImg
+						'Banner_Img' => $BnrImg,
+						'CMPLOGO' => $CmpLogo
 						);
 				
 				
@@ -315,7 +316,7 @@ $inm = date_format($date,"Ymd");
 				$path = DIR_WS_MINV.$fname;								
 				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
 				$date1 = date('Y-m-d H:i:s');
-				updInvEM($conn,$id,$fname);
+				updInvEM($conn,$eventlast_id,$fname,$INVID);
 				//insInvECID($conn,$id,$fname,$date1,$_SESSION['USER_ID']);
 				updInvConfig($conn,$cnf_id,$nextval);
 				header('Location: upload/minvoice/'.$fname);

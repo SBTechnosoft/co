@@ -333,7 +333,8 @@
 				$cntimg = count($bnrimg);
 				for($t=0;$t<$cntimg;$t++)
 				{					
-					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';
+					$CmpLogo .= '<img src=" '.DIR_IMAGES.$bnrimg[$t]['CMPLOGO'].' "  />';
 					
 				}
 				
@@ -357,7 +358,8 @@
 						'Venue' => $VennueD,
 						'ADATE' => $ADATE,
 						'INVID' => $INVID,
-						'Banner_Img' => $BnrImg
+						'Banner_Img' => $BnrImg,
+						'CMPLOGO' => $CmpLogo
 						);
 				
 				
@@ -698,7 +700,8 @@
 				$cntimg = count($bnrimg);
 				for($t=0;$t<$cntimg;$t++)
 				{					
-					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';
+					$CmpLogo .= '<img src=" '.DIR_IMAGES.$bnrimg[$t]['CMPLOGO'].' "  />';
 					
 				}
 				$INVID = $input[0]['inv_file_id'];
@@ -707,7 +710,8 @@
 						'Venue' => $VennueD,
 						'ADATE' => $ADATE,
 						'INVID' => $INVID,
-						'Banner_Img' => $BnrImg
+						'Banner_Img' => $BnrImg,
+						'CMPLOGO' => $CmpLogo
 						);
 				
 				

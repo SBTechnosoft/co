@@ -16,7 +16,8 @@
 	$InvBody = showEventInfoBody($conn);	
 	$input = showEventDetailInvD($conn,$_POST['txtfpdfeid']);	
 	
-	$vennue = showVennueDtl($conn,$_POST['txtfpdfeid']);
+	
+	$vennue = showVennueDtl($conn,$_POST['txtfpdfeid']);	
 	$cnteqp = count($vennue);
 	for($m=0;$m<$cnteqp;$m++)
 	{
@@ -26,84 +27,154 @@
 					<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Order Places Detail</td>
 				 </tr>
 				 <tr class="trhw">
-					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">Venue:'.$vennue[$m]['event_vennue'].' </td>
-					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="6">Hall: '.$vennue[$m]['event_hall'].' </td>
+					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="5">Venue:'.$vennue[$m]['event_vennue'].' </td>
+					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="4">Hall: '.$vennue[$m]['event_hall'].' </td>
 				 </tr>
 				 <tr class="trhw">
-					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">Date:'.$vennue[$m]['event_date'].' </td>
-					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="6">To Date:'.$vennue[$m]['event_to_date'].' </td>
+					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="5">Date:'.$vennue[$m]['event_date'].' </td>
+					<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="4">To Date:'.$vennue[$m]['event_to_date'].' </td>
 				 </tr>		';
 				 
 				$new = $vennue [$m]['event_places_id'];
-				$vndtlRes = showResDtlInfo($conn,$new);				
-				$subcnt = count($vndtlRes);
+				$vndtlRes = showResDtlInfo($conn,$new);	
+				if(!empty($vndtlRes))
+				{
+					$subcnt = count($vndtlRes);
+					
+					$outputD .= '
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Resources</td>
+						 </tr>
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Resource</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Qty</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Vendor</td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">Remark</td>
+						 
+						 </tr>
+					';
+					
 					for($n=0;$n<$subcnt;$n++)
 					{
 						
-						$outputD .= '
-								 <tr class="trhw">
-									<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Resources</td>
-								 </tr>
-								 <tr class="trhw">
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Resource</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Rate</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Qty</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Amount</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Vendor</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Price</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">Remark</td>
-								 
-								 </tr>
+						$outputD .= '								
 								 <tr class="trhw">
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['eq_name'].'</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['rate'].'</td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['qty'].'</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['amount'].'</td>
+									
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['vendor_name'].'('.$vndtlRes[$n]['vendor_cmp'].')</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlRes[$n]['res_vend_price'].'</td>
+									
+									
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">'.$vndtlRes[$n]['res_remark'].'</td>
 								 
 								 </tr>
 							
 							';							
 					}
+				}
 					$vndtl = showEquipmentDtl($conn,$new);
+				if(!empty($vndtl))
+				{
 					$subcnteqp = count($vndtl);
+					$outputD .= '
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Equipment</td>
+						 </tr>
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Equipment</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Accessories</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Qty</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Staff</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Vendor</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Remark</td>
+						 
+						 </tr>
+					';
+					
 					for($p=0;$p<$subcnteqp;$p++)
 					{
 						
 						$outputD .= '
-								 <tr class="trhw">
-									<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Equipment</td>
-								 </tr>
-								 <tr class="trhw">
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Equipment</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Accessories</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Rate</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Qty</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Amount</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Staff</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Vendor</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Price</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">Remark</td>
-								 
-								 </tr>
+								
 								 
 								  <tr class="trhw">
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['eq_name'].'</td>
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['eq_name'].'</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['rate'].'</td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['qty'].'</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['amount'].'</td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['first_name'].'</td>
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['vendor_name'].'</td>
-									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['vend_price'].'</td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
 									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtl[$p]['remark'].'</td>
 								 
 								 </tr>
 							
 							';							
 					}
+				}
+					$vndtlDelv = showDeliverableDtlInfo($conn,$_POST['txtfpdfeid']);
+				if(!empty($vndtlDelv))
+				{
+					$subcntdelv = count($vndtlDelv);
+					$outputD .= '
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #9a9a9a; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #e1e1e1;" colspan="9">Deliverable</td>
+						 </tr>
+						 <tr class="trhw">
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" >Deliverable</td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" ></td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" ></td>
+							
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" >Qty</td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" ></td>
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1" >Vendor</td>
+							
+							<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3" >Remark</td>
+						 
+						 </tr>
+					';
+					
+					for($r=0;$r<$subcntdelv;$r++)
+					{
+						
+						$outputD .= '
+								
+								 
+								  <tr class="trhw">
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlDelv[$r]['delv_name'].'</td>
+									
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlDelv[$r]['qty'].'</td>
+									
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1"></td>
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri;font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="1">'.$vndtlDelv[$r]['vendor_name'].'</td>
+									
+									<td class="tg-vi9z" style="background-color: #d9d9d9; padding: 5px 10px; font-family: Calibri; font-size: 12px; vertical-align: bottom; color: #4e4e4e;" colspan="3">'.$vndtlDelv[$r]['delv_remark'].'</td>
+								 
+								 </tr>
+							
+							';							
+					}
+				}
 	}
 	
 	
@@ -111,7 +182,7 @@
 	$cntimg = count($bnrimg);
 	for($t=0;$t<$cntimg;$t++)
 	{					
-		$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
+		$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  >';				
 		
 	}
 	$output =array(	
@@ -140,8 +211,10 @@
 	
 	$html = str_get_html($htmlData);
 	
-	$html = $htmlData;	
-	
+	$html = $htmlData;
+
+	// print_r($html);
+	// exit;
 	$mpdf=new mPDF('c','A4','','GEORGIAN'); 
 	 
 	$mpdf->SetDisplayMode('fullpage');
