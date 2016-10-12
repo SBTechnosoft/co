@@ -991,7 +991,9 @@
 														
 					<input style="width:121px;" type="text"  value="Rate" readonly />
 					<input style="width:123px;" type="text"  value="Qty" readonly />
-					<input style="width:120px;" type="text"  value="Amount" readonly />									
+					<input style="width:120px;" type="text"  value="Amount" readonly />
+					<input style="width:205px;" type="text"  value="Vendor" readonly />	
+					<input style="width:124px;" type="text"  value="Price" readonly />
 				</div>
 				<div>				
 					<select  name="drp_resource<?php echo $i; ?>" id="drp_resource<?php echo $i; ?>" class="medium m-wrap drp_resource<?php echo $i; ?>">											
@@ -999,7 +1001,17 @@
 					<input class="small m-wrap txtresrate<?php echo $i; ?>"  type="text"  id="txtresrate<?php echo $i; ?>" name="txtresrate<?php echo $i; ?>" value=""  />	
 					<input class="small m-wrap txtresqty<?php echo $i; ?>"  type="text"  id="txtresqty<?php echo $i; ?>" name="txtresqty<?php echo $i; ?>" value="1" />																	
 					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
-					
+					<select name="drpnewresvend<?php echo $i; ?>" id="drpnewresvend<?php echo $i; ?>" class="medium m-wrap drpnewresvend<?php echo $i; ?>"> 											
+					</select>
+					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="" />
+								
+				</div>
+				<div>
+					<input  type="text"  value="Remark" readonly />
+				</div>
+				
+				<div>
+					<textarea rows="2" cols="140" id="txtresremark<?php echo $i; ?>" class="txtresremark<?php echo $i; ?>" name="txtresremark<?php echo $i; ?>"></textarea>
 					<a name="addres<?php echo $i;?>" class="btn blue" id="addres<?php echo $i;?>" style="margin-left:15px;" >
 						Add								
 					</a>

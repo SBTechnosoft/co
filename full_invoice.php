@@ -128,7 +128,9 @@
 							';							
 					}
 				}
-					$vndtlDelv = showDeliverableDtlInfo($conn,$_POST['txtfpdfeid']);
+				
+	}
+		$vndtlDelv = showDeliverableDtlInfo($conn,$_POST['txtfpdfeid']);
 				if(!empty($vndtlDelv))
 				{
 					$subcntdelv = count($vndtlDelv);
@@ -175,8 +177,6 @@
 							';							
 					}
 				}
-	}
-	
 	
 	$bnrimg = showBannerImg($conn,$_POST['txtfpdfeid']);
 	$cntimg = count($bnrimg);

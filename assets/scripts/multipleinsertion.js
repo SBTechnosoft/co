@@ -8,6 +8,101 @@ $(document).on('click','#add',function()
 	$(document).on('click','.event',function(){
 		var button_id = $(this).attr("id");
 		$("#dynamic_field"+button_id+"").remove();
+			var txtrescharge = $('.txtrescharge').val();
+			if(txtrescharge == "")
+			{			
+				
+				//resource or equip tot
+				var gtot = [];
+				$.each($('.txtiamt'), function(){            
+					gtot.push($(this).val());
+				});
+				var total_amt = 0;
+				$.each(gtot,function() {
+					total_amt += parseInt(this);
+				});			
+				var vtot = [];
+				$.each($('.txtivendprice'), function(){            
+					vtot.push($(this).val());
+				});
+				var total_vamt = 0;
+				$.each(vtot,function() {
+					total_vamt += parseInt(this);
+				});
+				//end
+				
+				//deleverable
+				var delvgtot = [];
+				$.each($('.txtdelvamount'), function(){            
+					delvgtot.push($(this).val());
+				});
+				var totald_amt = 0;
+				$.each(delvgtot,function() {
+					totald_amt += parseInt(this);
+				});			
+				var delrvtot = [];
+				$.each($('.txtdelvendprice'), function(){            
+					delrvtot.push($(this).val());
+				});
+				var totald_vamt = 0;
+				$.each(delrvtot,function() {
+					totald_vamt += parseInt(this);
+				});
+				//end
+				var finalAmt = parseInt(total_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_vamt) +  parseInt(totald_vamt);
+				$('.txtcharge').val(finalAmt);
+			    $('.txtvcharge').val(finalVendAmt);
+			}
+			else
+			{
+					//resource tot
+				var rgtot = [];
+				$.each($('.rtxtiamt'), function(){            
+					rgtot.push($(this).val());
+				});
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				
+				
+				var rvtot = [];
+				$.each($('.txtiresvendprice'), function(){            
+					rvtot.push($(this).val());
+				});
+				var total_rvamt = 0;
+				$.each(rvtot,function() {
+					total_rvamt += parseInt(this);
+				});
+				//end
+				
+				//deleverable
+					var delvgtot = [];
+					$.each($('.txtdelvamount'), function(){            
+						delvgtot.push($(this).val());
+					});
+					var totald_amt = 0;
+					$.each(delvgtot,function() {
+						totald_amt += parseInt(this);
+					});			
+					var delrvtot = [];
+					$.each($('.txtdelvendprice'), function(){            
+						delrvtot.push($(this).val());
+					});
+					var totald_vamt = 0;
+					$.each(delrvtot,function() {
+						totald_vamt += parseInt(this);
+					});
+					//end
+				var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
+				
+				$('.txtvcharge').val(finalVendAmt);
+				
+				$('.txtcharge').val(finalAmt);
+				$('.txtrescharge').val(finalAmt);
+			}
 	});
 	var i = 0;
 	function addnewdiv()
@@ -249,6 +344,11 @@ $(document).on('click','#add',function()
 			'picker3.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
 			'var picker4 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
 			'picker4.setDate($(\'#datetimepicker1\').data(\'datetimepicker\')._date);'+
+			'$(\'#datetimepickerPF'+i+'\').on(\'changeDate\',function(selected)'+
+			'{'+
+			' var pickerEnd1 = $(\'#datetimepickerPT'+i+'\').data(\'datetimepicker\');'+
+			'pickerEnd1.setDate(selected.date);'+
+			'});'+
 		'</script>'+
 		'<script>'+
 		
@@ -1455,18 +1555,43 @@ $(document).on('click','#add',function()
 			'$.each(rvtot,function() {'+
 				'total_rvamt += parseInt(this);'+
 			'});'+
-				
+			//deleverable
+				'var delvgtot = [];'+
+				'$.each($(\'.txtdelvamount\'), function(){' +           
+					'delvgtot.push($(this).val());'+
+				'});'+
+				'var totald_amt = 0;'+
+				'$.each(delvgtot,function() {'+
+					'totald_amt += parseInt(this);'+
+				'});'+			
+				'var delrvtot = [];'+
+				'$.each($(\'.txtdelvendprice\'), function(){'+            
+					'delrvtot.push($(this).val());'+
+				'});'+
+				'var totald_vamt = 0;'+
+				'$.each(delrvtot,function() {'+
+					'totald_vamt += parseInt(this);'+
+				'});'+
+				//end
+
+			'var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);'+
+			'var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);'+
 			
-			'$(\'.txtvcharge\').val(total_rvamt);'+
+			'$(\'.txtvcharge\').val(finalVendAmt);'+
 			
-			'$(\'.txtcharge\').val(rtotal_amt);'+
+			'$(\'.txtcharge\').val(finalAmt);'+
+			'$(\'.txtrescharge\').val(finalAmt);'+
+			
+			//'$(\'.txtvcharge\').val(total_rvamt);'+
+			
+			//'$(\'.txtcharge\').val(rtotal_amt);'+
 
 			'$(\'.drp_resource'+i+'\').val(\'\');'+
 			'$(\'.txtresrate'+i+'\').val(\'\');'+
 			'$(\'.txtresqty'+i+'\').val(\'1\');'+
 			'$(\'.txtresamt'+i+'\').val(\'\');'+
 			
-			'$(\'.drpnewresvend'+i+'\').val(\'\');'+
+			'$(\'.drpnewresvend'+i+'\').val(\'0\');'+
 			'$(\'.txtresvprice'+i+'\').val(\'0\');'+
 			'$(\'.txtresremark'+i+'\').val(\'\');'+
 			
@@ -1495,11 +1620,32 @@ $(document).on('click','#add',function()
 			'$.each(rvtot,function() {'+
 				'total_rvamt += parseInt(this);'+
 			'});'+
-				
+			//deleverable
+				'var delvgtot = [];'+
+				'$.each($(\'.txtdelvamount\'), function(){' +           
+					'delvgtot.push($(this).val());'+
+				'});'+
+				'var totald_amt = 0;'+
+				'$.each(delvgtot,function() {'+
+					'totald_amt += parseInt(this);'+
+				'});'+			
+				'var delrvtot = [];'+
+				'$.each($(\'.txtdelvendprice\'), function(){'+            
+					'delrvtot.push($(this).val());'+
+				'});'+
+				'var totald_vamt = 0;'+
+				'$.each(delrvtot,function() {'+
+					'totald_vamt += parseInt(this);'+
+				'});'+
+				//end
+
+			'var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);'+
+			'var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);'+
 			
-			'$(\'.txtvcharge\').val(total_rvamt);'+
-				
-			'$(\'.txtcharge\').val(rtotal_amt);'+
+			'$(\'.txtvcharge\').val(finalVendAmt);'+
+			
+			'$(\'.txtcharge\').val(finalAmt);'+
+			'$(\'.txtrescharge\').val(finalAmt);'+
 			
 		'});'+
 		

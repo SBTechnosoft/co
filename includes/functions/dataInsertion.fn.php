@@ -256,10 +256,10 @@ function insertStfDrp($conn,$eventplaces_id,$event_id_pdtl,$stf_id)
 		}
 		
 		
-function insertPaymentTrn($conn,$event_id_pdtl1,$cur_date,$txtpaid,$paymentMode,$txtbanknm,$txtchkno)
+function insertPaymentTrn($conn,$event_id_pdtl1,$cur_date,$actPAmt,$ptaxamt,$paymentMode,$txtbanknm,$txtchkno)
 		{
-			$sqlInsPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
-			VALUES ('".$event_id_pdtl1."','".$cur_date."','".$txtpaid."','".$paymentMode."','".$txtbanknm."','".$txtchkno."','Payment')"; 
+			$sqlInsPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`tax`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
+			VALUES ('".$event_id_pdtl1."','".$cur_date."','".$actPAmt."','".$ptaxamt."','".$paymentMode."','".$txtbanknm."','".$txtchkno."','Payment')"; 
 			$resultArray3 = $conn->insertQuery($sqlInsPayTrn);
 			echo 5;
 			//exit;

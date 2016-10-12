@@ -50,8 +50,8 @@
 					
 				// }
 			
-			alert (hdn);
-			return false;
+			// alert (hdn);
+			// return false;
 			
 			
 			
@@ -2050,52 +2050,52 @@
 			}
 			else
 			{
-				//resource tot
-			var rgtot = [];
-			$.each($('.rtxtiamt'), function(){            
-				rgtot.push($(this).val());
-			});
-			var rtotal_amt = 0;
-			$.each(rgtot,function() {
-				rtotal_amt += parseInt(this);
-			});	
-			
-			
-			var rvtot = [];
-			$.each($('.txtiresvendprice'), function(){            
-				rvtot.push($(this).val());
-			});
-			var total_rvamt = 0;
-			$.each(rvtot,function() {
-				total_rvamt += parseInt(this);
-			});
-			//end
-			
-			//deleverable
-				var delvgtot = [];
-				$.each($('.txtdelvamount'), function(){            
-					delvgtot.push($(this).val());
+					//resource tot
+				var rgtot = [];
+				$.each($('.rtxtiamt'), function(){            
+					rgtot.push($(this).val());
 				});
-				var totald_amt = 0;
-				$.each(delvgtot,function() {
-					totald_amt += parseInt(this);
-				});			
-				var delrvtot = [];
-				$.each($('.txtdelvendprice'), function(){            
-					delrvtot.push($(this).val());
+				var rtotal_amt = 0;
+				$.each(rgtot,function() {
+					rtotal_amt += parseInt(this);
+				});	
+				
+				
+				var rvtot = [];
+				$.each($('.txtiresvendprice'), function(){            
+					rvtot.push($(this).val());
 				});
-				var totald_vamt = 0;
-				$.each(delrvtot,function() {
-					totald_vamt += parseInt(this);
+				var total_rvamt = 0;
+				$.each(rvtot,function() {
+					total_rvamt += parseInt(this);
 				});
 				//end
-			var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
-			var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
-			
-			$('.txtvcharge').val(finalVendAmt);
-			
-			$('.txtcharge').val(finalAmt);
-			$('.txtrescharge').val(finalAmt);
+				
+				//deleverable
+					var delvgtot = [];
+					$.each($('.txtdelvamount'), function(){            
+						delvgtot.push($(this).val());
+					});
+					var totald_amt = 0;
+					$.each(delvgtot,function() {
+						totald_amt += parseInt(this);
+					});			
+					var delrvtot = [];
+					$.each($('.txtdelvendprice'), function(){            
+						delrvtot.push($(this).val());
+					});
+					var totald_vamt = 0;
+					$.each(delrvtot,function() {
+						totald_vamt += parseInt(this);
+					});
+					//end
+				var finalAmt = parseInt(rtotal_amt) +  parseInt(totald_amt);
+				var finalVendAmt = parseInt(total_rvamt) +  parseInt(totald_vamt);
+				
+				$('.txtvcharge').val(finalVendAmt);
+				
+				$('.txtcharge').val(finalAmt);
+				$('.txtrescharge').val(finalAmt);
 			}
 		});
 		
@@ -2216,6 +2216,12 @@
 			
 			var picker2 = $('#datetimepickerPT').data('datetimepicker');
 			picker2.setDate(selected.date);
+		});
+		$('#datetimepickerPF').on('changeDate',function(selected)
+		{
+				
+			var picker3 = $('#datetimepickerPT').data('datetimepicker');
+			picker3.setDate(selected.date);
 		});
 		
 	});	
