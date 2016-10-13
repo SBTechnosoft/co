@@ -44,18 +44,18 @@
 	}
 	if(isset($_POST['search']))
 	{	
-		$s2 = '';$s3 = '';;$s4 = '';
+		$s2 = '';$s3 = '';$s4 = '';
 		if($_POST['client_name']!='')
 		{
-			$s2 = " `client_name` like '%".$_POST['client_name']."%' ";
+			$s2 = " `client_name` like '%".trim($_POST['client_name'])."%' ";
 		}
 		 if($_POST['company_name']!='')
 		{
-			$s3 = " `company_name` like '%".$_POST['company_name']."%' ";
+			$s3 = " `company_name` like '%".trim($_POST['company_name'])."%' ";
 		}
 		if($_POST['mobile_no']!='')
 		{
-			$s3 = " `mobile_no` like '%".$_POST['mobile_no']."%' ";
+			$s3 = " `mobile_no` like '%".trim($_POST['mobile_no'])."%' ";
 		}
 		$arr= array($s2,$s3,$s4);
 		$cnt= count($arr);
@@ -104,7 +104,7 @@
 				<td><?php echo ucfirst($data[$i]['work_no']);?></td>
 				<td><?php echo ucfirst($data[$i]['email_id']);?></td>
 				<td><?php echo ucfirst($data[$i]['address']);?></td>
-				
+				<td><?php echo ucfirst($data[$i]['client_type']);?></td>
 		</tr>		
 		<?php	
 		}

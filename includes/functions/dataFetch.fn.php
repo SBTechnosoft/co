@@ -213,7 +213,8 @@ function showEventDetail($conn)
 	}								
 function searchEventDetail($conn,$where)
 	{
-		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id`,`inv_file_id` from  `event_mst` where" .$where." and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		$sqlEventDetail = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`cmp_id`,`inv_file_id` from  `event_mst` where ".$where." and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+	
 		return $conn->getResultArray($sqlEventDetail);	
 	}
 function searchAccesDetail($conn,$where)
@@ -224,7 +225,8 @@ function searchAccesDetail($conn,$where)
 }
 function searchCoantactDetail($conn,$where)
 {
-	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address` from where" .$where.""; 
+	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address`,`client_type` from contact_dtl where".$where.""; 
+	
 	return $conn->getResultArray($sqlEventDetail);	
 	
 }

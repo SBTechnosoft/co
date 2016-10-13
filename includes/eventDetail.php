@@ -141,6 +141,7 @@ else
 										<th> Tot Amt </th>
 										
 										<th>Rec.Amt</th>
+										<th> Due Amt </th>
 										<th> Payment Status </th>
 										<th> Inv.</th>
 										<th> Invoice#</th>
@@ -542,9 +543,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="showeqp">Total Amount</label></td>
+													<td class="tdset"><label for="showeqp">Total Amount</label></td>
 													<td>
-														<input  class="textalign" id="client_charges" name="client_charges" type="text" readonly />
+														<input  class="textalign discounted" id="client_charges" name="client_charges" type="text" readonly />
 													</td>                                            
 												</tr>
 											</div>
@@ -552,9 +553,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Discount</label></td>
+													<td class="tdset"><label for="txtstf"> Discount</label></td>
 													<td>
-														<input  class="textalign" id="txtcldesc" name="txtcldesc" type="text" readonly />
+														<input  class="textalign discounted" id="txtcldesc" name="txtcldesc" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -562,9 +563,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Discounted Amount</label></td>
+													<td class="tdset"><label for="txtstf"> Discounted Amount</label></td>
 													<td>
-														<input  class="textalign" id="disamt" name="disamt" type="text" readonly />
+														<input  class="textalign discounted" id="disamt" name="disamt" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -572,9 +573,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Service Tax</label></td>
+													<td class="tdset"><label for="txtstf"> Service Tax</label></td>
 													<td>
-														<input  class="textalign" id="st" name="st" type="text" readonly />
+														<input  class="textalign discounted" id="st" name="st" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -582,9 +583,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Final Amount</label></td>
+													<td class="tdset"><label for="txtstf"> Final Amount</label></td>
 													<td>
-														<input  class="textalign" id="txtcharge" name="txtcharge" type="text" readonly />
+														<input  class="textalign discounted" id="txtcharge" name="txtcharge" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -594,7 +595,7 @@ else
 												<tr>
 													<td class="names"><label for="txtstf">Payment Status</label></td>
 													<td>
-														<input  id="txtpaystatus" name="txtpaystatus" type="text" readonly />
+														<input  class="textalign discounted" id="txtpaystatus" name="txtpaystatus" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -730,11 +731,13 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf">Paid Amount</label></td>
-													<td>
-														<input  class="textalign" id="txtpaidamt" name="txtpaidamt" type="text" readonly />
-														<button type="button" class=" btn blue" id="open" > <i class="icon-plus"> </i></button>
+													<td class="tdset"><label for="txtstf">Paid Amount</label></td>
+													<td style="width:52%;">
+														<input  class="textalign discounted" id="txtpaidamt" name="txtpaidamt" type="text" readonly />
+														<button type="button" class=" btn blue" id="open"> <i class="icon-plus"> </i></button>
+														
 													</td> 
+													
 												</tr>
 											</div>
 										</div>	

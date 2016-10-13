@@ -286,7 +286,8 @@
 										<th>S.Tax</th>
                                         <th>Income</th>
                                         <th>C.Paid</th>
-										<th>C.Unpaid</th>										
+										<th>C.Unpaid</th>	
+										
                                         <th>Exp.</th> 
 										<th>Other Exp.</th>
 										<th>P/L</th>
