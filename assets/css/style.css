@@ -5335,6 +5335,10 @@ Datatables Plugin(in v1.3)
 .names{
 	width:15%;
 	}
+	.tdset
+{
+	width:36%
+}
 .big-box{
 	width:80%;
 	}

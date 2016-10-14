@@ -620,7 +620,8 @@ if(isset($_POST['showtax']))
 	if(isset($_POST['showStf']))
 	{	
 		$data = showStaffDrp($conn);
-		$showStaffCnt = count($data);	
+		$showStaffCnt = count($data);
+		
 		for($i=0;$i<$showStaffCnt;$i++)
 		{
 		?>
@@ -633,7 +634,9 @@ if(isset($_POST['showtax']))
 	{	
 		$data = showCmpDrp($conn);
 		$showCmpCnt = count($data);
-		
+		?>
+		<option select="selected" value="">Select Company</option>
+		<?php
 		for($i=0;$i<$showCmpCnt;$i++)
 		{
 		?>

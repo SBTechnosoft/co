@@ -142,6 +142,7 @@
 										<th> S.Tax </th>
 										<th> Tot Amt </th>										
 										<th>Rec.Amt</th>
+										<th>Due.Amt</th>
 										<th> Payment Status </th>
 										<th> Inv </th>
 										<th> Invoice#</th>

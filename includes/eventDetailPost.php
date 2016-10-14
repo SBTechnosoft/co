@@ -149,11 +149,11 @@
 		$s2 = '';$s3 = '';$s4 = '';$s5 = '';$s6 = '';$s7 = '';$s8 = '';
 		if($_POST['txtename']!='')
 		{
-			$s2 = " `event_name` like '%".$_POST['txtename']."%' ";
+			$s2 = " `event_name` like '%".trim($_POST['txtename'])."%' ";
 		}
 		 if($_POST['txtclname']!='')
 		{
-			$s3 = " `client_name` like '%".$_POST['txtclname']."%' ";
+			$s3 = " `client_name` like '%".trim($_POST['txtclname'])."%' ";
 		}
 		// if($_POST['txtbillno'] != '')
 		//{
@@ -165,15 +165,15 @@
 		//}
 		 if($_POST['txtfromdt'] !='')
 		{
-			$s6 = " `from_date` like '%".$_POST['txtfromdt']."%' ";
+			$s6 = " `from_date` like '%".trim($_POST['txtfromdt'])."%' ";
 		}
 		 if($_POST['txttodt'] !='')
 		{
-			$s7 = " `from_date` like '%".$_POST['txttodt']."%'  ";
+			$s7 = " `from_date` like '%".trim($_POST['txttodt'])."%'  ";
 		}
 		 if($_POST['drpcmpnm'] !='')
 		{
-			$s8 = " `cmp_id` like '%".$_POST['drpcmpnm']."%'  ";
+			$s8 = " `cmp_id` like '%".trim($_POST['drpcmpnm'])."%'  ";
 		}
 		
 		$arr = array($s2,$s3,$s4,$s5,$s6,$s7,$s8);
@@ -265,6 +265,21 @@
 				</td>
 				<td><span style="float:right;"><?php echo round($data[$i]['total_amt']);?> </span></td>				
 				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
+				<td>
+					<span style="float:right;">
+						<?php 
+						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
+						{
+							
+							echo $data[$i]['total_amt']-$data[$i]['client_paid_amt'];
+						}
+						else
+						{
+							echo "-";
+						}
+						?>
+					</span>
+				</td>
 				<td>
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
@@ -369,6 +384,21 @@
 				</td>
 				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>				
 				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
+				<td>
+					<span style="float:right;">
+						<?php 
+						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
+						{
+							
+							echo $data[$i]['total_amt']-$data[$i]['client_paid_amt'];
+						}
+						else
+						{
+							echo "-";
+						}
+						?>
+					</span>
+				</td>
 				<td>
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 

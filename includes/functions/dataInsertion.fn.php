@@ -505,10 +505,10 @@ function upd_vend_dtl($conn,$evd_id,$vend_paid_amt)
 			$resultArray = $conn->insertQuery($sqlUpd_vend_dtl);
 			
 		}
-function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf,$showvnd,$cmpid)
+function insertExpence($conn,$showexpctg,$showevent,$txtfromdt,$txtamt,$showstf,$showvnd,$cmpid,$epaymentMode,$etxtbanknm,$etxtchkno)
 		{
-			$sqlinsertExpence = "INSERT INTO `expence_dtl` (`exp_cat_id`,`event_id`,`exp_date`,`amount`,`exp_by`,`exp_by_vendor`,`cmp_id`) 
-			VALUES ('".$showexpctg."','".$showevent."','".$txtfromdt."','".$txtamt."','".$showstf."','".$showvnd."','".$cmpid."')";  
+			$sqlinsertExpence = "INSERT INTO `expence_dtl` (`exp_cat_id`,`event_id`,`exp_date`,`amount`,`exp_by`,`exp_by_vendor`,`cmp_id`,`payment_mode`,`bank_name`,`cheque_no`) 
+			VALUES ('".$showexpctg."','".$showevent."','".$txtfromdt."','".$txtamt."','".$showstf."','".$showvnd."','".$cmpid."','".$epaymentMode."','".$etxtbanknm."','".$etxtchkno."')";  
 			$resultArray = $conn->insertQuery($sqlinsertExpence);
 			//echo 4;
 			//exit;

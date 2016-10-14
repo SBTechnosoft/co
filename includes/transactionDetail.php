@@ -116,6 +116,31 @@
 						<input type="text" id="txtamt" name="txtamt" placeholder="Eg; Amount of expence" class="m-wrap" />
 					</div>
 				</div>
+				<div class="clearfix margin-bottom-10">							
+					
+					<label for="paymentMode">Payment Mode: </label>
+					<div class="input-icon left">
+						<select name="epaymentMode" id="epaymentMode" onchange='ShowHideDiv();' class="m-wrap "> 
+							<option value="cash">Cash</option>
+							<option value="cheque">Cheque</option>
+							
+						</select>
+					</div>
+				</div>
+				<div class="clearfix margin-bottom-10" id="showHide" style="display:none;">
+					<div class="pull-left margin-right-20">
+						<label for="txtbanknm">Bank Name:</label>
+						<div class="input-icon left">
+							<input type="text" id="etxtbanknm" name="etxtbanknm" class="m-wrap" />
+						</div>
+					</div>
+					<div class="pull-right margin-right-20">
+						<label for="txtchkno" class="well1">Cheque No:</label>
+						<div class="input-icon left">
+							<input type="text" id="etxtchkno" name="etxtchkno" class="m-wrap" />
+						</div>
+					</div>
+				</div>
 				<div class="clearfix margin-bottom-10">
 					<label> Attachment  </label>
 					<div class="input-icon left">
@@ -277,6 +302,7 @@
                                     <tr>
                                         <th> Order Id</th>
 										<th> Order Exp.</th>
+										<th> Exp.Category</th>
                                         <th> Order Name </th>
                                         <th>C.Name </th> 
 										<th> Date </th>
@@ -291,7 +317,7 @@
 										<th>Other Exp.</th>
 										<th>P/L</th>
 										<th>Inv</th>
-										<th>Invoice#</th>	
+										<th>Inv.#</th>	
                                     </tr>
                                 </thead>
                                 <tbody id="showTrnDetail">

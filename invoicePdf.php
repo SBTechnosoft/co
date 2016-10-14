@@ -278,7 +278,7 @@
 					$count++;
 				}
 				
-				while($count<11)
+				while($count<9)
 				{
 					if($count%2==0)
 					{
@@ -646,7 +646,7 @@
 					$count++;
 				}
 				
-				while($count<11)
+				while($count<9)
 				{
 					if($count%2==0)
 					{
@@ -705,6 +705,9 @@
 					
 				}
 				$INVID = $input[0]['inv_file_id'];
+				// print_r($input);
+				// echo $INVID;
+				// exit;
 				$output =array(	
 						'Description' => $outputD,
 						'Venue' => $VennueD,
@@ -752,7 +755,7 @@
 				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
 				$date = date('Y-m-d H:i:s');
 				
-				updInvEM($conn,$id,$newFileName);
+				updInvEM($conn,$id,$newFileName,$INVID);
 				insInvECID($conn,$id,$newFileName,$date,$_SESSION['USER_ID']);		
 				
 				header('Location: upload/minvoice/'.$newFileName);

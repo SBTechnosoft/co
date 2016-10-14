@@ -253,6 +253,10 @@ $('#addexp').click(function()
 		var showstf     =   $('#showstf').val();
 		var showvnd     =   $('#showvnd').val();
 		var cmpid     =   $('#showComapny').val();
+		
+		var epaymentMode = $('#epaymentMode').val();
+		var etxtbanknm = $('#etxtbanknm').val();
+		var etxtchkno = $('#etxtchkno').val();
 		// alert(showexpctg);
 		// alert(showevent);
 		// alert(txtfromdt);
@@ -275,6 +279,10 @@ $('#addexp').click(function()
 				'showstf'  : showstf,
 				'showvnd'  : showvnd,
 				'cmpid'  : cmpid,
+				'epaymentMode' : epaymentMode,
+				'etxtbanknm' : etxtbanknm,
+				'etxtchkno' : etxtchkno,
+				
 			},
 			success : function(re)
 			{
@@ -288,6 +296,10 @@ $('#addexp').click(function()
 					$('#txtamt').val('');
 					$('#showstf').val('');
 					$('#showComapny').val('');
+					
+					//$('#epaymentMode').val('cash');
+					$('#etxtbanknm').val('');
+					$('#etxtchkno').val('');
 					
 					
 					$("#msgs").html("<i class=\"fa fa-check-circle-o\"> Successfully Updated!!");

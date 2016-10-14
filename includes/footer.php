@@ -624,7 +624,14 @@
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showTrasactionDetail.js"></script>
 					
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showCmpDrp.js"></script>
-					
+					<!-- Script for new event which is set for cash and cheque-->
+					<script type="text/javascript">
+						function ShowHideDiv() {
+							var paymentMode = document.getElementById("epaymentMode");
+							var showHide = document.getElementById("showHide");
+							showHide.style.display = paymentMode.value == "cheque" ? "block" : "none";
+						}
+					</script>
 					
 				<?php
 					break;
@@ -641,7 +648,7 @@
 							menu : {
 								file   : {title : 'File'  , items : 'newdocument'},
 								edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
-								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19 item20 item21 item22 item23'}
+								newmenu: {title : 'Setting', items : 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15 item16 item17 item18 item19 item20 item21 item22 item23 item24 item25 item26'}
 							},
 							menubar: 'file edit newmenu',
 							setup: function(editor) {
@@ -815,6 +822,27 @@
 									context: 'newmenu',
 									onclick: function (){										 
 										editor.insertContent('[CMPLOGO]');
+									}
+								});
+								editor.addMenuItem('item24', {
+									text: 'PAIDAMT',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[PAIDAMT]');
+									}
+								});
+								editor.addMenuItem('item25', {
+									text: 'REMAINAMT',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[REMAINAMT]');
+									}
+								});
+								editor.addMenuItem('item26', {
+									text: 'OPERATOR',
+									context: 'newmenu',
+									onclick: function (){										 
+										editor.insertContent('[OPERATOR]');
 									}
 								});
 							}

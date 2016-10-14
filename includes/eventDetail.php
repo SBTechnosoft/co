@@ -141,6 +141,7 @@ else
 										<th> Tot Amt </th>
 										
 										<th>Rec.Amt</th>
+										<th> Due Amt </th>
 										<th> Payment Status </th>
 										<th> Inv.</th>
 										<th>Invoice#</th>
@@ -162,6 +163,26 @@ else
             <!--end tabbable-->
         </div>
         <!--end tabbable-->
+		<div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.php">Orders</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#" id="evntclnm1">  </a>
+						<input type="text" id="evntclnm" name="evntclnm" readonly />
+                    </li>
+                    
+					
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
         <div class="tabbable tabbable-custom tabbable-full-width">
             <ul class="nav nav-tabs">
                 <li class="<?php if(!isset($_GET['id'])&& empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_2_5">Details </a></li>
@@ -542,9 +563,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="showeqp">Total Amount</label></td>
+													<td class="tdset"><label for="showeqp">Total Amount</label></td>
 													<td>
-														<input  class="textalign" id="client_charges" name="client_charges" type="text" readonly />
+														<input  class="textalign discounted" id="client_charges" name="client_charges" type="text" readonly />
 													</td>                                            
 												</tr>
 											</div>
@@ -552,9 +573,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Discount</label></td>
+													<td class="tdset"><label for="txtstf"> Discount</label></td>
 													<td>
-														<input  class="textalign" id="txtcldesc" name="txtcldesc" type="text" readonly />
+														<input  class="textalign discounted" id="txtcldesc" name="txtcldesc" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -562,9 +583,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Discounted Amount</label></td>
+													<td class="tdset"><label for="txtstf"> Discounted Amount</label></td>
 													<td>
-														<input  class="textalign" id="disamt" name="disamt" type="text" readonly />
+														<input  class="textalign discounted" id="disamt" name="disamt" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -572,9 +593,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Service Tax</label></td>
+													<td class="tdset"><label for="txtstf"> Service Tax</label></td>
 													<td>
-														<input  class="textalign" id="st" name="st" type="text" readonly />
+														<input  class="textalign discounted" id="st" name="st" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -582,9 +603,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf"> Final Amount</label></td>
+													<td class="tdset"><label for="txtstf"> Final Amount</label></td>
 													<td>
-														<input  class="textalign" id="txtcharge" name="txtcharge" type="text" readonly />
+														<input  class="textalign discounted" id="txtcharge" name="txtcharge" type="text" readonly />
 													</td> 
 												</tr>
 											</div>
@@ -730,9 +751,9 @@ else
 										<div class="input-icon left">
 											<div class="controls">
 												<tr>
-													<td class="names"><label for="txtstf">Paid Amount</label></td>
+													<td class="tdset"><label for="txtstf">Paid Amount</label></td>
 													<td>
-														<input  class="textalign" id="txtpaidamt" name="txtpaidamt" type="text" readonly />
+														<input  class="textalign discounted" id="txtpaidamt" name="txtpaidamt" type="text" readonly />
 														<button type="button" class=" btn blue" id="open" > <i class="icon-plus"> </i></button>
 													</td> 
 												</tr>

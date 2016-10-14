@@ -165,7 +165,7 @@ function showEventDetailInvD($conn,$eid)
 		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`event_ds` as 'OrderDesc',`client_name` as 'ClientName',`client_address` as 'CLIENTADD',
 		`client_cmp` as 'Company',`client_email` as 'Email',`client_work_mob` as 'WorkMob',
 		`client_home_mob` as 'HomeMob',`client_mob` as 'Mobile',DATE_FORMAT(from_date, '%D %M %Y')as 'OrderDate',DATE_FORMAT(to_date, '%D %M %Y')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
-		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
+		`client_paid_amt` as 'PAIDAMT',`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',(total_amt - client_paid_amt) as 'REMAINAMT',
 		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1' ,`inv_file_id`
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
@@ -177,10 +177,11 @@ function showEventDetailRetailD($conn,$eid)
 		$sqlEventDetail = "select `event_id` as 'OrderId',`event_name` as 'OrderName',`event_ds` as 'OrderDesc',`client_name` as 'ClientName',`client_address` as 'CLIENTADD',
 		`client_cmp` as 'Company',`client_email` as 'Email',`client_work_mob` as 'WorkMob',
 		`client_home_mob` as 'HomeMob',`client_mob` as 'Mobile',DATE_FORMAT(from_date, '%D %b %Y %h:%i %p')as 'OrderDate',DATE_FORMAT(to_date, '%D %b %Y %h:%i %p')as 'DeliveryDate',`invoice`,`status` ,`client_charges` as 'ClientCharge',
-		`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',
-		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1' ,`inv_file_id`
+		`client_paid_amt` as 'PAIDAMT',`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt` as 'TaxAmt',`total_amt` as 'Total',(total_amt - client_paid_amt) as 'REMAINAMT',
+		`service_tax_rate` as 'TaxRate',`client_discount_amt` as 'Discount',em.cmp_id,cm.cmp_name as 'Organization',cm.banner_img as 'banner1' ,`inv_file_id`,sm.first_name as 'OPERATOR'
 		from  `event_mst` em
 		right join company_mst cm on cm.cmp_id= em.cmp_id
+		right join staff_mst sm on sm.staff_id = em.staff_id
 		where em.event_id = '".$eid."' and `status` != 'enquiry' and em.deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventDetail);	
 	}
@@ -229,7 +230,7 @@ function searchAccesDetail($conn,$where)
 }
 function searchCoantactDetail($conn,$where)
 {
-	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address` from where" .$where.""; 
+	$sqlEventDetail = "select `client_id`,`client_name`,`company_name`,mobile_no,`work_no`,`email_id`,`address`,`client_type` from contact_dtl where".$where.""; 
 	return $conn->getResultArray($sqlEventDetail);	
 	
 }
@@ -728,7 +729,7 @@ function showClientInv($conn)
 function showTransDtlType($conn,$event_type)
 	{
 		$sqlTransDtl = 		
-		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
+		"select event_id,'Event Expense',NULL as 'Exp',event_name,client_name,from_date,null, 		
 		client_charges,client_discount_amt,inv_file_name,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
@@ -737,16 +738,17 @@ function showTransDtlType($conn,$event_type)
 		) as amount,`inv_file_id`,`order_type`
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and order_type = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
+		select event_id,'General Expense',ecm.cat_name,NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
+		right join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id
 		where event_id = 0";
 		return $conn->getResultArray($sqlTransDtl);	
 	}
 function showTransDtlCmpType($conn,$event_type)
 	{
 		$sqlTransDtl = 		
-		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
+		"select event_id,'Event Expense',NULL as 'Exp',event_name,client_name,from_date,null, 		
 		client_charges,client_discount_amt,inv_file_name,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
@@ -755,9 +757,10 @@ function showTransDtlCmpType($conn,$event_type)
 		) as amount,`inv_file_id`,`order_type`
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00' and cmp_id = '".$event_type."'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
+		select event_id,'General Expense',ecm.cat_name,NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
+		right join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id
 		where event_id = 0";
 		return $conn->getResultArray($sqlTransDtl);	
 	}
@@ -765,7 +768,7 @@ function showTransDtlCmpType($conn,$event_type)
 function showTransDtl($conn)
 	{
 		$sqlTransDtl = 		
-		"select event_id,'Event Expense',event_name,client_name,from_date,null, 		
+		"select event_id,'Event Expense',NULL as 'Exp',event_name,client_name,from_date,null, 		
 		client_charges,client_discount_amt,inv_file_name,service_tax_amt, service_tax_rate,total_amt,client_paid_amt,(total_amt - client_paid_amt) as client_unpaid, vendor_charges,client_cmp,client_email,client_work_mob,client_home_mob,
 		(
 			select sum(amount) 
@@ -774,9 +777,10 @@ function showTransDtl($conn)
 		) as amount,`inv_file_id`,`order_type`
 		from event_mst where `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00'
 		UNION
-		select event_id,'General Expense',NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
+		select event_id,'General Expense',ecm.cat_name,NULL,NULL,exp_date,sm.first_name,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,amount,NULL,NULL
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
+        right join expence_cat_mst ecm on ecm.exp_cat_id = exd.exp_cat_id 
 		where event_id = 0";
 		return $conn->getResultArray($sqlTransDtl);	
 	}
@@ -829,7 +833,7 @@ function showInvCond($conn)
 function showExpDtl($conn,$eid)
 	{
 		$sqlshowEvent = 
-		" select ecm.cat_name,em.event_name,exp_id,exp_date,sm.first_name,vm.vendor_name,vm.vendor_cmp,amount
+		" select ecm.cat_name,em.event_name,exp_id,exp_date,sm.first_name,vm.vendor_name,vm.vendor_cmp,amount,exd.payment_mode,exd.bank_name,exd.cheque_no
 		from expence_dtl exd
 		inner join staff_mst sm on sm.staff_id = exd.exp_by
         inner join vendor_mst vm on vm.vend_id = exd.exp_by_vendor

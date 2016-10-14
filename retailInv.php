@@ -146,9 +146,9 @@ $inm = date_format($date,"Ymd");
 				
 				$dEqp = showRtlInvDtl($conn,$eventlast_id);
 				$cnteqp = count($dEqp); 
-				if($cnteqp<11)
+				if($cnteqp<10)
 				{
-					$cnteqp1 = 11;
+					$cnteqp1 = 10;
 				}
 				else
 				{

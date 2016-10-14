@@ -528,6 +528,9 @@
 					$('#txteventnm').val(e.event_name);
 					$('#txteventds').val(e.event_ds);
 					$('#txtclnm').val(e.client_name);
+					//for client name in bread crumb
+					$('#evntclnm').val(e.client_name);
+					//end
 					$('#txtclcmp').val(e.client_cmp);
 					$('#txtclemail').val(e.client_email);
 					$('#txtworkmob').val(e.client_work_mob);
@@ -848,6 +851,9 @@
 					$('#txteventnm').val(e.event_name);
 					$('#txteventds').val(e.event_ds);
 					$('#txtclnm').val(e.client_name);
+					//for client name in bread crumb
+					$('#evntclnm').val(e.client_name);
+					//end
 					$('#txtclcmp').val(e.client_cmp);
 					$('#txtclemail').val(e.client_email);
 					$('#txtworkmob').val(e.client_work_mob);

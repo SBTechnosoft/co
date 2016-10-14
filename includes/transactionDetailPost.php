@@ -5,7 +5,7 @@
 	{
 		$frdt = $_POST['txtfromdt'];		
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
-		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd'],$_POST['cmpid']);
+		insertExpence($conn,$_POST['showexpctg'],$_POST['showevent'],$nfrdt,$_POST['txtamt'],$_POST['showstf'],$_POST['showvnd'],$_POST['cmpid'],$_POST['epaymentMode'],$_POST['etxtbanknm'],$_POST['etxtchkno']);
 		
 	}	
 	if(isset($_POST['delete']))
@@ -45,6 +45,7 @@
 						</td>
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -167,6 +168,7 @@
 							<?php //echo $ETrnDtl[$i]['event_id'];?>
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -332,6 +334,7 @@
 						</td>
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -453,6 +456,7 @@
 							<?php //echo $ETrnDtl[$i]['event_id'];?>
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -615,6 +619,7 @@
 						</td>
 						
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -737,6 +742,7 @@
 							<?php //echo $ETrnDtl[$i]['event_id'];?>
 						</td>
 						<td> <?php echo $ETrnDtl[$i]['Event Expense']; ?></td>
+						<td> <?php echo $ETrnDtl[$i]['Exp']; ?></td>
 						<td>
 							<a href="<?php echo HTTP_SERVER ; ?>index.php?url=<?php if($ETrnDtl[$i]['order_type']=='Event'){echo "EVD" ;}else{ echo "RTL" ;}?>&id=<?php echo $ETrnDtl[$i]['event_id'];?>" 
 							data-id="<?php echo $ETrnDtl[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="">						
@@ -980,6 +986,9 @@
 			<div class="Cell"><span style="float:left;">Exp By</span></div>	
 			<div class="Cell"><span style="float:left;">Exp By Vendor</span></div>				
 			<div class="Cell"><span style="float:left;">Amount</span></div>	
+			<div class="Cell"><span style="float:left;">Payement Mode</span></div>
+			<div class="Cell"><span style="float:left;">Bank Name</span></div>
+			<div class="Cell"><span style="float:left;">Cheque No</span></div>
 			<div class="Cell"><span style="float:left;">Action</span></div>	
 		</div>
 		<?php
@@ -1017,6 +1026,21 @@
 				<div class="Cell">
 					<span style="float:right;">
 					<?php if($expdtl[$a]['amount']== ''){echo "-";}else{echo $expdtl[$a]['amount']; }  ?>
+					</span>
+				</div>
+				<div class="Cell">
+					<span style="float:right;">
+					<?php if($expdtl[$a]['payment_mode']== ''){echo "-";}else{echo $expdtl[$a]['payment_mode']; }  ?>
+					</span>
+				</div>
+				<div class="Cell">
+					<span style="float:right;">
+					<?php if($expdtl[$a]['bank_name']== ''){echo "-";}else{echo $expdtl[$a]['bank_name']; }  ?>
+					</span>
+				</div>
+				<div class="Cell">
+					<span style="float:right;">
+					<?php if($expdtl[$a]['cheque_no']== ''){echo "-";}else{echo $expdtl[$a]['cheque_no']; }  ?>
 					</span>
 				</div>
 				<div class="Cell">								
