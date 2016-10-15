@@ -108,6 +108,21 @@
 						?>
 					</span>
 				</td>
+				<td>
+					<span style="float:right;">
+						<?php 
+						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
+						{
+							
+							echo $data[$i]['total_amt']-$data[$i]['client_paid_amt'];
+						}
+						else
+						{
+							echo "-";
+						}
+						?>
+					</span>
+				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
 					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 

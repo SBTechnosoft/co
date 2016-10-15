@@ -384,7 +384,7 @@
 				</td>
 				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>				
 				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
-				<td>
+			<td>
 					<span style="float:right;">
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
