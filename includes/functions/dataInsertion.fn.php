@@ -345,6 +345,12 @@ function updInvEM($conn,$id,$fname,$INVID)
 			$resultArray = $conn->insertQuery($sqlinsInvEM);
 			
 		}
+function updQuaEM($conn,$id,$fname)
+		{
+			$sqlinsInvEM = "Update `event_mst` set `qua_file_name` = '".$fname."'  where `event_id` = '".$id."' "; 
+			$resultArray = $conn->insertQuery($sqlinsInvEM);
+			
+		}
 function updInvConfig($conn,$cnf_id,$nextval)
 		{
 			$sqlinsInvEM = "Update `invoice_config` set `next_val` = '".$nextval."' where `invoice_conf_id` = '".$cnf_id."'"; 

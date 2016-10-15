@@ -40,7 +40,7 @@
 		for($i=0;$i<$cnt;$i++)
 		{
 			
-				$newFileName = $inm."-".$_POST['txteid']."_1.pdf";			
+				$newFileName = "QUA".$inm."-".$_POST['txteid']."_1.pdf";			
 						
 				$InvBody = showQuotBody($conn);
 				$CondBody = showQuotCond($conn);
@@ -383,8 +383,8 @@
 				$mpdf->Output($path,'F');//this fn on 8174 line in mpdf.php
 				$date = date('Y-m-d H:i:s');
 				
-				updInvEM($conn,$id,$newFileName);
-				insInvECID($conn,$id,$newFileName,$date,$_SESSION['USER_ID']);		
+				updQuaEM($conn,$id,$newFileName);
+				//insInvECID($conn,$id,$newFileName,$date,$_SESSION['USER_ID']);		
 				
 				header('Location: upload/minvoice/'.$newFileName);
 				//exit();
