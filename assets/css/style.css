@@ -1266,7 +1266,7 @@ Portlets
   display: inline-block !important;
   font-size: 13px;
   margin-right: 5px;
-  color: #666;
+  color: #f2f2f2;
 }
 
 .portlet.blue > .portlet-title .caption, .portlet-title.blue .caption, 
@@ -1594,7 +1594,14 @@ Box portlet
    border: 1px solid #77e588;
    border-top: 0;
 }
+.portlet.box.orange .portlet-title {
+  background-color: #FFA500;
+} 
 
+.portlet.box.orange {  
+   border: 1px solid #FFA500;
+   border-top: 0;
+}
 .portlet.box.purple .portlet-title {
   background-color: #852b99;
 } 

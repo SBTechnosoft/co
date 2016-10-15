@@ -220,7 +220,7 @@
 			}
 			else
 			{
-				$str1[] =  $narry[$a]."or";
+				$str1[] =  $narry[$a]."and";
 			}
 		}
 		if(!empty($str1))
