@@ -114,7 +114,7 @@ $inm = date_format($date,"Ymd");
 		$cur_date = date('Ymd');
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
 		{
-			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
+			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],0,$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 		}
 			
 	}

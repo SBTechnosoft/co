@@ -10,11 +10,33 @@
 			var txtpchq     =   $('#txtpchq').val();	
 			var txtptrn     =   $('#txtptrn').val();
 			
+			var txtptax = $('#txtptax').val();
+			var txratn = $('#txratn').val();
+			var txtpaidtax = 0;
+			var txtactamt = $('#txtpamt').val();
+			
+			
+			
+			
+			
 			if(txtpamt == '')
 			{
 				alert('Amount is empty');
 				return false;
 			}
+			if(txtptax=='Yes')
+			{
+				txtpaidtax = Math.round((parseInt(txtpamt) * parseInt(txratn) )/(100 + parseInt(txratn)));
+				txtactamt = txtpamt - txtpaidtax;
+			}
+			alert(txtptax);
+			alert(txratn);
+			alert(txtpaidtax);
+			alert(txtactamt);
+			alert(txtpamt);
+			return false;
+			
+			
 			$.ajax({
 				url : './includes/eventDetailPost.php',
 				type : 'POST',
@@ -28,6 +50,8 @@
 					'txtpbnm'  : txtpbnm,	
 					'txtpchq'  : txtpchq,
 					'txtptrn'   : txtptrn,
+					'txtactamt' : txtactamt,
+					'txtpaidtax' : txtpaidtax,
 					
 				},
 				success : function(re)

@@ -714,14 +714,23 @@ else
 													</div>
 												</div>
 												<div id="ShowHide" style="display:none;">
-												<div class="vendcell">
-													<div class="subvend">Bank Name:</div>
-													<div class="subvend"><input type="text" id="txtpbnm" name="txtpbnm"  /></div>
+													<div class="vendcell">
+														<div class="subvend">Bank Name:</div>
+														<div class="subvend"><input type="text" id="txtpbnm" name="txtpbnm"  /></div>
+													</div>
+													<div  class="vendcell">
+														<div class="subvend">Cheque No:</div>
+														<div class="subvend"><input type="text" id="txtpchq" name="txtpchq"  /></div>
+													</div>
 												</div>
 												<div  class="vendcell">
-													<div class="subvend">Cheque No:</div>
-													<div class="subvend"><input type="text" id="txtpchq" name="txtpchq"  /></div>
-												</div>
+													<div class="subvend">Tax:</div>
+													<div class="subvend">
+														<select id="txtptax" name="txtptax" onchange='ShowHideDiv();'>
+															<option value="Yes" > With Tax </option>
+															<option value="No"> Without Tax </option>
+														</select>
+													</div>
 												</div>
 												<div  class="vendcell">
 													<div class="subvend">Payment Trn:</div>

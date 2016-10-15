@@ -18,7 +18,7 @@
 			$tot =  $resultShow[0]['client_paid_amt'] + $_POST['txtpamt'];
 			if($resultShow[0]['total_amt'] >= $tot)
 			{
-				insPayTrn($conn,$_POST['txtpeid'],$_POST['txtpdate'],$_POST['txtpamt'],$_POST['txtpmode'],$_POST['txtpbnm'],$_POST['txtpchq'],$_POST['txtptrn']);				
+				insPayTrn($conn,$_POST['txtpeid'],$_POST['txtpdate'],$_POST['txtactamt'],$_POST['txtpaidtax'],$_POST['txtpmode'],$_POST['txtpbnm'],$_POST['txtpchq'],$_POST['txtptrn']);				
 				$tot_paid_amt = showTotPaidTrn($conn,$_POST['txtpeid']);
 				
 				if($resultShow[0]['total_amt'] > $tot)

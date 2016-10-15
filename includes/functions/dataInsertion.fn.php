@@ -265,10 +265,10 @@ function insertPaymentTrn($conn,$event_id_pdtl1,$cur_date,$actPAmt,$ptaxamt,$pay
 			//exit;
 		}
 	
-function insPayTrn($conn,$txtpeid,$txtpdate,$txtpamt,$txtpmode,$txtpbnm,$txtpchq,$txtptrn)
+function insPayTrn($conn,$txtpeid,$txtpdate,$txtpamt,$txttaxamt,$txtpmode,$txtpbnm,$txtpchq,$txtptrn)
 		{
-			$sqlInsertPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
-			VALUES ('".$txtpeid."','".$txtpdate."','".$txtpamt."','".$txtpmode."','".$txtpbnm."','".$txtpchq."','".$txtptrn."')"; 
+			$sqlInsertPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`tax`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
+			VALUES ('".$txtpeid."','".$txtpdate."','".$txtpamt."','".$txttaxamt."','".$txtpmode."','".$txtpbnm."','".$txtpchq."','".$txtptrn."')"; 
 			$resultArray3 = $conn->insertQuery($sqlInsertPayTrn);
 			echo 6;
 			//exit;
