@@ -156,6 +156,16 @@
 					<a id="upddelv" name="upddelv" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
 				</div>				
 			</div>
+			<div class="control-group">
+				<label class="control-label">Set As Quatation</label>
+				<div class="controls" id="updefault">
+					<select id="txtsetasqua" name="txtsetasqua" >						
+						<option  value="Yes"> Enable</option>
+						<option selected value="No"> Disable</option>						
+					</select>						
+					<a id="updqua" name="updqua" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
+				</div>				
+			</div>
 			
            
         </div>

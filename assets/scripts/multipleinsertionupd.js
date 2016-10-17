@@ -74,19 +74,19 @@ $(document).on('click','#add',function()
 		'	<div class="pull-left margin-right-20">'+
 		'		<label for="txtvenue">Venue :</label>'+
 		'		<div class="input-icon input-append">'+
-		'			<input class="m-wrap" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+
+		'			<input class="venuetxt" id="hdn['+i+'][txtvenue]" name="hdn['+i+'][txtvenue]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="pull-left margin-right-20 abc">'+
 		'		<label for="txthall">Hall :</label>'+
 		'		<div class="input-icon input-append">'+
-		'			<input class="m-wrap" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
+		'			<input class="venuetxt" id="hdn['+i+'][txthall]" name="hdn['+i+'][txthall]" type="text"  />'+
 		'		</div>'+
 		'	</div>'+
 		'	<div class="pull-right margin-right-20">'+
 		'		<label for="txtldmark">Land Mark :</label>'+
 		'		<div class="input-icon input-append">'+
-		'			<input class="m-wrap" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
+		'			<input class="venuetxt" id="hdn['+i+'][txtldmark]" name="hdn['+i+'][txtldmark]" type="text" />'+
 		'		</div>'+
 		'	</div>'+
 		'	</div>'+
@@ -95,7 +95,7 @@ $(document).on('click','#add',function()
 		'			<div class="input-icon input-append">'+
 		'				<label for="txtfunction">Function: </label>'+
 		'			</div>'+
-		'			<input class="m-wrap" id="hdn['+i+'][txtfunction]" name="hdn['+i+'][txtfunction]" type="text" />'+
+		'			<input class="venuetxt" id="hdn['+i+'][txtfunction]" name="hdn['+i+'][txtfunction]" type="text" />'+
 		'		</div>'+
 		'		<div class="pull-left margin-right-10">'+
 		'			<label for="txtfromdate">From Date :</label>'+

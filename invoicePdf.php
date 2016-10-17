@@ -38,6 +38,9 @@
 		$cnt = count($data);
 		//echo $cnt."<br>";
 		
+		$invSetting = showSettingInv($conn);
+		$defaultqua = $invSetting[0]['set_as_quatation'];
+		
 		for($i=0;$i<$cnt;$i++)
 		{
 			if($data[$i]['inv_file_name']=='')
@@ -54,7 +57,252 @@
 				// print_r($ResourceDtl);
 				// exit;
 				
+			if($defaultqua == 'Yes')
+			{
+				//start
+				// echo "divyesh";
+				// exit;
 				
+				$ResourceDtl = showQuoResource($conn,$_POST['txteid']);
+				$counter =0;
+				if(!empty($ResourceDtl))
+				{
+					$vennue = $ResourceDtl;
+				}
+				else
+				{
+					$vennue = showVennueDtl($conn,$_POST['txteid']);
+				}
+				//$cnteqp = count($dEqp); 				
+				//$vennue = showVennueDtl($conn,$_POST['txteid']);
+				
+				
+				$cnteqp = count($vennue);
+				//echo $cnt;
+				if($cnteqp<3)
+				{
+					$cnteqp1 = 3;
+				}
+				else
+				{
+					$cnteqp1 = $cnteqp;
+				}
+				for($m=0;$m<$cnteqp1;$m++)
+				{
+					if($m < $cnteqp)
+					{
+						if($m%2==0)
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['function'].','.$vennue[$m]['event_hall'].','.$vennue[$m]['event_vennue'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+								$new = $vennue [$m]['event_places_id'];
+									
+									
+									if(!empty($ResourceDtl))
+									{
+										$vndtl = showResDtl($conn,$new);
+									}
+									else
+									{
+										$vndtl = showVnDtl($conn,$new);
+									}
+									
+									
+									$subcnt = count($vndtl);
+									for($n=0;$n<$subcnt;$n++)
+									{
+										
+										$outputD .='
+											'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+											';							
+									}
+									$outputD .= '
+										</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+								</tr>
+									';
+								$counter++;
+						}
+						else
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['function'].','.$vennue[$m]['event_hall'].','.$vennue[$m]['event_vennue'].'</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+								$new = $vennue [$m]['event_places_id'];
+									
+									if(!empty($ResourceDtl))
+									{
+										$vndtl = showResDtl($conn,$new);
+									}
+									else
+									{
+										$vndtl = showVnDtl($conn,$new);
+									}
+									$subcnt = count($vndtl);
+									for($n=0;$n<$subcnt;$n++)
+									{
+										
+										$outputD .= ''.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>';							
+									}
+									$outputD .= '
+										</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+								</tr>
+									';
+							$counter++;
+						}
+					}
+					else
+					{
+						 if($m%2==0)
+						   {
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+								$new = $vennue [$m]['event_places_id'];
+									
+									if(!empty($ResourceDtl))
+									{
+										$vndtl = showResDtl($conn,$new);
+									}
+									else
+									{
+										$vndtl = showVnDtl($conn,$new);
+									}
+									$subcnt = count($vndtl);
+									for($n=0;$n<$subcnt;$n++)
+									{
+										
+										$outputD .='
+											'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+											';							
+									}
+									$outputD .= '
+										</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+								</tr>
+									';
+								$counter++;
+							}
+						 else
+							{
+								$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+								$new = $vennue [$m]['event_places_id'];
+									
+									if(!empty($ResourceDtl))
+									{
+										$vndtl = showResDtl($conn,$new);
+									}
+									else
+									{
+										$vndtl = showVnDtl($conn,$new);
+									}
+									$subcnt = count($vndtl);
+									for($n=0;$n<$subcnt;$n++)
+									{
+										
+										$outputD .='
+											'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+											';							
+									}
+									$outputD .= '
+										</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+								</tr>
+									';
+								$counter++;
+							}
+					}					
+				}
+				// echo $counter;
+				// exit;
+				$DeliverableDtl = showdeliverabledtl($conn,$_POST['txteid']);
+				if(!empty($DeliverableDtl))
+				{
+					if($counter%2 == 0)
+					{
+						$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+								</tr>
+									';
+						
+						
+						$delvcnt = count($DeliverableDtl);
+						for($delv=0;$delv<$delvcnt;$delv++)
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+								</tr>
+									';
+						}
+					}
+					else
+					{
+						$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+								</tr>
+									';
+						
+						
+						$delvcnt = count($DeliverableDtl);
+						for($delv=0;$delv<$delvcnt;$delv++)
+						{
+							$outputD .= '
+							
+								<tr class="" style="font-family:Calibri;">
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+									<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+								</tr>
+									';
+						}
+					}
+				}
+				//end
+				
+			}
+			else
+			{
 				if(!empty($ResourceDtl))
 				{
 					$dEqp = $ResourceDtl;
@@ -303,7 +551,7 @@
 					$count++;
 				}
 				
-				
+			}	
 				
 				$vennue = showVennue($conn,$_POST['txteid']);
 				$cntven = count($vennue);
@@ -422,205 +670,475 @@
 				$ResourceDtl = showEqpResource($conn,$_POST['txteid']);
 				// print_r($ResourceDtl);
 				// exit;
-				
-				if(!empty($ResourceDtl))
+			
+				if($defaultqua == 'Yes')
 				{
-					$dEqp = $ResourceDtl;
-				}
-				else
-				{
-					$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
-				}
-				$cnteqp = count($dEqp);
-				
-				if($cnteqp < $cnteqp+1)
-				{
-					$cnteqp1 = $cnteqp+1;
-				}
-				else
-				{
-					$cnteqp1 = $cnteqp;
-				}
-				
-				
-				$count = 0;
-				for($a=0;$a<$cnteqp1;$a++)
-				{
-					if($a < $cnteqp)
+					//start
+					// echo "divyesh";
+					// exit;
+					$ResourceDtl = showQuoResource($conn,$_POST['txteid']);
+					$counter =0;
+					if(!empty($ResourceDtl))
 					{
-						if($a%2==0)
-						{
-							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
-							{				
-							
-							$outputD .= '
-								<tr class="trhw" >
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>
-							';
-							}
-							else
-							{				
-							
-							$outputD .= '
-								<tr class="trhw">
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>
-							';
-							}
-						}
-						else
-						{
-							if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
-							{				
-							
-							$outputD .= '
-								<tr class="trhw" >
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>
-							';
-							}
-							else
-							{				
-							
-							$outputD .= '<tr class="trhw">
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>';
-							}
-						}
+						$vennue = $ResourceDtl;
 					}
 					else
 					{
-						if($a%2==0)
+						$vennue = showVennueDtl($conn,$_POST['txteid']);
+					}
+					//$cnteqp = count($dEqp); 				
+					//$vennue = showVennueDtl($conn,$_POST['txteid']);
+					
+					
+					$cnteqp = count($vennue);
+					//echo $cnt;
+					if($cnteqp<3)
+					{
+						$cnteqp1 = 3;
+					}
+					else
+					{
+						$cnteqp1 = $cnteqp;
+					}
+					for($m=0;$m<$cnteqp1;$m++)
+					{
+						if($m < $cnteqp)
 						{
-							$outputD .= '<tr class="trhw">
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>';
+							if($m%2==0)
+							{
+								$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['function'].','.$vennue[$m]['event_hall'].','.$vennue[$m]['event_vennue'].'</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+									$new = $vennue [$m]['event_places_id'];
+										
+										
+										if(!empty($ResourceDtl))
+										{
+											$vndtl = showResDtl($conn,$new);
+										}
+										else
+										{
+											$vndtl = showVnDtl($conn,$new);
+										}
+										
+										
+										$subcnt = count($vndtl);
+										for($n=0;$n<$subcnt;$n++)
+										{
+											
+											$outputD .='
+												'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+												';							
+										}
+										$outputD .= '
+											</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+									</tr>
+										';
+									$counter++;
+							}
+							else
+							{
+								$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Day'.($m+1).' </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Date<br> '.$vennue[$m]['event_date'].'</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Event Detail <br> '.$vennue[$m]['function'].','.$vennue[$m]['event_hall'].','.$vennue[$m]['event_vennue'].'</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+									$new = $vennue [$m]['event_places_id'];
+										
+										if(!empty($ResourceDtl))
+										{
+											$vndtl = showResDtl($conn,$new);
+										}
+										else
+										{
+											$vndtl = showVnDtl($conn,$new);
+										}
+										$subcnt = count($vndtl);
+										for($n=0;$n<$subcnt;$n++)
+										{
+											
+											$outputD .= ''.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>';							
+										}
+										$outputD .= '
+											</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+									</tr>
+										';
+								$counter++;
+							}
 						}
 						else
 						{
-							$outputD .= '<tr class="trhw">
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
-								</tr>';
+							 if($m%2==0)
+							   {
+								$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+									$new = $vennue [$m]['event_places_id'];
+										
+										if(!empty($ResourceDtl))
+										{
+											$vndtl = showResDtl($conn,$new);
+										}
+										else
+										{
+											$vndtl = showVnDtl($conn,$new);
+										}
+										$subcnt = count($vndtl);
+										for($n=0;$n<$subcnt;$n++)
+										{
+											
+											$outputD .='
+												'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+												';							
+										}
+										$outputD .= '
+											</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+									</tr>
+										';
+									$counter++;
+								}
+							 else
+								{
+									$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"></td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">';
+									$new = $vennue [$m]['event_places_id'];
+										
+										if(!empty($ResourceDtl))
+										{
+											$vndtl = showResDtl($conn,$new);
+										}
+										else
+										{
+											$vndtl = showVnDtl($conn,$new);
+										}
+										$subcnt = count($vndtl);
+										for($n=0;$n<$subcnt;$n++)
+										{
+											
+											$outputD .='
+												'.$vndtl[$n]['eq_name'].':'.$vndtl[$n]['qty'].'<br>
+												';							
+										}
+										$outputD .= '
+											</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;height:65px;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"><br>'.$vennue[$m]['Amount'].'</td> 
+									</tr>
+										';
+									$counter++;
+								}
+						}					
+					}
+					// echo $counter;
+					// exit;
+					$DeliverableDtl = showdeliverabledtl($conn,$_POST['txteid']);
+					if(!empty($DeliverableDtl))
+					{
+						if($counter%2 == 0)
+						{
+							$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+									</tr>
+										';
+							
+							
+							$delvcnt = count($DeliverableDtl);
+							for($delv=0;$delv<$delvcnt;$delv++)
+							{
+								$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;background-color: #d9d9d9;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+									</tr>
+										';
+							}
+						}
+						else
+						{
+							$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">Deliverable </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;"></td> 
+									</tr>
+										';
+							
+							
+							$delvcnt = count($DeliverableDtl);
+							for($delv=0;$delv<$delvcnt;$delv++)
+							{
+								$outputD .= '
+								
+									<tr class="" style="font-family:Calibri;">
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;"> </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">'.$DeliverableDtl[$delv]['delv_name'].' </td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;padding: 5px 5px;">	</td>
+										<td class=" " style="font-family:Calibri;vertical-align:top;font-size:12px;color:#4e4e4e;border-color:#4e4e4e;text-align:right;padding: 5px 5px;">'.$DeliverableDtl[$delv]['amount'].'</td> 
+									</tr>
+										';
+							}
 						}
 					}
-					
-					
-					$count++;
-				}
-				
-				$DelvDtl = showdeliverabledtl($conn,$_POST['txteid']);
-				$cntdelv = count($DelvDtl);
-				
-				if($count % 2 == 0)
-				{
-					$outputD .= '
-					<tr class="trhw" >
-						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-						<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
-						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-						<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-					</tr>				';
-					$count ++;
+					//end
 				}
 				else
 				{
-					$outputD .= '<tr class="trhw">
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								</tr>';
-					$count ++;
-				}
-				for($b=0;$b<=$cntdelv;$b++)
-				{
-					if($b < $cntdelv)
+					if(!empty($ResourceDtl))
 					{
-						if($count % 2 == 0)
+						$dEqp = $ResourceDtl;
+					}
+					else
+					{
+						$dEqp = showEqpRsDtl($conn,$_POST['txteid']);
+					}
+					$cnteqp = count($dEqp);
+					
+					if($cnteqp < $cnteqp+1)
+					{
+						$cnteqp1 = $cnteqp+1;
+					}
+					else
+					{
+						$cnteqp1 = $cnteqp;
+					}
+					
+					
+					$count = 0;
+					for($a=0;$a<$cnteqp1;$a++)
+					{
+						if($a < $cnteqp)
 						{
-							if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
-							{				
-							
-							$outputD .= '
-								<tr class="trhw" >
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
-								</tr>
-							';
+							if($a%2==0)
+							{
+								if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+								{				
+								
+								$outputD .= '
+									<tr class="trhw" >
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>
+								';
+								}
+								else
+								{				
+								
+								$outputD .= '
+									<tr class="trhw">
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>
+								';
+								}
 							}
 							else
-							{				
-							
-							$outputD .= '
-								<tr class="trhw">
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
-									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
-								</tr>
-							';
+							{
+								if($dEqp[$a]['length']!='' && $dEqp[$a]['length']!='undefined')
+								{				
+								
+								$outputD .= '
+									<tr class="trhw" >
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>
+								';
+								}
+								else
+								{				
+								
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>';
+								}
 							}
 						}
 						else
 						{
-							if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
-							{				
-							
-							$outputD .= '
-								<tr class="trhw" >
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
-								</tr>
-							';
+							if($a%2==0)
+							{
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>';
 							}
 							else
-							{				
-							
-							$outputD .= '<tr class="trhw">
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
-									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
-								</tr>';
+							{
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
+									</tr>';
 							}
 						}
+						
+						
+						$count++;
+					}
+					
+					$DelvDtl = showdeliverabledtl($conn,$_POST['txteid']);
+					$cntdelv = count($DelvDtl);
+					
+					if($count % 2 == 0)
+					{
+						$outputD .= '
+						<tr class="trhw" >
+							<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+							<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
+							<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+							<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+							<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+						</tr>				';
+						$count ++;
 					}
 					else
+					{
+						$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">Deliverable<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									</tr>';
+						$count ++;
+					}
+					for($b=0;$b<=$cntdelv;$b++)
+					{
+						if($b < $cntdelv)
+						{
+							if($count % 2 == 0)
+							{
+								if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
+								{				
+								
+								$outputD .= '
+									<tr class="trhw" >
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+									</tr>
+								';
+								}
+								else
+								{				
+								
+								$outputD .= '
+									<tr class="trhw">
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+									</tr>
+								';
+								}
+							}
+							else
+							{
+								if($DelvDtl[$b]['width']!='' && $DelvDtl[$b]['width']!='undefined' && $DelvDtl[$b]['width']!=0)
+								{				
+								
+								$outputD .= '
+									<tr class="trhw" >
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'('.$DelvDtl[$b]['width'].'X'.$DelvDtl[$b]['height'].')<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+									</tr>
+								';
+								}
+								else
+								{				
+								
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($b+1).'</td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['delv_name'].'<br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['qty'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['rate'].'</td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$DelvDtl[$b]['amount'].'</td>
+									</tr>';
+								}
+							}
+						}
+						else
+						{
+							if($count%2==0)
+							{
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									</tr>';
+							}
+							else
+							{
+								$outputD .= '<tr class="trhw">
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+										<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
+									</tr>';
+							}
+						}
+						$count++;
+					}
+					
+					while($count<9)
 					{
 						if($count%2==0)
 						{
@@ -642,35 +1160,9 @@
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
 								</tr>';
 						}
+						$count++;
 					}
-					$count++;
-				}
-				
-				while($count<9)
-				{
-					if($count%2==0)
-					{
-						$outputD .= '<tr class="trhw">
-								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
-								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-							</tr>';
-					}
-					else
-					{
-						$outputD .= '<tr class="trhw">
-								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;"><br></td>
-								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-								<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;"></td>
-							</tr>';
-					}
-					$count++;
-				}
-				
+				}	
 				
 				$vennue = showVennue($conn,$_POST['txteid']);
 				$cntven = count($vennue);

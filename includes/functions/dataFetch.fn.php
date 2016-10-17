@@ -686,6 +686,11 @@ function showSettingRes($conn)
 		$sqlshowResEqu = "select `resorce` from  `setting` "; 
 		return $conn->getResultArray($sqlshowResEqu);	
 	}
+function showSettingInv($conn)
+	{
+		$sqlshowResEqu = "select `set_as_quatation` from  `setting` "; 
+		return $conn->getResultArray($sqlshowResEqu);	
+	}
 function showEqpRsDtl($conn,$event_id)
 	{
 		$sqlshowEqpRsDtl = "select em.eq_name,nepd.qty,nepd.rate,nepd.amount,nepd.length,nepd.width 

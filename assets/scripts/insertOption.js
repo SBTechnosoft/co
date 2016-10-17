@@ -199,6 +199,32 @@
 				
 		});
 		
+		 $('#updqua').click(function(){
+			
+			var txtsetasqua    =   $('#txtsetasqua').val();
+					
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'saveQuaDef'  : 1,
+					'txtsetasqua'   : txtsetasqua,																			
+				},
+				success : function(re)
+				{
+					
+						alert ("Inserted Data Successfully");
+								
+					 
+					showdata();
+					//window.location.reload();
+					
+				}				
+			});	
+				
+		});
+		
 		function showdata()
 		{		
 			$.ajax({
@@ -219,6 +245,7 @@
 				   $('#txtres_equ').val(r.resorce);
 				   //$('#txtAutoSet').val(r.retail_sales_day);
 				   $('#txtdelv').val(r.deliverable);
+				   $('#txtsetasqua').val(r.set_as_quatation);
 				}
 				
 			});
@@ -228,7 +255,7 @@
 	});		
 	function showset()
 		{	
-var str;	
+			var str;	
 			$.ajax({
 				url : './includes/addOptionSettingsPost.php',
 				type : 'post',

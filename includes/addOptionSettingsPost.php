@@ -31,6 +31,11 @@
 		$Auto=json_encode($_REQUEST['txtAutoSet']);
 		insOptionAutoSetDate($conn,$Auto);	
 	}
+	if(isset($_POST['saveQuaDef']))
+	{		
+		
+		insOptionDefQua($conn,$_POST['txtsetasqua']);	
+	}
 	if(isset($_POST['showset']))
 	{	
 		$q = mysql_query("SELECT `retail_sales_day` from setting ");
@@ -43,7 +48,7 @@
 	}
 	if(isset($_POST['show']))
 	{	
-		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day`,`deliverable` from setting ");
+		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day`,`deliverable`,`set_as_quatation` from setting ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);
