@@ -85,7 +85,7 @@
 										<div class="pull-left margin-right-20">
 											<label for="">Company</label>
 											<div class="input-icon left">
-												<select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap">									
+												<select name="drpcmpnm1" id="drpcmpnm1" class="medium m-wrap">									
 												</select>
 											</div>
 									</div>
@@ -152,11 +152,13 @@
 									
 									<div>
 										<input style="width:207px;" type="text"  value="Product Category" tabindex="-1" readonly />									
-										<input style="width:207px;" type="text"  value="Product" tabindex="-1" readonly />									
+										<input style="width:207px;" type="text"  value="Product" tabindex="-1" readonly />	
+										<input style="width:120px;" type="text"  value="Photo Id" tabindex="-1" readonly />
 										<input style="width:121px;" type="text"  value="Rate" tabindex="-1" readonly />
 										<input style="width:121px;" type="text"  value="Tax" tabindex="-1" readonly />
 										<input style="width:123px;" type="text"  value="Qty" tabindex="-1" readonly />
-										<input style="width:120px;" type="text"  value="Amount" tabindex="-1" readonly />									
+										<input style="width:120px;" type="text"  value="Amount" tabindex="-1" readonly />
+										
 									</div>
 									
 									<div>
@@ -165,6 +167,9 @@
 										</select>
 										<select  name="drpProd" id="drpProd" class="medium m-wrap drpProd">											
 										</select>
+										
+										<input class="small m-wrap txtphotoId" type="text"  id="txtphotoId" name="txtphotoId" value=""  />
+										
 										<input class="small m-wrap txtcomgrp"  type="hidden"  id="txtcomgrp" name="txtcomgrp" value=""  />
 										
 										<input class="small m-wrap htxtprdrate"  type="hidden"  id="htxtprdrate" name="htxtprdrate" value=""  />
@@ -192,6 +197,7 @@
 													<tr>
 														<th> Product Category</th>	
 														<th> Product </th>
+														<th> Photo Id </th>
 														<th> Group </th>
 														<th> Rate</th>
 														<th> Tax</th>

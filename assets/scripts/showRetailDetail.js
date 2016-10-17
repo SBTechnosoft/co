@@ -459,6 +459,7 @@
 			var rate = $('.txtprdrate').val();
 			var amt = $('.txtprdamt').val();
 			var tax = $('.txtprdtax').val();
+			var txtphotoId = $('.txtphotoId').val();
 			
 			if(ctgid=='')
 			{
@@ -521,10 +522,11 @@
 						'<input  type="hidden"  id="txtirate" name="txtirate"  value="'+rate+'">'+
 						'<input   type="hidden" id="ptxtiamt" name="ptxtiamt"  class="ptxtiamt" value="'+amt+'">'+
 						'<input   type="hidden" id="ptxtitax" name="ptxtitax"  class="ptxtitax" value="'+tax+'">'+
+						'<input   type="hidden" id="txtphotoId" name="txtphotoId"   value="'+txtphotoId+'">'+
 						
 						
 						'<td>'+ prdnm+'</td>'+
-						
+						'<td>'+ txtphotoId+'</td>'+
 						'<td>'+ rate+'</td>'+
 						'<td>'+ qty+'</td>'+
 						'<td>'+ tax+'</td>'+
@@ -740,7 +742,12 @@
 					var ptxtitax = [];
 					$.each($("input[name='ptxtitax']"), function(){            
 						 ptxtitax.push($(this).val());
-					});					
+					});	
+
+					var txtphotoId = [];
+					$.each($("input[name='txtphotoId']"), function(){            
+						 txtphotoId.push($(this).val());
+					});	
 					
 					
 					
@@ -761,6 +768,7 @@
 								'txtiqty' 	: txtiqty,
 								'ptxtiamt' 	: ptxtiamt,								
 								'ptxtitax' 	: ptxtitax,
+								'txtphotoId' 	: txtphotoId,
 								
 								
 								'totclcharge'     : totclcharge,

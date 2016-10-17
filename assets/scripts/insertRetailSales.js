@@ -236,6 +236,8 @@ $("#drpProd").on("change", function()
 			var amt = $('.txtprdamt').val();
 			var tax = $('.txtprdtax').val();
 			
+			var txtphotoId = $('.txtphotoId').val();
+			
 			if(ctgid=='')
 			{
 				alert("Plz Select Equipment.");
@@ -297,9 +299,11 @@ $("#drpProd").on("change", function()
 						'<input  type="hidden"  id="hdn['+k+'][txtirate]" name="hdn['+k+'][txtirate]"  value="'+rate+'">'+
 						'<input   type="hidden" id="hdn['+k+'][ptxtiamt]" name="hdn['+k+'][ptxtiamt]"  class="ptxtiamt" value="'+amt+'">'+
 						'<input   type="hidden" id="hdn['+k+'][ptxtitax]" name="hdn['+k+'][ptxtitax]"  class="ptxtitax" value="'+tax+'">'+
+						'<input   type="hidden" id="hdn['+k+'][txtphotoId]" name="hdn['+k+'][txtphotoId]"   value="'+txtphotoId+'">'+
 						
 						'<td>'+ ctgnm+'</td>'+
 						'<td>'+ prdnm+'</td>'+
+						'<td>'+ txtphotoId+'</td>'+
 						'<td>'+ comgrp+'</td>'+
 						'<td>'+ rate+'</td>'+
 						'<td>'+ tax+'</td>'+
@@ -384,6 +388,7 @@ $("#drpProd").on("change", function()
 			$('.txtprdrate').val('');
 			$('.txtprdqty').val('1');
 			$('.txtprdamt').val('');
+			$('.txtphotoId').val('');
 			
 			
 			
@@ -670,7 +675,7 @@ function showclient()
 
 function showInvoice()
 		{	
-			var comp = $('#drpcmpnm').val();
+			var comp = $('#drpcmpnm1').val();
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -690,9 +695,9 @@ function showInvoice()
 		}
 		showInvoice(); 
 		
-$("#drpcmpnm").on("change", function()
+$("#drpcmpnm1").on("change", function()
 		{
-			var cmp =$('#drpcmpnm').val();
+			var cmp =$('#drpcmpnm1').val();
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -729,6 +734,25 @@ function showStaff()
 			});
 		}
 		showStaff();
+function showdataCmp()
+		{		
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showCmpretail' : 1
+					
+				},
+				success : function(r2)
+				{
+					$('#drpcmpnm1').html(r2);					
+					
+				}
+				
+			});
+		}
+		showdataCmp();
  // $(document).ready(function(){ 
         // $(document).keyup(function(event){
             // if (event.keyCode == 13){

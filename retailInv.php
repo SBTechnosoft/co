@@ -107,7 +107,7 @@ $inm = date_format($date,"Ymd");
 		//here is loop coming for multiple record//
 		foreach($hdn_ary as $value )
 		{				
-			insertRetailDtl($conn,$eventlast_id,$value['txtictg'],$value['txtprdid'],$value['txticomgrp'],$value['txtirate'],$value['txtiqty'],$value['ptxtiamt'],$value['ptxtitax']);		
+			insertRetailDtl($conn,$eventlast_id,$value['txtictg'],$value['txtprdid'],$value['txticomgrp'],$value['txtirate'],$value['txtiqty'],$value['ptxtiamt'],$value['ptxtitax'],$value['txtphotoId']);		
 		}			
 			
 		$client_charge = $_POST['txtcharge'];
@@ -156,6 +156,8 @@ $inm = date_format($date,"Ymd");
 				}
 				for($a=0;$a<$cnteqp1;$a++)
 				{
+					if($dEqp[$a]['photo_id']!=''){ $photoid = "  (Photo#".$dEqp[$a]['photo_id'].")";  }else{ $photoid = '';}
+					
 					if($a < $cnteqp)
 					{
 						if($a%2==0)
@@ -166,7 +168,7 @@ $inm = date_format($date,"Ymd");
 							$outputD .= '
 								<tr class="trhw" >
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')'.$photoid.'<br></td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
@@ -179,7 +181,7 @@ $inm = date_format($date,"Ymd");
 							$outputD .= '
 								<tr class="trhw">
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-vi9z" style="font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].$photoid.'<br></td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
 									<td class="tg-3gzm" style="text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
@@ -195,7 +197,7 @@ $inm = date_format($date,"Ymd");
 							$outputD .= '
 								<tr class="trhw" >
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')<br></td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'('.$dEqp[$a]['length'].'X'.$dEqp[$a]['width'].')'.$photoid.'<br></td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>
@@ -207,7 +209,7 @@ $inm = date_format($date,"Ymd");
 							
 							$outputD .= '<tr class="trhw">
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.($a+1).'</td>
-									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].'<br></td>
+									<td class="tg-vi9z" style="background-color:#d9d9d9;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['eq_name'].$photoid.'<br></td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['qty'].'</td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['rate'].'</td>
 									<td class="tg-3gzm" style="background-color:#d9d9d9;text-align:right;font-size:12px;padding: 5px 5px;color:#4e4e4e;">'.$dEqp[$a]['amount'].'</td>

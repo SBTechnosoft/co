@@ -621,6 +621,11 @@ function showCmpDrp($conn)
 		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name`,`cmp_default` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_default` DESC "; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
+function showCmpDrpRetail($conn)
+	{
+		$sqlShowCmpDrp = "select `cmp_id`,`cmp_name`,`cmp_default` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_default` DESC "; 
+		return $conn->getResultArray($sqlShowCmpDrp);		
+	}
 function showCmpDrp2($conn)
 	{
 		$sqlShowCmpDrp1 = "select `cmp_id`,`cmp_name` from  `company_mst` where `deleted_at` = '0000-00-00 00:00:00' order by `cmp_name` "; 
@@ -940,14 +945,15 @@ function showEventInfoBody($conn)
 	}
 function showRtlInvDtl($conn,$event_id)
 	{
-		$sqlshowEqpRsDtl = "select rid.retail_inv_id,rid.prod_id,pm.disp_nm as 'eq_name',rid.qty,rid.rate,rid.amount from retail_inv_dtl rid 
+		$sqlshowEqpRsDtl = "select rid.retail_inv_id,rid.prod_id,pm.disp_nm as 'eq_name',rid.qty,rid.rate,rid.amount,rid.photo_id
+							from retail_inv_dtl rid 
 							right join product_mst pm  on rid.prod_id=pm.prod_id
 							where event_id= '".$event_id."' "; 
 		return $conn->getResultArray($sqlshowEqpRsDtl);	
 	}
 function showRetailDtl($conn,$event_id)
 	{
-		$sqlshowEqpRsDtl = "select rid.retail_inv_id,rid.prod_id,pm.disp_nm as 'eq_name',rid.qty,rid.rate,rid.amount,rid.tax 
+		$sqlshowEqpRsDtl = "select rid.retail_inv_id,rid.prod_id,pm.disp_nm as 'eq_name',rid.qty,rid.rate,rid.amount,rid.tax,rid.photo_id 
 							from retail_inv_dtl rid 
 							right join product_mst pm  on rid.prod_id=pm.prod_id
 							where event_id= '".$event_id."' "; 

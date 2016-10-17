@@ -354,15 +354,16 @@ else
 							<input type="hidden" name="staxR" id="staxR" />
 							<input type="hidden" name="totalAmtR" id="totalAmtR" />
 							
-							<input type="hidden" name="insclientchargesR" id="insclientchargesR" class="insclientchargesR" />
-							<input type="hidden" name="insstaxR" id="insstaxR" class="insstaxR" />
-							<input type="hidden" name="instotalAmtR" id="instotalAmtR" class="instotalAmtR" />
+							<input type="hidden" name="insclientchargesR" id="insclientchargesR" class="insclientchargesR" value=0 />
+							<input type="hidden" name="insstaxR" id="insstaxR" class="insstaxR"  value=0 />
+							<input type="hidden" name="instotalAmtR" id="instotalAmtR" class="instotalAmtR"  value=0 />
 							<h4 >Retail Detail										
 							</h4> 
 							<div id="retailInfo">
 								<div>
 									<input style="width:207px;" type="text"  value="Product Category" tabindex="-1" readonly />									
-									<input style="width:207px;" type="text"  value="Product" tabindex="-1" readonly />									
+									<input style="width:207px;" type="text"  value="Product" tabindex="-1" readonly />
+									<input style="width:120px;" type="text"  value="Photo Id" tabindex="-1" readonly />
 									<input style="width:121px;" type="text"  value="Rate" tabindex="-1" readonly />
 									<input style="width:121px;" type="text"  value="Tax" tabindex="-1" readonly />
 									<input style="width:123px;" type="text"  value="Qty" tabindex="-1" readonly />
@@ -375,6 +376,8 @@ else
 									</select>
 									<select  name="drpProd" id="drpProd" class="medium m-wrap drpProd">											
 									</select>
+									<input class="small m-wrap txtphotoId" type="text"  id="txtphotoId" name="txtphotoId" value=""  />
+								
 									<input class="small m-wrap txtcomgrp"  type="hidden"  id="txtcomgrp" name="txtcomgrp" value=""  />
 									
 									<input class="small m-wrap htxtprdrate"  type="hidden"  id="htxtprdrate" name="htxtprdrate" value=""  />
@@ -406,7 +409,8 @@ else
 									<table class="table table-striped table-bordered table-hover table-full-width" id="sample_3">
 										<thead>
 											<tr>
-												<th>Particular </th>													
+												<th>Particular </th>
+												<th> Photo Id </th>
 												<th> Rate</th>
 												<th> Qty</th>
 												<th> Tax</th>

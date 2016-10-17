@@ -219,10 +219,10 @@ function insertRetailAdd($conn,$txtprdnm,$email,$txtmobno,$txtAdd,$drpcmpnm,$txt
 			echo 1;
 			//exit;
 		}
-function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax)
+function insertRetailDtl($conn,$event_id,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax,$txtphotoId)
 		{
-			$sqlInsEventAdd = "INSERT INTO `retail_inv_dtl` (`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`) 
-			VALUES ('".$event_id."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."')"; 
+			$sqlInsEventAdd = "INSERT INTO `retail_inv_dtl` (`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`,`photo_id`) 
+			VALUES ('".$event_id."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."','".$txtphotoId."')"; 
 			$resultArray = $conn->insertQuery($sqlInsEventAdd);
 			echo 1;
 			//exit;
@@ -617,11 +617,11 @@ function insInvoicSet($conn,$drpcomp,$txtlabel,$type,$start_at,$cur_date)
 			echo 0;
 			exit;
 		}
-function insRetailUpd($conn,$evntid,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax)
+function insRetailUpd($conn,$evntid,$txtictg,$txtprdid,$txticomgrp,$txtirate,$txtiqty,$ptxtiamt,$ptxtitax,$txtphotoId)
 		{
 			$sqlInsRetail = "INSERT INTO `retail_inv_dtl` 
-			(`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`) 
-			VALUES ('".$evntid."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."')"; 
+			(`event_id`,`prd_cat_id`,`prod_id`,`comm_grp`,`rate`,`qty`,`amount`,`tax`,`photo_id`) 
+			VALUES ('".$evntid."','".$txtictg."','".$txtprdid."','".$txticomgrp."','".$txtirate."','".$txtiqty."','".$ptxtiamt."','".$ptxtitax."','".$txtphotoId."')"; 
 			$resultArray = $conn->insertQuery($sqlInsRetail);
 			
 		}

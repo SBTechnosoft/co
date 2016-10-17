@@ -128,7 +128,7 @@
 		for($k=0;$k<count($_POST['txtictg']);$k++)
 			{
 				insRetailUpd($conn,$evntid,$_POST['txtictg'][$k],$_POST['txtprdid'][$k],$_POST['txticomgrp'][$k],
-				$_POST['txtirate'][$k],$_POST['txtiqty'][$k],$_POST['ptxtiamt'][$k],$_POST['ptxtitax'][$k]);
+				$_POST['txtirate'][$k],$_POST['txtiqty'][$k],$_POST['ptxtiamt'][$k],$_POST['ptxtitax'][$k],$_POST['txtphotoId'][$k]);
 			}
 			
 		updRetailMst($conn,$evntid,$_POST['totclcharge'],$_POST['tottaxamt'],$_POST['totfinalAmt']);		
@@ -155,6 +155,7 @@
 				
 				
 				<td><?php echo $data[$i]['eq_name']; ?></td>
+				<td><?php echo $data[$i]['photo_id']; ?></td>
 				<td><?php echo $data[$i]['rate']; ?></td>
 				<td><?php echo $data[$i]['qty']; ?></td>
 				
