@@ -85,7 +85,7 @@
 										<div class="pull-left margin-right-20">
 											<label for="">Company</label>
 											<div class="input-icon left">
-												<select name="drpcmpnm" id="drpcmpnm" class="medium m-wrap">									
+												<select name="drpcmpnm1" id="drpcmpnm1" class="medium m-wrap">									
 												</select>
 											</div>
 									</div>

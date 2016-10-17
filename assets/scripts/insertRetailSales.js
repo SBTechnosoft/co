@@ -670,7 +670,7 @@ function showclient()
 
 function showInvoice()
 		{	
-			var comp = $('#drpcmpnm').val();
+			var comp = $('#drpcmpnm1').val();
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -690,9 +690,9 @@ function showInvoice()
 		}
 		showInvoice(); 
 		
-$("#drpcmpnm").on("change", function()
+$("#drpcmpnm1").on("change", function()
 		{
-			var cmp =$('#drpcmpnm').val();
+			var cmp =$('#drpcmpnm1').val();
 			$.ajax({
 				url : './includes/retailSalesPost.php',
 				type : 'post',
@@ -729,6 +729,25 @@ $("#drpcmpnm").on("change", function()
 			});
 		}
 		showStaff();
+		function showdataCmp()
+		{		
+			$.ajax({
+				url : './includes/retailSalesPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showCmpretail' : 1
+					
+				},
+				success : function(r2)
+				{
+					$('#drpcmpnm1').html(r2);					
+					
+				}
+				
+			});
+		}
+		showdataCmp();
  // $(document).ready(function(){ 
         // $(document).keyup(function(event){
             // if (event.keyCode == 13){

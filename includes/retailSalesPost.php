@@ -236,6 +236,19 @@
 		}
 		
 	}
+	if(isset($_POST['showCmpretail']))
+	{	
+		$data = showCmpDrpRetail($conn);
+		$showCmpCnt = count($data);
+		
+		for($i=0;$i<$showCmpCnt;$i++)
+		{
+		?>
+			<option  value="<?php echo $data[$i]['cmp_id'];?>"><?php echo $data[$i]['cmp_name'];?></option>
+		<?php	
+		}
+		
+	}
 	if(isset($_POST['showProdprice']))
 	{			
 		$q = mysql_query("select `retail_price`,`commodity_grp`,`tax_amt`,`actual_amt` from  product_mst where `prod_id` = '".$_POST['prod']."' ");
@@ -387,5 +400,7 @@
 		}	
 		
 	}
+	
+	
 ?>
 				
