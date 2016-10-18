@@ -176,8 +176,9 @@
 						$('#txtempmail').val(v.email);
 						$('#txtmob').val(v.mobile);
 						
+						var pass = atob(v.pass);
 						
-						$('#txtpass').val(v.pass);							
+						$('#txtpass').val(pass);							
 						$('#txtadd1').val(v.add1);
 						$('#txtadd2').val(v.add2);
 						$('#txtcity').val(v.city);						

@@ -850,6 +850,7 @@
 							
 						});
 					</script>
+					
 					<!--script type="text/javascript">
 						tinymce.PluginManager.add('example', function(editor, url) {
 							// Add a button that opens a window

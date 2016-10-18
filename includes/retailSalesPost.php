@@ -332,7 +332,7 @@
 	if(isset($_POST['showInvoice1']))
 	{	
 		$abc=showInvoiceSet1($conn);
-		if($abc[0]["type"]=='prefix')
+		if($abc[0]["type"]=='postfix')
 		{
 		$inv2=$abc[0]["label"].$abc[0]["next_val"];
 			print_r($inv2);
@@ -348,7 +348,7 @@
 	{	
 		
 		$abc1=showInvoiceSet2($conn,$_POST['cmp']);
-		if($abc1[0]["type"]=='prefix')
+		if($abc1[0]["type"]=='postfix')
 		{
 		$inv=$abc1[0]["label"].$abc1[0]["next_val"];
 			print_r($inv);

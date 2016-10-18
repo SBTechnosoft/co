@@ -588,7 +588,7 @@
 				
 				$inv_id = showInvoiceId($conn,$input[0]['cmp_id']);
 				$cnf_id = $inv_id[0]['invoice_conf_id'];
-				if($inv_id[0]['type'] == 'prefix')
+				if($inv_id[0]['type'] == 'postfix')
 				{
 					$INVID = $inv_id[0]['label'].$inv_id[0]['next_val'];
 					$nextval = $inv_id[0]['next_val'] + 1;

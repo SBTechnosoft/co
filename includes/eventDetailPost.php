@@ -2535,6 +2535,7 @@
 			<div class="Cell">Bank Name</div>
 			<div class="Cell">Cheque No</div>
 			<div class="Cell">Trn Type</div>
+			<div class="Cell">Action</div>
 			
 		</div>
 		<?php
@@ -2554,6 +2555,8 @@
 				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
 				<div class="Cell"><?php  if($paidtrn[$a]['bank_name']== ''){echo "";}else{echo $paidtrn[$a]['bank_name']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['trn_type']== ''){echo "";}else{echo $paidtrn[$a]['trn_type']; }  ?></div>
+				
+				<div class="Cell"><?php if($paidtrn[$a]['cl_payment_id']== ''){echo "";}else{echo $paidtrn[$a]['cl_payment_id']; }  ?></div>
 				
 			</div>
             

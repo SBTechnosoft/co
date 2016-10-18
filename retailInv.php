@@ -116,7 +116,13 @@ $inm = date_format($date,"Ymd");
 		{
 			insertPaymentTrn($conn,$eventlast_id,$cur_date,$_POST['txtpaid'],0,$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 		}
+		$cmp_id = $_POST['drpcmpnm1'];
 			
+	}
+	else
+	{
+		$eventlast_id = $_POST['txteid'];
+		
 	}
 	
 	
@@ -262,18 +268,24 @@ $inm = date_format($date,"Ymd");
 					$BnrImg .= '<img width="1020" height="320" src=" '.DIR_IMAGES.$bnrimg[$t]['Banner_Img'].' "  />';				
 					$CmpLogo .= '<img src=" '.DIR_IMAGES.$bnrimg[$t]['CMPLOGO'].' "  />';
 				}
-				
-				$inv_id = showInvoiceId($conn,$_POST['drpcmpnm']);
-				$cnf_id = $inv_id[0]['invoice_conf_id'];
-				if($inv_id[0]['type'] == 'prefix')
+				if(isset($_POST['txteid']))
 				{
-					$INVID = $inv_id[0]['label'].$inv_id[0]['next_val'];
-					$nextval = $inv_id[0]['next_val'] + 1;
+					$INVID = $input[0]['inv_file_id'];
 				}
 				else
 				{
-					$INVID = $inv_id[0]['next_val'].$inv_id[0]['label'];
-					$nextval = $inv_id[0]['next_val'] + 1;
+					$inv_id = showInvoiceId($conn,$cmp_id);
+					$cnf_id = $inv_id[0]['invoice_conf_id'];
+					if($inv_id[0]['type'] == 'postfix')
+					{
+						$INVID = $inv_id[0]['label'].$inv_id[0]['next_val'];
+						$nextval = $inv_id[0]['next_val'] + 1;
+					}
+					else
+					{
+						$INVID = $inv_id[0]['next_val'].$inv_id[0]['label'];
+						$nextval = $inv_id[0]['next_val'] + 1;
+					}
 				}
 				$output =array(	
 						'Description' => $outputD,

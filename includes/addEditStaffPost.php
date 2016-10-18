@@ -99,7 +99,7 @@
 	}
 	if(isset($_POST['stfedit']))
 	{	 
-		$q = mysql_query("select `emp_id`,`first_name`,`last_name`,`email`,`mobile`,`relative1`,`relative2`, FROM_BASE64(`password`) as 'pass',`add1`,`add2`,`city`,`state`,`zip`,`staff_type` from  `staff_mst` where `staff_id` = '".$_POST['stfid']."' ");
+		$q = mysql_query("select `emp_id`,`first_name`,`last_name`,`email`,`mobile`,`relative1`,`relative2`, `password` as 'pass',`add1`,`add2`,`city`,`state`,`zip`,`staff_type` from  `staff_mst` where `staff_id` = '".$_POST['stfid']."' ");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

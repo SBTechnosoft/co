@@ -417,10 +417,10 @@ function showpaidtrn($conn,$epid)
 	{
 		$sqlShowEventPaidTrn = 
 		"select `payment_date`,ect.`event_id`,em.event_name,em.client_name,ect.`client_paid_amt`,`payment_mode`,`cheque_no`,
-`bank_name`,`trn_type` 
-from `event_client_payment_trn` ect
-right join event_mst em on em.event_id= ect.event_id
-where ect.`event_id` = '".$epid."' "; 
+		`bank_name`,`trn_type`,`cl_payment_id`
+		from `event_client_payment_trn` ect
+		right join event_mst em on em.event_id= ect.event_id
+		where ect.`event_id` = '".$epid."' "; 
 		return $conn->getResultArray($sqlShowEventPaidTrn);	
 	}
 function showTotPaidTrn($conn,$etpid)
@@ -943,6 +943,21 @@ function showRtlInvBody($conn)
 		$sqlshowRtlInvBody = " select `template_body` from  `template_mst` where `template_id` = 4; "; 
 		return $conn->getResultArray($sqlshowRtlInvBody);	
 	}
+function showPayInvBody($conn)
+	{
+		$sqlshowRtlInvBody = " select `template_body` from  `template_mst` where `template_id` = 6; "; 
+		return $conn->getResultArray($sqlshowRtlInvBody);	
+	}
+	
+	
+function showPaymentDetailD($conn,$pay_id)
+	{
+		$sqlshowEqpRsDtl = "select cl_payment_id,event_id,payment_date as 'Date',client_paid_amt as 'Amount',tax as 'Tax',
+							payment_mode as 'Type',cheque_no as 'ChequeNo',bank_name as 'BankName',trn_type 
+							from event_client_payment_trn where cl_payment_id = '".$pay_id."' "; 
+		return $conn->getResultArray($sqlshowEqpRsDtl);	
+	}
+	
 function showEventInfoBody($conn)
 	{
 		$sqlshowEventInfoBody = " select `template_body` from  `template_mst` where `template_id` = 5; "; 

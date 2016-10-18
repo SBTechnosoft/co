@@ -316,11 +316,12 @@ else
 						<div class="span4">
 							<div class="container-narrow">
 								<!-- invoice button -->
-								<!--
-								<form class="form-search" id="form1" target="_blank" method="post" action="invoicePdf.php">
+								
+								<form class="form-search" id="form1" target="_blank" method="post" action="retailInv.php">
 								
 									<input type="hidden" id="txteid" name="txteid" value=""/>
-									<input type="hidden" id="txtcmpnm" name="txtcmpnm" value=""/>
+									<input type="hidden" id="txtcmpid" name="txtcmpid" value=""/>
+									<!--
 									<input type="hidden" id="txtenm" name="txtenm" value=""/>
 									<input type="hidden" id="txtfdate" name="txtfdate" value=""/>
 									<input type="hidden" id="txtcnm" name="txtcnm" value=""/>
@@ -332,10 +333,10 @@ else
 										</h3></i>
 									</a>
 									
-								<!--	
+									
 								</form>
 								
-								-->
+								
 									<div id="showpdf">
 										<!--a href="upload/invoice/20160513-95_1.pdf" class="pdflist" target="_blank"> PDF </a><br-->
 										
