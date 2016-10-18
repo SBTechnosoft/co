@@ -150,6 +150,26 @@ else
             <!--end tabbable-->
         </div>
         <!--end tabbable-->
+		<div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.php">Client Name</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#" id="evntclnm1">  </a>
+						<input type="text" id="evntclnm" name="evntclnm" readonly />
+                    </li>
+                    
+					
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
         <div class="tabbable tabbable-custom tabbable-full-width">
             <ul class="nav nav-tabs">
                 <li class="<?php if(!isset($_GET['id'])&& empty($_GET['id'])){ echo 'active'; }?>"><a data-toggle="tab" href="#tab_2_5">Details </a></li>
@@ -296,7 +316,7 @@ else
 						<div class="span4">
 							<div class="container-narrow">
 								<!-- invoice button -->
-								
+								<!--
 								<form class="form-search" id="form1" target="_blank" method="post" action="invoicePdf.php">
 								
 									<input type="hidden" id="txteid" name="txteid" value=""/>
@@ -306,13 +326,16 @@ else
 									<input type="hidden" id="txtcnm" name="txtcnm" value=""/>
 									<input type="hidden" id="txtcharge1" name="txtcharge1" value=""/>
 									<input type="hidden" id="txtpaid" name="txtpaid" value="" />
-									
+								-->	
 									<a class="invoice invoice_btn btn blue" onclick="document.getElementById('form1').submit();" >
-										<h3 class="invoice_font"> Generate Invoice <i style="cursor : pointer; color:white;" class="fa fa-file-pdf-o" aria-hidden="true" >
+										<h3 class="invoice_font"> View Invoice <i style="cursor : pointer; color:white;" class="fa fa-file-pdf-o" aria-hidden="true" >
 										</h3></i>
 									</a>
 									
+								<!--	
 								</form>
+								
+								-->
 									<div id="showpdf">
 										<!--a href="upload/invoice/20160513-95_1.pdf" class="pdflist" target="_blank"> PDF </a><br-->
 										
@@ -547,6 +570,7 @@ else
 													</div>
 												</div>												
 													<input type="hidden" id="txtpeid"  name="txtpeid"  readonly />
+													<input type="hidden" id="txratn"  name="txratn"  readonly />
 												
 												<div class="vendcell">
 													<div class="subvend">Amount:</div>
@@ -563,14 +587,23 @@ else
 													</div>
 												</div>
 												<div id="ShowHide" style="display:none;">
-												<div class="vendcell">
-													<div class="subvend">Bank Name:</div>
-													<div class="subvend"><input type="text" id="txtpbnm" name="txtpbnm"  /></div>
+													<div class="vendcell">
+														<div class="subvend">Bank Name:</div>
+														<div class="subvend"><input type="text" id="txtpbnm" name="txtpbnm"  /></div>
+													</div>
+													<div  class="vendcell">
+														<div class="subvend">Cheque No:</div>
+														<div class="subvend"><input type="text" id="txtpchq" name="txtpchq"  /></div>
+													</div>
 												</div>
 												<div  class="vendcell">
-													<div class="subvend">Cheque No:</div>
-													<div class="subvend"><input type="text" id="txtpchq" name="txtpchq"  /></div>
-												</div>
+													<div class="subvend">Tax:</div>
+													<div class="subvend">
+														<select id="txtptax" name="txtptax" onchange='ShowHideDiv();'>
+															<option value="Yes" > With Tax </option>
+															<option value="No"> Without Tax </option>
+														</select>
+													</div>
 												</div>
 												<div  class="vendcell">
 													<div class="subvend">Payment Trn:</div>

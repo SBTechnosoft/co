@@ -177,7 +177,7 @@
 						$('#txtmob').val(v.mobile);
 						
 						
-						$('#txtpass').val(v.pass);						
+						$('#txtpass').val(v.pass);							
 						$('#txtadd1').val(v.add1);
 						$('#txtadd2').val(v.add2);
 						$('#txtcity').val(v.city);						

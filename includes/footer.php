@@ -2056,7 +2056,7 @@
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>
-					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertPaymentTrn.js"></script-->
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertPaymentTrn.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showRetailDetail.js"></script> 
 					<!--script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEventDataDetail.js"></script--> 
 					<script type="text/javascript" src="vertical-timeline/inc/colorbox.js"></script>

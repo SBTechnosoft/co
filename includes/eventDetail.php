@@ -170,7 +170,7 @@ else
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="index.php">Orders</a>
+                        <a href="index.php">Client Name</a>
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>

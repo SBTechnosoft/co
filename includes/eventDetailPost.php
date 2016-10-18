@@ -841,7 +841,7 @@
 					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
 					<select name="drpnewresvend<?php echo $i; ?>" id="drpnewresvend<?php echo $i; ?>" class="medium m-wrap drpnewresvend<?php echo $i; ?>"> 											
 					</select>
-					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="" />
+					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="0" />
 								
 				</div>
 				<div>
@@ -955,7 +955,7 @@
 					</select>
 					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="medium m-wrap drpnewvend<?php echo $i; ?>"> 											
 					</select>
-					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					<input class="small m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="0" />
 					
 					
 				</div>
@@ -1033,7 +1033,7 @@
 					<input class="small m-wrap txtresamt<?php echo $i; ?>" type="text"  id="txtresamt<?php echo $i; ?>" name="txtresamt<?php echo $i; ?>" value="" readonly />	
 					<select name="drpnewresvend<?php echo $i; ?>" id="drpnewresvend<?php echo $i; ?>" class="medium m-wrap drpnewresvend<?php echo $i; ?>"> 											
 					</select>
-					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="" />
+					<input class="small m-wrap txtresvprice<?php echo $i; ?>" type="text"  id="txtresvprice<?php echo $i; ?>" name="txtresvprice<?php echo $i; ?>" value="0" />
 								
 				</div>
 				<div>
@@ -1134,7 +1134,7 @@
 					</select>
 					<select name="drpnewvend<?php echo $i; ?>" id="drpnewvend<?php echo $i; ?>" class="set3 m-wrap drpnewvend<?php echo $i; ?>"> 											
 					</select>
-					<input class="xyz m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="" />
+					<input class="xyz m-wrap txtvprice<?php echo $i;?>" type="text"  id="txtvprice<?php echo $i;?>" name="txtvprice<?php echo $i;?>" value="0" />
 					
 					
 				</div>

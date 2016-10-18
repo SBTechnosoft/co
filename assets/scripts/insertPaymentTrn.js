@@ -29,13 +29,7 @@
 				txtpaidtax = Math.round((parseInt(txtpamt) * parseInt(txratn) )/(100 + parseInt(txratn)));
 				txtactamt = txtpamt - txtpaidtax;
 			}
-			alert(txtptax);
-			alert(txratn);
-			alert(txtpaidtax);
-			alert(txtactamt);
-			alert(txtpamt);
-			return false;
-			
+					
 			
 			$.ajax({
 				url : './includes/eventDetailPost.php',

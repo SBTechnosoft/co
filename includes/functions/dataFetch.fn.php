@@ -652,6 +652,11 @@ function showPdf($conn,$eid)
 		$sqlshowInvFile = "select `inv_file_name`  from  `event_client_invoice_dtl` where `event_id` = '".$eid."' "; 
 		return $conn->getResultArray($sqlshowInvFile);		
 	}
+function showPdfRetail($conn,$eid)
+	{
+		$sqlshowInvFile = "select `inv_file_name`  from  `event_mst` where `event_id` = '".$eid."' "; 
+		return $conn->getResultArray($sqlshowInvFile);		
+	}
 function showfullPdf($conn,$eid)
 	{
 		$sqlshowInvFile = "select `info_file_name`  from  `event_mst` where `event_id` = '".$eid."' "; 

@@ -179,4 +179,19 @@
 		delRetailUpd($conn,$_POST['id']);
 		updRetailEventMst($conn,$_POST['evnt_id'],$_POST['clcharge'],$_POST['evtax'],$_POST['totalAmt']);
 	}
+	if(isset($_POST['showPdf']))
+	{	
+		$data = showPdfRetail ($conn,$_POST['eid']);
+		$showPdfCnt = count($data);	
+		//echo $data[0]['inv_file_name'];
+		for($i=0;$i<$showPdfCnt;$i++)
+		{
+		?>
+			<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ; ?>" class="pdflist" target="_blank"> 
+				<?php echo $data[$i]['inv_file_name'] ;?> 
+			</a></br>
+		<?php	
+		}
+		
+	}
 ?>

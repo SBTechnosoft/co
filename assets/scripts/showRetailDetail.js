@@ -45,6 +45,8 @@
 					$('#txthmmob').val(e.client_home_mob);
 					$('#txtmob').val(e.client_mob);
 					
+					$('#evntclnm').val(e.client_name);
+					
 					$('#txtjobdata1').val(e.job_data_1);
 					$('#txtjobdata2').val(e.job_data_2);
 					
@@ -93,7 +95,7 @@
 					//end
 					 newshowretailplaces ();
 					//call of function which show the popup data that get the paid amt detail from event payment trn table					
-					//showeventpaid();
+					showeventpaid();
 					$('#txtpeid').val(e.event_id);
 					//call of the function to show vendor paid transaction
 					//showvendorpaid();
@@ -142,6 +144,8 @@
 					$('#txtworkmob').val(e.client_work_mob);
 					$('#txthmmob').val(e.client_home_mob);
 					$('#txtmob').val(e.client_mob);
+					
+					$('#evntclnm').val(e.client_name);
 					
 					$('#txtjobdata1').val(e.job_data_1);
 					$('#txtjobdata2').val(e.job_data_2);
@@ -197,7 +201,7 @@
 					
 					showpdf();
 					showfullpdf();
-					
+					showeventpaid();
 				}
 				
 			});		
@@ -874,7 +878,7 @@
 			//alert (eid);
 			//return false;
 			$.ajax({
-				url : './includes/eventDetailPost.php',
+				url : './includes/retailDetailPost.php',
 				type : 'post',
 				async : false,
 				data : {
