@@ -22,4 +22,34 @@
 		}
 		showdata();
 	
-		
+		$('#filter_data').click(function()
+		{			
+			var cat    =   $('#cat').val();
+			
+			
+			if(cat == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/categoryEquipmentsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'cat'   : cat,
+					
+					
+				},
+				success : function(v)
+				{	
+					
+					$('#showdata').html(v);
+					
+				}				
+			});	
+						
+		});

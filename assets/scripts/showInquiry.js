@@ -125,3 +125,40 @@ $('#enquiryexcel').click(function()
 			// });		
 		// });		
 		//end
+		$('#filter_data').click(function()
+		{			
+			var enqname    =   $('#enqname').val();
+			
+			
+			if(enqname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/enquiryFormPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'enqname'   : enqname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showInq').html(v);
+					
+				}				
+			});	
+						
+		});

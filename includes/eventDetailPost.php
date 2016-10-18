@@ -146,7 +146,7 @@
 		//`bill_no` like '%".$txtbillno."%' or `fp_no` like '%".$txtfpno."%' or 
 		//`from_date` like '%".$txtfromdt."%'  and `status` != 'enquiry' and deleted_at = '0000-00-00 00:00:00'";
 		
-		$s2 = '';$s3 = '';$s4 = '';$s5 = '';$s6 = '';$s7 = '';$s8 = '';
+		$s2 = '';$s3 = '';$s5 = '';$s6 = '';$s7 = '';$s8 = '';
 		if($_POST['txtename']!='')
 		{
 			$s2 = " `event_name` like '%".trim($_POST['txtename'])."%' ";
@@ -159,24 +159,24 @@
 		//{
 			//$s4 = " `bill_no` like '%".$_POST['txtbillno']."%' ";
 		//}
-		//if($_POST['txtfpno']!='')
-	//	{
-		//	$s5 = " `fp_no` like '%".$_POST['txtfpno']."%' ";
-		//}
+		if($_POST['txtInv']!='')
+		{
+			$s5 = " `inv_file_id` like '%".$_POST['txtInv']."%' ";
+		}
 		 if($_POST['txtfromdt'] !='')
 		{
 			$s6 = " `from_date` like '%".trim($_POST['txtfromdt'])."%' ";
 		}
 		 if($_POST['txttodt'] !='')
 		{
-			$s7 = " `from_date` like '%".trim($_POST['txttodt'])."%'  ";
+			$s7 = " `to_date` like '%".trim($_POST['txttodt'])."%'  ";
 		}
 		 if($_POST['drpcmpnm'] !='')
 		{
 			$s8 = " `cmp_id` like '%".$_POST['drpcmpnm']."%'  ";
 		}
 		
-		$arr = array($s2,$s3,$s4,$s5,$s6,$s7,$s8);
+		$arr = array($s2,$s3,$s5,$s6,$s7,$s8);
 		$cnt= count($arr);
 			for($i=0;$i<$cnt;$i++)
 			{		

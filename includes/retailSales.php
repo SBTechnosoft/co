@@ -52,7 +52,7 @@
                                         <label> Name </label>
                                         <div class="input-icon left">
                                             <input class="m-wrap" type="text" id="txtprdnm" name="txtprdnm" placeholder="Client name">
-											<a id ="open1" style="">
+											<a id ="open1" class="open1" style="">
 													<i class="fa fa-info-circle" aria-hidden="true" id=""></i>
  											</a>
                                         </div>

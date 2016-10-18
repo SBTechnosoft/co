@@ -334,7 +334,7 @@
 	}
 	if(isset($_POST['search']))
 	{	
-		$s2 = '';$s3 = '';$s4 = '';$s5 = '';$s6 = '';$s7 = '';$s8 = '';
+		$s2 = '';$s3 = '';$s5 = '';$s6 = '';$s7 = '';$s8 = '';
 		if($_POST['txtename']!='')
 		{
 			$s2 = " `event_name` like '%".trim($_POST['txtename'])."%' ";
@@ -343,13 +343,10 @@
 		{
 			$s3 = " `client_name` like '%".trim($_POST['txtclname'])."%' ";
 		}
-		 if($_POST['txtbillno'] != '')
+		 
+		if($_POST['txtInv']!='')
 		{
-			$s4 = " `bill_no` like '%".trim($_POST['txtbillno'])."%' ";
-		}
-		if($_POST['txtfpno']!='')
-		{
-			$s5 = " `fp_no` like '%".trim($_POST['txtfpno'])."%' ";
+			$s5 = " `inv_file_id` like '%".trim($_POST['txtInv'])."%' ";
 		}
 		 if($_POST['txtfromdt'] !='')
 		{
@@ -357,14 +354,14 @@
 		}
 		 if($_POST['txttodt'] !='')
 		{
-			$s7 = " `from_date` like '%".trim($_POST['txttodt'])."%'  ";
+			$s7 = " `to_date` like '%".trim($_POST['txttodt'])."%'  ";
 		}
 		 if($_POST['drpcmpnm'] !='')
 		{
 			$s8 = " `cmp_id` like '%".$_POST['drpcmpnm']."%'  ";
 		}
 		
-		$arr = array($s2,$s3,$s4,$s5,$s6,$s7,$s8);
+		$arr = array($s2,$s3,$s5,$s6,$s7,$s8);
 		$cnt= count($arr);
 			for($i=0;$i<$cnt;$i++)
 			{		
@@ -839,4 +836,5 @@
 		}
 	}
 }
+
 ?>

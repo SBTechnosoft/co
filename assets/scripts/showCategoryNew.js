@@ -21,5 +21,41 @@
 			});
 		}
 		showdata();
-	
+	$('#filter_data').click(function()
+		{			
+			var catname    =   $('#catname').val();
+			
+			
+			if(catname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/categoryNewPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'catname'   : catname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showdata').html(v);
+					
+				}				
+			});	
+						
+		});	
 		

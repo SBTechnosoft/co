@@ -91,7 +91,7 @@ $inm = date_format($date,"Ymd");
 		$nfrdt = date_format(new DateTime($frdt),'Y-m-d H:i:s');
 		$ntrdt = date_format(new DateTime($trdt),'Y-m-d H:i:s');
 
-		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['email'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm'],
+		insertRetailAdd($conn,$_POST['txtprdnm'],$_POST['email'],$_POST['txtmobno'],$_POST['txtadd'],$_POST['drpcmpnm1'],
 		$_POST['txtcharge'],$_POST['txtpaid'],$_POST['txtdiscamt'],$nfrdt,$ntrdt,$cur_date,
 		$pay_status,$tax,$gtot,$_POST['txtstax'],$vat,$_POST['staff']);
 		
@@ -261,7 +261,7 @@ $inm = date_format($date,"Ymd");
 					
 				}
 				
-				$inv_id = showInvoiceId($conn,$_POST['drpcmpnm']);
+				$inv_id = showInvoiceId($conn,$_POST['drpcmpnm1']);
 				$cnf_id = $inv_id[0]['invoice_conf_id'];
 				if($inv_id[0]['type'] == 'prefix')
 				{

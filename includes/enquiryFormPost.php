@@ -110,4 +110,133 @@
 		}
 		
 	}
+	if(isset($_POST['search']))
+	{	
+		$s2 = '';
+		if($_POST['enqname']!='')
+		{
+			$s2 = " `event_name` like '%".trim($_POST['enqname'])."%' ";
+		}
+		 
+		
+		$arr = array($s2);
+		$cnt= count($arr);
+			for($i=0;$i<$cnt;$i++)
+			{		
+				if($arr[$i]!= '')
+				{			
+					$narry[] = $arr[$i];
+				}		
+			}
+		$cnt1= count($narry);
+		for($a=0;$a<$cnt1;$a++)
+		{
+			//$str1 = array();
+			if($a == ($cnt1 - 1))
+			{
+				$str2[] =  $narry[$a];
+			}
+			else
+			{
+				$str1[] =  $narry[$a]."and";
+			}
+		}
+		if(!empty($str1))
+		{	
+			$where = implode(array_merge($str1,$str2));
+			//echo $where;
+		}
+		else
+		{
+			$where = implode ($str2);
+			//echo $where;
+		}
+		
+		//$where = " `event_name` like '%".$_POST['txtename']."%'  ";		
+		$data = searchEnquiry($conn,$where);
+		//echo json_encode($data);
+		$searchEnqCnt = count($data);	
+		for($i=0;$i<$searchEnqCnt;$i++)
+		{
 ?>
+<tr>
+				<td></td>
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
+						<?php echo $data[$i]['event_id'];?>
+					</a>
+					
+				</td>
+				
+				<td>
+					<a href="<?php echo HTTP_SERVER ; ?>index.php?url=EVD&id=<?php echo $data[$i]['event_id'];?>" data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="Enquiry">						
+						<?php echo ucfirst($data[$i]['event_name']);?></td>
+					</a>
+				</td>
+				 <td>
+					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
+					Client Email:<?php echo ucfirst($data[$i]['client_email']);?><br>
+					Mobile1:<?php echo $data[$i]['client_work_mob'];?><br>
+					Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
+					</i>&nbsp;&nbsp;<?php echo ucfirst($data[$i]['client_name']);?>
+				</td>
+				
+				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
+				<td> <?php //echo $data[$i]['bill_no'];?> </td-->
+				
+				<?php $from_date=date_create($data[$i]['from_date']);
+						$inm1= date_format($from_date,dateForm);  
+				?>
+				<td><?php echo $inm1;?></td>
+				
+				
+				<?php// $to_date=date_create($data[$i]['to_date']);
+						//$inm2= date_format($to_date,dateFormat);  
+				?>
+				<!--td><?php//echo $inm2;?></td-->
+				
+				<td> <span style="float:right;"><?php echo $data[$i]['client_charges'];?></span> </td>
+				
+				<td>
+					<span style="float:right;">
+						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
+						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 
+					</span>
+				</td>
+				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>
+				<td>
+					<form class="form-search" id="<?php echo $data[$i]['event_id'];?>" target="_blank" method="post" action="invoicePdfQ.php">
+							
+						<input type="hidden" id="txteid" name="txteid" value="<?php echo $data[$i]['event_id'];?>"/>
+						<input type="hidden" id="txtcmpnm" name="txtcmpnm" value="<?php echo $data[$i]['client_cmp'];?>"/>
+						<input type="hidden" id="txtenm" name="txtenm" value="<?php echo ucfirst($data[$i]['event_name']);?>"/>
+						<input type="hidden" id="txtfdate" name="txtfdate" value="<?php echo $data[$i]['from_date'];?>"/>
+						<input type="hidden" id="txtcnm" name="txtcnm" value="<?php echo ucfirst($data[$i]['client_name']);?>"/>
+						<input type="hidden" id="txtcharge1" name="txtcharge1" value="<?php echo $data[$i]['client_charges'];?>"/>
+						<input type="hidden" id="txtpaid" name="txtpaid" value="<?php echo $data[$i]['client_paid_amt'];?>" />
+						
+						<a onclick="document.getElementById('<?php echo $data[$i]['event_id'];?>').submit();" >
+							<i style="cursor : pointer; " class="fa fa-file-pdf-o" aria-hidden="true" >
+							</i>
+						</a>
+						
+					</form>
+				</td>
+				<td> 
+					<a href="#" data-id="<?php echo $data[$i]['event_id']; ?>" class="editenq" data-toggle="tooltip" title="Order">
+						<i class="fa fa-file-text"></i>
+						Order
+					</a>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="delete" data-toggle="tooltip" title="Delete">
+					<i class="fa fa-trash-o"></i> </a> 
+					 
+				</td>		
+				
+			</tr>
+			<?php
+			
+		}
+		
+	}?>

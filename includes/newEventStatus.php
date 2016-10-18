@@ -69,14 +69,8 @@
 				</br>
 				<div class="chat-form">
                     <div class="input-cont">
-                        <input type="text" id="txtfpno" name="txtfpno" placeholder="Eg; FP.No...." class="m-wrap" />						
-                    </div>
-				</div>
-				</br>
-				<div class="chat-form">
-                    <div class="input-cont">
-                        <input type="text" id="txtbillno" name="txtbillno" placeholder="Eg; Bill No...." class="m-wrap" />						
-                    </div>
+                        <input type="text" id="txtinv" name="txtinv" placeholder="Eg; Invoice No..." class="m-wrap" />						
+					</div>
 				</div>
 				</br>
 				<div class="chat-form">

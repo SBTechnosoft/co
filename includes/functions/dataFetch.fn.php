@@ -21,6 +21,11 @@ function showCatg($conn)
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `eq_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function searchCat($conn,$where)
+	{
+		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `eq_category_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showStaffRetail($conn)
 	{
 		$sqlShowCatg = "select * from  `staff_mst`"; 
@@ -36,9 +41,19 @@ function showCatgNew($conn)
 		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `new_category_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function seacrhCatgNew($conn,$where)
+	{
+		$sqlShowCatg = "select `cat_id`,`cat_name`,`description` from  `new_category_mst` where".$where." and  `deleted_at` = '0000-00-00 00:00:00' order by `cat_name` DESC"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showResources($conn)
 	{
 		$sqlShowCatg = "select `res_id`,`res_name`,`amount` from  `resource_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `res_name` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+function searchResources($conn,$where)
+	{
+		$sqlShowCatg = "select `res_id`,`res_name`,`amount` from  `resource_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00' order by `res_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showDeliverable($conn)
@@ -46,10 +61,20 @@ function showDeliverable($conn)
 		$sqlShowCatg = "select `delv_id`,`delv_name`,`delv_type`,`amount` from  `deliverable_mst` where  `deleted_at` = '0000-00-00 00:00:00' order by `delv_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
+function SearchDeliverable($conn,$where)
+	{
+		$sqlShowCatg = "select `delv_id`,`delv_name`,`delv_type`,`amount` from  `deliverable_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00' order by `delv_name` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 function showProduct($conn)
 	{
 		$sqlShowCatg = "select `prd_cat_name`,`prd_cat_parent_id`,`prd_cat_id` from  `product_cat_mst` where  
 		`deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+function searchProductcat($conn,$where)
+	{
+		$sqlShowCatg = "select `prd_cat_name`,`prd_cat_parent_id`,`prd_cat_id` from `product_cat_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00' order by `prd_cat_name` "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showProductMst($conn,$ctgprod)
@@ -62,6 +87,12 @@ function showProductAdd($conn)
 	{
 		$sqlShowCatg = "select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
 			`pur_price`,`type` from  `product_mst` where `deleted_at` = '0000-00-00 00:00:00' "; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+function searchProductAdd($conn,$where)
+	{
+		$sqlShowCatg = "select `prod_id`,`prod_nm`,`prd_id`,`item_code`,`disp_nm`,`commodity_grp`,`prd_cat_id`,`retail_price`,
+			`pur_price`,`type` from  `product_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlShowCatg);		
 	}
 function showCtgdrp($conn)
@@ -112,7 +143,11 @@ function showSubCatg($conn)
 		$sqlShowAcs = "select `as_id`,`as_name`,ncm.cat_name,`remark` from  `new_sub_catg` nsc inner join new_category_mst ncm on ncm.cat_id = eq_id where nsc.deleted_at = '0000-00-00 00:00:00'  "; 
 		return $conn->getResultArray($sqlShowAcs);		
 	}
-
+function searchSubCatg($conn,$where)
+	{
+		$sqlShowAcs = "select `as_id`,`as_name`,ncm.cat_name,`remark` from  `new_sub_catg` nsc inner join new_category_mst ncm on ncm.cat_id = eq_id where".$where." and nsc.deleted_at = '0000-00-00 00:00:00'  "; 
+		return $conn->getResultArray($sqlShowAcs);		
+	}
 function showEnq($conn)
 	{
 		$sqlShowEnq = "select * from  `eq_enquiry_mst` "; 
@@ -124,15 +159,31 @@ function showVend($conn)
 		$sqlShowVend = "select `vend_id`,`vendor_name`,`vendor_email`,`vendor_contact`,`vendor_cmp`,`cat_id` from  `vendor_mst` where `deleted_at` = '0000-00-00 00:00:00'  ";
 		return $conn->getResultArray($sqlShowVend);	
 	}
+function searchVend($conn,$where)
+	{
+		
+		$sqlShowVend = "select `vend_id`,`vendor_name`,`vendor_email`,`vendor_contact`,`vendor_cmp`,`cat_id` from  `vendor_mst` where".$where." and `deleted_at` = '0000-00-00 00:00:00'  ";
+		return $conn->getResultArray($sqlShowVend);	
+	}
 function showStaff($conn)
 	{
 		$sqlShowStaff = "select `staff_id`,`emp_id`,`first_name`,`last_name`,`email`,`mobile`,`relative1`,`relative2`,`password`,`staff_type` from  staff_mst where `staff_type`= 'staff' or staff_type = 'admin' "; 
+		return $conn->getResultArray($sqlShowStaff);	
+	}
+function searchStaff($conn,$where)
+	{
+		$sqlShowStaff = "select `staff_id`,`emp_id`,`first_name`,`last_name`,`email`,`mobile`,`relative1`,`relative2`,`password`,`staff_type` from  staff_mst where".$where." and `staff_type`= 'staff' or staff_type = 'admin' "; 
 		return $conn->getResultArray($sqlShowStaff);	
 	}
 function showAllEquipment($conn)
 	{				
 		$sqlShowEquipment = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.`deleted_at` = '0000-00-00 00:00:00' order by em.eq_name "; 
 		return $conn->getResultArray($sqlShowEquipment);	
+	}
+function searchEquipment($conn,$where)
+	{				
+		$sqlShowEquipment1 = "select em.eq_id,em.eq_name,em.serial_no,em.model_no,em.category_id,em.purchase_date,em.purchase_from,em.price,em.remark,ecm.cat_name  from  `equipment_mst` em inner join eq_category_mst ecm on ecm.cat_id = em.category_id where em.".$where." and em.`deleted_at` = '0000-00-00 00:00:00' order by em.eq_name "; 
+		return $conn->getResultArray($sqlShowEquipment1);	
 	}
 function showResoDrp($conn)
 	{
@@ -266,6 +317,11 @@ function showEventEnquiry($conn)
 	{
 		$sqlEventEnquiry = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status` ,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` from  `event_mst` where `status` = 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
 		return $conn->getResultArray($sqlEventEnquiry);	
+	}
+function searchEnquiry($conn,$where)
+	{
+		echo $sqlEventEnquiry1 = "select `event_id`,`event_name`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`from_date`,`to_date`,`invoice`,`status`,`client_charges`,`client_paid_amt`,`inv_file_name`,`bill_no`,`fp_no`,`payment_status`,`service_tax_amt`,`total_amt`,`service_tax_rate`,`inv_file_id` from `event_mst` where ".$where." and `status` = 'enquiry' and deleted_at = '0000-00-00 00:00:00' "; 
+		return $conn->getResultArray($sqlEventEnquiry1);	
 	}
 
 function showEventDataDet($conn,$id)
@@ -957,7 +1013,7 @@ function showcntRes($conn,$event_id)
 	}
 	function showClient($conn,$value)
 	{
-		$sqlShowCmpDrp = "select * from event_mst  where event_id='".$value."'"; 
+		$sqlShowCmpDrp = "select `event_id`,`event_name`,`client_name`,`client_work_mob`,`from_date`,`client_charges`,`payment_status` from event_mst  where client_work_mob='".$value."'"; 
 		return $conn->getResultArray($sqlShowCmpDrp);		
 	}
 function showInvoiceSet($conn)

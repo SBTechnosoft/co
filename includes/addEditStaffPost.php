@@ -117,5 +117,114 @@
 		exit();	
 		
 	}
+	if(isset($_POST['search']))
+	{	
+		$s2 = '';
+		if($_POST['sname']!='')
+		{
+			$s2 = " `first_name` like '%".trim($_POST['sname'])."%' ";
+		}
+		 
+		
+		$arr = array($s2);
+		$cnt= count($arr);
+			for($i=0;$i<$cnt;$i++)
+			{		
+				if($arr[$i]!= '')
+				{			
+					$narry[] = $arr[$i];
+				}		
+			}
+		$cnt1= count($narry);
+		for($a=0;$a<$cnt1;$a++)
+		{
+			//$str1 = array();
+			if($a == ($cnt1 - 1))
+			{
+				$str2[] =  $narry[$a];
+			}
+			else
+			{
+				$str1[] =  $narry[$a]."and";
+			}
+		}
+		if(!empty($str1))
+		{	
+			$where = implode(array_merge($str1,$str2));
+			//echo $where;
+		}
+		else
+		{
+			$where = implode ($str2);
+			//echo $where;
+		}
+		
+		//$where = " `event_name` like '%".$_POST['txtename']."%'  ";		
+		$data = searchStaff($conn,$where);
+		//echo json_encode($data);
+		$searchEnqCnt = count($data);	
+		for($i=0;$i<$searchEnqCnt;$i++)
+		{
 ?>
+		<tr>
+				<td>
+					<form id="<?php echo "id".$data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
+						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
+						<a class="edit" data-toggle="tooltip" title="Edit" onclick="document.getElementById('id<?php echo $data[$i]['staff_id']; ?>').submit();">
+							<?php echo ucfirst($data[$i]['staff_id']);?>
+						</a>
+					</form>
+					
+				</td>
+				<td>
+					<form id="<?php echo "eid".$data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
+						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
+						<a class="edit" data-toggle="tooltip" title="Edit" onclick="document.getElementById('eid<?php echo $data[$i]['staff_id']; ?>').submit();">
+							<?php echo ucfirst($data[$i]['emp_id']);?>
+						</a>
+					</form>
+					<?php //echo ucfirst($data[$i]['emp_id']);?>
+				</td>				
+				<td><?php echo ucfirst($data[$i]['first_name']);?></td>
+				<td><?php echo ucfirst($data[$i]['last_name']);?></td>
+				<td>
+					<a style="cursor:pointer;">
+						<i class="fa fa-lock" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Permission">
+						</i>&nbsp;&nbsp;
+					</a><?php echo $data[$i]['email'];?>
+					
+				</td>
+				<td>
+					<a style="cursor:pointer;">
+						<i class="fa fa-lock" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+							title="Permission">
+						</i>&nbsp;&nbsp;
+					</a><?php echo $data[$i]['mobile'];?>
+					
+				</td>
+				<td><?php echo $data[$i]['relative1'];?></td>
+				<td><?php echo $data[$i]['relative2'];?></td>
+				<td><?php echo base64_decode($data[$i]['password']);?></td>
+				<td><?php echo ucfirst($data[$i]['staff_type']);?></td>
 				
+				<td> 
+					<form id="<?php echo $data[$i]['staff_id']; ?>"  method="post" action= "index.php?url=STF">
+						<input type="hidden" id="stf_id" name="stf_id" value="<?php echo $data[$i]['staff_id']; ?>" />						
+						<a class="edit" data-toggle="tooltip" title="Edit" 
+						onclick="document.getElementById('<?php echo $data[$i]['staff_id']; ?>').submit();">
+							<i class="fa fa-pencil-square-o"></i>
+						</a>
+						<a style="cursor:pointer; padding: 5px;" data-id="<?php echo $data[$i]['emp_id']; ?>" data-toggle="tooltip" title="Permission" class="newperadd" >
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</a>
+					</form>
+					
+				</td>
+				
+				
+			</tr>
+<?php
+		}
+	}
+?>	
