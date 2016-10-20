@@ -90,4 +90,40 @@
 			});
 		}
 		showdata();	
+	$('#filter_data').click(function()
+		{			
+			var delname    =   $('#delname').val();
 			
+			
+			if(delname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/deliverableCategoryPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'delname'   : delname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showdata').html(v);
+					
+				}				
+			});	
+						
+		});			

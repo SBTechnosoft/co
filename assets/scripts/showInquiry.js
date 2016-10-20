@@ -94,34 +94,40 @@ $('#enquiryexcel').click(function()
 			
 		});	
 		
-		//edit detail with data on evd .
-		// $('body').delegate('.editenq','click',function(){
+		$('#filter_data').click(function()
+		{			
+			var enqname    =   $('#enqname').val();
 			
-			// var id = $(this).data('id');
 			
+			if(enqname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
 			
-			// $.ajax({
-				// url : 'includes/enquiryFormPost.php',
-				// type : 'POST',
-				// async : false,
-				// data : {
-					// 'edit'  : 1,
-					// 'id' 	: id
-										
-				// },
-				// success : function(e)
-				// {
-					// if(e==12)
-					// {
-					// alert("Ordered Successfully!!!");
-					// }
-					// else
-					// {
-						// alert("ERROR!!!")
-					// }
-					// window.location.reload();
-				// }
-				
-			// });		
-		// });		
-		//end
+			//alert(eid);
+			$.ajax({
+				url : 'includes/enquiryFormPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'enqname'   : enqname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showInq').html(v);
+					
+				}				
+			});	
+						
+		});

@@ -315,14 +315,14 @@
 		$a1=array();
 		if(strlen($s1)>0)
 		{
-			$query="select event_id from event_mst where client_work_mob='".$s1."'";
+			$query="select event_id,client_work_mob from event_mst where client_work_mob='".$s1."'";
 			$res=mysql_query($query);
 			if(mysql_num_rows($res)>0)
 			{
 				$i=0;
 				while($row2=mysql_fetch_array($res))
 				{
-					$a1[$i] = $row2['event_id'];
+					$a1[$i] = $row2['client_work_mob'];
 					$i++;
 				}
 			}
@@ -364,7 +364,7 @@
 	if(isset($_POST['Show_Client']))
 	{		
 		
-		$ShowClient = showClient($conn,$_POST['client1']);		
+		$ShowClient = showClient($conn,$_POST['client1'][0]);		
 		
 		$showCli = count($ShowClient);
 		?>

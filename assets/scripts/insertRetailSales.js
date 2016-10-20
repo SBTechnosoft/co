@@ -650,16 +650,14 @@ function showclient()
 	{
 		
 		var client1=$('#open1').attr('title');
-		//alert(client1);
-		// var txtvend_evnt_id =  $('#txtvend_evnt_id').val();
-		//alert('hhhh');
+		var cli=client1.split(',');
 		$.ajax({
 				url : 'includes/retailSalesPost.php',
 				type : 'POST',
 				async : false,
 				data : {
 					'Show_Client'  : 1,
-					'client1':client1
+					'client1':cli
 					// 'txtevent_vend_id' 	: txtevent_vend_id,
 					// 'txtvend_evnt_id' 	: txtvend_evnt_id,
 				},

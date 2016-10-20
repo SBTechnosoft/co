@@ -190,13 +190,12 @@
 		{			
 			var txtename    =   $('#txtename').val();
 			var txtclname    =   $('#txtclname').val();
-			var txtfpno    =   $('#txtfpno').val();
-			var txtbillno    =   $('#txtbillno').val();
+			var txtInv    =   $('#txtinv').val();
 			var txtfromdt    =   $('#txtfromdt').val();
 			var txttodt    =   $('#txttodt').val();
 			var drpcmpnm  = $('#drpcmpnm').val();
 			
-			if(txtename == '' && txtclname == '' && txtfpno == '' && txtbillno == '' && txtfromdt == '' && txttodt == '' && drpcmpnm == '' )
+			if(txtename == '' && txtclname == '' && txtInv == ''  && txtfromdt == '' && txttodt == '' && drpcmpnm == '' )
 			{
 				alert('All Fields are empty!!!');
 				return false;
@@ -211,8 +210,7 @@
 					'search'  : 1,
 					'txtename'   : txtename,
 					'txtclname' : txtclname,
-					'txtfpno' :txtfpno,
-					'txtbillno' : txtbillno,
+					'txtInv' :txtInv,
 					'txtfromdt' : txtfromdt,
 					'txttodt' :txttodt,
 					'drpcmpnm' : drpcmpnm,

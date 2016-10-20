@@ -87,4 +87,40 @@
 			});
 		}
 		showdata();	
+	$('#filter_data').click(function()
+		{			
+			var resname    =   $('#resname').val();
 			
+			
+			if(resname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/resourcesCategoryPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'resname'   : resname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showdata').html(v);
+					
+				}				
+			});	
+						
+		});		

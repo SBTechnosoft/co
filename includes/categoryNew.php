@@ -42,9 +42,9 @@
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
-                        <input type="text" placeholder="Eg; Name of the Category..." class="m-wrap" />
+                        <input type="text" placeholder="Eg; Name of the Category..." class="m-wrap" name="catname" id="catname" />
                     </div>
-                    <button type="button" class="btn green">Search &nbsp;
+                     <button type="button" id="filter_data" class="btn green">Search &nbsp;
                         <i class="icon-search m-icon-white"></i>
                     </button>
                 </div>

@@ -38,3 +38,40 @@ function showdata()
 			});
 		}
 		showCtgAcc();
+	$('#filter_data').click(function()
+		{			
+			var subcatname    =   $('#subcatname').val();
+			
+			
+			if(subcatname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+				url : 'includes/categorySubPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'subcatname'   : subcatname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showAcs').html(v);
+					
+				}				
+			});	
+						
+		});	

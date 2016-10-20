@@ -42,9 +42,9 @@
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
-                        <input type="text" placeholder="Eg; Name of the Equipment..." class="m-wrap" />
+                         <input type="text" placeholder="Eg; Name of the Equipment..." class="m-wrap" name="enqname" id="enqname"/>
                     </div>
-                    <button type="button" class="btn green">Search &nbsp;
+                    <button type="button" id="filter_data" class="btn green">Search &nbsp;
                         <i class="icon-search m-icon-white"></i>
                     </button>
                 </div>

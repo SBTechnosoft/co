@@ -103,4 +103,41 @@
 			});
 		}
 		showCtg();
+	$('#filter_data').click(function()
+		{			
+			var pcatname    =   $('#pcatname').val();
 			
+			
+			if(pcatname == '')
+			{
+				alert('All Fields are empty!!!');
+				return false;
+			}
+			
+			//alert(eid);
+			$.ajax({
+			url : 'includes/productCategoryPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'search'  : 1,
+					'pcatname'   : pcatname,
+					
+					
+				},
+				success : function(v)
+				{	
+						// $('#txtename').val('');
+						// $('#txtclname').val('');
+						// $('#txtfpno').val('');
+						// $('#txtbillno').val('');
+						// $('#txtfromdt').val('');
+						// $('#txttodt').val('');
+					
+					$('#showdata').html(v);
+					
+				}				
+			});	
+						
+		});
+		
