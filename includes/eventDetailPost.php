@@ -2538,6 +2538,7 @@
 			<div class="Cell">Action</div>
 			
 		</div>
+		</form>
 		<?php
 		for($a=0;$a<$showpaidtrnCnt;$a++)
 		{
@@ -2556,7 +2557,16 @@
 				<div class="Cell"><?php  if($paidtrn[$a]['bank_name']== ''){echo "";}else{echo $paidtrn[$a]['bank_name']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['trn_type']== ''){echo "";}else{echo $paidtrn[$a]['trn_type']; }  ?></div>
 				
-				<div class="Cell"><?php if($paidtrn[$a]['cl_payment_id']== ''){echo "";}else{echo $paidtrn[$a]['cl_payment_id']; }  ?></div>
+				<div class="Cell">				
+					<form class="form-search" id="<?php echo $paidtrn[$a]['cl_payment_id'];?>" target="_blank" method="post" action="payment_receipt.php">							
+						<input type="hidden" id="txtpayid" name="txtpayid" value="<?php echo  $paidtrn[$a]['cl_payment_id'];?>"/>
+						<input type="hidden" id="payment_date" name="payment_date" value="<?php echo  $paidtrn[$a]['payment_date'];?>"/>
+						<a onclick="document.getElementById('<?php echo $paidtrn[$a]['cl_payment_id'];?>').submit();" >
+							<i style="cursor : pointer; " class="fa fa-file-pdf-o" aria-hidden="true" >
+							</i>
+						</a>						
+					</form>
+				</div>
 				
 			</div>
             

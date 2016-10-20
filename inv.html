@@ -1,40 +1,14 @@
 <!--
 <table class="tg" style="border-collapse: collapse; border-spacing: 0;" border="1"> <tr>	<th colspan="2" width="1050px;">  <h3> Payment Voucher </h3>  </th> </tr>  <tr>	<td>Receipt No:</td>	<td>Date: </td> </tr>  <tr>	<td colspan="2">Sum Of Rupees:</td>	 </tr>  <tr>	<td colspan="2">In Words:</td>	 </tr>  <tr>	<td colspan="2">Paid To:</td>	 </tr>  <tr>	<td colspan="2">On Account Of:</td>	 </tr>  <tr>	<td >Prepared By:</td>	<td >Received By:</td> </tr> </table> 
--->
-
-<style>
 
 
-</style>
-
-<table class="tg" style="border-collapse: collapse; border-spacing: 0;" border="1">
-    <tr>
-        <th colspan="2" width="1050px;" height="100px;">
-            <h3> Payment Voucher </h3>
-        </th>
-    </tr>
-    <tr height="50px;">
-        <td  width="650px;">Receipt No:</td>
-        <td width="350px;">Date: </td>
-    </tr>
-    <tr height="50px;">
-        <td colspan="2">Sum Of Rupees:</td>
-    </tr>
-    <tr height="50px;">
-        <td colspan="2">In Words:</td>
-    </tr>
-    <tr height="50px;">
-        <td colspan="2">Paid To:</td>
-    </tr>
-    <tr height="50px;">
-        <td colspan="2">On Account Of:</td>
-    </tr>
-    <tr height="50px;">
-        <td>Prepared By:</td>
-        <td>Received By:</td>
-    </tr>
-</table>
+<img src="./images/smlogo.png" style="height:70px;width:70px;" >
+-->		
+	<table class="tg" style="border-collapse: collapse; border-spacing: 0;" border="1">		<tr>						<th style=" width: 100px;height: 150px; font-size:26px;border:none; padding: 5px;">				[CmpLogo]			</th>									<th style=" width: 950px;height: 150px; font-size:26px;border:none; ">				<h3>									Payment Receipt 				</h3>			</th>					</tr>	</table>	<table class="tg" style="border-collapse: collapse; border-spacing: 0;" border="1">		 <tbody>		 		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px; width: 700px;">Receipt No:[RecNo]</td>		 <td style="font-size: 16px; padding: 10px; width: 350px;">Date:[Date]</td>		 </tr>		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px;" colspan="2">Sum Of Rupees:[Amount]</td>		 </tr>		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px;" colspan="2">In Words:[AmountWord]</td>		 </tr>		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px;" colspan="2">Received With Thanks From:[ClientName]</td>		 </tr>		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px;" colspan="2">By:[TrnType]</td>		 </tr>		 <tr style="height: 50px;">		 <td style="font-size: 16px; padding: 10px;">Prepared By:</td>		 <td style="font-size: 16px; padding: 10px;">Received By:</td>		 </tr>		 </tbody>	</table>
 
 <!--
 INSERT INTO `suchak_mgt`.`template_mst` (`template_name`, `template_body`) VALUES ('Payement Receipt', '<table class=\"tg\" style=\"border-collapse: collapse; border-spacing: 0;\" border=\"1\"> <tr>	<th colspan=\"2\" width=\"450px;\">  <h3> Payment Voucher </h3>  </th> </tr>  <tr>	<td>Receipt No:</td>	<td>Date: </td> </tr>  <tr>	<td colspan=\"2\">Sum Of Rupees:</td>	 </tr>  <tr>	<td colspan=\"2\">In Words:</td>	 </tr>  <tr>	<td colspan=\"2\">Paid To:</td>	 </tr>  <tr>	<td colspan=\"2\">On Account Of:</td>	 </tr>  <tr>	<td >Prepared By:</td>	<td >Received By:</td> </tr> </table> ');
+
+UPDATE `suchak_mgt`.`template_mst` SET `template_body`='<table class=\"tg\" style=\"border-collapse: collapse; border-spacing: 0;\" border=\"1\">    <tr>        <th colspan=\"2\" style = \" width: 1050px;height: 150px; font-size:26px;\" >            <h3> Payment Voucher </h3>        </th>    </tr>    <tr style=\"height: 50px;\">        <td style=\" font-size: 16px;padding: 10px; width: 650px;\" >Receipt No:[RecNo]</td>        <td style=\" font-size: 16px;padding: 10px; width: 350px;\" >Date:[Date] </td>    </tr>    <tr style=\"height: 50px;\">        <td style=\" font-size: 16px;padding: 10px;\" colspan=\"2\">Sum Of Rupees:[Amount]</td>    </tr>    <tr style=\"height: 50px;\">        <td  style=\" font-size: 16px;padding: 10px;\" colspan=\"2\">In Words:</td>    </tr>    <tr style=\"height: 50px;\">        <td style=\" font-size: 16px;padding: 10px;\" colspan=\"2\">Paid To:[ClientName]</td>    </tr>    <tr style=\"height: 50px;\">        <td style=\" font-size: 16px;padding: 10px;\" colspan=\"2\">On Account Of:</td>    </tr>    <tr style=\"height: 50px;\">        <td style=\" font-size: 16px;padding: 10px;\">Prepared By:</td>        <td style=\" font-size: 16px;padding: 10px;\">Received By:</td>    </tr></table>' WHERE `template_id`='6';
+
 -->

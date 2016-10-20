@@ -369,6 +369,12 @@ function insInvECID($conn,$id,$fname,$date,$user)
 			$resultArray = $conn->insertQuery($sqlinsInvECID);
 			
 		}
+function updInvPayment($conn,$payid,$fname)
+		{
+			$sqlinsInvECID = "Update `event_client_payment_trn` set `receipt_name` = '".$fname."' where cl_payment_id = '".$payid."'"; 
+			$resultArray = $conn->insertQuery($sqlinsInvECID);
+			
+		}
 function insOption($conn,$stax)
 		{
 			//INSERT INTO `setting` (`service_tax`) VALUES ('".$stax."')ON DUPLICATE KEY UPDATE `service_tax` = `service_tax`;
