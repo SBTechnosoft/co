@@ -61,10 +61,12 @@ $inm = date_format($date,"Ymd");
 				"." . $words[$point / 10] . " " . 
 					  $words[$point = $point % 10] : '';
 			  $result . "Rupees  " . $points . " Paise";
- 				
-				
+			  
+			  $Logo .= '<img style="height:70px;width:70px;" src=" '.DIR_IMAGES.$input[0]['cmp_logo'].' "  />';
+			
 				$output =array(	
-						'AmountWord' => ucfirst($result)						
+						'AmountWord' => ucfirst($result),
+						'CmpLogo' =>  $Logo
 						);
 				
 				$htmlbody = $InvBody[0]['template_body'];
