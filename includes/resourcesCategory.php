@@ -63,7 +63,7 @@
                 <br />
                 <div class="chat-form">
                     <div class="input-cont">
-                        <input type="text" id="txtresprice" name="txtresprice" placeholder="Eg; Price Of Resource..." class="m-wrap" />
+                        <input type="number" id="txtresprice" name="txtresprice" placeholder="Eg; Price Of Resource..." class="m-wrap" />
                     </div>
                     <button id="addresc" type="button" class="btn green">Add &nbsp;
                         <i class="icon-plus-sign icon-white"></i>

@@ -1788,7 +1788,10 @@
 					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script-->
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>      
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/search.js"></script>  
+					
+					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>
+					
 					<script>
 						jQuery(document).ready(function() {    
 						   App.init();
@@ -1899,8 +1902,7 @@
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/app.js"></script>
-					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/table-advanced.js"></script>
+					
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/insertPaymentTrn.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEventDetail.js"></script> 
 					<script src="<?php echo HTTP_SERVER; ?>assets/scripts/showEventDataDetail.js"></script> 
