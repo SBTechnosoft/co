@@ -63,10 +63,20 @@ $inm = date_format($date,"Ymd");
 			  $result . "Rupees  " . $points . " Paise";
 			  
 			  $Logo .= '<img style="height:70px;width:70px;" src=" '.DIR_IMAGES.$input[0]['cmp_logo'].' "  />';
+			  
+			  if($input[0]['Type']== 'cheque')
+			  {
+				  $TrnType .= ucfirst($input[0]['Type'])." (" .$input[0]['ChequeNo']. " )";
+			  }
+			  else
+			  {
+				 $TrnType .= ucfirst($input[0]['Type']); 
+			  }
 			
 				$output =array(	
 						'AmountWord' => ucfirst($result),
-						'CmpLogo' =>  $Logo
+						'CmpLogo' =>  $Logo,
+						'TrnType' => $TrnType
 						);
 				
 				$htmlbody = $InvBody[0]['template_body'];

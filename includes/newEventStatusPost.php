@@ -169,11 +169,11 @@
 		}
 		 if($_POST['txtfromdt'] !='')
 		{
-			$s6 = " `to_date` like '%".trim($_POST['txtfromdt'])."%' ";
+			$s6 = " `from_date` like '%".trim($_POST['txtfromdt'])."%' ";
 		}
 		 if($_POST['txttodt'] !='')
 		{
-			$s7 = " `from_date` like '%".trim($_POST['txttodt'])."%'  ";
+			$s7 = " `to_date` like '%".trim($_POST['txttodt'])."%'  ";
 		}
 		 if($_POST['drpcmpnm'] !='')
 		{
@@ -181,6 +181,7 @@
 		}
 		
 		$arr = array($s2,$s3,$s5,$s6,$s7,$s8);
+		 $cnt= count($arr);
 			for($i=0;$i<$cnt;$i++)
 			{		
 				if($arr[$i]!= '')

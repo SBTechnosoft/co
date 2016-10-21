@@ -1008,8 +1008,8 @@ function showPayInvBody($conn)
 	
 function showPaymentDetailD($conn,$pay_id)
 	{
-		$sqlshowEqpRsDtl = "select cl_payment_id,cl_payment_id as 'RecNo',pm.event_id,payment_date as 'Date',(pm.client_paid_amt + pm.tax) as 'Amount',
-			pm.payment_mode as 'TrnType',pm.cheque_no as 'ChequeNo',
+		$sqlshowEqpRsDtl = "select cl_payment_id,cl_payment_id as 'RecNo',pm.event_id,DATE_FORMAT(payment_date, '%D %M %Y') as 'Date',(pm.client_paid_amt + pm.tax) as 'Amount',
+			pm.payment_mode as 'Type',pm.cheque_no as 'ChequeNo',
             bank_name as 'BankName',trn_type,em.client_name as 'ClientName',em.event_name as 'EventName',cm.cmp_logo 
 			from event_client_payment_trn pm 
 			right join event_mst em on em.event_id = pm.event_id
