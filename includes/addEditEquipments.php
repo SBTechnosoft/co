@@ -59,7 +59,7 @@ if(isset($_POST['eq_id']))
                                         <label> Name </label>
                                         <div class="input-icon left">
 
-                                            <input class="m-wrap" type="text" id="txteqpnm" name="txteqpnm" placeholder="Company or Brand name">
+                                            <input class="m-wrap" type="text" id="txteqpnm" name="txteqpnm" placeholder="Equipment Name">
                                         </div>
                                     </div>
                                     <div class="clearfix margin-bottom-10">
