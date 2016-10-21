@@ -17,7 +17,19 @@
 			<tr>
 				
 				<td><?php echo ucfirst($data[$i]['delv_name']);?></td>
-				<td><?php echo ucfirst($data[$i]['delv_type']);?></td>
+				<td><?php 
+				if($data[$i]['delv_type']==1){
+					echo "Qty";
+				}
+				else if($data[$i]['delv_type']==2)
+				{
+					echo "Sq.Feet";
+				}
+				else
+				{
+					echo "Per Page";
+				}
+				?></td>
 				<td><?php echo ucfirst($data[$i]['amount']);?></td>
 				<td>				
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['delv_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 

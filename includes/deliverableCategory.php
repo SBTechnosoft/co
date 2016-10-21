@@ -64,9 +64,9 @@
 				<br />
 				<div class="chat-form">
 					<select id="drptype" class="large m-wrap" name="drptype">						
-						<option selected="select" value="Qty"> Qty </option>						
-						<option value="Sq.Feet">Sq.Feet </option>
-						<option value="PerPage"> Per Page </option>
+						<option selected="select" value="1"> Qty </option>						
+						<option value="2">Sq.Feet </option>
+						<option value="3"> Per Page </option>
 					</select>					
 				</div>
 				<br />
