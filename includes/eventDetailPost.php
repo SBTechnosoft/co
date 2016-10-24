@@ -2550,8 +2550,9 @@
 				<div class="Cell"><?php echo ucfirst($paidtrn[$a]['client_name']);?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['client_paid_amt']== ''){echo "";}else{echo $paidtrn[$a]['client_paid_amt']; } ?></div>
 				<div class="Cell"><?php if($paidtrn[$a]['payment_mode']== ''){echo "";}else{echo $paidtrn[$a]['payment_mode']; } ?></div>
-				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
 				<div class="Cell"><?php  if($paidtrn[$a]['bank_name']== ''){echo "";}else{echo $paidtrn[$a]['bank_name']; } ?></div>
+				<div class="Cell"><?php if($paidtrn[$a]['cheque_no']== ''){echo "";}else{echo $paidtrn[$a]['cheque_no']; } ?></div>
+				
 				<div class="Cell"><?php if($paidtrn[$a]['trn_type']== ''){echo "";}else{echo $paidtrn[$a]['trn_type']; }  ?></div>
 				
 				<div class="Cell">				

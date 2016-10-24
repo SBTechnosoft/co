@@ -11,8 +11,8 @@
 						
 						<!-- END BEGIN STYLE CUSTOMIZER -->    
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">
-							Welcome to Creative Office <small>Always Connected</small>
+						<h3 class="page-title" >
+							Welcome to <b style="font-family:Segoe Script;color:#80C341;"> Creative</b><b style="font-family:Segoe Script;color:#0F5BA9;">office </b> <small>Always Connected</small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>

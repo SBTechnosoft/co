@@ -259,7 +259,7 @@ function insertStfDrp($conn,$eventplaces_id,$event_id_pdtl,$stf_id)
 function insertPaymentTrn($conn,$event_id_pdtl1,$cur_date,$actPAmt,$ptaxamt,$paymentMode,$txtbanknm,$txtchkno)
 		{
 			$sqlInsPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`tax`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
-			VALUES ('".$event_id_pdtl1."','".$cur_date."','".$actPAmt."','".$ptaxamt."','".$paymentMode."','".$txtbanknm."','".$txtchkno."','Payment')"; 
+			VALUES ('".$event_id_pdtl1."','".$cur_date."','".$actPAmt."','".$ptaxamt."','".$paymentMode."','".$txtchkno."','".$txtbanknm."','Payment')"; 
 			$resultArray3 = $conn->insertQuery($sqlInsPayTrn);
 			echo 5;
 			//exit;
@@ -268,7 +268,7 @@ function insertPaymentTrn($conn,$event_id_pdtl1,$cur_date,$actPAmt,$ptaxamt,$pay
 function insPayTrn($conn,$txtpeid,$txtpdate,$txtpamt,$txttaxamt,$txtpmode,$txtpbnm,$txtpchq,$txtptrn)
 		{
 			$sqlInsertPayTrn = "INSERT INTO `event_client_payment_trn` (`event_id`,`payment_date`,`client_paid_amt`,`tax`,`payment_mode`,`cheque_no`,`bank_name`,`trn_type`) 
-			VALUES ('".$txtpeid."','".$txtpdate."','".$txtpamt."','".$txttaxamt."','".$txtpmode."','".$txtpbnm."','".$txtpchq."','".$txtptrn."')"; 
+			VALUES ('".$txtpeid."','".$txtpdate."','".$txtpamt."','".$txttaxamt."','".$txtpmode."','".$txtpchq."','".$txtpbnm."','".$txtptrn."')"; 
 			$resultArray3 = $conn->insertQuery($sqlInsertPayTrn);
 			echo 6;
 			//exit;
