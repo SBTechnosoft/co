@@ -156,7 +156,16 @@
 					<a id="upddelv" name="upddelv" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
 				</div>				
 			</div>
-			
+			<div class="control-group">
+				<label class="control-label">App Confugration</label>
+				<div class="controls" id="updefault">
+					<select id="txtApp" name="txtApp" >						
+						<option  value="Enable"> Enable</option>
+						<option selected value="Disable"> Disable</option>						
+					</select>						
+					<a id="updApp" name="updApp" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
+				</div>				
+			</div>
            
         </div>
         <!--end tabbable-->

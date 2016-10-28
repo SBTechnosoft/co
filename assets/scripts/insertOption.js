@@ -219,6 +219,7 @@
 				   $('#txtres_equ').val(r.resorce);
 				   //$('#txtAutoSet').val(r.retail_sales_day);
 				   $('#txtdelv').val(r.deliverable);
+				    $('#txtApp').val(r.app_configuration);
 				}
 				
 			});
@@ -297,4 +298,30 @@ function showMin()
 				
 			});
 		}
-		showMin();			
+		showMin();		
+
+$('#updApp').click(function(){
+			var txtApp    =   $('#txtApp').val();
+					
+			$.ajax({
+				url : './includes/addOptionSettingsPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'saveApp'  : 1,
+					'txtApp'   : txtApp,																			
+				},
+				success : function(re)
+				{
+					if(re == 1)
+					 {
+						alert ("Inserted Data Successfully");
+								
+					 }
+					showdata();
+					window.location.reload();
+					
+				}				
+			});	
+				
+		});		

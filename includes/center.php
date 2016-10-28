@@ -142,6 +142,9 @@
 				case 'DLVB':
 					$url = FILENAME_DELIVERABLE;
 					break;
+				case 'EML':
+					$url = FILENAME_EMAIL;
+					break;
 				default:
 					$url = FILENAME_DASHBOARD;
 					break;

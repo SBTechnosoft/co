@@ -1074,4 +1074,24 @@ function showCmpInfo($conn)
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 
     // return $conn->insertQuery($sqlInsDesg);
 // }
+function getuser1($conn,$id,$pass)
+	{
+	
+		$sqlShowCatg = "select `email_id`,`password` from contact_dtl where email_id='".$id."' and password='".$pass."'"; 
+		
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+	
+	function gettoken($conn,$id)
+	{
+	
+		$sqlShowCatg = "select `token` from contact_dtl where email_id='".$id."'"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
+	function getAppConfiguration($conn)
+	{
+	
+		$sqlShowCatg = "select `app_configuration` from setting"; 
+		return $conn->getResultArray($sqlShowCatg);		
+	}
 ?>

@@ -413,6 +413,16 @@ function insOptionDelv($conn,$txtdelv)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+function insOptionApp($conn,$txtApp)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`app_configuration`) VALUES (1,'".$txtApp."')ON DUPLICATE KEY UPDATE `app_configuration` = `app_configuration`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `app_configuration` = '".$txtApp."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 function insOptionAutoSetDate($conn,$txtAutoSetDate)
 		{
 			
@@ -605,4 +615,18 @@ function insInvoicSet($conn,$drpcomp,$txtlabel,$type,$start_at,$cur_date)
     // $sqlInsDesg = "INSERT INTO ".TABLE_M_DESG_MST." (DESG_ID,DESIGNATION) VALUES ('".$desgId."','".strtoupper($designation)."')"; 
     // return $conn->insertQuery($sqlInsDesg);
 // }
+function UpdateToken($conn,$t,$ExpireAt,$id)
+	{
+	
+		$sqlShowCatg = "update contact_dtl set token='".$t."',expire_at='".$ExpireAt."' where email_id='".$id."'"; 
+		return $conn->insertQuery($sqlShowCatg);		
+	}
+
+function UpdateExpiary($conn,$ExpireAt1,$id)
+	{
+	
+		$sqlShowCatg = "update contact_dtl set expire_at='".$ExpireAt1."' where email_id='".$id."'"; 
+		return $conn->insertQuery($sqlShowCatg);		
+	}
+
 ?>
