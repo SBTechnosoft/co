@@ -36,6 +36,34 @@
 		
 		insOptionApp($conn,$_POST['txtApp']);	
 	}
+	
+	if(isset($_POST['saveEmail']))
+	{		
+		
+		insOptionEmail($conn,$_POST['txtemail']);	
+	}
+	if(isset($_POST['emailpass1']))
+	{		
+		
+		insOptionEmailPass1($conn,$_POST['email1'],$_POST['password1']);	
+	}
+	
+	if(isset($_POST['emailpass2']))
+	{		
+		
+		insOptionEmailPass2($conn,$_POST['email2'],$_POST['password2']);	
+	}
+	if(isset($_POST['emailpass3']))
+	{		
+		
+		insOptionEmailPass3($conn,$_POST['email3'],$_POST['password3']);	
+	}
+	
+	if(isset($_POST['configemailperson']))
+	{		
+		
+		updconfigperson($conn,$_POST['name'],$_POST['id']);	
+	}
 	if(isset($_POST['showset']))
 	{	
 		$q = mysql_query("SELECT `retail_sales_day` from setting ");
@@ -48,7 +76,81 @@
 	}
 	if(isset($_POST['show']))
 	{	
-		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day`,`deliverable`,`app_configuration` from setting ");
+		$q = mysql_query("SELECT `service_tax`,`upcoming_days`,`vat`,`retail_sales`,`resorce`,`retail_sales_day`,`deliverable`,`app_configuration`,
+		`email_config` from setting ");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showemail1']))
+	{	
+		$q = mysql_query("SELECT `email_id`,`email`,`password` from email_setting where `email_id` = 1");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showemail2']))
+	{	
+		$q = mysql_query("SELECT `email_id`,`email`,`password` from email_setting where `email_id` = 2");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showemail3']))
+	{	
+		$q = mysql_query("SELECT `email_id`,`email`,`password` from email_setting where `email_id` = 3");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	
+	if(isset($_POST['showneworder']))
+	{	
+		$q = mysql_query("SELECT `email_id` from email_setting where `neworder` = 0");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showenquiry']))
+	{	
+		$q = mysql_query("SELECT `email_id` from email_setting where `enquiry` = 0");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showpayment']))
+	{	
+		$q = mysql_query("SELECT `email_id` from email_setting where `payment` = 0");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showqutation']))
+	{	
+		$q = mysql_query("SELECT `email_id` from email_setting where `quotation` = 0");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		exit();	
+		
+	}
+	if(isset($_POST['showinvoice']))
+	{	
+		$q = mysql_query("SELECT `email_id` from email_setting where `invoice` = 0");
 		$row = mysql_fetch_array($q);
 		header("Content-type: text/x-json");
 		echo json_encode($row);

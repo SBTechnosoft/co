@@ -125,6 +125,13 @@ function insVend($conn,$txtvendnm,$txtemail,$txtcontact,$drp_cat_vend,$txtvendcm
 			echo 0;
 			exit;
 		}
+	function updVend($conn,$txtid,$txtvendnm,$txtemail,$txtcontact,$drp_cat_vend,$txtvendcmp,$cur_date)
+		{
+			$sqlInsVend = "update `vendor_mst` set `vendor_name`='".$txtvendnm."',`vendor_email`='".$txtemail."',`vendor_contact`='".$txtcontact."',`cat_id`='".$drp_cat_vend."',`vendor_cmp`='".$txtvendcmp."',`updated_at`='".$cur_date."' where `vend_id`='".$txtid."'"; 
+			$resultArray = $conn->insertQuery($sqlInsVend);
+			echo 0;
+			exit;
+		}
 function insVendDtl($conn,$txtveid,$txtvpeid,$showvendor,$txtvendchrg)
 		{
 			$sqlInsVend = "INSERT INTO `event_vendor_dtl` (`event_id`,`event_places_id`,`vend_id`,`vendor_charges`) VALUES ('".$txtveid."','".$txtvpeid."','".$showvendor."','".$txtvendchrg."')"; 
@@ -423,6 +430,50 @@ function insOptionApp($conn,$txtApp)
 			$resultArray = $conn->insertQuery($sqlinsOption1);
 			echo 2;
 		}
+	function insOptionEmail($conn,$txtemail)
+		{
+			
+			$sqlinsOption = "INSERT INTO `setting` (`id`,`email_config`) VALUES (1,'".$txtemail."')ON DUPLICATE KEY UPDATE `email_config` = `email_config`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `setting` SET `email_config` = '".$txtemail."' WHERE `id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
+	function insOptionEmailPass1($conn,$email1,$password1)
+		{
+			
+			$sqlinsOption = "INSERT INTO `email_setting` (`email_id`,`email`,`password`) VALUES (1,'".$email1."','".$password1."')ON DUPLICATE KEY UPDATE `email` = `email` and `password` = `password`"; 
+			
+			
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `email_setting` SET `email` = '".$email1."',`password` = '".$password1."' WHERE `email_id` = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
+		
+	
+	function insOptionEmailPass2($conn,$email2,$password2)
+		{
+			
+			$sqlinsOption = "INSERT INTO `email_setting` (`email_id`,`email`,`password`) VALUES (2,'".$email2."','".$password2."')ON DUPLICATE KEY UPDATE `email` = `email` and `password` = `password`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `email_setting` SET `email` = '".$email2."',`password` = '".$password2."' WHERE `email_id` = 2"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
+	function insOptionEmailPass3($conn,$email3,$password3)
+		{
+			
+			$sqlinsOption = "INSERT INTO `email_setting` (`email_id`,`email`,`password`) VALUES (3,'".$email3."','".$password3."')ON DUPLICATE KEY UPDATE `email` = `email` and `password` = `password`"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			echo 1;
+			$sqlinsOption1 = "UPDATE `email_setting` SET `email` = '".$email3."',`password` = '".$password3."' WHERE `email_id` = 3"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			echo 2;
+		}
 function insOptionAutoSetDate($conn,$txtAutoSetDate)
 		{
 			
@@ -432,6 +483,15 @@ function insOptionAutoSetDate($conn,$txtAutoSetDate)
 			$sqlinsEqu1 = "UPDATE `setting` SET `retail_sales_day` = '".$txtAutoSetDate."' WHERE `id` = 1"; 
 			$resultArray = $conn->insertQuery($sqlinsEqu1);
 			
+		}
+		function updconfigperson($conn,$name,$id)
+		{
+			$sqlinsOption = "UPDATE `email_setting` SET ".$name." = 1"; 
+			$resultArray = $conn->insertQuery($sqlinsOption);
+			//echo 1;
+			$sqlinsOption1 = "UPDATE `email_setting` SET ".$name." = 0 WHERE `email_id` = '".$id."'"; 
+			$resultArray = $conn->insertQuery($sqlinsOption1);
+			//echo 2;
 		}
 function insOptionResEqu($conn,$txtres_equ)
 		{
@@ -548,6 +608,14 @@ function updateTemplate($conn,$txttempid,$txtename,$txttemplate)
 		return $conn->getResultArray($sqlupdateTemplate);
 			
 	}
+function updateEmailTemplate($conn,$txttempid,$txtename,$txttemplate)
+	{
+		$sqlupdateTemplate = "UPDATE `email_template_mst` set `email_template_name` = '".$txtename."',
+													`email_template_body` = '".$txttemplate."'
+													 where `email_template_id` = '".$txttempid."' ";
+		return $conn->getResultArray($sqlupdateTemplate);
+			
+	}
 function insResourceUpd($conn,$evntid,$epldtlid,$txtires,$txtiresnm,$txtiqty,$txtirate,$rtxtiamt,$txtivend,$txtiresvendprice,$txtiremark)
 		{
 			$sqlinsNewRes = "INSERT INTO `res_places_dtl` (`event_id`,`event_places_id`,`res_id`,`res_name`,`qty`,`rate`,`amount`,`res_vend_id`,`res_vend_price`,`res_remark`) 
@@ -592,6 +660,12 @@ function updEqpEventMst($conn,$evntid,$totammt,$txamt,$clcharge,$vdcharge)
 														`service_tax_amt` = '".$txamt."',
 														`client_charges`= '".$clcharge."',
 														`vendor_charges`= '".$vdcharge."'	where `event_id` = '".$evntid."'"; 
+			$resultArray = $conn->insertQuery($sqlupdResEventMst);
+			
+		}
+		function updeventaccountdtl($conn,$evntid,$cli_disc,$sertaxamt,$totamt)
+		{
+			$sqlupdResEventMst = "Update `event_mst` set `client_discount_amt` = '".$cli_disc."',`service_tax_amt` = '".$sertaxamt."',`total_amt` = '".$totamt."' where `event_id` = '".$evntid."'"; 
 			$resultArray = $conn->insertQuery($sqlupdResEventMst);
 			
 		}

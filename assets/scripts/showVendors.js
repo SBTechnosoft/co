@@ -52,9 +52,12 @@
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					$("#sample_2").dataTable().fnDestroy();		
 					$('#showvendors').html(v);
-					
+					$('#sample_2').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

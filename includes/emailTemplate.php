@@ -53,19 +53,19 @@
 		<div id="add_form_temp" class="row-fluid search-forms search-default">
 
             <form class="form-search" action="#">
-                <h4>Template </h4><hr/>
+                <h4>Email Template </h4><hr/>
 				
 				
 				<input type="hidden" id="txttempid" name="txttempid" />
 				<div class="clearfix margin-bottom-10">
-					<label> Template Name:  </label>
+					<label>Email Template Name:  </label>
 					<div class="input-icon left">
 						<input type="text" id="txtename" name="txtename" placeholder="Eg; Template Name..." class="small-wrap" />
 					</div>
 				</div>
 				
 				<div class="clearfix margin-bottom-10">
-					<label> Template Body:  </label>
+					<label>Email Template Body:  </label>
 					<div class="input-icon left">
 						<textarea rows="4" cols="50" id="txttemplate" name="txttemplate"  >
 						
@@ -167,8 +167,8 @@
                             <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
                                 <thead>
                                     <tr>
-                                        <th> Template Id</th>										
-                                        <th> Template Name </th>
+                                        <th>Email Template Id</th>										
+                                        <th>Email Template Name </th>
 										<th> Action </th>
                                     </tr>
                                 </thead>

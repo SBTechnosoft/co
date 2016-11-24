@@ -35,9 +35,12 @@
 				},
 				success : function(v)
 				{	
-											
+						$("#sample_1").dataTable().fnDestroy();						
 					$('#showContact').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

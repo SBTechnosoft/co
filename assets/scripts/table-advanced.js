@@ -38,7 +38,7 @@ var TableAdvanced = function  () {
             "aoColumnDefs": [
                 {"bSortable": false, "aTargets": [ 0 ] }
             ],
-            "aaSorting": [[1, 'asc']],
+            "aaSorting": [[0, 'asc']],
              "aLengthMenu": [
                 [5, 15, 20, -1],
                 [5, 15, 20, "All"] // change per page values here
@@ -77,7 +77,7 @@ var TableAdvanced = function  () {
             "aoColumnDefs": [
                 { "aTargets": [ 0 ] }
             ],
-            "aaSorting": [[1, 'desc']],
+            "aaSorting": [[0, 'desc']],
              "aLengthMenu": [
                 [5, 15, 20, -1],
                 [5, 15, 20, "All"] // change per page values here

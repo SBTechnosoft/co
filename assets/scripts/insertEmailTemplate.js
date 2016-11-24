@@ -13,7 +13,7 @@ $('#updtemp').click(function()
 		var txttemplate = tinyMCE.get('txttemplate').getContent();
 		//alert (txttemplate);
 		$.ajax({
-				url : './includes/emailtemplatePost.php',
+				url : './includes/emailTemplatePost.php',
 				type : 'post',
 				async : false,
 				data : {
@@ -28,7 +28,7 @@ $('#updtemp').click(function()
 					//$('#showTemplate').html(r);
 					
 						alert("Update Successfully!!!")
-					
+					window.location.reload();
 					
 				}
 				
@@ -38,7 +38,7 @@ $('#updtemp').click(function()
 function showdata()
 		{		
 			$.ajax({
-				url : './includes/emailtemplatePost.php',
+				url : './includes/emailTemplatePost.php',
 				type : 'post',
 				async : false,
 				data : {
@@ -64,7 +64,7 @@ function showdata()
 			// return false;
 			
 			$.ajax({
-				url : 'includes/emailtemplatePost.php',
+				url : 'includes/emailTemplatePost.php',
 				type : 'POST',
 				async : false,
 				data : {
@@ -74,9 +74,9 @@ function showdata()
 				},
 				success : function(e)
 				{
-					$('#txttempid').val(e.template_id);
-					$('#txtename').val(e.template_name);					
-					tinyMCE.get('txttemplate').setContent(e.template_body);
+					$('#txttempid').val(e.email_template_id);
+					$('#txtename').val(e.email_template_name);					
+					tinyMCE.get('txttemplate').setContent(e.email_template_body);
 				}
 				
 			});		

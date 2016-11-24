@@ -74,9 +74,12 @@ $('#filter_data').click(function()
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					$("#sample_2").dataTable().fnDestroy();
 					$('#showdata').html(v);
-					
+					$('#sample_2').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

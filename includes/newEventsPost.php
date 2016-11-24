@@ -1,5 +1,9 @@
 <?php
-	include_once('./header.php');
+include_once('./header.php');
+include_once('../html_dom/simple_html_dom.php');
+
+
+	
 	//include_once('./footer.php');
 
 // $eventnm = $_POST['txteventnm'];
@@ -109,6 +113,7 @@ if(isset($_POST['showtax']))
 			{
 				insertPaymentTrn($conn,$event_id_pdtl,$cur_date,$_POST['txtpaid'],$_POST['paymentMode'],$_POST['txtbanknm'],$_POST['txtchkno']);
 			}
+		
 		
 	}
 
@@ -328,7 +333,67 @@ if(isset($_POST['showtax']))
 				$value['txtdelvrmk'],$value['txtdelvwt'],$value['txtdelvlg']);
 			}
 		}
-		
+			if($_POST['order_type'] == 'new')
+			{
+				$data=showemailsetting($conn);
+				if($data[0]['email_config']=='Enable')
+				{
+					$person=showperson($conn);
+					$email_id=$person[0]['email'];
+					$password=$person[0]['password'];
+				
+					$InvEmailBody = showNewEmailBody($conn);
+					$valuess = showEventDetailEmailInv($conn,$eventlast_id);
+			
+					$htmlbody = $InvEmailBody[0]['email_template_body'];
+					$htmlData = str_get_html($htmlbody);	
+			
+					foreach($valuess as $key => $first)
+					{
+						foreach($first as $key =>$value)
+							{		
+						
+								$htmlData = str_replace('['.$key.']', $value, $htmlData);
+							}
+					}							
+					$html = $htmlData;	
+					//include("email.php");
+				}
+				else
+				{
+				}	
+			}
+			if($_POST['order_type'] == 'enquiry')
+			{
+				$data=showemailsetting($conn);
+				if($data[0]['email_config']=='Enable')
+				{
+					$person=showperson($conn);
+					$email_id=$person[0]['email'];
+					$password=$person[0]['password'];
+				
+					$InvEmailBody = showEnqEmailBody($conn);
+					$valuess = showEventDetailEmailInv($conn,$eventlast_id);
+			
+					$htmlbody = $InvEmailBody[0]['email_template_body'];
+					$htmlData = str_get_html($htmlbody);	
+			
+					foreach($valuess as $key => $first)
+					{
+						foreach($first as $key =>$value)
+							{		
+						
+								$htmlData = str_replace('['.$key.']', $value, $htmlData);
+							}
+					}							
+					$html = $htmlData;	
+					$email=$_POST['txtclemail'];
+					//include("email.php");
+				}
+				else
+				{
+				}	
+			}
 		$client_charge = $_POST['txtcharge'];
 		$cur_date = date('Ymd');
 		if($_POST['txtpaid'] != '' && $_POST['txtpaid'] != 0 )
@@ -341,6 +406,7 @@ if(isset($_POST['showtax']))
 		}	
 		else
 		{
+			
 			header ('location:'.HTTP_SERVER.'index.php?url=EVD');
 		}
 		?>

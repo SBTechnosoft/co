@@ -129,7 +129,7 @@
 										<!--th> FP No </th>
 										<th> Bill No </th-->
                                         <th> Order Date</th>										
-										<th> Charged Amt </th>
+										<th class="sum"> Charged Amt </th>
 										<th> S.Tax </th>
 										<th> Tot Amt </th>										
 										<th>Rec.Amt</th>

@@ -51,9 +51,12 @@
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					$("#sample_2").dataTable().fnDestroy();		
 					$('#showstaff').html(v);
-					
+					$('#sample_2').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

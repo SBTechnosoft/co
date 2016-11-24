@@ -127,9 +127,12 @@ function showdays()
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					 $("#sample_1").dataTable().fnDestroy();
 					$('#upcoming_event').html(v);
-					
+					$('#sample_1').dataTable({
+									paging: true,
+									searching: true
+						});	
 				}				
 			});	
 						
@@ -137,6 +140,7 @@ function showdays()
 			$('.event_type').on('change',function() 
 			{
 				var value = $(this).val();
+				
 				$.ajax({
 						url : './includes/upcomingEventStatusPost.php',
 						type : 'post',
@@ -149,7 +153,12 @@ function showdays()
 						},
 						success : function(r)
 						{
-							$('#upcoming_event').html(r);					
+							 $("#sample_1").dataTable().fnDestroy();
+							$('#upcoming_event').html(r);
+							$('#sample_1').dataTable({
+									paging: true,
+									searching: true
+						});	
 						}
 						
 					});

@@ -2,6 +2,7 @@
 <?php
 	include_once('./header.php');
 	//include_once('./footer.php');
+	include_once('../html_dom/simple_html_dom.php');
    $setting2 = showSettingRes($conn);
 	if(isset($setting2) && !empty($setting2))
 	{
@@ -292,7 +293,8 @@
 					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
 						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
 						</i>
-					</a>						
+					</a>	
+					
 					<?php } ?>
 					
 				</td>
@@ -301,9 +303,11 @@
 								
 				</td>
 				<td> 
+				
 					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
 						<i class="fa fa-pencil-square-o"></i>
 					</a> &nbsp;&nbsp;&nbsp;
+					
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>		
 				
@@ -321,14 +325,142 @@
 	
 	if(isset($_POST['show']))
 	{	
+$sum=0;
+$abc=0;
 		$data = showEventDetail ($conn);
 		
 		$showEventCnt = count($data);	
 		for($i=0;$i<$showEventCnt;$i++)
 		{
+			if($i == $showEventCnt-1)
+					{
 		?>
 		
 			<tr>
+				
+				<td>
+					<?php if($i+1 == $showEventCnt)
+					{
+						?>
+						<input type="hidden" id="lasteid" name="lasteid" value="<?php echo $data[$i]['event_id'];?>"/>
+				<?php
+					}
+					?>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">						
+						<?php echo $data[$i]['event_id'];	?>
+					</a>
+					
+					
+				</td>
+				<td>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
+						<?php echo ucfirst($data[$i]['event_name']);?>
+					</a>
+				</td>
+				<td>
+					<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+					title="Client Comapany:<?php echo $data[$i]['client_cmp'];?><br>
+					Client Email:<?php echo $data[$i]['client_email'];?><br>
+					Mobile1:<?php echo $data[$i]['client_work_mob'];?><br>
+					Mobile2:<?php echo $data[$i]['client_home_mob'];?>">
+					</i>&nbsp;&nbsp;<?php echo ucfirst($data[$i]['client_name']);?>
+				</td>	
+
+				
+				<!--td> <?php //echo $data[$i]['fp_no']; ?> </td>
+				<td> <?php //echo $data[$i]['bill_no'];?> </td-->
+
+				
+				<?php $from_date=date_create($data[$i]['from_date']);
+						$inm1= date_format($from_date,dateForm);  
+				?>
+				<td><?php echo $inm1;?></td>
+				
+				<?php //$to_date=date_create($data[$i]['to_date']);
+						//$inm2= date_format($to_date,dateFormat);  
+				?>
+				<!--td><?php// echo $inm2;?></td-->
+				<td> <span style="float:right;"><?php echo $data[$i]['client_charges'];?></span> </td>
+				
+				<td>
+					<span style="float:right;">
+						<?php if($data[$i]['service_tax_amt']!=''){?>
+						<i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
+						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
+						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}?> 
+					</span>
+				</td>
+				<td><span style="float:right;"><?php echo $data[$i]['total_amt'];?> </span></td>				
+				<td><span style="float:right;"><?php echo $data[$i]['client_paid_amt']; ?></span></td>
+			<td>
+					<span style="float:right;">
+						<?php 
+						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
+						{
+							
+							echo $data[$i]['total_amt']-$data[$i]['client_paid_amt'];
+							
+						}
+						else
+						{
+							echo "-";
+						}
+						?>
+					</span>
+				</td>
+				<td>
+					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
+					<?php if($data[$i]['payment_status']!=''){echo ucfirst($data[$i]['payment_status']);}else{echo "Unpaid";};?> 
+					</span>
+				</td>
+				
+				<td>					
+					<?php //$date=date_create($data[$i]['from_date']);$inm = date_format($date,"Ymd"); ?>
+					<?php if($data[$i]['inv_file_name']!='') {?>
+					<a href="upload/minvoice/<?php echo $data[$i]['inv_file_name'] ;?>" target="_blank" >
+						<i style="cursor : pointer;" class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="tooltip" title="Invoice">
+						</i>
+					</a>						
+					<?php } ?>
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" data-email="<?php echo $data[$i]['client_email'];?>" data-pdf="<?php echo $data[$i]['inv_file_name'] ;?>" data-toggle="tooltip" class="emailenv">
+						<i class="fa fa-envelope-o" ></i>
+					</a> &nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+						<?php echo $data[$i]['inv_file_id'];?>
+								
+				</td>
+				<td> 
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" class="edit" data-toggle="tooltip" title="View">
+						<i class="fa fa-pencil-square-o"></i>
+					</a> &nbsp;&nbsp;&nbsp;
+					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
+				</td>	
+			
+				
+			</tr>
+			<tr>
+						
+						<td></td>
+						<td></td>						
+						<td></td>
+						<td><b> Grand Total</b></td>
+						<td><span style="float:right;"><b><?php echo $data[$i]['ctotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $data[$i]['stotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $data[$i]['nettotal'];?> </b></span></td>
+						<td><span style="float:right;"><b><?php echo $data[$i]['cpaidtotal'];?></b> </span></td>
+						<td style="color:red;"><span style="float:right;"><b><?php echo $data[$i]['nettotal']-$data[$i]['cpaidtotal'];	?></b></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+		<?php
+					}
+					else
+					{
+						?>
+						<tr>
 				
 				<td>
 					<?php if($i+1 == $showEventCnt)
@@ -413,7 +545,9 @@
 						</i>
 					</a>						
 					<?php } ?>
-					
+					<a data-id="<?php echo $data[$i]['event_id']; ?>" data-email="<?php echo $data[$i]['client_email'];?>" data-pdf="<?php echo $data[$i]['inv_file_name'] ;?>" data-toggle="tooltip" class="emailenv">
+						<i class="fa fa-envelope-o" ></i>
+					</a> &nbsp;&nbsp;&nbsp;
 				</td>
 				<td>
 						<?php echo $data[$i]['inv_file_id'];?>
@@ -424,12 +558,12 @@
 						<i class="fa fa-pencil-square-o"></i>
 					</a> &nbsp;&nbsp;&nbsp;
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['event_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
-				</td>		
+				</td>	
+			
 				
 			</tr>
-			
-		<?php
-			
+						<?php
+					}
 		}
 		
 	}
@@ -796,7 +930,7 @@
 					<div class="pull-left margin-right-10">
 						<label for="txtfromdate">From Date </label>
 						<div id="datetimepickerPF<?php echo $i; ?>" class="input-append date">
-							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_date'];?>" readonly />
+							<input data-format="dd-MM-yyyy HH:mm PP" class="m-wrap"  type="text" name="txtfromdate<?php echo $i; ?>" id="txtfromdate<?php echo $i; ?>" value="<?php $b=strtotime($edata[$i]['event_date']); echo date("d-M-Y",$b);?>" readonly />
 							<span class="add-on">
 							  <i class="icon-time" class="icon-calendar"></i>
 							</span>
@@ -805,7 +939,11 @@
 					<div class="pull-right margin-right-20">
 					<label for="txttodate" class="well1">To Date </label>
 					<div id="datetimepickerPT<?php echo $i; ?>" class="input-append date">
-						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="txttodate<?php echo $i; ?>" id="txttodate<?php echo $i; ?>" value="<?php echo $edata[$i]['event_to_date'];?>" readonly />
+						<input data-format="dd-MM-yyyy HH:mm PP" type="text" class="m-wrap"  name="txttodate<?php echo $i; ?>" id="txttodate<?php echo $i; ?>" value="<?php 
+						 $a=strtotime($edata[$i]['event_to_date']);
+						 echo date("d-M-Y",$a);
+						
+						?>" readonly />
 						<span class="add-on">
 						  <i class="icon-time" class="icon-calendar"></i>
 						</span>
@@ -2407,6 +2545,19 @@
 		delEquipmentUpd($conn,$_POST['id']);
 		updEqpEventMst($conn,$_POST['evnt_id'],$_POST['totammt'],$_POST['txamt'],$_POST['clcharge'],$_POST['vdcharge']);
 	}
+	if(isset($_POST['accountfetchedit']))
+	{		
+		$q = mysql_query("select `taxmode`,`service_tax_rate` from `event_mst` where event_id='".$_POST['eid']."'");
+		$row = mysql_fetch_array($q);
+		header("Content-type: text/x-json");
+		echo json_encode($row);
+		
+	}
+	if(isset($_POST['accountedit']))
+	{		
+		
+		updeventaccountdtl($conn,$_POST['eid'],$_POST['cli_disc'],$_POST['sertaxamt'],$_POST['totalamt']);
+	}
 	if(isset($_POST['edit']))
 	{		
 		$q = mysql_query("SELECT `event_id`,`event_name`,`event_ds`,`client_name`,`client_cmp`,`client_email`,`client_work_mob`,`client_home_mob`,`client_mob`,`status`,`payment_status`,`client_charges`,`client_paid_amt`,`client_discount_amt`,`from_date`,`total_amt`,`job_data_1`,`job_data_2`,`vendor_charges`,`vd_paid_amt`,`taxmode`,`service_tax_rate`,`service_tax_amt`,`event_cal_id` FROM event_mst where `event_id` = '".$_POST['id']."' ");
@@ -2416,6 +2567,7 @@
 		exit();	
 		
 	}
+	
 	
 	if(isset($_POST['showlast']))
 	{		
@@ -2635,6 +2787,43 @@
             
 		 <?php	
 		}	
+		
+	}
+	
+	if(isset($_POST['emailorder']))
+	{
+		$data=showemailsetting($conn);
+				if($data[0]['email_config']=='Enable')
+				{
+					$person=showperson($conn);
+					$email_id=$person[0]['email'];
+					$password=$person[0]['password'];
+				
+					$InvEmailBody = showNewEmailBody($conn);
+					
+					$valuess=getemailrecord($conn,$_POST['emid']);
+					$htmlbody = $InvEmailBody[0]['email_template_body'];
+					$htmlData = str_get_html($htmlbody);	
+			
+					foreach($valuess as $key => $first)
+					{
+						foreach($first as $key =>$value)
+							{		
+						
+								$htmlData = str_replace('['.$key.']', $value, $htmlData);
+							}
+					}							
+					$html = $htmlData;	
+					
+					$email=$_POST['email_id'];
+					$pdf='../upload/minvoice/'.$_POST['pdf'];
+					$file=$_POST['pdf'];
+					//include("email.php");
+				}
+				else
+				{
+				}	
+		
 		
 	}
 ?>

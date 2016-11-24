@@ -101,7 +101,7 @@
 						</div-->
 					</div>
 					<!-- END DASHBOARD STATS -->
-					<div class="clearfix"></div>
+					
 					
 		
 					<div class="row-fluid">
@@ -189,7 +189,45 @@
 							</div-->
 						</div>
 					</div>
-					<div class="clearfix"></div>
+					
+					
+        <!-- BEGIN PAGE CONTENT-->
+		<div class="" style="margin-left:0%;width:49%;">	
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <div class="tab-content">
+                <div id="tab_1_2" class="tab-pane active">
+					
+                    <div class="portlet box grey">
+                       <div class="portlet-title">
+								<div class="caption"><i class="icon-user"></i>Daily Buzz</div>
+								
+							</div>
+						
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+										<th>Receive</th>
+                                        <th>Due</th>
+                                        <th>Total </th> 
+										
+                                    </tr>
+                                </thead>
+                                <tbody id="showDailyDetail">
+								
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--end tab-pane-->
+                
+                <!-- End tab pane -->
+            </div>
+        </div>
+		</div>
 					<!--div class="row-fluid">
 						<div id="divifm">
 							<iframe id="ifmCalendar" src="https://www.google.com/calendar/embed?height=550&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=suafag3ku0re5rnvjl4beriljc@group.calendar.google.com&amp;color=%238C500B&amp;ctz=Asia%2FCalcutta"

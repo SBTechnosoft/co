@@ -155,9 +155,14 @@ $('#enquiryexcel').click(function()
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					  $("#sample_1").dataTable().fnDestroy();
+					 // $("#sample_2").dataTable().fnDestroy();
+				
 					$('#showInq').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

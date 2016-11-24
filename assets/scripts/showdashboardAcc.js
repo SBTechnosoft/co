@@ -90,3 +90,27 @@ function showUPCEventCnt()
 		showdataIncome();
 		showdataExpence();
 		showdataProfit();
+		
+		function showDailyBuzz()
+		{		
+			$.ajax({
+				url : './includes/dashboardPost.php',
+				type : 'post',
+				async : false,
+				data : {
+					'showDailyDtl' : 1
+					
+				},
+				success : function(r)
+				{
+					$('#showDailyDetail').html(r);
+					
+					//initTable1();
+					//$("th").removeClass("sorting_asc").addClass("sorting_asc");
+					
+				}
+				
+			});
+		}
+		showDailyBuzz();
+		

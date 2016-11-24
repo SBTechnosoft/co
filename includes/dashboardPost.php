@@ -56,7 +56,40 @@
 			//print_r($vend);
 			
 		}
-		
+		if(isset($_POST['showDailyDtl']))
+		{
+			$recieve=showRecieve($conn);
+			$recieveEvent=showRecieveEvent($conn);
+		?>
+			<tr>
+                                        <td>Retail Sales</td>
+                                        <td>
+											<span class="label label-success" style="float:right;"><?php echo $recieve[0]['clientpaid'];?></span>
+										</td>
+                                        <td><span class="label label-warning"  style="float:right;"><?php echo $recieve[0]['totalamt']-$recieve[0]['clientpaid'];?></span></td>
+                                        <td><span class="label label-inverse"  style="float:right;"><?php echo $recieve[0]['totalamt'];?></span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>OutDoor</td>
+                                        <td>
+											<span class="label label-success"  style="float:right;"><?php echo $recieveEvent[0]['clienteventpaid'];?></span>
+										</td>
+                                        <td><span class="label label-warning"  style="float:right;"><?php echo $recieveEvent[0]['totaleventamt']-$recieveEvent[0]['clienteventpaid'];?></span></td>
+                                        <td><span class="label label-inverse"  style="float:right;"><?php echo $recieveEvent[0]['totaleventamt'];?></span></td>
+                                        
+                                    </tr>
+									<tr>
+                                        <td>Total</td>
+                                        <td>
+											<span class="label label-success"  style="float:right;"><?php echo $recieve[0]['clientpaid']+$recieveEvent[0]['clienteventpaid'];?></span>
+										</td>
+                                        <td><span class="label label-warning"  style="float:right;"><?php echo ($recieve[0]['totalamt']-$recieve[0]['clientpaid'])+($recieveEvent[0]['totaleventamt']-$recieveEvent[0]['clienteventpaid']);?></span></td>
+                                        <td><span class="label label-inverse"  style="float:right;"><?php echo $recieve[0]['totalamt']+$recieveEvent[0]['totaleventamt'];?></span></td>
+                                        
+                                    </tr>
+		<?php	
+		}
 	?>
 	
 	

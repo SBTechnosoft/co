@@ -187,7 +187,11 @@
 		
 		
 	$('#filter_data').click(function()
-		{			
+		{	
+	
+ // $.getScript("assets/scripts/table-advanced.js");
+					 // $.getScript("assets/scripts/table-editable.js");
+					 // $.getScript("assets/scripts/table-managed.js");		
 			var txtename    =   $('#txtename').val();
 			var txtclname    =   $('#txtclname').val();
 			var txtInv    =   $('#txtinv').val();
@@ -224,8 +228,13 @@
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
-					$('#event_detail').html(v);
+					 $("#sample_1").dataTable().fnDestroy();
+					 $("#sample_2").dataTable().fnDestroy();
+					 $('#event_detail').html(v);
+					 $('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 					
 				}				
 			});	
@@ -1837,3 +1846,112 @@
 					});
 					$( this ).parent().parent().css( "display", "none" );					
 				});
+				
+	$('.emailenv').click(function()
+	{
+			var id1 = $(this).data('id');
+			var email_id = $(this).data('email');
+			var pdf = $(this).data('pdf');
+			
+			$.ajax({
+						url : 'includes/eventDetailPost.php',
+						type : 'POST',
+						async : false,
+						data : {
+							'emailorder'  : 1,
+							'emid' 	: id1,
+							'email_id' : email_id,
+							'pdf' : pdf,
+						},
+						success : function(d)
+						{
+							
+						}
+						
+						
+					});
+	});
+	
+	$('#editdiscount').click(function()
+	{
+			$('#txtcldesc').removeAttr('readonly');
+			$("#editaccountdtl").fadeIn();	
+	});
+	
+	$('#btnAccountcancel').click(function(){
+		$('#txtcldesc').attr('readonly','txtcldesc');
+		$("#editaccountdtl").fadeOut();	
+	});
+	
+	$('#btnAccountupdate').click(function(){
+		var service_tax;
+		var eid    =  $('#eid').val();
+					
+					
+			$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'accountfetchedit'  : 1,
+					'eid' 	: eid,	
+									},
+				success : function(v)
+				{
+					taxmode=v.taxmode;
+					service_tax=v.service_tax_rate;
+					
+					//$('#epldtl').val(r.event_places_id);
+					
+					
+				}
+				
+			});	
+			var cli_charge=$('#client_charges').val();
+					var cli_disc=$('#txtcldesc').val();
+					var disamt=cli_charge-cli_disc;
+					
+					$('#txtcldesc').val(cli_disc);
+					$('#txtcldesc').attr('readonly','txtcldesc');
+					$('#disamt').val(disamt);
+					if(taxmode=='Yes')
+						{
+							var sertaxamt=(parseInt(disamt)* parseFloat(service_tax))/100;
+							var totalamt=disamt+sertaxamt;
+						}
+						else
+						{
+							var sertaxamt;
+							var totalamt=disamt;
+						}
+					
+					// var servtax  =	(parseInt(rtxtiamt)* parseFloat(txrat))/100;
+							// txamt =  parseInt(txamt) - parseInt(servtax);
+							// totammt = parseInt(totammt) - parseInt(rtxtiamt) - parseInt(servtax) ;
+					
+		$.ajax({
+				url : 'includes/eventDetailPost.php',
+				type : 'POST',
+				async : false,
+				data : {
+					'accountedit'  : 1,
+					'eid' 	: eid,	
+					'cli_disc' 	: cli_disc,
+					'sertaxamt':sertaxamt,
+					'totalamt':totalamt,
+					
+					
+				},
+				success : function(v)
+				{
+					
+					
+					//alert("Update Successfully");
+					//updateEvent() ;
+					window.location.reload();
+					
+				}
+				
+			});	
+		
+	});

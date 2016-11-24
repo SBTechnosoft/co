@@ -80,9 +80,12 @@ function showdata()
 				},
 				success : function(v)
 				{	
-											
+					$("#sample_1").dataTable().fnDestroy();						
 					$('#showAcs').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

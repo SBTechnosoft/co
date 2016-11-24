@@ -52,6 +52,7 @@
             <form class="form-search" action="#">
                 <div class="chat-form">
                     <div class="input-cont">
+						<input type="hidden" id="txthidden" name="txthidden" placeholder="Eg; Name of Vendor ..." class="m-wrap"value="" />
                         <input type="text" id="txtvendnm" name="txtvendnm" placeholder="Eg; Name of Vendor ..." class="m-wrap" />
                     </div>
                 </div>
@@ -95,6 +96,9 @@
                         </select>
                     </div>
                     <button id="addvend" type="button" class="btn green">Add &nbsp;
+                        <i class="icon-plus-sign icon-white"></i>
+                    </button>
+					<button id="editvend" type="button" class="btn green">Update &nbsp;
                         <i class="icon-plus-sign icon-white"></i>
                     </button>
                 </div>

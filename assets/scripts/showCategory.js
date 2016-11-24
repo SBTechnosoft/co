@@ -46,9 +46,12 @@
 				},
 				success : function(v)
 				{	
-					
+					$("#sample_2").dataTable().fnDestroy();
 					$('#showdata').html(v);
-					
+					$('#sample_2').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

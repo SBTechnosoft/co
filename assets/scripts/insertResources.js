@@ -117,9 +117,12 @@
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					$("#sample_1").dataTable().fnDestroy();
 					$('#showdata').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

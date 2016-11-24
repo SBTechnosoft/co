@@ -119,7 +119,7 @@ else
 
                         </div>
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover table-full-width tbl1" id="sample_1">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -146,8 +146,11 @@ else
                                 <tbody id="event_detail">                                    
                                    
                                 </tbody>
+								
                             </table>
+							
                         </div>
+						 
                     </div>
 
                     <!--end tab-pane-->
@@ -532,6 +535,7 @@ else
 							
 								<h4>Accounting </h4>
 								<hr />
+								
 								<div class="tab-content">
 									<table>							
 										<div class="input-icon left">
@@ -550,7 +554,11 @@ else
 													<td class="tdset"><label for="txtstf"> Discount</label></td>
 													<td>
 														<input  class="textalign discounted" id="txtcldesc" name="txtcldesc" type="text" readonly />
+														<a id="editdiscount" >
+															<i class="fa fa-pencil-square-o" ></i>
+														</a>
 													</td> 
+													
 												</tr>
 											</div>
 										</div>
@@ -733,10 +741,20 @@ else
 													</td> 
 													
 												</tr>
+												
+										
+									
 											</div>
 										</div>	
 										
-										
+												<tr id="editaccountdtl"  style="display:none;">
+													<td class="names">
+														<a id="btnAccountupdate" class="btn blue"> Save </a>
+													
+														<a id="btnAccountcancel" class="btn blue"> Cancel</a>
+													</td>
+												</tr>
+											
 									</table>
 									<br/>
 								</div>	

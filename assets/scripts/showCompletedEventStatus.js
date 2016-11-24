@@ -34,7 +34,12 @@
 				},
 				success : function(r)
 				{
-					$('#completed_event').html(r);					
+					$("#sample_1").dataTable().fnDestroy();
+					$('#completed_event').html(r);	
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}
 				
 			});
@@ -119,9 +124,12 @@ function showdata()
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					 $("#sample_1").dataTable().fnDestroy();
 					$('#completed_event').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						

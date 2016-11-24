@@ -43,7 +43,8 @@ Class login {
 		
 		if(count($sql1)==1){
 			$tkn = gettoken($conn,$id);
-			if(count($tkn[0])!=1){
+
+			if($tkn[0]['token']== ''){
 			$t=md5(uniqid(true));
 			$ExpireAt =  date("Y-m-d H:i:s", strtotime('+24 hours'));
 			

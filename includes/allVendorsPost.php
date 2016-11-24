@@ -6,10 +6,21 @@
 		$cur_date = date('Y-m-d H:i:s');
 		insVend($conn,$_POST['txtvendnm'],$_POST['txtvendemail'],$_POST['txtContact'],$_POST['drp_cat_vend'],$_POST['txtvendcmp'],$cur_date);	
 	}
+	if(isset($_POST['editrecord']))
+	{		
+		$cur_date = date('Y-m-d H:i:s');
+		updVend($conn,$_POST['txtid'],$_POST['txtvendnm'],$_POST['txtvendemail'],$_POST['txtContact'],$_POST['drp_cat_vend'],$_POST['txtvendcmp'],$cur_date);	
+	}
 	if(isset($_POST['delete']))
 	{	
 		$del_date = date('Y-m-d H:i:s');
 		delVend($conn,$_POST['id'],$del_date);	
+	}
+	if(isset($_POST['editshow']))
+	{	
+		$data=showvendedit($conn,$_POST['id']);
+		header("Content-type: text/x-json");
+		echo json_encode($data);
 	}
 	
 	if(isset($_POST['show']))
@@ -57,7 +68,10 @@
 				</td>
 				<td><?php echo ucfirst($data[$i]['vendor_email']);?></td>
 				<td><?php echo ucfirst($data[$i]['vendor_contact']);?></td>
-				<td>				
+				<td>
+					<a data-id="<?php echo $data[$i]['vend_id']; ?>" class="edit" data-toggle="tooltip" title="Edit">
+						<i class="fa fa-pencil-square-o"></i>
+					</a> &nbsp;&nbsp;&nbsp;
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['vend_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>
 			</tr>
@@ -152,7 +166,10 @@
 				</td>
 				<td><?php echo ucfirst($data[$i]['vendor_email']);?></td>
 				<td><?php echo ucfirst($data[$i]['vendor_contact']);?></td>
-				<td>				
+				<td>
+					<a data-id="<?php echo $data[$i]['vend_id']; ?>" class="edit" data-toggle="tooltip" title="Edit">
+						<i class="fa fa-pencil-square-o"></i>
+					</a> &nbsp;&nbsp;&nbsp;
 					<a data-toggle="tooltip" title="Delete" data-id="<?php echo $data[$i]['vend_id']; ?>" class="delete"> <i class="fa fa-trash-o"></i> </a> 
 				</td>
 			</tr>

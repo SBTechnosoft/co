@@ -157,7 +157,7 @@
 				</div>				
 			</div>
 			<div class="control-group">
-				<label class="control-label">App Confugration</label>
+				<label class="control-label">App Configuration</label>
 				<div class="controls" id="updefault">
 					<select id="txtApp" name="txtApp" >						
 						<option  value="Enable"> Enable</option>
@@ -166,7 +166,52 @@
 					<a id="updApp" name="updApp" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
 				</div>				
 			</div>
-           
+           <div class="control-group">
+				<label class="control-label">E-mail Configuration</label>
+				<div class="controls" id="updefault">
+					<select id="txtemail" name="txtemail" >						
+						<option  value="Enable"> Enable</option>
+						<option selected value="Disable"> Disable</option>						
+					</select>						
+					<a id="updEmail" name="updEmail" class="btn btn-default" style="margin-bottom:10px;"> Save</a>
+				</div>				
+			</div>
+		<div class="control-group" id="emailsetting">
+				<label class="control-label">E-mail Settings</label>
+				<div class="controls" id="updefault">
+					<input id="email1" class="m-wrap medium" type="email" name="" placeholder="E-mail">
+					<input id="password1" class="m-wrap medium" type="password" name="" placeholder="Password">	
+					<a id="btnemail" name="" class="btn btn-default" style="margin-bottom:10px;"> Save</a>	
+						
+				</div>
+				<input value="1" class="neworder" type="checkbox" name="neworder">New Order Configuration</br>
+				<input value="1" class="enquiry" type="checkbox" name="enquiry">New Enquiry</br>
+				<input value="1" class="payment" type="checkbox" name="payment">Payment</br>
+				<input value="1" class="quotation" type="checkbox" name="quotation">Quotation</br>
+				<input value="1" class="invoice" type="checkbox" name="invoice">Invoice</br></br>
+				<div class="controls" id="updefault">
+					<input id="email2" class="m-wrap medium" type="email" name="" placeholder="E-mail">
+					<input id="password2" class="m-wrap medium" type="password" name="" placeholder="Password">	
+					<a id="btnemail2" name="" class="btn btn-default" style="margin-bottom:10px;"> Save</a>					
+				</div>
+				<input value="2" class="neworder" type="checkbox" name="neworder">New Order	Configuration</br>
+				<input value="2" class="enquiry" type="checkbox" name="enquiry">New Enquiry</br>
+				<input value="2" class="payment" type="checkbox" name="payment">Payment</br>
+				<input value="2" class="quotation" type="checkbox" name="quotation">Quotation</br>
+				<input value="2" class="invoice" type="checkbox" name="invoice">Invoice</br></br>
+				<div class="controls" id="updefault">
+					<input id="email3" class="m-wrap medium" type="email" name="" placeholder="E-mail">
+					<input id="password3" class="m-wrap medium" type="password" name="" placeholder="Password">	
+					<a id="btnemail3" name="" class="btn btn-default" style="margin-bottom:10px;"> Save</a>					
+				</div>
+				<input value="3" class="neworder" type="checkbox" name="neworder">New Order	Configuration</br>
+				<input value="3" class="enquiry" type="checkbox" name="enquiry">New Enquiry</br>
+				<input value="3" class="payment" type="checkbox" name="payment">Payment</br>
+				<input value="3" class="quotation" type="checkbox" name="quotation">Quotation</br>
+				<input value="3" class="invoice" type="checkbox" name="invoice">Invoice</br></br>
+				
+		</div>
+		
         </div>
         <!--end tabbable-->
         <!-- END PAGE CONTENT-->

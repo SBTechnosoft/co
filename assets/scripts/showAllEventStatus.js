@@ -38,7 +38,13 @@ $('#drpcmpnmdtl').on('change',function()
 				},
 				success : function(r)
 				{
-					$('#all_event').html(r);					
+					$("#sample_1").dataTable().fnDestroy();
+					// $("#sample_2").dataTable().fnDestroy();
+					$('#all_event').html(r);
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );				
 				}
 				
 			});
@@ -58,7 +64,13 @@ $('.event_type').on('change',function()
 				},
 				success : function(r)
 				{
-					$('#all_event').html(r);					
+					$("#sample_1").dataTable().fnDestroy();
+					// $("#sample_2").dataTable().fnDestroy();
+					$('#all_event').html(r);
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );				
 				}
 				
 			});
@@ -82,6 +94,7 @@ function showdata()
 				}
 				
 			});
+			
 		}
 		showdata();
 	$('#alleventexcel').click(function()
@@ -144,10 +157,15 @@ function showdata()
 						// $('#txtbillno').val('');
 						// $('#txtfromdt').val('');
 						// $('#txttodt').val('');
-					
+					 $("#sample_1").dataTable().fnDestroy();
+					// $("#sample_2").dataTable().fnDestroy();
 					$('#all_event').html(v);
-					
+					$('#sample_1').dataTable( {
+									paging: true,
+									searching: true
+						} );
 				}				
 			});	
 						
 		});
+		
