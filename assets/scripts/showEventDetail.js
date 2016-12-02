@@ -12,8 +12,10 @@
 				},
 				success : function(r)
 				{
+				
 					$('#event_detail').html(r);
 					
+					 
 					
 				}
 				

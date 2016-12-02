@@ -129,7 +129,7 @@
 										<!--th> FP No </th>
 										<th> Bill No </th-->
                                         <th> Order Date</th>										
-										<th class="sum"> Charged Amt </th>
+										<th> Charged Amt </th>
 										<th> S.Tax </th>
 										<th> Tot Amt </th>										
 										<th>Rec.Amt</th>
@@ -141,9 +141,21 @@
 										<th> Action</th>
                                     </tr>
                                 </thead>
+									
+									
                                 <tbody id="all_event">
                                     
                                 </tbody>
+								<tfoot  class="t_foot">
+									<tr>
+										<th  colspan="5" style="text-align:right">Total:</th>
+										<th></th>
+										<th></th>										
+										<th></th>
+										<th ></th>
+										<th colspan="6" ></th>
+									</tr>
+								</tfoot>
 								
                             </table>
                         </div>

@@ -6,14 +6,14 @@ var TableAdvanced = function  () {
         function fnFormatDetails ( oTable, nTr )
         {
             var aData = oTable.fnGetData( nTr );
-            var sOut = '<table>';
+            //var sOut = '<table>';
             //sOut += '<tr><td>Client Name:</td><td>'+aData[3]+'</td></tr>';           
             //sOut += '<tr><td>FP No.:</td><td>'+aData[4]+'</td></tr>';
 			//sOut += '<tr><td>Bill No.:</td><td>'+aData[5]+'</td></tr>';
-            //sOut += '<tr><td>Client Email:</td><td>Could provide a link here</td></tr>';
+           // sOut += '<tr><td>Client Email:</td></tr>';
            // sOut += '</table>';
              
-            return sOut;
+           // return sOut;
         }
 
         /*
@@ -45,6 +45,7 @@ var TableAdvanced = function  () {
             ],
             // set the initial value
             "iDisplayLength": 20,
+			 
         });
 
         jQuery('#sample_1_wrapper .dataTables_filter input').addClass("m-wrap small"); // modify table search input
@@ -70,6 +71,7 @@ var TableAdvanced = function  () {
                 oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
             }
         });
+		
     }
 
      var initTable2 = function() {

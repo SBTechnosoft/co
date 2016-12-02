@@ -67,6 +67,7 @@ var TableEditable = function () {
                         'bSortable': false,
 						'aTargets': [0]
                     }
+					
                 ]
             });
 
