@@ -43,12 +43,12 @@
 						</td>
 						
 						
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
-						<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+						<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 						<td>					
 							<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 								<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >
@@ -116,12 +116,12 @@
 					</i>&nbsp;&nbsp;<?php echo ucfirst($ClUnpaid[$i]['client_name']);?>
 				</td>
 				
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
-				<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+				<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 				<td>					
 					<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 						<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >
@@ -194,12 +194,12 @@
 						</td>
 						
 						
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>							
-						<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+						<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 						<td>					
 							<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 								<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >
@@ -269,12 +269,12 @@
 					</i>&nbsp;&nbsp;<?php echo ucfirst($ClUnpaid[$i]['client_name']);?>
 				</td>
 				
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
-				<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+				<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 				<td>					
 					<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 						<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >
@@ -349,12 +349,12 @@
 						</td>
 						
 						
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-						<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
-						<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+						<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 						<td>					
 							<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 								<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >
@@ -423,12 +423,12 @@
 					</i>&nbsp;&nbsp;<?php echo ucfirst($ClUnpaid[$i]['client_name']);?>
 				</td>
 				
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_charges'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_discount_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['service_tax_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['total_amt'];?></span></td>
-				<td><span style="float:right;"><?php echo $ClUnpaid[$i]['client_paid_amt'];?></span></td>				
-				<td style="color:red;"><span style="float:right;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></span></td>
+				<td><?php echo $ClUnpaid[$i]['client_charges'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_discount_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['service_tax_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['total_amt'];?></td>
+						<td><?php echo $ClUnpaid[$i]['client_paid_amt'];?></td>				
+						<td style="color:red;"><?php echo $ClUnpaid[$i]['remain_amt'] ;?></td>
 				<td>					
 					<?php if($ClUnpaid[$i]['inv_file_name']!='') {?>
 						<a href="upload/minvoice/<?php echo $ClUnpaid[$i]['inv_file_name'] ;?>" target="_blank" >

@@ -509,7 +509,7 @@ function showClientPaidAmt($conn)
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry'  
-		order by event_id "; 
+		order by event_id"; 
 		
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}
@@ -526,7 +526,7 @@ function showClPaidAmtType($conn,$event_type)
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and order_type = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry' and order_type = '".$event_type."'
-		order by event_id "; 
+		order by event_id"; 
 		
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}
@@ -543,7 +543,7 @@ function showClPaidAmtCmpType($conn,$event_type)
 		(select sum(total_amt - client_paid_amt) from event_mst where `payment_status` = 'Paid' and `status` != 'enquiry'  and cmp_id = '".$event_type."') as rtotal,`inv_file_id`
 		from `event_mst` 
 		where `payment_status` = 'Paid' and `status` != 'enquiry' and cmp_id = '".$event_type."'
-		order by event_id "; 
+		order by event_id"; 
 		
 		return $conn->getResultArray($sqlClPaidAmt);	
 	}

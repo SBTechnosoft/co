@@ -378,7 +378,7 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -396,6 +396,7 @@
 					break;
 				case 'UPC':
 				?>
+				<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>	 
@@ -442,7 +443,9 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script-->
+					
+					
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 					<!-- END PAGE LEVEL PLUGINS -->
@@ -461,6 +464,7 @@
 					break;
 				case 'COM':
 				?>
+				<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>
@@ -508,7 +512,7 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script-->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 					<!-- END PAGE LEVEL PLUGINS -->
@@ -527,7 +531,7 @@
 					break;
 				case 'PID':
 				?>
-				
+				<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					  
@@ -556,7 +560,7 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script-->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -1221,6 +1225,7 @@
 					break;
 				case 'UPD':
 				?>
+				<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>					
@@ -1251,7 +1256,7 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script-->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -1340,6 +1345,7 @@
 					break;
 				case 'VUD':
 				?>
+				<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 					<script src="<?php echo HTTP_SERVER; ?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 					<!--[if lt IE 9]>					
@@ -1369,7 +1375,7 @@
 					
 					<!-- BEGIN PAGE LEVEL PLUGINS -->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/select2/select2.min.js"></script>
-					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+					<!--script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/jquery.dataTables.min.js"></script-->
 					<script type="text/javascript" src="<?php echo HTTP_SERVER; ?>assets/plugins/data-tables/DT_bootstrap.js"></script>
 					<!-- END PAGE LEVEL PLUGINS -->
 					<!-- BEGIN PAGE LEVEL SCRIPTS -->

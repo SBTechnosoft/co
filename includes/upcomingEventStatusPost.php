@@ -75,30 +75,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -106,13 +108,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+				
 				</td>				
 				<td>
-					<span style="float:right;">
+				
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -120,13 +122,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -135,10 +137,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -239,30 +241,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -270,13 +274,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+					
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -284,13 +288,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -299,10 +303,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -458,30 +462,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -489,13 +495,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+					
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -503,13 +509,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -518,10 +524,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -622,30 +628,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -653,13 +661,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+					
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -667,13 +675,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -682,10 +690,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -781,30 +789,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -812,13 +822,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+					
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -826,13 +836,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -841,10 +851,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -945,30 +955,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -976,13 +988,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+				
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -990,13 +1002,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -1005,10 +1017,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -1101,30 +1113,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -1132,13 +1146,13 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
+				
 				</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -1146,13 +1160,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td>
-					<span style="float:right;">
+				
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -1161,10 +1175,10 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+					
 				</td>
 				<td style="text-align:center;">
 					<span <?php if(ucfirst($data[$i]['payment_status']) == 'Paid' ){ ?> class="label label-success " <?php } else {?> class="label label-warning " <?php } ?> >
@@ -1265,30 +1279,32 @@
 				?>
 				<!--td><?php// echo $inm2;?></td-->
 				<td> 
-					<span style="float:right;">
+					
 						<?php 
-							if($data[$i]['client_charges']!='')
+							if($data[$i]['client_charges']=='NaN'){echo "0";}
+							else if($data[$i]['client_charges']!='')
 							{ 
 								echo $data[$i]['client_charges'];
 							}
 							else
 							{
-								echo "-";
+								echo "0";
 							}
 							
 						?>
-					</span> 
+					
 				</td>
 				
 				<td>
-					<span style="float:right;">
-						<?php if($data[$i]['service_tax_amt']!=''){?><i class="fa fa-info-circle" style="cursor:pointer;" data-toggle="tooltip" data-html="true" 
-						title="Tax Rate:<?php echo $data[$i]['service_tax_rate']."%";?>">
-						</i>&nbsp;&nbsp;<?php echo $data[$i]['service_tax_amt'];}else{echo "-";}?> 
-					</span>
+					
+						<?php 
+						if($data[$i]['service_tax_amt']=='NaN'){echo "0";}
+						else if($data[$i]['service_tax_amt']!=''){ echo $data[$i]['service_tax_amt'];}
+						else{echo "0";}?> 
+					
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 							if($data[$i]['total_amt']!= '')
 							{ 
@@ -1296,13 +1312,12 @@
 							} 
 							else 
 							{ 
-								echo "-";
+								echo "0";
 							}
 						?> 
-					</span>
-				</td>				
+									</td>				
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='')
 						{
@@ -1310,13 +1325,13 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
-					</span>
+				
 				</td>
 				<td>
-					<span style="float:right;">
+					
 						<?php 
 						if($data[$i]['client_paid_amt']!='' || $data[$i]['client_paid_amt']==0 && $data[$i]['payment_status'] != 'Paid')
 						{
@@ -1325,7 +1340,7 @@
 						}
 						else
 						{
-							echo "-";
+							echo "0";
 						}
 						?>
 					</span>

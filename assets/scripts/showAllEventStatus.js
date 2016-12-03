@@ -130,7 +130,7 @@ function showdata()
                 }, 0 );
 
  
-            // Update footer
+         
             $( api.column( 5).footer() ).html(
 			pageTotal4
 			);
@@ -144,7 +144,7 @@ function showdata()
                 }, 0 );
 
  
-            // Update footer
+     
             $( api.column( 6 ).footer() ).html(
 			pageTotal3
 			);
@@ -159,7 +159,7 @@ function showdata()
                 }, 0 );
 
  
-            // Update footer
+       
             $( api.column( 7 ).footer() ).html(
 			pageTotal2
 			);
@@ -172,7 +172,7 @@ function showdata()
                 }, 0 );
 
  
-            // Update footer
+        
             $( api.column( 8 ).footer() ).html(
 			pageTotal1
 			);
@@ -196,7 +196,11 @@ function showdata()
 		currentPage= this.fnPagingInfo().iPage+1;  
 		if(pageNo==currentPage)
 			{
-				$('#sample_1 tfoot tr').remove();
+				$('#sample_1 tfoot tr').hide();
+			}
+			else
+			{
+				$('#sample_1 tfoot tr').show();
 			}
 		}
 		

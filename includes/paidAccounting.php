@@ -154,6 +154,16 @@
                                     </tr-->
                                     
                                 </tbody>
+								<tfoot  class="t_foot">
+									<tr>
+										<th  colspan="3" style="text-align:right">Total:</th>
+										<th></th>
+										<th></th>										
+										<th></th>
+										<th ></th>
+										<th colspan="4" ></th>
+									</tr>
+								</tfoot>
                             </table>
                         </div>
                     </div>

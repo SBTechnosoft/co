@@ -137,6 +137,16 @@
                                 <tbody id="completed_event">
                                    
                                 </tbody>
+								<tfoot  class="t_foot">
+									<tr>
+										<th  colspan="5" style="text-align:right">Total:</th>
+										<th></th>
+										<th></th>										
+										<th></th>
+										<th ></th>
+										<th colspan="5" ></th>
+									</tr>
+								</tfoot>
                             </table>
                         </div>
                     </div>
